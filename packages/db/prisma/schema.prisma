@@ -10,6 +10,8 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
-model Example {
-    id String @id @default(cuid())
+model Post {
+    id      String @id @default(cuid())
+    title   String
+    content String
 }

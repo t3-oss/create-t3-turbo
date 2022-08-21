@@ -1,23 +1,27 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
-/.pnp
+node_modules
+.pnp
 .pnp.js
 
 # testing
-/coverage
+coverage
 
 # database
-/prisma/db.sqlite
-/prisma/db.sqlite-journal
+prisma/db.sqlite
+prisma/db.sqlite-journal
 
 # next.js
-/.next/
-/out/
+.next/
+out/
+
+# expo
+.expo/
+dist/
 
 # production
-/build
+build
 
 # misc
 .DS_Store
@@ -38,3 +42,6 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+# turbo
+.turbo

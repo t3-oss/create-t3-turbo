@@ -2,7 +2,7 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**", ".expo/**"]
+      "outputs": [".next/**", ".expo/**"]
     },
     "lint": {
       "outputs": []

@@ -33,7 +33,7 @@ const Home: NextPage = () => {
           {postQuery.data ? (
             <div className="flex flex-col gap-4">
               {postQuery.data?.map((p) => {
-                return <PostCard post={p} />;
+                return <PostCard key={p.id} post={p} />;
               })}
             </div>
           ) : (

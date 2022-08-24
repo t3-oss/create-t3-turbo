@@ -1,10 +1,10 @@
 // src/pages/api/examples.ts
 import type { NextApiRequest, NextApiResponse } from "next";
-import { prisma } from "../../server/db/client";
+import { prisma } from "@acme/db";
 
 const examples = async (req: NextApiRequest, res: NextApiResponse) => {
-  const examples = await prisma.example.findMany();
-  res.status(200).json(examples);
+  const posts = await prisma.post.findMany();
+  res.status(200).json(posts);
 };
 
 export default examples;

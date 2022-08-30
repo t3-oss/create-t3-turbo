@@ -4,6 +4,7 @@
 
 To get it running, follow the steps below:
 
+### Setup dependencies
 ```shell
 # Install dependencies
 npm install
@@ -13,44 +14,31 @@ echo DATABASE_URL=file:./db.sqlite >> packages/db/.env
 npm run db-push
 ```
 
-## iOS
+### Configure Expo `dev`-script
 
-Make sure you have XCode and XCommand Line Tools installed [as shown on expo docs](https://docs.expo.dev/workflow/ios-simulator/).
-Then, change the `dev` script at `apps/expo/package.json` to open the iOS simulator.
+> **Note:** If you want to use a physical phone with Expo Go, just run `npm run dev` and scan the QR-code.
 
-```json
-...
-  "dev": "expo start --ios",
-...
+### Use iOS Simulator
+
+1. Make sure you have XCode and XCommand Line Tools installed [as shown on expo docs](https://docs.expo.dev/workflow/ios-simulator/).
+2. Change the `dev` script at `apps/expo/package.json` to open the iOS simulator.
+
+```diff
++  "dev": "expo start --ios",
 ```
 
-And run `npm run dev` at the project root folder.
+3. Run `npm run dev` at the project root folder.
 
-## Android
+### For Android
 
-Install Android Studio tools [as shown on expo docs](https://docs.expo.dev/workflow/android-studio-emulator/). 
-After that, change the `dev` script at `apps/expo/package.json` to open the Android emulator.
+1. Install Android Studio tools [as shown on expo docs](https://docs.expo.dev/workflow/android-studio-emulator/). 
+2. Change the `dev` script at `apps/expo/package.json` to open the Android emulator.
 
-```json
-...
-  "dev": "expo start --android",
-...
+```diff
++  "dev": "expo start --android",
 ```
 
-And run `npm run dev` at the project root folder.
-
-## Web
-
-Run `npx expo install @expo/webpack-config@^0.17.0` at the project root folder. After that, change the `dev` script 
-at `apps/expo/package.json` like shown bellow.
-
-```json
-...
-  "dev": "expo start --web",
-...
-```
-
-And run `npm run dev` at the project root folder.
+3. Run `npm run dev` at the project root folder.
 
 ## About
 

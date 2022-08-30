@@ -18,7 +18,7 @@ npm run db-push
 
 > **Note:** If you want to use a physical phone with Expo Go, just run `npm run dev` and scan the QR-code.
 
-### Use iOS Simulator
+#### Use iOS Simulator
 
 1. Make sure you have XCode and XCommand Line Tools installed [as shown on expo docs](https://docs.expo.dev/workflow/ios-simulator/).
 2. Change the `dev` script at `apps/expo/package.json` to open the iOS simulator.
@@ -29,7 +29,7 @@ npm run db-push
 
 3. Run `npm run dev` at the project root folder.
 
-### For Android
+#### For Android
 
 1. Install Android Studio tools [as shown on expo docs](https://docs.expo.dev/workflow/android-studio-emulator/). 
 2. Change the `dev` script at `apps/expo/package.json` to open the Android emulator.

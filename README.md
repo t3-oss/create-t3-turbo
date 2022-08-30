@@ -4,20 +4,53 @@
 
 To get it running, follow the steps below:
 
-```
+```shell
 # Install dependencies
 npm install
 
 # Create a `.env` for prisma and make sure it's synced
 echo DATABASE_URL=file:./db.sqlite >> packages/db/.env
 npm run db-push
-
-# Make sure your Expo dev-script is to your preference
-# (Depends on which simulator you have - iOS or Android)
-
-# Run!
-npm run dev
 ```
+
+## iOS
+
+Make sure you have XCode and XCommand Line Tools installed [as shown on expo docs](https://docs.expo.dev/workflow/ios-simulator/).
+Then, change the `dev` script at `apps/expo/package.json` to open the iOS simulator.
+
+```json
+...
+  "dev": "expo start --ios",
+...
+```
+
+And run `npm run dev` at the project root folder.
+
+## Android
+
+Install Android Studio tools [as shown on expo docs](https://docs.expo.dev/workflow/android-studio-emulator/). 
+After that, change the `dev` script at `apps/expo/package.json` to open the Android emulator.
+
+```json
+...
+  "dev": "expo start --android",
+...
+```
+
+And run `npm run dev` at the project root folder.
+
+## Web
+
+Run `npx expo install @expo/webpack-config@^0.17.0` at the project root folder. After that, change the `dev` script 
+at `apps/expo/package.json` like shown bellow.
+
+```json
+...
+  "dev": "expo start --web",
+...
+```
+
+And run `npm run dev` at the project root folder.
 
 ## About
 

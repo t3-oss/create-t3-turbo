@@ -5,6 +5,7 @@
     "packages/*"
   ],
   "scripts": {
+    "postinstall": "turbo run postinstall",
     "db-push": "npm run db-push -w @acme/db",
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",

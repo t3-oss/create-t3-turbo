@@ -18,9 +18,12 @@ const PostCard: React.FC<{
 export const HomeScreen = () => {
   const postQuery = trpc.post.all.useQuery();
 
+  console.log(postQuery);
+
   return (
     <SafeAreaView>
-      <View className="h-full w-full">
+      <View className="h-full w-full py-8 px-4">
+        <Text className="text-5xl font-bold">Create T3 Turbo</Text>
         <FlashList
           data={postQuery.data}
           estimatedItemSize={20}

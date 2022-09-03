@@ -1,5 +1,29 @@
 # create-t3-turbo
 
+## About
+
+Ever wondered how to migrate your T3 application into a monorepo? Stop right here! This is the perfect starter repo to get you running with the perfect stack!
+
+It uses [Turborepo](https://turborepo.org/) and contains:
+
+```
+apps
+ |- expo
+     |- Expo SDK 46
+     |- React Native using React 18
+     |- Tailwind using Nativewind
+     |- Typesafe API calls using tRPC
+ |- next.js
+     |- React 18
+     |- TailwindCSS
+     |- E2E Typesafe API Server & Client
+packages
+ |- api
+     |- tRPC v10 router definition
+ |- db
+     |- typesafe db-calls using Prisma
+ ```
+
 ## Quick Start
 
 To get it running, follow the steps below:
@@ -39,30 +63,6 @@ npm run db-push
 ```
 
 3. Run `npm run dev` at the project root folder.
-
-## About
-
-Ever wondered how to migrate your T3 application into a monorepo? Stop right here! This is the perfect starter repo to get you running with the perfect stack!
-
-It uses [Turborepo](https://turborepo.org/) and contains:
-
-```
-apps
- |- expo
-     |- Expo SDK 46
-     |- React Native using React 18
-     |- Tailwind using Nativewind
-     |- Typesafe API Calls using tRPC
- |- next.js
-     |- React 18
-     |- TailwindCSS
-     |- E2E Typesafe API Server & Client
-packages
- |- api
-     |- tRPC router definition
- |- db
-     |- typesafe db-calls using Prisma
- ```
 
  ## Deployment
 

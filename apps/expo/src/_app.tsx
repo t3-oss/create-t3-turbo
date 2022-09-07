@@ -10,7 +10,9 @@ import { transformer } from "@acme/api/transformer";
 import { HomeScreen } from "./screens/home";
 import { Text } from "react-native";
 
-const url = "http://192.168.1.166:3000/api/trpc";
+// `localhost` might not work in all cases
+// see https://github.com/t3-oss/create-t3-turbo/issues/10
+const url = "http://localhost:3000/api/trpc";
 
 const App = () => {
   const [queryClient] = React.useState(() => new QueryClient());

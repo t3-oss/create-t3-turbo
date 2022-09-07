@@ -18,8 +18,6 @@ const PostCard: React.FC<{
 export const HomeScreen = () => {
   const postQuery = trpc.post.all.useQuery();
 
-  console.log(postQuery);
-
   return (
     <SafeAreaView>
       <View className="h-full w-full py-8 px-4">

@@ -29,9 +29,13 @@ packages
 To get it running, follow the steps below:
 
 ### Setup dependencies
-```shell
+```diff
 # Install dependencies
 npm install
+
+# Update schema.prisma provider to use sqlite
+- provider = "postgresql"
++ provider = "sqlite"
 
 # Create a `.env` for prisma and make sure it's synced
 echo DATABASE_URL=file:./db.sqlite >> packages/db/.env

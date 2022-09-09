@@ -33,7 +33,7 @@ To get it running, follow the steps below:
 # Install dependencies
 npm install
 
-# Update schema.prisma provider to use sqlite
+# In packages/db/prisma update schema.prisma provider to use sqlite
 - provider = "postgresql"
 + provider = "sqlite"
 

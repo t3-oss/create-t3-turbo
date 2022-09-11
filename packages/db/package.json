@@ -5,7 +5,7 @@
   "types": "./index.ts",
   "license": "MIT",
   "scripts": {
-    "dev": "prisma studio --port 5000", 
+    "dev": "prisma studio --port 5556", 
     "db-push": "prisma db push",
     "postinstall": "prisma generate"
   },

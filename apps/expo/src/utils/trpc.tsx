@@ -27,16 +27,23 @@ const getBaseUrl = () => {
  */
 import React from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { httpBatchLink } from '@trpc/client';
 import { transformer } from "@acme/api/transformer";
 
 export const TRPCProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [queryClient] = React.useState(() => new QueryClient());
-  const [trpcClient] = React.useState(() => {
-    const url = getBaseUrl() + "/api/trpc";
-    return trpc.createClient({ url, transformer });
-  });
+  const [trpcClient] = React.useState(() =>
+    trpc.createClient({
+      transformer,
+      links: [
+        httpBatchLink({
+          url: `${getBaseUrl()}/api/trpc`,
+        }),
+      ],
+    }),
+  );
 
   return (
     <trpc.Provider client={trpcClient} queryClient={queryClient}>

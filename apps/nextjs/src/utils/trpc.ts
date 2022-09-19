@@ -1,5 +1,6 @@
 // src/utils/trpc.ts
-import { setupTRPC } from "@trpc/next";
+import { createTRPCNext } from '@trpc/next';
+import { httpBatchLink } from '@trpc/client';
 import type { AppRouter } from "@acme/api";
 import { transformer } from "@acme/api/transformer";
 
@@ -10,11 +11,15 @@ const getBaseUrl = () => {
   return `http://localhost:${process.env.PORT ?? 3000}`; // dev SSR should use localhost
 };
 
-export const trpc = setupTRPC<AppRouter>({
+export const trpc = createTRPCNext<AppRouter>({
   config() {
     return {
-      url: `${getBaseUrl()}/api/trpc`,
       transformer,
+      links: [
+        httpBatchLink({
+          url: `${getBaseUrl()}/api/trpc`,
+        }),
+      ],
     };
   },
   ssr: false,

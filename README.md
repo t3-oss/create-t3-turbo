@@ -68,6 +68,12 @@ npm run db-push
 
 3. Run `npm run dev` at the project root folder.
 
+## Note about pnpm
+Expo doesn't play nice with pnpm by default. The symbolic links of pnpm break the [rules of Expo monorepos](https://docs.expo.dev/guides/monorepos/#common-issues). The issue can be fixed by telling pnpm to hoist dependencies using a `.npmrc` file:
+```diff
++  node-linker=hoisted
+```
+
  ## Deployment
 
  ### Next.js

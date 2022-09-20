@@ -149,6 +149,12 @@ Deploying your Expo application works slightly differently compared to Next.js o
 
 8. Done! Now that you have created your production build, submitted it to the stores, and installed EAS Update, you are ready for anything!
 
+## Note about pnpm
+Expo doesn't play nice with pnpm by default. The symbolic links of pnpm break the [rules of Expo monorepos](https://docs.expo.dev/guides/monorepos/#common-issues). The issue can be fixed by telling pnpm to hoist dependencies using a `.npmrc` file:
+```diff
++  node-linker=hoisted
+```
+
  ## References
  The stack originates from [create-t3-app](https://github.com/t3-oss/create-t3-app).
 

@@ -5,15 +5,15 @@
   "types": "./index.ts",
   "license": "MIT",
   "scripts": {
-    "dev": "prisma studio --port 5556", 
+    "dev": "prisma studio --port 5556",
     "db-push": "prisma db push",
     "postinstall": "prisma generate"
   },
   "dependencies": {
-    "@prisma/client": "^4.2.1"
+    "@prisma/client": "^4.3.1"
   },
   "devDependencies": {
-    "prisma": "^4.2.1",
-    "typescript": "4.7.4"
+    "prisma": "^4.3.1",
+    "typescript": "^4.8.3"
   }
 }

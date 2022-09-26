@@ -1,6 +1,6 @@
 // src/utils/trpc.ts
-import { createTRPCNext } from '@trpc/next';
-import { httpBatchLink } from '@trpc/client';
+import { createTRPCNext } from "@trpc/next";
+import { httpBatchLink } from "@trpc/client";
 import type { AppRouter } from "@acme/api";
 import { transformer } from "@acme/api/transformer";
 

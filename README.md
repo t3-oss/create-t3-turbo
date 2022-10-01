@@ -74,6 +74,8 @@ Expo doesn't play nice with pnpm by default. The symbolic links of pnpm break th
 +  node-linker=hoisted
 ```
 
+This change is also necessary for Prisma due to their way of modifying the `node_modules`.
+
  ## Deployment
 
  ### Next.js

@@ -1,10 +1,6 @@
 {
   "name": "create-t3-turbo",
   "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
   "scripts": {
     "postinstall": "turbo run postinstall",
     "db-push": "npm run db-push -w @acme/db",
@@ -16,7 +12,7 @@
   },
   "dependencies": {
     "@manypkg/cli": "^0.19.2",
-    "prettier": "latest",
-    "turbo": "latest"
+    "prettier": "^2.7.1",
+    "turbo": "^1.5.5"
   }
 }

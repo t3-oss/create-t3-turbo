@@ -1,5 +1,8 @@
 # create-t3-turbo
 
+![Create T3 Turbo](https://user-images.githubusercontent.com/51714798/193696098-5ea53aa5-826f-411d-b694-b27f6a1d2421.png)
+
+
 ## About
 
 Ever wondered how to migrate your T3 application into a monorepo? Stop right here! This is the perfect starter repo to get you running with the perfect stack!

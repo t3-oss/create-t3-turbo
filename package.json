@@ -1,6 +1,7 @@
 {
   "name": "create-t3-turbo",
   "private": true,
+  "packageManager": "pnpm@7.13.0",
   "scripts": {
     "postinstall": "turbo postinstall",
     "db-push": "pnpm --filter @acme/db db-push",

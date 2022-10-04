@@ -1,0 +1,56 @@
+name: CI
+
+on:
+  pull_request:
+    branches: ["*"]
+  push:
+    branches: ["main"]
+
+# You can leverage Vercel Remote Caching with Turbo to speed up your builds
+# @link https://turborepo.org/docs/core-concepts/remote-caching#remote-caching-on-vercel-builds
+# env:
+#   TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+#   TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+
+jobs:
+  build-lint:
+    env:
+      DATABASE_URL: file:./db.sqlite
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.2.2
+
+      - name: Setup Node 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: |
+          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install deps (with cache)
+        run: pnpm install
+
+      - name: Next.js cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ github.workspace }}/.next/cache
+          key: ${{ runner.os }}-${{ runner.node }}-${{ hashFiles('**/pnpm-lock.yaml') }}-nextjs
+
+      - name: Build and lint
+        run: pnpm turbo build lint

@@ -1,22 +1,20 @@
 {
   "name": "create-t3-turbo",
   "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
+  "packageManager": "pnpm@7.13.0",
   "scripts": {
-    "postinstall": "turbo run postinstall",
-    "db-push": "npm run db-push -w @acme/db",
-    "build": "turbo run build",
-    "dev": "turbo run dev --parallel",
-    "clean": "find . -name node_modules -o -name .next -o -name .expo -type d -prune | xargs rm -rf",
-    "lint": "turbo run lint && manypkg check",
+    "postinstall": "turbo postinstall",
+    "db-push": "pnpm --filter @acme/db db-push",
+    "build": "turbo build",
+    "dev": "turbo dev --parallel",
+    "cleen": "turbo clean",
+    "clean": "rm -rf node_modules",
+    "lint": "turbo lint && manypkg check",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "dependencies": {
     "@manypkg/cli": "^0.19.2",
-    "prettier": "latest",
-    "turbo": "latest"
+    "prettier": "^2.7.1",
+    "turbo": "^1.5.5"
   }
 }

@@ -39,20 +39,21 @@ To get it running, follow the steps below:
 
 ```diff
 # Install dependencies
-npm install
+pnpm i
 
 # In packages/db/prisma update schema.prisma provider to use sqlite
+# or use your own database provider
 - provider = "postgresql"
 + provider = "sqlite"
 
 # Create a `.env` for prisma and make sure it's synced
 echo DATABASE_URL=file:./db.sqlite >> packages/db/.env
-npm run db-push
+pnpm db-push
 ```
 
 ### Configure Expo `dev`-script
 
-> **Note:** If you want to use a physical phone with Expo Go, just run `npm run dev` and scan the QR-code.
+> **Note:** If you want to use a physical phone with Expo Go, just run `pnpm dev` and scan the QR-code.
 
 #### Use iOS Simulator
 
@@ -63,7 +64,7 @@ npm run db-push
 +  "dev": "expo start --ios",
 ```
 
-3. Run `npm run dev` at the project root folder.
+3. Run `pnpm dev` at the project root folder.
 
 #### For Android
 
@@ -74,17 +75,7 @@ npm run db-push
 +  "dev": "expo start --android",
 ```
 
-3. Run `npm run dev` at the project root folder.
-
-## Note about pnpm
-
-Expo doesn't play nice with pnpm by default. The symbolic links of pnpm break the [rules of Expo monorepos](https://docs.expo.dev/guides/monorepos/#common-issues). The issue can be fixed by telling pnpm to hoist dependencies using a `.npmrc` file:
-
-```diff
-+  node-linker=hoisted
-```
-
-This change is also necessary for Prisma due to their way of modifying the `node_modules`.
+3. Run `pnpm dev` at the project root folder.
 
 ## Deployment
 
@@ -113,7 +104,7 @@ Deploying your Expo application works slightly differently compared to Next.js o
 
    ```bash
    // Install the EAS CLI
-   $ npm install --global eas-cli
+   $ pnpm add -g eas-cli
 
    // Log in with your Expo account
    $ eas login
@@ -148,7 +139,7 @@ Deploying your Expo application works slightly differently compared to Next.js o
    ```bash
    // Add the `expo-updates` library to your Expo app
    $ cd apps/expo
-   $ npx expo install expo-updates
+   $ pnpm expo install expo-updates
 
    // Configure EAS Update
    $ eas update:configure

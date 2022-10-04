@@ -2,12 +2,13 @@
   "name": "create-t3-turbo",
   "private": true,
   "scripts": {
-    "postinstall": "turbo run postinstall",
-    "db-push": "npm run db-push -w @acme/db",
-    "build": "turbo run build",
-    "dev": "turbo run dev --parallel",
-    "clean": "find . -name node_modules -o -name .next -o -name .expo -type d -prune | xargs rm -rf",
-    "lint": "turbo run lint && manypkg check",
+    "postinstall": "turbo postinstall",
+    "db-push": "pnpm --filter @acme/db db-push",
+    "build": "turbo build",
+    "dev": "turbo dev --parallel",
+    "cleen": "turbo clean",
+    "clean": "rm -rf node_modules",
+    "lint": "turbo lint && manypkg check",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "dependencies": {

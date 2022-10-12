@@ -5,7 +5,7 @@ import { TRPCProvider } from "./utils/trpc";
 
 import { HomeScreen } from "./screens/home";
 
-const App = () => {
+export const App = () => {
   return (
     <TRPCProvider>
       <SafeAreaProvider>
@@ -15,4 +15,3 @@ const App = () => {
     </TRPCProvider>
   );
 };
-

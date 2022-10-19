@@ -1,18 +1,13 @@
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { type NextAuthOptions } from "next-auth";
-import DiscordProvider from "next-auth/providers/discord";
-import GoogleProvider from "next-auth/providers/google";
+import { type NextAuthOptions } from 'next-auth';
+import DiscordProvider from 'next-auth/providers/discord';
 
-import { prisma } from "@acme/db";
+import { prisma } from '@acme/db';
+import { PrismaAdapter } from '@next-auth/prisma-adapter';
 
 export const authOptions: NextAuthOptions = {
   // Configure one or more authentication providers
   adapter: PrismaAdapter(prisma),
   providers: [
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID!,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-    }),
     DiscordProvider({
       clientId: process.env.DISCORD_CLIENT_ID!,
       clientSecret: process.env.DISCORD_CLIENT_SECRET!,

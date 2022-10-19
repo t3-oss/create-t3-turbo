@@ -7,7 +7,7 @@
     "db-push": "turbo db-push",
     "build": "turbo build",
     "dev": "turbo dev --parallel",
-    "cleen": "turbo clean",
+    "clean:workspaces": "turbo clean",
     "clean": "rm -rf node_modules",
     "lint": "turbo lint && manypkg check",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""

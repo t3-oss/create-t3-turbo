@@ -1,7 +1,7 @@
 {
   "pipeline": {
     "db-generate": {
-      "outputs": ["generated/**"]
+      "outputs": [".generated/**"]
     },
     "build": {
       "dependsOn": ["^build", "^db-generate"],

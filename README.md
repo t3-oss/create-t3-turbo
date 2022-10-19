@@ -27,6 +27,8 @@ apps
 packages
  ├─ api
  |   └─ tRPC v10 router definition
+ ├─ auth
+     └─ authentication using next-auth
  └─ db
      └─ typesafe db-calls using Prisma
 ```

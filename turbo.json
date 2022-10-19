@@ -11,9 +11,17 @@
       "dependsOn": ["^db-generate"],
       "cache": false
     },
-    "db-generate": {},
-    "db-push": {},
-    "clean": {},
-    "//#clean": {}
+    "db-generate": {
+      "cache": false
+    },
+    "db-push": {
+      "cache": false
+    },
+    "clean": {
+      "cache": false
+    },
+    "//#clean": {
+      "cache": false
+    }
   }
 }

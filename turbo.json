@@ -1,17 +1,19 @@
 {
   "pipeline": {
     "build": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build", "db-generate"],
       "outputs": [".next/**", ".expo/**"]
     },
     "lint": {
       "outputs": []
     },
     "dev": {
+      "dependsOn": ["db-generate"],
       "cache": false
     },
+    "db-generate": {},
+    "db-push": {},
     "clean": {},
-    "//#clean": {},
-    "postinstall": {}
+    "//#clean": {}
   }
 }

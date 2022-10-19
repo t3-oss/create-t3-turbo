@@ -3,12 +3,12 @@
   "private": true,
   "packageManager": "pnpm@7.13.0",
   "scripts": {
-    "postinstall": "turbo postinstall",
-    "db-push": "pnpm --filter @acme/db db-push",
+    "db-generate": "turbo db-generate",
+    "db-push": "turbo db-push",
     "build": "turbo build",
     "dev": "turbo dev --parallel",
-    "cleen": "turbo clean",
-    "clean": "rm -rf node_modules",
+    "clean:workspaces": "turbo clean",
+    "clean": "rm -rf node_modules .turbo .vercel",
     "lint": "turbo lint && manypkg check",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },

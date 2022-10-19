@@ -27,7 +27,8 @@ const Home: NextPage = () => {
       </Head>
       <main className="container flex flex-col items-center min-h-screen py-16 mx-auto">
         <h1 className="text-5xl md:text-[5rem] leading-normal font-extrabold text-gray-700">
-          Create <span className="text-indigo-500">T3</span> Turbo
+          Create <span className="text-indigo-500">T3</span> Turbo - with more
+          UI changes
         </h1>
         <div className="flex items-center justify-center w-full pt-6 text-2xl text-blue-500">
           {postQuery.data ? (

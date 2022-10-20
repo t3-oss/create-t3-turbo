@@ -1,8 +1,5 @@
 {
   "pipeline": {
-    "db-generate": {
-      "outputs": [".generated/**"]
-    },
     "build": {
       "dependsOn": ["^build", "^db-generate"],
       "outputs": [".next/**", ".expo/**"]
@@ -12,6 +9,9 @@
     },
     "dev": {
       "dependsOn": ["^db-generate"],
+      "cache": false
+    },
+    "db-generate": {
       "cache": false
     },
     "db-push": {

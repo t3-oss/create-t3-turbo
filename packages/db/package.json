@@ -8,7 +8,7 @@
     "dev": "prisma studio --port 5556",
     "clean": "rm -rf .turbo node_modules",
     "db-push": "prisma db push",
-    "db-generate": "prisma generate"
+    "db-generate": "prisma generate && ./fix-prisma.sh"
   },
   "dependencies": {
     "@prisma/client": "^4.4.0"

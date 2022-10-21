@@ -15,6 +15,6 @@ export const prisma =
         : ["error"],
   });
 
-if (process.env.NODE_ENV !== "production") global.prisma = prisma;
-
-export type { PrismaClient };
+if (process.env.NODE_ENV !== "production") {
+  global.prisma = prisma;
+}

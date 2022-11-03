@@ -8,3 +8,7 @@ export const t = initTRPC.context<Context>().create({
     return shape;
   },
 });
+
+export const router = t.router;
+
+export const publicProcedure = t.procedure;

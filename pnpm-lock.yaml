@@ -19,7 +19,7 @@ importers:
       '@babel/preset-env': ^7.19.3
       '@babel/runtime': ^7.19.0
       '@shopify/flash-list': ^1.2.1
-      '@tanstack/react-query': ^4.3.8
+      '@tanstack/react-query': ^4.14.1
       '@trpc/client': 10.0.0-rc.3
       '@trpc/react-query': 10.0.0-rc.3
       '@trpc/server': 10.0.0-rc.3
@@ -65,7 +65,7 @@ importers:
     specifiers:
       '@acme/api': '*'
       '@acme/db': '*'
-      '@tanstack/react-query': ^4.3.8
+      '@tanstack/react-query': ^4.14.1
       '@trpc/client': 10.0.0-rc.3
       '@trpc/next': 10.0.0-rc.3
       '@trpc/react-query': 10.0.0-rc.3
@@ -79,7 +79,6 @@ importers:
       eslint: 8.22.0
       eslint-config-next: 13.0.1
       next: 13.0.1
-      next-transpile-modules: ^10.0.0
       postcss: ^8.4.14
       react: 18.2.0
       react-dom: 18.2.0
@@ -107,7 +106,6 @@ importers:
       autoprefixer: 10.4.12_postcss@8.4.17
       eslint: 8.22.0
       eslint-config-next: 13.0.1_yv3nvntfnealqm77uomj2fi4ki
-      next-transpile-modules: 10.0.0
       postcss: 8.4.17
       tailwindcss: 3.1.8_postcss@8.4.17
       typescript: 4.8.4
@@ -3979,14 +3977,6 @@ packages:
       once: 1.4.0
     dev: false
 
-  /enhanced-resolve/5.10.0:
-    resolution: {integrity: sha512-T0yTFjdpldGY8PmuXXR0PyQ1ufZpEGiHVrp7zHKB7jdR4qlmZHhONVM5AQOAWXuF/w3dnHbEQVrNptJgt7F+cQ==}
-    engines: {node: '>=10.13.0'}
-    dependencies:
-      graceful-fs: 4.2.10
-      tapable: 2.2.1
-    dev: true
-
   /env-editor/0.4.2:
     resolution: {integrity: sha512-ObFo8v4rQJAE59M69QzwloxPZtd33TpYEIjtKD1rrFDcM1Gd7IkDxEBU+HriziN6HSHQnBJi8Dmy+JWkav5HKA==}
     engines: {node: '>=8'}
@@ -5012,6 +5002,7 @@ packages:
 
   /graceful-fs/4.2.10:
     resolution: {integrity: sha512-9ByhssR2fPVsNZj478qUUbKfmL0+t5BDVyjShtyZZLiK7ZDAArFFfopyOTj0M05wE2tJPisA4iTnnXl2YoPvOA==}
+    dev: false
 
   /grapheme-splitter/1.0.4:
     resolution: {integrity: sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==}
@@ -6571,12 +6562,6 @@ packages:
   /nested-error-stacks/2.0.1:
     resolution: {integrity: sha512-SrQrok4CATudVzBS7coSz26QRSmlK9TzzoFbeKfcPBUFPjcQM9Rqvr/DlJkOrwI/0KcgvMub1n1g5Jt9EgRn4A==}
     dev: false
-
-  /next-transpile-modules/10.0.0:
-    resolution: {integrity: sha512-FyeJ++Lm2Fq31gbThiRCrJlYpIY9QaI7A3TjuhQLzOix8ChQrvn5ny4MhfIthS5cy6+uK1AhDRvxVdW17y3Xdw==}
-    dependencies:
-      enhanced-resolve: 5.10.0
-    dev: true
 
   /next/13.0.1_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-ErCNBPIeZMKFn6hX+ZBSlqZVgJIeitEqhGTuQUNmYXJ07/A71DZ7AJI8eyHYUdBb686LUpV1/oBdTq9RpzRVPg==}
@@ -8383,11 +8368,6 @@ packages:
       resolve: 1.22.1
     transitivePeerDependencies:
       - ts-node
-
-  /tapable/2.2.1:
-    resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}
-    engines: {node: '>=6'}
-    dev: true
 
   /tar/6.1.11:
     resolution: {integrity: sha512-an/KZQzQUkZCkuoAA64hM92X0Urb6VpRhAFllDzz44U2mcD5scmT3zBc4VgVpkugF580+DQn8eAFSyoQt0tznA==}

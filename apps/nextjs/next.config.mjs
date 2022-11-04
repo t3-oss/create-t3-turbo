@@ -21,7 +21,7 @@ export default defineNextConfig({
   reactStrictMode: true,
   swcMinify: true,
   experimental: {
-    // Enables hot-reload and easy intergration for local packages
+    // Enables hot-reload and easy integration for local packages
     transpilePackages: ["@acme/api", "@acme/db"],
   },
 });

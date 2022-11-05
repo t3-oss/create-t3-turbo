@@ -1,5 +1,5 @@
 import { initTRPC, TRPCError } from "@trpc/server";
-import type { Context } from "./context";
+import { type Context } from "./context";
 import superjson from "superjson";
 
 const t = initTRPC.context<Context>().create({
@@ -8,9 +8,6 @@ const t = initTRPC.context<Context>().create({
     return shape;
   },
 });
-
-export const router = t.router;
-export const publicProcedure = t.procedure;
 
 const isAuthed = t.middleware(({ ctx, next }) => {
   if (!ctx.session) {
@@ -27,4 +24,6 @@ const isAuthed = t.middleware(({ ctx, next }) => {
   });
 });
 
+export const router = t.router;
+export const publicProcedure = t.procedure;
 export const protectedProcedure = t.procedure.use(isAuthed);

@@ -1,6 +1,9 @@
 // @ts-check
-import { env } from "./src/env/server.mjs";
-import withTM from "next-transpile-modules";
+/**
+ * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation.
+ * This is especially useful for Docker builds.
+ */
+!process.env.SKIP_ENV_VALIDATION && (await import("./src/env/server.mjs"));
 
 /**
  * Don't be scared of the generics here.
@@ -14,9 +17,11 @@ function defineNextConfig(config) {
   return config;
 }
 
-export default withTM(["@acme/api", "@acme/db"])(
-  defineNextConfig({
-    reactStrictMode: true,
-    swcMinify: true,
-  })
-);
+export default defineNextConfig({
+  reactStrictMode: true,
+  swcMinify: true,
+  experimental: {
+    // Enables hot-reload and easy integration for local packages
+    transpilePackages: ["@acme/api", "@acme/db"],
+  },
+});

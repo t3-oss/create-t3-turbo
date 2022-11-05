@@ -5,16 +5,18 @@
   "types": "./index.ts",
   "license": "MIT",
   "scripts": {
-    "dev": "prisma studio --port 5556",
     "clean": "rm -rf .turbo node_modules",
-    "db-push": "prisma db push",
-    "db-generate": "prisma generate"
+    "with-env": "dotenv -e ../../apps/nextjs/.env",
+    "dev": "pnpm with-env prisma studio --port 5556",
+    "db-push": "pnpm with-env prisma db push",
+    "db-generate": "pnpm with-env prisma generate"
   },
   "dependencies": {
-    "@prisma/client": "^4.4.0"
+    "@prisma/client": "^4.5.0"
   },
   "devDependencies": {
-    "prisma": "^4.4.0",
+    "dotenv-cli": "^6.0.0",
+    "prisma": "^4.5.0",
     "typescript": "^4.8.3"
   }
 }

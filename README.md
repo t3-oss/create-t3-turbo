@@ -27,6 +27,8 @@ apps
 packages
  ├─ api
  |   └─ tRPC v10 router definition
+ ├─ auth
+     └─ authentication using next-auth. **NOTE: Only for Next.js app, not Expo**
  └─ db
      └─ typesafe db-calls using Prisma
 ```
@@ -46,8 +48,11 @@ pnpm i
 - provider = "postgresql"
 + provider = "sqlite"
 
-# Create a `.env` for prisma and make sure it's synced
-echo DATABASE_URL=file:./db.sqlite >> packages/db/.env
+# Configure environment variables.
+# There is an `.env.example` in the Next.js app you can use for reference
+cp apps/nextjs/.env.example apps/nextjs/.env
+
+# Push the Prisma schema to your database
 pnpm db-push
 ```
 

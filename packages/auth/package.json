@@ -1,0 +1,21 @@
+{
+  "name": "@acme/auth",
+  "version": "0.1.0",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "license": "MIT",
+  "scripts": {
+    "clean": "rm -rf .turbo node_modules"
+  },
+  "dependencies": {
+    "@acme/db": "*",
+    "@next-auth/prisma-adapter": "^1.0.5",
+    "next": "13.0.2",
+    "next-auth": "^4.15.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.8.3"
+  }
+}

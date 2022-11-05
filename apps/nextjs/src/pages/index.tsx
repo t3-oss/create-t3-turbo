@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signIn, signOut } from "next-auth/react";
 import { trpc } from "../utils/trpc";
 import type { inferProcedureOutput } from "@trpc/server";
 import type { AppRouter } from "@acme/api";
@@ -9,7 +9,7 @@ const PostCard: React.FC<{
   post: inferProcedureOutput<AppRouter["post"]["all"]>[number];
 }> = ({ post }) => {
   return (
-    <div className="p-4 border-2 border-gray-500 rounded-lg max-w-2xl">
+    <div className="p-4 border-2 border-gray-500 rounded-lg max-w-2xl hover:scale-[101%] transition-all">
       <h2 className="text-2xl font-bold text-gray-800">{post.title}</h2>
       <p className="text-gray-600">{post.content}</p>
     </div>
@@ -30,6 +30,8 @@ const Home: NextPage = () => {
         <h1 className="text-5xl md:text-[5rem] leading-normal font-extrabold text-gray-700">
           Create <span className="text-indigo-500">T3</span> Turbo
         </h1>
+        <AuthShowcase />
+
         <div className="flex items-center justify-center w-full pt-6 text-2xl text-blue-500">
           {postQuery.data ? (
             <div className="flex flex-col gap-4">
@@ -41,7 +43,6 @@ const Home: NextPage = () => {
             <p>Loading..</p>
           )}
         </div>
-        <AuthShowcase />
       </main>
     </>
   );
@@ -50,27 +51,20 @@ const Home: NextPage = () => {
 export default Home;
 
 const AuthShowcase: React.FC = () => {
-  const { data: secretMessage } = trpc.auth.getSecretMessage.useQuery();
-
-  const { data: sessionData } = useSession();
+  const { data: sessionData } = trpc.auth.getSession.useQuery();
 
   return (
-    <div className="flex flex-col items-center justify-center gap-2">
+    <div className="flex items-center justify-between gap-8">
       {sessionData && (
-        <>
-          <p className="text-2xl text-blue-500">
+        <div>
+          <p className="text-2xl text-indigo-500">
             Logged in as {sessionData?.user?.name}
           </p>
-          <p className="text-sm text-gray-500">
-            User Id: {sessionData?.user?.id}
-          </p>
-        </>
-      )}
-      {secretMessage && (
-        <p className="text-2xl text-blue-500">{secretMessage}</p>
+          <p className="text-sm text-gray-500">Id: {sessionData?.user?.id}</p>
+        </div>
       )}
       <button
-        className="rounded-md border border-black bg-violet-50 px-4 py-2 text-xl shadow-lg hover:bg-violet-100"
+        className="rounded-md border border-indigo-700 bg-indigo-500 px-4 py-2 text-xl shadow-lg text-violet-100 hover:bg-indigo-700"
         onClick={sessionData ? () => signOut() : () => signIn()}
       >
         {sessionData ? "Sign out" : "Sign in"}

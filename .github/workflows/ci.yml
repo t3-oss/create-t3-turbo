@@ -54,3 +54,6 @@ jobs:
 
       - name: Build and lint
         run: pnpm turbo build lint
+
+      - name: Check workspaces
+        run: pnpm manypkg check

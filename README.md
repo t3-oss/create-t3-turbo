@@ -48,8 +48,8 @@ pnpm i
 - provider = "postgresql"
 + provider = "sqlite"
 
-# Create a `.env` for prisma and make sure it's synced
-echo DATABASE_URL=file:./db.sqlite >> packages/db/.env
+# Copy the example env file
+cp apps/nextjs/.env.example apps/nextjs/.env
 pnpm db-push
 ```
 

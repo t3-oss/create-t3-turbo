@@ -15,6 +15,7 @@ importers:
   apps/expo:
     specifiers:
       '@acme/api': '*'
+      '@acme/tailwind-config': '*'
       '@babel/core': ^7.19.3
       '@babel/preset-env': ^7.19.3
       '@babel/runtime': ^7.19.0
@@ -38,6 +39,7 @@ importers:
       typescript: ^4.8.3
     dependencies:
       '@acme/api': link:../../packages/api
+      '@acme/tailwind-config': link:../../packages/config/tailwind-config
       '@shopify/flash-list': 1.3.1_bznrqlx657afr3ph3snqmu46li
       '@tanstack/react-query': 4.14.1_slnhbjkuf3cktqrwdgz34rrasq
       '@trpc/client': 10.0.0-rc.4_@trpc+server@10.0.0-rc.4
@@ -66,6 +68,7 @@ importers:
       '@acme/api': '*'
       '@acme/auth': '*'
       '@acme/db': '*'
+      '@acme/tailwind-config': '*'
       '@tanstack/react-query': ^4.14.1
       '@trpc/client': 10.0.0-rc.4
       '@trpc/next': 10.0.0-rc.4
@@ -91,6 +94,7 @@ importers:
       '@acme/api': link:../../packages/api
       '@acme/auth': link:../../packages/auth
       '@acme/db': link:../../packages/db
+      '@acme/tailwind-config': link:../../packages/config/tailwind-config
       '@tanstack/react-query': 4.14.1_biqbaboplfbrettd7655fr4n2y
       '@trpc/client': 10.0.0-rc.4_@trpc+server@10.0.0-rc.4
       '@trpc/next': 10.0.0-rc.4_h73kcua3kdl6pxy4odxg6ohagu
@@ -151,6 +155,16 @@ importers:
       react-dom: 18.2.0_react@18.2.0
     devDependencies:
       typescript: 4.8.4
+
+  packages/config/tailwind-config:
+    specifiers:
+      autoprefixer: ^10.4.7
+      postcss: ^8.4.14
+      tailwindcss: ^3.1.8
+    devDependencies:
+      autoprefixer: 10.4.12_postcss@8.4.17
+      postcss: 8.4.17
+      tailwindcss: 3.1.8_postcss@8.4.17
 
   packages/db:
     specifiers:

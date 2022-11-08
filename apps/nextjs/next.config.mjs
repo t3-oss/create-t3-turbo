@@ -13,6 +13,10 @@ const config = {
     // Enables hot-reload and easy integration for local packages
     transpilePackages: ["@acme/api", "@acme/auth", "@acme/db"],
   },
+  // We already do linting on GH actions
+  eslint: {
+    ignoreDuringBuilds: !!process.env.CI,
+  },
 };
 
 export default config;

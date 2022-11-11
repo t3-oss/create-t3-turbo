@@ -3,6 +3,7 @@
   "private": true,
   "packageManager": "pnpm@7.13.0",
   "scripts": {
+    "preinstall": "npx -y only-allow pnpm",
     "db-generate": "turbo db-generate",
     "db-push": "turbo db-push",
     "build": "turbo build",

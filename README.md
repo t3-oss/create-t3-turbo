@@ -97,7 +97,7 @@ Let's deploy the Next.js application to [Vercel](https://vercel.com/). If you ha
 
 1. Create a new project on Vercel, select the `apps/nextjs` folder as the root directory and apply the following build settings:
 
-   <img width="907" alt="CleanShot 2022-11-14 at 11 30 07@2x" src="https://user-images.githubusercontent.com/11340449/201714412-e500ab5d-ff69-4ba2-bee4-8608990e0d38.png">
+<img width="927" alt="CleanShot 2022-11-15 at 11 34 16@2x" src="https://user-images.githubusercontent.com/11340449/201974887-b6403a32-5570-4ce6-b146-c486c0dbd244.png">
 
 2. Add your `DATABASE_URL` environment variable.
 

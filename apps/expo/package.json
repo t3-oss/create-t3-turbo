@@ -8,7 +8,8 @@
     "clean": "rm -rf .expo .turbo node_modules",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "lint": "eslint --ext js,ts,tsx ."
   },
   "dependencies": {
     "@acme/api": "*",

@@ -19,8 +19,8 @@ const PostCard: React.FC<{
 }> = ({ post }) => {
   return (
     <View className="p-4 border-2 border-gray-500 rounded-lg">
-      <Text className="text-xl font-semibold text-gray-800">{post.title}</Text>
-      <Text className="text-gray-600">{post.content}</Text>
+      <Text className="text-xl font-semibold text-[#cc66ff]">{post.title}</Text>
+      <Text className="text-white">{post.content}</Text>
     </View>
   );
 };
@@ -39,17 +39,17 @@ const CreatePost: React.FC = () => {
   return (
     <View className="p-4 border-t-2 border-gray-500 flex flex-col">
       <TextInput
-        className="border-2 border-gray-500 rounded p-2 mb-2"
+        className="border-2 border-gray-500 rounded p-2 mb-2 text-white"
         onChangeText={onChangeTitle}
         placeholder="Title"
       />
       <TextInput
-        className="border-2 border-gray-500 rounded p-2 mb-2"
+        className="border-2 border-gray-500 rounded p-2 mb-2 text-white"
         onChangeText={onChangeContent}
         placeholder="Content"
       />
       <TouchableOpacity
-        className="bg-indigo-500 rounded p-2"
+        className="bg-[#cc66ff] rounded p-2"
         onPress={() => {
           mutate({
             title,
@@ -68,20 +68,22 @@ export const HomeScreen = () => {
   const [showPost, setShowPost] = React.useState<string | null>(null);
 
   return (
-    <SafeAreaView>
+    <SafeAreaView className="bg-gradient-to-b from-[#2e026d] to-[#15162c] bg-[#2e026d]">
       <View className="h-full w-full p-4">
-        <Text className="text-5xl font-bold mx-auto pb-2">
-          Create <Text className="text-indigo-500">T3</Text> Turbo
+        <Text className="text-5xl font-bold mx-auto pb-2 text-white">
+          Create <Text className="text-[#cc66ff]">T3</Text> Turbo
         </Text>
 
         <View className="py-2">
           {showPost ? (
-            <Text>
+            <Text className="text-white">
               <Text className="font-semibold">Selected post:</Text>
               {showPost}
             </Text>
           ) : (
-            <Text className="italic font-semibold">Press on a post</Text>
+            <Text className="italic font-semibold text-white">
+              Press on a post
+            </Text>
           )}
         </View>
 

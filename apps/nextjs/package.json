@@ -7,20 +7,21 @@
     "build": "next build",
     "clean": "rm -rf .next .turbo node_modules",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@acme/api": "*",
     "@acme/auth": "*",
     "@acme/db": "*",
     "@acme/tailwind-config": "*",
-    "@tanstack/react-query": "^4.14.1",
+    "@tanstack/react-query": "^4.16.1",
     "@trpc/client": "10.0.0-rc.4",
     "@trpc/next": "10.0.0-rc.4",
     "@trpc/react-query": "10.0.0-rc.4",
     "@trpc/server": "10.0.0-rc.4",
-    "next": "13.0.2",
-    "next-auth": "^4.15.1",
+    "next": "13.0.4",
+    "next-auth": "^4.17.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "zod": "^3.18.0"
@@ -28,14 +29,12 @@
   "devDependencies": {
     "@types/node": "^18.0.0",
     "@types/react": "^18.0.25",
-    "@types/react-dom": "^18.0.8",
-    "@typescript-eslint/eslint-plugin": "^5.33.0",
-    "@typescript-eslint/parser": "^5.33.0",
-    "autoprefixer": "^10.4.7",
-    "eslint": "8.22.0",
-    "eslint-config-next": "13.0.1",
-    "postcss": "^8.4.14",
-    "tailwindcss": "^3.1.8",
-    "typescript": "^4.8.3"
+    "@types/react-dom": "^18.0.9",
+    "autoprefixer": "^10.4.13",
+    "eslint": "^8.28.0",
+    "eslint-config-next": "13.0.4",
+    "postcss": "^8.4.19",
+    "tailwindcss": "^3.2.4",
+    "typescript": "^4.9.3"
   }
 }

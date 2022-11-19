@@ -33,7 +33,7 @@ jobs:
       - name: Get pnpm store directory
         id: pnpm-cache
         run: |
-          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+          echo "pnpm_cache_dir=$(pnpm store path)" >> $GITHUB_OUTPUT
 
       - name: Setup pnpm cache
         uses: actions/cache@v3
@@ -49,7 +49,7 @@ jobs:
       - name: Next.js cache
         uses: actions/cache@v3
         with:
-          path: ${{ github.workspace }}/.next/cache
+          path: ${{ github.workspace }}apps/nextjs/.next/cache
           key: ${{ runner.os }}-${{ runner.node }}-${{ hashFiles('**/pnpm-lock.yaml') }}-nextjs
 
       - name: Build, lint and type-check

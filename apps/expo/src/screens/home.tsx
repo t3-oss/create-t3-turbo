@@ -18,7 +18,7 @@ const PostCard: React.FC<{
   post: inferProcedureOutput<AppRouter["post"]["all"]>[number];
 }> = ({ post }) => {
   return (
-    <View className="p-4 border-2 border-gray-500 rounded-lg">
+    <View className="rounded-lg border-2 border-gray-500 p-4">
       <Text className="text-xl font-semibold text-[#cc66ff]">{post.title}</Text>
       <Text className="text-white">{post.content}</Text>
     </View>
@@ -37,19 +37,19 @@ const CreatePost: React.FC = () => {
   const [content, onChangeContent] = React.useState("");
 
   return (
-    <View className="p-4 border-t-2 border-gray-500 flex flex-col">
+    <View className="flex flex-col border-t-2 border-gray-500 p-4">
       <TextInput
-        className="border-2 border-gray-500 rounded p-2 mb-2 text-white"
+        className="mb-2 rounded border-2 border-gray-500 p-2 text-white"
         onChangeText={onChangeTitle}
         placeholder="Title"
       />
       <TextInput
-        className="border-2 border-gray-500 rounded p-2 mb-2 text-white"
+        className="mb-2 rounded border-2 border-gray-500 p-2 text-white"
         onChangeText={onChangeContent}
         placeholder="Content"
       />
       <TouchableOpacity
-        className="bg-[#cc66ff] rounded p-2"
+        className="rounded bg-[#cc66ff] p-2"
         onPress={() => {
           mutate({
             title,
@@ -57,7 +57,7 @@ const CreatePost: React.FC = () => {
           });
         }}
       >
-        <Text className="text-white font-semibold">Publish post</Text>
+        <Text className="font-semibold text-white">Publish post</Text>
       </TouchableOpacity>
     </View>
   );
@@ -68,9 +68,9 @@ export const HomeScreen = () => {
   const [showPost, setShowPost] = React.useState<string | null>(null);
 
   return (
-    <SafeAreaView className="bg-gradient-to-b from-[#2e026d] to-[#15162c] bg-[#2e026d]">
+    <SafeAreaView className="bg-[#2e026d] bg-gradient-to-b from-[#2e026d] to-[#15162c]">
       <View className="h-full w-full p-4">
-        <Text className="text-5xl font-bold mx-auto pb-2 text-white">
+        <Text className="mx-auto pb-2 text-5xl font-bold text-white">
           Create <Text className="text-[#cc66ff]">T3</Text> Turbo
         </Text>
 
@@ -81,7 +81,7 @@ export const HomeScreen = () => {
               {showPost}
             </Text>
           ) : (
-            <Text className="italic font-semibold text-white">
+            <Text className="font-semibold italic text-white">
               Press on a post
             </Text>
           )}

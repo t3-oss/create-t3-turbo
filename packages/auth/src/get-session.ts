@@ -13,7 +13,7 @@ export const getServerSession = async (
         req: GetServerSidePropsContext["req"];
         res: GetServerSidePropsContext["res"];
       }
-    | { req: NextApiRequest; res: NextApiResponse }
+    | { req: NextApiRequest; res: NextApiResponse },
 ) => {
   return await unstable_getServerSession(ctx.req, ctx.res, authOptions);
 };

@@ -9,7 +9,7 @@ const PostCard: React.FC<{
   post: inferProcedureOutput<AppRouter["post"]["all"]>[number];
 }> = ({ post }) => {
   return (
-    <div className="p-4 border-2 border-gray-500 rounded-lg max-w-2xl hover:scale-[101%] transition-all">
+    <div className="max-w-2xl rounded-lg border-2 border-gray-500 p-4 transition-all hover:scale-[101%]">
       <h2 className="text-2xl font-bold text-[hsl(280,100%,70%)]">
         {post.title}
       </h2>
@@ -35,7 +35,7 @@ const Home: NextPage = () => {
           </h1>
           <AuthShowcase />
 
-          <div className="flex justify-center px-4 text-2xl overflow-y-scroll h-[60vh]">
+          <div className="flex h-[60vh] justify-center overflow-y-scroll px-4 text-2xl">
             {postQuery.data ? (
               <div className="flex flex-col gap-4">
                 {postQuery.data?.map((p) => {

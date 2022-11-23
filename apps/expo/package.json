@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "main": "index.ts",
   "scripts": {
-    "start": "expo start",
-    "dev": "expo start --ios",
-    "clean": "rm -rf .expo .turbo node_modules",
     "android": "expo start --android",
+    "clean": "rm -rf .expo .turbo node_modules",
+    "dev": "expo start --ios",
     "ios": "expo start --ios",
-    "web": "expo start --web",
     "lint": "eslint . --ext ts,tsx"
+    "start": "expo start",
+    "type-check": "tsc --noEmit",
+    "web": "expo start --web",
   },
   "dependencies": {
     "@acme/api": "*",

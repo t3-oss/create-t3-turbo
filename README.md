@@ -64,7 +64,7 @@ pnpm i
 cp .env.example .env
 
 # Push the Prisma schema to your database
-pnpm db-push
+pnpm db:push
 ```
 
 ### Configure Expo `dev`-script

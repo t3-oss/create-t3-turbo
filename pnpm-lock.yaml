@@ -91,7 +91,7 @@ importers:
       eslint: ^8.29.0
       eslint-config-next: ^13.0.7
       next: ^13.0.7
-      next-auth: ^4.18.3
+      next-auth: ^4.18.6
       postcss: ^8.4.19
       react: 18.2.0
       react-dom: 18.2.0
@@ -109,7 +109,7 @@ importers:
       '@trpc/react-query': 10.5.0_hkttq5uvq7kltri3tppuogqqou
       '@trpc/server': 10.5.0
       next: 13.0.7_biqbaboplfbrettd7655fr4n2y
-      next-auth: 4.18.3_gvvct4imq5upoiloat43sswrza
+      next-auth: 4.18.6_gvvct4imq5upoiloat43sswrza
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       zod: 3.20.2
@@ -6784,32 +6784,6 @@ packages:
 
   /nested-error-stacks/2.0.1:
     resolution: {integrity: sha512-SrQrok4CATudVzBS7coSz26QRSmlK9TzzoFbeKfcPBUFPjcQM9Rqvr/DlJkOrwI/0KcgvMub1n1g5Jt9EgRn4A==}
-    dev: false
-
-  /next-auth/4.18.3_gvvct4imq5upoiloat43sswrza:
-    resolution: {integrity: sha512-oZrTPnaF7YCMm4T6+FY47+1wHacE7V6YX+MCuvRTZMca7zHAc2WPMdTED6eV3hkqp2znEdilhD4aXQ5BuCpYIw==}
-    engines: {node: ^12.19.0 || ^14.15.0 || ^16.13.0 || ^18.12.0}
-    peerDependencies:
-      next: ^12.2.5 || ^13
-      nodemailer: ^6.6.5
-      react: ^17.0.2 || ^18
-      react-dom: ^17.0.2 || ^18
-    peerDependenciesMeta:
-      nodemailer:
-        optional: true
-    dependencies:
-      '@babel/runtime': 7.19.0
-      '@panva/hkdf': 1.0.2
-      cookie: 0.5.0
-      jose: 4.10.0
-      next: 13.0.7_biqbaboplfbrettd7655fr4n2y
-      oauth: 0.9.15
-      openid-client: 5.2.0
-      preact: 10.11.2
-      preact-render-to-string: 5.2.5_preact@10.11.2
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-      uuid: 8.3.2
     dev: false
 
   /next-auth/4.18.6_gvvct4imq5upoiloat43sswrza:

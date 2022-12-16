@@ -69,12 +69,12 @@ pnpm db:push
 
 ### Configure Expo `dev`-script
 
-> **Note:** If you want to use a physical phone with Expo Go, just run `pnpm dev` and scan the QR-code.
+> **Note:** If you want to use a physical phone with Expo Go, you need to run `dev` without `turbo` (e.g. `pnpm --filter expo dev`). This is because turbo's terminal output isn't interactive.
 
 #### Use iOS Simulator
 
 1. Make sure you have XCode and XCommand Line Tools installed [as shown on expo docs](https://docs.expo.dev/workflow/ios-simulator/).
-2. Change the `dev` script at `apps/expo/package.json` to open the iOS simulator.
+2. Change the `dev` script at `apps/expo/package.json` to open the iOS simulator. (This is the default)
 
 ```diff
 +  "dev": "expo start --ios",

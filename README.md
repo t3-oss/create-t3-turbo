@@ -1,6 +1,6 @@
 # create-t3-turbo
 
-![Create T3 Turbo](https://user-images.githubusercontent.com/51714798/193696098-5ea53aa5-826f-411d-b694-b27f6a1d2421.png)
+<img width="1758" alt="turbo2" src="https://user-images.githubusercontent.com/51714798/202427720-4ec5f285-41a5-4fed-a52f-20b89c5bc1b3.png">
 
 ## About
 
@@ -34,6 +34,16 @@ packages
      └─ typesafe db-calls using Prisma
 ```
 
+## FAQ
+
+### Can you include Solito?
+
+No. Solito will not be included in this repo. It is a great tool if you want to share code between your Next.js and Expo app. However, the main purpose of this repo is not the integration between Next.js and Expo - it's the codesplitting of your T3 App into a monorepo, the Expo app is just a bonus example of how you can utilize the monorepo with multiple apps but can just as well be any app such as Vite, Electron, etc.
+
+### What auth solution should I use instead of Next-Auth.js for Expo?
+
+I've left this kind of open for you to decide. Some options are [Clerk](https://clerk.dev), [Supabase Auth](https://supabase.com/docs/guides/auth), [Firebase Auth](https://firebase.google.com/docs/auth/) or [Auth0](https://auth0.com/docs). Note that if you're dropping the Expo app for something more "browser-like", you can still use Next-Auth.js for those.
+
 ## Quick Start
 
 To get it running, follow the steps below:
@@ -54,17 +64,17 @@ pnpm i
 cp .env.example .env
 
 # Push the Prisma schema to your database
-pnpm db-push
+pnpm db:push
 ```
 
 ### Configure Expo `dev`-script
 
-> **Note:** If you want to use a physical phone with Expo Go, just run `pnpm dev` and scan the QR-code.
+> **Note:** If you want to use a physical phone with Expo Go, you need to run `dev` without `turbo` (e.g. `pnpm --filter expo dev`). This is because turbo's terminal output isn't interactive.
 
 #### Use iOS Simulator
 
 1. Make sure you have XCode and XCommand Line Tools installed [as shown on expo docs](https://docs.expo.dev/workflow/ios-simulator/).
-2. Change the `dev` script at `apps/expo/package.json` to open the iOS simulator.
+2. Change the `dev` script at `apps/expo/package.json` to open the iOS simulator. (This is the default)
 
 ```diff
 +  "dev": "expo start --ios",

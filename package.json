@@ -3,6 +3,7 @@
   "private": true,
   "packageManager": "pnpm@7.13.0",
   "scripts": {
+    "preinstall": "npx -y only-allow pnpm",
     "build": "turbo build",
     "clean": "rm -rf node_modules",
     "clean:workspaces": "turbo clean",

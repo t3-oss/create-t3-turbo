@@ -2,6 +2,7 @@
   "extends": "../../tsconfig.json",
   "exclude": [],
   "include": [
+    "eslint.config.js",
     "next-env.d.ts",
     "../../packages/auth/next-auth.d.ts",
     "**/*.ts",

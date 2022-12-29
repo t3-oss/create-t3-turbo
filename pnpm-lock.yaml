@@ -180,15 +180,15 @@ importers:
 
   packages/db:
     specifiers:
-      '@prisma/client': ^4.7.1
+      '@prisma/client': ^4.8.0
       dotenv-cli: ^6.0.0
-      prisma: ^4.7.1
+      prisma: ^4.8.0
       typescript: ^4.9.4
     dependencies:
-      '@prisma/client': 4.7.1_prisma@4.7.1
+      '@prisma/client': 4.8.0_prisma@4.8.0
     devDependencies:
       dotenv-cli: 6.0.0
-      prisma: 4.7.1
+      prisma: 4.8.0
       typescript: 4.9.4
 
 packages:
@@ -2169,8 +2169,8 @@ packages:
       tslib: 2.4.0
     dev: true
 
-  /@prisma/client/4.7.1_prisma@4.7.1:
-    resolution: {integrity: sha512-/GbnOwIPtjiveZNUzGXOdp7RxTEkHL4DZP3vBaFNadfr6Sf0RshU5EULFzVaSi9i9PIK9PYd+1Rn7z2B2npb9w==}
+  /@prisma/client/4.8.0_prisma@4.8.0:
+    resolution: {integrity: sha512-Y1riB0p2W52kh3zgssP/YAhln3RjBFcJy3uwEiyjmU+TQYh6QTZDRFBo3JtBWuq2FyMOl1Rye8jxzUP+n0l5Cg==}
     engines: {node: '>=14.17'}
     requiresBuild: true
     peerDependencies:
@@ -2179,16 +2179,16 @@ packages:
       prisma:
         optional: true
     dependencies:
-      '@prisma/engines-version': 4.7.1-1.272861e07ab64f234d3ffc4094e32bd61775599c
-      prisma: 4.7.1
+      '@prisma/engines-version': 4.8.0-61.d6e67a83f971b175a593ccc12e15c4a757f93ffe
+      prisma: 4.8.0
     dev: false
 
-  /@prisma/engines-version/4.7.1-1.272861e07ab64f234d3ffc4094e32bd61775599c:
-    resolution: {integrity: sha512-Bd4LZ+WAnUHOq31e9X/ihi5zPlr4SzTRwUZZYxvWOxlerIZ7HJlVa9zXpuKTKLpI9O1l8Ec4OYCKsivWCs5a3Q==}
+  /@prisma/engines-version/4.8.0-61.d6e67a83f971b175a593ccc12e15c4a757f93ffe:
+    resolution: {integrity: sha512-MHSOSexomRMom8QN4t7bu87wPPD+pa+hW9+71JnVcF3DqyyO/ycCLhRL1we3EojRpZxKvuyGho2REQsMCvxcJw==}
     dev: false
 
-  /@prisma/engines/4.7.1:
-    resolution: {integrity: sha512-zWabHosTdLpXXlMefHmnouhXMoTB1+SCbUU3t4FCmdrtIOZcarPKU3Alto7gm/pZ9vHlGOXHCfVZ1G7OIrSbog==}
+  /@prisma/engines/4.8.0:
+    resolution: {integrity: sha512-A1Asn2rxZMlLAj1HTyfaCv0VQrLUv034jVay05QlqZg1qiHPeA3/pGTfNMijbsMYCsGVxfWEJuaZZuNxXGMCrA==}
     requiresBuild: true
 
   /@react-native-community/cli-clean/10.0.0-alpha.0:
@@ -7527,13 +7527,13 @@ packages:
     resolution: {integrity: sha512-WuxUnVtlWL1OfZFQFuqvnvs6MiAGk9UNsBostyBOB0Is9wb5uRESevA6rnl/rkksXaGX3GzZhPup5d6Vp1nFew==}
     dev: false
 
-  /prisma/4.7.1:
-    resolution: {integrity: sha512-CCQP+m+1qZOGIZlvnL6T3ZwaU0LAleIHYFPN9tFSzjs/KL6vH9rlYbGOkTuG9Q1s6Ki5D0LJlYlW18Z9EBUpGg==}
+  /prisma/4.8.0:
+    resolution: {integrity: sha512-DWIhxvxt8f4h6MDd35mz7BJff+fu7HItW3WPDIEpCR3RzcOWyiHBbLQW5/DOgmf+pRLTjwXQob7kuTZVYUAw5w==}
     engines: {node: '>=14.17'}
     hasBin: true
     requiresBuild: true
     dependencies:
-      '@prisma/engines': 4.7.1
+      '@prisma/engines': 4.8.0
 
   /process-nextick-args/2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}

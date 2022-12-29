@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "next build",
+    "build": "pnpm with-env next build",
     "clean": "rm -rf .next .turbo node_modules",
-    "dev": "next dev",
-    "lint": "next lint",
-    "type-check": "tsc --noEmit"
+    "dev": "pnpm with-env next dev",
+    "lint": "SKIP_ENV_VALIDATION=1 next lint",
+    "type-check": "tsc --noEmit",
+    "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
     "@acme/api": "*",
@@ -30,6 +31,7 @@
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.9",
     "autoprefixer": "^10.4.13",
+    "dotenv": "^16.0.3",
     "eslint": "^8.29.0",
     "eslint-config-next": "^13.0.7",
     "postcss": "^8.4.19",

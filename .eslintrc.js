@@ -20,7 +20,12 @@ const config = {
   ],
   root: true,
   reportUnusedDisableDirectives: true,
-  ignorePatterns: [".eslintrc.js", "packages/config/**"],
+  ignorePatterns: [
+    ".eslintrc.js",
+    "**/*.config.js",
+    "**/*.config.cjs",
+    "packages/config/**",
+  ],
 };
 
 module.exports = config;

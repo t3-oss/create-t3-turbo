@@ -1,8 +1,6 @@
 /** @type {import("eslint").Linter.Config} */
 const config = {
-  reportUnusedDisableDirectives: true,
-  root: true,
-  extends: ["prettier"],
+  extends: ["prettier", "eslint:recommended"],
   overrides: [
     {
       extends: [
@@ -20,6 +18,9 @@ const config = {
       },
     },
   ],
+  root: true,
+  reportUnusedDisableDirectives: true,
+  ignorePatterns: [".eslintrc.js"],
 };
 
 module.exports = config;

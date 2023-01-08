@@ -73,18 +73,18 @@ pnpm db:push
 
 ### Configure Expo `dev`-script
 
-> **Note:** If you want to use a physical phone with Expo Go, you need to run `dev` without `turbo` (e.g. `pnpm --filter expo dev`). This is because turbo's terminal output isn't interactive.
-
 #### Use iOS Simulator
 
 1. Make sure you have XCode and XCommand Line Tools installed [as shown on expo docs](https://docs.expo.dev/workflow/ios-simulator/).
-2. Change the `dev` script at `apps/expo/package.json` to open the iOS simulator. (This is the default)
+   > **NOTE:** If you just installed XCode, or if you have updated it, you need to open the simulator manually once before you can run it using the turbo `dev`-script.
 
 ```diff
 +  "dev": "expo start --ios",
 ```
 
 3. Run `pnpm dev` at the project root folder.
+
+> **TIP:** It might be easier to run each app in separate terminal windows so you get the logs from each app separately. This is also required if you want your terminals to be interactive, e.g. to access the Expo QR code. You can run `pnpm --filter expo dev` and `pnpm --filter nextjs dev` to run each app in a separate terminal window.
 
 #### For Android
 

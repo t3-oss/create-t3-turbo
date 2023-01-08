@@ -1,6 +1,6 @@
-import { protectedProcedure, publicProcedure, router } from "../trpc";
+import { protectedProcedure, publicProcedure, createTRPCRouter } from "../trpc";
 
-export const authRouter = router({
+export const authRouter = createTRPCRouter({
   getSession: publicProcedure.query(({ ctx }) => {
     return ctx.session;
   }),

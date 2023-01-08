@@ -1,21 +1,11 @@
 import React from "react";
-
-import {
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
-
+import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { FlashList } from "@shopify/flash-list";
-import type { inferProcedureOutput } from "@trpc/server";
-import type { AppRouter } from "@acme/api";
-
-import { trpc } from "../utils/trpc";
+import { api, type RouterOutputs } from "../utils/api";
 
 const PostCard: React.FC<{
-  post: inferProcedureOutput<AppRouter["post"]["all"]>[number];
+  post: RouterOutputs["post"]["all"][number];
 }> = ({ post }) => {
   return (
     <View className="rounded-lg border-2 border-gray-500 p-4">
@@ -26,8 +16,8 @@ const PostCard: React.FC<{
 };
 
 const CreatePost: React.FC = () => {
-  const utils = trpc.useContext();
-  const { mutate } = trpc.post.create.useMutation({
+  const utils = api.useContext();
+  const { mutate } = api.post.create.useMutation({
     async onSuccess() {
       await utils.post.all.invalidate();
     },
@@ -64,7 +54,7 @@ const CreatePost: React.FC = () => {
 };
 
 export const HomeScreen = () => {
-  const postQuery = trpc.post.all.useQuery();
+  const postQuery = api.post.all.useQuery();
   const [showPost, setShowPost] = React.useState<string | null>(null);
 
   return (

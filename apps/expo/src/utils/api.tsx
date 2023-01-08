@@ -3,7 +3,19 @@ import type { AppRouter } from "@acme/api";
 /**
  * A set of typesafe hooks for consuming your API.
  */
-export const trpc = createTRPCReact<AppRouter>();
+export const api = createTRPCReact<AppRouter>();
+
+/**
+ * Inference helpers for input types
+ * @example type HelloInput = RouterInputs['example']['hello']
+ **/
+export type RouterInputs = inferRouterInputs<AppRouter>;
+
+/**
+ * Inference helpers for output types
+ * @example type HelloOutput = RouterOutputs['example']['hello']
+ **/
+export type RouterOutputs = inferRouterOutputs<AppRouter>;
 
 /**
  * Extend this function when going to production by
@@ -30,13 +42,14 @@ import React from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { httpBatchLink } from "@trpc/client";
 import { transformer } from "@acme/api/transformer";
+import { inferRouterInputs, inferRouterOutputs } from "@trpc/server";
 
 export const TRPCProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [queryClient] = React.useState(() => new QueryClient());
   const [trpcClient] = React.useState(() =>
-    trpc.createClient({
+    api.createClient({
       transformer,
       links: [
         httpBatchLink({
@@ -47,8 +60,8 @@ export const TRPCProvider: React.FC<{ children: React.ReactNode }> = ({
   );
 
   return (
-    <trpc.Provider client={trpcClient} queryClient={queryClient}>
+    <api.Provider client={trpcClient} queryClient={queryClient}>
       <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-    </trpc.Provider>
+    </api.Provider>
   );
 };

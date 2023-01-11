@@ -11,7 +11,7 @@
 // We use HTTP POST requests with CSRF Tokens to protect against CSRF attacks.
 
 import { Session } from "next-auth";
-import { AuthClientConfig } from "next-auth/client/_utils";
+import { NextAuthClientConfig as AuthClientConfig } from "next-auth/client/_utils";
 import _logger, { LoggerInstance, proxyLogger } from "next-auth/utils/logger";
 import parseUrl from "next-auth/utils/parse-url";
 

@@ -1,3 +1,4 @@
+import type { inferRouterInputs, inferRouterOutputs } from "@trpc/server";
 import { createTRPCReact } from "@trpc/react-query";
 import type { AppRouter } from "@acme/api";
 /**
@@ -18,31 +19,14 @@ export type RouterInputs = inferRouterInputs<AppRouter>;
 export type RouterOutputs = inferRouterOutputs<AppRouter>;
 
 /**
- * Extend this function when going to production by
- * setting the baseUrl to your production API URL.
- */
-import Constants from "expo-constants";
-export const getBaseUrl = () => {
-  /**
-   * Gets the IP address of your host-machine. If it cannot automatically find it,
-   * you'll have to manually set it. NOTE: Port 3000 should work for most but confirm
-   * you don't have anything else running on it, or you'd have to change it.
-   */
-  const localhost = Constants.manifest?.debuggerHost?.split(":")[0];
-  if (!localhost)
-    throw new Error("failed to get localhost, configure it manually");
-  return `http://${localhost}:3000`;
-};
-
-/**
  * A wrapper for your app that provides the TRPC context.
  * Use only in _app.tsx
  */
 import React from "react";
+import Constants from "expo-constants";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { httpBatchLink } from "@trpc/client";
 import { transformer } from "@acme/api/transformer";
-import { inferRouterInputs, inferRouterOutputs } from "@trpc/server";
 
 export const TRPCProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -53,7 +37,7 @@ export const TRPCProvider: React.FC<{ children: React.ReactNode }> = ({
       transformer,
       links: [
         httpBatchLink({
-          url: `${getBaseUrl()}/api/trpc`,
+          url: Constants.expoConfig?.extra?.API_URL as string,
         }),
       ],
     }),

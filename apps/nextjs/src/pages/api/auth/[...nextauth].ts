@@ -7,5 +7,5 @@ import { NextApiRequest, NextApiResponse } from "next";
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   //   console.log("Incoming request", req);
   await NextAuth(req, res, authOptions);
-  console.log("Responding with", res.statusCode, res);
+  // console.log("Responding with", res.statusCode, res);
 };

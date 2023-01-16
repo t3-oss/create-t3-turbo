@@ -5,19 +5,33 @@ import { api, type RouterOutputs } from "../utils/api";
 
 const PostCard: React.FC<{
   post: RouterOutputs["post"]["all"][number];
-}> = ({ post }) => {
+  onPostDelete?: () => void;
+}> = ({ post, onPostDelete }) => {
   return (
-    <div className="max-w-2xl rounded-lg border-2 border-gray-500 p-4 transition-all hover:scale-[101%]">
-      <h2 className="text-2xl font-bold text-[hsl(280,100%,70%)]">
-        {post.title}
-      </h2>
-      <p>{post.content}</p>
+    <div className="flex w-full max-w-2xl flex-row rounded-lg bg-white/10 p-4 transition-all hover:scale-[101%]">
+      <div className="flex-grow">
+        <h2 className="text-2xl font-bold text-[hsl(280,100%,70%)]">
+          {post.title}
+        </h2>
+        <p className="mt-2 text-sm">{post.content}</p>
+      </div>
+      <div>
+        <span
+          className="cursor-pointer text-sm font-bold uppercase text-pink-400"
+          onClick={onPostDelete}
+        >
+          Delete
+        </span>
+      </div>
     </div>
   );
 };
 
 const Home: NextPage = () => {
   const postQuery = api.post.all.useQuery();
+  const deletePostMutation = api.post.delete.useMutation({
+    onSettled: () => postQuery.refetch(),
+  });
 
   return (
     <>
@@ -27,23 +41,35 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex h-screen flex-col items-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-        <div className="container flex flex-col items-center justify-center gap-12 px-4 py-8">
+        <div className="container mt-16 flex flex-col items-center justify-center gap-12 px-4 py-8">
           <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
             Create <span className="text-[hsl(280,100%,70%)]">T3</span> Turbo
           </h1>
           <AuthShowcase />
 
-          <div className="flex h-[60vh] justify-center overflow-y-scroll px-4 text-2xl">
-            {postQuery.data ? (
-              <div className="flex flex-col gap-4">
-                {postQuery.data?.map((p) => {
-                  return <PostCard key={p.id} post={p} />;
-                })}
-              </div>
-            ) : (
-              <p>Loading..</p>
-            )}
-          </div>
+          {postQuery.data ? (
+            <div>
+              {postQuery.data?.length === 0 ? (
+                <span>There are no posts!</span>
+              ) : (
+                <div className="flex h-[40vh] w-[80vw] justify-center overflow-y-scroll px-4 text-2xl md:w-[60vw] xl:w-[35vw]">
+                  <div className="flex w-full flex-col gap-4">
+                    {postQuery.data?.map((p) => {
+                      return (
+                        <PostCard
+                          key={p.id}
+                          post={p}
+                          onPostDelete={() => deletePostMutation.mutate(p.id)}
+                        />
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+            </div>
+          ) : (
+            <p>Loading..</p>
+          )}
         </div>
       </main>
     </>

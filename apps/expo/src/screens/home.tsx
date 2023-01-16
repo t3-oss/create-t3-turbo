@@ -8,9 +8,9 @@ const PostCard: React.FC<{
   post: RouterOutputs["post"]["all"][number];
 }> = ({ post }) => {
   return (
-    <View className="rounded-lg border-2 border-gray-500 p-4">
+    <View className="rounded-lg bg-white/10 p-4">
       <Text className="text-xl font-semibold text-[#cc66ff]">{post.title}</Text>
-      <Text className="text-white">{post.content}</Text>
+      <Text className="mt-2 text-white">{post.content}</Text>
     </View>
   );
 };
@@ -27,14 +27,16 @@ const CreatePost: React.FC = () => {
   const [content, onChangeContent] = React.useState("");
 
   return (
-    <View className="flex flex-col border-t-2 border-gray-500 p-4">
+    <View className="flex flex-col p-4">
       <TextInput
-        className="mb-2 rounded border-2 border-gray-500 p-2 text-white"
+        className="mb-2 rounded bg-white/10 p-2 text-white"
+        placeholderTextColor="rgba(255, 255, 255, 0.5)"
         onChangeText={onChangeTitle}
         placeholder="Title"
       />
       <TextInput
-        className="mb-2 rounded border-2 border-gray-500 p-2 text-white"
+        className="mb-2 rounded bg-white/10 p-2 text-white"
+        placeholderTextColor="rgba(255, 255, 255, 0.5)"
         onChangeText={onChangeContent}
         placeholder="Content"
       />
@@ -67,7 +69,7 @@ export const HomeScreen = () => {
         <View className="py-2">
           {showPost ? (
             <Text className="text-white">
-              <Text className="font-semibold">Selected post:</Text>
+              <Text className="font-semibold">Selected post: </Text>
               {showPost}
             </Text>
           ) : (

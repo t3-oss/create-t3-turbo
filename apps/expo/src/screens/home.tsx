@@ -1,16 +1,33 @@
 import React from "react";
-import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Button, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { FlashList } from "@shopify/flash-list";
 import { api, type RouterOutputs } from "../utils/api";
 
 const PostCard: React.FC<{
   post: RouterOutputs["post"]["all"][number];
-}> = ({ post }) => {
+  onPress: () => void;
+  onDelete: () => void;
+}> = ({ post, onPress, onDelete }) => {
   return (
-    <View className="rounded-lg bg-white/10 p-4">
-      <Text className="text-xl font-semibold text-[#cc66ff]">{post.title}</Text>
-      <Text className="mt-2 text-white">{post.content}</Text>
+    <View className="flex flex-row rounded-lg bg-white/10 p-4">
+      <View className="flex-grow">
+        <TouchableOpacity onPress={onPress}>
+          <Text
+            className={`text-xl font-semibold text-[#cc66ff] ${
+              !post.title && "italic"
+            }`}
+          >
+            {post.title || "Untitled"}
+          </Text>
+          <Text className={`mt-2 text-white ${!post.content && "italic"}`}>
+            {post.content || "No content"}
+          </Text>
+        </TouchableOpacity>
+      </View>
+      <TouchableOpacity onPress={onDelete}>
+        <Text className="font-bold uppercase text-pink-400">Delete</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -59,12 +76,22 @@ export const HomeScreen = () => {
   const postQuery = api.post.all.useQuery();
   const [showPost, setShowPost] = React.useState<string | null>(null);
 
+  const deletePostMutation = api.post.delete.useMutation({
+    onSettled: () => postQuery.refetch(),
+  });
+
   return (
     <SafeAreaView className="bg-[#2e026d] bg-gradient-to-b from-[#2e026d] to-[#15162c]">
       <View className="h-full w-full p-4">
         <Text className="mx-auto pb-2 text-5xl font-bold text-white">
           Create <Text className="text-[#cc66ff]">T3</Text> Turbo
         </Text>
+
+        <Button
+          onPress={() => postQuery.refetch()}
+          title="Refresh posts"
+          color={"#cc66ff"}
+        />
 
         <View className="py-2">
           {showPost ? (
@@ -84,9 +111,11 @@ export const HomeScreen = () => {
           estimatedItemSize={20}
           ItemSeparatorComponent={() => <View className="h-2" />}
           renderItem={(p) => (
-            <TouchableOpacity onPress={() => setShowPost(p.item.id)}>
-              <PostCard post={p.item} />
-            </TouchableOpacity>
+            <PostCard
+              post={p.item}
+              onPress={() => setShowPost(p.item.id)}
+              onDelete={() => deletePostMutation.mutate(p.item.id)}
+            />
           )}
         />
 

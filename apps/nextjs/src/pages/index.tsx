@@ -31,25 +31,29 @@ const PostCard: React.FC<{
 const CreatePostForm: React.FC = () => {
   const utils = api.useContext();
 
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+
   const { mutate } = api.post.create.useMutation({
     async onSuccess() {
+      setTitle("");
+      setContent("");
       await utils.post.all.invalidate();
     },
   });
-
-  const [title, onChangeTitle] = useState("");
-  const [content, onChangeContent] = useState("");
 
   return (
     <div className="flex w-[80vw] flex-col p-4 md:w-[60vw] xl:w-[35vw]">
       <input
         className="mb-2 rounded bg-white/10 p-2 text-white"
-        onChange={(e) => onChangeTitle(e.target.value)}
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
         placeholder="Title"
       />
       <input
         className="mb-2 rounded bg-white/10 p-2 text-white"
-        onChange={(e) => onChangeContent(e.target.value)}
+        value={content}
+        onChange={(e) => setContent(e.target.value)}
         placeholder="Content"
       />
       <button
@@ -82,7 +86,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex h-screen flex-col items-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-        <div className="container mt-12 flex flex-col items-center justify-center gap-12 px-4 py-8">
+        <div className="container mt-12 flex flex-col items-center justify-center gap-4 px-4 py-8">
           <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
             Create <span className="text-[hsl(280,100%,70%)]">T3</span> Turbo
           </h1>

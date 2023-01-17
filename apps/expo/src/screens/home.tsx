@@ -15,12 +15,12 @@ const PostCard: React.FC<{
         <TouchableOpacity onPress={onPress}>
           <Text
             className={`text-xl font-semibold text-[#cc66ff] ${
-              !post.title && "italic"
+              !post.title ? "italic" : ""
             }`}
           >
             {post.title || "Untitled"}
           </Text>
-          <Text className={`mt-2 text-white ${!post.content && "italic"}`}>
+          <Text className={`mt-2 text-white ${!post.content ? "italic" : ""}`}>
             {post.content || "No content"}
           </Text>
         </TouchableOpacity>
@@ -34,27 +34,32 @@ const PostCard: React.FC<{
 
 const CreatePost: React.FC = () => {
   const utils = api.useContext();
+
+  const [title, setTitle] = React.useState("");
+  const [content, setContent] = React.useState("");
+
   const { mutate } = api.post.create.useMutation({
     async onSuccess() {
+      setTitle("");
+      setContent("");
       await utils.post.all.invalidate();
     },
   });
-
-  const [title, onChangeTitle] = React.useState("");
-  const [content, onChangeContent] = React.useState("");
 
   return (
     <View className="flex flex-col p-4">
       <TextInput
         className="mb-2 rounded bg-white/10 p-2 text-white"
         placeholderTextColor="rgba(255, 255, 255, 0.5)"
-        onChangeText={onChangeTitle}
+        value={title}
+        onChangeText={setTitle}
         placeholder="Title"
       />
       <TextInput
         className="mb-2 rounded bg-white/10 p-2 text-white"
         placeholderTextColor="rgba(255, 255, 255, 0.5)"
-        onChangeText={onChangeContent}
+        value={content}
+        onChangeText={setContent}
         placeholder="Content"
       />
       <TouchableOpacity
@@ -88,7 +93,7 @@ export const HomeScreen = () => {
         </Text>
 
         <Button
-          onPress={() => postQuery.refetch()}
+          onPress={() => void postQuery.refetch()}
           title="Refresh posts"
           color={"#cc66ff"}
         />

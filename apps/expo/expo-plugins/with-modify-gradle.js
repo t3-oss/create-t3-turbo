@@ -1,4 +1,11 @@
 //@ts-check
+
+// This plugin is required for fixing `.apk` build issue
+// It appends Expo and RN versions into the `build.gradle` file
+// References:
+// https://github.com/t3-oss/create-t3-turbo/issues/120
+// https://github.com/expo/expo/issues/18129
+
 const { withProjectBuildGradle } = require("@expo/config-plugins");
 
 module.exports = (config) => {

@@ -31,6 +31,7 @@ const defineConfig = (_ctx: ConfigContext): ExpoConfig => ({
       projectId: "your-project-id",
     },
   },
+  plugins: ["./expo-plugins/with-modify-gradle.js"]
 });
 
 export default defineConfig;

@@ -1,0 +1,9 @@
+buildscript {
+    ext.getPackageJsonVersion = { packageName ->
+         new File(['node', '--print', "JSON.parse(require('fs').readFileSync(require.resolve('${packageName}/package.json'), 'utf-8')).version"].execute(null, rootDir).text.trim())
+    }
+    ext {
+        reactNativeVersion = "${ext.getPackageJsonVersion('react-native')}"
+        expoPackageVersion = "${ext.getPackageJsonVersion('expo')}"
+    }
+}

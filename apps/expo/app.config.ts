@@ -18,11 +18,17 @@ const defineConfig = (_ctx: ConfigContext): ExpoConfig => ({
   assetBundlePatterns: ["**/*"],
   ios: {
     supportsTablet: true,
+    bundleIdentifier: "your.bundle.identifier",
   },
   android: {
     adaptiveIcon: {
       foregroundImage: "./assets/icon.png",
       backgroundColor: "#2e026d",
+    },
+  },
+  extra: {
+    eas: {
+      projectId: "your-project-id",
     },
   },
 });

@@ -3,6 +3,7 @@ import { ExpoConfig, ConfigContext } from "@expo/config";
 const defineConfig = (_ctx: ConfigContext): ExpoConfig => ({
   name: "expo",
   slug: "expo",
+  scheme: "expo",
   version: "1.0.0",
   orientation: "portrait",
   icon: "./assets/icon.png",
@@ -31,7 +32,7 @@ const defineConfig = (_ctx: ConfigContext): ExpoConfig => ({
       projectId: "your-project-id",
     },
   },
-  plugins: ["./expo-plugins/with-modify-gradle.js"]
+  plugins: ["./expo-plugins/with-modify-gradle.js"],
 });
 
 export default defineConfig;

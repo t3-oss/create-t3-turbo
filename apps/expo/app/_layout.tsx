@@ -1,17 +1,18 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { TRPCProvider } from "./utils/api";
+import { TRPCProvider } from "../src/utils/api";
+import { Stack } from "expo-router";
 
-import { HomeScreen } from "./screens/home";
-
-export const App = () => {
+const Layout: React.FC = () => {
   return (
     <TRPCProvider>
       <SafeAreaProvider>
-        <HomeScreen />
+        <Stack screenOptions={{ headerShown: false }} />
         <StatusBar />
       </SafeAreaProvider>
     </TRPCProvider>
   );
 };
+
+export default Layout;

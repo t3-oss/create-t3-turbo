@@ -1,8 +1,9 @@
 import { ExpoConfig, ConfigContext } from "@expo/config";
 
 const defineConfig = (_ctx: ConfigContext): ExpoConfig => ({
-  name: "expo",
-  slug: "expo",
+  name: "ElasticTasks",
+  slug: "elastictasks",
+  owner: "albertmzb",
   version: "1.0.0",
   orientation: "portrait",
   icon: "./assets/icon.png",
@@ -18,7 +19,7 @@ const defineConfig = (_ctx: ConfigContext): ExpoConfig => ({
   assetBundlePatterns: ["**/*"],
   ios: {
     supportsTablet: true,
-    bundleIdentifier: "your.bundle.identifier",
+    bundleIdentifier: "io.albertdb.elastictasks",
   },
   android: {
     adaptiveIcon: {
@@ -27,11 +28,12 @@ const defineConfig = (_ctx: ConfigContext): ExpoConfig => ({
     },
   },
   extra: {
+    productionApiUrl: process.env.PRODUCTION_API_URL,
     eas: {
-      projectId: "your-project-id",
+      projectId: "6dc95de8-2e4b-4152-81e1-8b563903f13e",
     },
   },
-  plugins: ["./expo-plugins/with-modify-gradle.js"]
+  plugins: ["./expo-plugins/with-modify-gradle.js"],
 });
 
 export default defineConfig;

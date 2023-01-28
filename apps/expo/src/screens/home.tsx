@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { FlashList } from "@shopify/flash-list";
+
 import { api, type RouterOutputs } from "../utils/api";
 
 const PostCard: React.FC<{

@@ -1,5 +1,12 @@
+import React from "react";
+import Constants from "expo-constants";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { httpBatchLink } from "@trpc/client";
 import { createTRPCReact } from "@trpc/react-query";
+import { inferRouterInputs, inferRouterOutputs } from "@trpc/server";
 import type { AppRouter } from "@acme/api";
+import { transformer } from "@acme/api/transformer";
+
 /**
  * A set of typesafe hooks for consuming your API.
  */
@@ -21,7 +28,6 @@ export type RouterOutputs = inferRouterOutputs<AppRouter>;
  * Extend this function when going to production by
  * setting the baseUrl to your production API URL.
  */
-import Constants from "expo-constants";
 const getBaseUrl = () => {
   /**
    * Gets the IP address of your host-machine. If it cannot automatically find it,
@@ -38,12 +44,6 @@ const getBaseUrl = () => {
  * A wrapper for your app that provides the TRPC context.
  * Use only in _app.tsx
  */
-import React from "react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { httpBatchLink } from "@trpc/client";
-import { transformer } from "@acme/api/transformer";
-import { inferRouterInputs, inferRouterOutputs } from "@trpc/server";
-
 export const TRPCProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {

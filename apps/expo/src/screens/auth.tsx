@@ -59,7 +59,9 @@ export const AuthScreen = () => {
 
         <View className="flex flex-col items-center gap-4 p-2">
           <Text className="mx-auto text-3xl font-bold text-white">
-            {session.status}
+            {session.status === "authenticated"
+              ? `Hello ${session.data.user.name ?? "Unknown"}!`
+              : "Not Authenticated"}
           </Text>
         </View>
       </View>

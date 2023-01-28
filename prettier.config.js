@@ -22,6 +22,7 @@ module.exports = {
     "^~/utils/(.*)$",
     "^~/components/(.*)$",
     "^~/styles/(.*)$",
+    "^~/(.*)$",
     "^[./]",
   ],
   importOrderSeparation: false,

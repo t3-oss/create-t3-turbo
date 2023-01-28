@@ -15,22 +15,20 @@
     "type-check": "turbo type-check"
   },
   "dependencies": {
-    "@manypkg/cli": "^0.19.2",
-    "@typescript-eslint/eslint-plugin": "^5.46.0",
-    "@typescript-eslint/parser": "^5.46.0",
-    "eslint": "^8.30.0",
+    "@manypkg/cli": "^0.20.0",
+    "@typescript-eslint/eslint-plugin": "^5.49.0",
+    "@typescript-eslint/parser": "^5.49.0",
+    "eslint": "^8.32.0",
     "eslint-config-prettier": "^8.6.0",
-    "prettier": "^2.8.1",
-    "prettier-plugin-tailwindcss": "^0.2.1",
-    "turbo": "^1.6.3",
+    "prettier": "^2.8.3",
+    "prettier-plugin-tailwindcss": "^0.2.2",
+    "@ianvs/prettier-plugin-sort-imports": "^3.7.1",
+    "turbo": "^1.7.0",
     "typescript": "^4.9.4"
   },
   "pnpm": {
     "patchedDependencies": {
       "react-native@0.70.5": "patches/react-native@0.70.5.patch"
     }
-  },
-  "devDependencies": {
-    "@ianvs/prettier-plugin-sort-imports": "^3.7.1"
   }
 }

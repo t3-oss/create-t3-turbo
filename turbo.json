@@ -10,16 +10,14 @@
       "cache": false
     },
     "dev": {
-      "dependsOn": ["^db:generate"],
+      "persistent": true,
       "cache": false
     },
     "build": {
       "dependsOn": ["^build", "^db:generate"],
       "outputs": [".next/**", ".expo/**"]
     },
-    "lint": {
-      "outputs": []
-    },
+    "lint": {},
     "clean": {
       "cache": false
     },
@@ -31,5 +29,12 @@
       "cache": false
     }
   },
-  "globalEnv": ["DATABASE_URL", "NEXTAUTH_SECRET", "NEXTAUTH_URL"]
+  "globalEnv": [
+    "DATABASE_URL",
+    "NEXTAUTH_SECRET",
+    "NEXTAUTH_URL",
+    "NODE_ENV",
+    "DISCORD_CLIENT_ID",
+    "DISCORD_CLIENT_SECRET"
+  ]
 }

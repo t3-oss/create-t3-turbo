@@ -16,6 +16,16 @@ const config = {
           "./packages/*/tsconfig.json",
         ],
       },
+      rules: {
+        "@typescript-eslint/no-unused-vars": [
+          "error",
+          {
+            argsIgnorePattern: "^_",
+            varsIgnorePattern: "^_",
+            caughtErrorsIgnorePattern: "^_",
+          },
+        ],
+      },
     },
   ],
   root: true,

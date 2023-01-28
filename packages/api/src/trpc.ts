@@ -17,9 +17,8 @@
  *
  */
 import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
-import { type Session } from "next-auth";
 
-import { getServerSession } from "@acme/auth";
+import { getServerSession, type Session } from "@acme/auth";
 import { prisma } from "@acme/db";
 
 type CreateContextOptions = {
@@ -101,7 +100,7 @@ export const publicProcedure = t.procedure;
  * procedure
  */
 const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
-  if (!ctx.session || !ctx.session.user) {
+  if (!ctx.session?.user) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   }
   return next({

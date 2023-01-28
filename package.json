@@ -10,8 +10,7 @@
     "db:push": "turbo db:push db:generate",
     "dev": "turbo dev --parallel",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "lint": "turbo lint",
-    "FIXME:lint": "turbo lint && manypkg check",
+    "lint": "turbo lint && manypkg check",
     "type-check": "turbo type-check"
   },
   "dependencies": {
@@ -26,8 +25,9 @@
     "typescript": "^4.9.4"
   },
   "pnpm": {
-    "patchedDependencies": {
-      "react-native@0.70.5": "patches/react-native@0.70.5.patch"
+    "overrides": {
+      "@acme/post-db>@prisma/client": "https://registry.npmjs.com/@prisma/client/-/client-4.9.0.tgz?id=%acme%2Fpostdb",
+      "@acme/user-db>@prisma/client": "https://registry.npmjs.com/@prisma/client/-/client-4.9.0.tgz?id=%40acme%2Fuserdb"
     }
   }
 }

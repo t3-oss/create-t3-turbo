@@ -1,22 +1,18 @@
 {
-  "name": "@acme/auth",
+  "name": "@acme/env",
   "version": "0.1.0",
-  "main": "./index.ts",
-  "types": "./index.ts",
+  "main": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "license": "MIT",
   "scripts": {
+    "build": "tsup",
     "clean": "rm -rf .turbo node_modules",
+    "dev": "tsup --watch",
     "lint": "eslint",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@acme/db": "*",
-    "@acme/env": "*",
-    "@next-auth/prisma-adapter": "^1.0.5",
-    "next": "^13.1.6",
-    "next-auth": "^4.19.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "zod": "^3.20.2"
   },
   "devDependencies": {
     "eslint": "^8.32.0",

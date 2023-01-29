@@ -91,6 +91,7 @@ importers:
       '@acme/api': '*'
       '@acme/auth': '*'
       '@acme/db': '*'
+      '@acme/env': '*'
       '@acme/tailwind-config': '*'
       '@tanstack/react-query': ^4.23.0
       '@trpc/client': ^10.9.0
@@ -116,6 +117,7 @@ importers:
       '@acme/api': link:../../packages/api
       '@acme/auth': link:../../packages/auth
       '@acme/db': link:../../packages/db
+      '@acme/env': link:../../packages/env
       '@acme/tailwind-config': link:../../packages/config/tailwind
       '@tanstack/react-query': 4.23.0_biqbaboplfbrettd7655fr4n2y
       '@trpc/client': 10.9.0_@trpc+server@10.9.0
@@ -143,6 +145,7 @@ importers:
     specifiers:
       '@acme/auth': '*'
       '@acme/db': '*'
+      '@acme/env': '*'
       '@trpc/client': ^10.9.0
       '@trpc/server': ^10.9.0
       eslint: ^8.32.0
@@ -152,6 +155,7 @@ importers:
     dependencies:
       '@acme/auth': link:../auth
       '@acme/db': link:../db
+      '@acme/env': link:../env
       '@trpc/client': 10.9.0_@trpc+server@10.9.0
       '@trpc/server': 10.9.0
       superjson: 1.9.1
@@ -163,6 +167,7 @@ importers:
   packages/auth:
     specifiers:
       '@acme/db': '*'
+      '@acme/env': '*'
       '@next-auth/prisma-adapter': ^1.0.5
       eslint: ^8.32.0
       next: ^13.1.6
@@ -172,6 +177,7 @@ importers:
       typescript: ^4.9.4
     dependencies:
       '@acme/db': link:../db
+      '@acme/env': link:../env
       '@next-auth/prisma-adapter': 1.0.5_next-auth@4.19.0
       next: 13.1.6_biqbaboplfbrettd7655fr4n2y
       next-auth: 4.19.0_3vryta7zmbcsw4rrqf4axjqggm
@@ -193,15 +199,28 @@ importers:
 
   packages/db:
     specifiers:
+      '@acme/env': '*'
       '@prisma/client': ^4.9.0
       dotenv-cli: ^7.0.0
       prisma: ^4.9.0
       typescript: ^4.9.4
     dependencies:
+      '@acme/env': link:../env
       '@prisma/client': 4.9.0_prisma@4.9.0
     devDependencies:
       dotenv-cli: 7.0.0
       prisma: 4.9.0
+      typescript: 4.9.4
+
+  packages/env:
+    specifiers:
+      eslint: ^8.32.0
+      typescript: ^4.9.4
+      zod: ^3.20.2
+    dependencies:
+      zod: 3.20.2
+    devDependencies:
+      eslint: 8.32.0
       typescript: 4.9.4
 
 packages:

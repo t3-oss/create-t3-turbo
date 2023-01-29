@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { Link, Stack } from "expo-router";
 import { FlashList } from "@shopify/flash-list";
 
 import { api, type RouterOutputs } from "../utils/api";
@@ -78,7 +79,7 @@ const CreatePost: React.FC = () => {
   );
 };
 
-export const HomeScreen = () => {
+const Index = () => {
   const postQuery = api.post.all.useQuery();
   const [showPost, setShowPost] = React.useState<string | null>(null);
 
@@ -88,6 +89,8 @@ export const HomeScreen = () => {
 
   return (
     <SafeAreaView className="bg-[#2e026d] bg-gradient-to-b from-[#2e026d] to-[#15162c]">
+      {/* Changes page title visible on the header */}
+      <Stack.Screen options={{ title: "Home Page" }} />
       <View className="h-full w-full p-4">
         <Text className="mx-auto pb-2 text-5xl font-bold text-white">
           Create <Text className="text-[#cc66ff]">T3</Text> Turbo
@@ -126,7 +129,15 @@ export const HomeScreen = () => {
         />
 
         <CreatePost />
+
+        <View>
+          <Link href="/about">
+            <Text className="text-white">About Create T3 Turbo</Text>
+          </Link>
+        </View>
       </View>
     </SafeAreaView>
   );
 };
+
+export default Index;

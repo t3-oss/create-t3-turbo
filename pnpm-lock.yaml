@@ -146,7 +146,7 @@ importers:
       '@trpc/client': ^10.9.0
       '@trpc/server': ^10.9.0
       eslint: ^8.32.0
-      superjson: 1.9.1
+      superjson: 1.12.2
       typescript: ^4.9.4
       zod: ^3.20.2
     dependencies:
@@ -154,7 +154,7 @@ importers:
       '@acme/db': link:../db
       '@trpc/client': 10.9.0_@trpc+server@10.9.0
       '@trpc/server': 10.9.0
-      superjson: 1.9.1
+      superjson: 1.12.2
       zod: 3.20.2
     devDependencies:
       eslint: 8.32.0
@@ -8735,8 +8735,8 @@ packages:
     resolution: {integrity: sha512-Mu7R0g4ig9TUuGSxJavny5Rv0egCEtpZRNMrZaYS1vxkiIxGiGUwoezU3LazIQ+KE04hTrTfNPgxU5gzi7F5Pw==}
     dev: false
 
-  /superjson/1.9.1:
-    resolution: {integrity: sha512-oT3HA2nPKlU1+5taFgz/HDy+GEaY+CWEbLzaRJVD4gZ7zMVVC4GDNFdgvAZt6/VuIk6D2R7RtPAiCHwmdzlMmg==}
+  /superjson/1.12.2:
+    resolution: {integrity: sha512-ugvUo9/WmvWOjstornQhsN/sR9mnGtWGYeTxFuqLb4AiT4QdUavjGFRALCPKWWnAiUJ4HTpytj5e0t5HoMRkXg==}
     engines: {node: '>=10'}
     dependencies:
       copy-anything: 3.0.3

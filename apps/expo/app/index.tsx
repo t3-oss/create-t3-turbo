@@ -4,7 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Link, Stack } from "expo-router";
 import { FlashList } from "@shopify/flash-list";
 
-import { api, type RouterOutputs } from "../utils/api";
+import { api, type RouterOutputs } from "../src/utils/api";
 
 const PostCard: React.FC<{
   post: RouterOutputs["post"]["all"][number];

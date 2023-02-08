@@ -13,7 +13,7 @@
     "db:push": "turbo db:push db:generate",
     "dev": "turbo dev --parallel",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "lint": "turbo lint",
+    "lint": "turbo lint --continue",
     "FIXME:lint": "turbo lint && manypkg check",
     "type-check": "turbo type-check"
   },
@@ -39,6 +39,6 @@
           "next": "*"
         }
       }
-  }
+    }
   }
 }

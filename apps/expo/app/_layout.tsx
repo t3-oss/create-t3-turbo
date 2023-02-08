@@ -11,7 +11,10 @@ const RootLayout = () => {
   return (
     <TRPCProvider>
       <SafeAreaProvider>
-        {/* The Stack component displays the current page. It also allows you to configure your screens */}
+        {/*
+          The Stack component displays the current page.
+          It also allows you to configure your screens 
+        */}
         <Stack
           screenOptions={{
             headerStyle: {

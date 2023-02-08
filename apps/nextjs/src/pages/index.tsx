@@ -12,10 +12,8 @@ const PostCard: React.FC<{
   return (
     <div className="flex flex-row rounded-lg bg-white/10 p-4 transition-all hover:scale-[101%]">
       <div className="flex-grow">
-        <h2 className="text-2xl font-bold text-pink-400">
-          {post.title || <i>Untitled</i>}
-        </h2>
-        <p className="mt-2 text-sm">{post.content || <i>No content</i>}</p>
+        <h2 className="text-2xl font-bold text-pink-400">{post.title}</h2>
+        <p className="mt-2 text-sm">{post.content}</p>
       </div>
       <div>
         <span
@@ -35,7 +33,7 @@ const CreatePostForm: React.FC = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
-  const { mutate } = api.post.create.useMutation({
+  const { mutate, isError } = api.post.create.useMutation({
     async onSuccess() {
       setTitle("");
       setContent("");
@@ -68,6 +66,9 @@ const CreatePostForm: React.FC = () => {
       >
         Create
       </button>
+      {isError && (
+        <span className="font-bold mt-2">Fill out all the fields!</span>
+      )}
     </div>
   );
 };

@@ -11,7 +11,6 @@ const Post: React.FC = () => {
 
   return (
     <SafeAreaView className="bg-[#1F104A]">
-      {/* Changes page title visible on the header */}
       <Stack.Screen options={{ title: `Post: ${!data.title ? "untitled" : data.title}` }} />
       <View className="h-full w-full p-4">
         <Text

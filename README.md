@@ -18,6 +18,7 @@ apps
   ├─ expo
   |   ├─ Expo SDK 46
   |   ├─ React Native using React 18
+  |   ├─ Navigation using Expo Router
   |   ├─ Tailwind using Nativewind
   |   └─ Typesafe API calls using tRPC
   └─ next.js

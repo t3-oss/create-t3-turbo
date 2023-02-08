@@ -16,16 +16,10 @@ const PostCard: React.FC<{
     <View className="flex flex-row rounded-lg bg-white/10 p-4">
       <View className="flex-grow">
         <TouchableOpacity onPress={() => router.push(`/post/${post.id}`)}>
-          <Text
-            className={`text-xl font-semibold text-pink-400 ${
-              !post.title ? "italic" : ""
-            }`}
-          >
-            {post.title || "Untitled"}
+          <Text className="text-xl font-semibold text-pink-400">
+            {post.title}
           </Text>
-          <Text className={`mt-2 text-white ${!post.content ? "italic" : ""}`}>
-            {post.content || "No content"}
-          </Text>
+          <Text className="mt-2 text-white">{post.content}</Text>
         </TouchableOpacity>
       </View>
       <TouchableOpacity onPress={onDelete}>
@@ -41,7 +35,7 @@ const CreatePost: React.FC = () => {
   const [title, setTitle] = React.useState("");
   const [content, setContent] = React.useState("");
 
-  const { mutate } = api.post.create.useMutation({
+  const { mutate, error } = api.post.create.useMutation({
     async onSuccess() {
       setTitle("");
       setContent("");
@@ -50,7 +44,7 @@ const CreatePost: React.FC = () => {
   });
 
   return (
-    <View>
+    <View className="mt-4">
       <TextInput
         className="mb-2 rounded bg-white/10 p-2 text-white"
         placeholderTextColor="rgba(255, 255, 255, 0.5)"
@@ -58,6 +52,11 @@ const CreatePost: React.FC = () => {
         onChangeText={setTitle}
         placeholder="Title"
       />
+      {error?.data?.zodError?.fieldErrors.title && (
+        <Text className="text-red-500 mb-2">
+          {error.data.zodError.fieldErrors.title}
+        </Text>
+      )}
       <TextInput
         className="mb-2 rounded bg-white/10 p-2 text-white"
         placeholderTextColor="rgba(255, 255, 255, 0.5)"
@@ -65,6 +64,11 @@ const CreatePost: React.FC = () => {
         onChangeText={setContent}
         placeholder="Content"
       />
+      {error?.data?.zodError?.fieldErrors.content && (
+        <Text className="text-red-500 mb-2">
+          {error.data.zodError.fieldErrors.content}
+        </Text>
+      )}
       <TouchableOpacity
         className="rounded bg-pink-400 p-2"
         onPress={() => {

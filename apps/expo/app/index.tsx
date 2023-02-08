@@ -35,7 +35,7 @@ const CreatePost: React.FC = () => {
   const [title, setTitle] = React.useState("");
   const [content, setContent] = React.useState("");
 
-  const { mutate, isError } = api.post.create.useMutation({
+  const { mutate, error } = api.post.create.useMutation({
     async onSuccess() {
       setTitle("");
       setContent("");
@@ -45,11 +45,6 @@ const CreatePost: React.FC = () => {
 
   return (
     <View>
-      {isError && (
-        <Text className="text-white mb-2 font-bold">
-          Fill out all the fields!
-        </Text>
-      )}
       <TextInput
         className="mb-2 rounded bg-white/10 p-2 text-white"
         placeholderTextColor="rgba(255, 255, 255, 0.5)"
@@ -57,6 +52,11 @@ const CreatePost: React.FC = () => {
         onChangeText={setTitle}
         placeholder="Title"
       />
+      {error?.data?.zodError?.fieldErrors.title && (
+        <Text className="text-red-500 mb-2">
+          {error.data.zodError.fieldErrors.title}
+        </Text>
+      )}
       <TextInput
         className="mb-2 rounded bg-white/10 p-2 text-white"
         placeholderTextColor="rgba(255, 255, 255, 0.5)"
@@ -64,6 +64,11 @@ const CreatePost: React.FC = () => {
         onChangeText={setContent}
         placeholder="Content"
       />
+      {error?.data?.zodError?.fieldErrors.content && (
+        <Text className="text-red-500 mb-2">
+          {error.data.zodError.fieldErrors.content}
+        </Text>
+      )}
       <TouchableOpacity
         className="rounded bg-pink-400 p-2"
         onPress={() => {

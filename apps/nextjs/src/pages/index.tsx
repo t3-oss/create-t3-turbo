@@ -10,9 +10,9 @@ const PostCard: React.FC<{
   onPostDelete?: () => void;
 }> = ({ post, onPostDelete }) => {
   return (
-    <div className="flex w-full max-w-2xl flex-row rounded-lg bg-white/10 p-4 transition-all hover:scale-[101%]">
+    <div className="flex flex-row rounded-lg bg-white/10 p-4 transition-all hover:scale-[101%]">
       <div className="flex-grow">
-        <h2 className="text-2xl font-bold text-[hsl(280,100%,70%)]">
+        <h2 className="text-2xl font-bold text-pink-400">
           {post.title || <i>Untitled</i>}
         </h2>
         <p className="mt-2 text-sm">{post.content || <i>No content</i>}</p>
@@ -44,7 +44,7 @@ const CreatePostForm: React.FC = () => {
   });
 
   return (
-    <div className="flex w-[80vw] flex-col p-4 md:w-[60vw] xl:w-[35vw]">
+    <div className="flex w-full max-w-2xl flex-col p-4">
       <input
         className="mb-2 rounded bg-white/10 p-2 text-white"
         value={title}
@@ -58,7 +58,7 @@ const CreatePostForm: React.FC = () => {
         placeholder="Content"
       />
       <button
-        className="rounded bg-pink-700 p-2 font-bold"
+        className="rounded bg-pink-400 p-2 font-bold"
         onClick={() => {
           mutate({
             title,
@@ -89,18 +89,18 @@ const Home: NextPage = () => {
       <main className="flex h-screen flex-col items-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
         <div className="container mt-12 flex flex-col items-center justify-center gap-4 px-4 py-8">
           <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
-            Create <span className="text-[hsl(280,100%,70%)]">T3</span> Turbo
+            Create <span className="text-pink-400">T3</span> Turbo
           </h1>
           <AuthShowcase />
 
           <CreatePostForm />
 
           {postQuery.data ? (
-            <div>
+            <div className="w-full max-w-2xl">
               {postQuery.data?.length === 0 ? (
                 <span>There are no posts!</span>
               ) : (
-                <div className="flex h-[40vh] w-[80vw] justify-center overflow-y-scroll px-4 text-2xl md:w-[60vw] xl:w-[35vw]">
+                <div className="flex h-[40vh] justify-center overflow-y-scroll px-4 text-2xl">
                   <div className="flex w-full flex-col gap-4">
                     {postQuery.data?.map((p) => {
                       return (
@@ -116,7 +116,7 @@ const Home: NextPage = () => {
               )}
             </div>
           ) : (
-            <p>Loading..</p>
+            <p>Loading...</p>
           )}
         </div>
       </main>

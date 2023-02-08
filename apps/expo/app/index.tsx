@@ -50,7 +50,7 @@ const CreatePost: React.FC = () => {
   });
 
   return (
-    <View className="flex flex-col p-4">
+    <View>
       <TextInput
         className="mb-2 rounded bg-white/10 p-2 text-white"
         placeholderTextColor="rgba(255, 255, 255, 0.5)"

@@ -44,7 +44,7 @@ const CreatePost: React.FC = () => {
   });
 
   return (
-    <View>
+    <View className="mt-4">
       <TextInput
         className="mb-2 rounded bg-white/10 p-2 text-white"
         placeholderTextColor="rgba(255, 255, 255, 0.5)"

@@ -1,8 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "strict": true,
     "jsx": "react-native"
   },
-  "include": ["src", "index.ts", "app.config.ts"]
+  "include": ["src", "index.ts", "app.config.ts", "expo-plugins"]
 }

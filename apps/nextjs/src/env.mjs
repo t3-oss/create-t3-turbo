@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-// @ts-check
 import { z } from "zod";
 
 /**

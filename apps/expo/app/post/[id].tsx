@@ -11,7 +11,7 @@ const Post: React.FC = () => {
 
   return (
     <SafeAreaView className="bg-[#1F104A]">
-      <Stack.Screen options={{ title: `Post: ${!data.title ? "untitled" : data.title}` }} />
+      <Stack.Screen options={{ title: !data.title ? "Untitled" : data.title}} />
       <View className="h-full w-full p-4">
         <Text
             className={`py-2 text-3xl font-bold text-white ${!data.content ? "italic" : ""}`}

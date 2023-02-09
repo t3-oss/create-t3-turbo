@@ -37,7 +37,7 @@ importers:
       '@babel/core': ^7.20.0
       '@babel/preset-env': ^7.20.0
       '@babel/runtime': ^7.20.0
-      '@expo/config-plugins': ^5.0.4
+      '@expo/config-plugins': ^6.0.0
       '@shopify/flash-list': 1.4.0
       '@tanstack/react-query': ^4.23.0
       '@trpc/client': ^10.9.0
@@ -84,7 +84,7 @@ importers:
       '@babel/core': 7.20.12
       '@babel/preset-env': 7.20.2_@babel+core@7.20.12
       '@babel/runtime': 7.20.7
-      '@expo/config-plugins': 5.0.4
+      '@expo/config-plugins': 6.0.0
       '@types/react': 18.0.27
       eslint: 8.32.0
       postcss: 8.4.21
@@ -1595,28 +1595,6 @@ packages:
       nullthrows: 1.1.1
     dev: false
 
-  /@expo/config-plugins/5.0.4:
-    resolution: {integrity: sha512-vzUcVpqOMs3h+hyRdhGwk+eGIOhXa5xYdd92yO17RMNHav3v/+ekMbs7XA2c3lepMO8Yd4/5hqmRw9ZTL6jGzg==}
-    dependencies:
-      '@expo/config-types': 47.0.0
-      '@expo/json-file': 8.2.36
-      '@expo/plist': 0.0.18
-      '@expo/sdk-runtime-versions': 1.0.0
-      '@react-native/normalize-color': 2.1.0
-      chalk: 4.1.2
-      debug: 4.3.4
-      find-up: 5.0.0
-      getenv: 1.0.0
-      glob: 7.1.6
-      resolve-from: 5.0.0
-      semver: 7.3.8
-      slash: 3.0.0
-      xcode: 3.0.1
-      xml2js: 0.4.23
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
   /@expo/config-plugins/6.0.0:
     resolution: {integrity: sha512-Hp9ZbAvonzPTJFcoBBfmxwLwxHFOQuj8YcbYzSW2UiXeco79Q0itsCEKenvfc16V+ZwMkcjpbahy5/8uVn6aiA==}
     dependencies:
@@ -1637,15 +1615,9 @@ packages:
       xml2js: 0.4.23
     transitivePeerDependencies:
       - supports-color
-    dev: false
-
-  /@expo/config-types/47.0.0:
-    resolution: {integrity: sha512-r0pWfuhkv7KIcXMUiNACJmJKKwlTBGMw9VZHNdppS8/0Nve8HZMTkNRFQzTHW1uH3pBj8jEXpyw/2vSWDHex9g==}
-    dev: true
 
   /@expo/config-types/48.0.0:
     resolution: {integrity: sha512-DwyV4jTy/+cLzXGAo1xftS6mVlSiLIWZjl9DjTCLPFVgNYQxnh7htPilRv4rBhiNs7KaznWqKU70+4zQoKVT9A==}
-    dev: false
 
   /@expo/config/8.0.1:
     resolution: {integrity: sha512-mwz2vmOnwbSJfLpAx3HaaQDtItnDuC3MNFsi1j8ld8y7yBFhipa73t8qkJ4g4FG5mqgC35+kv0ejwnh7v1gROQ==}
@@ -1748,6 +1720,7 @@ packages:
       '@babel/code-frame': 7.10.4
       json5: 1.0.2
       write-file-atomic: 2.4.3
+    dev: false
 
   /@expo/json-file/8.2.37:
     resolution: {integrity: sha512-YaH6rVg11JoTS2P6LsW7ybS2CULjf40AbnAHw2F1eDPuheprNjARZMnyHFPkKv7GuxCy+B9GPcbOKgc4cgA80Q==}
@@ -1755,7 +1728,6 @@ packages:
       '@babel/code-frame': 7.10.4
       json5: 2.2.3
       write-file-atomic: 2.4.3
-    dev: false
 
   /@expo/metro-config/0.6.0:
     resolution: {integrity: sha512-AqiWCyD6MGQuddZuitdpNVpPUO7JZEjPmLaDabAf/hEP6Uo9UJ4flx0OGcJRBkZTRSZ3Z3WwSBtq0LWvABJzrA==}
@@ -1804,21 +1776,12 @@ packages:
       sudo-prompt: 9.1.1
     dev: false
 
-  /@expo/plist/0.0.18:
-    resolution: {integrity: sha512-+48gRqUiz65R21CZ/IXa7RNBXgAI/uPSdvJqoN9x1hfL44DNbUoWHgHiEXTx7XelcATpDwNTz6sHLfy0iNqf+w==}
-    dependencies:
-      '@xmldom/xmldom': 0.7.9
-      base64-js: 1.5.1
-      xmlbuilder: 14.0.0
-    dev: true
-
   /@expo/plist/0.0.20:
     resolution: {integrity: sha512-UXQ4LXCfTZ580LDHGJ5q62jSTwJFFJ1GqBu8duQMThiHKWbMJ+gajJh6rsB6EJ3aLUr9wcauxneL5LVRFxwBEA==}
     dependencies:
       '@xmldom/xmldom': 0.7.9
       base64-js: 1.5.1
       xmlbuilder: 14.0.0
-    dev: false
 
   /@expo/prebuild-config/6.0.0:
     resolution: {integrity: sha512-UW0QKAoRelsalVMhAG1tmegwS+2tbefvUi6/0QiKPlMLg8GFDQ5ZnzsSmuljD0SzT5yGg8oSpKYhnrXJ6pRmIQ==}

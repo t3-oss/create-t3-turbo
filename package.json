@@ -13,8 +13,7 @@
     "db:push": "turbo db:push db:generate",
     "dev": "turbo dev --parallel",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "lint": "turbo lint --continue",
-    "FIXME:lint": "turbo lint && manypkg check",
+    "lint": "turbo lint && manypkg check",
     "type-check": "turbo type-check"
   },
   "dependencies": {
@@ -31,9 +30,6 @@
     "typescript": "^4.9.5"
   },
   "pnpm": {
-    "patchedDependencies": {
-      "react-native@0.70.5": "patches/react-native@0.70.5.patch"
-    },
     "packageExtensions": {
       "eslint-config-next@*": {
         "dependencies": {

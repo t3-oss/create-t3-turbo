@@ -16,8 +16,9 @@ It uses [Turborepo](https://turborepo.org/) and contains:
   └─ Recommended extensions and settings for VSCode users
 apps
   ├─ expo
-  |   ├─ Expo SDK 46
+  |   ├─ Expo SDK 47
   |   ├─ React Native using React 18
+  |   ├─ Navigation using Expo Router
   |   ├─ Tailwind using Nativewind
   |   └─ Typesafe API calls using tRPC
   └─ next.js

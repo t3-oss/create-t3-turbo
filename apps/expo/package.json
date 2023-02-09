@@ -7,7 +7,7 @@
     "dev": "expo start --ios",
     "dev:android": "expo start --android",
     "dev:ios": "expo start --ios",
-    "lint": "eslint",
+    "lint": "eslint .",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
@@ -19,13 +19,17 @@
     "@trpc/react-query": "^10.9.0",
     "@trpc/server": "^10.9.0",
     "expo": "~47.0.13",
+    "expo-constants": "~14.0.2",
+    "expo-linking": "~3.3.0",
+    "expo-router": "1.0.0-rc5",
+    "expo-splash-screen": "~0.17.5",
     "expo-status-bar": "~1.4.2",
     "nativewind": "^2.0.11",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-native": "0.70.5",
     "react-native-safe-area-context": "4.5.0",
-    "expo-splash-screen": "~0.17.5"
+    "react-native-screens": "~3.18.0"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",
@@ -37,7 +41,11 @@
     "eslint": "^8.32.0",
     "postcss": "^8.4.21",
     "tailwindcss": "^3.2.4",
-    "typescript": "^4.9.4"
+    "typescript": "^4.9.5"
+  },
+  "overrides": {
+    "metro": "0.73.7",
+    "metro-resolver": "0.73.7"
   },
   "private": true
 }

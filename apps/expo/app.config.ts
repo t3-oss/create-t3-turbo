@@ -19,7 +19,7 @@ const defineConfig = (_ctx: ConfigContext): ExpoConfig => ({
   assetBundlePatterns: ["**/*"],
   ios: {
     supportsTablet: true,
-    bundleIdentifier: "com.juliusmarminge.expo",
+    bundleIdentifier: "your.bundle.identifier",
   },
   android: {
     adaptiveIcon: {
@@ -29,7 +29,7 @@ const defineConfig = (_ctx: ConfigContext): ExpoConfig => ({
   },
   extra: {
     eas: {
-      projectId: "768478b6-46cd-43a3-904b-f4d5065648d2",
+      projectId: "your-project-id",
     },
   },
   plugins: ["./expo-plugins/with-modify-gradle.js"],

@@ -6,7 +6,6 @@ importers:
 
   .:
     specifiers:
-      '@ianvs/prettier-plugin-sort-imports': ^3.7.1
       '@manypkg/cli': ^0.20.0
       '@types/eslint': ^8.21.0
       '@typescript-eslint/eslint-plugin': ^5.49.0
@@ -14,11 +13,11 @@ importers:
       eslint: ^8.32.0
       eslint-config-prettier: ^8.6.0
       prettier: ^2.8.3
+      prettier-plugin-organize-imports: ^3.2.2
       prettier-plugin-tailwindcss: ^0.2.2
       turbo: ^1.7.4
       typescript: ^4.9.5
     dependencies:
-      '@ianvs/prettier-plugin-sort-imports': 3.7.1_prettier@2.8.3
       '@manypkg/cli': 0.20.0
       '@types/eslint': 8.21.0
       '@typescript-eslint/eslint-plugin': 5.49.0_uuava45uwav2f2r3waokl3sbum
@@ -26,7 +25,8 @@ importers:
       eslint: 8.32.0
       eslint-config-prettier: 8.6.0_eslint@8.32.0
       prettier: 2.8.3
-      prettier-plugin-tailwindcss: 0.2.2_prettier@2.8.3
+      prettier-plugin-organize-imports: 3.2.2_ioxdq35luteszuxmt2jhnqjeca
+      prettier-plugin-tailwindcss: 0.2.2_i4xi2hg6g3kmzi3zhxser2a7ai
       turbo: 1.7.4
       typescript: 4.9.5
 
@@ -71,7 +71,7 @@ importers:
       expo: 48.0.0-beta.2_@babel+core@7.20.12
       expo-constants: 14.2.1_expo@48.0.0-beta.2
       expo-linking: 4.0.1_expo@48.0.0-beta.2
-      expo-router: 1.0.0-rc5_dhqnf27ejynva3436u4rx52f54
+      expo-router: 1.0.0-rc6_dhqnf27ejynva3436u4rx52f54
       expo-splash-screen: 0.18.1_expo@48.0.0-beta.2
       expo-status-bar: 1.4.4
       nativewind: 2.0.11_dpx3ezyh7vrtb4aufvxbx6obrq
@@ -203,10 +203,10 @@ importers:
       prisma: ^4.10.0
       typescript: ^4.9.5
     dependencies:
-      '@prisma/client': 4.10.0_prisma@4.10.0
+      '@prisma/client': 4.10.1_prisma@4.10.1
     devDependencies:
       dotenv-cli: 7.0.0
-      prisma: 4.10.0
+      prisma: 4.10.1
       typescript: 4.9.5
 
 packages:
@@ -1595,6 +1595,28 @@ packages:
       nullthrows: 1.1.1
     dev: false
 
+  /@expo/config-plugins/5.0.4:
+    resolution: {integrity: sha512-vzUcVpqOMs3h+hyRdhGwk+eGIOhXa5xYdd92yO17RMNHav3v/+ekMbs7XA2c3lepMO8Yd4/5hqmRw9ZTL6jGzg==}
+    dependencies:
+      '@expo/config-types': 47.0.0
+      '@expo/json-file': 8.2.36
+      '@expo/plist': 0.0.18
+      '@expo/sdk-runtime-versions': 1.0.0
+      '@react-native/normalize-color': 2.1.0
+      chalk: 4.1.2
+      debug: 4.3.4
+      find-up: 5.0.0
+      getenv: 1.0.0
+      glob: 7.1.6
+      resolve-from: 5.0.0
+      semver: 7.3.8
+      slash: 3.0.0
+      xcode: 3.0.1
+      xml2js: 0.4.23
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   /@expo/config-plugins/6.0.0:
     resolution: {integrity: sha512-Hp9ZbAvonzPTJFcoBBfmxwLwxHFOQuj8YcbYzSW2UiXeco79Q0itsCEKenvfc16V+ZwMkcjpbahy5/8uVn6aiA==}
     dependencies:
@@ -1616,8 +1638,30 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
+  /@expo/config-types/47.0.0:
+    resolution: {integrity: sha512-r0pWfuhkv7KIcXMUiNACJmJKKwlTBGMw9VZHNdppS8/0Nve8HZMTkNRFQzTHW1uH3pBj8jEXpyw/2vSWDHex9g==}
+    dev: false
+
   /@expo/config-types/48.0.0:
     resolution: {integrity: sha512-DwyV4jTy/+cLzXGAo1xftS6mVlSiLIWZjl9DjTCLPFVgNYQxnh7htPilRv4rBhiNs7KaznWqKU70+4zQoKVT9A==}
+
+  /@expo/config/7.0.3:
+    resolution: {integrity: sha512-joVtB5o+NF40Tmsdp65UzryRtbnCuMbXkVO4wJnNJO4aaK0EYLdHCYSewORVqNcDfGN0LphQr8VTG2npbd9CJA==}
+    dependencies:
+      '@babel/code-frame': 7.10.4
+      '@expo/config-plugins': 5.0.4
+      '@expo/config-types': 47.0.0
+      '@expo/json-file': 8.2.36
+      getenv: 1.0.0
+      glob: 7.1.6
+      require-from-string: 2.0.2
+      resolve-from: 5.0.0
+      semver: 7.3.2
+      slugify: 1.6.5
+      sucrase: 3.29.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
 
   /@expo/config/8.0.1:
     resolution: {integrity: sha512-mwz2vmOnwbSJfLpAx3HaaQDtItnDuC3MNFsi1j8ld8y7yBFhipa73t8qkJ4g4FG5mqgC35+kv0ejwnh7v1gROQ==}
@@ -1776,12 +1820,40 @@ packages:
       sudo-prompt: 9.1.1
     dev: false
 
+  /@expo/plist/0.0.18:
+    resolution: {integrity: sha512-+48gRqUiz65R21CZ/IXa7RNBXgAI/uPSdvJqoN9x1hfL44DNbUoWHgHiEXTx7XelcATpDwNTz6sHLfy0iNqf+w==}
+    dependencies:
+      '@xmldom/xmldom': 0.7.9
+      base64-js: 1.5.1
+      xmlbuilder: 14.0.0
+    dev: false
+
   /@expo/plist/0.0.20:
     resolution: {integrity: sha512-UXQ4LXCfTZ580LDHGJ5q62jSTwJFFJ1GqBu8duQMThiHKWbMJ+gajJh6rsB6EJ3aLUr9wcauxneL5LVRFxwBEA==}
     dependencies:
       '@xmldom/xmldom': 0.7.9
       base64-js: 1.5.1
       xmlbuilder: 14.0.0
+
+  /@expo/prebuild-config/5.0.7:
+    resolution: {integrity: sha512-D+TBpJUHe4+oTGFPb4o0rrw/h1xxc6wF+abJnbDHUkhnaeiHkE2O3ByS7FdiZ2FT36t0OKqeSKG/xFwWT3m1Ew==}
+    peerDependencies:
+      expo-modules-autolinking: '>=0.8.1'
+    dependencies:
+      '@expo/config': 7.0.3
+      '@expo/config-plugins': 5.0.4
+      '@expo/config-types': 47.0.0
+      '@expo/image-utils': 0.3.22
+      '@expo/json-file': 8.2.36
+      debug: 4.3.4
+      fs-extra: 9.1.0
+      resolve-from: 5.0.0
+      semver: 7.3.2
+      xml2js: 0.4.23
+    transitivePeerDependencies:
+      - encoding
+      - supports-color
+    dev: false
 
   /@expo/prebuild-config/6.0.0:
     resolution: {integrity: sha512-UW0QKAoRelsalVMhAG1tmegwS+2tbefvUi6/0QiKPlMLg8GFDQ5ZnzsSmuljD0SzT5yGg8oSpKYhnrXJ6pRmIQ==}
@@ -1901,28 +1973,6 @@ packages:
 
   /@humanwhocodes/object-schema/1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
-
-  /@ianvs/prettier-plugin-sort-imports/3.7.1_prettier@2.8.3:
-    resolution: {integrity: sha512-XDnBUUruJY9KgNd7T2ZHnVPWo5B9NzVDCLEMm7HjXTA3rTtMg5Q46gYRjLvampDXSmN8+icu54aRE3IIT8U+1w==}
-    peerDependencies:
-      '@vue/compiler-sfc': '>=3.0.0'
-      prettier: 2.x
-    peerDependenciesMeta:
-      '@vue/compiler-sfc':
-        optional: true
-    dependencies:
-      '@babel/core': 7.20.12
-      '@babel/generator': 7.20.7
-      '@babel/parser': 7.20.7
-      '@babel/traverse': 7.20.12
-      '@babel/types': 7.20.7
-      javascript-natural-sort: 0.7.1
-      lodash.clone: 4.5.0
-      lodash.isequal: 4.5.0
-      prettier: 2.8.3
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
 
   /@jest/create-cache-key-function/29.3.1:
     resolution: {integrity: sha512-4i+E+E40gK13K78ffD/8cy4lSSqeWwyXeTZoq16tndiCP12hC8uQsPJdIu5C6Kf22fD8UbBk71so7s/6VwpUOQ==}
@@ -2272,8 +2322,8 @@ packages:
       tslib: 2.4.1
     dev: true
 
-  /@prisma/client/4.10.0_prisma@4.10.0:
-    resolution: {integrity: sha512-sBmYb1S6SMKFIESaLMfKqWSalv3pH73cMCsFt9HslJvYjIIcKQCA6PDL2O4SZGWvc4JBef9cg5Gd7d9x3AtKjw==}
+  /@prisma/client/4.10.1_prisma@4.10.1:
+    resolution: {integrity: sha512-VonXLJZybdt8e5XZH5vnIGCRNnIh6OMX1FS3H/yzMGLT3STj5TJ/OkMcednrvELgk8PK89Vo3aSh51MWNO0axA==}
     engines: {node: '>=14.17'}
     requiresBuild: true
     peerDependencies:
@@ -2282,16 +2332,16 @@ packages:
       prisma:
         optional: true
     dependencies:
-      '@prisma/engines-version': 4.10.0-84.ca7fcef713137fa11029d519a9780db130cca91d
-      prisma: 4.10.0
+      '@prisma/engines-version': 4.10.1-2.aead147aa326ccb985dcfed5b065b4fdabd44b19
+      prisma: 4.10.1
     dev: false
 
-  /@prisma/engines-version/4.10.0-84.ca7fcef713137fa11029d519a9780db130cca91d:
-    resolution: {integrity: sha512-UVpmVlvSaGfY4ue+hh8CTkIesbuXCFUfrr8zk//+u85WwkKfWMtt6nLB2tNSzR1YO8eAA8+HqNf8LM7mnXIq5w==}
+  /@prisma/engines-version/4.10.1-2.aead147aa326ccb985dcfed5b065b4fdabd44b19:
+    resolution: {integrity: sha512-tsjTho7laDhf9EJ9EnDxAPEf7yrigSMDhniXeU4YoWc7azHAs4GPxRi2P9LTFonmHkJLMOLjR77J1oIP8Ife1w==}
     dev: false
 
-  /@prisma/engines/4.10.0:
-    resolution: {integrity: sha512-ZPPo7q+nQZdTlPFedS7mFXPE3oZ2kWtTh3GO4sku0XQ8ikLqEyinuTPJbQCw/8qel2xglIEQicsK6yI4Jgh20A==}
+  /@prisma/engines/4.10.1:
+    resolution: {integrity: sha512-B3tcTxjx196nuAu1GOTKO9cGPUgTFHYRdkPkTS4m5ptb2cejyBlH9X7GOfSt3xlI7p4zAJDshJP4JJivCg9ouA==}
     requiresBuild: true
 
   /@radix-ui/react-compose-refs/1.0.0_react@18.2.0:
@@ -2508,8 +2558,8 @@ packages:
     resolution: {integrity: sha512-K0aGNn1TjalKj+65D7ycc1//H9roAQ51GJVk5ZJQFb2teECGmzd86bYDC0aYdbRf7gtovescq4Zt6FR0tgXiHQ==}
     dev: false
 
-  /@react-navigation/bottom-tabs/6.5.3_3g6ukttaios2fokpan6bi6kfje:
-    resolution: {integrity: sha512-ZA2Ko9fNwNaaSNn7738KpEk8Doi+yjRfTg8Wb/WvduIaK/28qNLAYWBCUEVjBC55y/9zJOzwc4R8Av2J2MG/4g==}
+  /@react-navigation/bottom-tabs/6.5.4_ax74hflyfobjnbctpwh4x4mqxq:
+    resolution: {integrity: sha512-C2Tf+SsO9zc+p/MKUkILso8Dw4KTIscXPi7YhdepyZbM8ZYMGfnZKzffGjLFlLhQXtsFQQuHMelD8sIStTkgyQ==}
     peerDependencies:
       '@react-navigation/native': ^6.0.0
       react: '*'
@@ -2517,8 +2567,8 @@ packages:
       react-native-safe-area-context: '>= 3.0.0'
       react-native-screens: '>= 3.0.0'
     dependencies:
-      '@react-navigation/elements': 1.3.13_atgi73b4tmddqjil62kbtiksn4
-      '@react-navigation/native': 6.1.2_4abxuapkhmo52mhwaeeet7psu4
+      '@react-navigation/elements': 1.3.14_uvs6kmem7zhnecwzm6n7e6m3da
+      '@react-navigation/native': 6.1.3_4abxuapkhmo52mhwaeeet7psu4
       color: 4.2.3
       react: 18.2.0
       react-native: 0.71.2_oo5no556diumlvgcr27pvljqai
@@ -2541,22 +2591,22 @@ packages:
       use-latest-callback: 0.1.5
     dev: false
 
-  /@react-navigation/elements/1.3.13_atgi73b4tmddqjil62kbtiksn4:
-    resolution: {integrity: sha512-LqqK5s2ZfYHn2cQ376jC5V9dQztLH5ixkkJj9WR7JY2g4SghDd39WJhL3Jillw1Mu3F3b9sZwvAK+QkXhnDeAA==}
+  /@react-navigation/elements/1.3.14_uvs6kmem7zhnecwzm6n7e6m3da:
+    resolution: {integrity: sha512-RBbPhYq+KNFPAkWPaHB9gypq0jTGp/0fkMwRLToJ8jkLtWG4LV+JoQ/erFQnVARkR3Q807n0VnES15EYP4ITMQ==}
     peerDependencies:
       '@react-navigation/native': ^6.0.0
       react: '*'
       react-native: '*'
       react-native-safe-area-context: '>= 3.0.0'
     dependencies:
-      '@react-navigation/native': 6.1.2_4abxuapkhmo52mhwaeeet7psu4
+      '@react-navigation/native': 6.1.3_4abxuapkhmo52mhwaeeet7psu4
       react: 18.2.0
       react-native: 0.71.2_oo5no556diumlvgcr27pvljqai
       react-native-safe-area-context: 4.5.0_4abxuapkhmo52mhwaeeet7psu4
     dev: false
 
-  /@react-navigation/native-stack/6.9.8_3g6ukttaios2fokpan6bi6kfje:
-    resolution: {integrity: sha512-74dje939lflsTXJQwCAdznbJ4B6V8sA5CSzuHwbiogL8B6EVXNa/qliXtB7DBAvzeyWDWT3u+gM2vOYJOeXYhA==}
+  /@react-navigation/native-stack/6.9.9_ax74hflyfobjnbctpwh4x4mqxq:
+    resolution: {integrity: sha512-FIbTCEjqAt6guQ90lKIDvOfTo5vtKGG+aQTtHMdTV9JLGnS6gFsBgXmv5hvWLkyd426Nc04mpZXPTK7d80v/LQ==}
     peerDependencies:
       '@react-navigation/native': ^6.0.0
       react: '*'
@@ -2564,8 +2614,8 @@ packages:
       react-native-safe-area-context: '>= 3.0.0'
       react-native-screens: '>= 3.0.0'
     dependencies:
-      '@react-navigation/elements': 1.3.13_atgi73b4tmddqjil62kbtiksn4
-      '@react-navigation/native': 6.1.2_4abxuapkhmo52mhwaeeet7psu4
+      '@react-navigation/elements': 1.3.14_uvs6kmem7zhnecwzm6n7e6m3da
+      '@react-navigation/native': 6.1.3_4abxuapkhmo52mhwaeeet7psu4
       react: 18.2.0
       react-native: 0.71.2_oo5no556diumlvgcr27pvljqai
       react-native-safe-area-context: 4.5.0_4abxuapkhmo52mhwaeeet7psu4
@@ -2573,8 +2623,8 @@ packages:
       warn-once: 0.1.1
     dev: false
 
-  /@react-navigation/native/6.1.2_4abxuapkhmo52mhwaeeet7psu4:
-    resolution: {integrity: sha512-qLUe0asHofr5EhxKjvUBJ9DrPPmR4535IEwmW3oU4DRb3cLbNysjajJKHL8kcYtqPvn9Bx9QZG2x0PMb2vN23A==}
+  /@react-navigation/native/6.1.3_4abxuapkhmo52mhwaeeet7psu4:
+    resolution: {integrity: sha512-DB5FyG6aqGfcjjVozljF5NEkjWaSymIbQHfWwsjL0YrvC1gfc7E53QXDOjxZ/wfbCo8qZs8RIC/LAgclP2YK/w==}
     peerDependencies:
       react: '*'
       react-native: '*'
@@ -5001,10 +5051,10 @@ packages:
       invariant: 2.2.4
     dev: false
 
-  /expo-router/1.0.0-rc5_dhqnf27ejynva3436u4rx52f54:
-    resolution: {integrity: sha512-azuFVYvCwFdfbV1sEKM/tRXn69IgFICewgIM8xA62yp1NCPiSpzjo8Vx1CQUK7yW8ZR6ykHXHa3KUf9H399y3Q==}
+  /expo-router/1.0.0-rc6_dhqnf27ejynva3436u4rx52f54:
+    resolution: {integrity: sha512-fTtZFIC8BEAS7N6e67MxszSCCNLk9cCOwVSRgBuPRQX9/194eNU78fNpODN5LAcrAuG8haw/ML/cjAp/Nv2HoA==}
     peerDependencies:
-      '@react-navigation/drawer': ^6.4.4
+      '@react-navigation/drawer': ^6.5.8
       expo: ~46.0.2 || ~47.0.0-beta || ~47.0.0
       expo-constants: '*'
       expo-linking: '*'
@@ -5025,13 +5075,13 @@ packages:
       '@bacons/react-views': 1.1.3_react-native@0.71.2
       '@expo/metro-runtime': 0.0.1_react-native@0.71.2
       '@radix-ui/react-slot': 1.0.1_react@18.2.0
-      '@react-navigation/bottom-tabs': 6.5.3_3g6ukttaios2fokpan6bi6kfje
-      '@react-navigation/native': 6.1.2_4abxuapkhmo52mhwaeeet7psu4
-      '@react-navigation/native-stack': 6.9.8_3g6ukttaios2fokpan6bi6kfje
+      '@react-navigation/bottom-tabs': 6.5.4_ax74hflyfobjnbctpwh4x4mqxq
+      '@react-navigation/native': 6.1.3_4abxuapkhmo52mhwaeeet7psu4
+      '@react-navigation/native-stack': 6.9.9_ax74hflyfobjnbctpwh4x4mqxq
       expo: 48.0.0-beta.2_@babel+core@7.20.12
       expo-constants: 14.2.1_expo@48.0.0-beta.2
       expo-linking: 4.0.1_expo@48.0.0-beta.2
-      expo-splash-screen: 0.18.1_expo@48.0.0-beta.2
+      expo-splash-screen: 0.17.5_expo@48.0.0-beta.2
       expo-status-bar: 1.4.4
       react-helmet-async: 1.3.0_biqbaboplfbrettd7655fr4n2y
       react-native-safe-area-context: 4.5.0_4abxuapkhmo52mhwaeeet7psu4
@@ -5043,6 +5093,20 @@ packages:
       - react
       - react-dom
       - react-native
+      - supports-color
+    dev: false
+
+  /expo-splash-screen/0.17.5_expo@48.0.0-beta.2:
+    resolution: {integrity: sha512-ejSO78hwHXz8T9u8kh8t4r6CR4h70iBvA65gX8GK+dYxZl6/IANPbIb2VnUpND9vqfW+JnkDw+ZFst+gDnkpcQ==}
+    peerDependencies:
+      expo: '*'
+    dependencies:
+      '@expo/configure-splash-screen': 0.6.0
+      '@expo/prebuild-config': 5.0.7
+      expo: 48.0.0-beta.2_@babel+core@7.20.12
+    transitivePeerDependencies:
+      - encoding
+      - expo-modules-autolinking
       - supports-color
     dev: false
 
@@ -6146,10 +6210,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: false
 
-  /javascript-natural-sort/0.7.1:
-    resolution: {integrity: sha512-nO6jcEfZWQXDhOiBtG2KvKyEptz7RVbpGP4vTD2hLBdmNQSsCiicO2Ioinv6UI4y9ukqnBpy+XZ9H6uLNgJTlw==}
-    dev: false
-
   /jest-environment-node/29.4.2:
     resolution: {integrity: sha512-MLPrqUcOnNBc8zTOfqBbxtoa8/Ee8tZ7UFW7hRDQSUT+NGsvS96wlbHGTf+EFAT9KC3VNb7fWEM6oyvmxtE/9w==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
@@ -6490,16 +6550,8 @@ packages:
     dependencies:
       p-locate: 5.0.0
 
-  /lodash.clone/4.5.0:
-    resolution: {integrity: sha512-GhrVeweiTD6uTmmn5hV/lzgCQhccwReIVRLHp7LT4SopOjqEZ5BbX8b5WWEtAKasjmy8hR7ZPwsYlxRCku5odg==}
-    dev: false
-
   /lodash.debounce/4.0.8:
     resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
-
-  /lodash.isequal/4.5.0:
-    resolution: {integrity: sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==}
-    dev: false
 
   /lodash.merge/4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
@@ -7883,7 +7935,24 @@ packages:
     engines: {node: '>=4'}
     dev: false
 
-  /prettier-plugin-tailwindcss/0.2.2_prettier@2.8.3:
+  /prettier-plugin-organize-imports/3.2.2_ioxdq35luteszuxmt2jhnqjeca:
+    resolution: {integrity: sha512-e97lE6odGSiHonHJMTYC0q0iLXQyw0u5z/PJpvP/3vRy6/Zi9kLBwFAbEGjDzIowpjQv8b+J04PDamoUSQbzGA==}
+    peerDependencies:
+      '@volar/vue-language-plugin-pug': ^1.0.4
+      '@volar/vue-typescript': ^1.0.4
+      prettier: '>=2.0'
+      typescript: '>=2.9'
+    peerDependenciesMeta:
+      '@volar/vue-language-plugin-pug':
+        optional: true
+      '@volar/vue-typescript':
+        optional: true
+    dependencies:
+      prettier: 2.8.3
+      typescript: 4.9.5
+    dev: false
+
+  /prettier-plugin-tailwindcss/0.2.2_i4xi2hg6g3kmzi3zhxser2a7ai:
     resolution: {integrity: sha512-5RjUbWRe305pUpc48MosoIp6uxZvZxrM6GyOgsbGLTce+ehePKNm7ziW2dLG2air9aXbGuXlHVSQQw4Lbosq3w==}
     engines: {node: '>=12.17.0'}
     peerDependencies:
@@ -7933,6 +8002,7 @@ packages:
         optional: true
     dependencies:
       prettier: 2.8.3
+      prettier-plugin-organize-imports: 3.2.2_ioxdq35luteszuxmt2jhnqjeca
     dev: false
 
   /prettier/2.8.3:
@@ -7969,13 +8039,13 @@ packages:
     resolution: {integrity: sha512-WuxUnVtlWL1OfZFQFuqvnvs6MiAGk9UNsBostyBOB0Is9wb5uRESevA6rnl/rkksXaGX3GzZhPup5d6Vp1nFew==}
     dev: false
 
-  /prisma/4.10.0:
-    resolution: {integrity: sha512-xUHcF3Glc8QGgW8x0rfPITvyyTo04fskUdG7pI4kQbvDX/rhzDP4046x/FvazYqYHXMLR5/KTIi2p2Gth5vKOQ==}
+  /prisma/4.10.1:
+    resolution: {integrity: sha512-0jDxgg+DruB1kHVNlcspXQB9au62IFfVg9drkhzXudszHNUAQn0lVuu+T8np0uC2z1nKD5S3qPeCyR8u5YFLnA==}
     engines: {node: '>=14.17'}
     hasBin: true
     requiresBuild: true
     dependencies:
-      '@prisma/engines': 4.10.0
+      '@prisma/engines': 4.10.1
 
   /process-nextick-args/2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}

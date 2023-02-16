@@ -57,6 +57,5 @@ jobs:
         env:
           SKIP_ENV_VALIDATION: true
 
-      # FIXME: Add this back once we have an Expo SDK supporting React 18.2
-      # - name: Check workspaces
-      #   run: pnpm manypkg check
+      - name: Check workspaces
+        run: pnpm manypkg check

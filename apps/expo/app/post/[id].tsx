@@ -1,4 +1,5 @@
-import { SafeAreaView, Text, View } from "react-native";
+import { Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { SplashScreen, Stack, useSearchParams } from "expo-router";
 
 import { api } from "../../src/utils/api";

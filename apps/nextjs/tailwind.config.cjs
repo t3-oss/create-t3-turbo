@@ -1,5 +1,8 @@
 /** @type {import("tailwindcss").Config} */
-module.exports = {
+const config = {
+  content: ["./src/**/*.tsx"],
   // @ts-ignore
   presets: [require("@acme/tailwind-config")],
 };
+
+module.exports = config;

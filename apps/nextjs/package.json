@@ -7,6 +7,7 @@
     "clean": "rm -rf .next .turbo node_modules",
     "dev": "pnpm with-env next dev",
     "lint": "SKIP_ENV_VALIDATION=1 next lint",
+    "lint:fix": "pnpm lint --fix",
     "start": "next start",
     "type-check": "tsc --noEmit",
     "with-env": "dotenv -e ../../.env --"
@@ -16,16 +17,16 @@
     "@acme/auth": "*",
     "@acme/db": "*",
     "@acme/tailwind-config": "*",
-    "@tanstack/react-query": "^4.23.0",
-    "@trpc/client": "^10.9.0",
-    "@trpc/next": "^10.9.0",
-    "@trpc/react-query": "^10.9.0",
-    "@trpc/server": "^10.9.0",
-    "next": "^13.1.6",
-    "next-auth": "^4.19.0",
+    "@tanstack/react-query": "^4.24.10",
+    "@trpc/client": "^10.12.0",
+    "@trpc/next": "^10.12.0",
+    "@trpc/react-query": "^10.12.0",
+    "@trpc/server": "^10.12.0",
+    "next": "^13.2.0",
+    "next-auth": "^4.19.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "zod": "^3.20.2"
+    "zod": "^3.20.6"
   },
   "devDependencies": {
     "@types/node": "^18.0.0",
@@ -33,10 +34,10 @@
     "@types/react-dom": "^18.0.10",
     "autoprefixer": "^10.4.13",
     "dotenv-cli": "^7.0.0",
-    "eslint": "^8.32.0",
-    "eslint-config-next": "^13.1.6",
+    "eslint": "^8.34.0",
+    "eslint-config-acme": "0.0.0",
     "postcss": "^8.4.21",
-    "tailwindcss": "^3.2.4",
+    "tailwindcss": "^3.2.7",
     "typescript": "^4.9.5"
   }
 }

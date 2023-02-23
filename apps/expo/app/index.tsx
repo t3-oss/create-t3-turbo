@@ -53,7 +53,7 @@ const CreatePost: React.FC = () => {
         placeholder="Title"
       />
       {error?.data?.zodError?.fieldErrors.title && (
-        <Text className="text-red-500 mb-2">
+        <Text className="mb-2 text-red-500">
           {error.data.zodError.fieldErrors.title}
         </Text>
       )}
@@ -65,7 +65,7 @@ const CreatePost: React.FC = () => {
         placeholder="Content"
       />
       {error?.data?.zodError?.fieldErrors.content && (
-        <Text className="text-red-500 mb-2">
+        <Text className="mb-2 text-red-500">
           {error.data.zodError.fieldErrors.content}
         </Text>
       )}

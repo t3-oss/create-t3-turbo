@@ -3,8 +3,9 @@
   "extends": ["config:base"],
   "packageRules": [
     {
-      "matchPackagePatterns": ["^@acme/"],
+      "matchPackagePatterns": ["^@acme/", "eslint-config-acme"],
       "enabled": false
     }
-  ]
+  ],
+  "updateInternalDeps": true
 }

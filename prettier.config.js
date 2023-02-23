@@ -8,7 +8,7 @@ module.exports = {
   trailingComma: "all",
   tabWidth: 2,
   plugins: [
-    require.resolve("prettier-plugin-organize-imports"),
+    require.resolve("@ianvs/prettier-plugin-sort-imports"),
     require.resolve("prettier-plugin-tailwindcss"),
   ],
   tailwindConfig: "./packages/config/tailwind",

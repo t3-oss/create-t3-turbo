@@ -1,5 +1,5 @@
 /** @type {import("prettier").Config} */
-module.exports = {
+const config = {
   arrowParens: "always",
   printWidth: 80,
   singleQuote: false,
@@ -8,8 +8,8 @@ module.exports = {
   trailingComma: "all",
   tabWidth: 2,
   plugins: [
-    require.resolve("@ianvs/prettier-plugin-sort-imports"),
-    require.resolve("prettier-plugin-tailwindcss"),
+    "@ianvs/prettier-plugin-sort-imports",
+    "prettier-plugin-tailwindcss",
   ],
   tailwindConfig: "./packages/config/tailwind",
   importOrder: [
@@ -32,3 +32,5 @@ module.exports = {
   importOrderMergeDuplicateImports: true,
   importOrderCombineTypeAndValueImports: true,
 };
+
+module.exports = config;

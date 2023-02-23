@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-
 // This plugin is required for fixing `.apk` build issue
 // It appends Expo and RN versions into the `build.gradle` file
 // References:
@@ -7,7 +5,8 @@
 // https://github.com/expo/expo/issues/18129
 
 /** @type {import("@expo/config-plugins").ConfigPlugin} */
-module.exports = (config) => {
+const defineConfig = (config) => {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   return require("@expo/config-plugins").withProjectBuildGradle(
     config,
     (config) => {
@@ -41,3 +40,5 @@ module.exports = (config) => {
     },
   );
 };
+
+module.exports = defineConfig;

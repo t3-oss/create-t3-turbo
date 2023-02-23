@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
+import Link from "next/link";
 import { signIn, signOut } from "next-auth/react";
 
 import { api, type RouterOutputs } from "~/utils/api";
@@ -50,10 +51,11 @@ const CreatePostForm: React.FC = () => {
         placeholder="Title"
       />
       {error?.data?.zodError?.fieldErrors.title && (
-        <span className="text-red-500 mb-2">
+        <span className="mb-2 text-red-500">
           {error.data.zodError.fieldErrors.title}
         </span>
       )}
+      <Link href="/yoo">Hello</Link>
       <input
         className="mb-2 rounded bg-white/10 p-2 text-white"
         value={content}
@@ -61,7 +63,7 @@ const CreatePostForm: React.FC = () => {
         placeholder="Content"
       />
       {error?.data?.zodError?.fieldErrors.content && (
-        <span className="text-red-500 mb-2">
+        <span className="mb-2 text-red-500">
           {error.data.zodError.fieldErrors.content}
         </span>
       )}

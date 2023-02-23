@@ -1,4 +1,4 @@
-/** @type {import("prettier").Config} */
+/** @type {import("prettier").Config & { [key:string]: any }} */
 const config = {
   arrowParens: "always",
   printWidth: 80,

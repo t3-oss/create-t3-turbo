@@ -3,5 +3,6 @@
   "compilerOptions": {
     "jsx": "react-native"
   },
-  "include": ["app", "expo-plugins", "src", "app.config.ts", "index.ts"]
+  "include": ["app", "expo-plugins", "src", "app.config.ts", "index.ts"],
+  "exclude": ["node_modules"]
 }

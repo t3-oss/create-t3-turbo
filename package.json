@@ -6,26 +6,28 @@
   },
   "packageManager": "pnpm@7.28.0",
   "scripts": {
-    "build": "turbo build",
+    "build": "pnpm with-env turbo build",
     "clean": "rm -rf node_modules",
     "clean:workspaces": "turbo clean",
-    "db:generate": "turbo db:generate",
-    "db:push": "turbo db:push db:generate",
-    "dev": "turbo dev --parallel",
+    "db:generate": "pnpm with-env turbo db:generate",
+    "db:push": "pnpm with-env turbo db:push db:generate",
+    "dev": "pnpm with-env turbo dev --parallel",
     "format": "prettier --write \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path .gitignore",
     "lint": "turbo lint && manypkg check",
     "lint:fix": "turbo lint:fix && manypkg fix",
-    "type-check": "turbo type-check"
+    "type-check": "turbo type-check",
+    "with-env": "dotenv -e .env --"
   },
   "dependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^3.7.1",
     "@manypkg/cli": "^0.20.0",
     "@types/prettier": "^2.7.2",
+    "dotenv-cli": "^7.0.0",
     "eslint": "^8.34.0",
     "eslint-config-acme": "0.0.0",
     "prettier": "^2.8.4",
-    "prettier-plugin-tailwindcss": "^0.2.3",
-    "turbo": "^1.8.2",
+    "prettier-plugin-tailwindcss": "^0.2.4",
+    "turbo": "^1.8.3",
     "typescript": "^4.9.5"
   }
 }

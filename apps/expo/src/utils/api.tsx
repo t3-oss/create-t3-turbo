@@ -3,26 +3,15 @@ import Constants from "expo-constants";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { httpBatchLink } from "@trpc/client";
 import { createTRPCReact } from "@trpc/react-query";
-import { type inferRouterInputs, type inferRouterOutputs } from "@trpc/server";
-import type { AppRouter } from "@acme/api";
-import { transformer } from "@acme/api/transformer";
+import superjson from "superjson";
+
+import { type AppRouter } from "@acme/api";
 
 /**
  * A set of typesafe hooks for consuming your API.
  */
 export const api = createTRPCReact<AppRouter>();
-
-/**
- * Inference helpers for input types
- * @example type HelloInput = RouterInputs['example']['hello']
- **/
-export type RouterInputs = inferRouterInputs<AppRouter>;
-
-/**
- * Inference helpers for output types
- * @example type HelloOutput = RouterOutputs['example']['hello']
- **/
-export type RouterOutputs = inferRouterOutputs<AppRouter>;
+export { type RouterInputs, type RouterOutputs } from "@acme/api";
 
 /**
  * Extend this function when going to production by
@@ -54,7 +43,7 @@ export const TRPCProvider: React.FC<{ children: React.ReactNode }> = ({
   const [queryClient] = React.useState(() => new QueryClient());
   const [trpcClient] = React.useState(() =>
     api.createClient({
-      transformer,
+      transformer: superjson,
       links: [
         httpBatchLink({
           url: `${getBaseUrl()}/api/trpc`,

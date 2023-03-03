@@ -1,6 +1,6 @@
-import { type ConfigContext, type ExpoConfig } from "@expo/config";
+import type { ExpoConfig } from "@expo/config";
 
-const defineConfig = (_ctx: ConfigContext): ExpoConfig => ({
+const defineConfig = (): ExpoConfig => ({
   name: "expo",
   slug: "expo",
   scheme: "expo",
@@ -19,7 +19,7 @@ const defineConfig = (_ctx: ConfigContext): ExpoConfig => ({
   assetBundlePatterns: ["**/*"],
   ios: {
     supportsTablet: true,
-    bundleIdentifier: "your.bundle.identifier",
+    bundleIdentifier: "juliusmarminge.expo.com",
   },
   android: {
     adaptiveIcon: {
@@ -29,7 +29,7 @@ const defineConfig = (_ctx: ConfigContext): ExpoConfig => ({
   },
   extra: {
     eas: {
-      projectId: "your-project-id",
+      projectId: "768478b6-46cd-43a3-904b-f4d5065648d2",
     },
   },
   plugins: ["./expo-plugins/with-modify-gradle.js"],

@@ -17,6 +17,7 @@ const config = {
     "^(next/(.*)$)|^(next$)",
     "^(expo(.*)$)|^(expo$)",
     "<THIRD_PARTY_MODULES>",
+    "",
     "^@acme/(.*)$",
     "",
     "^~/utils/(.*)$",

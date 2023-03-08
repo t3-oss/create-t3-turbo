@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 import { registerRootComponent } from "expo";
 import { ExpoRoot } from "expo-router";
 

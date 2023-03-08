@@ -40,6 +40,7 @@ importers:
       '@trpc/react-query': ^10.14.0
       '@trpc/server': ^10.14.0
       '@types/react': ^18.0.27
+      '@types/webpack-env': ^1.18.0
       eslint: ^8.34.0
       eslint-config-acme: 0.0.0
       expo: ^48.0.4
@@ -85,6 +86,7 @@ importers:
       '@babel/runtime': 7.20.7
       '@expo/config-plugins': 6.0.0
       '@types/react': 18.0.27
+      '@types/webpack-env': 1.18.0
       eslint: 8.34.0
       eslint-config-acme: link:../../packages/config/eslint
       postcss: 8.4.21
@@ -3124,6 +3126,10 @@ packages:
   /@types/stack-utils/2.0.1:
     resolution: {integrity: sha512-Hl219/BT5fLAaz6NDkSuhzasy49dwQS/DSdu4MdggFB8zcXv7vflBI3xp7FEmkmdDkBUI2bPUNeMttp2knYdxw==}
     dev: false
+
+  /@types/webpack-env/1.18.0:
+    resolution: {integrity: sha512-56/MAlX5WMsPVbOg7tAxnYvNYMMWr/QJiIp6BxVSW3JJXUVzzOn64qW8TzQyMSqSUFM2+PVI4aUHcHOzIz/1tg==}
+    dev: true
 
   /@types/yargs-parser/21.0.0:
     resolution: {integrity: sha512-iO9ZQHkZxHn4mSakYV0vFHAVDyEOIJQrV2uZ06HxEPcx+mt8swXoZHIbaaJ2crJYFfErySgktuTZ3BeLz+XmFA==}

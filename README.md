@@ -49,6 +49,10 @@ I've left this kind of open for you to decide. Some options are [Clerk](https://
 
 The Clerk.dev team even made an [official template repository](https://github.com/clerkinc/t3-turbo-and-clerk) integrating Clerk.dev with this repo.
 
+### Does this pattern leak backend code to my client applications?
+
+No, it does not. The `api` package should only be a production dependency in the Next.js application where it's served. The Expo app, and all other apps you may add in the future, should only add the `api` package as a dev dependency. This lets you have full typesafety in your client applications, while keeping your backend code safe.
+
 ## Quick Start
 
 To get it running, follow the steps below:

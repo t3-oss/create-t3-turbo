@@ -53,6 +53,8 @@ The Clerk.dev team even made an [official template repository](https://github.co
 
 No, it does not. The `api` package should only be a production dependency in the Next.js application where it's served. The Expo app, and all other apps you may add in the future, should only add the `api` package as a dev dependency. This lets you have full typesafety in your client applications, while keeping your backend code safe.
 
+If you need to share runtime code between the client and server, such as input validation schemas, you can create a separate `shared` package for this and import on both sides.
+
 ## Quick Start
 
 To get it running, follow the steps below:

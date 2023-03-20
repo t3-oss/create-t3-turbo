@@ -22,10 +22,9 @@ importers:
       eslint: 8.34.0
       eslint-config-acme: link:packages/config/eslint
       prettier: 2.8.4
+      prettier-plugin-tailwindcss: 0.2.4_2m34gfnsqvzqy5bj5eci3wt3by
       turbo: 1.8.3
       typescript: 5.0.2
-    devDependencies:
-      prettier-plugin-tailwindcss: 0.2.4_2m34gfnsqvzqy5bj5eci3wt3by
 
   apps/expo:
     specifiers:
@@ -2203,6 +2202,7 @@ packages:
       prettier: 2.8.4
     transitivePeerDependencies:
       - supports-color
+    dev: false
 
   /@jest/create-cache-key-function/29.3.1:
     resolution: {integrity: sha512-4i+E+E40gK13K78ffD/8cy4lSSqeWwyXeTZoq16tndiCP12hC8uQsPJdIu5C6Kf22fD8UbBk71so7s/6VwpUOQ==}
@@ -6471,6 +6471,7 @@ packages:
 
   /javascript-natural-sort/0.7.1:
     resolution: {integrity: sha512-nO6jcEfZWQXDhOiBtG2KvKyEptz7RVbpGP4vTD2hLBdmNQSsCiicO2Ioinv6UI4y9ukqnBpy+XZ9H6uLNgJTlw==}
+    dev: false
 
   /jest-environment-node/29.4.2:
     resolution: {integrity: sha512-MLPrqUcOnNBc8zTOfqBbxtoa8/Ee8tZ7UFW7hRDQSUT+NGsvS96wlbHGTf+EFAT9KC3VNb7fWEM6oyvmxtE/9w==}
@@ -6815,12 +6816,14 @@ packages:
 
   /lodash.clone/4.5.0:
     resolution: {integrity: sha512-GhrVeweiTD6uTmmn5hV/lzgCQhccwReIVRLHp7LT4SopOjqEZ5BbX8b5WWEtAKasjmy8hR7ZPwsYlxRCku5odg==}
+    dev: false
 
   /lodash.debounce/4.0.8:
     resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
 
   /lodash.isequal/4.5.0:
     resolution: {integrity: sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==}
+    dev: false
 
   /lodash.merge/4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
@@ -8278,12 +8281,13 @@ packages:
     dependencies:
       '@ianvs/prettier-plugin-sort-imports': 3.7.1_prettier@2.8.4
       prettier: 2.8.4
-    dev: true
+    dev: false
 
   /prettier/2.8.4:
     resolution: {integrity: sha512-vIS4Rlc2FNh0BySk3Wkd6xmwxB0FpOndW5fisM5H8hsZSxU2VWVB5CWIkIjWvrHjIhxk2g3bfMKM87zNTrZddw==}
     engines: {node: '>=10.13.0'}
     hasBin: true
+    dev: false
 
   /pretty-bytes/5.6.0:
     resolution: {integrity: sha512-FFw039TmrBqFK8ma/7OL3sDz/VytdtJr044/QUJtH0wK9lb9jLq9tJyIxUwtQJHwar2BqtiA4iCWSwo9JLkzFg==}

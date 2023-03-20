@@ -1,4 +1,10 @@
-/** @type {import("prettier").Config & { [key:string]: any }} */
+
+/** @typedef  {import("@ianvs/prettier-plugin-sort-imports").PluginConfig} SortImportsConfig*/
+/** @typedef  {import("prettier").Config} PrettierConfig*/
+// prettier-plugin-tailwindcss does not have type definitions, only a single config option
+/** @typedef  {{ tailwindConfig: string }} TailwindConfig*/
+
+/** @type { PrettierConfig | SortImportsConfig | TailwindConfig } */
 const config = {
   arrowParens: "always",
   printWidth: 80,

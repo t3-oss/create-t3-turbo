@@ -11,7 +11,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@acme/db": "*",
+    "@acme/db": "workspace:*",
     "@next-auth/prisma-adapter": "^1.0.5",
     "next": "^13.2.3",
     "next-auth": "^4.20.1",

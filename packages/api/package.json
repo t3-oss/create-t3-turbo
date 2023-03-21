@@ -11,8 +11,8 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@acme/auth": "*",
-    "@acme/db": "*",
+    "@acme/auth": "workspace:*",
+    "@acme/db": "workspace:*",
     "@trpc/client": "^10.14.0",
     "@trpc/server": "^10.14.0",
     "superjson": "1.9.1",

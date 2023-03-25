@@ -4,23 +4,23 @@ importers:
 
   .:
     specifiers:
+      '@acme/eslint-config': '*'
       '@ianvs/prettier-plugin-sort-imports': ^3.7.1
       '@manypkg/cli': ^0.20.0
       '@types/prettier': ^2.7.2
       dotenv-cli: ^7.0.0
       eslint: ^8.34.0
-      eslint-config-acme: 0.0.0
       prettier: ^2.8.4
       prettier-plugin-tailwindcss: ^0.2.4
       turbo: ^1.8.3
       typescript: ^5.0.0
     dependencies:
+      '@acme/eslint-config': link:packages/config/eslint
       '@ianvs/prettier-plugin-sort-imports': 3.7.1_prettier@2.8.4
       '@manypkg/cli': 0.20.0
       '@types/prettier': 2.7.2
       dotenv-cli: 7.0.0
       eslint: 8.34.0
-      eslint-config-acme: link:packages/config/eslint
       prettier: 2.8.4
       prettier-plugin-tailwindcss: 0.2.4_2m34gfnsqvzqy5bj5eci3wt3by
       turbo: 1.8.3
@@ -29,6 +29,7 @@ importers:
   apps/expo:
     specifiers:
       '@acme/api': '*'
+      '@acme/eslint-config': '*'
       '@acme/tailwind-config': '*'
       '@babel/core': ^7.20.0
       '@babel/preset-env': ^7.20.0
@@ -42,7 +43,6 @@ importers:
       '@types/react': ^18.0.27
       '@types/webpack-env': ^1.18.0
       eslint: ^8.34.0
-      eslint-config-acme: 0.0.0
       expo: ^48.0.4
       expo-constants: ~14.2.1
       expo-linking: ~4.0.1
@@ -80,6 +80,7 @@ importers:
       superjson: 1.9.1
     devDependencies:
       '@acme/api': link:../../packages/api
+      '@acme/eslint-config': link:../../packages/config/eslint
       '@acme/tailwind-config': link:../../packages/config/tailwind
       '@babel/core': 7.20.12
       '@babel/preset-env': 7.20.2_@babel+core@7.20.12
@@ -88,7 +89,6 @@ importers:
       '@types/react': 18.0.27
       '@types/webpack-env': 1.18.0
       eslint: 8.34.0
-      eslint-config-acme: link:../../packages/config/eslint
       postcss: 8.4.21
       tailwindcss: 3.2.7_postcss@8.4.21
       typescript: 5.0.2
@@ -98,6 +98,7 @@ importers:
       '@acme/api': '*'
       '@acme/auth': '*'
       '@acme/db': '*'
+      '@acme/eslint-config': '*'
       '@acme/tailwind-config': '*'
       '@tanstack/react-query': ^4.24.10
       '@trpc/client': ^10.14.0
@@ -109,7 +110,6 @@ importers:
       '@types/react-dom': ^18.0.10
       autoprefixer: ^10.4.13
       eslint: ^8.34.0
-      eslint-config-acme: 0.0.0
       next: ^13.2.3
       next-auth: ^4.20.1
       postcss: ^8.4.21
@@ -137,12 +137,12 @@ importers:
       superjson: 1.9.1
       zod: 3.20.6
     devDependencies:
+      '@acme/eslint-config': link:../../packages/config/eslint
       '@types/node': 18.11.18
       '@types/react': 18.0.27
       '@types/react-dom': 18.0.10
       autoprefixer: 10.4.13_postcss@8.4.21
       eslint: 8.34.0
-      eslint-config-acme: link:../../packages/config/eslint
       postcss: 8.4.21
       tailwindcss: 3.2.7_postcss@8.4.21
       tsx: 3.12.3
@@ -152,10 +152,10 @@ importers:
     specifiers:
       '@acme/auth': '*'
       '@acme/db': '*'
+      '@acme/eslint-config': '*'
       '@trpc/client': ^10.14.0
       '@trpc/server': ^10.14.0
       eslint: ^8.34.0
-      eslint-config-acme: 0.0.0
       superjson: 1.9.1
       typescript: ^5.0.0
       zod: ^3.20.6
@@ -167,16 +167,16 @@ importers:
       superjson: 1.9.1
       zod: 3.20.6
     devDependencies:
+      '@acme/eslint-config': link:../config/eslint
       eslint: 8.34.0
-      eslint-config-acme: link:../config/eslint
       typescript: 5.0.2
 
   packages/auth:
     specifiers:
       '@acme/db': '*'
+      '@acme/eslint-config': '*'
       '@next-auth/prisma-adapter': ^1.0.5
       eslint: ^8.34.0
-      eslint-config-acme: 0.0.0
       next: ^13.2.3
       next-auth: ^4.20.1
       react: 18.2.0
@@ -190,8 +190,8 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     devDependencies:
+      '@acme/eslint-config': link:../config/eslint
       eslint: 8.34.0
-      eslint-config-acme: link:../config/eslint
       typescript: 5.0.2
 
   packages/config/eslint:

@@ -28,9 +28,9 @@ importers:
 
   apps/expo:
     specifiers:
-      '@acme/api': '*'
-      '@acme/eslint-config': '*'
-      '@acme/tailwind-config': '*'
+      '@acme/api': ^0.1.0
+      '@acme/eslint-config': ^0.1.0
+      '@acme/tailwind-config': ^0.1.0
       '@babel/core': ^7.20.0
       '@babel/preset-env': ^7.20.0
       '@babel/runtime': ^7.20.0
@@ -95,11 +95,11 @@ importers:
 
   apps/nextjs:
     specifiers:
-      '@acme/api': '*'
-      '@acme/auth': '*'
-      '@acme/db': '*'
-      '@acme/eslint-config': '*'
-      '@acme/tailwind-config': '*'
+      '@acme/api': ^0.1.0
+      '@acme/auth': ^0.1.0
+      '@acme/db': ^0.1.0
+      '@acme/eslint-config': ^0.1.0
+      '@acme/tailwind-config': ^0.1.0
       '@tanstack/react-query': ^4.28.0
       '@trpc/client': ^10.18.0
       '@trpc/next': ^10.18.0
@@ -148,9 +148,9 @@ importers:
 
   packages/api:
     specifiers:
-      '@acme/auth': '*'
-      '@acme/db': '*'
-      '@acme/eslint-config': '*'
+      '@acme/auth': ^0.1.0
+      '@acme/db': ^0.1.0
+      '@acme/eslint-config': ^0.1.0
       '@trpc/client': ^10.18.0
       '@trpc/server': ^10.18.0
       eslint: ^8.36.0
@@ -171,8 +171,8 @@ importers:
 
   packages/auth:
     specifiers:
-      '@acme/db': '*'
-      '@acme/eslint-config': '*'
+      '@acme/db': ^0.1.0
+      '@acme/eslint-config': ^0.1.0
       '@next-auth/prisma-adapter': ^1.0.5
       eslint: ^8.36.0
       next: ^13.2.4

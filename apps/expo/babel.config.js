@@ -1,4 +1,5 @@
-// @ts-expect-error - no type for api?
+// FIXME: better type :)
+/** @param {{ cache: (b:boolean) => void }} api */
 module.exports = function (api) {
   api.cache(true);
 

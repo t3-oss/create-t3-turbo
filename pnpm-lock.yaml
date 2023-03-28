@@ -8,7 +8,6 @@ importers:
       '@ianvs/prettier-plugin-sort-imports': ^3.7.2
       '@manypkg/cli': ^0.20.0
       '@types/prettier': ^2.7.2
-      dotenv-cli: ^7.1.0
       eslint: ^8.36.0
       prettier: ^2.8.7
       prettier-plugin-tailwindcss: ^0.2.5
@@ -19,7 +18,6 @@ importers:
       '@ianvs/prettier-plugin-sort-imports': 3.7.2_prettier@2.8.7
       '@manypkg/cli': 0.20.0
       '@types/prettier': 2.7.2
-      dotenv-cli: 7.1.0
       eslint: 8.36.0
       prettier: 2.8.7
       prettier-plugin-tailwindcss: 0.2.5_it6dmlw7gffs35k5m3t3bb3la4
@@ -109,6 +107,7 @@ importers:
       '@types/react': ^18.0.29
       '@types/react-dom': ^18.0.11
       autoprefixer: ^10.4.14
+      dotenv-cli: ^7.1.0
       eslint: ^8.36.0
       next: ^13.2.4
       next-auth: ^4.20.1
@@ -141,6 +140,7 @@ importers:
       '@types/react': 18.0.29
       '@types/react-dom': 18.0.11
       autoprefixer: 10.4.14_postcss@8.4.21
+      dotenv-cli: 7.1.0
       eslint: 8.36.0
       postcss: 8.4.21
       tailwindcss: 3.2.7_postcss@8.4.21
@@ -228,11 +228,13 @@ importers:
   packages/db:
     specifiers:
       '@prisma/client': ^4.11.0
+      dotenv-cli: ^7.1.0
       prisma: ^4.11.0
       typescript: ^5.0.2
     dependencies:
       '@prisma/client': 4.11.0_prisma@4.11.0
     devDependencies:
+      dotenv-cli: 7.1.0
       prisma: 4.11.0
       typescript: 5.0.2
 
@@ -4530,17 +4532,17 @@ packages:
       dotenv: 16.0.3
       dotenv-expand: 10.0.0
       minimist: 1.2.8
-    dev: false
+    dev: true
 
   /dotenv-expand/10.0.0:
     resolution: {integrity: sha512-GopVGCpVS1UKH75VKHGuQFqS1Gusej0z4FyQkPdwjil2gNIv+LNsqBlboOzpJFZKVT95GkCyWJbBSdFEFUWI2A==}
     engines: {node: '>=12'}
-    dev: false
+    dev: true
 
   /dotenv/16.0.3:
     resolution: {integrity: sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==}
     engines: {node: '>=12'}
-    dev: false
+    dev: true
 
   /duplexer3/0.1.5:
     resolution: {integrity: sha512-1A8za6ws41LQgv9HrE/66jyC5yuSjQ3L/KOpFtoBilsAK2iA2wuS5rTt1OCzIvtS2V7nVmedsUU+DGRcjBmOYA==}
@@ -7260,7 +7262,6 @@ packages:
 
   /minimist/1.2.8:
     resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
-    dev: false
 
   /minipass-collect/1.0.2:
     resolution: {integrity: sha512-6T6lH0H8OG9kITm/Jm6tdooIbogG9e0tLgpY6mphXSm/A9u8Nq1ryBG+Qspiub9LjWlBPsPS3tWQ/Botq4FdxA==}

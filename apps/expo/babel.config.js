@@ -1,3 +1,4 @@
+// @ts-expect-error - no type for api?
 module.exports = function (api) {
   api.cache(true);
 

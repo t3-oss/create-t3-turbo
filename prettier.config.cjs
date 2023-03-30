@@ -1,4 +1,3 @@
-
 /** @typedef  {import("@ianvs/prettier-plugin-sort-imports").PluginConfig} SortImportsConfig*/
 /** @typedef  {import("prettier").Config} PrettierConfig*/
 /** @typedef  {{ tailwindConfig: string }} TailwindConfig*/
@@ -12,6 +11,7 @@ const config = {
   semi: true,
   trailingComma: "all",
   tabWidth: 2,
+  // pluginSearchDirs: false,
   plugins: [
     "@ianvs/prettier-plugin-sort-imports",
     "prettier-plugin-tailwindcss",

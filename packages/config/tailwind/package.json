@@ -1,16 +1,15 @@
 {
   "name": "@acme/tailwind-config",
   "version": "0.1.0",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "index.ts",
   "license": "MIT",
   "files": [
-    "index.js",
+    "index.ts",
     "postcss.js"
   ],
   "devDependencies": {
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.21",
-    "tailwindcss": "^3.3.0"
+    "tailwindcss": "^3.3.1"
   }
 }

@@ -55,6 +55,39 @@ No, it does not. The `api` package should only be a production dependency in the
 
 If you need to share runtime code between the client and server, such as input validation schemas, you can create a separate `shared` package for this and import on both sides.
 
+## Docker
+
+To get it running with docker, follow the steps below:
+
+Option 1:
+
+1. Build and run the images with:
+
+   ```bash
+      docker compose up --build
+      # You can specify a specific service: docker compose up nextjs --build
+   ```
+
+2. Visit `http://localhost:3000` to see your app.
+
+Option 2:
+
+1. Build the images
+
+   ```bash
+      docker compose build
+      # You can specify a specific service: docker compose build nextjs
+   ```
+
+2. Run the images
+
+   ```bash
+      docker compose up
+      # You can specify a specific service: docker compose up nextjs
+   ```
+
+3. Visit `http://localhost:3000` to see your app.
+
 ## Quick Start
 
 To get it running, follow the steps below:

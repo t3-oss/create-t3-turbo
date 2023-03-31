@@ -1,3 +1,5 @@
+// FIXME: better type :)
+/** @param {{ cache: (b:boolean) => void }} api */
 module.exports = function (api) {
   api.cache(true);
 

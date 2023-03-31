@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "next build",
+    "build": "pnpm with-env next build",
     "clean": "git clean -xdf .next .turbo node_modules",
-    "dev": "next dev",
-    "lint": "SKIP_ENV_VALIDATION=1 next lint",
+    "dev": "pnpm with-env next dev",
+    "lint": "dotenv -v SKIP_ENV_VALIDATION=1 next lint",
     "lint:fix": "pnpm lint --fix",
-    "start": "next start",
-    "type-check": "tsc --noEmit"
+    "start": "pnpm with-env next start",
+    "type-check": "tsc --noEmit",
+    "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
     "@acme/api": "^0.1.0",
@@ -30,13 +31,14 @@
   },
   "devDependencies": {
     "@acme/eslint-config": "^0.1.0",
-    "@types/node": "^18.15.10",
-    "@types/react": "^18.0.30",
+    "@types/node": "^18.15.11",
+    "@types/react": "^18.0.31",
     "@types/react-dom": "^18.0.11",
     "autoprefixer": "^10.4.14",
-    "eslint": "^8.36.0",
+    "dotenv-cli": "^7.1.0",
+    "eslint": "^8.37.0",
     "postcss": "^8.4.21",
-    "tailwindcss": "^3.3.0",
-    "typescript": "^5.0.2"
+    "tailwindcss": "^3.3.1",
+    "typescript": "^5.0.3"
   }
 }

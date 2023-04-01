@@ -85,10 +85,12 @@ const CreatePost: React.FC = () => {
 };
 
 const Index = () => {
+  const utils = api.useContext();
+
   const postQuery = api.post.all.useQuery();
 
   const deletePostMutation = api.post.delete.useMutation({
-    onSettled: () => postQuery.refetch(),
+    onSettled: () => utils.post.all.invalidate(),
   });
 
   return (
@@ -101,7 +103,7 @@ const Index = () => {
         </Text>
 
         <Button
-          onPress={() => void postQuery.refetch()}
+          onPress={() => void utils.post.all.invalidate()}
           title="Refresh posts"
           color={"#f472b6"}
         />

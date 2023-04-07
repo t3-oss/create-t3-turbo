@@ -7,7 +7,7 @@
 /** @type {import("next").NextConfig} */
 const config = {
   /** For docker build, more information: https://nextjs.org/docs/advanced-features/output-file-tracing */
-  output: "standalone",
+  // output: "standalone",
   reactStrictMode: true,
   /** Enables hot reloading for local packages without a build step */
   transpilePackages: ["@acme/api", "@acme/auth", "@acme/db"],

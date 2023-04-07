@@ -59,6 +59,12 @@ If you need to share runtime code between the client and server, such as input v
 
 To get it running with docker, follow the steps below:
 
+Inside `next.config.mjs` set, you can read more about why we need to set this here: https://nextjs.org/docs/advanced-features/output-file-tracing
+
+```diff
+output: "standalone",
+```
+
 Option 1:
 
 1. Build and run the images with:

@@ -20,9 +20,12 @@ COPY  --from=builder /app/tsconfig.json ./tsconfig.json
 COPY --from=builder /app/out/json .
 COPY --from=builder /app/out/pnpm-lock.yaml\* ./
 
-RUN yarn global add pnpm && pnpm install --frozen-lockfile
+RUN yarn global add pnpm && pnpm fetch --prod && pnpm install -r --offline --prod
+
 
 COPY --from=builder /app/out/full .
+
+
 
 RUN pnpm turbo build --filter=nextjs
 

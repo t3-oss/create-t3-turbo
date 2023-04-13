@@ -43,6 +43,16 @@ pnpm -F db db:push
 3. Under `Auth`, configure any auth provider(s) of your choice. This repo is using Github for Web and Apple for Mobile.
 4. You'll also need to copy-paste the `project url` and `anon key` into [Expo app config](./apps/expo/app.config.ts).
 
+By default, Supabase exposes the `public` schema to the PostgREST API to allow the `supabase-js` client query the database directly from the client. However, since we route all our requests through the Next.js application (through tRPC), we don't want our client to have this access. To disable this, execute the following SQL query in the SQL Editor on your Supabase dashboard:
+
+```sql
+REVOKE USAGE ON SCHEMA public FROM anon, authenticated;
+```
+
+![disable public access](https://user-images.githubusercontent.com/51714798/231810706-88b1db82-0cfd-485f-9043-ef12a53dc62f.png)
+
+> Note: This means you also don't need to enable row-level security (RLS) on your database if you don't want to.
+
 ### Configure Expo `dev`-script
 
 #### Use iOS Simulator

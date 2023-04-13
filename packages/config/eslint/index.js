@@ -22,6 +22,15 @@ const config = {
       "error",
       { prefer: "type-imports", fixStyle: "inline-type-imports" },
     ],
+    "@typescript-eslint/no-misused-promises": [
+      2,
+      {
+        checksVoidReturn: {
+          // Allow promises to be used as attributes such as `onSubmit`
+          attributes: false,
+        },
+      },
+    ],
   },
   ignorePatterns: ["**/*.config.js", "**/*.config.cjs", "packages/config/**"],
   reportUnusedDisableDirectives: true,

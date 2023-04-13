@@ -1,5 +1,6 @@
-import React from "react";
+import { useState } from "react";
 import Constants from "expo-constants";
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { httpBatchLink } from "@trpc/client";
 import { createTRPCReact } from "@trpc/react-query";
@@ -43,13 +44,20 @@ const getBaseUrl = () => {
 export const TRPCProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [queryClient] = React.useState(() => new QueryClient());
-  const [trpcClient] = React.useState(() =>
+  const supabase = useSupabaseClient();
+
+  const [queryClient] = useState(() => new QueryClient());
+  const [trpcClient] = useState(() =>
     api.createClient({
       transformer: superjson,
       links: [
         httpBatchLink({
           url: `${getBaseUrl()}/api/trpc`,
+          headers: async () => {
+            const { data } = await supabase.auth.getSession();
+            const token = data.session?.access_token;
+            return { Authorization: token };
+          },
         }),
       ],
     }),

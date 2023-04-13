@@ -6,12 +6,16 @@
  * tl;dr - this is where all the tRPC server stuff is created and plugged in.
  * The pieces you will need to use are documented accordingly near the end
  */
+
+import {
+  createServerSupabaseClient,
+  type User,
+} from "@supabase/auth-helpers-nextjs";
 import { TRPCError, initTRPC } from "@trpc/server";
 import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
 import superjson from "superjson";
 import { ZodError } from "zod";
 
-import { getServerSession, type Session } from "@acme/auth";
 import { prisma } from "@acme/db";
 
 /**
@@ -19,12 +23,12 @@ import { prisma } from "@acme/db";
  *
  * This section defines the "contexts" that are available in the backend API
  *
- * These allow you to access things like the database, the session, etc, when
+ * These allow you to access things like the database, the user, etc, when
  * processing a request
  *
  */
 type CreateContextOptions = {
-  session: Session | null;
+  user: User | null;
 };
 
 /**
@@ -36,9 +40,9 @@ type CreateContextOptions = {
  * - trpc's `createSSGHelpers` where we don't have req/res
  * @see https://create.t3.gg/en/usage/trpc#-servertrpccontextts
  */
-const createInnerTRPCContext = (opts: CreateContextOptions) => {
+export const createInnerTRPCContext = (opts: CreateContextOptions) => {
   return {
-    session: opts.session,
+    user: opts.user,
     prisma,
   };
 };
@@ -49,13 +53,22 @@ const createInnerTRPCContext = (opts: CreateContextOptions) => {
  * @link https://trpc.io/docs/context
  */
 export const createTRPCContext = async (opts: CreateNextContextOptions) => {
-  const { req, res } = opts;
+  const supabase = createServerSupabaseClient(opts);
 
-  // Get the session from the server using the unstable_getServerSession wrapper function
-  const session = await getServerSession({ req, res });
+  // React Native will pass their token through headers,
+  // browsers will have the session cookie set
+  const token = opts.req.headers.authorization;
+
+  console.log("server-token", token);
+
+  const user = token
+    ? await supabase.auth.getUser(token)
+    : await supabase.auth.getUser();
+
+  console.log("server-user", user);
 
   return createInnerTRPCContext({
-    session,
+    user: user.data.user,
   });
 };
 
@@ -106,13 +119,13 @@ export const publicProcedure = t.procedure;
  * procedure
  */
 const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
-  if (!ctx.session?.user) {
+  if (!ctx.user?.id) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   }
   return next({
     ctx: {
-      // infers the `session` as non-nullable
-      session: { ...ctx.session, user: ctx.session.user },
+      // infers the `user` as non-nullable
+      user: ctx.user,
     },
   });
 });

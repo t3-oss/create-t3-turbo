@@ -4,6 +4,6 @@
     "jsx": "react-native",
     "types": ["nativewind/types", "webpack-env"]
   },
-  "include": ["expo-plugins", "src", "*.ts", "**/*.js", "index.tsx"],
+  "include": ["**/*.ts", "**/*.js", "**/*.tsx", ".eslintrc.js"],
   "exclude": ["node_modules"]
 }

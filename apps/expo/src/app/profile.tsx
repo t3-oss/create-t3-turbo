@@ -52,7 +52,6 @@ function SignedOutView() {
       });
       if (error) return Alert.alert("Error", error.message);
     } catch (e) {
-      console.log("Error", e);
       if (typeof e === "object" && !!e && "code" in e) {
         if (e.code === "ERR_REQUEST_CANCELED") {
           // handle that the user canceled the sign-in flow
@@ -104,12 +103,14 @@ function EmailForm() {
           password,
         })
       : await supabase.auth.signInWithPassword({
-          email: "email",
-          password: "password",
+          email,
+          password,
         });
-    if (error) return Alert.alert("Error", error.message);
-
-    console.log({ data });
+    if (error) Alert.alert("Error", error.message);
+    else if (isSignUp && data.user) {
+      Alert.alert("Check your email for a confirmation link.");
+      setIsSignUp(false);
+    }
   };
 
   return (

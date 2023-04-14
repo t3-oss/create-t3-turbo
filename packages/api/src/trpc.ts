@@ -59,13 +59,9 @@ export const createTRPCContext = async (opts: CreateNextContextOptions) => {
   // browsers will have the session cookie set
   const token = opts.req.headers.authorization;
 
-  console.log("server-token", token);
-
   const user = token
     ? await supabase.auth.getUser(token)
     : await supabase.auth.getUser();
-
-  console.log("server-user", user);
 
   return createInnerTRPCContext({
     user: user.data.user,

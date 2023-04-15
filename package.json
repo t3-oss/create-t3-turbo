@@ -7,7 +7,7 @@
   "packageManager": "pnpm@8.1.1",
   "scripts": {
     "build": "turbo build",
-    "clean": "git clean -xdf node_modules",
+    "clean": "git clean -xdf --exclude=.env",
     "clean:workspaces": "turbo clean",
     "db:generate": "turbo db:generate",
     "db:push": "turbo db:push db:generate",

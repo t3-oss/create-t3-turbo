@@ -11,14 +11,7 @@ module.exports = function (api) {
     plugins: [
       "nativewind/babel",
       "expo-router/babel",
-      [
-        "module-resolver",
-        {
-          alias: {
-            "~": "./src",
-          },
-        },
-      ],
+      ["module-resolver", { alias: { "~": "./src" } }],
     ],
   };
 };

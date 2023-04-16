@@ -9,7 +9,8 @@ module.exports = function (api) {
   return {
     presets: ["babel-preset-expo"],
     plugins: [
-      ["nativewind/babel", {}, require.resolve("expo-router/babel")],
+      "nativewind/babel",
+      "expo-router/babel",
       [
         "module-resolver",
         {

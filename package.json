@@ -4,7 +4,7 @@
   "engines": {
     "node": ">=v18.16.0"
   },
-  "packageManager": "pnpm@8.2.0",
+  "packageManager": "pnpm@8.3.1",
   "scripts": {
     "build": "turbo build",
     "clean": "git clean -xdf node_modules",
@@ -25,7 +25,7 @@
     "eslint": "^8.38.0",
     "prettier": "^2.8.7",
     "prettier-plugin-tailwindcss": "^0.2.7",
-    "turbo": "^1.9.1",
+    "turbo": "^1.9.3",
     "typescript": "^5.0.4"
   }
 }

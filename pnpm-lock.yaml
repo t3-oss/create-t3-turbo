@@ -257,8 +257,8 @@ importers:
         specifier: ^0.1.0
         version: link:../db
       '@next-auth/prisma-adapter':
-        specifier: ^1.0.5
-        version: 1.0.5(@prisma/client@4.13.0)(next-auth@4.22.1)
+        specifier: ^1.0.6
+        version: 1.0.6(@prisma/client@4.13.0)(next-auth@4.22.1)
       next:
         specifier: ^13.3.1
         version: 13.3.1(@babel/core@7.21.4)(react-dom@18.2.0)(react@18.2.0)
@@ -2282,8 +2282,8 @@ packages:
       read-yaml-file: 1.1.0
     dev: false
 
-  /@next-auth/prisma-adapter@1.0.5(@prisma/client@4.13.0)(next-auth@4.22.1):
-    resolution: {integrity: sha512-VqMS11IxPXrPGXw6Oul6jcyS/n8GLOWzRMrPr3EMdtD6eOalM6zz05j08PcNiis8QzkfuYnCv49OvufTuaEwYQ==}
+  /@next-auth/prisma-adapter@1.0.6(@prisma/client@4.13.0)(next-auth@4.22.1):
+    resolution: {integrity: sha512-Z7agwfSZEeEcqKqrnisBun7VndRPshd6vyDsoRU68MXbkui8storkHgvN2hnNDrqr/hSCF9aRn56a1qpihaB4A==}
     peerDependencies:
       '@prisma/client': '>=2.26.0 || >=3'
       next-auth: ^4

@@ -149,6 +149,9 @@ importers:
       '@acme/db':
         specifier: ^0.1.0
         version: link:../../packages/db
+      '@acme/env':
+        specifier: ^0.1.0
+        version: link:../../packages/env
       '@acme/tailwind-config':
         specifier: ^0.1.0
         version: link:../../packages/config/tailwind
@@ -256,6 +259,9 @@ importers:
       '@acme/db':
         specifier: ^0.1.0
         version: link:../db
+      '@acme/env':
+        specifier: ^0.1.0
+        version: link:../env
       '@next-auth/prisma-adapter':
         specifier: ^1.0.6
         version: 1.0.6(@prisma/client@4.13.0)(next-auth@4.22.1)
@@ -327,6 +333,9 @@ importers:
 
   packages/db:
     dependencies:
+      '@acme/env':
+        specifier: ^0.1.0
+        version: link:../env
       '@prisma/client':
         specifier: ^4.13.0
         version: 4.13.0(prisma@4.13.0)
@@ -337,6 +346,25 @@ importers:
       prisma:
         specifier: ^4.13.0
         version: 4.13.0
+      typescript:
+        specifier: ^5.0.4
+        version: 5.0.4
+
+  packages/env:
+    dependencies:
+      '@t3-oss/env-nextjs':
+        specifier: ^0.2.1
+        version: 0.2.1(zod@3.21.4)
+      zod:
+        specifier: ^3.21.4
+        version: 3.21.4
+    devDependencies:
+      '@acme/eslint-config':
+        specifier: ^0.1.0
+        version: link:../config/eslint
+      eslint:
+        specifier: ^8.38.0
+        version: 8.38.0
       typescript:
         specifier: ^5.0.4
         version: 5.0.4

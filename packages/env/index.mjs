@@ -1,6 +1,8 @@
 import { createEnv } from "@t3-oss/env-nextjs";
 import { z } from "zod";
 
+const ValidEnv = z.enum(["development", "test", "production"]);
+
 export const env = createEnv({
   /**
    * Specify your server-side environment variables schema here. This way you can ensure the app isn't
@@ -8,7 +10,11 @@ export const env = createEnv({
    */
   server: {
     DATABASE_URL: z.string().url(),
-    NODE_ENV: z.enum(["development", "test", "production"]),
+    NODE_ENV: ValidEnv,
+    VERCEL_URL: process.env.VERCEL
+      ? // VERCEL_URL doesn't include `https` so it cant be validated as a URL
+        z.string()
+      : z.string().optional(),
     NEXTAUTH_SECRET:
       process.env.NODE_ENV === "production"
         ? z.string().min(1)
@@ -29,6 +35,7 @@ export const env = createEnv({
    * For them to be exposed to the client, prefix them with `NEXT_PUBLIC_`.
    */
   client: {
+    NEXT_PUBLIC_ENV: ValidEnv,
     // NEXT_PUBLIC_CLIENTVAR: z.string(),
   },
   /**
@@ -37,10 +44,12 @@ export const env = createEnv({
   runtimeEnv: {
     DATABASE_URL: process.env.DATABASE_URL,
     NODE_ENV: process.env.NODE_ENV,
+    VERCEL_URL: process.env.VERCEL_URL,
     NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
     DISCORD_CLIENT_ID: process.env.DISCORD_CLIENT_ID,
     DISCORD_CLIENT_SECRET: process.env.DISCORD_CLIENT_SECRET,
+    NEXT_PUBLIC_ENV: process.env.NODE_ENV,
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
 });

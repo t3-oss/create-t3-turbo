@@ -153,8 +153,8 @@ importers:
         specifier: ^0.1.0
         version: link:../../packages/config/tailwind
       '@t3-oss/env-nextjs':
-        specifier: ^0.2.1
-        version: 0.2.1(zod@3.21.4)
+        specifier: ^0.2.2
+        version: 0.2.2(zod@3.21.4)
       '@tanstack/react-query':
         specifier: ^4.29.5
         version: 4.29.5(react-dom@18.2.0)(react-native@0.71.7)(react@18.2.0)
@@ -2828,20 +2828,20 @@ packages:
       defer-to-connect: 1.1.3
     dev: false
 
-  /@t3-oss/env-core@0.2.1(zod@3.21.4):
-    resolution: {integrity: sha512-aTf/E+t0i7WsHJelg8LaynUVgIXeQdDViIr3LCL8XiE+qzE8vWoTgfc+VML/lBBgE2cbcG2VCBnk45EUCjIRdQ==}
+  /@t3-oss/env-core@0.2.2(zod@3.21.4):
+    resolution: {integrity: sha512-Jiuph14/L3L9EDaU0O0YiLeaKUcWA9c3mWYuKem8+L64i3Iwz+IbKdl5Jp4cx+JbOsS/aptwGZplnxSHhm2gMQ==}
     peerDependencies:
       zod: ^3.0.0
     dependencies:
       zod: 3.21.4
     dev: false
 
-  /@t3-oss/env-nextjs@0.2.1(zod@3.21.4):
-    resolution: {integrity: sha512-fWyoUHrwMz+CuO6lJ7jaWNj76LHminYzA0quYp1wv+8EKjHOuP/zf2k0FDtjnHBs//6K+kpWxttVW2Uby3SuQA==}
+  /@t3-oss/env-nextjs@0.2.2(zod@3.21.4):
+    resolution: {integrity: sha512-9LnVpTkf/8WkggyVN6Liz9Ma9a7fLzV00b5BngWj3HI3iWDfddsWaqCf/H0f46Bgu29NubP3Bwajf1JieVrxFA==}
     peerDependencies:
       zod: ^3.0.0
     dependencies:
-      '@t3-oss/env-core': 0.2.1(zod@3.21.4)
+      '@t3-oss/env-core': 0.2.2(zod@3.21.4)
       zod: 3.21.4
     dev: false
 

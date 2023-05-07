@@ -52,10 +52,9 @@ jobs:
       - name: Generate Prisma Client
         run: pnpm turbo db:generate
 
+      - run: cp .env.example .env
       - name: Build, lint and type-check
         run: pnpm turbo build lint type-check
-        env:
-          SKIP_ENV_VALIDATION: true
 
       - name: Check workspaces
         run: pnpm manypkg check

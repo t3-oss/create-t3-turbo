@@ -1,33 +1,16 @@
-import { httpBatchLink, loggerLink } from "@trpc/client";
-import { createTRPCNext } from "@trpc/next";
-import superjson from "superjson";
+import { createTRPCNextCaller } from "@trpc/app-router";
+import { getServerSession } from "next-auth/next";
 
-import type { AppRouter } from "@acme/api";
+import { appRouter, type AppRouter } from "@acme/api";
+import { createInnerTRPCContext } from "@acme/api/src/trpc";
+import { authOptions } from "@acme/auth";
 
-const getBaseUrl = () => {
-  if (typeof window !== "undefined") return ""; // browser should use relative url
-  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`; // SSR should use vercel url
-
-  return `http://localhost:3000`; // dev SSR should use localhost
-};
-
-export const api = createTRPCNext<AppRouter>({
-  config() {
-    return {
-      transformer: superjson,
-      links: [
-        loggerLink({
-          enabled: (opts) =>
-            process.env.NODE_ENV === "development" ||
-            (opts.direction === "down" && opts.result instanceof Error),
-        }),
-        httpBatchLink({
-          url: `${getBaseUrl()}/api/trpc`,
-        }),
-      ],
-    };
+export const api = createTRPCNextCaller<AppRouter>({
+  router: appRouter,
+  createContext: async () => {
+    const session = await getServerSession(authOptions);
+    return createInnerTRPCContext({ session });
   },
-  ssr: false,
 });
 
 export { type RouterInputs, type RouterOutputs } from "@acme/api";

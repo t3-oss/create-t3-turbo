@@ -79,7 +79,6 @@ export function createTRPCNextCaller<TRouter extends AnyRouter>(config: {
       return revalidateTag(cacheTag);
     }
 
-    // not sure when to call this but this place is good enough
     const ctx = await config.createContext();
 
     const callProc = async () =>

@@ -10,10 +10,10 @@
   "exclude": [],
   "include": [
     "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "*.ts",
+    "src",
     "**/*.cjs",
-    "**/*.mjs",
-    ".next/types/**/*.ts"
+    "**/*.mjs"
   ]
 }

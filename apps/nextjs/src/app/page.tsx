@@ -23,6 +23,7 @@ export default function HomePage() {
         <h1 className="bg-gradient-to-r from-indigo-700 to-fuchsia-500 bg-clip-text text-center text-5xl/[3rem] font-bold text-transparent md:text-7xl/[5rem]">
           Create T3 Turbo
         </h1>
+        {/* @ts-expect-error - async */}
         <AuthShowcase />
 
         <CreatePostForm
@@ -39,6 +40,7 @@ export default function HomePage() {
         />
 
         <Suspense fallback={<div>Loading...</div>}>
+          {/* @ts-expect-error - async */}
           <PostList />
         </Suspense>
       </div>
@@ -47,7 +49,7 @@ export default function HomePage() {
 }
 
 async function PostList() {
-  const posts = await api.post.all.query();
+  const posts = await api.post.all.query(undefined, { revalidate: 5 });
 
   return (
     <div className="flex w-full max-w-2xl flex-col gap-4">

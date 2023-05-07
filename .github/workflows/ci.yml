@@ -52,7 +52,7 @@ jobs:
       - name: Generate Prisma Client
         run: pnpm turbo db:generate
 
-      - run: cp .env.example .env
+      - run: mv .env.example .env
       - name: Build, lint and type-check
         run: pnpm turbo build lint type-check
 

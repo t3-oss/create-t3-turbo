@@ -34,6 +34,9 @@ importers:
 
   apps/expo:
     dependencies:
+      '@acme/tailwind-config':
+        specifier: ^0.1.0
+        version: link:../../packages/config/tailwind
       '@expo/metro-config':
         specifier: ^0.7.1
         version: 0.7.1
@@ -98,9 +101,6 @@ importers:
       '@acme/eslint-config':
         specifier: ^0.1.0
         version: link:../../packages/config/eslint
-      '@acme/tailwind-config':
-        specifier: ^0.1.0
-        version: link:../../packages/config/tailwind
       '@babel/core':
         specifier: ^7.21.8
         version: 7.21.8
@@ -128,9 +128,15 @@ importers:
       eslint:
         specifier: ^8.40.0
         version: 8.40.0
+      jiti:
+        specifier: ^1.18.2
+        version: 1.18.2
       postcss:
         specifier: ^8.4.23
         version: 8.4.23
+      sucrase:
+        specifier: ^3.32.0
+        version: 3.32.0
       tailwindcss:
         specifier: ^3.3.2
         version: 3.3.2

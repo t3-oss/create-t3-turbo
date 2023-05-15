@@ -1,22 +1,14 @@
-const jiti = require("jiti");
-const { transform } = require("sucrase");
+const path = require("path");
+const loadConfig = require("tailwindcss/loadConfig");
 
 let _tailwindConfig = null;
 /**
  * Transpiles tailwind.config.ts for babel
  * Fix until nativewind babel plugin supports tailwind.config.ts files
  */
-function lazyTranspileTailwindConfig() {
+function lazyLoadConfig() {
   return (
-    _tailwindConfig ??
-    jiti(__filename, {
-      interopDefault: true,
-      transform: (options) => {
-        return transform(options.source, {
-          transforms: ["typescript", "imports"],
-        });
-      },
-    })("./tailwind.config.ts")
+    _tailwindConfig ?? loadConfig(path.join(__dirname, "tailwind.config.ts"))
   );
 }
 
@@ -34,7 +26,7 @@ module.exports = function (api) {
       [
         "nativewind/babel",
         {
-          tailwindConfig: lazyTranspileTailwindConfig(),
+          tailwindConfig: lazyLoadConfig(),
         },
       ],
       "expo-router/babel",

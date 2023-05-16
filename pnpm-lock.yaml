@@ -149,9 +149,6 @@ importers:
       '@acme/db':
         specifier: ^0.1.0
         version: link:../../packages/db
-      '@acme/tailwind-config':
-        specifier: ^0.1.0
-        version: link:../../packages/config/tailwind
       '@t3-oss/env-nextjs':
         specifier: ^0.3.1
         version: 0.3.1(typescript@5.0.4)(zod@3.21.4)
@@ -192,6 +189,9 @@ importers:
       '@acme/eslint-config':
         specifier: ^0.1.0
         version: link:../../packages/config/eslint
+      '@acme/tailwind-config':
+        specifier: ^0.1.0
+        version: link:../../packages/config/tailwind
       '@types/node':
         specifier: ^18.16.5
         version: 18.16.5

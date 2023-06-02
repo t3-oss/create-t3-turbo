@@ -1,7 +1,8 @@
 import React from "react";
-import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
+
+import { Provider } from "@acme/app/provider";
 
 import { TRPCProvider } from "~/utils/api";
 
@@ -10,7 +11,7 @@ import { TRPCProvider } from "~/utils/api";
 const RootLayout = () => {
   return (
     <TRPCProvider>
-      <SafeAreaProvider>
+      <Provider>
         {/*
           The Stack component displays the current page.
           It also allows you to configure your screens 
@@ -23,7 +24,7 @@ const RootLayout = () => {
           }}
         />
         <StatusBar />
-      </SafeAreaProvider>
+      </Provider>
     </TRPCProvider>
   );
 };

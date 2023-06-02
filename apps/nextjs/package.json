@@ -14,8 +14,10 @@
   },
   "dependencies": {
     "@acme/api": "^0.1.0",
+    "@acme/app": "^0.1.0",
     "@acme/auth": "^0.1.0",
     "@acme/db": "^0.1.0",
+    "@expo/next-adapter": "^5.0.2",
     "@t3-oss/env-nextjs": "^0.3.1",
     "@tanstack/react-query": "^4.29.5",
     "@trpc/client": "^10.27.1",
@@ -24,8 +26,10 @@
     "@trpc/server": "^10.27.1",
     "next": "^13.4.2",
     "next-auth": "^4.22.1",
+    "raf": "^3.4.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "setimmediate": "^1.0.5",
     "superjson": "1.9.1",
     "zod": "^3.21.4"
   },

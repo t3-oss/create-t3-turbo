@@ -1,8 +1,15 @@
 import { type Config } from "tailwindcss";
 
-import baseConfig from "@acme/tailwind-config";
+import { theme } from "@acme/tailwind-config";
 
-export default {
-  presets: [baseConfig],
-  content: ["./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
-} satisfies Config;
+const config: Config = {
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+    "../../packages/app/design/**/*.{js,jsx,ts,tsx}",
+  ],
+  theme: {
+    ...theme,
+  },
+};
+
+export default config;

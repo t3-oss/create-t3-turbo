@@ -20,16 +20,20 @@ module.exports = function (api) {
   // Path is relative to `/node_modules/expo-router`
   process.env.EXPO_ROUTER_APP_ROOT = "../../apps/expo/src/app";
 
+  const config = lazyLoadConfig();
+  console.log(config);
+
   return {
-    presets: ["babel-preset-expo"],
+    presets: [["babel-preset-expo", { jsxRuntime: "automatic" }]],
     plugins: [
+      "react-native-reanimated/plugin",
+      "expo-router/babel",
       [
         "nativewind/babel",
         {
           tailwindConfig: lazyLoadConfig(),
         },
       ],
-      "expo-router/babel",
       ["module-resolver", { alias: { "~": "./src" } }],
     ],
   };

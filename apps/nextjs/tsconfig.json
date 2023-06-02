@@ -3,7 +3,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./src/*"]
+      "~/*": ["./src/*"],
+      "@acme/app/*": ["../../packages/app/*"]
     },
     "plugins": [{ "name": "next" }]
   },

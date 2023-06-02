@@ -4,13 +4,24 @@
   },
   "build": {
     "development": {
+      "node": "18.16.0",
       "developmentClient": true,
       "distribution": "internal",
       "ios": {
         "resourceClass": "m-medium"
       }
     },
+    "development-simulator": {
+      "node": "18.16.0",
+      "developmentClient": true,
+      "distribution": "internal",
+      "ios": {
+        "simulator": true,
+        "resourceClass": "m-medium"
+      }
+    },
     "preview": {
+      "node": "18.16.0",
       "distribution": "internal",
       "ios": {
         "simulator": true,
@@ -18,6 +29,7 @@
       }
     },
     "production": {
+      "node": "18.16.0",
       "ios": {
         "resourceClass": "m-medium"
       }

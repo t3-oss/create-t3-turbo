@@ -1,9 +1,6 @@
-import type { Config } from "tailwindcss";
+import { Config } from "tailwindcss";
 
-export default {
-  content: [""],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-} satisfies Config;
+export const theme: Config["theme"] = {
+  // edit your tailwind theme here!
+  // https://tailwindcss.com/docs/adding-custom-styles
+};

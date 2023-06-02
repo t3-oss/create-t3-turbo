@@ -1,8 +1,18 @@
-import type { Config } from "tailwindcss";
+import { type Config } from "tailwindcss";
 
-import baseConfig from "@acme/tailwind-config";
+import { theme } from "@acme/tailwind-config";
 
-export default {
-  content: ["./src/**/*.tsx"],
-  presets: [baseConfig],
-} satisfies Config;
+const config: Config = {
+  content: [
+    "./pages/**/*.{js,jsx,ts,tsx}",
+    "../../packages/**/*.{js,jsx,ts,tsx}",
+  ],
+  plugins: [require("nativewind/tailwind/css")],
+  important: "html",
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  theme: {
+    ...theme,
+  },
+};
+
+export default config;

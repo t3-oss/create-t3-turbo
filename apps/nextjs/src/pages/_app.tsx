@@ -1,7 +1,11 @@
+import "raf/polyfill";
+import "setimmediate";
 import "../styles/globals.css";
 import type { AppType } from "next/app";
 import type { Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
+
+import { Provider } from "@acme/app/provider";
 
 import { api } from "~/utils/api";
 
@@ -11,7 +15,9 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
-      <Component {...pageProps} />
+      <Provider>
+        <Component {...pageProps} />
+      </Provider>
     </SessionProvider>
   );
 };

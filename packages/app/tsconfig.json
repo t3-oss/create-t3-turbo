@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@acme/app/*": ["./*"]
+    },
+    "jsx": "react-jsx"
+  },
+  "include": ["**/*.ts", "**/*.tsx", "env.mjs", "rnw-overrides.d.ts"],
+  "exclude": ["node_moules"]
+}

@@ -20,6 +20,8 @@ const config = {
     "react-native-reanimated",
     "nativewind",
     "react-native-gesture-handler",
+    "@shopify/flash-list",
+    "recyclerlistview",
     /** Enables hot reloading for local packages without a build step */
     "@acme/api",
     "@acme/auth",

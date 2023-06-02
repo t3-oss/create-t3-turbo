@@ -6,8 +6,7 @@ import type { Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 
 import { Provider } from "@acme/app/provider";
-
-import { api } from "~/utils/api";
+import { api } from "@acme/app/utils/api/index.web";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,

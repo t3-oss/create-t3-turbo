@@ -8,8 +8,8 @@ importers:
         specifier: ^0.1.0
         version: link:packages/config/eslint
       '@ianvs/prettier-plugin-sort-imports':
-        specifier: ^3.7.2
-        version: 3.7.2(prettier@2.8.8)
+        specifier: ^4.0.2
+        version: 4.0.2(prettier@2.8.8)
       '@manypkg/cli':
         specifier: ^0.20.0
         version: 0.20.0
@@ -24,7 +24,7 @@ importers:
         version: 2.8.8
       prettier-plugin-tailwindcss:
         specifier: ^0.2.8
-        version: 0.2.8(@ianvs/prettier-plugin-sort-imports@3.7.2)(prettier@2.8.8)
+        version: 0.2.8(@ianvs/prettier-plugin-sort-imports@4.0.2)(prettier@2.8.8)
       turbo:
         specifier: ^1.9.8
         version: 1.9.8
@@ -2076,8 +2076,8 @@ packages:
   /@humanwhocodes/object-schema@1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
 
-  /@ianvs/prettier-plugin-sort-imports@3.7.2(prettier@2.8.8):
-    resolution: {integrity: sha512-bVckKToJM8XV2wTOG1VpeXrSmfAG49esVrikbxeFbY51RJdNke9AdMANJtGuACB59uo+pGlz0wBdWFrRzWyO1A==}
+  /@ianvs/prettier-plugin-sort-imports@4.0.2(prettier@2.8.8):
+    resolution: {integrity: sha512-VnsTzyb9aSWpc3v6HvZKD6eolZRvofIYjhda+6IbW1GYwr2byWqK0KhLPbYNkit9MAgShad5bhZ1hgBn867A1A==}
     peerDependencies:
       '@vue/compiler-sfc': '>=3.0.0'
       prettier: 2.x
@@ -2090,10 +2090,8 @@ packages:
       '@babel/parser': 7.21.8
       '@babel/traverse': 7.21.5
       '@babel/types': 7.21.5
-      javascript-natural-sort: 0.7.1
-      lodash.clone: 4.5.0
-      lodash.isequal: 4.5.0
       prettier: 2.8.8
+      semver: 7.5.0
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -6465,10 +6463,6 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: false
 
-  /javascript-natural-sort@0.7.1:
-    resolution: {integrity: sha512-nO6jcEfZWQXDhOiBtG2KvKyEptz7RVbpGP4vTD2hLBdmNQSsCiicO2Ioinv6UI4y9ukqnBpy+XZ9H6uLNgJTlw==}
-    dev: false
-
   /jest-environment-node@29.5.0:
     resolution: {integrity: sha512-ExxuIK/+yQ+6PRGaHkKewYtg6hto2uGCgvKdb2nfJfKXgZ17DfXjvbZ+jA1Qt9A8EQSfPnt5FKIfnOO3u1h9qw==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
@@ -6812,16 +6806,8 @@ packages:
     dependencies:
       p-locate: 5.0.0
 
-  /lodash.clone@4.5.0:
-    resolution: {integrity: sha512-GhrVeweiTD6uTmmn5hV/lzgCQhccwReIVRLHp7LT4SopOjqEZ5BbX8b5WWEtAKasjmy8hR7ZPwsYlxRCku5odg==}
-    dev: false
-
   /lodash.debounce@4.0.8:
     resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
-
-  /lodash.isequal@4.5.0:
-    resolution: {integrity: sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==}
-    dev: false
 
   /lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
@@ -8573,7 +8559,7 @@ packages:
     engines: {node: '>=4'}
     dev: false
 
-  /prettier-plugin-tailwindcss@0.2.8(@ianvs/prettier-plugin-sort-imports@3.7.2)(prettier@2.8.8):
+  /prettier-plugin-tailwindcss@0.2.8(@ianvs/prettier-plugin-sort-imports@4.0.2)(prettier@2.8.8):
     resolution: {integrity: sha512-KgPcEnJeIijlMjsA6WwYgRs5rh3/q76oInqtMXBA/EMcamrcYJpyhtRhyX1ayT9hnHlHTuO8sIifHF10WuSDKg==}
     engines: {node: '>=12.17.0'}
     peerDependencies:
@@ -8622,7 +8608,7 @@ packages:
       prettier-plugin-twig-melody:
         optional: true
     dependencies:
-      '@ianvs/prettier-plugin-sort-imports': 3.7.2(prettier@2.8.8)
+      '@ianvs/prettier-plugin-sort-imports': 4.0.2(prettier@2.8.8)
       prettier: 2.8.8
     dev: false
 

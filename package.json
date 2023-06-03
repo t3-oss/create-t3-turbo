@@ -4,13 +4,14 @@
   "engines": {
     "node": ">=v18.16.0"
   },
-  "packageManager": "pnpm@8.5.1",
+  "packageManager": "pnpm@8.6.0",
   "scripts": {
     "build": "turbo build",
     "clean": "git clean -xdf node_modules",
     "clean:workspaces": "turbo clean",
     "db:generate": "turbo db:generate",
     "db:push": "turbo db:push db:generate",
+    "db:studio": "pnpm -F db dev",
     "dev": "turbo dev --parallel",
     "format": "prettier --write \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path .gitignore",
     "lint": "turbo lint && manypkg check",
@@ -21,11 +22,11 @@
     "@acme/eslint-config": "^0.1.0",
     "@ianvs/prettier-plugin-sort-imports": "^4.0.2",
     "@manypkg/cli": "^0.20.0",
-    "@types/prettier": "^2.7.2",
+    "@types/prettier": "^2.7.3",
     "eslint": "^8.42.0",
     "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.2.8",
-    "turbo": "^1.9.8",
-    "typescript": "^5.0.4"
+    "turbo": "^1.10.1",
+    "typescript": "^5.1.3"
   }
 }

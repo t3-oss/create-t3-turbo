@@ -35,12 +35,14 @@ apps
       ├─ Tailwind CSS
       └─ E2E Typesafe API Server & Client
 packages
- ├─ api
- |   └─ tRPC v10 router definition
- ├─ auth
-     └─ authentication using next-auth. **NOTE: Only for Next.js app, not Expo**
- └─ db
-     └─ typesafe db-calls using Prisma
+  ├─ api
+  |   └─ tRPC v10 router definition
+  ├─ auth
+  |   └─ Authentication using next-auth. **NOTE: Only for Next.js app, not Expo**
+  ├─ config
+  |   └─ Shared Tailwind & Eslint configs
+  └─ db
+      └─ Typesafe db calls using Prisma
 ```
 
 > In this template, we use `@acme` as a placeholder for package names. As a user, you might want to replace it with your own organization or project name. You can use find-and-replace to change all the instances of `@acme/` to something like `@my-company/` / `@project-name/`.

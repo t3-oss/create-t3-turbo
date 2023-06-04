@@ -30,6 +30,7 @@ const getBaseUrl = () => {
     Constants.manifest?.debuggerHost ??
     Constants.manifest2?.extra?.expoGo?.debuggerHost;
   const localhost = debuggerHost?.split(":")[0];
+
   if (!localhost) {
     // return "https://your-production-url.com";
     throw new Error(

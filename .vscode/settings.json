@@ -1,7 +1,6 @@
 {
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
+  "[prisma]": { "editor.defaultFormatter": "Prisma.prisma" },
+  "editor.codeActionsOnSave": { "source.fixAll.eslint": true },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "eslint.rules.customizations": [{ "rule": "*", "severity": "warn" }],
@@ -9,7 +8,7 @@
     { "pattern": "apps/*/" },
     { "pattern": "packages/*/" }
   ],
-  "typescript.tsdk": "node_modules/typescript/lib",
+  "tailwindCSS.experimental.configFile": "./packages/config/tailwind/index.ts",
   "typescript.enablePromptUseWorkspaceTsdk": true,
-  "tailwindCSS.experimental.configFile": "./packages/config/tailwind/index.ts"
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

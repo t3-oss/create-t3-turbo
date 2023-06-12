@@ -3,24 +3,26 @@
     "version": ">= 3.3.0"
   },
   "build": {
-    "development": {
-      "developmentClient": true,
-      "distribution": "internal",
+    "base": {
+      "node": "18.15.0",
       "ios": {
         "resourceClass": "m-medium"
       }
     },
+    "development": {
+      "extends": "base",
+      "developmentClient": true,
+      "distribution": "internal"
+    },
     "preview": {
+      "extends": "base",
       "distribution": "internal",
       "ios": {
-        "simulator": true,
-        "resourceClass": "m-medium"
+        "simulator": true
       }
     },
     "production": {
-      "ios": {
-        "resourceClass": "m-medium"
-      }
+      "extends": "base"
     }
   },
   "submit": {

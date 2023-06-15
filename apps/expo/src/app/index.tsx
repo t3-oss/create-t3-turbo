@@ -118,9 +118,7 @@ const Index = () => {
           data={postQuery.data}
           estimatedItemSize={20}
           ItemSeparatorComponent={() => <View className="h-2" />}
-          renderItem={(p: {
-            item: { id: string; content: string; title: string };
-          }) => (
+          renderItem={(p) => (
             <PostCard
               post={p.item}
               onDelete={() => deletePostMutation.mutate(p.item.id)}

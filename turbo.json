@@ -1,6 +1,6 @@
 {
   "$schema": "https://turborepo.org/schema.json",
-  "globalDependencies": ["**/.env"],
+  "globalDependencies": ["**/.env", "tsconfig.json"],
   "pipeline": {
     "db:generate": {
       "inputs": ["prisma/schema.prisma"],

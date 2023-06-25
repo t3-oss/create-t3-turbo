@@ -5,29 +5,29 @@ import { signIn, signOut } from "next-auth/react";
 
 import { api, type RouterOutputs } from "~/utils/api";
 
-const PostCard: React.FC<{
+function PostCard(props: {
   post: RouterOutputs["post"]["all"][number];
-  onPostDelete?: () => void;
-}> = ({ post, onPostDelete }) => {
+  onPostDelete: () => void;
+}) {
   return (
     <div className="flex flex-row rounded-lg bg-white/10 p-4 transition-all hover:scale-[101%]">
       <div className="flex-grow">
-        <h2 className="text-2xl font-bold text-pink-400">{post.title}</h2>
-        <p className="mt-2 text-sm">{post.content}</p>
+        <h2 className="text-2xl font-bold text-pink-400">{props.post.title}</h2>
+        <p className="mt-2 text-sm">{props.post.content}</p>
       </div>
       <div>
         <span
           className="cursor-pointer text-sm font-bold uppercase text-pink-400"
-          onClick={onPostDelete}
+          onClick={props.onPostDelete}
         >
           Delete
         </span>
       </div>
     </div>
   );
-};
+}
 
-const CreatePostForm: React.FC = () => {
+function CreatePostForm() {
   const utils = api.useContext();
 
   const [title, setTitle] = useState("");
@@ -78,7 +78,7 @@ const CreatePostForm: React.FC = () => {
       </button>
     </div>
   );
-};
+}
 
 const Home: NextPage = () => {
   const postQuery = api.post.all.useQuery();
@@ -134,7 +134,7 @@ const Home: NextPage = () => {
 
 export default Home;
 
-const AuthShowcase: React.FC = () => {
+function AuthShowcase() {
   const { data: session } = api.auth.getSession.useQuery();
 
   const { data: secretMessage } = api.auth.getSecretMessage.useQuery(
@@ -158,4 +158,4 @@ const AuthShowcase: React.FC = () => {
       </button>
     </div>
   );
-};
+}

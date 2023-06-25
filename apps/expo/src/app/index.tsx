@@ -6,30 +6,30 @@ import { FlashList } from "@shopify/flash-list";
 
 import { api, type RouterOutputs } from "~/utils/api";
 
-const PostCard: React.FC<{
+function PostCard(props: {
   post: RouterOutputs["post"]["all"][number];
   onDelete: () => void;
-}> = ({ post, onDelete }) => {
+}) {
   const router = useRouter();
 
   return (
     <View className="flex flex-row rounded-lg bg-white/10 p-4">
       <View className="flex-grow">
-        <TouchableOpacity onPress={() => router.push(`/post/${post.id}`)}>
+        <TouchableOpacity onPress={() => router.push(`/post/${props.post.id}`)}>
           <Text className="text-xl font-semibold text-pink-400">
-            {post.title}
+            {props.post.title}
           </Text>
-          <Text className="mt-2 text-white">{post.content}</Text>
+          <Text className="mt-2 text-white">{props.post.content}</Text>
         </TouchableOpacity>
       </View>
-      <TouchableOpacity onPress={onDelete}>
+      <TouchableOpacity onPress={props.onDelete}>
         <Text className="font-bold uppercase text-pink-400">Delete</Text>
       </TouchableOpacity>
     </View>
   );
-};
+}
 
-const CreatePost: React.FC = () => {
+function CreatePost() {
   const utils = api.useContext();
 
   const [title, setTitle] = React.useState("");
@@ -82,7 +82,7 @@ const CreatePost: React.FC = () => {
       </TouchableOpacity>
     </View>
   );
-};
+}
 
 const Index = () => {
   const utils = api.useContext();

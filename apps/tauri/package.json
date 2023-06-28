@@ -1,11 +1,7 @@
 {
-  "name": "@flow/desktop",
+  "name": "@acme/tauri",
   "version": "0.1.0",
   "private": true,
-  "author": {
-    "name": "Min Chun Fu",
-    "email": "itsnotaka@gmail.com"
-  },
   "scripts": {
     "next-start": "pnpm with-env cross-env BROWSER=none next dev --port 3001",
     "next-export": "pnpm with-env next export",

@@ -1,0 +1,20 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./src/*"]
+    }
+  },
+  "exclude": [],
+  "include": [
+    "./next-env.d.ts",
+    "./tsconfig.json",
+    "../../packages/types/next-auth.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.cjs",
+    "**/*.mjs",
+    "next-i18next.config.mjs"
+  ]
+}

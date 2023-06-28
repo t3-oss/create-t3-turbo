@@ -1,0 +1,47 @@
+{
+  "name": "@flow/desktop",
+  "version": "0.1.0",
+  "private": true,
+  "author": {
+    "name": "Min Chun Fu",
+    "email": "itsnotaka@gmail.com"
+  },
+  "scripts": {
+    "next-start": "pnpm with-env cross-env BROWSER=none next dev --port 3001",
+    "next-export": "pnpm with-env next export",
+    "next-build": "pnpm with-env next build && pnpm next-export",
+    "clean": "rm -rf .next .turbo node_modules",
+    "tauri": "tauri",
+    "build": "tauri build",
+    "dev": "tauri dev",
+    "lint": "dotenv -v SKIP_ENV_VALIDATION=1 next lint",
+    "lint:fix": "pnpm lint --fix",
+    "with-env": "dotenv -e ../../.env --"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^1.4.0",
+    "next": "^13.4.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@acme/api": "^0.1.0",
+    "@acme/auth": "^0.1.0",
+    "@acme/eslint-config": "^0.1.0",
+    "@acme/tailwind-config": "^0.1.0",
+    "@tauri-apps/cli": "^1.4.0",
+    "cross-env": "^7.0.3"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

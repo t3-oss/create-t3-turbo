@@ -1,5 +1,4 @@
 import type { GetServerSidePropsContext, NextPage } from "next";
-import Head from "next/head";
 
 import { useLocale } from "@acme/lib/hooks/useLocale";
 
@@ -7,7 +6,9 @@ import { ssrInit } from "~/server/ssr";
 
 const Home: NextPage = () => {
   const { t, isLocaleReady } = useLocale();
+
   if (!isLocaleReady) return null;
+
   return (
     <>
       <main className="flex h-screen flex-col items-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">

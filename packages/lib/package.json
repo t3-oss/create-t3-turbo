@@ -1,0 +1,16 @@
+{
+  "name": "@acme/lib",
+  "version": "0.1.0",
+  "private": true,
+  "main": "index.ts",
+  "license": "MIT",
+  "scripts": {
+    "clean": "git clean -xdf .turbo node_modules",
+    "lint": "eslint .",
+    "lint:fix": "pnpm lint --fix",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "accept-language-parser": "^1.5.0"
+  }
+}

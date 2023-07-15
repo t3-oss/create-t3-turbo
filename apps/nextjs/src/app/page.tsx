@@ -23,7 +23,7 @@ export default function HomePage() {
   );
 }
 
-export async function AuthShowcase() {
+async function AuthShowcase() {
   const session = await auth();
 
   if (!session) {

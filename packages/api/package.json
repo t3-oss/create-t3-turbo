@@ -22,5 +22,11 @@
     "@acme/eslint-config": "^0.2.0",
     "eslint": "^8.45.0",
     "typescript": "^5.1.6"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@acme/eslint-config/base"
+    ]
   }
 }

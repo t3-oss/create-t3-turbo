@@ -1,6 +1,7 @@
 {
   "name": "@acme/expo",
   "version": "0.1.0",
+  "private": true,
   "main": "index.tsx",
   "scripts": {
     "clean": "git clean -xdf .expo .turbo node_modules",
@@ -49,5 +50,11 @@
     "tailwindcss": "^3.3.3",
     "typescript": "^5.1.6"
   },
-  "private": true
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@acme/eslint-config/base",
+      "@acme/eslint-config/react"
+    ]
+  }
 }

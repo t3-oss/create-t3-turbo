@@ -7,11 +7,12 @@
  * The pieces you will need to use are documented accordingly near the end
  */
 import { initTRPC, TRPCError } from "@trpc/server";
-import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
+import type { CreateNextContextOptions } from "@trpc/server/adapters/next";
 import superjson from "superjson";
 import { ZodError } from "zod";
 
-import { getServerSession, type Session } from "@acme/auth";
+import { getServerSession } from "@acme/auth";
+import type { Session } from "@acme/auth";
 import { prisma } from "@acme/db";
 
 /**
@@ -23,9 +24,9 @@ import { prisma } from "@acme/db";
  * processing a request
  *
  */
-type CreateContextOptions = {
+interface CreateContextOptions {
   session: Session | null;
-};
+}
 
 /**
  * This helper generates the "internals" for a tRPC context. If you need to use

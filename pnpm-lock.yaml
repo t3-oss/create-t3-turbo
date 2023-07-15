@@ -252,8 +252,8 @@ importers:
         specifier: ^0.1.0
         version: link:../db
       '@next-auth/prisma-adapter':
-        specifier: ^1.0.6
-        version: 1.0.6(@prisma/client@5.0.0)(next-auth@4.22.1)
+        specifier: ^1.0.7
+        version: 1.0.7(@prisma/client@5.0.0)(next-auth@4.22.1)
       '@t3-oss/env-nextjs':
         specifier: ^0.6.0
         version: 0.6.0(typescript@5.1.6)(zod@3.21.4)
@@ -2997,8 +2997,8 @@ packages:
       read-yaml-file: 1.1.0
     dev: false
 
-  /@next-auth/prisma-adapter@1.0.6(@prisma/client@5.0.0)(next-auth@4.22.1):
-    resolution: {integrity: sha512-Z7agwfSZEeEcqKqrnisBun7VndRPshd6vyDsoRU68MXbkui8storkHgvN2hnNDrqr/hSCF9aRn56a1qpihaB4A==}
+  /@next-auth/prisma-adapter@1.0.7(@prisma/client@5.0.0)(next-auth@4.22.1):
+    resolution: {integrity: sha512-Cdko4KfcmKjsyHFrWwZ//lfLUbcLqlyFqjd/nYE2m3aZ7tjMNUjpks47iw7NTCnXf+5UWz5Ypyt1dSs1EP5QJw==}
     peerDependencies:
       '@prisma/client': '>=2.26.0 || >=3'
       next-auth: ^4

@@ -11,7 +11,7 @@ import type { CreateNextContextOptions } from "@trpc/server/adapters/next";
 import superjson from "superjson";
 import { ZodError } from "zod";
 
-import { getServerSession } from "@acme/auth";
+import { auth } from "@acme/auth";
 import type { Session } from "@acme/auth";
 import { prisma } from "@acme/db";
 
@@ -49,11 +49,9 @@ const createInnerTRPCContext = (opts: CreateContextOptions) => {
  * process every request that goes through your tRPC endpoint
  * @link https://trpc.io/docs/context
  */
-export const createTRPCContext = async (opts: CreateNextContextOptions) => {
-  const { req, res } = opts;
-
+export const createTRPCContext = async () => {
   // Get the session from the server using the unstable_getServerSession wrapper function
-  const session = await getServerSession({ req, res });
+  const session = await auth();
 
   return createInnerTRPCContext({
     session,

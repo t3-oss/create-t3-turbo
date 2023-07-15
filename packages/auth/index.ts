@@ -30,13 +30,15 @@ export const {
     }),
   ],
   callbacks: {
-    session({ session, user }) {
-      if (session.user) {
-        session.user.id = user.id;
-        // session.user.role = user.role; <-- put other properties on the session here
-      }
-      return session;
-    },
+    session: ({ session, user }) => ({
+      ...session,
+      user: {
+        ...session.user,
+        id: user.id,
+      },
+    }),
+
+    // @TODO - if you wanna have auth on the edge
     // jwt: ({ token, profile }) => {
     //   if (profile?.id) {
     //     token.id = profile.id;
@@ -44,6 +46,7 @@ export const {
     //   }
     //   return token;
     // },
+
     // @TODO
     // authorized({ request, auth }) {
     //   return !!auth?.user

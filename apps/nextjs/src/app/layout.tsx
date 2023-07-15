@@ -3,8 +3,6 @@ import { Inter } from "next/font/google";
 
 import "~/styles/globals.css";
 
-import { SessionProvider } from "next-auth/react";
-
 import { TRPCReactProvider } from "./providers";
 
 const fontSans = Inter({
@@ -32,9 +30,7 @@ export default function Layout(props: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className={["font-sans", fontSans.variable].join(" ")}>
-        <SessionProvider>
-          <TRPCReactProvider>{props.children}</TRPCReactProvider>
-        </SessionProvider>
+        <TRPCReactProvider>{props.children}</TRPCReactProvider>
       </body>
     </html>
   );

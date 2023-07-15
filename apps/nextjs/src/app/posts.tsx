@@ -64,6 +64,7 @@ export function CreatePostForm() {
 
 export function PostList() {
   const [posts] = api.post.all.useSuspenseQuery();
+
   return (
     <div className="w-full max-w-2xl">
       {posts.length === 0 ? (

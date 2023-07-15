@@ -1,4 +1,4 @@
-import { type Config } from "tailwindcss";
+import type { Config } from "tailwindcss";
 
 import baseConfig from "@acme/tailwind-config";
 

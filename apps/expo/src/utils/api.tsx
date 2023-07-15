@@ -5,7 +5,7 @@ import { httpBatchLink } from "@trpc/client";
 import { createTRPCReact } from "@trpc/react-query";
 import superjson from "superjson";
 
-import { type AppRouter } from "@acme/api";
+import type { AppRouter } from "@acme/api";
 
 /**
  * A set of typesafe hooks for consuming your API.
@@ -44,9 +44,8 @@ const getBaseUrl = () => {
  * A wrapper for your app that provides the TRPC context.
  * Use only in _app.tsx
  */
-export const TRPCProvider: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
+
+export function TRPCProvider(props: { children: React.ReactNode }) {
   const [queryClient] = React.useState(() => new QueryClient());
   const [trpcClient] = React.useState(() =>
     api.createClient({
@@ -61,7 +60,9 @@ export const TRPCProvider: React.FC<{ children: React.ReactNode }> = ({
 
   return (
     <api.Provider client={trpcClient} queryClient={queryClient}>
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+      <QueryClientProvider client={queryClient}>
+        {props.children}
+      </QueryClientProvider>
     </api.Provider>
   );
-};
+}

@@ -30,13 +30,20 @@ export const {
     }),
   ],
   callbacks: {
-    jwt: ({ token, profile }) => {
-      if (profile?.id) {
-        token.id = profile.id;
-        token.image = profile.picture;
+    session({ session, user }) {
+      if (session.user) {
+        session.user.id = user.id;
+        // session.user.role = user.role; <-- put other properties on the session here
       }
-      return token;
+      return session;
     },
+    // jwt: ({ token, profile }) => {
+    //   if (profile?.id) {
+    //     token.id = profile.id;
+    //     token.image = profile.picture;
+    //   }
+    //   return token;
+    // },
     // @TODO
     // authorized({ request, auth }) {
     //   return !!auth?.user

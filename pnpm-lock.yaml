@@ -124,8 +124,8 @@ importers:
         specifier: ^8.45.0
         version: 8.45.0
       postcss:
-        specifier: ^8.4.24
-        version: 8.4.24
+        specifier: ^8.4.26
+        version: 8.4.26
       tailwindcss:
         specifier: ^3.3.3
         version: 3.3.3
@@ -201,7 +201,7 @@ importers:
         version: 18.2.6
       autoprefixer:
         specifier: ^10.4.14
-        version: 10.4.14(postcss@8.4.24)
+        version: 10.4.14(postcss@8.4.26)
       dotenv-cli:
         specifier: ^7.2.1
         version: 7.2.1
@@ -209,8 +209,8 @@ importers:
         specifier: ^8.45.0
         version: 8.45.0
       postcss:
-        specifier: ^8.4.24
-        version: 8.4.24
+        specifier: ^8.4.26
+        version: 8.4.26
       tailwindcss:
         specifier: ^3.3.3
         version: 3.3.3
@@ -333,10 +333,10 @@ importers:
     devDependencies:
       autoprefixer:
         specifier: ^10.4.14
-        version: 10.4.14(postcss@8.4.24)
+        version: 10.4.14(postcss@8.4.26)
       postcss:
-        specifier: ^8.4.24
-        version: 8.4.24
+        specifier: ^8.4.26
+        version: 8.4.26
       tailwindcss:
         specifier: ^3.3.3
         version: 3.3.3
@@ -4280,7 +4280,7 @@ packages:
     hasBin: true
     dev: false
 
-  /autoprefixer@10.4.14(postcss@8.4.24):
+  /autoprefixer@10.4.14(postcss@8.4.26):
     resolution: {integrity: sha512-FQzyfOsTlwVzjHxKEqRIAdJx9niO6VCBCoEwax/VLSoQF29ggECcPuBqUMZ+u8jCZOPSy8b8/8KnuFbp0SaFZQ==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
@@ -4292,7 +4292,7 @@ packages:
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
-      postcss: 8.4.24
+      postcss: 8.4.26
       postcss-value-parser: 4.2.0
     dev: true
 
@@ -8602,11 +8602,11 @@ packages:
       css-mediaquery: 0.1.2
       css-to-react-native: 3.2.0
       micromatch: 4.0.5
-      postcss: 8.4.24
-      postcss-calc: 8.2.4(postcss@8.4.24)
-      postcss-color-functional-notation: 4.2.4(postcss@8.4.24)
-      postcss-css-variables: 0.18.0(postcss@8.4.24)
-      postcss-nested: 5.0.6(postcss@8.4.24)
+      postcss: 8.4.26
+      postcss-calc: 8.2.4(postcss@8.4.26)
+      postcss-color-functional-notation: 4.2.4(postcss@8.4.26)
+      postcss-css-variables: 0.18.0(postcss@8.4.26)
+      postcss-nested: 5.0.6(postcss@8.4.26)
       react-is: 18.2.0
       tailwindcss: 3.3.3
       use-sync-external-store: 1.2.0(react@18.2.0)
@@ -9208,27 +9208,27 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: false
 
-  /postcss-calc@8.2.4(postcss@8.4.24):
+  /postcss-calc@8.2.4(postcss@8.4.26):
     resolution: {integrity: sha512-SmWMSJmB8MRnnULldx0lQIyhSNvuDl9HfrZkaqqE/WHAhToYsAvDq+yAsA/kIyINDszOp3Rh0GFoNuH5Ypsm3Q==}
     peerDependencies:
       postcss: ^8.2.2
     dependencies:
-      postcss: 8.4.24
+      postcss: 8.4.26
       postcss-selector-parser: 6.0.12
       postcss-value-parser: 4.2.0
     dev: false
 
-  /postcss-color-functional-notation@4.2.4(postcss@8.4.24):
+  /postcss-color-functional-notation@4.2.4(postcss@8.4.26):
     resolution: {integrity: sha512-2yrTAUZUab9s6CpxkxC4rVgFEVaR6/2Pipvi6qcgvnYiVqZcbDHEoBDhrXzyb7Efh2CCfHQNtcqWcIruDTIUeg==}
     engines: {node: ^12 || ^14 || >=16}
     peerDependencies:
       postcss: ^8.2
     dependencies:
-      postcss: 8.4.24
+      postcss: 8.4.26
       postcss-value-parser: 4.2.0
     dev: false
 
-  /postcss-css-variables@0.18.0(postcss@8.4.24):
+  /postcss-css-variables@0.18.0(postcss@8.4.26):
     resolution: {integrity: sha512-lYS802gHbzn1GI+lXvy9MYIYDuGnl1WB4FTKoqMQqJ3Mab09A7a/1wZvGTkCEZJTM8mSbIyb1mJYn8f0aPye0Q==}
     peerDependencies:
       postcss: ^8.2.6
@@ -9236,7 +9236,7 @@ packages:
       balanced-match: 1.0.2
       escape-string-regexp: 1.0.5
       extend: 3.0.2
-      postcss: 8.4.24
+      postcss: 8.4.26
     dev: false
 
   /postcss-import@15.1.0(postcss@8.4.26):
@@ -9275,13 +9275,13 @@ packages:
       postcss: 8.4.26
       yaml: 2.2.2
 
-  /postcss-nested@5.0.6(postcss@8.4.24):
+  /postcss-nested@5.0.6(postcss@8.4.26):
     resolution: {integrity: sha512-rKqm2Fk0KbA8Vt3AdGN0FB9OBOMDVajMG6ZCf/GoHgdxUJ4sBFp0A/uMIRm+MJUdo33YXEtjqIz8u7DAp8B7DA==}
     engines: {node: '>=12.0'}
     peerDependencies:
       postcss: ^8.2.14
     dependencies:
-      postcss: 8.4.24
+      postcss: 8.4.26
       postcss-selector-parser: 6.0.12
     dev: false
 
@@ -9312,14 +9312,6 @@ packages:
       picocolors: 1.0.0
       source-map-js: 1.0.2
     dev: false
-
-  /postcss@8.4.24:
-    resolution: {integrity: sha512-M0RzbcI0sO/XJNucsGjvWU9ERWxb/ytp1w6dKtxTKgixdtQDq4rmx/g8W1hnaheq9jgwL/oyEdH5Bc4WwJKMqg==}
-    engines: {node: ^10 || ^12 || >=14}
-    dependencies:
-      nanoid: 3.3.6
-      picocolors: 1.0.0
-      source-map-js: 1.0.2
 
   /postcss@8.4.26:
     resolution: {integrity: sha512-jrXHFF8iTloAenySjM/ob3gSj7pCu0Ji49hnjqzsgSRa50hkWCKD0HQ+gMNJkW38jBI68MpAAg7ZWwHwX8NMMw==}

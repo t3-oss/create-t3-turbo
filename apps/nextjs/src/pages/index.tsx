@@ -3,7 +3,8 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { signIn, signOut } from "next-auth/react";
 
-import { api, type RouterOutputs } from "~/utils/api";
+import { api } from "~/utils/api";
+import type { RouterOutputs } from "~/utils/api";
 
 function PostCard(props: {
   post: RouterOutputs["post"]["all"][number];
@@ -16,6 +17,7 @@ function PostCard(props: {
         <p className="mt-2 text-sm">{props.post.content}</p>
       </div>
       <div>
+        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
         <span
           className="cursor-pointer text-sm font-bold uppercase text-pink-400"
           onClick={props.onPostDelete}

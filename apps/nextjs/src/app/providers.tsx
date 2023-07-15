@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { ReactQueryStreamedHydration } from "@tanstack/react-query-next-experimental";
 import { httpBatchLink, loggerLink } from "@trpc/client";
 import superjson from "superjson";
 
@@ -15,7 +17,17 @@ const getBaseUrl = () => {
 };
 
 export function TRPCReactProvider(props: { children: React.ReactNode }) {
-  const [queryClient] = useState(() => new QueryClient());
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            staleTime: 5 * 1000,
+          },
+        },
+      }),
+  );
+
   const [trpcClient] = useState(() =>
     api.createClient({
       transformer: superjson,
@@ -34,9 +46,12 @@ export function TRPCReactProvider(props: { children: React.ReactNode }) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <api.Provider client={trpcClient} queryClient={queryClient}>
-        {props.children}
-      </api.Provider>
+      <ReactQueryStreamedHydration>
+        <api.Provider client={trpcClient} queryClient={queryClient}>
+          {props.children}
+        </api.Provider>
+      </ReactQueryStreamedHydration>
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 }

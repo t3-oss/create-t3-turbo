@@ -63,16 +63,15 @@ export function CreatePostForm() {
 }
 
 export function PostList() {
-  const postQuery = api.post.all.useQuery();
-
+  const [posts] = api.post.all.useSuspenseQuery();
   return (
     <div className="w-full max-w-2xl">
-      {postQuery.data?.length === 0 ? (
+      {posts.length === 0 ? (
         <span>There are no posts!</span>
       ) : (
         <div className="flex h-[40vh] justify-center overflow-y-scroll px-4 text-2xl">
           <div className="flex w-full flex-col gap-4">
-            {postQuery.data?.map((p) => {
+            {posts.map((p) => {
               return <PostCard key={p.id} post={p} />;
             })}
           </div>

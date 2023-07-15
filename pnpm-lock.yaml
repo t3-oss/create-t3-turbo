@@ -150,6 +150,12 @@ importers:
       '@tanstack/react-query':
         specifier: ^4.29.23
         version: 4.29.23(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0)
+      '@tanstack/react-query-devtools':
+        specifier: ^4.29.23
+        version: 4.29.23(@tanstack/react-query@4.29.23)(react-dom@18.2.0)(react@18.2.0)
+      '@tanstack/react-query-next-experimental':
+        specifier: 5.0.0-alpha.80
+        version: 5.0.0-alpha.80(@tanstack/react-query@4.29.23)(next@13.4.10)(react-dom@18.2.0)(react@18.2.0)
       '@trpc/client':
         specifier: ^10.34.0
         version: 10.34.0(@trpc/server@10.34.0)
@@ -3597,8 +3603,44 @@ packages:
       zod: 3.21.4
     dev: false
 
+  /@tanstack/match-sorter-utils@8.8.4:
+    resolution: {integrity: sha512-rKH8LjZiszWEvmi01NR72QWZ8m4xmXre0OOwlRGnjU01Eqz/QnN+cqpty2PJ0efHblq09+KilvyR7lsbzmXVEw==}
+    engines: {node: '>=12'}
+    dependencies:
+      remove-accents: 0.4.2
+    dev: false
+
   /@tanstack/query-core@4.29.23:
     resolution: {integrity: sha512-4BMHPrkfYmLP+NvqbbkV7Mk1nnphu+bNmxhhuB0+EMjKA7VfyFCfiyiTf55RRDgLaevyb9LrFK16lHW2owF52w==}
+    dev: false
+
+  /@tanstack/react-query-devtools@4.29.23(@tanstack/react-query@4.29.23)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-ufPxjlk5LCmSk0Pmm9RjEB19dJ3OxmRQptXQLoYxJXmWG+LZc5IpEtQmaEdBXGtwI+1l2wWDkxWRoHpK++dKcw==}
+    peerDependencies:
+      '@tanstack/react-query': 4.29.23
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@tanstack/match-sorter-utils': 8.8.4
+      '@tanstack/react-query': 4.29.23(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      superjson: 1.12.4
+      use-sync-external-store: 1.2.0(react@18.2.0)
+    dev: false
+
+  /@tanstack/react-query-next-experimental@5.0.0-alpha.80(@tanstack/react-query@4.29.23)(next@13.4.10)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-J+rHrE+5BVEAoZVlvp5wryBdusKDBRrzysfpgOa4t6vcVRWHgzNlmWJFHelgipdHJrA3/4D6wSir8xmkp8ijtA==}
+    peerDependencies:
+      '@tanstack/react-query': 5.0.0-alpha.71
+      next: ^13.0.0
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    dependencies:
+      '@tanstack/react-query': 4.29.23(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0)
+      next: 13.4.10(@babel/core@7.22.1)(react-dom@18.2.0)(react@18.2.0)
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /@tanstack/react-query@4.29.23(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0):
@@ -9876,6 +9918,10 @@ packages:
     dependencies:
       jsesc: 0.5.0
 
+  /remove-accents@0.4.2:
+    resolution: {integrity: sha512-7pXIJqJOq5tFgG1A2Zxti3Ht8jJF337m4sowbuHsW30ZnkQFnDzy9qBNhgzX8ZLW4+UBcXiiR7SwR6pokHsxiA==}
+    dev: false
+
   /remove-trailing-slash@0.1.1:
     resolution: {integrity: sha512-o4S4Qh6L2jpnCy83ysZDau+VORNvnFw07CKSAymkd6ICNVEPisMyzlc00KlvvicsxKck94SEwhDnMNdICzO+tA==}
     dev: false
@@ -10557,6 +10603,13 @@ packages:
 
   /sudo-prompt@9.2.1:
     resolution: {integrity: sha512-Mu7R0g4ig9TUuGSxJavny5Rv0egCEtpZRNMrZaYS1vxkiIxGiGUwoezU3LazIQ+KE04hTrTfNPgxU5gzi7F5Pw==}
+    dev: false
+
+  /superjson@1.12.4:
+    resolution: {integrity: sha512-vkpPQAxdCg9SLfPv5GPC5fnGrui/WryktoN9O5+Zif/14QIMjw+RITf/5LbBh+9QpBFb3KNvJth+puz2H8o6GQ==}
+    engines: {node: '>=10'}
+    dependencies:
+      copy-anything: 3.0.4
     dev: false
 
   /superjson@1.9.1:

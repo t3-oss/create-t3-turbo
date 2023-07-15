@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+
 import { AuthShowcase } from "./auth-showcase";
 import { CreatePostForm, PostList } from "./posts";
 
@@ -11,7 +13,9 @@ export default function HomePage() {
         <AuthShowcase />
 
         <CreatePostForm />
-        <PostList />
+        <Suspense fallback={<span>Loading...</span>}>
+          <PostList />
+        </Suspense>
       </div>
     </main>
   );

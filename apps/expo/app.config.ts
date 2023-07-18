@@ -32,6 +32,9 @@ const defineConfig = (): ExpoConfig => ({
       // projectId: "your-project-id",
     },
   },
+  experiments: {
+    tsconfigPaths: true,
+  },
   plugins: ["./expo-plugins/with-modify-gradle.js"],
 });
 

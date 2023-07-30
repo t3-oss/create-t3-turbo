@@ -24,13 +24,17 @@ export function CreatePostForm() {
       className="flex w-full max-w-2xl flex-col p-4"
       onSubmit={async (e) => {
         e.preventDefault();
-        await createPost({
-          title,
-          content,
-        });
-        setTitle("");
-        setContent("");
-        await context.post.all.invalidate();
+        try {
+          await createPost({
+            title,
+            content,
+          });
+          setTitle("");
+          setContent("");
+          await context.post.all.invalidate();
+        } catch {
+          // noop
+        }
       }}
     >
       <input
@@ -55,9 +59,13 @@ export function CreatePostForm() {
           {error.data.zodError.fieldErrors.content}
         </span>
       )}
+      {}
       <button type="submit" className="rounded bg-pink-400 p-2 font-bold">
         Create
       </button>
+      {error?.data?.code === "UNAUTHORIZED" && (
+        <span className="mt-2 text-red-500">You must be logged in to post</span>
+      )}
     </form>
   );
 }

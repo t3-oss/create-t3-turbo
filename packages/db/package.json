@@ -6,17 +6,16 @@
   "license": "MIT",
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
-    "db:generate": "pnpm with-env prisma generate",
-    "db:push": "pnpm with-env prisma db push --skip-generate",
-    "dev": "pnpm with-env prisma studio --port 5556",
-    "with-env": "dotenv -e ../../.env --"
+    "db:push": "drizzle-kit push:mysql",
+    "dev": "drizzle-kit studio --port 5556"
   },
   "dependencies": {
-    "@prisma/client": "^5.1.1"
+    "@planetscale/database": "^1.10.0",
+    "drizzle-orm": "^0.28.1"
   },
   "devDependencies": {
     "dotenv-cli": "^7.2.1",
-    "prisma": "^5.1.1",
+    "drizzle-kit": "^0.19.12",
     "typescript": "^5.1.6"
   }
 }

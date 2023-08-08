@@ -7,7 +7,7 @@
       "cache": false
     },
     "build": {
-      "dependsOn": ["^build", "^db:generate"],
+      "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**", "next-env.d.ts", ".expo/**"]
     },
     "lint": {},
@@ -19,7 +19,6 @@
       "cache": false
     },
     "type-check": {
-      "dependsOn": ["^db:generate"],
       "cache": false
     }
   },

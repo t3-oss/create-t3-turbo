@@ -30,6 +30,9 @@ const handler = auth(async (req) => {
     router: appRouter,
     req,
     createContext: () => createTRPCContext({ auth: req.auth, req }),
+    onError({ error, path }) {
+      console.error(`>>> tRPC Error on '${path}'`, error);
+    },
   });
 
   setCorsHeaders(response);

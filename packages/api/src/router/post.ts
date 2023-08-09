@@ -1,20 +1,28 @@
 import { z } from "zod";
 
-import { desc, eq, tables } from "@acme/db";
+import { desc, eq, schema } from "@acme/db";
 
 import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 
 export const postRouter = createTRPCRouter({
   all: publicProcedure.query(({ ctx }) => {
-    return ctx.db.query.post.findMany({ orderBy: desc(tables.post.id) });
+    // return ctx.db.select().from(schema.post).orderBy(desc(schema.post.id));
+    return ctx.db.query.post.findMany({ orderBy: desc(schema.post.id) });
   }),
+
   byId: publicProcedure
     .input(z.object({ id: z.number() }))
     .query(({ ctx, input }) => {
+      // return ctx.db
+      //   .select()
+      //   .from(schema.post)
+      //   .where(eq(schema.post.id, input.id));
+
       return ctx.db.query.post.findFirst({
-        where: eq(tables.post.id, input.id),
+        where: eq(schema.post.id, input.id),
       });
     }),
+
   create: protectedProcedure
     .input(
       z.object({
@@ -23,9 +31,12 @@ export const postRouter = createTRPCRouter({
       }),
     )
     .mutation(({ ctx, input }) => {
-      return ctx.db.insert(tables.post).values(input);
+      return ctx.db.insert(schema.post).values({
+        title: input.title,
+      });
     }),
+
   delete: publicProcedure.input(z.number()).mutation(({ ctx, input }) => {
-    return ctx.db.delete(tables.post).where(eq(tables.post.id, input));
+    return ctx.db.delete(schema.post).where(eq(schema.post.id, input));
   }),
 });

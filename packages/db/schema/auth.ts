@@ -1,10 +1,10 @@
 import type { AdapterAccount } from "@auth/core/adapters";
 import { relations, sql } from "drizzle-orm";
 import {
+  index,
   int,
   primaryKey,
   timestamp,
-  uniqueIndex,
   varchar,
 } from "drizzle-orm/mysql-core";
 
@@ -44,7 +44,7 @@ export const accounts = mySqlTable(
   },
   (account) => ({
     compoundKey: primaryKey(account.provider, account.providerAccountId),
-    userIdIndex: uniqueIndex("userId_idx").on(account.userId),
+    userIdIdx: index("userId_idx").on(account.userId),
   }),
 );
 
@@ -62,7 +62,7 @@ export const sessions = mySqlTable(
     expires: timestamp("expires", { mode: "date" }).notNull(),
   },
   (session) => ({
-    userIdIndex: uniqueIndex("userId_idx").on(session.userId),
+    userIdIdx: index("userId_idx").on(session.userId),
   }),
 );
 

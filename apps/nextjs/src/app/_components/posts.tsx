@@ -21,7 +21,7 @@ export function CreatePostForm() {
 
   return (
     <form
-      className="flex w-full max-w-2xl flex-col p-4"
+      className="flex w-full max-w-2xl flex-col"
       onSubmit={async (e) => {
         e.preventDefault();
         try {
@@ -73,24 +73,32 @@ export function CreatePostForm() {
 export function PostList() {
   const [posts] = api.post.all.useSuspenseQuery();
 
-  return (
-    <div className="w-full max-w-2xl">
-      {posts.length === 0 ? (
-        <span>There are no posts!</span>
-      ) : (
-        <div className="flex h-[40vh] justify-center overflow-y-scroll px-4 text-2xl">
-          <div className="flex w-full flex-col gap-4">
-            {posts.map((p) => {
-              return <PostCard key={p.id} post={p} />;
-            })}
-          </div>
+  if (posts.length === 0) {
+    return (
+      <div className="relative flex w-full flex-col gap-4">
+        <PostCardSkeleton pulse={false} />
+        <PostCardSkeleton pulse={false} />
+        <PostCardSkeleton pulse={false} />
+
+        <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/10">
+          <p className="text-2xl font-bold text-white">No posts yet</p>
         </div>
-      )}
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex w-full flex-col gap-4">
+      {posts.map((p) => {
+        return <PostCard key={p.id} post={p} />;
+      })}
     </div>
   );
 }
 
-function PostCard(props: { post: RouterOutputs["post"]["all"][number] }) {
+export function PostCard(props: {
+  post: RouterOutputs["post"]["all"][number];
+}) {
   const context = api.useContext();
   const deletePost = api.post.delete.useMutation();
 
@@ -110,6 +118,30 @@ function PostCard(props: { post: RouterOutputs["post"]["all"][number] }) {
         >
           Delete
         </button>
+      </div>
+    </div>
+  );
+}
+
+export function PostCardSkeleton(props: { pulse?: boolean }) {
+  const { pulse = true } = props;
+  return (
+    <div className="flex flex-row rounded-lg bg-white/10 p-4 transition-all hover:scale-[101%]">
+      <div className="flex-grow">
+        <h2
+          className={`w-1/4 rounded bg-pink-400 text-2xl font-bold ${
+            pulse && "animate-pulse"
+          }`}
+        >
+          &nbsp;
+        </h2>
+        <p
+          className={`mt-2 w-1/3 rounded bg-current text-sm ${
+            pulse && "animate-pulse"
+          }`}
+        >
+          &nbsp;
+        </p>
       </div>
     </div>
   );

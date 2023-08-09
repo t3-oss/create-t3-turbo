@@ -27,15 +27,16 @@ const defineConfig = (): ExpoConfig => ({
       backgroundColor: "#1F104A",
     },
   },
-  extra: {
-    eas: {
-      // projectId: "your-project-id",
-    },
-  },
+  // extra: {
+  //   eas: {
+  //     projectId: "your-eas-project-id",
+  //   },
+  // },
   experiments: {
     tsconfigPaths: true,
+    typedRoutes: true,
   },
-  plugins: ["./expo-plugins/with-modify-gradle.js"],
+  plugins: ["expo-router", "./expo-plugins/with-modify-gradle.js"],
 });
 
 export default defineConfig;

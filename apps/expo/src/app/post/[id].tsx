@@ -1,12 +1,12 @@
 import { SafeAreaView, Text, View } from "react-native";
-import { SplashScreen, Stack, useSearchParams } from "expo-router";
+import { SplashScreen, Stack, useGlobalSearchParams } from "expo-router";
 
 import { api } from "~/utils/api";
 
 function Post() {
-  const { id } = useSearchParams();
+  const { id } = useGlobalSearchParams();
   if (!id || typeof id !== "string") throw new Error("unreachable");
-  const { data } = api.post.byId.useQuery({ id });
+  const { data } = api.post.byId.useQuery({ id: parseInt(id) });
 
   if (!data) return <SplashScreen />;
 

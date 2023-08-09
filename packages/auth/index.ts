@@ -1,9 +1,9 @@
 import Discord from "@auth/core/providers/discord";
 import type { DefaultSession } from "@auth/core/types";
-import { PrismaAdapter } from "@auth/prisma-adapter";
+import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import NextAuth from "next-auth";
 
-import { prisma } from "@acme/db";
+import { db, tableCreator } from "@acme/db";
 
 import { env } from "./env.mjs";
 
@@ -26,7 +26,7 @@ export const {
   auth,
   CSRF_experimental,
 } = NextAuth({
-  adapter: PrismaAdapter(prisma),
+  adapter: DrizzleAdapter(db, tableCreator),
   providers: [
     Discord({
       clientId: env.DISCORD_CLIENT_ID,

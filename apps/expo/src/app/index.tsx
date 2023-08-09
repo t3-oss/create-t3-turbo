@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Button,
-  Pressable,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Button, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Link, Stack } from "expo-router";
 import { FlashList } from "@shopify/flash-list";
@@ -28,12 +21,12 @@ function PostCard(props: {
             params: { id: props.post.id },
           }}
         >
-          <Pressable>
+          <TouchableOpacity>
             <Text className="text-xl font-semibold text-pink-400">
               {props.post.title}
             </Text>
             <Text className="mt-2 text-white">{props.post.content}</Text>
-          </Pressable>
+          </TouchableOpacity>
         </Link>
       </View>
       <TouchableOpacity onPress={props.onDelete}>

@@ -75,7 +75,7 @@ If you need to share runtime code between the client and server, such as input v
 ## Quick Start
 
 > **Note**
-> The [db](./packages/db) package is preconfigured to use PlanetScale and it's edge ready [database.js](https://github.com/planetscale/database-js) driver. If you're using something else, make the necesary modifications to the [schema](./packages/db/schema/) as well as the [client](./packages/db/index.ts) and [drizzle config](./packages/db/drizzle.config.ts).
+> The [db](./packages/db) package is preconfigured to use PlanetScale and it's edge ready [database.js](https://github.com/planetscale/database-js) driver. If you're using something else, make the necesary modifications to the [schema](./packages/db/schema) as well as the [client](./packages/db/index.ts) and [drizzle config](./packages/db/drizzle.config.ts).
 
 To get it running, follow the steps below:
 

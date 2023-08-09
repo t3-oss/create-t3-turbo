@@ -73,6 +73,9 @@ If you need to share runtime code between the client and server, such as input v
 
 ## Quick Start
 
+> **Note**
+> The [db](./packages/db) is preconfigured to use PlanetScale. If you're using something else, make the necesary modifications to the [schema](./packages/db/schema/) as well as the [client](./packages/db/index.ts)
+
 To get it running, follow the steps below:
 
 ### Setup dependencies
@@ -81,16 +84,11 @@ To get it running, follow the steps below:
 # Install dependencies
 pnpm i
 
-# In packages/db/prisma update schema.prisma provider to use sqlite
-# or use your own database provider
-- provider = "postgresql"
-+ provider = "sqlite"
-
 # Configure environment variables.
 # There is an `.env.example` in the root directory you can use for reference
 cp .env.example .env
 
-# Push the Prisma schema to your database
+# Push the Drizzle schema to the database
 pnpm db:push
 ```
 
@@ -125,8 +123,6 @@ pnpm db:push
 ### Next.js
 
 #### Prerequisites
-
-_We do not recommend deploying a SQLite database on serverless environments since the data wouldn't be persisted. I provisioned a quick Postgresql database on [Railway](https://railway.app), but you can of course use any other database provider. Make sure the prisma schema is updated to use the correct database._
 
 **Please note that the Next.js application with tRPC must be deployed in order for the Expo app to communicate with the server in a production environment.**
 

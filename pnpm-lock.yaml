@@ -344,8 +344,8 @@ importers:
         specifier: ^1.10.0
         version: 1.10.0
       drizzle-orm:
-        specifier: ^0.28.1
-        version: 0.28.1(@planetscale/database@1.10.0)
+        specifier: ^0.28.2
+        version: 0.28.2(@planetscale/database@1.10.0)
     devDependencies:
       dotenv-cli:
         specifier: ^7.2.1
@@ -5235,8 +5235,8 @@ packages:
       - supports-color
     dev: true
 
-  /drizzle-orm@0.28.1(@planetscale/database@1.10.0):
-    resolution: {integrity: sha512-6ms2pVxvkBJtuP1BZTUCzLLkr+iK/cNgd+tCw+I5/PoM8PB9kXaYoW9yNe/cnaXb0TLJ1gDEndDIyQdRX7zCdQ==}
+  /drizzle-orm@0.28.2(@planetscale/database@1.10.0):
+    resolution: {integrity: sha512-QRyuzvpJr7GE6LpvZ/sg2nAKNg2if1uGGkgFTiXn4auuYId//vVJe6HBsDTktfKfcaDGzIYos+/f+PS5EkBmrg==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
       '@cloudflare/workers-types': '>=3'

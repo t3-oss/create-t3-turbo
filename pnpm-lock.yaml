@@ -252,8 +252,8 @@ importers:
         specifier: ^0.1.0
         version: link:../db
       '@auth/core':
-        specifier: ^0.11.1
-        version: 0.11.1
+        specifier: ^0.12.0
+        version: 0.12.0
       '@auth/drizzle-adapter':
         specifier: ^0.3.1
         version: 0.3.1
@@ -392,6 +392,22 @@ packages:
 
   /@auth/core@0.11.1:
     resolution: {integrity: sha512-PzvebszgJ4NpQNz8Fsjn39oEY8MzULKppr7Um7DX/HLrS3zthgLY0yAnwkA+2/kxwAb36dIkX+C72q6TziiTaA==}
+    peerDependencies:
+      nodemailer: ^6.8.0
+    peerDependenciesMeta:
+      nodemailer:
+        optional: true
+    dependencies:
+      '@panva/hkdf': 1.1.1
+      cookie: 0.5.0
+      jose: 4.14.4
+      oauth4webapi: 2.3.0
+      preact: 10.11.3
+      preact-render-to-string: 5.2.3(preact@10.11.3)
+    dev: false
+
+  /@auth/core@0.12.0:
+    resolution: {integrity: sha512-XYipdAc/nKu014VOgpcPyLlj1ghWlnwyloaB1UjQd9ElZRZQ9YpSizzXGLON23t/a0FyabOBBl0/awD2tW58Rg==}
     peerDependencies:
       nodemailer: ^6.8.0
     peerDependenciesMeta:

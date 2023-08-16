@@ -2,6 +2,9 @@
   "$schema": "https://turborepo.org/schema.json",
   "globalDependencies": ["**/.env", "tsconfig.json"],
   "pipeline": {
+    "topo": {
+      "dependsOn": ["^topo"]
+    },
     "dev": {
       "persistent": true,
       "cache": false
@@ -10,30 +13,30 @@
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**", "next-env.d.ts", ".expo/**"]
     },
-    "lint": {},
-    "lint:fix": {},
+    "lint": {
+      "outputs": ["node_modules/.cache/.eslintcache"],
+      "dependsOn": ["^topo"]
+    },
+    "format": {
+      "outputs": ["node_modules/.cache/.prettiercache"],
+      "outputMode": "new-only"
+    },
+    "typecheck": {
+      "dependsOn": ["^topo"],
+      "outputs": ["node_modules/.cache/tsbuildinfo.json"]
+    },
     "clean": {
       "cache": false
     },
     "//#clean": {
       "cache": false
-    },
-    "type-check": {
-      "cache": false
     }
   },
   "globalEnv": [
-    "CI",
     "DATABASE_URL",
     "DISCORD_CLIENT_ID",
     "DISCORD_CLIENT_SECRET",
-    "EXPO_ROUTER_APP_ROOT",
     "NEXTAUTH_SECRET",
-    "NEXTAUTH_URL",
-    "NODE_ENV",
-    "SKIP_ENV_VALIDATION",
-    "PORT",
-    "VERCEL",
-    "VERCEL_URL"
+    "NEXTAUTH_URL"
   ]
 }

@@ -1,6 +1,7 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "target": "es2017",
+    "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "checkJs": true,
@@ -17,5 +18,5 @@
     "incremental": true,
     "noUncheckedIndexedAccess": true
   },
-  "include": ["prettier.config.mjs"]
+  "exclude": ["node_modules", "build", "dist", ".next", ".expo"]
 }

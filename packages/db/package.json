@@ -13,8 +13,15 @@
     "drizzle-orm": "^0.28.2"
   },
   "devDependencies": {
+    "@acme/eslint-config": "^0.2.0",
     "dotenv-cli": "^7.2.1",
     "drizzle-kit": "^0.19.12",
     "typescript": "^5.1.6"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@acme/eslint-config/base"
+    ]
   }
 }

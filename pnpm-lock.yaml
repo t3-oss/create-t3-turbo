@@ -347,6 +347,9 @@ importers:
         specifier: ^0.28.2
         version: 0.28.2(@planetscale/database@1.10.0)
     devDependencies:
+      '@acme/eslint-config':
+        specifier: ^0.2.0
+        version: link:../config/eslint
       dotenv-cli:
         specifier: ^7.2.1
         version: 7.2.1

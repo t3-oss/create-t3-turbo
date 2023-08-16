@@ -7,9 +7,9 @@
     "clean": "git clean -xdf .next .turbo node_modules",
     "dev": "pnpm with-env next dev",
     "lint": "dotenv -v SKIP_ENV_VALIDATION=1 next lint",
-    "lint:fix": "pnpm lint --fix",
+    "format": "prettier --check \"**/*.{js,cjs,mjs,ts,tsx,md,json}\"",
     "start": "pnpm with-env next start",
-    "type-check": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
@@ -32,14 +32,15 @@
   },
   "devDependencies": {
     "@acme/eslint-config": "^0.2.0",
+    "@acme/prettier-config": "^0.1.0",
     "@acme/tailwind-config": "^0.1.0",
+    "@acme/tsconfig": "^0.1.0",
     "@types/node": "^18.17.5",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
-    "autoprefixer": "^10.4.15",
     "dotenv-cli": "^7.2.1",
     "eslint": "^8.47.0",
-    "postcss": "^8.4.28",
+    "prettier": "^3.0.2",
     "tailwindcss": "3.3.2",
     "typescript": "^5.1.6"
   },
@@ -50,5 +51,6 @@
       "@acme/eslint-config/nextjs",
       "@acme/eslint-config/react"
     ]
-  }
+  },
+  "prettier": "@acme/prettier-config"
 }

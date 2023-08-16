@@ -12,17 +12,18 @@
     "db:push": "pnpm -F db push",
     "db:studio": "pnpm -F db dev",
     "dev": "turbo dev --parallel",
-    "format": "prettier --write \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path .gitignore",
-    "lint": "turbo lint && manypkg check",
-    "lint:fix": "turbo lint:fix && manypkg fix",
-    "type-check": "turbo type-check"
+    "format": "turbo format --continue -- --cache --cache-location='node_modules/.cache/.prettiercache'",
+    "format:fix": "turbo format --continue -- --write --cache --cache-location='node_modules/.cache/.prettiercache'",
+    "lint": "turbo lint --continue -- --cache --cache-location 'node_modules/.cache/.eslintcache' && manypkg check",
+    "lint:fix": "turbo lint --continue -- --fix --cache --cache-location 'node_modules/.cache/.eslintcache' && manypkg fix",
+    "typecheck": "turbo typecheck"
   },
   "dependencies": {
-    "@ianvs/prettier-plugin-sort-imports": "^4.1.0",
+    "@acme/prettier-config": "^0.1.0",
     "@manypkg/cli": "^0.21.0",
     "prettier": "^3.0.2",
-    "prettier-plugin-tailwindcss": "^0.5.3",
     "turbo": "^1.10.12",
     "typescript": "^5.1.6"
-  }
+  },
+  "prettier": "@acme/prettier-config"
 }

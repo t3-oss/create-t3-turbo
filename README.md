@@ -121,6 +121,12 @@ pnpm db:push
 
 > **TIP:** It might be easier to run each app in separate terminal windows so you get the logs from each app separately. This is also required if you want your terminals to be interactive, e.g. to access the Expo QR code. You can run `pnpm --filter expo dev` and `pnpm --filter nextjs dev` to run each app in a separate terminal window.
 
+### 3. When it's time to add a new package
+
+To add a new package, simply run `pnpm turbo gen init` in the monorepo root. This will prompt you for a package name as well as if you want to install any dependencies to the new package (of course you can also do this yourself later).
+
+The generator sets up the `package.json`, `tsconfig.json` and a `index.ts`, as well as configures all the necessary configurations for tooling around your package such as formatting, linting and typechecking. When the package is created, you're ready to go build out the package.
+
 ## Deployment
 
 ### Next.js
@@ -157,10 +163,10 @@ Deploying your Expo application works slightly differently compared to Next.js o
    ```bash
    # Install the EAS CLI
    pnpm add -g eas-cli
- 
+
    # Log in with your Expo account
    eas login
- 
+
    # Configure your Expo app
    cd apps/expo
    eas build:configure
@@ -192,7 +198,7 @@ Deploying your Expo application works slightly differently compared to Next.js o
    # Add the `expo-updates` library to your Expo app
    cd apps/expo
    pnpm expo install expo-updates
- 
+
    # Configure EAS Update
    eas update:configure
    ```

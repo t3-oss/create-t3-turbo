@@ -7,6 +7,12 @@
     "./nextjs.js",
     "./react.js"
   ],
+  "scripts": {
+    "clean": "rm -rf .turbo node_modules",
+    "lint": "eslint .",
+    "format": "prettier --check \"**/*.{mjs,ts,md,json}\"",
+    "typecheck": "tsc --noEmit"
+  },
   "dependencies": {
     "@next/eslint-plugin-next": "^13.4.13",
     "@types/eslint": "^8.44.2",
@@ -20,7 +26,16 @@
     "eslint-plugin-react-hooks": "^4.6.0"
   },
   "devDependencies": {
+    "@acme/prettier-config": "^0.1.0",
+    "@acme/tsconfig": "^0.1.0",
     "eslint": "^8.47.0",
     "typescript": "^5.1.6"
-  }
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "./base.js"
+    ]
+  },
+  "prettier": "@acme/prettier-config"
 }

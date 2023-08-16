@@ -377,6 +377,12 @@ importers:
         specifier: ^4.6.0
         version: 4.6.0(eslint@8.47.0)
     devDependencies:
+      '@acme/prettier-config':
+        specifier: ^0.1.0
+        version: link:../prettier
+      '@acme/tsconfig':
+        specifier: ^0.1.0
+        version: link:../typescript
       eslint:
         specifier: ^8.47.0
         version: 8.47.0
@@ -395,6 +401,13 @@ importers:
       prettier-plugin-tailwindcss:
         specifier: ^0.5.3
         version: 0.5.3(@ianvs/prettier-plugin-sort-imports@4.1.0)(prettier@3.0.2)
+    devDependencies:
+      '@acme/tsconfig':
+        specifier: ^0.1.0
+        version: link:../typescript
+      typescript:
+        specifier: ^5.1.6
+        version: 5.1.6
 
   tooling/tailwind:
     dependencies:
@@ -402,11 +415,30 @@ importers:
         specifier: ^10.4.15
         version: 10.4.15(postcss@8.4.26)
       postcss:
-        specifier: ^8.4.26
+        specifier: 8.4.26
         version: 8.4.26
       tailwindcss:
         specifier: 3.3.2
         version: 3.3.2
+    devDependencies:
+      '@acme/eslint-config':
+        specifier: ^0.2.0
+        version: link:../eslint
+      '@acme/prettier-config':
+        specifier: ^0.1.0
+        version: link:../prettier
+      '@acme/tsconfig':
+        specifier: ^0.1.0
+        version: link:../typescript
+      eslint:
+        specifier: ^8.47.0
+        version: 8.47.0
+      prettier:
+        specifier: ^3.0.2
+        version: 3.0.2
+      typescript:
+        specifier: ^5.1.6
+        version: 5.1.6
 
   tooling/typescript: {}
 

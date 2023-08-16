@@ -64,7 +64,7 @@ importers:
         version: 1.6.0
       nativewind:
         specifier: ^2.0.11
-        version: 2.0.11(react@18.2.0)(tailwindcss@3.3.2)
+        version: 2.0.11(react@18.2.0)(tailwindcss@3.3.3)
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -127,8 +127,8 @@ importers:
         specifier: ^3.0.2
         version: 3.0.2
       tailwindcss:
-        specifier: 3.3.2
-        version: 3.3.2
+        specifier: 3.3.3
+        version: 3.3.3
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -215,8 +215,8 @@ importers:
         specifier: ^3.0.2
         version: 3.0.2
       tailwindcss:
-        specifier: 3.3.2
-        version: 3.3.2
+        specifier: 3.3.3
+        version: 3.3.3
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -418,8 +418,8 @@ importers:
         specifier: 8.4.26
         version: 8.4.26
       tailwindcss:
-        specifier: 3.3.2
-        version: 3.3.2
+        specifier: 3.3.3
+        version: 3.3.3
     devDependencies:
       '@acme/eslint-config':
         specifier: ^0.2.0
@@ -8215,7 +8215,7 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
-  /nativewind@2.0.11(react@18.2.0)(tailwindcss@3.3.2):
+  /nativewind@2.0.11(react@18.2.0)(tailwindcss@3.3.3):
     resolution: {integrity: sha512-qCEXUwKW21RYJ33KRAJl3zXq2bCq82WoI564fI21D/TiqhfmstZOqPN53RF8qK1NDK6PGl56b2xaTxgObEePEg==}
     engines: {node: '>=14.18'}
     peerDependencies:
@@ -8233,7 +8233,7 @@ packages:
       postcss-css-variables: 0.18.0(postcss@8.4.26)
       postcss-nested: 5.0.6(postcss@8.4.26)
       react-is: 18.2.0
-      tailwindcss: 3.3.2
+      tailwindcss: 3.3.3
       use-sync-external-store: 1.2.0(react@18.2.0)
     transitivePeerDependencies:
       - react
@@ -10166,8 +10166,8 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
-  /tailwindcss@3.3.2:
-    resolution: {integrity: sha512-9jPkMiIBXvPc2KywkraqsUfbfj+dHDb+JPWtSJa9MLFdrPyazI7q6WX2sUrm7R9eVR7qqv3Pas7EvQFzxKnI6w==}
+  /tailwindcss@3.3.3:
+    resolution: {integrity: sha512-A0KgSkef7eE4Mf+nKJ83i75TMyq8HqY3qmFIJSWy8bNt0v1lG7jUcpGpoTFxAwYcWOphcTBLPPJg+bDfhDf52w==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
@@ -10191,7 +10191,6 @@ packages:
       postcss-load-config: 4.0.1(postcss@8.4.26)
       postcss-nested: 6.0.1(postcss@8.4.26)
       postcss-selector-parser: 6.0.12
-      postcss-value-parser: 4.2.0
       resolve: 1.22.4
       sucrase: 3.32.0
     transitivePeerDependencies:

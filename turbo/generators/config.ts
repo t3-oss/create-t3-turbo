@@ -1,6 +1,7 @@
 import { execSync } from "node:child_process";
+import { PlopTypes } from "@turbo/gen";
 
-export default function generator(plop) {
+export default function generator(plop: PlopTypes.NodePlopAPI): void {
   plop.setGenerator("init", {
     description: "Generate a new package for the Acme Monorepo",
     prompts: [
@@ -66,15 +67,16 @@ export default function generator(plop) {
         /**
          * Install deps and format everything
          */
-        execSync("pnpm manypkg fix", {
-          stdio: "inherit",
-        });
-        execSync(
-          `pnpm prettier --write packages/${
-            answers.name
-          }/** --list-different`,
-        );
-        return "Package scaffolded";
+        if ("name" in answers && typeof answers.name === "string") {
+          execSync("pnpm manypkg fix", {
+            stdio: "inherit",
+          });
+          execSync(
+            `pnpm prettier --write packages/${answers.name}/** --list-different`
+          );
+          return "Package scaffolded";
+        }
+        return "Package not scaffolded";
       },
     ],
   });

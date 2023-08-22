@@ -17,6 +17,12 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
         message:
           "Enter a space separated list of dependencies you would like to install",
       },
+      {
+        type: "input",
+        name: "devdeps",
+        message:
+          "Enter a space separated list of development dependencies you would like to install",
+      },
     ],
     actions: [
       (answers) => {
@@ -52,13 +58,23 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
         path: "packages/{{ name }}/package.json",
         async transform(content, answers) {
           const pkg = JSON.parse(content);
+          // Add dependencies
           for (const dep of answers.deps.split(" ").filter(Boolean)) {
             const version = await fetch(
-              `https://registry.npmjs.org/-/package/${dep}/dist-tags`,
+              `https://registry.npmjs.org/-/package/${dep}/dist-tags`
             )
               .then((res) => res.json())
               .then((json) => json.latest);
             pkg.dependencies[dep] = `^${version}`;
+          }
+          // Add development dependencies
+          for (const dep of answers.devdeps.split(" ").filter(Boolean)) {
+            const version = await fetch(
+              `https://registry.npmjs.org/-/package/${dep}/dist-tags`
+            )
+              .then((res) => res.json())
+              .then((json) => json.latest);
+            pkg.devDependencies[dep] = `^${version}`;
           }
           return JSON.stringify(pkg, null, 2);
         },

@@ -47,8 +47,11 @@ jobs:
       - name: Install deps (with cache)
         run: pnpm install
 
-      - name: Build, lint and type-check
-        run: pnpm turbo build lint format typecheck
+      - name: Check formatting
+        run: pnpm format:check
+
+      - name: Build, lint and typecheck
+        run: pnpm turbo build lint typecheck
 
       - name: Check workspaces
         run: pnpm manypkg check

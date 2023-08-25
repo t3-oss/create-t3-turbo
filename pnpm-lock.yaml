@@ -8,15 +8,18 @@ importers:
 
   .:
     dependencies:
-      '@acme/prettier-config':
-        specifier: ^0.1.0
-        version: link:tooling/prettier
+      '@ianvs/prettier-plugin-sort-imports':
+        specifier: ^4.1.0
+        version: 4.1.0(prettier@3.0.2)
       '@manypkg/cli':
         specifier: ^0.21.0
         version: 0.21.0
       prettier:
         specifier: ^3.0.2
         version: 3.0.2
+      prettier-plugin-tailwindcss:
+        specifier: ^0.5.3
+        version: 0.5.3(@ianvs/prettier-plugin-sort-imports@4.1.0)(prettier@3.0.2)
       turbo:
         specifier: ^1.10.13
         version: 1.10.13
@@ -93,15 +96,9 @@ importers:
       '@acme/eslint-config':
         specifier: ^0.2.0
         version: link:../../tooling/eslint
-      '@acme/prettier-config':
-        specifier: ^0.1.0
-        version: link:../../tooling/prettier
       '@acme/tailwind-config':
         specifier: ^0.1.0
         version: link:../../tooling/tailwind
-      '@acme/tsconfig':
-        specifier: ^0.1.0
-        version: link:../../tooling/typescript
       '@babel/core':
         specifier: ^7.22.11
         version: 7.22.11
@@ -123,9 +120,6 @@ importers:
       eslint:
         specifier: ^8.47.0
         version: 8.47.0
-      prettier:
-        specifier: ^3.0.2
-        version: 3.0.2
       tailwindcss:
         specifier: 3.3.2
         version: 3.3.2
@@ -170,7 +164,7 @@ importers:
         version: 10.38.0
       next:
         specifier: ^13.4.19
-        version: 13.4.19(react-dom@18.2.0)(react@18.2.0)
+        version: 13.4.19(@babel/core@7.22.11)(react-dom@18.2.0)(react@18.2.0)
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -187,15 +181,9 @@ importers:
       '@acme/eslint-config':
         specifier: ^0.2.0
         version: link:../../tooling/eslint
-      '@acme/prettier-config':
-        specifier: ^0.1.0
-        version: link:../../tooling/prettier
       '@acme/tailwind-config':
         specifier: ^0.1.0
         version: link:../../tooling/tailwind
-      '@acme/tsconfig':
-        specifier: ^0.1.0
-        version: link:../../tooling/typescript
       '@types/node':
         specifier: ^18.17.7
         version: 18.17.7
@@ -211,9 +199,6 @@ importers:
       eslint:
         specifier: ^8.47.0
         version: 8.47.0
-      prettier:
-        specifier: ^3.0.2
-        version: 3.0.2
       tailwindcss:
         specifier: 3.3.2
         version: 3.3.2
@@ -245,18 +230,9 @@ importers:
       '@acme/eslint-config':
         specifier: ^0.2.0
         version: link:../../tooling/eslint
-      '@acme/prettier-config':
-        specifier: ^0.1.0
-        version: link:../../tooling/prettier
-      '@acme/tsconfig':
-        specifier: ^0.1.0
-        version: link:../../tooling/typescript
       eslint:
         specifier: ^8.47.0
         version: 8.47.0
-      prettier:
-        specifier: ^3.0.2
-        version: 3.0.2
       typescript:
         specifier: ^5.2.2
         version: 5.2.2
@@ -277,7 +253,7 @@ importers:
         version: 0.6.1(typescript@5.2.2)(zod@3.22.2)
       next:
         specifier: ^13.4.19
-        version: 13.4.19(react-dom@18.2.0)(react@18.2.0)
+        version: 13.4.19(@babel/core@7.22.11)(react-dom@18.2.0)(react@18.2.0)
       next-auth:
         specifier: 0.0.0-manual.b53ca00b
         version: 0.0.0-manual.b53ca00b(next@13.4.19)(react-dom@18.2.0)(react@18.2.0)
@@ -294,18 +270,9 @@ importers:
       '@acme/eslint-config':
         specifier: ^0.2.0
         version: link:../../tooling/eslint
-      '@acme/prettier-config':
-        specifier: ^0.1.0
-        version: link:../../tooling/prettier
-      '@acme/tsconfig':
-        specifier: ^0.1.0
-        version: link:../../tooling/typescript
       eslint:
         specifier: ^8.47.0
         version: 8.47.0
-      prettier:
-        specifier: ^3.0.2
-        version: 3.0.2
       typescript:
         specifier: ^5.2.2
         version: 5.2.2
@@ -322,12 +289,6 @@ importers:
       '@acme/eslint-config':
         specifier: ^0.2.0
         version: link:../../tooling/eslint
-      '@acme/prettier-config':
-        specifier: ^0.1.0
-        version: link:../../tooling/prettier
-      '@acme/tsconfig':
-        specifier: ^0.1.0
-        version: link:../../tooling/typescript
       dotenv-cli:
         specifier: ^7.3.0
         version: 7.3.0
@@ -337,9 +298,6 @@ importers:
       eslint:
         specifier: ^8.47.0
         version: 8.47.0
-      prettier:
-        specifier: ^3.0.2
-        version: 3.0.2
       typescript:
         specifier: ^5.2.2
         version: 5.2.2
@@ -377,34 +335,9 @@ importers:
         specifier: ^4.6.0
         version: 4.6.0(eslint@8.47.0)
     devDependencies:
-      '@acme/prettier-config':
-        specifier: ^0.1.0
-        version: link:../prettier
-      '@acme/tsconfig':
-        specifier: ^0.1.0
-        version: link:../typescript
       eslint:
         specifier: ^8.47.0
         version: 8.47.0
-      typescript:
-        specifier: ^5.2.2
-        version: 5.2.2
-
-  tooling/prettier:
-    dependencies:
-      '@ianvs/prettier-plugin-sort-imports':
-        specifier: ^4.1.0
-        version: 4.1.0(prettier@3.0.2)
-      prettier:
-        specifier: ^3.0.2
-        version: 3.0.2
-      prettier-plugin-tailwindcss:
-        specifier: ^0.5.3
-        version: 0.5.3(@ianvs/prettier-plugin-sort-imports@4.1.0)(prettier@3.0.2)
-    devDependencies:
-      '@acme/tsconfig':
-        specifier: ^0.1.0
-        version: link:../typescript
       typescript:
         specifier: ^5.2.2
         version: 5.2.2
@@ -424,23 +357,12 @@ importers:
       '@acme/eslint-config':
         specifier: ^0.2.0
         version: link:../eslint
-      '@acme/prettier-config':
-        specifier: ^0.1.0
-        version: link:../prettier
-      '@acme/tsconfig':
-        specifier: ^0.1.0
-        version: link:../typescript
       eslint:
         specifier: ^8.47.0
         version: 8.47.0
-      prettier:
-        specifier: ^3.0.2
-        version: 3.0.2
       typescript:
         specifier: ^5.2.2
         version: 5.2.2
-
-  tooling/typescript: {}
 
 packages:
 
@@ -506,7 +428,7 @@ packages:
       react: ^18.2.0
     dependencies:
       '@auth/core': 0.0.0-manual.59d8da33
-      next: 13.4.19(react-dom@18.2.0)(react@18.2.0)
+      next: 13.4.19(@babel/core@7.22.11)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
     transitivePeerDependencies:
       - nodemailer
@@ -3541,7 +3463,7 @@ packages:
       react-dom: ^18.0.0
     dependencies:
       '@tanstack/react-query': 4.33.0(react-dom@18.2.0)(react-native@0.72.4)(react@18.2.0)
-      next: 13.4.19(react-dom@18.2.0)(react@18.2.0)
+      next: 13.4.19(@babel/core@7.22.11)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
@@ -3588,7 +3510,7 @@ packages:
       '@trpc/client': 10.38.0(@trpc/server@10.38.0)
       '@trpc/react-query': 10.38.0(@tanstack/react-query@4.33.0)(@trpc/client@10.38.0)(@trpc/server@10.38.0)(react-dom@18.2.0)(react@18.2.0)
       '@trpc/server': 10.38.0
-      next: 13.4.19(react-dom@18.2.0)(react@18.2.0)
+      next: 13.4.19(@babel/core@7.22.11)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-ssr-prepass: 1.5.0(react@18.2.0)
@@ -8282,7 +8204,7 @@ packages:
     dependencies:
       '@auth/core': 0.0.0-manual.59d8da33
       '@auth/nextjs': 0.0.0-manual.179c08d4(next@13.4.19)(react@18.2.0)
-      next: 13.4.19(react-dom@18.2.0)(react@18.2.0)
+      next: 13.4.19(@babel/core@7.22.11)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
@@ -8291,7 +8213,7 @@ packages:
     resolution: {integrity: sha512-CXdUiJembsNjuToQvxayPZF9Vqht7hewsvy2sOWafLvi2awflj9mOC6bHIg50orX8IJvWKY9wYQ/zB2kogPslQ==}
     dev: true
 
-  /next@13.4.19(react-dom@18.2.0)(react@18.2.0):
+  /next@13.4.19(@babel/core@7.22.11)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-HuPSzzAbJ1T4BD8e0bs6B9C1kWQ6gv8ykZoRWs5AQoiIuqbGHHdQO7Ljuvg05Q0Z24E2ABozHe6FxDvI6HfyAw==}
     engines: {node: '>=16.8.0'}
     hasBin: true
@@ -8313,7 +8235,7 @@ packages:
       postcss: 8.4.14
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      styled-jsx: 5.1.1(react@18.2.0)
+      styled-jsx: 5.1.1(@babel/core@7.22.11)(react@18.2.0)
       watchpack: 2.4.0
       zod: 3.21.4
     optionalDependencies:
@@ -9013,6 +8935,7 @@ packages:
     resolution: {integrity: sha512-o2YR9qtniXvwEZlOKbveKfDQVyqxbEIWn48Z8m3ZJjBjcCmUy3xZGIv+7AkaeuaTr6yPXJjwv07ZWlsWbEy1rQ==}
     engines: {node: '>=14'}
     hasBin: true
+    dev: false
 
   /pretty-bytes@5.6.0:
     resolution: {integrity: sha512-FFw039TmrBqFK8ma/7OL3sDz/VytdtJr044/QUJtH0wK9lb9jLq9tJyIxUwtQJHwar2BqtiA4iCWSwo9JLkzFg==}
@@ -10089,7 +10012,7 @@ packages:
     resolution: {integrity: sha512-0MP/Cxx5SzeeZ10p/bZI0S6MpgD+yxAhi1BOQ34jgnMXsCq3j1t6tQnZu+KdlL7dvJTLT3g9xN8tl10TqgFMcg==}
     dev: false
 
-  /styled-jsx@5.1.1(react@18.2.0):
+  /styled-jsx@5.1.1(@babel/core@7.22.11)(react@18.2.0):
     resolution: {integrity: sha512-pW7uC1l4mBZ8ugbiZrcIsiIvVx1UmTfw7UkC3Um2tmfUq9Bhk8IiyEIPl6F8agHgjzku6j0xQEZbfA5uSgSaCw==}
     engines: {node: '>= 12.0.0'}
     peerDependencies:
@@ -10102,6 +10025,7 @@ packages:
       babel-plugin-macros:
         optional: true
     dependencies:
+      '@babel/core': 7.22.11
       client-only: 0.0.1
       react: 18.2.0
     dev: false

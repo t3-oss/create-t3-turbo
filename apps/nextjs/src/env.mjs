@@ -10,8 +10,8 @@ export const env = createEnv({
     PORT: z.coerce.number().default(3000),
   },
   /**
-   * Specify your server-side environment variables schema here. This way you can ensure the app isn't
-   * built with invalid env vars.
+   * Specify your server-side environment variables schema here.
+   * This way you can ensure the app isn't built with invalid env vars.
    */
   server: {
     DATABASE_URL: z.string().url(),

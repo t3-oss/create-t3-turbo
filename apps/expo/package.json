@@ -4,15 +4,14 @@
   "private": true,
   "main": "index.tsx",
   "scripts": {
+    "android": "expo run:android",
+    "ios": "expo run:ios",
     "clean": "git clean -xdf .expo .turbo node_modules",
-    "dev": "expo start --ios",
+    "dev": "expo start",
     "dev:android": "expo start --android",
     "dev:ios": "expo start --ios",
     "lint": "eslint .",
-    "format": "prettier --check \"**/*.{js,cjs,mjs,ts,tsx,md,json}\"",
-    "typecheck": "tsc --noEmit",
-    "android": "expo run:android",
-    "ios": "expo run:ios"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@expo/metro-config": "^0.10.7",
@@ -39,9 +38,7 @@
   "devDependencies": {
     "@acme/api": "^0.1.0",
     "@acme/eslint-config": "^0.2.0",
-    "@acme/prettier-config": "^0.1.0",
     "@acme/tailwind-config": "^0.1.0",
-    "@acme/tsconfig": "^0.1.0",
     "@babel/core": "^7.22.11",
     "@babel/preset-env": "^7.22.10",
     "@babel/runtime": "^7.22.11",
@@ -49,7 +46,6 @@
     "@types/babel__core": "^7.20.1",
     "@types/react": "^18.2.21",
     "eslint": "^8.47.0",
-    "prettier": "^3.0.2",
     "tailwindcss": "3.3.2",
     "typescript": "^5.2.2"
   },
@@ -59,6 +55,5 @@
       "@acme/eslint-config/base",
       "@acme/eslint-config/react"
     ]
-  },
-  "prettier": "@acme/prettier-config"
+  }
 }

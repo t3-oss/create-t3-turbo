@@ -70,9 +70,7 @@ export default function generator(plop) {
           stdio: "inherit",
         });
         execSync(
-          `pnpm prettier --write packages/${
-            answers.name
-          }/** --list-different`,
+          `pnpm prettier --write packages/${answers.name}/** --list-different`,
         );
         return "Package scaffolded";
       },

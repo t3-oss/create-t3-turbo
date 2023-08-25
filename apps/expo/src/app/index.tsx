@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import { Button, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Link, Stack } from "expo-router";
@@ -7,10 +7,12 @@ import { FlashList } from "@shopify/flash-list";
 import { api } from "~/utils/api";
 import type { RouterOutputs } from "~/utils/api";
 
-function PostCard(props: {
+interface PostCardProps {
   post: RouterOutputs["post"]["all"][number];
   onDelete: () => void;
-}) {
+}
+
+function PostCard({ post, onDelete }: PostCardProps) {
   return (
     <View className="flex flex-row rounded-lg bg-white/10 p-4">
       <View className="flex-grow">
@@ -18,18 +20,18 @@ function PostCard(props: {
           asChild
           href={{
             pathname: "/post/[id]",
-            params: { id: props.post.id },
+            params: { id: post.id },
           }}
         >
           <TouchableOpacity>
             <Text className="text-xl font-semibold text-pink-400">
-              {props.post.title}
+              {post.title}
             </Text>
-            <Text className="mt-2 text-white">{props.post.content}</Text>
+            <Text className="mt-2 text-white">{post.content}</Text>
           </TouchableOpacity>
         </Link>
       </View>
-      <TouchableOpacity onPress={props.onDelete}>
+      <TouchableOpacity onPress={onDelete}>
         <Text className="font-bold uppercase text-pink-400">Delete</Text>
       </TouchableOpacity>
     </View>
@@ -39,8 +41,8 @@ function PostCard(props: {
 function CreatePost() {
   const utils = api.useContext();
 
-  const [title, setTitle] = React.useState("");
-  const [content, setContent] = React.useState("");
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
 
   const { mutate, error } = api.post.create.useMutation({
     async onSuccess() {
@@ -91,7 +93,7 @@ function CreatePost() {
   );
 }
 
-const Index = () => {
+export default function Index() {
   const utils = api.useContext();
 
   const postQuery = api.post.all.useQuery();
@@ -137,6 +139,4 @@ const Index = () => {
       </View>
     </SafeAreaView>
   );
-};
-
-export default Index;
+}

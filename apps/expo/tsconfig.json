@@ -1,5 +1,5 @@
 {
-  "extends": "@acme/tsconfig/base.json",
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
@@ -9,14 +9,6 @@
     "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json",
     "types": ["nativewind/types"]
   },
-  "include": [
-    "expo-plugins",
-    "src",
-    "*.ts",
-    "index.tsx",
-    "*.js",
-    ".expo/types/**/*.ts",
-    "expo-env.d.ts"
-  ],
+  "include": [".", ".expo/types/**/*.ts", "expo-env.d.ts"],
   "exclude": ["node_modules"]
 }

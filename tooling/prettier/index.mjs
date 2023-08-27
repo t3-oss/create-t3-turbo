@@ -1,3 +1,5 @@
+import { fileURLToPath } from "url";
+
 /** @typedef  {import("prettier").Config} PrettierConfig */
 /** @typedef {import("prettier-plugin-tailwindcss").PluginOptions} TailwindConfig */
 /** @typedef  {import("@ianvs/prettier-plugin-sort-imports").PluginConfig} SortImportsConfig */
@@ -8,7 +10,9 @@ const config = {
     "@ianvs/prettier-plugin-sort-imports",
     "prettier-plugin-tailwindcss",
   ],
-  tailwindConfig: "../../tooling/tailwind",
+  tailwindConfig: fileURLToPath(
+    new URL("../../tooling/tailwind/index.ts", import.meta.url),
+  ),
   importOrder: [
     "^(react/(.*)$)|^(react$)|^(react-native(.*)$)",
     "^(next/(.*)$)|^(next$)",

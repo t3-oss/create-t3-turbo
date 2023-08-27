@@ -316,11 +316,11 @@ importers:
   packages/db:
     dependencies:
       '@planetscale/database':
-        specifier: ^1.10.0
-        version: 1.10.0
+        specifier: ^1.11.0
+        version: 1.11.0
       drizzle-orm:
         specifier: ^0.28.5
-        version: 0.28.5(@planetscale/database@1.10.0)
+        version: 0.28.5(@planetscale/database@1.11.0)
     devDependencies:
       '@acme/eslint-config':
         specifier: ^0.2.0
@@ -3102,8 +3102,8 @@ packages:
     resolution: {integrity: sha512-dhPeilub1NuIG0X5Kvhh9lH4iW3ZsHlnzwgwbOlgwQ2wG1IqFzsgHqmKPk3WzsdWAeaxKJxgM0+W433RmN45GA==}
     dev: false
 
-  /@planetscale/database@1.10.0:
-    resolution: {integrity: sha512-XMfNRjIPgGTga6g1YpGr7E21CcnHZcHZdyhRUIiZ/AlpD+ts65UF2B3wKjcu7MKMynmmcOGs6R9kAT6D1OTlZQ==}
+  /@planetscale/database@1.11.0:
+    resolution: {integrity: sha512-aWbU+D/IRHoDE9975y+Q4c+EwwAWxCPwFId+N1AhQVFXzbeJMkj6KN2iQtoi03elcLMRdfT+V3i9Z4WRw+/oIA==}
     engines: {node: '>=16'}
     dev: false
 
@@ -5486,7 +5486,7 @@ packages:
       - supports-color
     dev: true
 
-  /drizzle-orm@0.28.5(@planetscale/database@1.10.0):
+  /drizzle-orm@0.28.5(@planetscale/database@1.11.0):
     resolution: {integrity: sha512-6r6Iw4c38NAmW6TiKH3TUpGUQ1YdlEoLJOQptn8XPx3Z63+vFNKfAiANqrIiYZiMjKR9+NYAL219nFrmo1duXA==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
@@ -5548,7 +5548,7 @@ packages:
       sqlite3:
         optional: true
     dependencies:
-      '@planetscale/database': 1.10.0
+      '@planetscale/database': 1.11.0
     dev: false
 
   /duplexer3@0.1.5:

@@ -10,7 +10,7 @@ import {
 
 import { mySqlTable } from "./_table";
 
-export const users = mySqlTable("users", {
+export const users = mySqlTable("user", {
   id: varchar("id", { length: 255 }).notNull().primaryKey(),
   name: varchar("name", { length: 255 }),
   email: varchar("email", { length: 255 }).notNull(),
@@ -26,7 +26,7 @@ export const usersRelations = relations(users, ({ many }) => ({
 }));
 
 export const accounts = mySqlTable(
-  "accounts",
+  "account",
   {
     userId: varchar("userId", { length: 255 }).notNull(),
     type: varchar("type", { length: 255 })
@@ -53,7 +53,7 @@ export const accountsRelations = relations(accounts, ({ one }) => ({
 }));
 
 export const sessions = mySqlTable(
-  "sessions",
+  "session",
   {
     sessionToken: varchar("sessionToken", { length: 255 })
       .notNull()

@@ -34,7 +34,7 @@ export const postRouter = createTRPCRouter({
       return ctx.db.insert(schema.post).values(input);
     }),
 
-  delete: publicProcedure.input(z.number()).mutation(({ ctx, input }) => {
+  delete: protectedProcedure.input(z.number()).mutation(({ ctx, input }) => {
     return ctx.db.delete(schema.post).where(eq(schema.post.id, input));
   }),
 });

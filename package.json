@@ -4,7 +4,7 @@
   "engines": {
     "node": ">=v18.17.1"
   },
-  "packageManager": "pnpm@8.6.12",
+  "packageManager": "pnpm@8.7.0",
   "scripts": {
     "build": "turbo build",
     "clean": "git clean -xdf node_modules",
@@ -21,6 +21,7 @@
   "dependencies": {
     "@acme/prettier-config": "^0.1.0",
     "@manypkg/cli": "^0.21.0",
+    "@turbo/gen": "^1.10.13",
     "prettier": "^3.0.2",
     "turbo": "^1.10.13",
     "typescript": "^5.2.2"

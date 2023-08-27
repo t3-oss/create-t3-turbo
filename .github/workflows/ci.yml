@@ -15,8 +15,6 @@ env:
 
 jobs:
   build-lint:
-    env:
-      DATABASE_URL: file:./db.sqlite
     runs-on: ubuntu-latest
 
     steps:

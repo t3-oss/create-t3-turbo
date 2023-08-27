@@ -33,8 +33,8 @@ importers:
         specifier: ^0.10.7
         version: 0.10.7
       '@shopify/flash-list':
-        specifier: 1.5.0
-        version: 1.5.0(@babel/runtime@7.22.11)(react-native@0.72.4)(react@18.2.0)
+        specifier: 1.4.3
+        version: 1.4.3(@babel/runtime@7.22.11)(react-native@0.72.4)(react@18.2.0)
       '@tanstack/react-query':
         specifier: ^4.33.0
         version: 4.33.0(react-dom@18.2.0)(react-native@0.72.4)(react@18.2.0)
@@ -57,8 +57,8 @@ importers:
         specifier: ~5.0.2
         version: 5.0.2(expo@49.0.8)
       expo-router:
-        specifier: 2.0.2
-        version: 2.0.2(expo-constants@14.4.2)(expo-linking@5.0.2)(expo-modules-autolinking@1.5.1)(expo-status-bar@1.6.0)(expo@49.0.8)(metro@0.76.7)(react-dom@18.2.0)(react-native-gesture-handler@2.12.1)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.1)(react-native@0.72.4)(react@18.2.0)
+        specifier: 2.0.0
+        version: 2.0.0(expo-constants@14.4.2)(expo-linking@5.0.2)(expo-modules-autolinking@1.5.1)(expo-status-bar@1.6.0)(expo@49.0.8)(metro@0.76.7)(react-dom@18.2.0)(react-native-gesture-handler@2.12.1)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.1)(react-native@0.72.4)(react@18.2.0)
       expo-splash-screen:
         specifier: ~0.20.5
         version: 0.20.5(expo-modules-autolinking@1.5.1)(expo@49.0.8)
@@ -2654,8 +2654,8 @@ packages:
       - supports-color
     dev: false
 
-  /@expo/metro-runtime@2.2.5(react-native@0.72.4):
-    resolution: {integrity: sha512-6B3VrADIJWnNi8Csh8qfNWQml/MQR8vOq8XlUedPUEhUDyO36f+cfD/XxGYpK7Ob93+tIgooFvode/OBR3WRIw==}
+  /@expo/metro-runtime@2.2.3(react-native@0.72.4):
+    resolution: {integrity: sha512-SI1SfjsAKIryRLVgxcNBDywy1DN7L/EGcPZSS6+Juls3L6/mGluz97ytIJw3CTZ6S4X3hDL4QDvjyZv2szpTDA==}
     peerDependencies:
       react-native: '*'
     dependencies:
@@ -3448,8 +3448,8 @@ packages:
       join-component: 1.1.0
     dev: false
 
-  /@shopify/flash-list@1.5.0(@babel/runtime@7.22.11)(react-native@0.72.4)(react@18.2.0):
-    resolution: {integrity: sha512-XeocevDIXastr6jh3TPo1MzV5XkdqTyWtw/j8kUhz9EOBc2SzNWbpJWyzrAsYKlqYNrnxxs0P9C0amlX2jaQnw==}
+  /@shopify/flash-list@1.4.3(@babel/runtime@7.22.11)(react-native@0.72.4)(react@18.2.0):
+    resolution: {integrity: sha512-jtIReAbwWzYBV0dQ6Io9wBX+pD0C4qQFMrb5/fkEvX8PYDgBl5KRYvpfr9WLLj8CV2Jsn1X0mYOsB+ysWrI/8g==}
     peerDependencies:
       '@babel/runtime': '*'
       react: '*'
@@ -6267,12 +6267,12 @@ packages:
       invariant: 2.2.4
     dev: false
 
-  /expo-router@2.0.2(expo-constants@14.4.2)(expo-linking@5.0.2)(expo-modules-autolinking@1.5.1)(expo-status-bar@1.6.0)(expo@49.0.8)(metro@0.76.7)(react-dom@18.2.0)(react-native-gesture-handler@2.12.1)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.1)(react-native@0.72.4)(react@18.2.0):
-    resolution: {integrity: sha512-SMgBE+5gacmaFi6tRdZn4gz8QLQC+STvk/M4hCaij0CzWd3prfk5h0Kx2of/JY1VZnhHDHpp2hcO6m8jjDAMpA==}
+  /expo-router@2.0.0(expo-constants@14.4.2)(expo-linking@5.0.2)(expo-modules-autolinking@1.5.1)(expo-status-bar@1.6.0)(expo@49.0.8)(metro@0.76.7)(react-dom@18.2.0)(react-native-gesture-handler@2.12.1)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.1)(react-native@0.72.4)(react@18.2.0):
+    resolution: {integrity: sha512-K9ezwX2ll4VAOPOKmpoy6b2bcWxnakAYGFYAx+WWlhR5IABWK0fwrNODs8pCHnN0P1SmeiiFf+8zsZ7MyiXODQ==}
     peerDependencies:
       '@react-navigation/drawer': ^6.5.8
       '@testing-library/jest-native': '*'
-      expo: ^49.0.0
+      expo: ^49.0.0-alpha.6
       expo-constants: '*'
       expo-linking: '*'
       expo-status-bar: '*'
@@ -6290,7 +6290,7 @@ packages:
         optional: true
     dependencies:
       '@bacons/react-views': 1.1.3(react-native@0.72.4)
-      '@expo/metro-runtime': 2.2.5(react-native@0.72.4)
+      '@expo/metro-runtime': 2.2.3(react-native@0.72.4)
       '@radix-ui/react-slot': 1.0.1(react@18.2.0)
       '@react-navigation/bottom-tabs': 6.5.7(@react-navigation/native@6.1.6)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.1)(react-native@0.72.4)(react@18.2.0)
       '@react-navigation/native': 6.1.6(react-native@0.72.4)(react@18.2.0)

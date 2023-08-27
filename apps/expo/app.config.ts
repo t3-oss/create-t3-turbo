@@ -18,10 +18,11 @@ const defineConfig = (): ExpoConfig => ({
   },
   assetBundlePatterns: ["**/*"],
   ios: {
-    supportsTablet: true,
     bundleIdentifier: "your.bundle.identifier",
+    supportsTablet: true,
   },
   android: {
+    package: "your.bundle.identifier",
     adaptiveIcon: {
       foregroundImage: "./assets/icon.png",
       backgroundColor: "#1F104A",

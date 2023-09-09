@@ -68,7 +68,7 @@ export const sessions = mySqlTable(
 );
 
 export const sessionsRelations = relations(sessions, ({ one }) => ({
-  user: one(users),
+  user: one(users, { fields: [sessions.userId], references: [users.id] }),
 }));
 
 export const verificationTokens = mySqlTable(

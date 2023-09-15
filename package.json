@@ -4,27 +4,33 @@
   "engines": {
     "node": ">=18.18.2"
   },
-  "packageManager": "pnpm@8.10.2",
+  "packageManager": "bun@1.0.7",
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "tooling/*"
+  ],
   "scripts": {
     "build": "turbo build",
     "clean": "git clean -xdf node_modules",
     "clean:workspaces": "turbo clean",
-    "postinstall": "pnpm lint:ws",
-    "db:push": "pnpm -F db push",
-    "db:studio": "pnpm -F db studio",
+    "postinstall": "bun lint:ws",
+    "db:push": "bun -w db push",
+    "db:studio": "bun -w db studio",
     "dev": "turbo dev --parallel",
     "format": "turbo format --continue -- --cache --cache-location='node_modules/.cache/.prettiercache'",
     "format:fix": "turbo format --continue -- --write --cache --cache-location='node_modules/.cache/.prettiercache'",
     "lint": "turbo lint --continue -- --cache --cache-location 'node_modules/.cache/.eslintcache'",
     "lint:fix": "turbo lint --continue -- --fix --cache --cache-location 'node_modules/.cache/.eslintcache'",
-    "lint:ws": "pnpm dlx sherif@latest",
+    "lint:ws": "bunx sherif@latest",
     "typecheck": "turbo typecheck"
   },
   "devDependencies": {
-    "@acme/prettier-config": "workspace:^0.1.0",
+    "@acme/prettier-config": "workspace:*",
     "@turbo/gen": "^1.10.16",
     "prettier": "^3.0.3",
     "turbo": "^1.10.16",
+    "@manypkg/cli": "^0.21.0",
     "typescript": "^5.2.2"
   },
   "pnpm": {

@@ -8,10 +8,14 @@ runs:
     - uses: actions/setup-node@v4
       with:
         node-version: 18
-        cache: "pnpm"
+
+    - name: Setup bun
+      uses: oven-sh/setup-bun@v1
+      with:
+        bun-version: latest
 
     - shell: bash
-      run: pnpm add -g turbo
+      run: bun add -g turbo
 
     - shell: bash
-      run: pnpm install
+      run: bun install

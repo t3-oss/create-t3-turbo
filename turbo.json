@@ -7,10 +7,16 @@
     },
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**", "next-env.d.ts", ".expo/**"]
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**",
+        "next-env.d.ts",
+        ".expo/**",
+        "expo-env.d.ts"
+      ]
     },
     "dev": {
-      "persistent": false,
+      "persistent": true,
       "cache": false
     },
     "format": {

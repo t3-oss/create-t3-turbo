@@ -9,7 +9,7 @@ There are two ways of initializing an app using the `create-t3-turbo` starter. Y
 
 ![use-as-template](https://github.com/t3-oss/create-t3-turbo/assets/51714798/bb6c2e5d-d8b6-416e-aeb3-b3e50e2ca994)
 
-or use Turbo's CLI to init your project (use PNPM as package manager):
+or use Turbo's CLI to init your project (use Bun as package manager, PNPM also works with some minor modifications):
 
 ```bash
 npx create-turbo@latest -e https://github.com/t3-oss/create-t3-turbo
@@ -24,7 +24,7 @@ It uses [Turborepo](https://turborepo.org) and contains:
 ```text
 .github
   └─ workflows
-        └─ CI with pnpm cache setup
+        └─ Continuous Integration w/ Turbo Remote Caching
 .vscode
   └─ Recommended extensions and settings for VSCode users
 apps
@@ -70,14 +70,14 @@ To get it running, follow the steps below:
 
 ```bash
 # Install dependencies
-pnpm i
+bun i
 
 # Configure environment variables
 # There is an `.env.example` in the root directory you can use for reference
 cp .env.example .env
 
 # Push the Drizzle schema to the database
-pnpm db:push
+bun db:push
 ```
 
 ### 2. Configure Expo `dev`-script
@@ -86,13 +86,13 @@ pnpm db:push
 
 1. Make sure you have XCode and XCommand Line Tools installed [as shown on expo docs](https://docs.expo.dev/workflow/ios-simulator).
 
-   > **NOTE:** If you just installed XCode, or if you have updated it, you need to open the simulator manually once. Run `npx expo start` in the root dir, and then enter `I` to launch Expo Go. After the manual launch, you can run `pnpm dev` in the root directory.
+   > **NOTE:** If you just installed XCode, or if you have updated it, you need to open the simulator manually once. Run `bunx expo start` in the root dir, and then enter `I` to launch Expo Go. After the manual launch, you can run `bun dev` in the root directory.
 
    ```diff
    +  "dev": "expo start --ios",
    ```
 
-2. Run `pnpm dev` at the project root folder.
+2. Run `bun dev` at the project root folder.
 
 #### Use Android Emulator
 
@@ -104,13 +104,13 @@ pnpm db:push
    +  "dev": "expo start --android",
    ```
 
-3. Run `pnpm dev` at the project root folder.
+3. Run `bun dev` at the project root folder.
 
-> **TIP:** It might be easier to run each app in separate terminal windows so you get the logs from each app separately. This is also required if you want your terminals to be interactive, e.g. to access the Expo QR code. You can run `pnpm --filter expo dev` and `pnpm --filter nextjs dev` to run each app in a separate terminal window.
+> **TIP:** It might be easier to run each app in separate terminal windows so you get the logs from each app separately. This is also required if you want your terminals to be interactive, e.g. to access the Expo QR code. You can run `bun --cwd apps/expo dev` and `bun --cwd apps/nextjs dev` to run each app in a separate terminal window.
 
 ### 3. When it's time to add a new package
 
-To add a new package, simply run `pnpm turbo gen init` in the monorepo root. This will prompt you for a package name as well as if you want to install any dependencies to the new package (of course you can also do this yourself later).
+To add a new package, simply run `bun turbo gen init` in the monorepo root. This will prompt you for a package name as well as if you want to install any dependencies to the new package (of course you can also do this yourself later).
 
 The generator sets up the `package.json`, `tsconfig.json` and a `index.ts`, as well as configures all the necessary configurations for tooling around your package such as formatting, linting and typechecking. When the package is created, you're ready to go build out the package.
 
@@ -171,7 +171,7 @@ Deploying your Expo application works slightly differently compared to Next.js o
 
    ```bash
    # Install the EAS CLI
-   pnpm add -g eas-cli
+   bun add -g eas-cli
 
    # Log in with your Expo account
    eas login
@@ -206,7 +206,7 @@ Deploying your Expo application works slightly differently compared to Next.js o
    ```bash
    # Add the `expo-updates` library to your Expo app
    cd apps/expo
-   pnpm expo install expo-updates
+   bun expo install expo-updates
 
    # Configure EAS Update
    eas update:configure

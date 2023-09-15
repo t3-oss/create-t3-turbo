@@ -12,17 +12,17 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@acme/auth": "workspace:^0.1.0",
-    "@acme/db": "workspace:^0.1.0",
+    "@acme/auth": "workspace:*",
+    "@acme/db": "workspace:*",
     "@trpc/client": "next",
     "@trpc/server": "next",
-    "superjson": "2.2.0",
-    "zod": "^3.22.2"
+    "superjson": "^2.2.0",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@acme/eslint-config": "workspace:^0.2.0",
-    "@acme/prettier-config": "workspace:^0.1.0",
-    "@acme/tsconfig": "workspace:^0.1.0",
+    "@acme/eslint-config": "workspace:*",
+    "@acme/prettier-config": "workspace:*",
+    "@acme/tsconfig": "workspace:*",
     "eslint": "^8.52.0",
     "prettier": "^3.0.3",
     "typescript": "^5.2.2"

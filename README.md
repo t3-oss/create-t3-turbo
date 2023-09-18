@@ -9,11 +9,13 @@ There are two ways of initializing an app using the `create-t3-turbo` starter. Y
 
 ![use-as-template](https://github.com/t3-oss/create-t3-turbo/assets/51714798/bb6c2e5d-d8b6-416e-aeb3-b3e50e2ca994)
 
-or use Turbo's CLI to init your project (use Bun as package manager, PNPM also works with some minor modifications):
+or use Turbo's CLI to init your project (use Bun as package manager):
 
 ```bash
 npx create-turbo@latest -e https://github.com/t3-oss/create-t3-turbo
 ```
+
+> You can use `@turbo/workspaces` to convert this monorepo to a different package manager. [Read more here](https://github.com/vercel/turbo/tree/main/packages/turbo-workspaces).
 
 ## About
 

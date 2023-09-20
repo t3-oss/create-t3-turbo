@@ -10,6 +10,7 @@
     "lint": "eslint .",
     "format": "prettier --check \"**/*.{mjs,ts,md,json}\"",
     "push": "drizzle-kit push:mysql",
+    "dev": "drizzle-kit studio",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

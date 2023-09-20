@@ -57,8 +57,8 @@ importers:
         specifier: ~5.0.2
         version: 5.0.2(expo@49.0.11)
       expo-router:
-        specifier: 2.0.7
-        version: 2.0.7(expo-constants@14.5.1)(expo-linking@5.0.2)(expo-modules-autolinking@1.5.1)(expo-status-bar@1.7.1)(expo@49.0.11)(metro@0.76.7)(react-dom@18.2.0)(react-native-gesture-handler@2.13.1)(react-native-safe-area-context@4.7.2)(react-native-screens@3.25.0)(react-native@0.72.4)(react@18.2.0)
+        specifier: 2.0.8
+        version: 2.0.8(expo-constants@14.5.1)(expo-linking@5.0.2)(expo-modules-autolinking@1.5.1)(expo-status-bar@1.7.1)(expo@49.0.11)(metro@0.76.7)(react-dom@18.2.0)(react-native-gesture-handler@2.13.1)(react-native-safe-area-context@4.7.2)(react-native-screens@3.25.0)(react-native@0.72.4)(react@18.2.0)
       expo-splash-screen:
         specifier: ~0.22.0
         version: 0.22.0(expo-modules-autolinking@1.5.1)(expo@49.0.11)
@@ -2799,8 +2799,8 @@ packages:
       - supports-color
     dev: false
 
-  /@expo/metro-runtime@2.2.9(react-native@0.72.4):
-    resolution: {integrity: sha512-mRWPyhtvJTi6OPSUvEOkLNfIg8DKSgf3rjCiJ5zXkiKN+ruJZI7oRtZkhtF3PiUeAWq0PytYt2c3dp2zsBw33A==}
+  /@expo/metro-runtime@2.2.10(react-native@0.72.4):
+    resolution: {integrity: sha512-4lEHpOpm7FFwnNsD985eZFtcf32WakD8wSGZmfqc/bkBks076PUb5qIfTgJviGEHF9OAuic+htQi/IcbEdBr9w==}
     peerDependencies:
       react-native: '*'
     dependencies:
@@ -6386,8 +6386,8 @@ packages:
       fontfaceobserver: 2.3.0
     dev: false
 
-  /expo-head@0.0.13(expo@49.0.11)(react-dom@18.2.0)(react-native@0.72.4)(react@18.2.0):
-    resolution: {integrity: sha512-5vIhDrU0ozLhtkuCf40lTrzUP4WXGtfwu5GIFISYE6kz/4a4sQmVdlAodb4hIAJgkPIy16XCH+7oc0r/LP1X1w==}
+  /expo-head@0.0.14(expo@49.0.11)(react-dom@18.2.0)(react-native@0.72.4)(react@18.2.0):
+    resolution: {integrity: sha512-NvG6dwzi06F2hlYuz1rW/O8B/Us/2lDHTHZv0DJJmSWjAuT3Ja04WtS0QI9Yn5n0bSKKPrEGl4515q1zJ9MI0A==}
     peerDependencies:
       expo: '*'
       react: '*'
@@ -6443,8 +6443,8 @@ packages:
       invariant: 2.2.4
     dev: false
 
-  /expo-router@2.0.7(expo-constants@14.5.1)(expo-linking@5.0.2)(expo-modules-autolinking@1.5.1)(expo-status-bar@1.7.1)(expo@49.0.11)(metro@0.76.7)(react-dom@18.2.0)(react-native-gesture-handler@2.13.1)(react-native-safe-area-context@4.7.2)(react-native-screens@3.25.0)(react-native@0.72.4)(react@18.2.0):
-    resolution: {integrity: sha512-Va1u5H/8c0UYiPdd8uNt0ukX52mEemafNVhwNm7l0E/ioSbuqpB4rxymPOYGPuBqwDtq4+VYd4bwBUnp9/rALQ==}
+  /expo-router@2.0.8(expo-constants@14.5.1)(expo-linking@5.0.2)(expo-modules-autolinking@1.5.1)(expo-status-bar@1.7.1)(expo@49.0.11)(metro@0.76.7)(react-dom@18.2.0)(react-native-gesture-handler@2.13.1)(react-native-safe-area-context@4.7.2)(react-native-screens@3.25.0)(react-native@0.72.4)(react@18.2.0):
+    resolution: {integrity: sha512-hKm15AzEmqASgts1qf1UQzjB4ON6iXrV+KsHVicK7L3lb2rLpI6Cj5ayWjjUAQ7GmTw5O2FR/gdlPYil4hALIQ==}
     peerDependencies:
       '@react-navigation/drawer': ^6.5.8
       '@testing-library/jest-native': '*'
@@ -6466,14 +6466,14 @@ packages:
         optional: true
     dependencies:
       '@bacons/react-views': 1.1.3(react-native@0.72.4)
-      '@expo/metro-runtime': 2.2.9(react-native@0.72.4)
+      '@expo/metro-runtime': 2.2.10(react-native@0.72.4)
       '@radix-ui/react-slot': 1.0.1(react@18.2.0)
       '@react-navigation/bottom-tabs': 6.5.7(@react-navigation/native@6.1.6)(react-native-safe-area-context@4.7.2)(react-native-screens@3.25.0)(react-native@0.72.4)(react@18.2.0)
       '@react-navigation/native': 6.1.6(react-native@0.72.4)(react@18.2.0)
       '@react-navigation/native-stack': 6.9.12(@react-navigation/native@6.1.6)(react-native-safe-area-context@4.7.2)(react-native-screens@3.25.0)(react-native@0.72.4)(react@18.2.0)
       expo: 49.0.11(@babel/core@7.22.20)
       expo-constants: 14.5.1(expo@49.0.11)
-      expo-head: 0.0.13(expo@49.0.11)(react-dom@18.2.0)(react-native@0.72.4)(react@18.2.0)
+      expo-head: 0.0.14(expo@49.0.11)(react-dom@18.2.0)(react-native@0.72.4)(react@18.2.0)
       expo-linking: 5.0.2(expo@49.0.11)
       expo-splash-screen: 0.20.5(expo-modules-autolinking@1.5.1)(expo@49.0.11)
       expo-status-bar: 1.7.1

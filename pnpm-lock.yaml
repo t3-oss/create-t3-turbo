@@ -121,8 +121,8 @@ importers:
         specifier: ^7.20.2
         version: 7.20.2
       '@types/react':
-        specifier: ^18.2.25
-        version: 18.2.25
+        specifier: ^18.2.28
+        version: 18.2.28
       eslint:
         specifier: ^8.50.0
         version: 8.50.0
@@ -203,11 +203,11 @@ importers:
         specifier: ^18.17.19
         version: 18.17.19
       '@types/react':
-        specifier: ^18.2.25
-        version: 18.2.25
+        specifier: ^18.2.28
+        version: 18.2.28
       '@types/react-dom':
-        specifier: ^18.2.10
-        version: 18.2.10
+        specifier: ^18.2.13
+        version: 18.2.13
       dotenv-cli:
         specifier: ^7.3.0
         version: 7.3.0
@@ -3869,14 +3869,14 @@ packages:
     resolution: {integrity: sha512-FGa1F62FT09qcrueBA6qYTrJPVDzah9a+493+o2PCXsesWHIn27G98TsSMs3WPNbZIEj4+VJf6saSFpvD+3Zsw==}
     dev: false
 
-  /@types/react-dom@18.2.10:
-    resolution: {integrity: sha512-5VEC5RgXIk1HHdyN1pHlg0cOqnxHzvPGpMMyGAP5qSaDRmyZNDaQ0kkVAkK6NYlDhP6YBID3llaXlmAS/mdgCA==}
+  /@types/react-dom@18.2.13:
+    resolution: {integrity: sha512-eJIUv7rPP+EC45uNYp/ThhSpE16k22VJUknt5OLoH9tbXoi8bMhwLf5xRuWMywamNbWzhrSmU7IBJfPup1+3fw==}
     dependencies:
-      '@types/react': 18.2.25
+      '@types/react': 18.2.28
     dev: true
 
-  /@types/react@18.2.25:
-    resolution: {integrity: sha512-24xqse6+VByVLIr+xWaQ9muX1B4bXJKXBbjszbld/UEDslGLY53+ZucF44HCmLbMPejTzGG9XgR+3m2/Wqu1kw==}
+  /@types/react@18.2.28:
+    resolution: {integrity: sha512-ad4aa/RaaJS3hyGz0BGegdnSRXQBkd1CCYDCdNjBPg90UUpLgo+WlJqb9fMYUxtehmzF3PJaTWqRZjko6BRzBg==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.3

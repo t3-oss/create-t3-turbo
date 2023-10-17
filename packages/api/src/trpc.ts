@@ -12,7 +12,7 @@ import { ZodError } from "zod";
 
 import { auth } from "@acme/auth";
 import type { Session } from "@acme/auth";
-import { db } from "@acme/db";
+import { prisma } from "@acme/db";
 
 /**
  * 1. CONTEXT
@@ -39,7 +39,7 @@ interface CreateContextOptions {
 const createInnerTRPCContext = (opts: CreateContextOptions) => {
   return {
     session: opts.session,
-    db,
+    prisma,
   };
 };
 

@@ -5,8 +5,14 @@
     "topo": {
       "dependsOn": ["^topo"]
     },
+    "db:generate": {
+      "cache": false
+    },
+    "db:push": {
+      "cache": false
+    },
     "build": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build", "^db:generate"],
       "outputs": [".next/**", "!.next/cache/**", "next-env.d.ts", ".expo/**"]
     },
     "dev": {
@@ -22,7 +28,7 @@
       "outputs": ["node_modules/.cache/.eslintcache"]
     },
     "typecheck": {
-      "dependsOn": ["^topo"],
+      "dependsOn": ["^topo", "^db:generate"],
       "outputs": ["node_modules/.cache/tsbuildinfo.json"]
     },
     "clean": {

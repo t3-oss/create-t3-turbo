@@ -9,6 +9,7 @@
     "build": "turbo build",
     "clean": "git clean -xdf node_modules",
     "clean:workspaces": "turbo clean",
+    "postinstall": "manypkg check",
     "db:push": "pnpm -F db push",
     "db:studio": "pnpm -F db studio",
     "dev": "turbo dev --parallel",

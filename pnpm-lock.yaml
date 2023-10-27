@@ -273,8 +273,8 @@ importers:
         specifier: ^0.16.1
         version: 0.16.1
       '@auth/drizzle-adapter':
-        specifier: ^0.3.4
-        version: 0.3.4
+        specifier: ^0.3.5
+        version: 0.3.5
       '@t3-oss/env-nextjs':
         specifier: ^0.7.1
         version: 0.7.1(typescript@5.2.2)(zod@3.22.2)
@@ -494,8 +494,8 @@ packages:
       preact-render-to-string: 5.2.3(preact@10.11.3)
     dev: false
 
-  /@auth/core@0.17.0:
-    resolution: {integrity: sha512-YkbWuXny6sv0gF/sYm7KD3GxnnGxJomoQJzibzhJuwVOYjPUjjYBv/JMTkYcfpBuPHoHZwTVR3y1J+/W18oRxA==}
+  /@auth/core@0.18.0:
+    resolution: {integrity: sha512-Xb41H3FIv4PlTZmwoFvntaNlVTwIqFxIg7i0/ieHOOxf/7H8EJpGTWoNrqKhwMyZEPU6fHp+VcUiqdX3vFrWSg==}
     peerDependencies:
       nodemailer: ^6.8.0
     peerDependenciesMeta:
@@ -510,10 +510,10 @@ packages:
       preact-render-to-string: 5.2.3(preact@10.11.3)
     dev: false
 
-  /@auth/drizzle-adapter@0.3.4:
-    resolution: {integrity: sha512-3N734pgz7UJa+p1GBBl4OaORD7Ka6AIgfgM8W9b3UZjvIMnyT1dUZB6JleNg52Qskzh9ULtBuT1Lzb9/gKxsgQ==}
+  /@auth/drizzle-adapter@0.3.5:
+    resolution: {integrity: sha512-pZCnZ8vrqUD+C4uc4MiRj+Ox7NLXze6yzWHdtAgK1QMj9PgvUtBsJu02mAYJCyCchWVzdvPG25e9+B6L2mLRBg==}
     dependencies:
-      '@auth/core': 0.17.0
+      '@auth/core': 0.18.0
     transitivePeerDependencies:
       - nodemailer
     dev: false

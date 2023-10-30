@@ -116,7 +116,7 @@ The generator sets up the `package.json`, `tsconfig.json` and a `index.ts`, as w
 
 ## FAQ
 
-### Can you include Solito?
+### Does the starter include Solito?
 
 No. Solito will not be included in this repo. It is a great tool if you want to share code between your Next.js and Expo app. However, the main purpose of this repo is not the integration between Next.js and Expo — it's the codesplitting of your T3 App into a monorepo. The Expo app is just a bonus example of how you can utilize the monorepo with multiple apps but can just as well be any app such as Vite, Electron, etc.
 

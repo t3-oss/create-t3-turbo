@@ -61,7 +61,7 @@ importers:
         version: 5.0.2(expo@49.0.16)
       expo-router:
         specifier: 2.0.8
-        version: 2.0.8(expo-constants@14.4.2)(expo-linking@5.0.2)(expo-modules-autolinking@1.5.1)(expo-status-bar@1.7.1)(expo@49.0.16)(metro@0.76.8)(react-dom@18.2.0)(react-native-gesture-handler@2.12.1)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.1)(react-native@0.72.6)(react@18.2.0)
+        version: 2.0.8(expo-constants@14.4.2)(expo-linking@5.0.2)(expo-modules-autolinking@1.5.1)(expo-status-bar@1.7.1)(expo@49.0.16)(metro@0.76.8)(react-dom@18.2.0)(react-native-gesture-handler@2.12.1)(react-native-safe-area-context@4.6.3)(react-native-screens@3.27.0)(react-native@0.72.6)(react@18.2.0)
       expo-splash-screen:
         specifier: ~0.22.0
         version: 0.22.0(expo-modules-autolinking@1.5.1)(expo@49.0.16)
@@ -87,8 +87,8 @@ importers:
         specifier: 4.6.3
         version: 4.6.3(react-native@0.72.6)(react@18.2.0)
       react-native-screens:
-        specifier: ~3.22.1
-        version: 3.22.1(react-native@0.72.6)(react@18.2.0)
+        specifier: ~3.27.0
+        version: 3.27.0(react-native@0.72.6)(react@18.2.0)
       superjson:
         specifier: 1.13.1
         version: 1.13.1
@@ -3385,7 +3385,7 @@ packages:
       react-native: 0.72.6(@babel/core@7.23.2)(@babel/preset-env@7.23.2)(react@18.2.0)
     dev: false
 
-  /@react-navigation/bottom-tabs@6.5.7(@react-navigation/native@6.1.6)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.1)(react-native@0.72.6)(react@18.2.0):
+  /@react-navigation/bottom-tabs@6.5.7(@react-navigation/native@6.1.6)(react-native-safe-area-context@4.6.3)(react-native-screens@3.27.0)(react-native@0.72.6)(react@18.2.0):
     resolution: {integrity: sha512-9oZYyRu2z7+1pr2dX5V54rHFPmlj4ztwQxFe85zwpnGcPtGIsXj7VCIdlHnjRHJBBFCszvJGQpYY6/G2+DfD+A==}
     peerDependencies:
       '@react-navigation/native': ^6.0.0
@@ -3400,7 +3400,7 @@ packages:
       react: 18.2.0
       react-native: 0.72.6(@babel/core@7.23.2)(@babel/preset-env@7.23.2)(react@18.2.0)
       react-native-safe-area-context: 4.6.3(react-native@0.72.6)(react@18.2.0)
-      react-native-screens: 3.22.1(react-native@0.72.6)(react@18.2.0)
+      react-native-screens: 3.27.0(react-native@0.72.6)(react@18.2.0)
       warn-once: 0.1.1
     dev: false
 
@@ -3432,7 +3432,7 @@ packages:
       react-native-safe-area-context: 4.6.3(react-native@0.72.6)(react@18.2.0)
     dev: false
 
-  /@react-navigation/native-stack@6.9.12(@react-navigation/native@6.1.6)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.1)(react-native@0.72.6)(react@18.2.0):
+  /@react-navigation/native-stack@6.9.12(@react-navigation/native@6.1.6)(react-native-safe-area-context@4.6.3)(react-native-screens@3.27.0)(react-native@0.72.6)(react@18.2.0):
     resolution: {integrity: sha512-kS2zXCWP0Rgt7uWaCUKrRl7U2U1Gp19rM1kyRY2YzBPXhWGVPjQ2ygBp88CTQzjgy8M07H/79jvGiZ0mlEJI+g==}
     peerDependencies:
       '@react-navigation/native': ^6.0.0
@@ -3446,7 +3446,7 @@ packages:
       react: 18.2.0
       react-native: 0.72.6(@babel/core@7.23.2)(@babel/preset-env@7.23.2)(react@18.2.0)
       react-native-safe-area-context: 4.6.3(react-native@0.72.6)(react@18.2.0)
-      react-native-screens: 3.22.1(react-native@0.72.6)(react@18.2.0)
+      react-native-screens: 3.27.0(react-native@0.72.6)(react@18.2.0)
       warn-once: 0.1.1
     dev: false
 
@@ -6347,7 +6347,7 @@ packages:
       invariant: 2.2.4
     dev: false
 
-  /expo-router@2.0.8(expo-constants@14.4.2)(expo-linking@5.0.2)(expo-modules-autolinking@1.5.1)(expo-status-bar@1.7.1)(expo@49.0.16)(metro@0.76.8)(react-dom@18.2.0)(react-native-gesture-handler@2.12.1)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.1)(react-native@0.72.6)(react@18.2.0):
+  /expo-router@2.0.8(expo-constants@14.4.2)(expo-linking@5.0.2)(expo-modules-autolinking@1.5.1)(expo-status-bar@1.7.1)(expo@49.0.16)(metro@0.76.8)(react-dom@18.2.0)(react-native-gesture-handler@2.12.1)(react-native-safe-area-context@4.6.3)(react-native-screens@3.27.0)(react-native@0.72.6)(react@18.2.0):
     resolution: {integrity: sha512-hKm15AzEmqASgts1qf1UQzjB4ON6iXrV+KsHVicK7L3lb2rLpI6Cj5ayWjjUAQ7GmTw5O2FR/gdlPYil4hALIQ==}
     peerDependencies:
       '@react-navigation/drawer': ^6.5.8
@@ -6372,9 +6372,9 @@ packages:
       '@bacons/react-views': 1.1.3(react-native@0.72.6)
       '@expo/metro-runtime': 2.2.10(react-native@0.72.6)
       '@radix-ui/react-slot': 1.0.1(react@18.2.0)
-      '@react-navigation/bottom-tabs': 6.5.7(@react-navigation/native@6.1.6)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.1)(react-native@0.72.6)(react@18.2.0)
+      '@react-navigation/bottom-tabs': 6.5.7(@react-navigation/native@6.1.6)(react-native-safe-area-context@4.6.3)(react-native-screens@3.27.0)(react-native@0.72.6)(react@18.2.0)
       '@react-navigation/native': 6.1.6(react-native@0.72.6)(react@18.2.0)
-      '@react-navigation/native-stack': 6.9.12(@react-navigation/native@6.1.6)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.1)(react-native@0.72.6)(react@18.2.0)
+      '@react-navigation/native-stack': 6.9.12(@react-navigation/native@6.1.6)(react-native-safe-area-context@4.6.3)(react-native-screens@3.27.0)(react-native@0.72.6)(react@18.2.0)
       expo: 49.0.16(@babel/core@7.23.2)
       expo-constants: 14.4.2(expo@49.0.16)
       expo-head: 0.0.14(expo@49.0.16)(react-dom@18.2.0)(react-native@0.72.6)(react@18.2.0)
@@ -6386,7 +6386,7 @@ packages:
       react-helmet-async: 1.3.0(react-dom@18.2.0)(react@18.2.0)
       react-native-gesture-handler: 2.12.1(react-native@0.72.6)(react@18.2.0)
       react-native-safe-area-context: 4.6.3(react-native@0.72.6)(react@18.2.0)
-      react-native-screens: 3.22.1(react-native@0.72.6)(react@18.2.0)
+      react-native-screens: 3.27.0(react-native@0.72.6)(react@18.2.0)
       schema-utils: 4.2.0
       url: 0.11.0
     transitivePeerDependencies:
@@ -9865,8 +9865,8 @@ packages:
       react-native: 0.72.6(@babel/core@7.23.2)(@babel/preset-env@7.23.2)(react@18.2.0)
     dev: false
 
-  /react-native-screens@3.22.1(react-native@0.72.6)(react@18.2.0):
-    resolution: {integrity: sha512-ffzwUdVKf+iLqhWSzN5DXBm0s2w5sN0P+TaHHPAx42LT7+DT0g8PkHT1QDvxpR5vCEPSS1i3EswyVK4HCuhTYg==}
+  /react-native-screens@3.27.0(react-native@0.72.6)(react@18.2.0):
+    resolution: {integrity: sha512-FzSUygZ7yLQyhDJZsl7wU68LwRpVtVdqOPWribmEU3Tf26FohFGGcfJx1D8lf2V2Teb8tI+IaLnXCKbyh2xffA==}
     peerDependencies:
       react: '*'
       react-native: '*'

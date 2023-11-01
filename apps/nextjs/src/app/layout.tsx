@@ -12,6 +12,13 @@ const fontSans = Inter({
   variable: "--font-sans",
 });
 
+/**
+ * Since we're passing `headers()` to the `TRPCReactProvider` we need to
+ * make the entire app dynamic. You can move the `TRPCReactProvider` further
+ * down the tree (e.g. /dashboard and onwards) to make part of the app statically rendered.
+ */
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Create T3 Turbo",
   description: "Simple monorepo with shared backend for web & mobile apps",

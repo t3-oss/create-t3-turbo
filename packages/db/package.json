@@ -10,20 +10,21 @@
     "lint": "eslint .",
     "format": "prettier --check \"**/*.{mjs,ts,md,json}\"",
     "push": "drizzle-kit push:mysql",
+    "studio": "drizzle-kit studio",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@planetscale/database": "^1.11.0",
-    "drizzle-orm": "^0.28.5"
+    "drizzle-orm": "^0.28.6"
   },
   "devDependencies": {
-    "@acme/eslint-config": "^0.2.0",
-    "@acme/prettier-config": "^0.1.0",
-    "@acme/tsconfig": "^0.1.0",
+    "@acme/eslint-config": "workspace:^0.2.0",
+    "@acme/prettier-config": "workspace:^0.1.0",
+    "@acme/tsconfig": "workspace:^0.1.0",
     "dotenv-cli": "^7.3.0",
     "drizzle-kit": "^0.19.13",
-    "eslint": "^8.48.0",
-    "prettier": "^3.0.2",
+    "eslint": "^8.52.0",
+    "prettier": "^3.0.3",
     "typescript": "^5.2.2"
   },
   "eslintConfig": {

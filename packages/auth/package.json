@@ -12,22 +12,22 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@acme/db": "^0.1.0",
-    "@auth/core": "^0.12.0",
-    "@auth/drizzle-adapter": "^0.3.2",
-    "@t3-oss/env-nextjs": "^0.6.1",
-    "next": "^13.4.19",
-    "next-auth": "0.0.0-manual.b53ca00b",
+    "@acme/db": "workspace:^0.1.0",
+    "@auth/core": "^0.18.0",
+    "@auth/drizzle-adapter": "^0.3.5",
+    "@t3-oss/env-nextjs": "^0.7.1",
+    "next": "^14.0.1",
+    "next-auth": "5.0.0-beta.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "zod": "^3.22.2"
   },
   "devDependencies": {
-    "@acme/eslint-config": "^0.2.0",
-    "@acme/prettier-config": "^0.1.0",
-    "@acme/tsconfig": "^0.1.0",
-    "eslint": "^8.48.0",
-    "prettier": "^3.0.2",
+    "@acme/eslint-config": "workspace:^0.2.0",
+    "@acme/prettier-config": "workspace:^0.1.0",
+    "@acme/tsconfig": "workspace:^0.1.0",
+    "eslint": "^8.52.0",
+    "prettier": "^3.0.3",
     "typescript": "^5.2.2"
   },
   "eslintConfig": {

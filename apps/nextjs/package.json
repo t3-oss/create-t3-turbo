@@ -13,9 +13,9 @@
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
-    "@acme/api": "^0.1.0",
-    "@acme/auth": "^0.1.0",
-    "@acme/db": "^0.1.0",
+    "@acme/api": "workspace:^0.1.0",
+    "@acme/auth": "workspace:^0.1.0",
+    "@acme/db": "workspace:^0.1.0",
     "@t3-oss/env-nextjs": "^0.7.1",
     "@tanstack/react-query": "^5.4.3",
     "@tanstack/react-query-devtools": "^5.4.3",
@@ -31,10 +31,10 @@
     "zod": "^3.22.2"
   },
   "devDependencies": {
-    "@acme/eslint-config": "^0.2.0",
-    "@acme/prettier-config": "^0.1.0",
-    "@acme/tailwind-config": "^0.1.0",
-    "@acme/tsconfig": "^0.1.0",
+    "@acme/eslint-config": "workspace:^0.2.0",
+    "@acme/prettier-config": "workspace:^0.1.0",
+    "@acme/tailwind-config": "workspace:^0.1.0",
+    "@acme/tsconfig": "workspace:^0.1.0",
     "@types/node": "^18.18.8",
     "@types/react": "^18.2.33",
     "@types/react-dom": "^18.2.14",

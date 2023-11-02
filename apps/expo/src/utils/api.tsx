@@ -7,6 +7,8 @@ import superjson from "superjson";
 
 import type { AppRouter } from "@acme/api";
 
+import { getToken } from "./session-store";
+
 /**
  * A set of typesafe hooks for consuming your API.
  */
@@ -50,9 +52,13 @@ export function TRPCProvider(props: { children: React.ReactNode }) {
       links: [
         httpBatchLink({
           url: `${getBaseUrl()}/api/trpc`,
-          headers() {
+          headers: async () => {
             const headers = new Map<string, string>();
             headers.set("x-trpc-source", "expo-react");
+
+            const token = await getToken();
+            if (token) headers.set("Authorization", `Bearer ${token}`);
+
             return Object.fromEntries(headers);
           },
         }),

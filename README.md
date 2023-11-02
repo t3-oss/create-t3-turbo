@@ -49,7 +49,7 @@ packages
   ├─ api
   |   └─ tRPC v10 router definition
   ├─ auth
-  |   └─ Authentication using next-auth. **NOTE: Only for Next.js app, not Expo**
+  |   └─ Authentication using next-auth.
   └─ db
       └─ Typesafe db calls using Drizzle & Planetscale
 tooling
@@ -129,6 +129,9 @@ No. Solito will not be included in this repo. It is a great tool if you want to 
 Integrating Solito into this repo isn't hard, and there are a few [offical templates](https://github.com/nandorojo/solito/tree/master/example-monorepos) by the creators of Solito that you can use as a reference.
 
 ### What auth solution should I use instead of Next-Auth.js for Expo?
+
+> **Note**
+> There is nowadays a functioning OAuth solution for next-auth on Expo. Take it as a starting point and expand to suit your needs.
 
 I've left this kind of open for you to decide. Some options are [Clerk](https://clerk.dev), [Supabase Auth](https://supabase.com/docs/guides/auth), [Firebase Auth](https://firebase.google.com/docs/auth/) or [Auth0](https://auth0.com/docs). Note that if you're dropping the Expo app for something more "browser-like", you can still use Next-Auth.js for those. [See an example in a Plasmo Chrome Extension here](https://github.com/t3-oss/create-t3-turbo/tree/chrome/apps/chrome).
 

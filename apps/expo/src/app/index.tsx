@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Button, Pressable, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Link, Stack } from "expo-router";
 import { FlashList } from "@shopify/flash-list";
@@ -21,17 +21,17 @@ function PostCard(props: {
             params: { id: props.post.id },
           }}
         >
-          <TouchableOpacity>
+          <Pressable>
             <Text className="text-xl font-semibold text-pink-400">
               {props.post.title}
             </Text>
             <Text className="mt-2 text-white">{props.post.content}</Text>
-          </TouchableOpacity>
+          </Pressable>
         </Link>
       </View>
-      <TouchableOpacity onPress={props.onDelete}>
+      <Pressable onPress={props.onDelete}>
         <Text className="font-bold uppercase text-pink-400">Delete</Text>
-      </TouchableOpacity>
+      </Pressable>
     </View>
   );
 }
@@ -76,7 +76,7 @@ function CreatePost() {
           {error.data.zodError.fieldErrors.content}
         </Text>
       )}
-      <TouchableOpacity
+      <Pressable
         className="rounded bg-pink-400 p-2"
         onPress={() => {
           mutate({
@@ -86,7 +86,12 @@ function CreatePost() {
         }}
       >
         <Text className="font-semibold text-white">Publish post</Text>
-      </TouchableOpacity>
+      </Pressable>
+      {error?.data?.code === "UNAUTHORIZED" && (
+        <Text className="mt-2 text-red-500">
+          You need to be logged in to create a post
+        </Text>
+      )}
     </View>
   );
 }
@@ -105,7 +110,7 @@ const Index = () => {
       {/* Changes page title visible on the header */}
       <Stack.Screen options={{ title: "Home Page" }} />
       <View className="h-full w-full p-4">
-        <Text className="mx-auto pb-2 text-5xl font-bold text-white">
+        <Text className="pb-2 text-center text-5xl font-bold text-white">
           Create <Text className="text-pink-400">T3</Text> Turbo
         </Text>
 

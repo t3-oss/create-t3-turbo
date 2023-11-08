@@ -4,7 +4,7 @@
 > Due to high demand, this repo now uses the `app` directory with some new experimental features. If you want to use the more traditional `pages` router, [check out the repo before the update](https://github.com/t3-oss/create-t3-turbo/tree/414aff131ca124573e721f3779df3edb64989fd4).
 
 > **Note**
-> OAuth deployments are now working for preview deployments. Read [deployment guide](https://github.com/t3-oss/create-t3-turbo#auth-proxy) and [check out the source](/apps/auth-proxy) to learn more!
+> OAuth deployments are now working for preview deployments. Read [deployment guide](https://github.com/t3-oss/create-t3-turbo#auth-proxy) and [check out the source](./apps/auth-proxy) to learn more!
 
 ## Installation
 
@@ -174,7 +174,7 @@ Then, there are some environment variables you need to set in order to get OAuth
 - For the Next.js app, set `AUTH_REDIRECT_PROXY_URL` to the URL of the auth proxy.
 - For the auth proxy server, set `AUTH_REDIRECT_PROXY_URL` to the same as above, as well as `AUTH_DISCORD_ID`, `AUTH_DISCORD_SECRET` (or the equivalent for your OAuth provider(s)). Lastly, set `AUTH_SECRET` **to the same value as in the Next.js app** for preview environments.
 
-Read more about the setup in [the auth proxy README](/apps/auth-proxy/README.md).
+Read more about the setup in [the auth proxy README](./apps/auth-proxy/README.md).
 
 ### Expo
 

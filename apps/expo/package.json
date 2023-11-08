@@ -59,6 +59,9 @@
     "extends": [
       "@acme/eslint-config/base",
       "@acme/eslint-config/react"
+    ],
+    "ignorePatterns": [
+      "expo-plugins/**"
     ]
   },
   "prettier": "@acme/prettier-config"

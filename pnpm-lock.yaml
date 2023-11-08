@@ -27,6 +27,34 @@ importers:
         specifier: ^5.2.2
         version: 5.2.2
 
+  apps/auth-proxy:
+    dependencies:
+      '@auth/core':
+        specifier: 0.18.0
+        version: 0.18.0
+    devDependencies:
+      '@acme/eslint-config':
+        specifier: workspace:^0.2.0
+        version: link:../../tooling/eslint
+      '@acme/prettier-config':
+        specifier: workspace:^0.1.0
+        version: link:../../tooling/prettier
+      '@acme/tailwind-config':
+        specifier: workspace:^0.1.0
+        version: link:../../tooling/tailwind
+      '@acme/tsconfig':
+        specifier: workspace:^0.1.0
+        version: link:../../tooling/typescript
+      eslint:
+        specifier: ^8.52.0
+        version: 8.52.0
+      prettier:
+        specifier: ^3.0.3
+        version: 3.0.3
+      typescript:
+        specifier: ^5.2.2
+        version: 5.2.2
+
   apps/expo:
     dependencies:
       '@expo/metro-config':

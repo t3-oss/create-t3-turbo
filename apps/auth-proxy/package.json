@@ -1,0 +1,30 @@
+{
+  "name": "@acme/auth-proxy",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "clean": "rm -rf .turbo node_modules",
+    "lint": "eslint .",
+    "format": "prettier --check \"**/*.{mjs,ts,md,json}\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@auth/core": "^0.18.0"
+  },
+  "devDependencies": {
+    "@acme/eslint-config": "workspace:^0.2.0",
+    "@acme/prettier-config": "workspace:^0.1.0",
+    "@acme/tailwind-config": "workspace:^0.1.0",
+    "@acme/tsconfig": "workspace:^0.1.0",
+    "eslint": "^8.52.0",
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@acme/eslint-config/base"
+    ]
+  },
+  "prettier": "@acme/prettier-config"
+}

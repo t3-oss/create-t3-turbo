@@ -1,2 +1,5 @@
-export { default } from "../[auth].js";
-export const config = { runtime: "edge" };
+import { eventHandler } from "h3";
+
+import { handleEvent } from "../[auth].js";
+
+export default eventHandler(handleEvent);

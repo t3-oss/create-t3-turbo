@@ -1,15 +1,17 @@
 import type { AuthConfig } from "@auth/core";
 import { Auth } from "@auth/core";
 import Discord from "@auth/core/providers/discord";
-import { eventHandler, getHeaders, getRequestURL } from "h3";
+import { eventHandler, getHeaders, getRequestURL, readBody } from "h3";
 
-export default eventHandler((event) => {
+export default eventHandler(async (event) => {
   const request = new Request(getRequestURL(event), {
+    method: event.method,
     headers: new Headers(
       Object.entries(getHeaders(event)).filter(
         (e): e is [string, string] => !!e[1],
       ),
     ),
+    body: await readBody(event),
   });
 
   return Auth(request, getDefaults({ providers: [Discord] }));

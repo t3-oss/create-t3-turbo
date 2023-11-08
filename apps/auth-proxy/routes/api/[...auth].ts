@@ -1,15 +1,9 @@
 import type { AuthConfig } from "@auth/core";
 import { Auth } from "@auth/core";
 import Discord from "@auth/core/providers/discord";
-import { eventHandler, getHeaders, getRequestURL, readBody } from "h3";
+import { eventHandler, toWebRequest } from "h3";
 
 export default eventHandler(async (event) => {
-  const request = new Request(getRequestURL(event), {
-    method: event.method,
-    headers: getHeaders(event) as unknown as Headers,
-    body: event.method === "POST" ? await readBody(event) : undefined,
-  });
-
   const config = {
     secret: process.env.AUTH_SECRET,
     trustHost: !!process.env.VERCEL,
@@ -22,5 +16,5 @@ export default eventHandler(async (event) => {
     ],
   } satisfies AuthConfig;
 
-  return Auth(request, config);
+  return Auth(toWebRequest(event), config);
 });

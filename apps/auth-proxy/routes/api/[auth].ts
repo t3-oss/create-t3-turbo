@@ -11,8 +11,6 @@ export const handleEvent = async (event: H3Event) => {
     body: event.method === "POST" ? await readBody(event) : undefined,
   });
 
-  console.log("heads", getHeaders(event));
-
   const config = {
     secret: process.env.AUTH_SECRET,
     trustHost: !!process.env.VERCEL,
@@ -25,14 +23,7 @@ export const handleEvent = async (event: H3Event) => {
     ],
   } satisfies AuthConfig;
 
-  const response = await Auth(request, config);
-
-  console.log(
-    getRequestURL(event).href,
-    Object.fromEntries(response.headers.entries()),
-  );
-
-  return response;
+  return Auth(request, config);
 };
 
 export default eventHandler(handleEvent);

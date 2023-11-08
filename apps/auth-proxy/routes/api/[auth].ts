@@ -12,7 +12,7 @@ export const handleEvent = async (event: H3Event) => {
         (e): e is [string, string] => !!e[1],
       ),
     ),
-    body: await readBody(event),
+    body: event.method === "POST" ? await readBody(event) : undefined,
   });
 
   const config = {

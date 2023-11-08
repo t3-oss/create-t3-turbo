@@ -3,7 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "build": "nitro build",
     "clean": "rm -rf .turbo node_modules",
+    "dev": "nitro dev",
     "lint": "eslint .",
     "format": "prettier --check \"**/*.{mjs,ts,md,json}\"",
     "typecheck": "tsc --noEmit"
@@ -17,6 +19,7 @@
     "@acme/tailwind-config": "workspace:^0.1.0",
     "@acme/tsconfig": "workspace:^0.1.0",
     "eslint": "^8.52.0",
+    "nitropack": "^2.7.2",
     "prettier": "^3.0.3",
     "typescript": "^5.2.2"
   },

@@ -1,14 +1,21 @@
 import type { AuthConfig } from "@auth/core";
 import { Auth } from "@auth/core";
 import Discord from "@auth/core/providers/discord";
+import { eventHandler, getHeaders, getRequestURL } from "h3";
 
-export default function handler(req: Request) {
-  return Auth(req, getDefaults({ providers: [Discord] }));
-}
+export default eventHandler((event) => {
+  const request = new Request(getRequestURL(event), {
+    headers: new Headers(
+      Object.entries(getHeaders(event)).filter(
+        (e): e is [string, string] => !!e[1],
+      ),
+    ),
+  });
 
-export const config = { runtime: "edge" };
+  return Auth(request, getDefaults({ providers: [Discord] }));
+});
 
-export function getDefaults(config: AuthConfig) {
+function getDefaults(config: AuthConfig) {
   config.secret ??= process.env.AUTH_SECRET;
   config.trustHost ??= !!process.env.VERCEL;
   config.redirectProxyUrl ??= process.env.AUTH_REDIRECT_PROXY_URL;

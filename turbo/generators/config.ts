@@ -72,7 +72,7 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
          * Install deps and format everything
          */
         if ("name" in answers && typeof answers.name === "string") {
-          execSync("pnpm manypkg fix", {
+          execSync("pnpm dlx sherif@latest --fix", {
             stdio: "inherit",
           });
           execSync(

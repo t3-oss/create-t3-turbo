@@ -155,11 +155,7 @@ If you need to share runtime code between the client and server, such as input v
 
 Let's deploy the Next.js application to [Vercel](https://vercel.com). If you've never deployed a Turborepo app there, don't worry, the steps are quite straightforward. You can also read the [official Turborepo guide](https://vercel.com/docs/concepts/monorepos/turborepo) on deploying to Vercel.
 
-1. Create a new project on Vercel, select the `apps/nextjs` folder as the root directory and apply the following build settings:
-
-   <img width="927" alt="Vercel deployment settings" src="https://user-images.githubusercontent.com/11340449/201974887-b6403a32-5570-4ce6-b146-c486c0dbd244.png">
-
-   > The install command filters out the expo package and saves us a few seconds (and cache size) of dependency installation. The build command utilizes Turbo to build the application.
+1. Create a new project on Vercel, select the `apps/nextjs` folder as the root directory. Vercel's zero-config system should handle all configurations for you.
 
 2. Add your `DATABASE_URL` environment variable.
 

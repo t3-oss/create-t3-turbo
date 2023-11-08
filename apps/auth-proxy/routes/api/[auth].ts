@@ -15,6 +15,8 @@ export const handleEvent = async (event: H3Event) => {
     body: event.method === "POST" ? await readBody(event) : undefined,
   });
 
+  console.log(request);
+
   const config = {
     secret: process.env.AUTH_SECRET,
     trustHost: !!process.env.VERCEL,

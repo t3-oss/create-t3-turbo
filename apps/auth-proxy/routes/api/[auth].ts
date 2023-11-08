@@ -27,7 +27,14 @@ export const handleEvent = async (event: H3Event) => {
     ],
   } satisfies AuthConfig;
 
-  return Auth(request, config);
+  const response = await Auth(request, config);
+
+  console.log(
+    getRequestURL(event).href,
+    Object.fromEntries(response.headers.entries()),
+  );
+
+  return response;
 };
 
 export default eventHandler(handleEvent);

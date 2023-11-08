@@ -5,7 +5,7 @@
   "scripts": {
     "build": "nitro build",
     "clean": "rm -rf .turbo node_modules",
-    "dev": "nitro dev",
+    "dev": "nitro dev --port 3001",
     "lint": "eslint .",
     "format": "prettier --check \"**/*.{mjs,ts,md,json}\"",
     "typecheck": "tsc --noEmit"

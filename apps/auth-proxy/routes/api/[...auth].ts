@@ -1,10 +1,9 @@
 import type { AuthConfig } from "@auth/core";
 import { Auth } from "@auth/core";
 import Discord from "@auth/core/providers/discord";
-import type { H3Event } from "h3";
 import { eventHandler, getHeaders, getRequestURL, readBody } from "h3";
 
-export const handleEvent = async (event: H3Event) => {
+export default eventHandler(async (event) => {
   const request = new Request(getRequestURL(event), {
     method: event.method,
     headers: getHeaders(event) as unknown as Headers,
@@ -24,6 +23,4 @@ export const handleEvent = async (event: H3Event) => {
   } satisfies AuthConfig;
 
   return Auth(request, config);
-};
-
-export default eventHandler(handleEvent);
+});

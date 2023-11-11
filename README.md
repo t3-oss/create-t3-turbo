@@ -41,7 +41,7 @@ apps
   |   ├─ Tailwind using Nativewind
   |   └─ Typesafe API calls using tRPC
   └─ next.js
-      ├─ Next.js 13
+      ├─ Next.js 14
       ├─ React 18
       ├─ Tailwind CSS
       └─ E2E Typesafe API Server & Client

@@ -7,7 +7,7 @@
     "clean": "git clean -xdf .next .turbo node_modules",
     "dev": "pnpm with-env next dev",
     "lint": "dotenv -v SKIP_ENV_VALIDATION=1 next lint",
-    "format": "prettier --check \"**/*.{js,cjs,mjs,ts,tsx,md,json}\"",
+    "format": "prettier --check \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path ../../.gitignore",
     "start": "pnpm with-env next start",
     "typecheck": "tsc --noEmit",
     "with-env": "dotenv -e ../../.env --"

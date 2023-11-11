@@ -8,7 +8,7 @@
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
     "lint": "eslint .",
-    "format": "prettier --check \"**/*.{mjs,ts,md,json}\" --ignore-path ../../.gitignore",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
     "push": "drizzle-kit push:mysql",
     "studio": "drizzle-kit studio",
     "typecheck": "tsc --noEmit"

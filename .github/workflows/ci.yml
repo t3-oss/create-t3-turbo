@@ -61,11 +61,8 @@ jobs:
     needs: [lint, format, typecheck]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup
-        uses: ./tooling/github/setup
-
       - uses: juliusmarminge/gh-failed-action-commenter@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           FIXES: '{ "format": "format:fix", "lint": "lint:fix" }'

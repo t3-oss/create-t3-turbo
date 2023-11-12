@@ -67,3 +67,5 @@ jobs:
         uses: ./tooling/github/setup
 
       - uses: juliusmarminge/gh-failed-action-commenter@main
+        with:
+          FIXES: '"{ "format": "format:fix", "lint": "lint:fix" }"'

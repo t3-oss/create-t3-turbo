@@ -57,6 +57,8 @@ jobs:
         run: turbo typecheck
 
   comment-if-failed:
+    if: ${{ always() }}
+    needs: [lint, format, typecheck]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

@@ -55,3 +55,13 @@ jobs:
 
       - name: Typecheck
         run: turbo typecheck
+
+  comment-if-failed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup
+        uses: ./tooling/github/setup
+
+      - uses: juliusmarminge/gh-failed-action-commenter@main

@@ -55,14 +55,3 @@ jobs:
 
       - name: Typecheck
         run: turbo typecheck
-
-  comment-if-failed:
-    if: ${{ always() }}
-    needs: [lint, format, typecheck]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: juliusmarminge/gh-failed-action-commenter@0.0.1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          FIXES: '{ "format": "format:fix", "lint": "lint:fix" }'

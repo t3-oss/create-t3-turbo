@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 
+import { api } from "~/trpc/server";
 import { AuthShowcase } from "./_components/auth-showcase";
 import {
   CreatePostForm,
@@ -9,7 +10,9 @@ import {
 
 export const runtime = "edge";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const posts = await api.post.all.query();
+
   return (
     <main className="flex h-screen flex-col items-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
       <div className="container mt-12 flex flex-col items-center justify-center gap-4 py-8">

@@ -37,7 +37,7 @@ function PostCard(props: {
 }
 
 function CreatePost() {
-  const utils = api.useContext();
+  const utils = api.useUtils();
 
   const [title, setTitle] = React.useState("");
   const [content, setContent] = React.useState("");
@@ -97,7 +97,7 @@ function CreatePost() {
 }
 
 const Index = () => {
-  const utils = api.useContext();
+  const utils = api.useUtils();
 
   const postQuery = api.post.all.useQuery();
 

@@ -28,9 +28,9 @@ import { db } from "@acme/db";
  */
 export const createTRPCContext = async (opts: {
   headers: Headers;
-  auth: Session | null;
+  session: Session | null;
 }) => {
-  const session = opts.auth ?? (await auth());
+  const session = opts.session ?? (await auth());
   const source = opts.headers.get("x-trpc-source") ?? "unknown";
 
   console.log(">>> tRPC Request from", source, "by", session?.user);

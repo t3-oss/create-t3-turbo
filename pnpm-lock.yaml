@@ -79,20 +79,20 @@ importers:
         specifier: next
         version: 11.0.0-alpha-next-2023-10-26-15-15-56.93
       expo:
-        specifier: ^49.0.18
-        version: 49.0.18(@babel/core@7.23.2)
+        specifier: ^49.0.21
+        version: 49.0.21(@babel/core@7.23.2)
       expo-constants:
         specifier: ~14.4.2
-        version: 14.4.2(expo@49.0.18)
+        version: 14.4.2(expo@49.0.21)
       expo-linking:
         specifier: ~5.0.2
-        version: 5.0.2(expo@49.0.18)
+        version: 5.0.2(expo@49.0.21)
       expo-router:
         specifier: 2.0.12
-        version: 2.0.12(expo-constants@14.4.2)(expo-linking@5.0.2)(expo-modules-autolinking@1.5.1)(expo-status-bar@1.7.1)(expo@49.0.18)(metro@0.76.8)(react-dom@18.2.0)(react-native-gesture-handler@2.12.1)(react-native-reanimated@3.3.0)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.1)(react-native@0.72.7)(react@18.2.0)
+        version: 2.0.12(expo-constants@14.4.2)(expo-linking@5.0.2)(expo-modules-autolinking@1.5.1)(expo-status-bar@1.7.1)(expo@49.0.21)(metro@0.76.8)(react-dom@18.2.0)(react-native-gesture-handler@2.12.1)(react-native-reanimated@3.3.0)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.1)(react-native@0.72.7)(react@18.2.0)
       expo-splash-screen:
         specifier: ~0.22.0
-        version: 0.22.0(expo-modules-autolinking@1.5.1)(expo@49.0.18)
+        version: 0.22.0(expo-modules-autolinking@1.5.1)(expo@49.0.21)
       expo-status-bar:
         specifier: ~1.7.1
         version: 1.7.1
@@ -2575,8 +2575,8 @@ packages:
       safe-json-stringify: 1.2.0
     dev: false
 
-  /@expo/cli@0.10.15(expo-modules-autolinking@1.5.1):
-    resolution: {integrity: sha512-CIpfIB5oB/s/op6Ke5M7TI4/yOi5raTR9ps9UD+ExazonTDAzEtXANVWmAR7Z4+wUyqycniWxTpICcaxri2a3A==}
+  /@expo/cli@0.10.16(expo-modules-autolinking@1.5.1):
+    resolution: {integrity: sha512-EwgnRN5AMElg0JJjFLJTPk5hYkVXxnNMLIvZBiTfGoCq+rDw6u7Mg5l2Bbm/geSHOoplaHyPZ/Wr23FAuZWehA==}
     hasBin: true
     dependencies:
       '@babel/runtime': 7.23.2
@@ -6901,20 +6901,20 @@ packages:
       signal-exit: 3.0.7
       strip-final-newline: 2.0.0
 
-  /expo-application@5.3.0(expo@49.0.18):
+  /expo-application@5.3.0(expo@49.0.21):
     resolution: {integrity: sha512-XLkaELwmiXW6JjFVkwuiFQaGZoNKAxNAcSJkFdz8s4rCljEwehylbzoPk37QHw3cxqb4v0/2EICtg4C4kpEVCA==}
     peerDependencies:
       expo: '*'
     dependencies:
-      expo: 49.0.18(@babel/core@7.23.2)
+      expo: 49.0.21(@babel/core@7.23.2)
     dev: false
 
-  /expo-asset@8.10.1(expo@49.0.18):
+  /expo-asset@8.10.1(expo@49.0.21):
     resolution: {integrity: sha512-5VMTESxgY9GBsspO/esY25SKEa7RyascVkLe/OcL1WgblNFm7xCCEEUIW8VWS1nHJQGYxpMZPr3bEfjMpdWdyA==}
     dependencies:
       blueimp-md5: 2.19.0
-      expo-constants: 14.4.2(expo@49.0.18)
-      expo-file-system: 15.4.4(expo@49.0.18)
+      expo-constants: 14.4.2(expo@49.0.21)
+      expo-file-system: 15.4.5(expo@49.0.21)
       invariant: 2.2.4
       md5-file: 3.2.3
       path-browserify: 1.0.1
@@ -6924,44 +6924,44 @@ packages:
       - supports-color
     dev: false
 
-  /expo-constants@14.4.2(expo@49.0.18):
+  /expo-constants@14.4.2(expo@49.0.21):
     resolution: {integrity: sha512-nOB122DOAjk+KrJT69lFQAoYVQGQjFHSigCPVBzVdko9S1xGsfiOH9+X5dygTsZTIlVLpQJDdmZ7ONiv3i+26w==}
     peerDependencies:
       expo: '*'
     dependencies:
       '@expo/config': 8.1.2
-      expo: 49.0.18(@babel/core@7.23.2)
+      expo: 49.0.21(@babel/core@7.23.2)
       uuid: 3.4.0
     transitivePeerDependencies:
       - supports-color
     dev: false
 
-  /expo-file-system@15.4.4(expo@49.0.18):
-    resolution: {integrity: sha512-F0xS88D85F7qVQ61r0qBnzh6VW/s6iIl+VaQEEi2nAIOQHw1JIEj4yCXPLTtbyn5VmArbe2dSL3KYz1V+BLkKA==}
+  /expo-file-system@15.4.5(expo@49.0.21):
+    resolution: {integrity: sha512-xy61KaTaDgXhT/dllwYDHm3ch026EyO8j4eC6wSVr/yE12MMMxAC09yGwy4f7kkOs6ztGVQF5j7ldRzNLN4l0Q==}
     peerDependencies:
       expo: '*'
     dependencies:
-      expo: 49.0.18(@babel/core@7.23.2)
+      expo: 49.0.21(@babel/core@7.23.2)
       uuid: 3.4.0
     dev: false
 
-  /expo-font@11.4.0(expo@49.0.18):
+  /expo-font@11.4.0(expo@49.0.21):
     resolution: {integrity: sha512-nkmezCFD7gR/I6R+e3/ry18uEfF8uYrr6h+PdBJu+3dawoLOpo+wFb/RG9bHUekU1/cPanR58LR7G5MEMKHR2w==}
     peerDependencies:
       expo: '*'
     dependencies:
-      expo: 49.0.18(@babel/core@7.23.2)
+      expo: 49.0.21(@babel/core@7.23.2)
       fontfaceobserver: 2.3.0
     dev: false
 
-  /expo-head@0.0.18(expo@49.0.18)(react-dom@18.2.0)(react-native@0.72.7)(react@18.2.0):
+  /expo-head@0.0.18(expo@49.0.21)(react-dom@18.2.0)(react-native@0.72.7)(react@18.2.0):
     resolution: {integrity: sha512-GaTAUiPf30GgoUTJEDJI0UdDUlLdfbFffU6NerIMwklSCFXJ1f9Nr8XG5qPEwm71ri/dssbToaMorIaXxtIc7Q==}
     peerDependencies:
       expo: '*'
       react: '*'
       react-native: '*'
     dependencies:
-      expo: 49.0.18(@babel/core@7.23.2)
+      expo: 49.0.21(@babel/core@7.23.2)
       react: 18.2.0
       react-helmet-async: 1.3.0(react-dom@18.2.0)(react@18.2.0)
       react-native: 0.72.7(@babel/core@7.23.2)(@babel/preset-env@7.23.2)(react@18.2.0)
@@ -6969,19 +6969,19 @@ packages:
       - react-dom
     dev: false
 
-  /expo-keep-awake@12.3.0(expo@49.0.18):
+  /expo-keep-awake@12.3.0(expo@49.0.21):
     resolution: {integrity: sha512-ujiJg1p9EdCOYS05jh5PtUrfiZnK0yyLy+UewzqrjUqIT8eAGMQbkfOn3C3fHE7AKd5AefSMzJnS3lYZcZYHDw==}
     peerDependencies:
       expo: '*'
     dependencies:
-      expo: 49.0.18(@babel/core@7.23.2)
+      expo: 49.0.21(@babel/core@7.23.2)
     dev: false
 
-  /expo-linking@5.0.2(expo@49.0.18):
+  /expo-linking@5.0.2(expo@49.0.21):
     resolution: {integrity: sha512-SPQus0+tYGx9c69Uw4wmdo3rkKX8vRT1vyJz/mvkpSlZN986s0NmP/V0M5vDv5Zv2qZzVdqJyuITFe0Pg5aI+A==}
     dependencies:
       '@types/qs': 6.9.7
-      expo-constants: 14.4.2(expo@49.0.18)
+      expo-constants: 14.4.2(expo@49.0.21)
       invariant: 2.2.4
       qs: 6.11.1
       url-parse: 1.5.10
@@ -7004,14 +7004,14 @@ packages:
       - supports-color
     dev: false
 
-  /expo-modules-core@1.5.11:
-    resolution: {integrity: sha512-1Dj2t74nVjxq6xEQf2b9WFfAMhPzVnR0thY0PfRFgob4STyj3sq1U4PIHVWvKQBtDKIa227DrNRb+Hu+LqKWQg==}
+  /expo-modules-core@1.5.12:
+    resolution: {integrity: sha512-mY4wTDU458dhwk7IVxLNkePlYXjs9BTgk4NQHBUXf0LapXsvr+i711qPZaFNO4egf5qq6fQV+Yfd/KUguHstnQ==}
     dependencies:
       compare-versions: 3.6.0
       invariant: 2.2.4
     dev: false
 
-  /expo-router@2.0.12(expo-constants@14.4.2)(expo-linking@5.0.2)(expo-modules-autolinking@1.5.1)(expo-status-bar@1.7.1)(expo@49.0.18)(metro@0.76.8)(react-dom@18.2.0)(react-native-gesture-handler@2.12.1)(react-native-reanimated@3.3.0)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.1)(react-native@0.72.7)(react@18.2.0):
+  /expo-router@2.0.12(expo-constants@14.4.2)(expo-linking@5.0.2)(expo-modules-autolinking@1.5.1)(expo-status-bar@1.7.1)(expo@49.0.21)(metro@0.76.8)(react-dom@18.2.0)(react-native-gesture-handler@2.12.1)(react-native-reanimated@3.3.0)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.1)(react-native@0.72.7)(react@18.2.0):
     resolution: {integrity: sha512-4Z4hUE3H+jCjpbkoHD2da6osjnkSeoE882B8ynQTOZWSeKiLj8itM4tM0Dhctjo6OGuIV7A3fkqj843Yb6aHgQ==}
     peerDependencies:
       '@react-navigation/drawer': ^6.5.8
@@ -7039,11 +7039,11 @@ packages:
       '@react-navigation/bottom-tabs': 6.5.7(@react-navigation/native@6.1.6)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.1)(react-native@0.72.7)(react@18.2.0)
       '@react-navigation/native': 6.1.6(react-native@0.72.7)(react@18.2.0)
       '@react-navigation/native-stack': 6.9.12(@react-navigation/native@6.1.6)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.1)(react-native@0.72.7)(react@18.2.0)
-      expo: 49.0.18(@babel/core@7.23.2)
-      expo-constants: 14.4.2(expo@49.0.18)
-      expo-head: 0.0.18(expo@49.0.18)(react-dom@18.2.0)(react-native@0.72.7)(react@18.2.0)
-      expo-linking: 5.0.2(expo@49.0.18)
-      expo-splash-screen: 0.20.5(expo-modules-autolinking@1.5.1)(expo@49.0.18)
+      expo: 49.0.21(@babel/core@7.23.2)
+      expo-constants: 14.4.2(expo@49.0.21)
+      expo-head: 0.0.18(expo@49.0.21)(react-dom@18.2.0)(react-native@0.72.7)(react@18.2.0)
+      expo-linking: 5.0.2(expo@49.0.21)
+      expo-splash-screen: 0.20.5(expo-modules-autolinking@1.5.1)(expo@49.0.21)
       expo-status-bar: 1.7.1
       metro: 0.76.8
       query-string: 7.1.3
@@ -7063,26 +7063,26 @@ packages:
       - supports-color
     dev: false
 
-  /expo-splash-screen@0.20.5(expo-modules-autolinking@1.5.1)(expo@49.0.18):
+  /expo-splash-screen@0.20.5(expo-modules-autolinking@1.5.1)(expo@49.0.21):
     resolution: {integrity: sha512-nTALYdjHpeEA30rdOWSguxn72ctv8WM8ptuUgpfRgsWyn4i6rwYds/rBXisX69XO5fg+XjHAQqijGx/b28+3tg==}
     peerDependencies:
       expo: '*'
     dependencies:
       '@expo/prebuild-config': 6.2.6(expo-modules-autolinking@1.5.1)
-      expo: 49.0.18(@babel/core@7.23.2)
+      expo: 49.0.21(@babel/core@7.23.2)
     transitivePeerDependencies:
       - encoding
       - expo-modules-autolinking
       - supports-color
     dev: false
 
-  /expo-splash-screen@0.22.0(expo-modules-autolinking@1.5.1)(expo@49.0.18):
+  /expo-splash-screen@0.22.0(expo-modules-autolinking@1.5.1)(expo@49.0.21):
     resolution: {integrity: sha512-+iKesrtp8s3IQDXPgCwI6PZzQwhSGR/LLND1wOux8HrCmtveJQpomKBIdvwTb26GNKZiN1EtiQbnBZhn3EiKaA==}
     peerDependencies:
       expo: '*'
     dependencies:
       '@expo/prebuild-config': 6.4.0(expo-modules-autolinking@1.5.1)
-      expo: 49.0.18(@babel/core@7.23.2)
+      expo: 49.0.21(@babel/core@7.23.2)
     transitivePeerDependencies:
       - encoding
       - expo-modules-autolinking
@@ -7093,24 +7093,24 @@ packages:
     resolution: {integrity: sha512-Wkm9uCmuQQBSU+l/AekWAQ1d0FYw560yL116+OAKJDyKBOUpPURoWkFbabM1EDxv+5scTuSThr/CvsA0nsSCow==}
     dev: false
 
-  /expo@49.0.18(@babel/core@7.23.2):
-    resolution: {integrity: sha512-BrPtTxBlE7pFG1ZDi1fqq4pGbS5IcTg4bH9TTeUbJOTTs43W+QkXzsylmT0omf8nADOHGx9EFgufPneBcU1F1w==}
+  /expo@49.0.21(@babel/core@7.23.2):
+    resolution: {integrity: sha512-JpHL6V0yt8/fzsmkAdPdtsah+lU6Si4ac7MDklLYvzEil7HAFEsN/pf06wQ21ax4C+BL27hI6JJoD34tzXUCJA==}
     hasBin: true
     dependencies:
       '@babel/runtime': 7.23.2
-      '@expo/cli': 0.10.15(expo-modules-autolinking@1.5.1)
+      '@expo/cli': 0.10.16(expo-modules-autolinking@1.5.1)
       '@expo/config': 8.1.2
       '@expo/config-plugins': 7.2.5
       '@expo/vector-icons': 13.0.0
       babel-preset-expo: 9.5.2(@babel/core@7.23.2)
-      expo-application: 5.3.0(expo@49.0.18)
-      expo-asset: 8.10.1(expo@49.0.18)
-      expo-constants: 14.4.2(expo@49.0.18)
-      expo-file-system: 15.4.4(expo@49.0.18)
-      expo-font: 11.4.0(expo@49.0.18)
-      expo-keep-awake: 12.3.0(expo@49.0.18)
+      expo-application: 5.3.0(expo@49.0.21)
+      expo-asset: 8.10.1(expo@49.0.21)
+      expo-constants: 14.4.2(expo@49.0.21)
+      expo-file-system: 15.4.5(expo@49.0.21)
+      expo-font: 11.4.0(expo@49.0.21)
+      expo-keep-awake: 12.3.0(expo@49.0.21)
       expo-modules-autolinking: 1.5.1
-      expo-modules-core: 1.5.11
+      expo-modules-core: 1.5.12
       fbemitter: 3.0.0
       invariant: 2.2.4
       md5-file: 3.2.3

@@ -12,7 +12,9 @@ export * from "drizzle-orm";
 
 export const db = drizzle(
   new Client({
-    url: process.env.DATABASE_URL,
+    host: process.env.DB_HOST,
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
   }).connection(),
   { schema },
 );

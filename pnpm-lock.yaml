@@ -88,8 +88,8 @@ importers:
         specifier: ~5.0.2
         version: 5.0.2(expo@49.0.21)
       expo-router:
-        specifier: 2.0.12
-        version: 2.0.12(expo-constants@14.4.2)(expo-linking@5.0.2)(expo-modules-autolinking@1.5.1)(expo-status-bar@1.7.1)(expo@49.0.21)(metro@0.76.8)(react-dom@18.2.0)(react-native-gesture-handler@2.12.1)(react-native-reanimated@3.3.0)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.1)(react-native@0.72.7)(react@18.2.0)
+        specifier: 2.0.14
+        version: 2.0.14(expo-constants@14.4.2)(expo-linking@5.0.2)(expo-modules-autolinking@1.5.1)(expo-status-bar@1.7.1)(expo@49.0.21)(metro@0.76.8)(react-dom@18.2.0)(react-native-gesture-handler@2.12.1)(react-native-reanimated@3.3.0)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.1)(react-native@0.72.7)(react@18.2.0)
       expo-splash-screen:
         specifier: ~0.22.0
         version: 0.22.0(expo-modules-autolinking@1.5.1)(expo@49.0.21)
@@ -2880,8 +2880,8 @@ packages:
       - supports-color
     dev: false
 
-  /@expo/metro-runtime@2.2.14(react-native@0.72.7):
-    resolution: {integrity: sha512-qfhv5VPbYYZO1OVZixtxgl8Tal00K+QkDT2x719glF96v4g1ApvMmwfTuUsh3Y3GjtQpWhPC1myrjsZjyHdFnQ==}
+  /@expo/metro-runtime@2.2.16(react-native@0.72.7):
+    resolution: {integrity: sha512-WOUe7ByZsQpFRifyh9WgsjMYrCGHirWA8VvtR5fs+vi0za3yFIaC89wYMvEZILyvn+RIe7Ysln8nzF4xgtnKFg==}
     peerDependencies:
       react-native: '*'
     dependencies:
@@ -6954,8 +6954,8 @@ packages:
       fontfaceobserver: 2.3.0
     dev: false
 
-  /expo-head@0.0.18(expo@49.0.21)(react-dom@18.2.0)(react-native@0.72.7)(react@18.2.0):
-    resolution: {integrity: sha512-GaTAUiPf30GgoUTJEDJI0UdDUlLdfbFffU6NerIMwklSCFXJ1f9Nr8XG5qPEwm71ri/dssbToaMorIaXxtIc7Q==}
+  /expo-head@0.0.20(expo@49.0.21)(react-dom@18.2.0)(react-native@0.72.7)(react@18.2.0):
+    resolution: {integrity: sha512-K0ETFOp/I+Td1T40D8k+Nlk8zCtvUFKTVYiwUhLoCCPf4dGC0zXv/noJLgyZ8jZ+5FJLlrSTpk2Gm9bxJfqkLw==}
     peerDependencies:
       expo: '*'
       react: '*'
@@ -7011,8 +7011,8 @@ packages:
       invariant: 2.2.4
     dev: false
 
-  /expo-router@2.0.12(expo-constants@14.4.2)(expo-linking@5.0.2)(expo-modules-autolinking@1.5.1)(expo-status-bar@1.7.1)(expo@49.0.21)(metro@0.76.8)(react-dom@18.2.0)(react-native-gesture-handler@2.12.1)(react-native-reanimated@3.3.0)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.1)(react-native@0.72.7)(react@18.2.0):
-    resolution: {integrity: sha512-4Z4hUE3H+jCjpbkoHD2da6osjnkSeoE882B8ynQTOZWSeKiLj8itM4tM0Dhctjo6OGuIV7A3fkqj843Yb6aHgQ==}
+  /expo-router@2.0.14(expo-constants@14.4.2)(expo-linking@5.0.2)(expo-modules-autolinking@1.5.1)(expo-status-bar@1.7.1)(expo@49.0.21)(metro@0.76.8)(react-dom@18.2.0)(react-native-gesture-handler@2.12.1)(react-native-reanimated@3.3.0)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.1)(react-native@0.72.7)(react@18.2.0):
+    resolution: {integrity: sha512-F5dP4WMe+zQLzlGSbC+NT9/67FGgwmUCJuPGD4BkK0eRt0uga+y53vQ59m5MCOebqE0N9Ukr/Jz8Num16iGqZA==}
     peerDependencies:
       '@react-navigation/drawer': ^6.5.8
       '@testing-library/jest-native': '*'
@@ -7034,14 +7034,14 @@ packages:
         optional: true
     dependencies:
       '@bacons/react-views': 1.1.3(react-native@0.72.7)
-      '@expo/metro-runtime': 2.2.14(react-native@0.72.7)
+      '@expo/metro-runtime': 2.2.16(react-native@0.72.7)
       '@radix-ui/react-slot': 1.0.1(react@18.2.0)
       '@react-navigation/bottom-tabs': 6.5.7(@react-navigation/native@6.1.6)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.1)(react-native@0.72.7)(react@18.2.0)
       '@react-navigation/native': 6.1.6(react-native@0.72.7)(react@18.2.0)
       '@react-navigation/native-stack': 6.9.12(@react-navigation/native@6.1.6)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.1)(react-native@0.72.7)(react@18.2.0)
       expo: 49.0.21(@babel/core@7.23.2)
       expo-constants: 14.4.2(expo@49.0.21)
-      expo-head: 0.0.18(expo@49.0.21)(react-dom@18.2.0)(react-native@0.72.7)(react@18.2.0)
+      expo-head: 0.0.20(expo@49.0.21)(react-dom@18.2.0)(react-native@0.72.7)(react@18.2.0)
       expo-linking: 5.0.2(expo@49.0.21)
       expo-splash-screen: 0.20.5(expo-modules-autolinking@1.5.1)(expo@49.0.21)
       expo-status-bar: 1.7.1

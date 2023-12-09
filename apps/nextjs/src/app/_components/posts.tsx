@@ -6,7 +6,7 @@ import type { RouterOutputs } from "~/utils/api";
 import { api } from "~/utils/api";
 
 export function CreatePostForm() {
-  const context = api.useUtils();
+  const utils = api.useUtils();
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -15,7 +15,7 @@ export function CreatePostForm() {
     async onSuccess() {
       setTitle("");
       setContent("");
-      await context.post.all.invalidate();
+      await utils.post.all.invalidate();
     },
   });
 
@@ -31,7 +31,7 @@ export function CreatePostForm() {
           });
           setTitle("");
           setContent("");
-          await context.post.all.invalidate();
+          await utils.post.all.invalidate();
         } catch {
           // noop
         }
@@ -99,7 +99,7 @@ export function PostList() {
 export function PostCard(props: {
   post: RouterOutputs["post"]["all"][number];
 }) {
-  const context = api.useUtils();
+  const utils = api.useUtils();
   const deletePost = api.post.delete.useMutation();
 
   return (
@@ -113,7 +113,7 @@ export function PostCard(props: {
           className="cursor-pointer text-sm font-bold uppercase text-pink-400"
           onClick={async () => {
             await deletePost.mutateAsync(props.post.id);
-            await context.post.all.invalidate();
+            await utils.post.all.invalidate();
           }}
         >
           Delete

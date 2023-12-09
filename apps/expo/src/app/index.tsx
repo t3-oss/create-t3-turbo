@@ -4,8 +4,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Link, Stack } from "expo-router";
 import { FlashList } from "@shopify/flash-list";
 
-import { api } from "~/utils/api";
 import type { RouterOutputs } from "~/utils/api";
+import { api } from "~/utils/api";
 
 function PostCard(props: {
   post: RouterOutputs["post"]["all"][number];
@@ -37,7 +37,7 @@ function PostCard(props: {
 }
 
 function CreatePost() {
-  const utils = api.useContext();
+  const utils = api.useUtils();
 
   const [title, setTitle] = React.useState("");
   const [content, setContent] = React.useState("");
@@ -97,7 +97,7 @@ function CreatePost() {
 }
 
 const Index = () => {
-  const utils = api.useContext();
+  const utils = api.useUtils();
 
   const postQuery = api.post.all.useQuery();
 

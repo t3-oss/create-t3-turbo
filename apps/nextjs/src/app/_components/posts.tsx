@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 
-import { api } from "~/utils/api";
 import type { RouterOutputs } from "~/utils/api";
+import { api } from "~/utils/api";
 
 export function CreatePostForm() {
-  const context = api.useContext();
+  const context = api.useUtils();
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -99,7 +99,7 @@ export function PostList() {
 export function PostCard(props: {
   post: RouterOutputs["post"]["all"][number];
 }) {
-  const context = api.useContext();
+  const context = api.useUtils();
   const deletePost = api.post.delete.useMutation();
 
   return (

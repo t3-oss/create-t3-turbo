@@ -1,9 +1,9 @@
+import type { TRPCErrorResponse } from "@trpc/server/rpc";
 import { cache } from "react";
 import { headers } from "next/headers";
 import { createTRPCClient, loggerLink, TRPCClientError } from "@trpc/client";
 import { callProcedure } from "@trpc/server";
 import { observable } from "@trpc/server/observable";
-import type { TRPCErrorResponse } from "@trpc/server/rpc";
 import SuperJSON from "superjson";
 
 import { appRouter, createTRPCContext } from "@acme/api";

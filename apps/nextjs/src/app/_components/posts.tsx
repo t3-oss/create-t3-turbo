@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 
-import type { RouterOutputs } from "~/trpc/react";
+import type { RouterOutputs } from "@acme/api";
+
 import { api } from "~/trpc/react";
 
 export function CreatePostForm() {

@@ -8,8 +8,6 @@ import SuperJSON from "superjson";
 
 import type { AppRouter } from "@acme/api";
 
-export type * from "@acme/api";
-
 export const api = createTRPCReact<AppRouter>();
 
 export function TRPCReactProvider(props: {

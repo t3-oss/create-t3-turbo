@@ -13,7 +13,7 @@ const defineConfig = (): ExpoConfig => ({
   name: "expo",
   slug: "expo",
   scheme: "expo",
-  version: "0.1.0",
+  version: "2.0.0",
   orientation: "portrait",
   icon: "./assets/icon.png",
   userInterfaceStyle: "dark",
@@ -42,9 +42,14 @@ const defineConfig = (): ExpoConfig => ({
     tsconfigPaths: true,
     typedRoutes: true,
   },
+  // extra: {
+  //   eas: {
+  //     projectId: "your-project-id",
+  //   },
+  // },
   plugins: [
-    "expo-apple-authentication",
     "./expo-plugins/with-modify-gradle.js",
+    "expo-apple-authentication",
   ],
 });
 

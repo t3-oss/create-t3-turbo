@@ -17,6 +17,8 @@ const config = {
     "^(react/(.*)$)|^(react$)|^(react-native(.*)$)",
     "^(next/(.*)$)|^(next$)",
     "^(expo(.*)$)|^(expo$)",
+    "<TYPES>", 
+    "<TYPES>^[.]",
     "<THIRD_PARTY_MODULES>",
     "",
     "^@acme/(.*)$",

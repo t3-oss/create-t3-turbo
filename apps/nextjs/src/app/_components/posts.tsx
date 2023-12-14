@@ -3,8 +3,9 @@
 import { useState } from "react";
 import Image from "next/image";
 
-import type { RouterOutputs } from "~/utils/api";
-import { api } from "~/utils/api";
+import type { RouterOutputs } from "@acme/api";
+
+import { api } from "~/trpc/react";
 
 export function CreatePostForm() {
   const utils = api.useUtils();

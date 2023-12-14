@@ -6,7 +6,7 @@
  * tl;dr - this is where all the tRPC server stuff is created and plugged in.
  * The pieces you will need to use are documented accordingly near the end
  */
-import type { SupabaseClient, User } from "@supabase/auth-helpers-nextjs";
+import type { SupabaseClient } from "@supabase/auth-helpers-nextjs";
 import { initTRPC, TRPCError } from "@trpc/server";
 import superjson from "superjson";
 import { ZodError } from "zod";
@@ -16,58 +16,36 @@ import { db } from "@acme/db";
 /**
  * 1. CONTEXT
  *
- * This section defines the "contexts" that are available in the backend API
+ * This section defines the "contexts" that are available in the backend API.
  *
- * These allow you to access things like the database, the user, etc, when
- * processing a request
+ * These allow you to access things when processing a request, like the database, the session, etc.
  *
- */
-interface CreateContextOptions {
-  user: User | null;
-}
-
-/**
- * This helper generates the "internals" for a tRPC context. If you need to use
- * it, you can export it from here
+ * This helper generates the "internals" for a tRPC context. The API handler and RSC clients each
+ * wrap this and provides the required context.
  *
- * Examples of things you may need it for:
- * - testing, so we dont have to mock Next.js' req/res
- * - trpc's `createSSGHelpers` where we don't have req/res
- * @see https://create.t3.gg/en/usage/trpc#-servertrpccontextts
- */
-export const createInnerTRPCContext = (opts: CreateContextOptions) => {
-  return {
-    ...opts,
-    db,
-  };
-};
-
-/**
- * This is the actual context you'll use in your router. It will be used to
- * process every request that goes through your tRPC endpoint
- * @link https://trpc.io/docs/context
+ * @see https://trpc.io/docs/server/context
  */
 export const createTRPCContext = async (opts: {
-  req?: Request;
+  headers: Headers;
   supabase: SupabaseClient;
 }) => {
   const supabase = opts.supabase;
 
   // React Native will pass their token through headers,
   // browsers will have the session cookie set
-  const token = opts.req?.headers.get("authorization");
+  const token = opts.headers.get("authorization");
 
   const user = token
     ? await supabase.auth.getUser(token)
     : await supabase.auth.getUser();
 
-  const source = opts.req?.headers.get("x-trpc-source") ?? "unknown";
-
+  const source = opts.headers.get("x-trpc-source") ?? "unknown";
   console.log(">>> tRPC Request from", source, "by", user?.data.user?.email);
 
-  return createInnerTRPCContext({
+  return {
     user: user.data.user,
-  });
+    db,
+  };
 };
 
 /**

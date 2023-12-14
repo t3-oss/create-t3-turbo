@@ -1,5 +1,5 @@
-import { cookies } from "next/headers";
 import type { NextRequest } from "next/server";
+import { cookies } from "next/headers";
 import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
 
@@ -33,7 +33,7 @@ const handler = async (req: NextRequest) => {
     endpoint: "/api/trpc",
     router: appRouter,
     req,
-    createContext: () => createTRPCContext({ req, supabase }),
+    createContext: () => createTRPCContext({ headers: req.headers, supabase }),
     onError({ error, path }) {
       console.error(`>>> tRPC Error on '${path}'`, error);
     },

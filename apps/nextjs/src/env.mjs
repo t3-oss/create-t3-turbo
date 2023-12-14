@@ -14,7 +14,10 @@ export const env = createEnv({
    * built with invalid env vars.
    */
   server: {
-    DATABASE_URL: z.string().url(),
+    DB_USERNAME: z.string(),
+    DB_PASSWORD: z.string(),
+    DB_HOST: z.string(),
+    DB_NAME: z.string(),
   },
   /**
    * Specify your client-side environment variables schema here.
@@ -29,7 +32,10 @@ export const env = createEnv({
   runtimeEnv: {
     VERCEL_URL: process.env.VERCEL_URL,
     PORT: process.env.PORT,
-    DATABASE_URL: process.env.DATABASE_URL,
+    DB_USERNAME: process.env.DB_USERNAME,
+    DB_PASSWORD: process.env.DB_PASSWORD,
+    DB_HOST: process.env.DB_HOST,
+    DB_NAME: process.env.DB_NAME,
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
   skipValidation:

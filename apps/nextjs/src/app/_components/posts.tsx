@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 
-import { api } from "~/trpc/react";
 import type { RouterOutputs } from "~/trpc/react";
+import { api } from "~/trpc/react";
 
 export function CreatePostForm() {
   const utils = api.useUtils();

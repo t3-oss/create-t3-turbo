@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { Github } from "lucide-react";
 
-import { signInWithGithub, signInWithPassword } from "../actions";
+import { signInWithGithub, signInWithPassword, signUp } from "../actions";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -44,7 +44,7 @@ export default function LoginPage() {
               const email = formData.get("email") as string;
               const password = formData.get("password") as string;
 
-              await signInWithPassword(email, password, true);
+              await signUp(email, password);
               alert("Check your email for a confirmation link.");
             }}
           >

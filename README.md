@@ -50,8 +50,10 @@ packages
   |   └─ tRPC v11 router definition
   ├─ auth
   |   └─ Authentication using next-auth.
-  └─ db
-      └─ Typesafe db calls using Drizzle & Planetscale
+  ├─ db
+  |   └─ Typesafe db calls using Drizzle & Planetscale
+  └─ ui
+      └─ Start of a UI package for the webapp using shadcn-ui
 tooling
   ├─ eslint
   |   └─ shared, fine-grained, eslint presets

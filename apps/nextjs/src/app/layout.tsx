@@ -30,9 +30,7 @@ export const metadata: Metadata = {
 };
 
 // Lazy load headers
-const getHeaders = cache(async () => {
-  return headers();
-});
+const getHeaders = cache(async () => headers());
 
 export default function Layout(props: { children: React.ReactNode }) {
   return (

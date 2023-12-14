@@ -1,3 +1,4 @@
+import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 
 import { desc, eq, schema } from "@acme/db";
@@ -34,6 +35,7 @@ export const postRouter = createTRPCRouter({
       }),
     )
     .mutation(({ ctx, input }) => {
+      // TODO: add user
       return ctx.db.insert(schema.post).values(input);
     }),
 

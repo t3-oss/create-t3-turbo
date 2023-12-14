@@ -1,30 +1,47 @@
-import React from "react";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
+import { SessionContextProvider } from "@supabase/auth-helpers-react";
 
-import { TRPCProvider } from "~/utils/api";
-
-import "../styles.css";
+import { HeaderBackButton, HeaderTitle } from "../components/header";
+import { TRPCProvider } from "../utils/api";
+import { supabase } from "../utils/supabase";
 
 // This is the main layout of the app
 // It wraps your pages with the providers they need
-const RootLayout = () => {
+export default function RootLayout() {
   return (
-    <TRPCProvider>
-      {/*
-        The Stack component displays the current page.
-        It also allows you to configure your screens 
-      */}
-      <Stack
-        screenOptions={{
-          headerStyle: {
-            backgroundColor: "#f472b6",
-          },
-        }}
-      />
-      <StatusBar />
-    </TRPCProvider>
+    <SessionContextProvider supabaseClient={supabase}>
+      <TRPCProvider>
+        <SafeAreaProvider>
+          {/*
+           * The Stack component displays the current page.
+           * It also allows you to configure your screens
+           */}
+          <Stack
+            screenOptions={{
+              headerLeft: HeaderBackButton,
+              headerTitle: HeaderTitle,
+              headerStyle: {
+                backgroundColor: "#18181A",
+              },
+            }}
+          >
+            {/*
+             * Present the profile screen as a modal
+             * @see https://expo.github.io/router/docs/guides/modals
+             */}
+            <Stack.Screen
+              name="profile"
+              options={{
+                presentation: "modal",
+                headerTitle: () => <></>,
+              }}
+            />
+          </Stack>
+          <StatusBar />
+        </SafeAreaProvider>
+      </TRPCProvider>
+    </SessionContextProvider>
   );
-};
-
-export default RootLayout;
+}

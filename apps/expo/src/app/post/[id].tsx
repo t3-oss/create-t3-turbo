@@ -11,11 +11,13 @@ export default function Post() {
   if (!data) return null;
 
   return (
-    <SafeAreaView className="bg-[#1F104A]">
-      <Stack.Screen options={{ title: data.title }} />
+    <SafeAreaView className="bg-zinc-900">
+      <Stack.Screen options={{ title: title }} />
       <View className="h-full w-full p-4">
-        <Text className="py-2 text-3xl font-bold text-white">{data.title}</Text>
-        <Text className="py-4 text-white">{data.content}</Text>
+        <Text className="py-2 text-3xl font-bold text-zinc-200">
+          {isLoading ? "Loading..." : post?.title}
+        </Text>
+        <Text className="py-4 text-zinc-200">{post?.content}</Text>
       </View>
     </SafeAreaView>
   );

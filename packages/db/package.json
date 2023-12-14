@@ -9,12 +9,11 @@
     "clean": "rm -rf .turbo node_modules",
     "lint": "eslint .",
     "format": "prettier --check . --ignore-path ../../.gitignore",
-    "push": "drizzle-kit push:mysql",
-    "studio": "drizzle-kit studio",
+    "push": "drizzle-kit push:pg",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@planetscale/database": "^1.11.0",
+    "@vercel/postgres": "^0.5.1",
     "drizzle-orm": "^0.29.1"
   },
   "devDependencies": {
@@ -22,7 +21,7 @@
     "@acme/prettier-config": "workspace:^0.1.0",
     "@acme/tsconfig": "workspace:^0.1.0",
     "dotenv-cli": "^7.3.0",
-    "drizzle-kit": "^0.20.6",
+    "drizzle-kit": "beta",
     "eslint": "^8.53.0",
     "prettier": "^3.1.0",
     "typescript": "^5.3.3"

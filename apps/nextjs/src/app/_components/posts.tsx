@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 import type { RouterOutputs } from "~/utils/api";
 import { api } from "~/utils/api";
@@ -60,7 +61,10 @@ export function CreatePostForm() {
         </span>
       )}
       {}
-      <button type="submit" className="rounded bg-pink-400 p-2 font-bold">
+      <button
+        type="submit"
+        className="rounded bg-emerald-400 p-2 font-bold text-zinc-900"
+      >
         Create
       </button>
       {error?.data?.code === "UNAUTHORIZED" && (
@@ -101,16 +105,24 @@ export function PostCard(props: {
 }) {
   const utils = api.useUtils();
   const deletePost = api.post.delete.useMutation();
+  const { post } = props;
 
   return (
     <div className="flex flex-row rounded-lg bg-white/10 p-4 transition-all hover:scale-[101%]">
+      <Image
+        className="mr-2 self-center rounded"
+        src={post.author?.image ?? ""}
+        alt={`${post.author?.name}'s avatar`}
+        width={64}
+        height={64}
+      />
       <div className="flex-grow">
-        <h2 className="text-2xl font-bold text-pink-400">{props.post.title}</h2>
-        <p className="mt-2 text-sm">{props.post.content}</p>
+        <h2 className="text-2xl font-bold text-emerald-400">{post.title}</h2>
+        <p className="mt-2 text-sm">{post.content}</p>
       </div>
       <div>
         <button
-          className="cursor-pointer text-sm font-bold uppercase text-pink-400"
+          className="cursor-pointer text-sm font-bold uppercase text-emerald-400"
           onClick={async () => {
             await deletePost.mutateAsync(props.post.id);
             await utils.post.all.invalidate();
@@ -125,11 +137,17 @@ export function PostCard(props: {
 
 export function PostCardSkeleton(props: { pulse?: boolean }) {
   const { pulse = true } = props;
+
   return (
     <div className="flex flex-row rounded-lg bg-white/10 p-4 transition-all hover:scale-[101%]">
+      <div
+        className={`mr-2 h-16 w-16 self-center rounded ${
+          pulse && "animate-pulse"
+        }`}
+      />
       <div className="flex-grow">
         <h2
-          className={`w-1/4 rounded bg-pink-400 text-2xl font-bold ${
+          className={`w-1/4 rounded bg-emerald-400 text-2xl font-bold ${
             pulse && "animate-pulse"
           }`}
         >

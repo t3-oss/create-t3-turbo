@@ -6,17 +6,12 @@
  * tl;dr - this is where all the tRPC server stuff is created and plugged in.
  * The pieces you will need to use are documented accordingly near the end
  */
-
-import { db } from "@acme/db";
-
-import {
-  createServerSupabaseClient,
-  type User,
-} from "@supabase/auth-helpers-nextjs";
-import { TRPCError, initTRPC } from "@trpc/server";
+import type { SupabaseClient, User } from "@supabase/auth-helpers-nextjs";
+import { initTRPC, TRPCError } from "@trpc/server";
 import superjson from "superjson";
 import { ZodError } from "zod";
 
+import { db } from "@acme/db";
 
 /**
  * 1. CONTEXT
@@ -29,7 +24,7 @@ import { ZodError } from "zod";
  */
 interface CreateContextOptions {
   user: User | null;
-};
+}
 
 /**
  * This helper generates the "internals" for a tRPC context. If you need to use
@@ -54,13 +49,13 @@ export const createInnerTRPCContext = (opts: CreateContextOptions) => {
  */
 export const createTRPCContext = async (opts: {
   req?: Request;
-  auth: Session | null;
+  supabase: SupabaseClient;
 }) => {
-  const supabase = createServerSupabaseClient(opts);
+  const supabase = opts.supabase;
 
   // React Native will pass their token through headers,
   // browsers will have the session cookie set
-  const token = opts.req.headers.get("authorization")
+  const token = opts.req?.headers.get("authorization");
 
   const user = token
     ? await supabase.auth.getUser(token)
@@ -68,7 +63,7 @@ export const createTRPCContext = async (opts: {
 
   const source = opts.req?.headers.get("x-trpc-source") ?? "unknown";
 
-  console.log(">>> tRPC Request from", source, "by", user?.data.user);
+  console.log(">>> tRPC Request from", source, "by", user?.data.user?.email);
 
   return createInnerTRPCContext({
     user: user.data.user,

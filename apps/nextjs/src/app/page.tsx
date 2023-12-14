@@ -11,10 +11,11 @@ export const runtime = "edge";
 
 export default function HomePage() {
   return (
-    <main className="flex h-screen flex-col items-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
+    <main className="flex h-screen flex-col items-center bg-zinc-900 text-zinc-200">
       <div className="container mt-12 flex flex-col items-center justify-center gap-4 py-8">
         <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
-          Create <span className="text-pink-400">T3</span> Turbo
+          <span className="text-fuchsia-500">T3</span> Turbo x{" "}
+          <span className="text-emerald-400">Supabase</span>
         </h1>
         <AuthShowcase />
 

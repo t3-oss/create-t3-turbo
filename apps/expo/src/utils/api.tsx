@@ -44,9 +44,7 @@ const getBaseUrl = () => {
  * A wrapper for your app that provides the TRPC context.
  * Use only in _app.tsx
  */
-export const TRPCProvider: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
+export const TRPCProvider = (props: { children: React.ReactNode }) => {
   const supabase = useSupabaseClient();
 
   const [queryClient] = useState(() => new QueryClient());
@@ -56,12 +54,14 @@ export const TRPCProvider: React.FC<{ children: React.ReactNode }> = ({
       links: [
         httpBatchLink({
           url: `${getBaseUrl()}/api/trpc`,
-          headers() {
+          async headers() {
             const headers = new Map<string, string>();
             headers.set("x-trpc-source", "expo-react");
+
             const { data } = await supabase.auth.getSession();
             const token = data.session?.access_token;
             if (token) headers.set("authorization", token);
+
             return Object.fromEntries(headers);
           },
         }),
@@ -82,4 +82,4 @@ export const TRPCProvider: React.FC<{ children: React.ReactNode }> = ({
       </QueryClientProvider>
     </api.Provider>
   );
-}
+};

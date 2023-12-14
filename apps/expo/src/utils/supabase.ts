@@ -1,4 +1,3 @@
-import Constants from "expo-constants";
 import * as SecureStore from "expo-secure-store";
 import { createClient } from "@supabase/supabase-js";
 
@@ -12,8 +11,8 @@ const ExpoSecureStoreAdapter = {
 
 export const supabase = createClient(
   // App Throws if these are not defined, so we can safely cast
-  Constants.expoConfig?.extra?.SUPABASE_URL as string,
-  Constants.expoConfig?.extra?.SUPABASE_ANON_KEY as string,
+  process.env.EXPO_PUBLIC_SUPABASE_URL!,
+  process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY!,
   {
     auth: {
       storage: ExpoSecureStoreAdapter,

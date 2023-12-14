@@ -1,3 +1,6 @@
+import { cookies } from "next/headers";
+import type { NextRequest } from "next/server";
+import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
 
 import { appRouter, createTRPCContext } from "@acme/api";
@@ -23,12 +26,14 @@ export function OPTIONS() {
   return response;
 }
 
-const handler = (async (req) => {
+const handler = async (req: NextRequest) => {
+  const supabase = createRouteHandlerClient({ cookies });
+
   const response = await fetchRequestHandler({
     endpoint: "/api/trpc",
     router: appRouter,
     req,
-    createContext: () => createTRPCContext({ auth: req.auth, req }),
+    createContext: () => createTRPCContext({ req, supabase }),
     onError({ error, path }) {
       console.error(`>>> tRPC Error on '${path}'`, error);
     },
@@ -36,6 +41,6 @@ const handler = (async (req) => {
 
   setCorsHeaders(response);
   return response;
-});
+};
 
 export { handler as GET, handler as POST };

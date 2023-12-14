@@ -24,8 +24,10 @@
     "@trpc/react-query": "next",
     "@trpc/server": "next",
     "expo": "^49.0.21",
+    "expo-apple-authentication": "~6.1.2",
     "expo-constants": "~14.4.2",
     "expo-crypto": "^12.2.2",
+    "expo-image": "~1.5.1",
     "expo-linking": "~5.0.2",
     "expo-router": "2.0.14",
     "expo-secure-store": "~12.1.1",
@@ -67,7 +69,10 @@
     ],
     "ignorePatterns": [
       "expo-plugins/**"
-    ]
+    ],
+    "rules": {
+      "jsx-a11y/alt-text": "off"
+    }
   },
   "prettier": "@acme/prettier-config"
 }

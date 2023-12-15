@@ -1,12 +1,5 @@
 import { useState } from "react";
-import {
-  Alert,
-  Pressable,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Alert, Pressable, Text, TextInput, View } from "react-native";
 import * as AppleAuthentication from "expo-apple-authentication";
 import { AntDesign } from "@expo/vector-icons";
 import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
@@ -29,12 +22,12 @@ function SignedInView() {
   return (
     <View className="flex gap-4">
       <Text className="text-zinc-200">Signed in as {user?.email}</Text>
-      <TouchableOpacity
+      <Pressable
         onPress={() => supabase.auth.signOut()}
         className="flex-row items-center justify-center gap-2 rounded-lg bg-zinc-200 p-2"
       >
         <Text className="text-xl font-semibold text-zinc-900">Sign out</Text>
-      </TouchableOpacity>
+      </Pressable>
     </View>
   );
 }
@@ -76,13 +69,14 @@ function SignedOutView() {
           or
         </Text>
       </View>
+
       {/* Sign in with Apple */}
       <AppleAuthentication.AppleAuthenticationButton
         buttonType={AppleAuthentication.AppleAuthenticationButtonType.SIGN_IN}
         buttonStyle={AppleAuthentication.AppleAuthenticationButtonStyle.BLACK}
-        className="h-14"
         cornerRadius={8}
         onPress={signInWithApple}
+        style={{ height: 40 }}
       />
     </View>
   );
@@ -148,14 +142,14 @@ function EmailForm() {
         </Text>
       </Pressable>
 
-      <TouchableOpacity
+      <Pressable
         onPress={signInWithPassword}
         className="flex-row items-center justify-center rounded-lg bg-emerald-400 p-2"
       >
         <Text className="ml-1 text-xl font-medium">
           {isSignUp ? "Sign Up" : "Sign In"}
         </Text>
-      </TouchableOpacity>
+      </Pressable>
     </View>
   );
 }

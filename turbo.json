@@ -2,43 +2,48 @@
   "$schema": "https://turborepo.org/schema.json",
   "globalDependencies": ["**/.env"],
   "pipeline": {
-    "db:generate": {
-      "inputs": ["prisma/schema.prisma"],
-      "cache": false
+    "topo": {
+      "dependsOn": ["^topo"]
     },
-    "db:push": {
-      "inputs": ["prisma/schema.prisma"],
-      "cache": false
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**",
+        "next-env.d.ts",
+        ".expo/**",
+        ".output/**",
+        ".vercel/output/**"
+      ]
     },
     "dev": {
       "persistent": true,
       "cache": false
     },
-    "build": {
-      "dependsOn": ["^build", "^db:generate"],
-      "outputs": [".next/**", ".expo/**"]
+    "format": {
+      "outputs": ["node_modules/.cache/.prettiercache"],
+      "outputMode": "new-only"
     },
-    "lint": {},
-    "lint:fix": {},
+    "lint": {
+      "dependsOn": ["^topo"],
+      "outputs": ["node_modules/.cache/.eslintcache"]
+    },
+    "typecheck": {
+      "dependsOn": ["^topo"],
+      "outputs": ["node_modules/.cache/tsbuildinfo.json"]
+    },
     "clean": {
       "cache": false
     },
     "//#clean": {
       "cache": false
-    },
-    "type-check": {
-      "dependsOn": ["^db:generate"],
-      "cache": false
     }
   },
   "globalEnv": [
-    "CI",
-    "DATABASE_URL",
-    "EXPO_ROUTER_APP_ROOT",
+    "POSTGRES_URL",
+    "EXPO_PUBLIC_SUPABASE_URL",
+    "EXPO_PUBLIC_SUPABASE_ANON_KEY",
     "NEXT_PUBLIC_SUPABASE_URL",
-    "NEXT_PUBLIC_SUPABASE_ANON_KEY",
-    "NODE_ENV",
-    "SKIP_ENV_VALIDATION",
-    "VERCEL_URL"
+    "NEXT_PUBLIC_SUPABASE_ANON_KEY"
   ]
 }

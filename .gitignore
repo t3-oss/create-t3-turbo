@@ -8,18 +8,20 @@ node_modules
 # testing
 coverage
 
-# database
-**/prisma/db.sqlite
-**/prisma/db.sqlite-journal
-
 # next.js
 .next/
 out/
 next-env.d.ts
 
+# nitro
+.nitro/
+.output/
+
 # expo
 .expo/
 dist/
+expo-env.d.ts
+apps/expo/.gitignore
 
 # production
 build

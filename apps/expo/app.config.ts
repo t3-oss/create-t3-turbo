@@ -1,16 +1,19 @@
 import type { ExpoConfig } from "@expo/config";
 
-const SUPABASE_URL = "https://YOUR_PROJECT_REF.supabase.co";
-const SUPABASE_ANON_KEY = "YOUR_ANON_KEY";
-if (typeof SUPABASE_URL !== "string" || typeof SUPABASE_ANON_KEY !== "string") {
-  throw new Error("Missing Supabase URL or anonymous key");
+if (
+  !process.env.EXPO_PUBLIC_SUPABASE_URL ||
+  !process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY
+) {
+  throw new Error(
+    "Please provide SUPABASE_URL and SUPABASE_ANON_KEY in your .env file",
+  );
 }
 
 const defineConfig = (): ExpoConfig => ({
   name: "expo",
   slug: "expo",
   scheme: "expo",
-  version: "1.0.0",
+  version: "2.0.0",
   orientation: "portrait",
   icon: "./assets/icon.png",
   userInterfaceStyle: "dark",
@@ -24,22 +27,26 @@ const defineConfig = (): ExpoConfig => ({
   },
   assetBundlePatterns: ["**/*"],
   ios: {
-    supportsTablet: true,
     bundleIdentifier: "your.bundle.identifier",
+    supportsTablet: true,
+    usesAppleSignIn: true,
   },
   android: {
+    package: "your.bundle.identifier",
     adaptiveIcon: {
       foregroundImage: "./assets/icon.png",
       backgroundColor: "#18181A",
     },
   },
-  extra: {
-    eas: {
-      projectId: "your-project-id",
-    },
-    SUPABASE_URL,
-    SUPABASE_ANON_KEY,
+  experiments: {
+    tsconfigPaths: true,
+    typedRoutes: true,
   },
+  // extra: {
+  //   eas: {
+  //     projectId: "your-project-id",
+  //   },
+  // },
   plugins: [
     "./expo-plugins/with-modify-gradle.js",
     "expo-apple-authentication",

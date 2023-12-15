@@ -1,22 +1,36 @@
 {
   "name": "@acme/db",
   "version": "0.1.0",
+  "private": true,
   "main": "./index.ts",
   "types": "./index.ts",
   "license": "MIT",
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
-    "db:generate": "pnpm with-env prisma generate",
-    "db:push": "pnpm with-env prisma db push --skip-generate",
-    "dev": "pnpm with-env prisma studio --port 5556",
-    "with-env": "dotenv -e ../../.env --"
+    "lint": "eslint .",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "push": "drizzle-kit push:pg",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@prisma/client": "^4.12.0"
+    "@vercel/postgres": "^0.5.1",
+    "drizzle-orm": "^0.29.1"
   },
   "devDependencies": {
-    "dotenv-cli": "^7.1.0",
-    "prisma": "^4.12.0",
-    "typescript": "^5.0.4"
-  }
+    "@acme/eslint-config": "workspace:^0.2.0",
+    "@acme/prettier-config": "workspace:^0.1.0",
+    "@acme/tsconfig": "workspace:^0.1.0",
+    "dotenv-cli": "^7.3.0",
+    "drizzle-kit": "beta",
+    "eslint": "^8.53.0",
+    "prettier": "^3.1.0",
+    "typescript": "^5.3.3"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@acme/eslint-config/base"
+    ]
+  },
+  "prettier": "@acme/prettier-config"
 }

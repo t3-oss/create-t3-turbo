@@ -1,22 +1,26 @@
 import { TRPCError } from "@trpc/server";
+import { nanoid } from "nanoid";
 import { z } from "zod";
+
+import { desc, eq, schema } from "@acme/db";
 
 import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 
 export const postRouter = createTRPCRouter({
   all: publicProcedure.query(({ ctx }) => {
-    return ctx.prisma.post.findMany({
-      include: { author: { select: { name: true, image: true } } },
-      orderBy: { id: "desc" },
+    return ctx.db.query.post.findMany({
+      with: { author: true },
+      orderBy: desc(schema.post.id),
+      limit: 10,
     });
   }),
 
   byId: publicProcedure
     .input(z.object({ id: z.string() }))
     .query(({ ctx, input }) => {
-      return ctx.prisma.post.findFirst({
-        include: { author: { select: { name: true, image: true } } },
-        where: { id: input.id },
+      return ctx.db.query.post.findFirst({
+        with: { author: true },
+        where: eq(schema.post.id, input.id),
       });
     }),
 
@@ -36,29 +40,39 @@ export const postRouter = createTRPCRouter({
         return "[redacted]";
       }
 
-      return ctx.prisma.post.create({
-        data: {
-          author: {
-            connectOrCreate: {
-              where: { id: ctx.user.id },
-              create: {
-                id: ctx.user.id,
-                email: ctx.user.email,
-                name: getNameFromUser(),
-                image: ctx.user.user_metadata.avatar_url as string | undefined,
-                user: { connect: { id: ctx.user.id } },
-              },
-            },
-          },
-          ...input,
-        },
+      const authorId = await ctx.db.query.profile
+        .findFirst({
+          where: eq(schema.profile.id, ctx.user.id),
+        })
+        .then(async (profile) => {
+          if (profile) return profile.id;
+          const [newProfile] = await ctx.db
+            .insert(schema.profile)
+            .values({
+              id: ctx.user.id,
+              name: getNameFromUser(),
+              image: ctx.user.user_metadata.avatar_url as string | undefined,
+              email: ctx.user.email,
+            })
+            .returning();
+
+          return newProfile!.id;
+        });
+
+      return ctx.db.insert(schema.post).values({
+        id: nanoid(),
+        authorId,
+        title: input.title,
+        content: input.content,
       });
     }),
 
   delete: protectedProcedure
     .input(z.string())
     .mutation(async ({ ctx, input }) => {
-      const post = await ctx.prisma.post.findUnique({ where: { id: input } });
+      const post = await ctx.db.query.post.findFirst({
+        where: eq(schema.post.id, input),
+      });
 
       if (post?.authorId !== ctx.user.id) {
         throw new TRPCError({
@@ -67,6 +81,6 @@ export const postRouter = createTRPCRouter({
         });
       }
 
-      return ctx.prisma.post.delete({ where: { id: input } });
+      return ctx.db.delete(schema.post).where(eq(schema.post.id, input));
     }),
 });

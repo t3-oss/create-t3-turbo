@@ -2,12 +2,14 @@
 module.exports = function (api) {
   api.cache.forever();
 
-  // Make Expo Router run from `src/app` instead of `app`.
-  // Path is relative to `/node_modules/expo-router`
-  process.env.EXPO_ROUTER_APP_ROOT = "../../apps/expo/src/app";
-
   return {
-    plugins: ["nativewind/babel", require.resolve("expo-router/babel")],
-    presets: ["babel-preset-expo"],
+    presets: [
+      ["babel-preset-expo", { jsxImportSource: "nativewind" }],
+      "nativewind/babel",
+    ],
+    plugins: [
+      require.resolve("expo-router/babel"),
+      require.resolve("react-native-reanimated/plugin"),
+    ],
   };
 };

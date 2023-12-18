@@ -16,7 +16,7 @@ const uri = [
 ].join("");
 
 export default {
-  schema: "./schema",
+  schema: "./src/schema",
   driver: "mysql2",
   dbCredentials: { uri },
   tablesFilter: ["t3turbo_*"],

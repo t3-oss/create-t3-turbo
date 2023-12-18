@@ -1,5 +1,3 @@
-/* @see https://github.com/nextauthjs/next-auth/pull/8932 */
-
 import type { DefaultSession } from "next-auth";
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import NextAuth from "next-auth";

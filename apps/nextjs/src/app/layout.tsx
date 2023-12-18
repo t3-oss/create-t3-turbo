@@ -6,6 +6,7 @@ import "~/styles/globals.css";
 import { cache } from "react";
 import { headers } from "next/headers";
 
+import { env } from "~/env";
 import { TRPCReactProvider } from "~/trpc/react";
 
 const fontSans = Inter({
@@ -14,6 +15,11 @@ const fontSans = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    env.VERCEL_ENV === "production"
+      ? "https://turbo.t3.gg"
+      : "http://localhost:3000",
+  ),
   title: "Create T3 Turbo",
   description: "Simple monorepo with shared backend for web & mobile apps",
   openGraph: {
@@ -30,7 +36,7 @@ export const metadata: Metadata = {
 };
 
 // Lazy load headers
-const getHeaders = cache(async () => headers());
+const getHeaders = cache(() => Promise.resolve(headers()));
 
 export default function Layout(props: { children: React.ReactNode }) {
   return (

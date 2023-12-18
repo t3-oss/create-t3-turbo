@@ -2,8 +2,10 @@
   "name": "@acme/db",
   "version": "0.1.0",
   "private": true,
-  "main": "./index.ts",
-  "types": "./index.ts",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
   "license": "MIT",
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
@@ -22,9 +24,9 @@
     "@acme/prettier-config": "workspace:^0.1.0",
     "@acme/tsconfig": "workspace:^0.1.0",
     "dotenv-cli": "^7.3.0",
-    "drizzle-kit": "^0.20.6",
-    "eslint": "^8.53.0",
-    "prettier": "^3.1.0",
+    "drizzle-kit": "^0.20.7",
+    "eslint": "^8.56.0",
+    "prettier": "^3.1.1",
     "typescript": "^5.3.3"
   },
   "eslintConfig": {

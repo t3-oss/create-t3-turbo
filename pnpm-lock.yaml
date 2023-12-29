@@ -67,14 +67,14 @@ importers:
         specifier: ^5.8.7
         version: 5.8.7(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)
       '@trpc/client':
-        specifier: next
-        version: 11.0.0-next-alpha.149(@trpc/server@11.0.0-next-alpha.149)
+        specifier: 12-28-caller-accept-fn
+        version: 10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151(@trpc/server@10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151)
       '@trpc/react-query':
-        specifier: next
-        version: 11.0.0-next-alpha.149(@tanstack/react-query@5.8.7)(@trpc/client@11.0.0-next-alpha.149)(@trpc/server@11.0.0-next-alpha.149)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 12-28-caller-accept-fn
+        version: 10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151(@tanstack/react-query@5.8.7)(@trpc/client@10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151)(@trpc/server@10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151)(react-dom@18.2.0)(react@18.2.0)
       '@trpc/server':
-        specifier: next
-        version: 11.0.0-next-alpha.149
+        specifier: 12-28-caller-accept-fn
+        version: 10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151
       expo:
         specifier: ^49.0.21
         version: 49.0.21(@babel/core@7.23.7)
@@ -197,17 +197,17 @@ importers:
         specifier: 5.8.7
         version: 5.8.7(@tanstack/react-query@5.8.7)(next@14.0.4)(react-dom@18.2.0)(react@18.2.0)
       '@trpc/client':
-        specifier: next
-        version: 11.0.0-next-alpha.149(@trpc/server@11.0.0-next-alpha.149)
+        specifier: 12-28-caller-accept-fn
+        version: 10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151(@trpc/server@10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151)
       '@trpc/next':
-        specifier: next
-        version: 11.0.0-next-alpha.149(@tanstack/react-query@5.8.7)(@trpc/client@11.0.0-next-alpha.149)(@trpc/react-query@11.0.0-next-alpha.149)(@trpc/server@11.0.0-next-alpha.149)(next@14.0.4)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 12-28-caller-accept-fn
+        version: 10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151(@tanstack/react-query@5.8.7)(@trpc/client@10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151)(@trpc/react-query@10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151)(@trpc/server@10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151)(next@14.0.4)(react-dom@18.2.0)(react@18.2.0)
       '@trpc/react-query':
-        specifier: next
-        version: 11.0.0-next-alpha.149(@tanstack/react-query@5.8.7)(@trpc/client@11.0.0-next-alpha.149)(@trpc/server@11.0.0-next-alpha.149)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 12-28-caller-accept-fn
+        version: 10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151(@tanstack/react-query@5.8.7)(@trpc/client@10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151)(@trpc/server@10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151)(react-dom@18.2.0)(react@18.2.0)
       '@trpc/server':
-        specifier: next
-        version: 11.0.0-next-alpha.149
+        specifier: 12-28-caller-accept-fn
+        version: 10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151
       geist:
         specifier: ^1.2.0
         version: 1.2.0(next@14.0.4)
@@ -276,11 +276,11 @@ importers:
         specifier: workspace:^0.1.0
         version: link:../validators
       '@trpc/client':
-        specifier: next
-        version: 11.0.0-next-alpha.149(@trpc/server@11.0.0-next-alpha.149)
+        specifier: 12-28-caller-accept-fn
+        version: 10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151(@trpc/server@10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151)
       '@trpc/server':
-        specifier: next
-        version: 11.0.0-next-alpha.149
+        specifier: 12-28-caller-accept-fn
+        version: 10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151
       superjson:
         specifier: 2.2.1
         version: 2.2.1
@@ -5186,52 +5186,52 @@ packages:
     resolution: {integrity: sha512-C5Mc6rdnsaJDjO3UpGW/CQTHtCKaYlScZTly4JIu97Jxo/odCiH0ITnDXSJPTOrEKk/ycSZ0AOgTmkDtkOsvIA==}
     dev: true
 
-  /@trpc/client@11.0.0-next-alpha.149(@trpc/server@11.0.0-next-alpha.149):
-    resolution: {integrity: sha512-5siTSTzcSt9WBTZ7VHTpyO9NJMh26ExEqSypsbyzkFfnHbqbQxttdEtJ2MTBm/Td87Hm2VpPL2WsjNs7kY0xHA==}
+  /@trpc/client@10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151(@trpc/server@10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151):
+    resolution: {integrity: sha512-u51thB4kaXZwFJqd5cI0qmkKN9FpA1hfJwmqS2CVE+xONE64nKP+EyyCYOc8oM1R1mNt28pmlS4BQVc8gFAGNQ==}
     peerDependencies:
-      '@trpc/server': 11.0.0-next-alpha.149+11361b82d
+      '@trpc/server': 10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151+a20f2b972
     dependencies:
-      '@trpc/server': 11.0.0-next-alpha.149
+      '@trpc/server': 10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151
     dev: false
 
-  /@trpc/next@11.0.0-next-alpha.149(@tanstack/react-query@5.8.7)(@trpc/client@11.0.0-next-alpha.149)(@trpc/react-query@11.0.0-next-alpha.149)(@trpc/server@11.0.0-next-alpha.149)(next@14.0.4)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-mPd4sH2taIyhh+JZc078QVH6AXTeDflsWJICg/jol/YbZr1QKY54FwZUSwaqeyqbpl/Jmp4ojWUD8J7fROkmZw==}
+  /@trpc/next@10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151(@tanstack/react-query@5.8.7)(@trpc/client@10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151)(@trpc/react-query@10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151)(@trpc/server@10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151)(next@14.0.4)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-kt8TsrsGSsoPhqAXTEAwVvxeXSVsxGpDFP5DTU67Z1UfZtgGi9phOsf34r+nKqOxiAcHbpQrScxFHouO1EJfgA==}
     peerDependencies:
       '@tanstack/react-query': ^5.0.0
-      '@trpc/client': 11.0.0-next-alpha.149+11361b82d
-      '@trpc/react-query': 11.0.0-next-alpha.149+11361b82d
-      '@trpc/server': 11.0.0-next-alpha.149+11361b82d
+      '@trpc/client': 10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151+a20f2b972
+      '@trpc/react-query': 10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151+a20f2b972
+      '@trpc/server': 10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151+a20f2b972
       next: '*'
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
     dependencies:
       '@tanstack/react-query': 5.8.7(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)
-      '@trpc/client': 11.0.0-next-alpha.149(@trpc/server@11.0.0-next-alpha.149)
-      '@trpc/react-query': 11.0.0-next-alpha.149(@tanstack/react-query@5.8.7)(@trpc/client@11.0.0-next-alpha.149)(@trpc/server@11.0.0-next-alpha.149)(react-dom@18.2.0)(react@18.2.0)
-      '@trpc/server': 11.0.0-next-alpha.149
+      '@trpc/client': 10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151(@trpc/server@10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151)
+      '@trpc/react-query': 10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151(@tanstack/react-query@5.8.7)(@trpc/client@10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151)(@trpc/server@10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151)(react-dom@18.2.0)(react@18.2.0)
+      '@trpc/server': 10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151
       next: 14.0.4(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@trpc/react-query@11.0.0-next-alpha.149(@tanstack/react-query@5.8.7)(@trpc/client@11.0.0-next-alpha.149)(@trpc/server@11.0.0-next-alpha.149)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-KDikOzoaI6f4DtXVTXnn5d4y4iyEBPh9uRN1z8BVhF1T1nbjcAGSLABk40QfH9xgMW+PousCOO0UlSCDHkdA9A==}
+  /@trpc/react-query@10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151(@tanstack/react-query@5.8.7)(@trpc/client@10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151)(@trpc/server@10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-+bMyy4vwr91N3OGb6ZTBmBkNuv8Bt4rxdjr1slac7KAkwDKfxGMmCworoZPHrwM4fk+E/2NKJ1MNDF5Pu5OJJQ==}
     peerDependencies:
       '@tanstack/react-query': ^5.0.0
-      '@trpc/client': 11.0.0-next-alpha.149+11361b82d
-      '@trpc/server': 11.0.0-next-alpha.149+11361b82d
+      '@trpc/client': 10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151+a20f2b972
+      '@trpc/server': 10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151+a20f2b972
       react: '>=18.2.0'
       react-dom: '>=18.2.0'
     dependencies:
       '@tanstack/react-query': 5.8.7(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)
-      '@trpc/client': 11.0.0-next-alpha.149(@trpc/server@11.0.0-next-alpha.149)
-      '@trpc/server': 11.0.0-next-alpha.149
+      '@trpc/client': 10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151(@trpc/server@10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151)
+      '@trpc/server': 10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@trpc/server@11.0.0-next-alpha.149:
-    resolution: {integrity: sha512-+zj/pk8vIP1v7K/ntGo3HkB4UT4wHWSYlkUdTQrqk3SawOygk+D0aRYkXvg6D9wgUn3zFEKUyVR1OWbMXD53Gw==}
+  /@trpc/server@10.7.1-alpha-12-28-caller-accept-fn-2023-12-28-20-40-32.151:
+    resolution: {integrity: sha512-JCqKLhnR/j7wK/jfkSwEuBCRuqKAK/UWRylgkeF2+NgEzgSyNZvKOUQweDE7vPgOVpOz3CWzpAjqm15DcrKF7A==}
     dev: false
 
   /@tsconfig/node10@1.0.9:

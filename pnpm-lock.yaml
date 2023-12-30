@@ -356,11 +356,11 @@ importers:
   packages/db:
     dependencies:
       '@planetscale/database':
-        specifier: ^1.11.0
-        version: 1.11.0
+        specifier: ^1.13.0
+        version: 1.13.0
       drizzle-orm:
         specifier: ^0.29.2
-        version: 0.29.2(@planetscale/database@1.11.0)(@types/react@18.2.45)(expo-sqlite@13.2.0)(react@18.2.0)
+        version: 0.29.2(@planetscale/database@1.13.0)(@types/react@18.2.45)(expo-sqlite@13.2.0)(react@18.2.0)
     devDependencies:
       '@acme/eslint-config':
         specifier: workspace:^0.2.0
@@ -3473,8 +3473,8 @@ packages:
       '@parcel/watcher-win32-x64': 2.3.0
     dev: true
 
-  /@planetscale/database@1.11.0:
-    resolution: {integrity: sha512-aWbU+D/IRHoDE9975y+Q4c+EwwAWxCPwFId+N1AhQVFXzbeJMkj6KN2iQtoi03elcLMRdfT+V3i9Z4WRw+/oIA==}
+  /@planetscale/database@1.13.0:
+    resolution: {integrity: sha512-sb9tUoF+Po55o+3PRHZVeH8XzUIABKBKcnq6oBUa+p/2uau/E2EXhnUPXmkC/x7oB6ILBqmqTL6dPP5Dn6d6iA==}
     engines: {node: '>=16'}
     dev: false
 
@@ -6916,7 +6916,7 @@ packages:
       - supports-color
     dev: true
 
-  /drizzle-orm@0.29.2(@planetscale/database@1.11.0)(@types/react@18.2.45)(expo-sqlite@13.2.0)(react@18.2.0):
+  /drizzle-orm@0.29.2(@planetscale/database@1.13.0)(@types/react@18.2.45)(expo-sqlite@13.2.0)(react@18.2.0):
     resolution: {integrity: sha512-BhwCwuSQqUoLVc7wtgIkuWexY127Z9+yDbuXU7QWZbMC2XE48jecvAThW9apQaDoaxQmwQ+ObyPfPb4zL4Bgsw==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
@@ -6981,7 +6981,7 @@ packages:
       sqlite3:
         optional: true
     dependencies:
-      '@planetscale/database': 1.11.0
+      '@planetscale/database': 1.13.0
       '@types/react': 18.2.45
       expo-sqlite: 13.2.0(expo@49.0.21)
       react: 18.2.0

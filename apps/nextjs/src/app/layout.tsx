@@ -6,13 +6,12 @@ import { GeistSans } from "geist/font/sans";
 
 import { cn } from "@acme/ui";
 import { ThemeProvider, ThemeToggle } from "@acme/ui/theme";
+import { Toaster } from "@acme/ui/toast";
 
 import { env } from "~/env";
 import { TRPCReactProvider } from "~/trpc/react";
 
-import "@acme/ui/styles.css";
-
-import { Toaster } from "@acme/ui/toast";
+import "~/app/globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(

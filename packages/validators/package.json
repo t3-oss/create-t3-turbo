@@ -1,7 +1,7 @@
 {
-  "name": "@acme/api",
-  "version": "0.1.0",
+  "name": "@acme/validators",
   "private": true,
+  "version": "0.1.0",
   "type": "module",
   "exports": {
     ".": "./src/index.ts"
@@ -14,12 +14,6 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@acme/auth": "workspace:^0.1.0",
-    "@acme/db": "workspace:^0.1.0",
-    "@acme/validators": "workspace:^0.1.0",
-    "@trpc/client": "next",
-    "@trpc/server": "next",
-    "superjson": "2.2.1",
     "zod": "^3.22.4"
   },
   "devDependencies": {
@@ -31,7 +25,6 @@
     "typescript": "^5.3.3"
   },
   "eslintConfig": {
-    "root": true,
     "extends": [
       "@acme/eslint-config/base"
     ]

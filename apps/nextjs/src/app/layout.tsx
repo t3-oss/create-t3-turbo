@@ -1,18 +1,18 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-
-import "~/styles/globals.css";
-
+import type { Metadata, Viewport } from "next";
 import { cache } from "react";
 import { headers } from "next/headers";
+import { GeistMono } from "geist/font/mono";
+import { GeistSans } from "geist/font/sans";
+
+import { cn } from "@acme/ui";
+import { ThemeProvider, ThemeToggle } from "@acme/ui/theme";
 
 import { env } from "~/env";
 import { TRPCReactProvider } from "~/trpc/react";
 
-const fontSans = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
+import "@acme/ui/styles.css";
+
+import { Toaster } from "@acme/ui/toast";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -35,16 +35,34 @@ export const metadata: Metadata = {
   },
 };
 
-// Lazy load headers
-const getHeaders = cache(() => Promise.resolve(headers()));
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
+  ],
+};
 
-export default function Layout(props: { children: React.ReactNode }) {
+const getHeaders = cache(async () => headers());
+
+export default function RootLayout(props: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={["font-sans", fontSans.variable].join(" ")}>
-        <TRPCReactProvider headersPromise={getHeaders()}>
-          {props.children}
-        </TRPCReactProvider>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={cn(
+          "bg-background text-foreground min-h-screen font-sans antialiased",
+          GeistSans.variable,
+          GeistMono.variable,
+        )}
+      >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <TRPCReactProvider headersPromise={getHeaders()}>
+            {props.children}
+          </TRPCReactProvider>
+          <div className="absolute bottom-4 right-4">
+            <ThemeToggle />
+          </div>
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );

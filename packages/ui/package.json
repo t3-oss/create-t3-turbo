@@ -18,7 +18,8 @@
     "clean": "rm -rf .turbo node_modules",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "ui-add": "pnpm dlx shadcn-ui add"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",

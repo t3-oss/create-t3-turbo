@@ -28,9 +28,9 @@ export function TRPCReactProvider(props: {
         unstable_httpBatchStreamLink({
           url: getBaseUrl() + "/api/trpc",
           async headers() {
-            const heads = new Headers(await props.headersPromise);
-            heads.set("x-trpc-source", "nextjs-react");
-            return Object.fromEntries(heads);
+            const headers = new Headers(await props.headersPromise);
+            headers.set("x-trpc-source", "nextjs-react");
+            return headers;
           },
         }),
       ],

@@ -27,11 +27,13 @@ export function TRPCProvider(props: { children: React.ReactNode }) {
       links: [
         httpBatchLink({
           url: `${getBaseUrl()}/api/trpc`,
-          async headers() {
+          headers: async () => {
             const headers = new Map<string, string>();
             headers.set("x-trpc-source", "expo-react");
+
             const token = await getToken();
             if (token) headers.set("Authorization", `Bearer ${token}`);
+
             return Object.fromEntries(headers);
           },
         }),

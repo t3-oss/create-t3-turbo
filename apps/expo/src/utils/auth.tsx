@@ -2,23 +2,22 @@ import * as Linking from "expo-linking";
 import * as Browser from "expo-web-browser";
 
 import { api } from "./api";
+import { getBaseUrl } from "./base-url";
 import { deleteToken, setToken } from "./session-store";
 
 export const signIn = async () => {
-  const signInUrl = "http://localhost:3000/api/auth/signin";
-  const redirectTo = "exp://192.168.10.181:8081/login";
+  const signInUrl = `${getBaseUrl()}/api/auth/signin`;
+  const redirectTo = Linking.createURL("/login");
   const result = await Browser.openAuthSessionAsync(
     `${signInUrl}?expo-redirect=${encodeURIComponent(redirectTo)}`,
-    redirectTo,
   );
-  if (result.type !== "success") return;
 
+  if (result.type !== "success") return;
   const url = Linking.parse(result.url);
   const sessionToken = String(url.queryParams?.session_token);
   if (!sessionToken) return;
 
   await setToken(sessionToken);
-  // ...
 };
 
 export const useUser = () => {

@@ -2,12 +2,12 @@ import type { NextRequest } from "next/server";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
-import { GET as _GET, POST } from "@acme/auth";
+import { GET as DEFAULT_GET, POST } from "@acme/auth";
 
 export const runtime = "edge";
 
-const expoRedirectCookieName = "__acme-expo-redirect-state";
-const setCookieMatchPattern = /next-auth\.session-token=([^;]+)/;
+const EXPO_COOKIE_NAME = "__acme-expo-redirect-state";
+const AUTH_COOKIE_PATTERN = /authjs\.session-token=([^;]+)/;
 
 export const GET = async (
   req: NextRequest,
@@ -15,13 +15,13 @@ export const GET = async (
 ) => {
   const nextauthAction = props.params.nextauth[0];
   const isExpoSignIn = req.nextUrl.searchParams.get("expo-redirect");
-  const isExpoCallback = cookies().get(expoRedirectCookieName);
+  const isExpoCallback = cookies().get(EXPO_COOKIE_NAME);
 
   if (nextauthAction === "signin" && !!isExpoSignIn) {
     // set a cookie we can read in the callback
     // to know to send the user back to expo
     cookies().set({
-      name: expoRedirectCookieName,
+      name: EXPO_COOKIE_NAME,
       value: isExpoSignIn,
       maxAge: 60 * 10, // 10 min
       path: "/",
@@ -29,12 +29,12 @@ export const GET = async (
   }
 
   if (nextauthAction === "callback" && !!isExpoCallback) {
-    cookies().delete(expoRedirectCookieName);
+    cookies().delete(EXPO_COOKIE_NAME);
 
-    const authResponse = await _GET(req);
+    const authResponse = await DEFAULT_GET(req);
     const setCookie = authResponse.headers.getSetCookie()[0];
-    const match = setCookie?.match(setCookieMatchPattern)?.[1];
-    if (!match) throw new Error("No session cookie found");
+    const match = setCookie?.match(AUTH_COOKIE_PATTERN)?.[1];
+    if (!match) throw new Error("Unable to find session cookie");
 
     const url = new URL(isExpoCallback.value);
     url.searchParams.set("session_token", match);
@@ -42,7 +42,7 @@ export const GET = async (
   }
 
   // Every other request just calls the default handler
-  return _GET(req);
+  return DEFAULT_GET(req);
 };
 
 export { POST };

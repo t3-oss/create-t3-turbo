@@ -6,7 +6,7 @@ import { FlashList } from "@shopify/flash-list";
 
 import type { RouterOutputs } from "~/utils/api";
 import { api } from "~/utils/api";
-import { useSignIn, useSignOut, useUser } from "~/utils/auth-hooks";
+import { useSignIn, useSignOut, useUser } from "~/utils/auth";
 
 function PostCard(props: {
   post: RouterOutputs["post"]["all"][number];
@@ -97,6 +97,25 @@ function CreatePost() {
   );
 }
 
+function MobileAuth() {
+  const user = useUser();
+  const signIn = useSignIn();
+  const signOut = useSignOut();
+
+  return (
+    <>
+      <Text className="pb-2 text-center text-xl font-semibold text-white">
+        {user?.name ?? "Not logged in"}
+      </Text>
+      <Button
+        onPress={() => (user ? signOut() : signIn())}
+        title={user ? "Sign Out" : "Sign In With Discord"}
+        color={"#5B65E9"}
+      />
+    </>
+  );
+}
+
 export default function Index() {
   const utils = api.useUtils();
 
@@ -111,13 +130,15 @@ export default function Index() {
   });
 
   return (
-    <SafeAreaView className="bg-[#1F104A]">
+    <SafeAreaView style={{ backgroundColor: "#1F104A" }}>
       {/* Changes page title visible on the header */}
       <Stack.Screen options={{ title: "Home Page" }} />
       <View className="h-full w-full p-4">
         <Text className="pb-2 text-center text-5xl font-bold text-white">
           Create <Text className="text-pink-400">T3</Text> Turbo
         </Text>
+
+        <MobileAuth />
 
         <Button
           onPress={() => void utils.post.all.invalidate()}

@@ -122,6 +122,10 @@ To add a new package, simply run `pnpm turbo gen init` in the monorepo root. Thi
 
 The generator sets up the `package.json`, `tsconfig.json` and a `index.ts`, as well as configures all the necessary configurations for tooling around your package such as formatting, linting and typechecking. When the package is created, you're ready to go build out the package.
 
+### 4. Configuring Next-Auth to work with Expo
+
+In order for the CSRF protection to work when developing locally, you will need to set the AUTH_URL to the same IP address your expo dev server is listening on. This address is displayed in your Expo CLI when starting the dev server.
+
 ## FAQ
 
 ### Does the starter include Solito?

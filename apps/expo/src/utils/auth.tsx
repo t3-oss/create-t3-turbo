@@ -6,18 +6,18 @@ import { getBaseUrl } from "./base-url";
 import { deleteToken, setToken } from "./session-store";
 
 export const signIn = async () => {
-  const authUrl = `${getBaseUrl()}/api/auth/signin`;
-  const redirectUrl = Linking.createURL("/login");
+  const signInUrl = `${getBaseUrl()}/api/auth/signin`;
+  const redirectTo = Linking.createURL("/login");
   const result = await Browser.openAuthSessionAsync(
-    `${authUrl}?expo-redirect=${encodeURIComponent(redirectUrl)}`,
+    `${signInUrl}?expo-redirect=${encodeURIComponent(redirectTo)}`,
   );
 
   if (result.type !== "success") return;
   const url = Linking.parse(result.url);
-  const token = String(url.queryParams?.session_token);
+  const sessionToken = String(url.queryParams?.session_token);
+  if (!sessionToken) return;
 
-  if (!token) return;
-  await setToken(token);
+  await setToken(sessionToken);
 };
 
 export const useUser = () => {

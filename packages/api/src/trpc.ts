@@ -11,7 +11,7 @@ import superjson from "superjson";
 import { ZodError } from "zod";
 
 import type { Session } from "@acme/auth";
-import { auth } from "@acme/auth";
+import { auth, validateToken } from "@acme/auth";
 import { db } from "@acme/db";
 
 /**
@@ -30,13 +30,17 @@ export const createTRPCContext = async (opts: {
   headers: Headers;
   session: Session | null;
 }) => {
-  const session = opts.session ?? (await auth());
+  const token = opts.headers.get("Authorization") ?? null;
+  const session = token
+    ? await validateToken(token)
+    : opts.session ?? (await auth());
   const source = opts.headers.get("x-trpc-source") ?? "unknown";
 
   console.log(">>> tRPC Request from", source, "by", session?.user);
 
   return {
     session,
+    token,
     db,
   };
 };

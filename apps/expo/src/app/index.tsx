@@ -121,6 +121,10 @@ export default function Index() {
 
   const postQuery = api.post.all.useQuery();
 
+  const user = useUser();
+  const signIn = useSignIn();
+  const signOut = useSignOut();
+
   const deletePostMutation = api.post.delete.useMutation({
     onSettled: () => utils.post.all.invalidate(),
   });
@@ -140,6 +144,15 @@ export default function Index() {
           onPress={() => void utils.post.all.invalidate()}
           title="Refresh posts"
           color={"#f472b6"}
+        />
+
+        <Text className="pb-2 text-center text-xl font-semibold text-white">
+          {user?.name ?? "Not logged in"}
+        </Text>
+        <Button
+          onPress={() => (user ? signOut() : signIn())}
+          title={user ? "Sign Out" : "Sign In With Discord"}
+          color={"#5B65E9"}
         />
 
         <View className="py-2">

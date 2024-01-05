@@ -13,22 +13,22 @@ export const GET = async (
   req: NextRequest,
   props: { params: { nextauth: string[] } },
 ) => {
-  const action = props.params.nextauth[0];
+  const nextauthAction = props.params.nextauth[0];
   const isExpoSignIn = req.nextUrl.searchParams.get("expo-redirect");
   const isExpoCallback = cookies().get(EXPO_COOKIE_NAME);
 
-  if (action === "signin" && !!isExpoSignIn) {
+  if (nextauthAction === "signin" && !!isExpoSignIn) {
+    // set a cookie we can read in the callback
+    // to know to send the user back to expo
     cookies().set({
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
       name: EXPO_COOKIE_NAME,
       value: isExpoSignIn,
-      maxAge: 60 * 60,
+      maxAge: 60 * 10, // 10 min
       path: "/",
     });
   }
 
-  if (action === "callback" && !!isExpoCallback) {
+  if (nextauthAction === "callback" && !!isExpoCallback) {
     cookies().delete(EXPO_COOKIE_NAME);
 
     const authResponse = await DEFAULT_GET(req);
@@ -41,6 +41,7 @@ export const GET = async (
     return NextResponse.redirect(url);
   }
 
+  // Every other request just calls the default handler
   return DEFAULT_GET(req);
 };
 

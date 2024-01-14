@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      '@tsconfig/node18':
+        specifier: ^18.2.2
+        version: 18.2.2
     devDependencies:
       '@acme/prettier-config':
         specifier: workspace:^0.1.0
@@ -270,8 +274,8 @@ importers:
         specifier: workspace:^0.1.0
         version: link:../validators
       '@trpc/server':
-        specifier: next
-        version: 11.0.0-next-alpha.170
+        specifier: 11.0.0-next-beta.193
+        version: 11.0.0-next-beta.193
       superjson:
         specifier: 2.2.1
         version: 2.2.1
@@ -5174,6 +5178,10 @@ packages:
     resolution: {integrity: sha512-F2j7XYnvv1hIeyTCKVzRWndMoIUUgHH0I3DP0bqhxmeB7+0tbgKUgAxt5sZ3T3xxUzooczXNbClK3EaHa3c1KA==}
     dev: false
 
+  /@trpc/core@11.0.0-next-beta.193:
+    resolution: {integrity: sha512-oF/Tg6ue12v8EjtbLEjiuLddbFovdpwK1hGPgZUesX1gtRiuWoJugpo4Xn2L1ESFhn1MVCZdAgXLj3qoNpXxIg==}
+    dev: false
+
   /@trpc/react-query@11.0.0-next-alpha.170(@tanstack/react-query@5.17.7)(@trpc/client@11.0.0-next-alpha.170)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-Igcj/x4v1GkIs1Vk7aMjcIT3SYOTSw33ijBl0Scrovw1ExdZWVpYMBTNMbURJNUhiFe5GBxVcwe2OG3Kauij7A==}
     peerDependencies:
@@ -5195,6 +5203,12 @@ packages:
       '@trpc/core': 11.0.0-next-alpha.170
     dev: false
 
+  /@trpc/server@11.0.0-next-beta.193:
+    resolution: {integrity: sha512-NRs1IyydAQI2jKZQzotVUwwUtBdvZWZOCxtaLsA5EkqZyXWbSQ2hF0xwbCZvUBnMWJXrXZljWidFzsGGsEGSag==}
+    dependencies:
+      '@trpc/core': 11.0.0-next-beta.193
+    dev: false
+
   /@tsconfig/node10@1.0.9:
     resolution: {integrity: sha512-jNsYVVxU8v5g43Erja32laIDHXeoNvFEpX33OK4d6hljo3jDhCBDhx5dhCCTMWUojscpAagGiRkBKxpdl9fxqA==}
     dev: true
@@ -5210,6 +5224,10 @@ packages:
   /@tsconfig/node16@1.0.4:
     resolution: {integrity: sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==}
     dev: true
+
+  /@tsconfig/node18@18.2.2:
+    resolution: {integrity: sha512-d6McJeGsuoRlwWZmVIeE8CUA27lu6jLjvv1JzqmpsytOYYbVi1tHZEnwCNVOXnj4pyLvneZlFlpXUK+X9wBWyw==}
+    dev: false
 
   /@turbo/gen@1.11.3(@types/node@20.10.6)(typescript@5.3.3):
     resolution: {integrity: sha512-cHGRj7Jn7Hw1cA7NuwWYfYdhEliQX4LuSfEB9L1m8ifGkHalU3bbYXcehzLThmckpGpUQGnXYx0UtVudbQ42HA==}

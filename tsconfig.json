@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "build",
+    "paths": {
+      "@trpc/*": ["./packages/api/src/*"]
+    },
+    "baseUrl": "."
+  },
+  "include": ["packages/trpc/**/*.ts"],
+  "references": [
+    {
+      "path": "./packages/api"
+    }
+  ]
+}

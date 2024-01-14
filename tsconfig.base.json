@@ -1,0 +1,35 @@
+{
+  "extends": "@tsconfig/node18/tsconfig.json",
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "ESNext",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "incremental": true,
+    "preserveSymlinks": true,
+    // "types": ["vitest/globals"],
+    "jsx": "react-jsx", // better frontend/backend tooling interoperability (ts-jest)
+    "moduleResolution": "Bundler", // assume esbuild/webpack/turbopack is used for bundling and let them handle imports
+    "resolveJsonModule": true,
+
+    // https://github.com/microsoft/TypeScript/issues/47663#issuecomment-1519138189
+    // 👉 declaration commented out because it fixes this issue...  maybe?
+    // "declaration": true /* Generates corresponding '.d.ts' file. */,
+    // "declarationMap": true /* Generates a sourcemap for each corresponding '.d.ts' file. */,
+    "sourceMap": true /* Generates corresponding '.map' file. */,
+    "noEmit": true,
+
+    "experimentalDecorators": true, // enable decorators
+    "emitDecoratorMetadata": true, // for runtime use of decorators
+    "strictPropertyInitialization": true,
+
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "strictNullChecks": true,
+    "noImplicitReturns": true /* Report error when not all code paths in function return a value. */,
+    "noFallthroughCasesInSwitch": true /* Report errors for fallthrough cases in switch statement. */,
+    "noImplicitOverride": true // must use override
+    // "noUnusedLocals": true /* Report errors on unused locals. */,
+    // "noUnusedParameters": true /* Report errors on unused parameters. */,
+  }
+}

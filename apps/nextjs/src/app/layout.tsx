@@ -1,6 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { cache } from "react";
-import { headers } from "next/headers";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 
@@ -41,8 +39,6 @@ export const viewport: Viewport = {
   ],
 };
 
-const getHeaders = cache(async () => headers());
-
 export default function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -54,9 +50,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <TRPCReactProvider headersPromise={getHeaders()}>
-            {props.children}
-          </TRPCReactProvider>
+          <TRPCReactProvider>{props.children}</TRPCReactProvider>
           <div className="absolute bottom-4 right-4">
             <ThemeToggle />
           </div>

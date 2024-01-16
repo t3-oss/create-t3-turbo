@@ -10,10 +10,7 @@ import type { AppRouter } from "@acme/api";
 
 export const api = createTRPCReact<AppRouter>();
 
-export function TRPCReactProvider(props: {
-  children: React.ReactNode;
-  headersPromise: Promise<Headers>;
-}) {
+export function TRPCReactProvider(props: { children: React.ReactNode }) {
   const [queryClient] = useState(() => new QueryClient());
 
   const [trpcClient] = useState(() =>
@@ -28,7 +25,7 @@ export function TRPCReactProvider(props: {
         unstable_httpBatchStreamLink({
           url: getBaseUrl() + "/api/trpc",
           async headers() {
-            const headers = new Headers(await props.headersPromise);
+            const headers = new Headers();
             headers.set("x-trpc-source", "nextjs-react");
             return headers;
           },

@@ -24,12 +24,16 @@ export const {
   adapter: DrizzleAdapter(db, tableCreator),
   providers: [Discord],
   callbacks: {
-    session: ({ session, user }) => ({
-      ...session,
-      user: {
-        ...session.user,
-        id: user.id,
-      },
-    }),
+    session: (opts) => {
+      if (!("user" in opts)) throw "unreachable with session strategy";
+
+      return {
+        ...opts.session,
+        user: {
+          ...opts.session.user,
+          id: opts.user.id,
+        },
+      };
+    },
   },
 });

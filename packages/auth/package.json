@@ -2,32 +2,34 @@
   "name": "@acme/auth",
   "version": "0.1.0",
   "private": true,
-  "main": "./index.ts",
-  "types": "./index.ts",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./env": "./env.js"
+  },
   "license": "MIT",
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
-    "lint": "eslint .",
     "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "eslint .",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@acme/db": "workspace:^0.1.0",
-    "@auth/core": "^0.18.4",
-    "@auth/drizzle-adapter": "^0.3.9",
+    "@auth/drizzle-adapter": "^0.3.12",
     "@t3-oss/env-nextjs": "^0.7.1",
-    "next": "^14.0.3",
+    "next": "^14.0.4",
     "next-auth": "5.0.0-beta.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "zod": "^3.22.2"
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@acme/eslint-config": "workspace:^0.2.0",
     "@acme/prettier-config": "workspace:^0.1.0",
     "@acme/tsconfig": "workspace:^0.1.0",
-    "eslint": "^8.53.0",
-    "prettier": "^3.1.0",
+    "eslint": "^8.56.0",
+    "prettier": "^3.1.1",
     "typescript": "^5.3.3"
   },
   "eslintConfig": {

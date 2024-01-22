@@ -1,5 +1,5 @@
-import * as dotenv from "dotenv";
 import type { Config } from "drizzle-kit";
+import * as dotenv from "dotenv";
 
 dotenv.config({ path: "../../.env" });
 
@@ -16,7 +16,7 @@ const uri = [
 ].join("");
 
 export default {
-  schema: "./schema",
+  schema: "./src/schema",
   driver: "mysql2",
   dbCredentials: { uri },
   tablesFilter: ["t3turbo_*"],

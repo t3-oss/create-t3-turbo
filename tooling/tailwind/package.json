@@ -2,27 +2,29 @@
   "name": "@acme/tailwind-config",
   "version": "0.1.0",
   "private": true,
-  "main": "index.ts",
+  "type": "module",
+  "exports": {
+    ".": "./index.ts"
+  },
   "license": "MIT",
-  "files": [
-    "index.ts"
-  ],
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
-    "lint": "eslint .",
     "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "eslint .",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "autoprefixer": "^10.4.16",
-    "tailwindcss": "3.3.5"
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.0",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@acme/eslint-config": "workspace:^0.2.0",
     "@acme/prettier-config": "workspace:^0.1.0",
     "@acme/tsconfig": "workspace:^0.1.0",
-    "eslint": "^8.53.0",
-    "prettier": "^3.1.0",
+    "eslint": "^8.56.0",
+    "prettier": "^3.1.1",
     "typescript": "^5.3.3"
   },
   "eslintConfig": {

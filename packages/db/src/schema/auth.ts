@@ -1,4 +1,3 @@
-import type { AdapterAccount } from "@auth/core/adapters";
 import { relations, sql } from "drizzle-orm";
 import {
   index,
@@ -31,12 +30,12 @@ export const accounts = mySqlTable(
   {
     userId: varchar("userId", { length: 255 }).notNull(),
     type: varchar("type", { length: 255 })
-      .$type<AdapterAccount["type"]>()
+      .$type<"oauth" | "oidc" | "email">()
       .notNull(),
     provider: varchar("provider", { length: 255 }).notNull(),
     providerAccountId: varchar("providerAccountId", { length: 255 }).notNull(),
     refresh_token: varchar("refresh_token", { length: 255 }),
-    access_token: varchar("access_token", { length: 255 }),
+    access_token: text("access_token"),
     expires_at: int("expires_at"),
     token_type: varchar("token_type", { length: 255 }),
     scope: varchar("scope", { length: 255 }),
@@ -44,7 +43,9 @@ export const accounts = mySqlTable(
     session_state: varchar("session_state", { length: 255 }),
   },
   (account) => ({
-    compoundKey: primaryKey(account.provider, account.providerAccountId),
+    compoundKey: primaryKey({
+      columns: [account.provider, account.providerAccountId],
+    }),
     userIdIdx: index("userId_idx").on(account.userId),
   }),
 );
@@ -79,6 +80,6 @@ export const verificationTokens = mySqlTable(
     expires: timestamp("expires", { mode: "date" }).notNull(),
   },
   (vt) => ({
-    compoundKey: primaryKey(vt.identifier, vt.token),
+    compoundKey: primaryKey({ columns: [vt.identifier, vt.token] }),
   }),
 );

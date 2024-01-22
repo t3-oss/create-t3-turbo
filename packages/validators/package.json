@@ -1,5 +1,5 @@
 {
-  "name": "@acme/{{ name }}",
+  "name": "@acme/validators",
   "private": true,
   "version": "0.1.0",
   "type": "module",
@@ -12,6 +12,9 @@
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@acme/eslint-config": "workspace:^0.2.0",

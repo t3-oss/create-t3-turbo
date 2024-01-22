@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import { Button, Pressable, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Link, Stack } from "expo-router";
@@ -39,8 +39,8 @@ function PostCard(props: {
 function CreatePost() {
   const utils = api.useUtils();
 
-  const [title, setTitle] = React.useState("");
-  const [content, setContent] = React.useState("");
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
 
   const { mutate, error } = api.post.create.useMutation({
     async onSuccess() {
@@ -96,7 +96,7 @@ function CreatePost() {
   );
 }
 
-const Index = () => {
+export default function Index() {
   const utils = api.useUtils();
 
   const postQuery = api.post.all.useQuery();
@@ -142,6 +142,4 @@ const Index = () => {
       </View>
     </SafeAreaView>
   );
-};
-
-export default Index;
+}

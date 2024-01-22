@@ -5,11 +5,7 @@
     "paths": {
       "~/*": ["./src/*"]
     },
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
+    "plugins": [{ "name": "next" }],
     "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json"
   },
   "include": [".", ".next/types/**/*.ts"],

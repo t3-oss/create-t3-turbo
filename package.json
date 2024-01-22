@@ -2,14 +2,13 @@
   "name": "create-t3-turbo",
   "private": true,
   "engines": {
-    "node": ">=18.18.2"
+    "node": ">=20.10"
   },
-  "packageManager": "pnpm@8.11.0",
+  "packageManager": "pnpm@8.14.0",
   "scripts": {
     "build": "turbo build",
     "clean": "git clean -xdf node_modules",
     "clean:workspaces": "turbo clean",
-    "postinstall": "pnpm lint:ws",
     "db:push": "pnpm -F db push",
     "db:studio": "pnpm -F db studio",
     "dev": "turbo dev --parallel",
@@ -18,19 +17,20 @@
     "lint": "turbo lint --continue -- --cache --cache-location node_modules/.cache/.eslintcache",
     "lint:fix": "turbo lint --continue -- --fix --cache --cache-location node_modules/.cache/.eslintcache",
     "lint:ws": "pnpm dlx sherif@latest",
+    "postinstall": "pnpm lint:ws",
     "typecheck": "turbo typecheck"
   },
   "devDependencies": {
     "@acme/prettier-config": "workspace:^0.1.0",
-    "@turbo/gen": "^1.11.1",
-    "prettier": "^3.1.0",
-    "turbo": "^1.11.1",
+    "@turbo/gen": "^1.11.3",
+    "prettier": "^3.1.1",
+    "turbo": "^1.11.3",
     "typescript": "^5.3.3"
   },
+  "prettier": "@acme/prettier-config",
   "pnpm": {
     "overrides": {
-      "@auth/core": "0.18.0"
+      "@auth/core": "0.20.0"
     }
-  },
-  "prettier": "@acme/prettier-config"
+  }
 }

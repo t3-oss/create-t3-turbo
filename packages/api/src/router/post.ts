@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 import { desc, eq, schema } from "@acme/db";
+import { CreatePostSchema } from "@acme/validators";
 
 import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
 
@@ -27,12 +28,7 @@ export const postRouter = createTRPCRouter({
     }),
 
   create: protectedProcedure
-    .input(
-      z.object({
-        title: z.string().min(1),
-        content: z.string().min(1),
-      }),
-    )
+    .input(CreatePostSchema)
     .mutation(({ ctx, input }) => {
       return ctx.db.insert(schema.post).values(input);
     }),

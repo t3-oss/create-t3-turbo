@@ -47,11 +47,13 @@ apps
       └─ E2E Typesafe API Server & Client
 packages
   ├─ api
-  |   └─ tRPC v10 router definition
+  |   └─ tRPC v11 router definition
   ├─ auth
   |   └─ Authentication using next-auth. **NOTE: Only for Next.js app, not Expo**
-  └─ db
-      └─ Typesafe db calls using Drizzle & Planetscale
+  ├─ db
+  |   └─ Typesafe db calls using Drizzle & Planetscale
+  └─ ui
+      └─ Start of a UI package for the webapp using shadcn-ui
 tooling
   ├─ eslint
   |   └─ shared, fine-grained, eslint presets

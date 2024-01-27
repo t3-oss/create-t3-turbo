@@ -1,4 +1,3 @@
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 
@@ -12,7 +11,6 @@ import { useColorScheme } from "nativewind";
 // It wraps your pages with the providers they need
 export default function RootLayout() {
   const { colorScheme } = useColorScheme();
-  const insets = useSafeAreaInsets();
   return (
     <TRPCProvider>
       {/*

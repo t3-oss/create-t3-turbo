@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Pressable, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Link, Stack } from "expo-router";
 import { FlashList } from "@shopify/flash-list";
-import { useColorScheme } from "nativewind";
 
 import type { RouterOutputs } from "~/utils/api";
 import { api } from "~/utils/api";
@@ -96,7 +95,6 @@ function CreatePost() {
 }
 
 export default function Index() {
-  const { setColorScheme } = useColorScheme();
   const utils = api.useUtils();
 
   const postQuery = api.post.all.useQuery();
@@ -104,10 +102,6 @@ export default function Index() {
   const deletePostMutation = api.post.delete.useMutation({
     onSettled: () => utils.post.all.invalidate().then(),
   });
-
-  useEffect(() => {
-    setColorScheme("system");
-  }, []);
 
   return (
     <SafeAreaView className=" bg-background">

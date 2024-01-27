@@ -5,7 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  '@auth/core': 0.24.0
+  '@auth/core': 0.20.0
 
 importers:
 
@@ -30,8 +30,8 @@ importers:
   apps/auth-proxy:
     dependencies:
       '@auth/core':
-        specifier: 0.24.0
-        version: 0.24.0
+        specifier: 0.20.0
+        version: 0.20.0
     devDependencies:
       '@acme/eslint-config':
         specifier: workspace:^0.2.0
@@ -608,8 +608,8 @@ packages:
       '@jridgewell/gen-mapping': 0.3.3
       '@jridgewell/trace-mapping': 0.3.18
 
-  /@auth/core@0.24.0:
-    resolution: {integrity: sha512-wwTyapljg4ydyvtQRXSeOaj6nBVSvPkVoXws6i+/vPfINxz4lo9UuLifPLqW7iO72/f4Ttaez0g3XA42VtKQ8A==}
+  /@auth/core@0.20.0:
+    resolution: {integrity: sha512-04lQH58H5d/9xQ63MOTDTOC7sXWYlr/RhJ97wfFLXzll7nYyCKbkrT3ZMdzdLC5O+qt90sQDK85TAtLlcZ2WBg==}
     peerDependencies:
       nodemailer: ^6.8.0
     peerDependenciesMeta:
@@ -628,7 +628,7 @@ packages:
   /@auth/drizzle-adapter@0.3.12:
     resolution: {integrity: sha512-6+XCHrDXglKPWKRmHuUA6f27WM40v3+MQyUFf2d+JsA0tuBuwOw6IPp1ycxvOODM6milHyKcjowUfqWW9F9f9Q==}
     dependencies:
-      '@auth/core': 0.24.0
+      '@auth/core': 0.20.0
     transitivePeerDependencies:
       - nodemailer
     dev: false
@@ -10373,7 +10373,7 @@ packages:
       nodemailer:
         optional: true
     dependencies:
-      '@auth/core': 0.24.0
+      '@auth/core': 0.20.0
       next: 14.1.0(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
     dev: false

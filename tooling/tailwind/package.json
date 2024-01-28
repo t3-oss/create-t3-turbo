@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "exports": {
-    ".": "./index.ts"
+    "./native": "./native.ts",
+    "./web": "./web.ts"
   },
   "license": "MIT",
   "scripts": {

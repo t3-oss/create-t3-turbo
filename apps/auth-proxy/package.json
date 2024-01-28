@@ -11,14 +11,16 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@auth/core": "0.24.0"
+    "@auth/core": "0.20.0"
   },
   "devDependencies": {
     "@acme/eslint-config": "workspace:^0.2.0",
     "@acme/prettier-config": "workspace:^0.1.0",
     "@acme/tailwind-config": "workspace:^0.1.0",
     "@acme/tsconfig": "workspace:^0.1.0",
+    "@types/node": "^20.10.6",
     "eslint": "^8.56.0",
+    "h3": "^1.9.0",
     "nitropack": "^2.8.1",
     "prettier": "^3.1.1",
     "typescript": "^5.3.3"

@@ -1,7 +1,5 @@
 "use client";
 
-import { use } from "react";
-
 import type { RouterOutputs } from "@acme/api";
 import { cn } from "@acme/ui";
 import { Button } from "@acme/ui/button";
@@ -81,16 +79,11 @@ export function CreatePostForm() {
   );
 }
 
-export function PostList(props: {
-  posts: Promise<RouterOutputs["post"]["all"]>;
-}) {
-  // TODO: Make `useSuspenseQuery` work without having to pass a promise from RSC
-  const initialData = use(props.posts);
-  const { data: posts } = api.post.all.useQuery(undefined, {
-    initialData,
-  });
+export function PostList() {
+  const { data: posts } = api.post.all.useQuery();
+  console.log("posts", posts);
 
-  if (posts.length === 0) {
+  if (posts?.length === 0) {
     return (
       <div className="relative flex w-full flex-col gap-4">
         <PostCardSkeleton pulse={false} />
@@ -106,7 +99,7 @@ export function PostList(props: {
 
   return (
     <div className="flex w-full flex-col gap-4">
-      {posts.map((p) => {
+      {posts?.map((p) => {
         return <PostCard key={p.id} post={p} />;
       })}
     </div>

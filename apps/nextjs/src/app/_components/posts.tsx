@@ -81,6 +81,7 @@ export function CreatePostForm() {
 
 export function PostList() {
   const { data: posts } = api.post.all.useQuery();
+  console.log("this should never be undefined", posts);
 
   if (posts?.length === 0) {
     return (

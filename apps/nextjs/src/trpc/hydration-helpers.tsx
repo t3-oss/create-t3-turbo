@@ -77,7 +77,6 @@ export function createHydrationHelpers<TRouter extends AnyTRPCRouter>(
   const proxy = createFlatProxy<Proxy>((key) =>
     createRecursiveProxy(({ path }) => {
       const fullPath = [key, ...path];
-      console.log("path", fullPath);
       return fullPath;
     }),
   );
@@ -95,7 +94,6 @@ export function createHydrationHelpers<TRouter extends AnyTRPCRouter>(
 
   function HydrateClient(props: { children: React.ReactNode }) {
     const state = dehydrate(getQueryClient());
-    console.log("state", state);
 
     return (
       <HydrationBoundary state={state}>{props.children}</HydrationBoundary>

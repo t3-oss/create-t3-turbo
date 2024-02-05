@@ -10,7 +10,6 @@ import {
   createFlatProxy,
   createRecursiveProxy,
 } from "@trpc/server/unstable-core-do-not-import";
-import { getQueryKeyInternal } from "node_modules/@trpc/react-query/dist/internals/getQueryKey";
 
 /**
  * Some internal shit used to hydrate query client on the client
@@ -20,6 +19,43 @@ import { getQueryKeyInternal } from "node_modules/@trpc/react-query/dist/interna
  * This also provides some DX helpers to more easily perform hydration
  * for queries fetched in RSC.
  */
+
+// https://github.com/trpc/trpc/blob/next/packages/react-query/src/internals/getQueryKey.ts
+export function getQueryKeyInternal(
+  path: string[],
+  input: unknown,
+  type: "any" | "infinite" | "query",
+) {
+  const splitPath = path.flatMap((part) => part.split("."));
+
+  if (!input && (!type || type === "any")) {
+    return splitPath.length ? [splitPath] : [];
+  }
+
+  if (
+    type === "infinite" &&
+    input &&
+    typeof input === "object" &&
+    "cursor" in input
+  ) {
+    const { cursor: _, ...inputWithoutCursor } = input;
+
+    return [
+      splitPath,
+      {
+        input: inputWithoutCursor,
+        type: "infinite",
+      },
+    ];
+  }
+  return [
+    splitPath,
+    {
+      ...(typeof input !== "undefined" && { input: input }),
+      ...(type && type !== "any" && { type: type }),
+    },
+  ];
+}
 
 type DecorateProcedure<TProcedure extends AnyTRPCProcedure> = (
   input: TProcedure["_def"]["_input_in"],

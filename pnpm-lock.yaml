@@ -5,7 +5,7 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  '@auth/core': 0.26.0
+  '@auth/core': 0.20.0
 
 importers:
 
@@ -30,8 +30,8 @@ importers:
   apps/auth-proxy:
     dependencies:
       '@auth/core':
-        specifier: 0.26.0
-        version: 0.26.0
+        specifier: 0.20.0
+        version: 0.20.0
     devDependencies:
       '@acme/eslint-config':
         specifier: workspace:^0.2.0
@@ -602,14 +602,11 @@ packages:
       '@jridgewell/gen-mapping': 0.3.3
       '@jridgewell/trace-mapping': 0.3.18
 
-  /@auth/core@0.26.0:
-    resolution: {integrity: sha512-AcuOQZHVUJDIbP6l98GttJNlobo3dxFfUiUEzzESapJ5BxJM+k/Cez3heDkQFhDBeati+FDZpZb4aPtH+odNwA==}
+  /@auth/core@0.20.0:
+    resolution: {integrity: sha512-04lQH58H5d/9xQ63MOTDTOC7sXWYlr/RhJ97wfFLXzll7nYyCKbkrT3ZMdzdLC5O+qt90sQDK85TAtLlcZ2WBg==}
     peerDependencies:
-      '@simplewebauthn/server': ^9.0.1
       nodemailer: ^6.8.0
     peerDependenciesMeta:
-      '@simplewebauthn/server':
-        optional: true
       nodemailer:
         optional: true
     dependencies:
@@ -625,9 +622,8 @@ packages:
   /@auth/drizzle-adapter@0.3.12:
     resolution: {integrity: sha512-6+XCHrDXglKPWKRmHuUA6f27WM40v3+MQyUFf2d+JsA0tuBuwOw6IPp1ycxvOODM6milHyKcjowUfqWW9F9f9Q==}
     dependencies:
-      '@auth/core': 0.26.0
+      '@auth/core': 0.20.0
     transitivePeerDependencies:
-      - '@simplewebauthn/server'
       - nodemailer
     dev: false
 
@@ -10323,11 +10319,9 @@ packages:
       nodemailer:
         optional: true
     dependencies:
-      '@auth/core': 0.26.0
+      '@auth/core': 0.20.0
       next: 14.1.0(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
-    transitivePeerDependencies:
-      - '@simplewebauthn/server'
     dev: false
 
   /next-themes@0.2.1(next@14.1.0)(react-dom@18.2.0)(react@18.2.0):

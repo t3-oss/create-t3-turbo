@@ -21,7 +21,7 @@ import {
  */
 
 // https://github.com/trpc/trpc/blob/next/packages/react-query/src/internals/getQueryKey.ts
-export function getQueryKeyInternal(
+function getQueryKeyInternal(
   path: string[],
   input: unknown,
   type: "any" | "infinite" | "query",

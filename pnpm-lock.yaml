@@ -319,8 +319,8 @@ importers:
         specifier: ^14.1.0
         version: 14.1.0(react-dom@18.2.0)(react@18.2.0)
       next-auth:
-        specifier: 5.0.0-beta.5
-        version: 5.0.0-beta.5(next@14.1.0)(react@18.2.0)
+        specifier: 5.0.0-beta.6
+        version: 5.0.0-beta.6(next@14.1.0)(react@18.2.0)
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -10306,13 +10306,16 @@ packages:
     engines: {node: '>= 0.4.0'}
     dev: true
 
-  /next-auth@5.0.0-beta.5(next@14.1.0)(react@18.2.0):
-    resolution: {integrity: sha512-tEYIPhm/i0byW4xf9Ldlsnh7ckBQfNvMjOA3B3eXQX9taAQWb8earravSn1fjk4fKfKvaOApFJkks0VeI7Vy/A==}
+  /next-auth@5.0.0-beta.6(next@14.1.0)(react@18.2.0):
+    resolution: {integrity: sha512-knkj6sfl6NkoilOh886pdJAKWCcJyoEXhR8avqDKffRSK6cfyOdAoAyERMZK4uWS2MwnsuUqhSz0vhndM3ws8Q==}
     peerDependencies:
+      '@simplewebauthn/browser': v9.0.0
       next: ^14
       nodemailer: ^6.6.5
       react: ^18.2.0
     peerDependenciesMeta:
+      '@simplewebauthn/browser':
+        optional: true
       nodemailer:
         optional: true
     dependencies:

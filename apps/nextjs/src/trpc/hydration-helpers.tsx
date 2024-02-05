@@ -83,6 +83,7 @@ export function createHydrationHelpers<TRouter extends AnyTRPCRouter>(
   );
 
   function setQueryData<T extends AnyTRPCQueryProcedure>(
+    // light mode - should be closer to https://github.com/trpc/trpc/blob/next/packages/react-query/src/internals/getQueryKey.ts#L66-L118
     cb: (p: Proxy) => [DecorateProcedure<T>, T["_def"]["_input_in"]],
     data: T["_def"]["_output_out"],
   ) {

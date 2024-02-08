@@ -490,9 +490,6 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^6.19.1
         version: 6.19.1(eslint@8.56.0)(typescript@5.3.3)
-      eslint-config-prettier:
-        specifier: ^9.1.0
-        version: 9.1.0(eslint@8.56.0)
       eslint-config-turbo:
         specifier: ^1.11.3
         version: 1.11.3(eslint@8.56.0)
@@ -7347,15 +7344,6 @@ packages:
     optionalDependencies:
       source-map: 0.6.1
     dev: true
-
-  /eslint-config-prettier@9.1.0(eslint@8.56.0):
-    resolution: {integrity: sha512-NSWl5BFQWEPi1j4TjVNItzYV7dZXZ+wP6I6ZhrBGpChQhZRUaElihE9uRRkcbRnNb76UMKDF3r+WTmNcGPKsqw==}
-    hasBin: true
-    peerDependencies:
-      eslint: '>=7.0.0'
-    dependencies:
-      eslint: 8.56.0
-    dev: false
 
   /eslint-config-turbo@1.11.3(eslint@8.56.0):
     resolution: {integrity: sha512-v7CHpAHodBKlj+r+R3B2DJlZbCjpZLnK7gO/vCRk/Lc+tlD/f04wM6rmHlerevOlchtmwARilRLBnmzNLffTyQ==}

@@ -80,8 +80,9 @@ export function CreatePostForm() {
 }
 
 export function PostList() {
-  const { data: posts } = api.post.all.useQuery();
-  console.log("this should never be undefined", posts);
+  // Posts are already in the cache from our RSC pre-fetch,
+  // so this will not fetch until the data goes stale
+  const [posts] = api.post.all.useSuspenseQuery();
 
   if (posts?.length === 0) {
     return (

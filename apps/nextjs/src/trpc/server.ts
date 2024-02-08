@@ -1,12 +1,11 @@
 import { cache } from "react";
 import { headers } from "next/headers";
 import { QueryClient } from "@tanstack/react-query";
+import { createHydrationHelpers } from "@trpc/react-query/rsc";
 
 import type { AppRouter } from "@acme/api";
 import { createCaller, createTRPCContext } from "@acme/api";
 import { auth } from "@acme/auth";
-
-import { createHydrationHelpers } from "./hydration-helpers";
 
 /**
  * This wraps the `createTRPCContext` helper and provides the required context for the tRPC API when
@@ -22,8 +21,10 @@ const createContext = cache(async () => {
   });
 });
 
-export const api = createCaller(createContext);
-
+const caller = createCaller(createContext);
 const getQueryClient = cache(() => new QueryClient());
-export const { HydrateClient, setQueryData } =
-  createHydrationHelpers<AppRouter>(getQueryClient);
+
+export const { HydrateClient, trpc: api } = createHydrationHelpers<AppRouter>(
+  caller,
+  getQueryClient,
+);

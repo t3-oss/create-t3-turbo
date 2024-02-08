@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 
-import { api, HydrateClient, setQueryData } from "~/trpc/server";
+import { api, HydrateClient } from "~/trpc/server";
 import { AuthShowcase } from "./_components/auth-showcase";
 import {
   CreatePostForm,
@@ -41,8 +41,8 @@ export default async function HomePage() {
 }
 
 async function PostListWrapped() {
-  const posts = await api.post.all();
-  setQueryData((t) => [t.post.all, undefined], posts); // would be cool if this was automatically put to the cache
+  // pre-fetch posts and put it in the query cache
+  const _posts = await api.post.all();
 
   return (
     <HydrateClient>

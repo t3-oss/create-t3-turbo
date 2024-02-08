@@ -73,14 +73,14 @@ importers:
         specifier: ^5.18.1
         version: 5.18.1(react@18.2.0)
       '@trpc/client':
-        specifier: 11.0.0-next-beta.264
-        version: 11.0.0-next-beta.264(@trpc/server@11.0.0-next-beta.264)
+        specifier: 11.0.0-alpha-tmp-app-router-example.281
+        version: 11.0.0-alpha-tmp-app-router-example.281(@trpc/server@11.0.0-alpha-tmp-app-router-example.281)
       '@trpc/react-query':
-        specifier: 11.0.0-next-beta.264
-        version: 11.0.0-next-beta.264(@tanstack/react-query@5.18.1)(@trpc/client@11.0.0-next-beta.264)(@trpc/server@11.0.0-next-beta.264)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 11.0.0-alpha-tmp-app-router-example.281
+        version: 11.0.0-alpha-tmp-app-router-example.281(@tanstack/react-query@5.18.1)(@trpc/client@11.0.0-alpha-tmp-app-router-example.281)(@trpc/server@11.0.0-alpha-tmp-app-router-example.281)(react-dom@18.2.0)(react@18.2.0)
       '@trpc/server':
-        specifier: 11.0.0-next-beta.264
-        version: 11.0.0-next-beta.264
+        specifier: 11.0.0-alpha-tmp-app-router-example.281
+        version: 11.0.0-alpha-tmp-app-router-example.281
       expo:
         specifier: ~50.0.6
         version: 50.0.6(@babel/core@7.23.9)(@react-native/babel-preset@0.73.21)
@@ -197,14 +197,14 @@ importers:
         specifier: ^5.18.1
         version: 5.18.1(react@18.2.0)
       '@trpc/client':
-        specifier: 11.0.0-next-beta.264
-        version: 11.0.0-next-beta.264(@trpc/server@11.0.0-next-beta.264)
+        specifier: 11.0.0-alpha-tmp-app-router-example.281
+        version: 11.0.0-alpha-tmp-app-router-example.281(@trpc/server@11.0.0-alpha-tmp-app-router-example.281)
       '@trpc/react-query':
-        specifier: 11.0.0-next-beta.264
-        version: 11.0.0-next-beta.264(@tanstack/react-query@5.18.1)(@trpc/client@11.0.0-next-beta.264)(@trpc/server@11.0.0-next-beta.264)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 11.0.0-alpha-tmp-app-router-example.281
+        version: 11.0.0-alpha-tmp-app-router-example.281(@tanstack/react-query@5.18.1)(@trpc/client@11.0.0-alpha-tmp-app-router-example.281)(@trpc/server@11.0.0-alpha-tmp-app-router-example.281)(react-dom@18.2.0)(react@18.2.0)
       '@trpc/server':
-        specifier: 11.0.0-next-beta.264
-        version: 11.0.0-next-beta.264
+        specifier: 11.0.0-alpha-tmp-app-router-example.281
+        version: 11.0.0-alpha-tmp-app-router-example.281
       geist:
         specifier: ^1.2.2
         version: 1.2.2(next@14.1.0)
@@ -276,8 +276,8 @@ importers:
         specifier: workspace:^0.1.0
         version: link:../validators
       '@trpc/server':
-        specifier: 11.0.0-next-beta.264
-        version: 11.0.0-next-beta.264
+        specifier: 11.0.0-alpha-tmp-app-router-example.281
+        version: 11.0.0-alpha-tmp-app-router-example.281
       superjson:
         specifier: 2.2.1
         version: 2.2.1
@@ -4962,32 +4962,32 @@ packages:
     resolution: {integrity: sha512-C5Mc6rdnsaJDjO3UpGW/CQTHtCKaYlScZTly4JIu97Jxo/odCiH0ITnDXSJPTOrEKk/ycSZ0AOgTmkDtkOsvIA==}
     dev: true
 
-  /@trpc/client@11.0.0-next-beta.264(@trpc/server@11.0.0-next-beta.264):
-    resolution: {integrity: sha512-He/kE++/rDq/yZr7xCkQmOC+1S3auulLVjBuo6LvuYuFQL+Slf2ObRftbNVWa92GVd/llxV+eNlbzR9mTVPCPg==}
+  /@trpc/client@11.0.0-alpha-tmp-app-router-example.281(@trpc/server@11.0.0-alpha-tmp-app-router-example.281):
+    resolution: {integrity: sha512-MkGn1Z3/EIikNsMWeuYXGfy98XuSdz48uyI9x0JFSnmuL5VgSPfSRUVxGEMhDBKzMmW5k/+khlz5cG543FdCZQ==}
     peerDependencies:
-      '@trpc/server': 11.0.0-next-beta.264+f5f08f35d
+      '@trpc/server': 11.0.0-alpha-tmp-app-router-example.281+1b2ea2dd7
     dependencies:
-      '@trpc/server': 11.0.0-next-beta.264
+      '@trpc/server': 11.0.0-alpha-tmp-app-router-example.281
     dev: false
 
-  /@trpc/react-query@11.0.0-next-beta.264(@tanstack/react-query@5.18.1)(@trpc/client@11.0.0-next-beta.264)(@trpc/server@11.0.0-next-beta.264)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-maIb/L1mtfwdTkLzscVhv6MGFwoRUdQkDU++e+9E7EPCSZD4ZJ12MyoDPQp85Wv44ot7frBFbfyWak/woP1zjQ==}
+  /@trpc/react-query@11.0.0-alpha-tmp-app-router-example.281(@tanstack/react-query@5.18.1)(@trpc/client@11.0.0-alpha-tmp-app-router-example.281)(@trpc/server@11.0.0-alpha-tmp-app-router-example.281)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-QTYk/vkNU/PR3iB31956SHe2lK2WBpb7MBEXykENn8G6MAcRMAm2mBKZjrOeXiLlzs9Xkvne8a8/ehp0VgVtLg==}
     peerDependencies:
       '@tanstack/react-query': ^5.0.0
-      '@trpc/client': 11.0.0-next-beta.264+f5f08f35d
-      '@trpc/server': 11.0.0-next-beta.264+f5f08f35d
+      '@trpc/client': 11.0.0-alpha-tmp-app-router-example.281+1b2ea2dd7
+      '@trpc/server': 11.0.0-alpha-tmp-app-router-example.281+1b2ea2dd7
       react: '>=18.2.0'
       react-dom: '>=18.2.0'
     dependencies:
       '@tanstack/react-query': 5.18.1(react@18.2.0)
-      '@trpc/client': 11.0.0-next-beta.264(@trpc/server@11.0.0-next-beta.264)
-      '@trpc/server': 11.0.0-next-beta.264
+      '@trpc/client': 11.0.0-alpha-tmp-app-router-example.281(@trpc/server@11.0.0-alpha-tmp-app-router-example.281)
+      '@trpc/server': 11.0.0-alpha-tmp-app-router-example.281
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@trpc/server@11.0.0-next-beta.264:
-    resolution: {integrity: sha512-h6RJX+C+VgFQusxGVtw3n1PZPLt27ZG70U8cPR5pwmsnE2E3vREijOgEo5MRKoiUhVrjbw8e6gnGVeKzl7uZXg==}
+  /@trpc/server@11.0.0-alpha-tmp-app-router-example.281:
+    resolution: {integrity: sha512-nda57jJgXgcSNc2I0I6sWxKMEtPk7Gjnx4a4NMgMkBqgJ2xG04oeqO4Ck691BGM/IPsKO56YwA0CiH3tGdDk7g==}
     dev: false
 
   /@tsconfig/node10@1.0.9:

@@ -191,8 +191,8 @@ importers:
         specifier: workspace:^0.1.0
         version: link:../../packages/validators
       '@t3-oss/env-nextjs':
-        specifier: ^0.9.1
-        version: 0.9.1(typescript@5.3.3)(zod@3.22.4)
+        specifier: ^0.9.2
+        version: 0.9.2(typescript@5.3.3)(zod@3.22.4)
       '@tanstack/react-query':
         specifier: ^5.17.7
         version: 5.17.19(react@18.2.0)
@@ -251,6 +251,9 @@ importers:
       eslint:
         specifier: ^8.56.0
         version: 8.56.0
+      jiti:
+        specifier: ^1.21.0
+        version: 1.21.0
       prettier:
         specifier: ^3.1.1
         version: 3.1.1
@@ -310,8 +313,8 @@ importers:
         specifier: ^0.6.3
         version: 0.6.3
       '@t3-oss/env-nextjs':
-        specifier: ^0.9.1
-        version: 0.9.1(typescript@5.3.3)(zod@3.22.4)
+        specifier: ^0.9.2
+        version: 0.9.2(typescript@5.3.3)(zod@3.22.4)
       next:
         specifier: ^14.1.0
         version: 14.1.0(react-dom@18.2.0)(react@18.2.0)
@@ -4835,8 +4838,8 @@ packages:
       tslib: 2.5.0
     dev: false
 
-  /@t3-oss/env-core@0.9.1(typescript@5.3.3)(zod@3.22.4):
-    resolution: {integrity: sha512-QgR4jV2BmRMdq+in5DbI9Ox/mgpNM/b1H1wB6a0Zf015RsuLk12mIC9FKzDtLITgSSSI/Gt8ZbarqugAUtRslw==}
+  /@t3-oss/env-core@0.9.2(typescript@5.3.3)(zod@3.22.4):
+    resolution: {integrity: sha512-KgWXljUTHgO3o7GMZQPAD5+P+HqpauMNNHowlm7V2b9IeMitSUpNKwG6xQrup/xARWHTdxRVIl0mSI4wCevQhQ==}
     peerDependencies:
       typescript: '>=5.0.0'
       zod: ^3.0.0
@@ -4848,8 +4851,8 @@ packages:
       zod: 3.22.4
     dev: false
 
-  /@t3-oss/env-nextjs@0.9.1(typescript@5.3.3)(zod@3.22.4):
-    resolution: {integrity: sha512-c5JbI8ADarxhItsimm0fnbrr6YLFC+8l509IFlc6v0Y6aEaAidhJkRj+SwyKtKzz/6gJ4c98vxd5kOLb3FoGWQ==}
+  /@t3-oss/env-nextjs@0.9.2(typescript@5.3.3)(zod@3.22.4):
+    resolution: {integrity: sha512-dklHrgKLESStNVB67Jdbu6osxDYA+xNKaPBRerlnkEvzbCccSKMvZENx6EZebJuR4snqB3/yRykNMn/bdIAyiQ==}
     peerDependencies:
       typescript: '>=5.0.0'
       zod: ^3.0.0
@@ -4857,7 +4860,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@t3-oss/env-core': 0.9.1(typescript@5.3.3)(zod@3.22.4)
+      '@t3-oss/env-core': 0.9.2(typescript@5.3.3)(zod@3.22.4)
       typescript: 5.3.3
       zod: 3.22.4
     dev: false

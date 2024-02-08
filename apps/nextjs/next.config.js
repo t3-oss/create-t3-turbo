@@ -1,6 +1,10 @@
-// Importing env files here to validate on build
-import "./src/env.js";
-import "@acme/auth/env";
+import _jiti from "jiti";
+
+const jiti = _jiti(new URL(import.meta.url).pathname);
+
+// Import env files to validate at build time. Use jiti so we can load .ts files in here.
+jiti("./src/env");
+jiti("@acme/auth/env");
 
 /** @type {import("next").NextConfig} */
 const config = {

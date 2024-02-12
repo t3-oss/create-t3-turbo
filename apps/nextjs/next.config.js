@@ -1,10 +1,7 @@
 import _jiti from "jiti";
+import { fileURLToPath } from 'url';
 
-let path = new URL(import.meta.url).pathname;
-
-if (process.platform === "win32") {
-  path = path.replace(/^\/(\w):/, "$1:");
-}
+const path = fileURLToPath(import.meta.url);
 const jiti = _jiti(path);
 
 // Import env files to validate at build time. Use jiti so we can load .ts files in here.
@@ -24,7 +21,7 @@ const config = {
     "@acme/validators",
   ],
 
-  /** We already do linting and typechecking as separate tasks in CI */
+  /** We already do linting and typechecking as separate tasks in CI */w
   eslint: { ignoreDuringBuilds: true },
   typescript: { ignoreBuildErrors: true },
 };

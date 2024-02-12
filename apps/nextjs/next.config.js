@@ -1,8 +1,7 @@
 import _jiti from "jiti";
 import { fileURLToPath } from 'url';
 
-const path = fileURLToPath(import.meta.url);
-const jiti = _jiti(path);
+const jiti = _jiti(fileURLToPath(import.meta.url));
 
 // Import env files to validate at build time. Use jiti so we can load .ts files in here.
 jiti("./src/env");

@@ -1,7 +1,5 @@
 "use client";
 
-import { use } from "react";
-
 import type { RouterOutputs } from "@acme/api";
 import { cn } from "@acme/ui";
 import { Button } from "@acme/ui/button";
@@ -81,14 +79,10 @@ export function CreatePostForm() {
   );
 }
 
-export function PostList(props: {
-  posts: Promise<RouterOutputs["post"]["all"]>;
-}) {
-  // TODO: Make `useSuspenseQuery` work without having to pass a promise from RSC
-  const initialData = use(props.posts);
-  const { data: posts } = api.post.all.useQuery(undefined, {
-    initialData,
-  });
+export function PostList() {
+  // Posts are already in the cache from our RSC pre-fetch,
+  // so this will not fetch until the data goes stale
+  const [posts] = api.post.all.useSuspenseQuery();
 
   if (posts.length === 0) {
     return (

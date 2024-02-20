@@ -11,7 +11,18 @@ import type { AppRouter } from "@acme/api";
 export const api = createTRPCReact<AppRouter>();
 
 export function TRPCReactProvider(props: { children: React.ReactNode }) {
-  const [queryClient] = useState(() => new QueryClient());
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            // Since queries are prefetched on the server, we set a stale time so that
+            // queries aren't immediately refetched on the client
+            staleTime: 60 * 1000,
+          },
+        },
+      }),
+  );
 
   const [trpcClient] = useState(() =>
     api.createClient({

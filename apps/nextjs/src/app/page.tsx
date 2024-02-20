@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 
-import { api } from "~/trpc/server";
+import { api, HydrateClient } from "~/trpc/server";
 import { AuthShowcase } from "./_components/auth-showcase";
 import {
   CreatePostForm,
@@ -12,7 +12,6 @@ export const runtime = "edge";
 
 export default async function HomePage() {
   // You can await this here if you don't want to show Suspense fallback below
-  const posts = api.post.all();
 
   return (
     <main className="container h-screen py-16">
@@ -33,10 +32,21 @@ export default async function HomePage() {
               </div>
             }
           >
-            <PostList posts={posts} />
+            <PostListWrapped />
           </Suspense>
         </div>
       </div>
     </main>
+  );
+}
+
+async function PostListWrapped() {
+  // pre-fetch posts and put it in the query cache
+  const _posts = await api.post.all();
+
+  return (
+    <HydrateClient>
+      <PostList />
+    </HydrateClient>
   );
 }

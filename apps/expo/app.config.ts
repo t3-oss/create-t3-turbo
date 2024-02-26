@@ -1,6 +1,7 @@
-import type { ExpoConfig } from "expo/config";
+import type { ConfigContext, ExpoConfig } from "@expo/config";
 
-const defineConfig = (): ExpoConfig => ({
+export default ({ config }: ConfigContext): ExpoConfig => ({
+  ...config,
   name: "expo",
   slug: "expo",
   scheme: "expo",
@@ -39,5 +40,3 @@ const defineConfig = (): ExpoConfig => ({
   },
   plugins: ["expo-router"],
 });
-
-export default defineConfig;

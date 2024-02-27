@@ -22,7 +22,7 @@ module.exports = withTurborepoManagedCache(
  * @param {import('expo/metro-config').MetroConfig} config
  * @returns {import('expo/metro-config').MetroConfig}
  */
-const withMonorepoPaths = (config) => {
+function withMonorepoPaths(config) {
   const projectRoot = __dirname;
   const workspaceRoot = path.resolve(projectRoot, "../..");
 
@@ -36,7 +36,7 @@ const withMonorepoPaths = (config) => {
   ];
 
   return config;
-};
+}
 
 /**
  * Move the Metro cache to the `node_modules/.cache/metro` folder.
@@ -47,9 +47,9 @@ const withMonorepoPaths = (config) => {
  * @param {import('expo/metro-config').MetroConfig} config
  * @returns {import('expo/metro-config').MetroConfig}
  */
-const withTurborepoManagedCache = (config) => {
+function withTurborepoManagedCache(config) {
   config.cacheStores = [
     new FileStore({ root: path.join(__dirname, "node_modules/.cache/metro") }),
   ];
   return config;
-};
+}

@@ -10,10 +10,10 @@ const EXPO_COOKIE_NAME = "__acme-expo-redirect-state";
 const AUTH_COOKIE_PATTERN = /authjs\.session-token=([^;]+)/;
 
 const getToken = (res: Response) =>
-  res.headers
-    .getSetCookie()
-    .filter((c) => AUTH_COOKIE_PATTERN.test(c))[0]
-    ?.match(AUTH_COOKIE_PATTERN)?.[1];
+  res.headers.getSetCookie().find((cookie) => {
+    const match = cookie.match(AUTH_COOKIE_PATTERN);
+    return match?.[1];
+  });
 
 export const GET = async (
   req: NextRequest,

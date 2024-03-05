@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Pressable, Text, TextInput, View, Button } from "react-native";
+import { Button, Pressable, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Link, Stack } from "expo-router";
 import { FlashList } from "@shopify/flash-list";
@@ -119,12 +119,8 @@ export default function Index() {
 
   const postQuery = api.post.all.useQuery();
 
-  const user = useUser();
-  const signIn = useSignIn();
-  const signOut = useSignOut();
-
   const deletePostMutation = api.post.delete.useMutation({
-    onSettled: () => utils.post.all.invalidate().then(),
+    onSettled: () => utils.post.all.invalidate(),
   });
 
   return (
@@ -137,22 +133,6 @@ export default function Index() {
         </Text>
 
         <MobileAuth />
-
-        <Pressable
-          onPress={() => void utils.post.all.invalidate()}
-          className="flex items-center rounded-lg bg-primary p-2"
-        >
-          <Text className="text-foreground"> Refresh posts</Text>
-        </Pressable>
-
-        <Text className="pb-2 text-center text-xl font-semibold text-white">
-          {user?.name ?? "Not logged in"}
-        </Text>
-        <Button
-          onPress={() => (user ? signOut() : signIn())}
-          title={user ? "Sign Out" : "Sign In With Discord"}
-          color={"#5B65E9"}
-        />
 
         <View className="py-2">
           <Text className="font-semibold italic text-primary">

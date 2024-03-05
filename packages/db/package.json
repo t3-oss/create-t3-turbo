@@ -11,22 +11,23 @@
     "clean": "rm -rf .turbo node_modules",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint .",
-    "push": "drizzle-kit push:mysql",
-    "studio": "drizzle-kit studio",
-    "typecheck": "tsc --noEmit"
+    "push": "pnpm with-env drizzle-kit push:mysql",
+    "studio": "pnpm with-env drizzle-kit studio",
+    "typecheck": "tsc --noEmit",
+    "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
-    "@planetscale/database": "^1.13.0",
-    "drizzle-orm": "^0.29.3"
+    "@planetscale/database": "^1.16.0",
+    "drizzle-orm": "^0.29.4"
   },
   "devDependencies": {
     "@acme/eslint-config": "workspace:^0.2.0",
     "@acme/prettier-config": "workspace:^0.1.0",
     "@acme/tsconfig": "workspace:^0.1.0",
     "dotenv-cli": "^7.3.0",
-    "drizzle-kit": "^0.20.9",
-    "eslint": "^8.56.0",
-    "prettier": "^3.1.1",
+    "drizzle-kit": "^0.20.14",
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.5",
     "typescript": "^5.3.3"
   },
   "eslintConfig": {

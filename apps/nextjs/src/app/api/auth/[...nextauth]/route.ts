@@ -9,6 +9,12 @@ export const runtime = "edge";
 const EXPO_COOKIE_NAME = "__acme-expo-redirect-state";
 const AUTH_COOKIE_PATTERN = /authjs\.session-token=([^;]+)/;
 
+const getToken = (res: Response) =>
+  res.headers
+    .getSetCookie()
+    .filter((c) => AUTH_COOKIE_PATTERN.test(c))[0]
+    ?.match(AUTH_COOKIE_PATTERN)?.[1];
+
 export const GET = async (
   req: NextRequest,
   props: { params: { nextauth: string[] } },
@@ -27,21 +33,16 @@ export const GET = async (
       path: "/",
     });
   }
-
+  
   if (nextauthAction === "callback" && !!isExpoCallback) {
     cookies().delete(EXPO_COOKIE_NAME);
 
     const authResponse = await DEFAULT_GET(req);
-    const setCookie = authResponse.headers.getSetCookie()[0];
-    const match = setCookie?.match(AUTH_COOKIE_PATTERN)?.[1];
-    if (!match)
-      throw new Error(
-        "Unable to find session cookie: " +
-          JSON.stringify(authResponse.headers.getSetCookie()),
-      );
+    const token = getToken(authResponse);
+    if (!token) throw new Error("Unable to find session cookie");
 
     const url = new URL(isExpoCallback.value);
-    url.searchParams.set("session_token", match);
+    url.searchParams.set("session_token", token);
     return NextResponse.redirect(url);
   }
 

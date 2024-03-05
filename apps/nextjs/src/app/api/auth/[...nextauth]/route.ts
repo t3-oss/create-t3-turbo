@@ -33,7 +33,7 @@ export const GET = async (
       path: "/",
     });
   }
-  
+
   if (nextauthAction === "callback" && !!isExpoCallback) {
     cookies().delete(EXPO_COOKIE_NAME);
 

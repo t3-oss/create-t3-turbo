@@ -1,5 +1,3 @@
-# Auth Proxy
-
 This is a simple proxy server that enables OAuth authentication for preview environments.
 
 ## Setup
@@ -17,7 +15,6 @@ The lines below shows what values should match eachother in both deployments.
 
 ![Environment variables setup](https://github.com/t3-oss/create-t3-turbo/assets/51714798/5fadd3f5-f705-459a-82ab-559a3df881d0)
 
-For providers that require an origin and a redirect URL, set them to `{AUTH_REDIRECT_PROXY_URL}` and `{AUTH_REDIRECT_PROXY_URL}/callback/PROVIDER_NAME` accordingly.
+For providers that require an origin and a redirect URL, set them to `{AUTH_REDIRECT_PROXY_URL}` and `{AUTH_REDIRECT_PROXY_URL}/callback/{provider}` accordingly.
 
-![Google origin setup]()
-![Google redirect URL setup]()
+![Google credentials setup](https://github.com/ahkhanjani/create-t3-turbo/assets/72540492/eaa88685-6fc2-4c23-b7ac-737eb172fa0e)

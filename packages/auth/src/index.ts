@@ -40,6 +40,7 @@ const {
 });
 
 export { GET, POST, signIn, signOut };
+
 /**
  * This is the main way to get session data for your RSCs.
  * This will de-duplicate all calls to next-auth's default `auth()` function and only call it once per request across all components

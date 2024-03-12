@@ -1,4 +1,5 @@
 import type { DefaultSession } from "next-auth";
+import { cache } from "react";
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import NextAuth from "next-auth";
 import Discord from "next-auth/providers/discord";
@@ -17,7 +18,7 @@ declare module "next-auth" {
 
 export const {
   handlers: { GET, POST },
-  auth,
+  auth: defaultAuth,
   signIn,
   signOut,
 } = NextAuth({
@@ -37,3 +38,9 @@ export const {
     },
   },
 });
+
+/**
+ * This is the main way to get session data for your RSCs.
+ * This will de-duplicate all calls to next-auth's default `auth()` function and only call it once per request across all components
+ */
+export const auth = cache(defaultAuth);

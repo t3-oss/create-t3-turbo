@@ -356,8 +356,8 @@ importers:
         specifier: ^1.16.0
         version: 1.16.0
       drizzle-orm:
-        specifier: ^0.29.5
-        version: 0.29.5(@planetscale/database@1.16.0)(mysql2@3.9.2)
+        specifier: ^0.30.4
+        version: 0.30.4(@planetscale/database@1.16.0)(mysql2@3.9.2)
     devDependencies:
       '@acme/eslint-config':
         specifier: workspace:*
@@ -7113,13 +7113,14 @@ packages:
       - supports-color
     dev: true
 
-  /drizzle-orm@0.29.5(@planetscale/database@1.16.0)(mysql2@3.9.2):
-    resolution: {integrity: sha512-jS3+uyzTz4P0Y2CICx8FmRQ1eplURPaIMWDn/yq6k4ShRFj9V7vlJk67lSf2kyYPzQ60GkkNGXcJcwrxZ6QCRw==}
+  /drizzle-orm@0.30.4(@planetscale/database@1.16.0)(mysql2@3.9.2):
+    resolution: {integrity: sha512-kWoSMGbrOFkmkAweLTFtHJMpN+nwhx89q0mLELqT2aEU+1szNV8jrnBmJwZ0WGNp7J7yQn/ezEtxBI/qzTSElQ==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
       '@cloudflare/workers-types': '>=3'
       '@libsql/client': '*'
       '@neondatabase/serverless': '>=0.1'
+      '@op-engineering/op-sqlite': '>=2'
       '@opentelemetry/api': ^1.4.1
       '@planetscale/database': '>=1'
       '@types/better-sqlite3': '*'
@@ -7127,6 +7128,7 @@ packages:
       '@types/react': '>=18'
       '@types/sql.js': '*'
       '@vercel/postgres': '*'
+      '@xata.io/client': '*'
       better-sqlite3: '>=7'
       bun-types: '*'
       expo-sqlite: '>=13.2.0'
@@ -7147,6 +7149,8 @@ packages:
         optional: true
       '@neondatabase/serverless':
         optional: true
+      '@op-engineering/op-sqlite':
+        optional: true
       '@opentelemetry/api':
         optional: true
       '@planetscale/database':
@@ -7160,6 +7164,8 @@ packages:
       '@types/sql.js':
         optional: true
       '@vercel/postgres':
+        optional: true
+      '@xata.io/client':
         optional: true
       better-sqlite3:
         optional: true

@@ -13,7 +13,7 @@
     "lint": "eslint .",
     "push": "pnpm with-env drizzle-kit push:mysql",
     "studio": "pnpm with-env drizzle-kit studio",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
@@ -28,7 +28,7 @@
     "drizzle-kit": "^0.20.14",
     "eslint": "^8.57.0",
     "prettier": "^3.2.5",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.3"
   },
   "eslintConfig": {
     "root": true,

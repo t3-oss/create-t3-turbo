@@ -4,7 +4,10 @@
   "private": true,
   "type": "module",
   "exports": {
-    ".": "./src/index.ts",
+    ".": {
+      "default": "./src/index.ts",
+      "react-server": "./src/index.rsc.ts"
+    },
     "./env": "./env.ts"
   },
   "license": "MIT",

@@ -52,8 +52,8 @@ importers:
         specifier: ^1.11.1
         version: 1.11.1
       nitropack:
-        specifier: ^2.9.4
-        version: 2.9.4
+        specifier: ^2.9.5
+        version: 2.9.5
       prettier:
         specifier: ^3.2.5
         version: 3.2.5
@@ -598,29 +598,6 @@ packages:
     dependencies:
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
-
-  /@auth/core@0.28.0:
-    resolution: {integrity: sha512-/fh/tb/L4NMSYcyPoo4Imn8vN6MskcVfgESF8/ndgtI4fhD/7u7i5fTVzWgNRZ4ebIEGHNDbWFRxaTu1NtQgvA==}
-    peerDependencies:
-      '@simplewebauthn/browser': ^9.0.1
-      '@simplewebauthn/server': ^9.0.2
-      nodemailer: ^6.8.0
-    peerDependenciesMeta:
-      '@simplewebauthn/browser':
-        optional: true
-      '@simplewebauthn/server':
-        optional: true
-      nodemailer:
-        optional: true
-    dependencies:
-      '@panva/hkdf': 1.1.1
-      '@types/cookie': 0.6.0
-      cookie: 0.6.0
-      jose: 5.2.3
-      oauth4webapi: 2.10.3
-      preact: 10.11.3
-      preact-render-to-string: 5.2.3(preact@10.11.3)
-    dev: false
 
   /@auth/core@0.28.1:
     resolution: {integrity: sha512-gvp74mypYZADpTlfGRp6HE0G3pIHWvtJpy+KZ+8FvY0cmlIpHog+jdMOdd29dQtLtN25kF2YbfHsesCFuGUQbg==}
@@ -10710,8 +10687,8 @@ packages:
     resolution: {integrity: sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ==}
     dev: false
 
-  /nitropack@2.9.4:
-    resolution: {integrity: sha512-i/cbDW5qfZS6pQR4DrlQOFlNoNvQVBuiy7EEvMlrqkmMGXiIJY1WW7L7D4/6m9dF1cwitOu7k0lJWVn74gxfvw==}
+  /nitropack@2.9.5:
+    resolution: {integrity: sha512-ClanSILi9O6HX95QNIC+TwxojpRpOSn9n3e3wmHExAHhLN5HdnHGmHN4LwtJdE2p91nse3kDULOTR7k1xRVJ/g==}
     engines: {node: ^16.11.0 || >=17.0.0}
     hasBin: true
     peerDependencies:
@@ -10772,7 +10749,7 @@ packages:
       perfect-debounce: 1.0.0
       pkg-types: 1.0.3
       pretty-bytes: 6.1.1
-      radix3: 1.1.1
+      radix3: 1.1.2
       rollup: 4.13.0
       rollup-plugin-visualizer: 5.12.0(rollup@4.13.0)
       scule: 1.3.0
@@ -11738,6 +11715,10 @@ packages:
 
   /radix3@1.1.1:
     resolution: {integrity: sha512-yUUd5VTiFtcMEx0qFUxGAv5gbMc1un4RvEO1JZdP7ZUl/RHygZK6PknIKntmQRZxnMY3ZXD2ISaw1ij8GYW1yg==}
+    dev: true
+
+  /radix3@1.1.2:
+    resolution: {integrity: sha512-b484I/7b8rDEdSDKckSSBA8knMpcdsXudlE/LNL639wFoHKwLbEkQFZHWEYwDC0wa0FKUcCY+GAF73Z7wxNVFA==}
     dev: true
 
   /randombytes@2.1.0:

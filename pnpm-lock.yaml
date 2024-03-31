@@ -275,6 +275,9 @@ importers:
       '@acme/validators':
         specifier: workspace:*
         version: link:../validators
+      '@trpc/react-query':
+        specifier: 11.0.0-next.320
+        version: 11.0.0-next.320(@tanstack/react-query@5.28.6)(@trpc/client@11.0.0-next.320)(@trpc/server@11.0.0-next.320)(react-dom@18.2.0)(react@18.2.0)
       '@trpc/server':
         specifier: 11.0.0-next.320
         version: 11.0.0-next.320

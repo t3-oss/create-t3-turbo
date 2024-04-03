@@ -4,13 +4,11 @@
   "version": "0.1.0",
   "type": "module",
   "exports": {
-    ".": "./src/index.ts",
-    "./button": "./src/button.tsx",
-    "./form": "./src/form.tsx",
-    "./input": "./src/input.tsx",
-    "./label": "./src/label.tsx",
-    "./theme": "./src/theme.tsx",
-    "./toast": "./src/toast.tsx"
+    "./globals.css": "./@/globals.css",
+    "./postcss.config": "./postcss.config.js",
+    "./tailwind.config": "./tailwind.config.ts",
+    "./lib/*": "./src/lib/*.ts",
+    "./*": "./src/components/ui/*.tsx"
   },
   "license": "MIT",
   "scripts": {
@@ -22,6 +20,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
+    "@radix-ui/react-avatar": "^1.0.4",
     "@radix-ui/react-dropdown-menu": "^2.0.6",
     "@radix-ui/react-icons": "^1.3.0",
     "@radix-ui/react-label": "^2.0.2",

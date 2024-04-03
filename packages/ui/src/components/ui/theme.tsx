@@ -4,13 +4,13 @@ import * as React from "react";
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import { ThemeProvider, useTheme } from "next-themes";
 
-import { Button } from "./button";
+import { Button } from "@acme/ui/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "./dropdown-menu";
+} from "@acme/ui/components/ui/dropdown-menu";
 
 function ThemeToggle() {
   const { setTheme } = useTheme();

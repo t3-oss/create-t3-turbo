@@ -3,8 +3,7 @@
 import { use } from "react";
 
 import type { RouterOutputs } from "@acme/api";
-import { cn } from "@acme/ui";
-import { Button } from "@acme/ui/button";
+import { Button } from "@acme/ui/components/ui/button";
 import {
   Form,
   FormControl,
@@ -12,9 +11,10 @@ import {
   FormItem,
   FormMessage,
   useForm,
-} from "@acme/ui/form";
-import { Input } from "@acme/ui/input";
-import { toast } from "@acme/ui/toast";
+} from "@acme/ui/components/ui/form";
+import { Input } from "@acme/ui/components/ui/input";
+import { toast } from "@acme/ui/components/ui/sonner";
+import { cn } from "@acme/ui/lib/utils";
 import { CreatePostSchema } from "@acme/validators";
 
 import { api } from "~/trpc/react";

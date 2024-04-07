@@ -11,17 +11,19 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@auth/core": "^0.20.0"
+    "@auth/core": "0.28.1"
   },
   "devDependencies": {
-    "@acme/eslint-config": "workspace:^0.2.0",
-    "@acme/prettier-config": "workspace:^0.1.0",
-    "@acme/tailwind-config": "workspace:^0.1.0",
-    "@acme/tsconfig": "workspace:^0.1.0",
-    "eslint": "^8.56.0",
-    "nitropack": "^2.8.1",
-    "prettier": "^3.1.1",
-    "typescript": "^5.3.3"
+    "@acme/eslint-config": "workspace:*",
+    "@acme/prettier-config": "workspace:*",
+    "@acme/tailwind-config": "workspace:*",
+    "@acme/tsconfig": "workspace:*",
+    "@types/node": "^20.11.30",
+    "eslint": "^8.57.0",
+    "h3": "^1.11.1",
+    "nitropack": "^2.9.5",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.3"
   },
   "eslintConfig": {
     "root": true,

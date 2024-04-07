@@ -11,7 +11,7 @@ const config = {
     "prettier-plugin-tailwindcss",
   ],
   tailwindConfig: fileURLToPath(
-    new URL("../../tooling/tailwind/index.ts", import.meta.url),
+    new URL("../../tooling/tailwind/web.ts", import.meta.url),
   ),
   tailwindFunctions: ["cn", "cva"],
   importOrder: [

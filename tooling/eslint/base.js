@@ -1,3 +1,5 @@
+/// <reference types="./types.d.ts" />
+
 import eslint from "@eslint/js";
 import importPlugin from "eslint-plugin-import";
 import tseslint from "typescript-eslint";
@@ -5,7 +7,7 @@ import tseslint from "typescript-eslint";
 export default tseslint.config(
   {
     // Globally ignored files
-    ignores: ["dist", "pnpm-lock.yaml", "**/*.config.js"],
+    ignores: ["**/*.config.js"],
   },
   {
     files: ["**/*.js", "**/*.ts", "**/*.tsx"],

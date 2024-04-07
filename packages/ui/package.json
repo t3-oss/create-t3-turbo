@@ -5,12 +5,7 @@
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
-    "./button": "./src/button.tsx",
-    "./form": "./src/form.tsx",
-    "./input": "./src/input.tsx",
-    "./label": "./src/label.tsx",
-    "./theme": "./src/theme.tsx",
-    "./toast": "./src/toast.tsx"
+    "./*": "./src/*.tsx"
   },
   "license": "MIT",
   "scripts": {

@@ -13,22 +13,15 @@ const env = createEnv({
   emptyStringAsUndefined: true,
 });
 
-export const credentials = {
-  username: env.DB_USERNAME,
-  password: env.DB_PASSWORD,
-  host: env.DB_HOST,
-  database: env.DB_NAME,
-};
-
 // Push requires SSL so use URL instead of username/password
-const pushUrl = new URL(`mysql://${credentials.host}/${credentials.database}`);
-pushUrl.username = credentials.username;
-pushUrl.password = credentials.password;
-pushUrl.searchParams.set("ssl", '{"rejectUnauthorized":true}');
+export const connectionStr = new URL(`mysql://${env.DB_HOST}/${env.DB_NAME}`);
+connectionStr.username = env.DB_USERNAME;
+connectionStr.password = env.DB_PASSWORD;
+connectionStr.searchParams.set("ssl", '{"rejectUnauthorized":true}');
 
 export default {
   schema: "./src/schema",
   driver: "mysql2",
-  dbCredentials: { uri: pushUrl.href },
+  dbCredentials: { uri: connectionStr.href },
   tablesFilter: ["t3turbo_*"],
 } satisfies Config;

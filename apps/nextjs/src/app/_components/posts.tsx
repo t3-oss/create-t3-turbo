@@ -36,7 +36,7 @@ export function CreatePostForm() {
     },
     onError: (err) => {
       toast.error(
-        err?.data?.code === "UNAUTHORIZED"
+        err.data?.code === "UNAUTHORIZED"
           ? "You must be logged in to post"
           : "Failed to create post",
       );
@@ -123,7 +123,7 @@ export function PostCard(props: {
     },
     onError: (err) => {
       toast.error(
-        err?.data?.code === "UNAUTHORIZED"
+        err.data?.code === "UNAUTHORIZED"
           ? "You must be logged in to delete a post"
           : "Failed to delete post",
       );

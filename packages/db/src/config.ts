@@ -20,9 +20,16 @@ export const credentials = {
   database: env.DB_NAME,
 };
 
+const pushUrl = new URL(
+  `mysql://${credentials.host}:3306/${credentials.database}`,
+);
+pushUrl.username = credentials.username;
+pushUrl.password = credentials.password;
+pushUrl.searchParams.set("ssl", '{"rejectUnauthorized":true}');
+
 export default {
   schema: "./src/schema",
   driver: "mysql2",
-  dbCredentials: credentials,
+  dbCredentials: { uri: pushUrl.href },
   tablesFilter: ["t3turbo_*"],
 } satisfies Config;

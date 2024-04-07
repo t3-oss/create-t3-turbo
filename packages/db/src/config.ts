@@ -20,9 +20,7 @@ export const credentials = {
   database: env.DB_NAME,
 };
 
-const pushUrl = new URL(
-  `mysql://${credentials.host}:3306/${credentials.database}`,
-);
+const pushUrl = new URL(`mysql://${credentials.host}/${credentials.database}`);
 pushUrl.username = credentials.username;
 pushUrl.password = credentials.password;
 pushUrl.searchParams.set("ssl", '{"rejectUnauthorized":true}');

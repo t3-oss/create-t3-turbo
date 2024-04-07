@@ -5,7 +5,7 @@ import tseslint from "typescript-eslint";
 export default tseslint.config(
   {
     // Globally ignored files
-    ignores: [".next", "dist", "pnpm-lock.yaml", "**/*.config.js"],
+    ignores: ["dist", "pnpm-lock.yaml", "**/*.config.js"],
   },
   {
     files: ["**/*.js", "**/*.ts", "**/*.tsx"],

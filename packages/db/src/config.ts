@@ -20,6 +20,7 @@ export const credentials = {
   database: env.DB_NAME,
 };
 
+// Push requires SSL so use URL instead of username/password
 const pushUrl = new URL(`mysql://${credentials.host}/${credentials.database}`);
 pushUrl.username = credentials.username;
 pushUrl.password = credentials.password;

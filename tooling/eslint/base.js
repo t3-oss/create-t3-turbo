@@ -1,50 +1,50 @@
-/** @type {import("eslint").Linter.Config} */
-const config = {
-  extends: [
-    "turbo",
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended-type-checked",
-    "plugin:@typescript-eslint/stylistic-type-checked",
-  ],
-  env: {
-    es2022: true,
-    node: true,
-  },
-  parser: "@typescript-eslint/parser",
-  parserOptions: { project: true },
-  plugins: ["@typescript-eslint", "import"],
-  rules: {
-    "turbo/no-undeclared-env-vars": "off",
-    "@typescript-eslint/no-unused-vars": [
-      "error",
-      { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
-    ],
-    "@typescript-eslint/consistent-type-imports": [
-      "warn",
-      { prefer: "type-imports", fixStyle: "separate-type-imports" },
-    ],
-    "@typescript-eslint/no-misused-promises": [
-      2,
-      { checksVoidReturn: { attributes: false } },
-    ],
-    "@typescript-eslint/no-unnecessary-condition": [
-      "error",
-      {
-        allowConstantLoopConditions: true,
-      },
-    ],
-    "@typescript-eslint/no-non-null-assertion": "error",
-    "import/consistent-type-specifier-style": ["error", "prefer-top-level"],
-  },
-  ignorePatterns: [
-    "**/*.config.js",
-    "**/*.config.cjs",
-    "**/.eslintrc.cjs",
-    ".next",
-    "dist",
-    "pnpm-lock.yaml",
-  ],
-  reportUnusedDisableDirectives: true,
-};
+/// <reference types="./types.d.ts" />
 
-module.exports = config;
+import eslint from "@eslint/js";
+import importPlugin from "eslint-plugin-import";
+import tseslint from "typescript-eslint";
+
+export default tseslint.config(
+  {
+    // Globally ignored files
+    ignores: ["**/*.config.js"],
+  },
+  {
+    files: ["**/*.js", "**/*.ts", "**/*.tsx"],
+    plugins: {
+      import: importPlugin,
+    },
+    extends: [
+      eslint.configs.recommended,
+      ...tseslint.configs.recommended,
+      ...tseslint.configs.recommendedTypeChecked,
+      ...tseslint.configs.stylisticTypeChecked,
+    ],
+    rules: {
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
+      ],
+      "@typescript-eslint/consistent-type-imports": [
+        "warn",
+        { prefer: "type-imports", fixStyle: "separate-type-imports" },
+      ],
+      "@typescript-eslint/no-misused-promises": [
+        2,
+        { checksVoidReturn: { attributes: false } },
+      ],
+      "@typescript-eslint/no-unnecessary-condition": [
+        "error",
+        {
+          allowConstantLoopConditions: true,
+        },
+      ],
+      "@typescript-eslint/no-non-null-assertion": "error",
+      "import/consistent-type-specifier-style": ["error", "prefer-top-level"],
+    },
+  },
+  {
+    linterOptions: { reportUnusedDisableDirectives: true },
+    languageOptions: { parserOptions: { project: true } },
+  },
+);

@@ -47,7 +47,7 @@ export function CreatePostForm() {
     <Form {...form}>
       <form
         className="flex w-full max-w-2xl flex-col gap-4"
-        onSubmit={form.handleSubmit(async (data) => {
+        onSubmit={form.handleSubmit((data) => {
           createPost.mutate(data);
         })}
       >

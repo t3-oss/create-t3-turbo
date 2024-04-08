@@ -10,21 +10,16 @@
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
     "format": "prettier --check . --ignore-path ../../.gitignore",
-    "lint": "eslint .",
+    "lint": "eslint",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@acme/eslint-config": "workspace:*",
     "@acme/prettier-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
-    "eslint": "^8.57.0",
+    "eslint": "^9.0.0",
     "prettier": "^3.2.5",
     "typescript": "^5.4.3"
-  },
-  "eslintConfig": {
-    "extends": [
-      "@acme/eslint-config/base"
-    ]
   },
   "prettier": "@acme/prettier-config"
 }

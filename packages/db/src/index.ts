@@ -9,7 +9,8 @@ export const schema = { ...auth, ...post };
 
 export { mySqlTable as tableCreator } from "./schema/_table";
 
-export * from "drizzle-orm/expressions";
+export * from "drizzle-orm/sql";
+export { alias } from "drizzle-orm/mysql-core";
 
 const psClient = new Client({ url: connectionStr.href });
 

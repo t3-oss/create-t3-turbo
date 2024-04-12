@@ -2,14 +2,37 @@ import { relations, sql } from "drizzle-orm";
 import {
   index,
   int,
+  mysqlTableCreator,
   primaryKey,
+  serial,
   text,
   timestamp,
   varchar,
 } from "drizzle-orm/mysql-core";
 
-import { mySqlTable } from "./_table";
+/**
+ * This is an example of how to use the multi-project schema feature of Drizzle ORM.
+ * Use the same database instance for multiple projects.
+ *
+ * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
+ */
+export const mySqlTable = mysqlTableCreator((name) => `t3turbo_${name}`);
 
+export const post = mySqlTable("post", {
+  id: serial("id").primaryKey(),
+  title: varchar("name", { length: 256 }).notNull(),
+  content: varchar("content", { length: 256 }).notNull(),
+  createdAt: timestamp("created_at")
+    .default(sql`CURRENT_TIMESTAMP`)
+    .notNull(),
+  updatedAt: timestamp("updatedAt").onUpdateNow(),
+});
+
+/**
+ * ========================================
+ * ============ Next Auth =================
+ * ========================================
+ */
 export const users = mySqlTable("user", {
   id: varchar("id", { length: 255 }).notNull().primaryKey(),
   name: varchar("name", { length: 255 }),

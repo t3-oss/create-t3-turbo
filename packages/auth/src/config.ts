@@ -2,7 +2,8 @@ import type { DefaultSession, NextAuthConfig } from "next-auth";
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import Discord from "next-auth/providers/discord";
 
-import { db, tableCreator } from "@acme/db";
+import { createDBClient } from "@acme/db/client";
+import { mySqlTable } from "@acme/db/schema";
 
 declare module "next-auth" {
   interface Session {
@@ -13,7 +14,7 @@ declare module "next-auth" {
 }
 
 export const authConfig = {
-  adapter: DrizzleAdapter(db, tableCreator),
+  adapter: DrizzleAdapter(createDBClient(), mySqlTable),
   providers: [Discord],
   callbacks: {
     session: (opts) => {

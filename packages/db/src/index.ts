@@ -1,17 +1,16 @@
-import { Client } from "@planetscale/database";
-import { drizzle } from "drizzle-orm/planetscale-serverless";
+import { createInsertSchema } from "drizzle-zod";
+import { z } from "zod";
 
-import { connectionStr } from "./config";
-import * as auth from "./schema/auth";
-import * as post from "./schema/post";
-
-export const schema = { ...auth, ...post };
-
-export { mySqlTable as tableCreator } from "./schema/_table";
+import * as schema from "./schema";
 
 export * from "drizzle-orm/sql";
 export { alias } from "drizzle-orm/mysql-core";
 
-const psClient = new Client({ url: connectionStr.href });
-
-export const db = drizzle(psClient, { schema });
+export const createPostSchema = createInsertSchema(schema.post, {
+  title: z.string().max(256),
+  content: z.string().max(256),
+}).omit({
+  id: true,
+  createdAt: true,
+  updatedAt: true,
+});

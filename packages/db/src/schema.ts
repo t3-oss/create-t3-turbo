@@ -9,6 +9,8 @@ import {
   timestamp,
   varchar,
 } from "drizzle-orm/mysql-core";
+import { createInsertSchema } from "drizzle-zod";
+import { z } from "zod";
 
 /**
  * This is an example of how to use the multi-project schema feature of Drizzle ORM.
@@ -26,6 +28,14 @@ export const post = mySqlTable("post", {
     .default(sql`CURRENT_TIMESTAMP`)
     .notNull(),
   updatedAt: timestamp("updatedAt").onUpdateNow(),
+});
+export const createPostSchema = createInsertSchema(post, {
+  title: z.string().max(256),
+  content: z.string().max(256),
+}).omit({
+  id: true,
+  createdAt: true,
+  updatedAt: true,
 });
 
 /**

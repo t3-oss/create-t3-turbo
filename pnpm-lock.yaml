@@ -465,10 +465,16 @@ importers:
 
   packages/validators:
     dependencies:
+      drizzle-zod:
+        specifier: ^0.5.1
+        version: 0.5.1(drizzle-orm@0.30.4)(zod@3.22.4)
       zod:
         specifier: ^3.22.4
         version: 3.22.4
     devDependencies:
+      '@acme/db':
+        specifier: workspace:*
+        version: link:../db
       '@acme/eslint-config':
         specifier: workspace:*
         version: link:../../tooling/eslint
@@ -7233,6 +7239,16 @@ packages:
     dependencies:
       '@planetscale/database': 1.16.0
       mysql2: 3.9.2
+    dev: false
+
+  /drizzle-zod@0.5.1(drizzle-orm@0.30.4)(zod@3.22.4):
+    resolution: {integrity: sha512-C/8bvzUH/zSnVfwdSibOgFjLhtDtbKYmkbPbUCq46QZyZCH6kODIMSOgZ8R7rVjoI+tCj3k06MRJMDqsIeoS4A==}
+    peerDependencies:
+      drizzle-orm: '>=0.23.13'
+      zod: '*'
+    dependencies:
+      drizzle-orm: 0.30.4(@planetscale/database@1.16.0)(mysql2@3.9.2)
+      zod: 3.22.4
     dev: false
 
   /duplexer@0.1.2:

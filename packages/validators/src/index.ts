@@ -1,6 +1,5 @@
-import { z } from "zod";
+import { createInsertSchema } from "drizzle-zod";
 
-export const CreatePostSchema = z.object({
-  title: z.string().min(1),
-  content: z.string().min(1),
-});
+import { schema } from "@acme/db/schema";
+
+export const CreatePostSchema = createInsertSchema(schema.post);

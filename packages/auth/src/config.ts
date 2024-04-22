@@ -12,8 +12,6 @@ declare module "next-auth" {
   }
 }
 
-process.exit(0);
-
 export const authConfig = {
   adapter: DrizzleAdapter(db, tableCreator),
   providers: [Discord],

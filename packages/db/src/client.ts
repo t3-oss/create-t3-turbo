@@ -12,6 +12,7 @@ const env = createEnv({
     DB_USERNAME: z.string(),
     DB_PASSWORD: z.string(),
   },
+  // eslint-disable-next-line no-restricted-properties
   runtimeEnv: process.env,
   emptyStringAsUndefined: true,
 });

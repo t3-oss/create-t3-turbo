@@ -27,8 +27,8 @@ importers:
   apps/auth-proxy:
     dependencies:
       '@auth/core':
-        specifier: 0.28.1
-        version: 0.28.1
+        specifier: 0.30.0
+        version: 0.30.0
     devDependencies:
       '@acme/eslint-config':
         specifier: workspace:*
@@ -191,8 +191,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/validators
       '@t3-oss/env-nextjs':
-        specifier: ^0.9.2
-        version: 0.9.2(typescript@5.4.5)(zod@3.22.4)
+        specifier: ^0.10.0
+        version: 0.10.0(typescript@5.4.5)(zod@3.23.0)
       '@tanstack/react-query':
         specifier: ^5.29.0
         version: 5.29.0(react@18.2.0)
@@ -221,8 +221,8 @@ importers:
         specifier: 2.2.1
         version: 2.2.1
       zod:
-        specifier: ^3.22.4
-        version: 3.22.4
+        specifier: ^3.23.0
+        version: 3.23.0
     devDependencies:
       '@acme/eslint-config':
         specifier: workspace:*
@@ -282,8 +282,8 @@ importers:
         specifier: 2.2.1
         version: 2.2.1
       zod:
-        specifier: ^3.22.4
-        version: 3.22.4
+        specifier: ^3.23.0
+        version: 3.23.0
     devDependencies:
       '@acme/eslint-config':
         specifier: workspace:*
@@ -310,17 +310,17 @@ importers:
         specifier: workspace:*
         version: link:../db
       '@auth/drizzle-adapter':
-        specifier: ^0.8.1
-        version: 0.8.2
+        specifier: ^1.0.1
+        version: 1.0.1
       '@t3-oss/env-nextjs':
-        specifier: ^0.9.2
-        version: 0.9.2(typescript@5.4.5)(zod@3.22.4)
+        specifier: ^0.10.0
+        version: 0.10.0(typescript@5.4.5)(zod@3.23.0)
       next:
         specifier: ^14.2.0
         version: 14.2.0(react-dom@18.2.0)(react@18.2.0)
       next-auth:
-        specifier: 5.0.0-beta.16
-        version: 5.0.0-beta.16(next@14.2.0)(react@18.2.0)
+        specifier: 5.0.0-beta.17
+        version: 5.0.0-beta.17(next@14.2.0)(react@18.2.0)
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -328,8 +328,8 @@ importers:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
       zod:
-        specifier: ^3.22.4
-        version: 3.22.4
+        specifier: ^3.23.0
+        version: 3.23.0
     devDependencies:
       '@acme/eslint-config':
         specifier: workspace:*
@@ -356,17 +356,17 @@ importers:
         specifier: ^1.16.0
         version: 1.16.0
       '@t3-oss/env-core':
-        specifier: ^0.9.2
-        version: 0.9.2(typescript@5.4.5)(zod@3.22.4)
+        specifier: ^0.10.0
+        version: 0.10.0(typescript@5.4.5)(zod@3.23.0)
       drizzle-orm:
-        specifier: ^0.30.4
-        version: 0.30.4(@planetscale/database@1.16.0)(mysql2@3.9.2)
+        specifier: ^0.30.9
+        version: 0.30.9(@planetscale/database@1.16.0)(mysql2@3.9.7)
       drizzle-zod:
         specifier: ^0.5.1
-        version: 0.5.1(drizzle-orm@0.30.4)(zod@3.22.4)
+        version: 0.5.1(drizzle-orm@0.30.9)(zod@3.23.0)
       zod:
-        specifier: ^3.22.4
-        version: 3.22.4
+        specifier: ^3.23.0
+        version: 3.23.0
     devDependencies:
       '@acme/eslint-config':
         specifier: workspace:*
@@ -381,14 +381,14 @@ importers:
         specifier: ^7.4.1
         version: 7.4.1
       drizzle-kit:
-        specifier: ^0.20.14
-        version: 0.20.14
+        specifier: ^0.20.17
+        version: 0.20.17
       eslint:
         specifier: ^9.0.0
         version: 9.0.0
       mysql2:
-        specifier: ^3.9.2
-        version: 3.9.2
+        specifier: ^3.9.7
+        version: 3.9.7
       prettier:
         specifier: ^3.2.5
         version: 3.2.5
@@ -463,14 +463,14 @@ importers:
         specifier: ^5.4.5
         version: 5.4.5
       zod:
-        specifier: ^3.22.4
-        version: 3.22.4
+        specifier: ^3.23.0
+        version: 3.23.0
 
   packages/validators:
     dependencies:
       zod:
-        specifier: ^3.22.4
-        version: 3.22.4
+        specifier: ^3.23.0
+        version: 3.23.0
     devDependencies:
       '@acme/eslint-config':
         specifier: workspace:*
@@ -602,8 +602,8 @@ packages:
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
 
-  /@auth/core@0.28.1:
-    resolution: {integrity: sha512-gvp74mypYZADpTlfGRp6HE0G3pIHWvtJpy+KZ+8FvY0cmlIpHog+jdMOdd29dQtLtN25kF2YbfHsesCFuGUQbg==}
+  /@auth/core@0.30.0:
+    resolution: {integrity: sha512-8AE4m/nk+4EIiVCJwxZAsJeAQuzpEC8M8768mmKVn60CGDdupKQkVhxbRlm5Qh7eNRCoFFME+0DvtaX2aXrYaA==}
     peerDependencies:
       '@simplewebauthn/browser': ^9.0.1
       '@simplewebauthn/server': ^9.0.2
@@ -625,33 +625,10 @@ packages:
       preact-render-to-string: 5.2.3(preact@10.11.3)
     dev: false
 
-  /@auth/core@0.28.2:
-    resolution: {integrity: sha512-Rlvu6yKa4bKbhQESMaEm6jHOY5ncIrsrQkC8tcwVQmf+cBLk7ReI9DIJS2O/WkIDoOwvM9PHiXTi5b+b/eyXxw==}
-    peerDependencies:
-      '@simplewebauthn/browser': ^9.0.1
-      '@simplewebauthn/server': ^9.0.2
-      nodemailer: ^6.8.0
-    peerDependenciesMeta:
-      '@simplewebauthn/browser':
-        optional: true
-      '@simplewebauthn/server':
-        optional: true
-      nodemailer:
-        optional: true
+  /@auth/drizzle-adapter@1.0.1:
+    resolution: {integrity: sha512-E4np2F48p930q+YeQ5ipZPv/L+9gmQcB7g6NQQyux2wtanRNOXNW4TG8wMjSRfTzccNq161YZ8Fm5le/5snkGQ==}
     dependencies:
-      '@panva/hkdf': 1.1.1
-      '@types/cookie': 0.6.0
-      cookie: 0.6.0
-      jose: 5.2.3
-      oauth4webapi: 2.10.3
-      preact: 10.11.3
-      preact-render-to-string: 5.2.3(preact@10.11.3)
-    dev: false
-
-  /@auth/drizzle-adapter@0.8.2:
-    resolution: {integrity: sha512-IrySrHLr427+J5CjiM5fI6XFDmH5R2G7wd4E26z+J64C3t2aegdZdlfMAUerLjeoxAXnMas7bECtOYRO33EfKA==}
-    dependencies:
-      '@auth/core': 0.28.2
+      '@auth/core': 0.30.0
     transitivePeerDependencies:
       - '@simplewebauthn/browser'
       - '@simplewebauthn/server'
@@ -2125,12 +2102,6 @@ packages:
       '@jridgewell/trace-mapping': 0.3.9
     dev: true
 
-  /@drizzle-team/studio@0.0.39:
-    resolution: {integrity: sha512-c5Hkm7MmQC2n5qAsKShjQrHoqlfGslB8+qWzsGGZ+2dHMRTNG60UuzalF0h0rvBax5uzPXuGkYLGaQ+TUX3yMw==}
-    dependencies:
-      superjson: 2.2.1
-    dev: true
-
   /@egjs/hammerjs@2.0.17:
     resolution: {integrity: sha512-XQsZgjm2EcVUiZQf11UBJQfmZeEmOW8DpI1gsFeln6w0ae0ii4dMQEQ0kjl6DspdWX1aGY1/loyXnP0JS06e/A==}
     engines: {node: '>=0.8.0'}
@@ -3226,6 +3197,21 @@ packages:
     dependencies:
       '@hapi/hoek': 9.3.0
     dev: false
+
+  /@hono/node-server@1.11.0:
+    resolution: {integrity: sha512-TLIJq9TMtD1NEG1mVoqNUn1Ita0qSaB5XboZErjFBcO/GJYXwWY4dVdTi9G0lbxtu0x+hJXDItcLaFHb7rlFTw==}
+    engines: {node: '>=18.14.1'}
+    dev: true
+
+  /@hono/zod-validator@0.2.1(hono@4.2.7)(zod@3.23.0):
+    resolution: {integrity: sha512-HFoxln7Q6JsE64qz2WBS28SD33UB2alp3aRKmcWnNLDzEL1BLsWfbdX6e1HIiUprHYTIXf5y7ax8eYidKUwyaA==}
+    peerDependencies:
+      hono: '>=3.9.0'
+      zod: ^3.19.1
+    dependencies:
+      hono: 4.2.7
+      zod: 3.23.0
+    dev: true
 
   /@hookform/resolvers@3.3.4(react-hook-form@7.51.1):
     resolution: {integrity: sha512-o5cgpGOuJYrd+iMKvkttOclgwRW86EsWJZZRC23prf0uU2i48Htq4PuT73AVb9ionFyZrwYEITuOFGF+BydEtQ==}
@@ -5031,8 +5017,8 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@t3-oss/env-core@0.9.2(typescript@5.4.5)(zod@3.22.4):
-    resolution: {integrity: sha512-KgWXljUTHgO3o7GMZQPAD5+P+HqpauMNNHowlm7V2b9IeMitSUpNKwG6xQrup/xARWHTdxRVIl0mSI4wCevQhQ==}
+  /@t3-oss/env-core@0.10.0(typescript@5.4.5)(zod@3.23.0):
+    resolution: {integrity: sha512-2NJM7kBPYfxkvLSt0cX4UnQR3YMNOoqHKUWEEbxrqad0R1eqj1j2ZxU4HByQzYW8tBUD+kCSd00xJPoju/WJ1Q==}
     peerDependencies:
       typescript: '>=5.0.0'
       zod: ^3.0.0
@@ -5041,11 +5027,11 @@ packages:
         optional: true
     dependencies:
       typescript: 5.4.5
-      zod: 3.22.4
+      zod: 3.23.0
     dev: false
 
-  /@t3-oss/env-nextjs@0.9.2(typescript@5.4.5)(zod@3.22.4):
-    resolution: {integrity: sha512-dklHrgKLESStNVB67Jdbu6osxDYA+xNKaPBRerlnkEvzbCccSKMvZENx6EZebJuR4snqB3/yRykNMn/bdIAyiQ==}
+  /@t3-oss/env-nextjs@0.10.0(typescript@5.4.5)(zod@3.23.0):
+    resolution: {integrity: sha512-JMpWF8dyI3ska1wFX92An7Y7AQicRn11be0z10c3TletATvdmFJzazb28VbgAX6fKuXJRRxBoiKNGIdLWVVsig==}
     peerDependencies:
       typescript: '>=5.0.0'
       zod: ^3.0.0
@@ -5053,9 +5039,9 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@t3-oss/env-core': 0.9.2(typescript@5.4.5)(zod@3.22.4)
+      '@t3-oss/env-core': 0.10.0(typescript@5.4.5)(zod@3.23.0)
       typescript: 5.4.5
-      zod: 3.22.4
+      zod: 3.23.0
     dev: false
 
   /@tanstack/query-core@5.29.0:
@@ -7158,12 +7144,13 @@ packages:
       wordwrap: 1.0.0
     dev: true
 
-  /drizzle-kit@0.20.14:
-    resolution: {integrity: sha512-0fHv3YIEaUcSVPSGyaaBfOi9bmpajjhbJNdPsRMIUvYdLVxBu9eGjH8mRc3Qk7HVmEidFc/lhG1YyJhoXrn5yA==}
+  /drizzle-kit@0.20.17:
+    resolution: {integrity: sha512-mLVDS4nXmO09wFVlzGrdshWnAL+U9eQGC5zRs6hTN6Q9arwQGWU2XnZ17I8BM8Quau8CQRx3Ms6VPgRWJFVp7Q==}
     hasBin: true
     dependencies:
-      '@drizzle-team/studio': 0.0.39
       '@esbuild-kit/esm-loader': 2.6.5
+      '@hono/node-server': 1.11.0
+      '@hono/zod-validator': 0.2.1(hono@4.2.7)(zod@3.23.0)
       camelcase: 7.0.1
       chalk: 5.3.0
       commander: 9.5.0
@@ -7172,19 +7159,22 @@ packages:
       esbuild-register: 3.5.0(esbuild@0.19.12)
       glob: 8.1.0
       hanji: 0.0.5
+      hono: 4.2.7
       json-diff: 0.9.0
       minimatch: 7.4.6
       semver: 7.6.0
-      zod: 3.22.4
+      superjson: 2.2.1
+      zod: 3.23.0
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /drizzle-orm@0.30.4(@planetscale/database@1.16.0)(mysql2@3.9.2):
-    resolution: {integrity: sha512-kWoSMGbrOFkmkAweLTFtHJMpN+nwhx89q0mLELqT2aEU+1szNV8jrnBmJwZ0WGNp7J7yQn/ezEtxBI/qzTSElQ==}
+  /drizzle-orm@0.30.9(@planetscale/database@1.16.0)(mysql2@3.9.7):
+    resolution: {integrity: sha512-VOiCFsexErmgqvNCOmbzmqDCZzZsHoz6SkWAjTFxsTr1AllKDbDJ2+GgedLXsXMDgpg/ljDG1zItIFeZtiO2LA==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
       '@cloudflare/workers-types': '>=3'
+      '@electric-sql/pglite': '>=0.1.1'
       '@libsql/client': '*'
       '@neondatabase/serverless': '>=0.1'
       '@op-engineering/op-sqlite': '>=2'
@@ -7194,7 +7184,7 @@ packages:
       '@types/pg': '*'
       '@types/react': '>=18'
       '@types/sql.js': '*'
-      '@vercel/postgres': '*'
+      '@vercel/postgres': '>=0.8.0'
       '@xata.io/client': '*'
       better-sqlite3: '>=7'
       bun-types: '*'
@@ -7211,6 +7201,8 @@ packages:
       '@aws-sdk/client-rds-data':
         optional: true
       '@cloudflare/workers-types':
+        optional: true
+      '@electric-sql/pglite':
         optional: true
       '@libsql/client':
         optional: true
@@ -7258,17 +7250,17 @@ packages:
         optional: true
     dependencies:
       '@planetscale/database': 1.16.0
-      mysql2: 3.9.2
+      mysql2: 3.9.7
     dev: false
 
-  /drizzle-zod@0.5.1(drizzle-orm@0.30.4)(zod@3.22.4):
+  /drizzle-zod@0.5.1(drizzle-orm@0.30.9)(zod@3.23.0):
     resolution: {integrity: sha512-C/8bvzUH/zSnVfwdSibOgFjLhtDtbKYmkbPbUCq46QZyZCH6kODIMSOgZ8R7rVjoI+tCj3k06MRJMDqsIeoS4A==}
     peerDependencies:
       drizzle-orm: '>=0.23.13'
       zod: '*'
     dependencies:
-      drizzle-orm: 0.30.4(@planetscale/database@1.16.0)(mysql2@3.9.2)
-      zod: 3.22.4
+      drizzle-orm: 0.30.9(@planetscale/database@1.16.0)(mysql2@3.9.7)
+      zod: 3.23.0
     dev: false
 
   /duplexer@0.1.2:
@@ -8846,6 +8838,11 @@ packages:
     dependencies:
       react-is: 16.13.1
     dev: false
+
+  /hono@4.2.7:
+    resolution: {integrity: sha512-k1xHi86tJnRIVvqhFMBDGFKJ8r5O+bEsT4P59ZK59r0F300Xd910/r237inVfuT/VmE86RQQffX4OYNda6dLXw==}
+    engines: {node: '>=16.0.0'}
+    dev: true
 
   /hookable@5.5.3:
     resolution: {integrity: sha512-Yc+BQe8SvoXH1643Qez1zqLRmbA5rCL+sSmk6TVos0LWVfNIB7PGncdlId77WzLGSIB5KaWgTaNTs2lNVEI6VQ==}
@@ -10635,8 +10632,8 @@ packages:
     dev: false
     optional: true
 
-  /mysql2@3.9.2:
-    resolution: {integrity: sha512-3Cwg/UuRkAv/wm6RhtPE5L7JlPB877vwSF6gfLAS68H+zhH+u5oa3AieqEd0D0/kC3W7qIhYbH419f7O9i/5nw==}
+  /mysql2@3.9.7:
+    resolution: {integrity: sha512-KnJT8vYRcNAZv73uf9zpXqNbvBG7DJrs+1nACsjZP1HMJ1TgXEy8wnNilXAn/5i57JizXKtrUtwDB7HxT9DDpw==}
     engines: {node: '>= 8.0'}
     dependencies:
       denque: 2.1.0
@@ -10711,8 +10708,8 @@ packages:
     engines: {node: '>= 0.4.0'}
     dev: true
 
-  /next-auth@5.0.0-beta.16(next@14.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-dX2snB+ezN23tFzSes3n3uosT9iBf0eILPYWH/R2fd9n3ZzdMQlRzq7JIOPeS1aLc84IuRlyuyXyx9XmmZB6og==}
+  /next-auth@5.0.0-beta.17(next@14.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-XA/7JtAjOgDfAeotJPFUsFZGGItZwzZrxLt9Gc9fE7EchLk6zydZfuZ22Vvwixs3IilkN644D5IoD5tEOAFGCQ==}
     peerDependencies:
       '@simplewebauthn/browser': ^9.0.1
       '@simplewebauthn/server': ^9.0.2
@@ -10727,7 +10724,7 @@ packages:
       nodemailer:
         optional: true
     dependencies:
-      '@auth/core': 0.28.1
+      '@auth/core': 0.30.0
       next: 14.2.0(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
     dev: false
@@ -14357,5 +14354,5 @@ packages:
       readable-stream: 4.5.2
     dev: true
 
-  /zod@3.22.4:
-    resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
+  /zod@3.23.0:
+    resolution: {integrity: sha512-OFLT+LTocvabn6q76BTwVB0hExEBS0IduTr3cqZyMqEDbOnYmcU+y0tUAYbND4uwclpBGi4I4UUBGzylWpjLGA==}

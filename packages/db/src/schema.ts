@@ -18,7 +18,7 @@ import { z } from "zod";
  *
  * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
  */
-export const mySqlTable = mysqlTableCreator((name) => `t3turbo_${name}`);
+const mySqlTable = mysqlTableCreator((name) => `t3turbo_${name}`);
 
 export const post = mySqlTable("post", {
   id: serial("id").primaryKey(),

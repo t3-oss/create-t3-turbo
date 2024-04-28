@@ -387,7 +387,7 @@ importers:
         specifier: ^9.0.0
         version: 9.0.0
       mysql2:
-        specifier: ^3.9.2
+        specifier: ^3.9.7
         version: 3.9.7
       prettier:
         specifier: ^3.2.5
@@ -5684,10 +5684,6 @@ packages:
 
   lower-case@1.1.4:
     resolution: {integrity: sha512-2Fgx1Ycm599x+WGpIYwJOvsjmXFzTSc34IwDWALRA/8AopUKAVPwfJ+h5+f85BCp0PWmmJcWzEpxOpoXycMpdA==}
-
-  lru-cache@10.2.0:
-    resolution: {integrity: sha512-2bIM8x+VAf6JT4bKAljS1qUWgMsqZRPGJS6FSahIMPVvctcNhyVp7AJu7quxOW9jwkryBReKZY5tY5JYv2n/7Q==}
-    engines: {node: 14 || >=16.14}
 
   lru-cache@10.2.1:
     resolution: {integrity: sha512-tS24spDe/zXhWbNPErCHs/AGOzbKGHT+ybSBqmdLm8WZ1xXLWvH8Qn71QPAlqVhd0qUTWjy+Kl9JmISgDdEjsA==}
@@ -14024,8 +14020,6 @@ snapshots:
 
   lower-case@1.1.4: {}
 
-  lru-cache@10.2.0: {}
-
   lru-cache@10.2.1: {}
 
   lru-cache@5.1.1:
@@ -14898,7 +14892,7 @@ snapshots:
 
   path-scurry@1.10.1:
     dependencies:
-      lru-cache: 10.2.0
+      lru-cache: 10.2.1
       minipass: 7.0.4
 
   path-type@4.0.0: {}

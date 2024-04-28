@@ -2,7 +2,7 @@
   "name": "create-t3-turbo",
   "private": true,
   "engines": {
-    "node": ">=20.11.1"
+    "node": ">=20.12.0"
   },
   "packageManager": "pnpm@8.15.5",
   "scripts": {
@@ -18,14 +18,15 @@
     "lint:fix": "turbo lint --continue -- --fix --cache --cache-location node_modules/.cache/.eslintcache",
     "lint:ws": "pnpm dlx sherif@latest",
     "postinstall": "pnpm lint:ws",
-    "typecheck": "turbo typecheck"
+    "typecheck": "turbo typecheck",
+    "ui-add": "pnpm -F ui ui-add"
   },
   "devDependencies": {
     "@acme/prettier-config": "workspace:*",
-    "@turbo/gen": "^1.13.0",
+    "@turbo/gen": "^1.13.2",
     "prettier": "^3.2.5",
-    "turbo": "^1.13.0",
-    "typescript": "^5.4.3"
+    "turbo": "^1.13.2",
+    "typescript": "^5.4.5"
   },
   "prettier": "@acme/prettier-config"
 }

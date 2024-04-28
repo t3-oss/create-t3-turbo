@@ -10,9 +10,11 @@ import { TRPCReactProvider } from "~/trpc/react";
 
 import "~/app/globals.css";
 
+import { env } from "~/env";
+
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.VERCEL_ENV === "production"
+    env.VERCEL_ENV === "production"
       ? "https://turbo.t3.gg"
       : "http://localhost:3000",
   ),

@@ -36,7 +36,7 @@ export function CreatePostForm() {
     },
     onError: (err) => {
       toast.error(
-        err?.data?.code === "UNAUTHORIZED"
+        err.data?.code === "UNAUTHORIZED"
           ? "You must be logged in to post"
           : "Failed to create post",
       );
@@ -47,7 +47,7 @@ export function CreatePostForm() {
     <Form {...form}>
       <form
         className="flex w-full max-w-2xl flex-col gap-4"
-        onSubmit={form.handleSubmit(async (data) => {
+        onSubmit={form.handleSubmit((data) => {
           createPost.mutate(data);
         })}
       >
@@ -123,7 +123,7 @@ export function PostCard(props: {
     },
     onError: (err) => {
       toast.error(
-        err?.data?.code === "UNAUTHORIZED"
+        err.data?.code === "UNAUTHORIZED"
           ? "You must be logged in to delete a post"
           : "Failed to delete post",
       );

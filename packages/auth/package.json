@@ -14,32 +14,26 @@
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
     "format": "prettier --check . --ignore-path ../../.gitignore",
-    "lint": "eslint .",
+    "lint": "eslint",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@acme/db": "workspace:*",
-    "@auth/drizzle-adapter": "^0.8.1",
-    "@t3-oss/env-nextjs": "^0.9.2",
-    "next": "^14.1.4",
-    "next-auth": "5.0.0-beta.16",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "zod": "^3.22.4"
+    "@auth/drizzle-adapter": "^1.0.1",
+    "@t3-oss/env-nextjs": "^0.10.0",
+    "next": "^14.2.0",
+    "next-auth": "5.0.0-beta.17",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "zod": "^3.23.0"
   },
   "devDependencies": {
     "@acme/eslint-config": "workspace:*",
     "@acme/prettier-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
-    "eslint": "^8.57.0",
+    "eslint": "^9.0.0",
     "prettier": "^3.2.5",
-    "typescript": "^5.4.3"
-  },
-  "eslintConfig": {
-    "root": true,
-    "extends": [
-      "@acme/eslint-config/base"
-    ]
+    "typescript": "^5.4.5"
   },
   "prettier": "@acme/prettier-config"
 }

@@ -35,7 +35,7 @@ apps
   |   ├─ Nitro server to proxy OAuth requests in preview deployments
   |   └─ Uses Auth.js Core
   ├─ expo
-  |   ├─ Expo SDK 49
+  |   ├─ Expo SDK 50
   |   ├─ React Native using React 18
   |   ├─ Navigation using Expo Router
   |   ├─ Tailwind using NativeWind

@@ -359,8 +359,8 @@ importers:
         specifier: ^1.16.0
         version: 1.16.0
       '@t3-oss/env-core':
-        specifier: ^0.10.0
-        version: 0.10.0(typescript@5.4.5)(zod@3.23.0)
+        specifier: ^0.10.1
+        version: 0.10.1(typescript@5.4.5)(zod@3.23.0)
       drizzle-orm:
         specifier: ^0.30.4
         version: 0.30.4(@planetscale/database@1.16.0)(@types/react@18.3.1)(mysql2@3.9.7)(react@18.3.1)
@@ -2900,6 +2900,15 @@ packages:
 
   '@t3-oss/env-core@0.10.0':
     resolution: {integrity: sha512-2NJM7kBPYfxkvLSt0cX4UnQR3YMNOoqHKUWEEbxrqad0R1eqj1j2ZxU4HByQzYW8tBUD+kCSd00xJPoju/WJ1Q==}
+    peerDependencies:
+      typescript: '>=5.0.0'
+      zod: ^3.0.0
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+
+  '@t3-oss/env-core@0.10.1':
+    resolution: {integrity: sha512-GcKZiCfWks5CTxhezn9k5zWX3sMDIYf6Kaxy2Gx9YEQftFcz8hDRN56hcbylyAO3t4jQnQ5ifLawINsNgCDpOg==}
     peerDependencies:
       typescript: '>=5.0.0'
       zod: ^3.0.0
@@ -10780,6 +10789,12 @@ snapshots:
       tslib: 2.6.2
 
   '@t3-oss/env-core@0.10.0(typescript@5.4.5)(zod@3.23.0)':
+    dependencies:
+      zod: 3.23.0
+    optionalDependencies:
+      typescript: 5.4.5
+
+  '@t3-oss/env-core@0.10.1(typescript@5.4.5)(zod@3.23.0)':
     dependencies:
       zod: 3.23.0
     optionalDependencies:

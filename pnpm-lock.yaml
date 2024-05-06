@@ -53,7 +53,7 @@ importers:
         version: 1.11.1
       nitropack:
         specifier: ^2.9.6
-        version: 2.9.6(@planetscale/database@1.16.0)(drizzle-orm@0.30.4(@planetscale/database@1.16.0)(@types/react@18.3.1)(mysql2@3.9.7)(react@18.3.1))(xml2js@0.6.0)
+        version: 2.9.6(@planetscale/database@1.16.0)(drizzle-orm@0.30.10(@planetscale/database@1.16.0)(@types/react@18.3.1)(mysql2@3.9.7)(react@18.3.1))(xml2js@0.6.0)
       prettier:
         specifier: ^3.2.5
         version: 3.2.5
@@ -362,8 +362,8 @@ importers:
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.4.5)(zod@3.23.0)
       drizzle-orm:
-        specifier: ^0.30.4
-        version: 0.30.4(@planetscale/database@1.16.0)(@types/react@18.3.1)(mysql2@3.9.7)(react@18.3.1)
+        specifier: ^0.30.10
+        version: 0.30.10(@planetscale/database@1.16.0)(@types/react@18.3.1)(mysql2@3.9.7)(react@18.3.1)
       zod:
         specifier: ^3.23.0
         version: 3.23.0
@@ -4104,11 +4104,12 @@ packages:
     resolution: {integrity: sha512-0fHv3YIEaUcSVPSGyaaBfOi9bmpajjhbJNdPsRMIUvYdLVxBu9eGjH8mRc3Qk7HVmEidFc/lhG1YyJhoXrn5yA==}
     hasBin: true
 
-  drizzle-orm@0.30.4:
-    resolution: {integrity: sha512-kWoSMGbrOFkmkAweLTFtHJMpN+nwhx89q0mLELqT2aEU+1szNV8jrnBmJwZ0WGNp7J7yQn/ezEtxBI/qzTSElQ==}
+  drizzle-orm@0.30.10:
+    resolution: {integrity: sha512-IRy/QmMWw9lAQHpwbUh1b8fcn27S/a9zMIzqea1WNOxK9/4EB8gIo+FZWLiPXzl2n9ixGSv8BhsLZiOppWEwBw==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
       '@cloudflare/workers-types': '>=3'
+      '@electric-sql/pglite': '>=0.1.1'
       '@libsql/client': '*'
       '@neondatabase/serverless': '>=0.1'
       '@op-engineering/op-sqlite': '>=2'
@@ -4118,7 +4119,7 @@ packages:
       '@types/pg': '*'
       '@types/react': '>=18'
       '@types/sql.js': '*'
-      '@vercel/postgres': '*'
+      '@vercel/postgres': '>=0.8.0'
       '@xata.io/client': '*'
       better-sqlite3: '>=7'
       bun-types: '*'
@@ -4135,6 +4136,8 @@ packages:
       '@aws-sdk/client-rds-data':
         optional: true
       '@cloudflare/workers-types':
+        optional: true
+      '@electric-sql/pglite':
         optional: true
       '@libsql/client':
         optional: true
@@ -11982,9 +11985,9 @@ snapshots:
 
   dayjs@1.11.10: {}
 
-  db0@0.1.4(drizzle-orm@0.30.4(@planetscale/database@1.16.0)(@types/react@18.3.1)(mysql2@3.9.7)(react@18.3.1)):
+  db0@0.1.4(drizzle-orm@0.30.10(@planetscale/database@1.16.0)(@types/react@18.3.1)(mysql2@3.9.7)(react@18.3.1)):
     optionalDependencies:
-      drizzle-orm: 0.30.4(@planetscale/database@1.16.0)(@types/react@18.3.1)(mysql2@3.9.7)(react@18.3.1)
+      drizzle-orm: 0.30.10(@planetscale/database@1.16.0)(@types/react@18.3.1)(mysql2@3.9.7)(react@18.3.1)
 
   debug@2.6.9:
     dependencies:
@@ -12151,7 +12154,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.30.4(@planetscale/database@1.16.0)(@types/react@18.3.1)(mysql2@3.9.7)(react@18.3.1):
+  drizzle-orm@0.30.10(@planetscale/database@1.16.0)(@types/react@18.3.1)(mysql2@3.9.7)(react@18.3.1):
     optionalDependencies:
       '@planetscale/database': 1.16.0
       '@types/react': 18.3.1
@@ -14473,7 +14476,7 @@ snapshots:
 
   nice-try@1.0.5: {}
 
-  nitropack@2.9.6(@planetscale/database@1.16.0)(drizzle-orm@0.30.4(@planetscale/database@1.16.0)(@types/react@18.3.1)(mysql2@3.9.7)(react@18.3.1))(xml2js@0.6.0):
+  nitropack@2.9.6(@planetscale/database@1.16.0)(drizzle-orm@0.30.10(@planetscale/database@1.16.0)(@types/react@18.3.1)(mysql2@3.9.7)(react@18.3.1))(xml2js@0.6.0):
     dependencies:
       '@cloudflare/kv-asset-handler': 0.3.1
       '@netlify/functions': 2.6.0
@@ -14496,7 +14499,7 @@ snapshots:
       cookie-es: 1.1.0
       croner: 8.0.1
       crossws: 0.2.4
-      db0: 0.1.4(drizzle-orm@0.30.4(@planetscale/database@1.16.0)(@types/react@18.3.1)(mysql2@3.9.7)(react@18.3.1))
+      db0: 0.1.4(drizzle-orm@0.30.10(@planetscale/database@1.16.0)(@types/react@18.3.1)(mysql2@3.9.7)(react@18.3.1))
       defu: 6.1.4
       destr: 2.0.3
       dot-prop: 8.0.2

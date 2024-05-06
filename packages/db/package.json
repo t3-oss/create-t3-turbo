@@ -22,18 +22,18 @@
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
-    "@planetscale/database": "^1.16.0",
+    "@planetscale/database": "^1.18.0",
     "@t3-oss/env-core": "^0.10.1",
-    "drizzle-orm": "^0.30.4",
-    "zod": "^3.23.0"
+    "drizzle-orm": "^0.30.10",
+    "zod": "^3.23.6"
   },
   "devDependencies": {
     "@acme/eslint-config": "workspace:*",
     "@acme/prettier-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
     "dotenv-cli": "^7.4.1",
-    "drizzle-kit": "^0.20.14",
-    "eslint": "^9.0.0",
+    "drizzle-kit": "^0.20.18",
+    "eslint": "^9.2.0",
     "mysql2": "^3.9.7",
     "prettier": "^3.2.5",
     "typescript": "^5.4.5"

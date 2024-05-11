@@ -1,5 +1,6 @@
 {
   "$schema": "https://turborepo.org/schema.json",
+  "experimentalUI": true,
   "globalDependencies": ["**/.env"],
   "pipeline": {
     "topo": {
@@ -25,11 +26,11 @@
       "outputMode": "new-only"
     },
     "lint": {
-      "dependsOn": ["^topo"],
+      "dependsOn": ["^topo", "^build"],
       "outputs": ["node_modules/.cache/.eslintcache"]
     },
     "typecheck": {
-      "dependsOn": ["^topo"],
+      "dependsOn": ["^topo", "^build"],
       "outputs": ["node_modules/.cache/tsbuildinfo.json"]
     },
     "clean": {

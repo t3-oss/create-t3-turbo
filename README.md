@@ -35,7 +35,7 @@ apps
   |   ├─ Nitro server to proxy OAuth requests in preview deployments
   |   └─ Uses Auth.js Core
   ├─ expo
-  |   ├─ Expo SDK 49
+  |   ├─ Expo SDK 50
   |   ├─ React Native using React 18
   |   ├─ Navigation using Expo Router
   |   ├─ Tailwind using NativeWind
@@ -51,7 +51,7 @@ packages
   ├─ auth
   |   └─ Authentication using next-auth.
   ├─ db
-  |   └─ Typesafe db calls using Drizzle & Planetscale
+  |   └─ Typesafe db calls using Drizzle & Supabase
   └─ ui
       └─ Start of a UI package for the webapp using shadcn-ui
 tooling
@@ -70,7 +70,7 @@ tooling
 ## Quick Start
 
 > **Note**
-> The [db](./packages/db) package is preconfigured to use PlanetScale and is **edge-bound** with the [database.js](https://github.com/planetscale/database-js) driver. If you're using something else, make the necessary modifications to the [schema](./packages/db/src/schema) as well as the [client](./packages/db/src/index.ts) and the [drizzle config](./packages/db/drizzle.config.ts). If you want to switch to non-edge database driver, remove `export const runtime = "edge";` [from all pages and api routes](https://github.com/t3-oss/create-t3-turbo/issues/634#issuecomment-1730240214).
+> The [db](./packages/db) package is preconfigured to use Supabase and is **edge-bound** with the [Vercel Postgres](https://github.com/vercel/storage/tree/main/packages/postgres) driver. If you're using something else, make the necessary modifications to the [schema](./packages/db/src/schema) as well as the [client](./packages/db/src/index.ts) and the [drizzle config](./packages/db/drizzle.config.ts). If you want to switch to non-edge database driver, remove `export const runtime = "edge";` [from all pages and api routes](https://github.com/t3-oss/create-t3-turbo/issues/634#issuecomment-1730240214).
 
 To get it running, follow the steps below:
 
@@ -94,7 +94,7 @@ pnpm db:push
 
 1. Make sure you have XCode and XCommand Line Tools installed [as shown on expo docs](https://docs.expo.dev/workflow/ios-simulator).
 
-   > **NOTE:** If you just installed XCode, or if you have updated it, you need to open the simulator manually once. Run `npx expo start` in the root dir, and then enter `I` to launch Expo Go. After the manual launch, you can run `pnpm dev` in the root directory.
+   > **NOTE:** If you just installed XCode, or if you have updated it, you need to open the simulator manually once. Run `npx expo start` from `apps/expo`, and then enter `I` to launch Expo Go. After the manual launch, you can run `pnpm dev` in the root directory.
 
    ```diff
    +  "dev": "expo start --ios",
@@ -114,9 +114,17 @@ pnpm db:push
 
 3. Run `pnpm dev` at the project root folder.
 
-> **TIP:** It might be easier to run each app in separate terminal windows, so you get the logs from each app separately. This is also required if you want your terminals to be interactive, e.g. to access the Expo QR code. You can run `pnpm --filter expo dev` and `pnpm --filter nextjs dev` to run each app in a separate terminal window.
+### 3a. When it's time to add a new UI component
 
-### 3. When it's time to add a new package
+Run the `ui-add` script to add a new UI component using the interactive `shadcn/ui` CLI:
+
+```bash
+pnpm ui-add
+```
+
+When the component(s) has been installed, you should be good to go and start using it in your app.
+
+### 3b. When it's time to add a new package
 
 To add a new package, simply run `pnpm turbo gen init` in the monorepo root. This will prompt you for a package name as well as if you want to install any dependencies to the new package (of course you can also do this yourself later).
 

@@ -6,10 +6,11 @@ import { cn } from "@acme/ui";
 import { ThemeProvider, ThemeToggle } from "@acme/ui/theme";
 import { Toaster } from "@acme/ui/toast";
 
-import { env } from "~/env";
 import { TRPCReactProvider } from "~/trpc/react";
 
 import "~/app/globals.css";
+
+import { env } from "~/env";
 
 export const metadata: Metadata = {
   metadataBase: new URL(

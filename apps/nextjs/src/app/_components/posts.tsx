@@ -3,6 +3,7 @@
 import { use } from "react";
 
 import type { RouterOutputs } from "@acme/api";
+import { CreatePostSchema } from "@acme/db/schema";
 import { cn } from "@acme/ui";
 import { Button } from "@acme/ui/button";
 import {
@@ -15,7 +16,6 @@ import {
 } from "@acme/ui/form";
 import { Input } from "@acme/ui/input";
 import { toast } from "@acme/ui/toast";
-import { CreatePostSchema } from "@acme/validators";
 
 import { api } from "~/trpc/react";
 
@@ -36,7 +36,7 @@ export function CreatePostForm() {
     },
     onError: (err) => {
       toast.error(
-        err?.data?.code === "UNAUTHORIZED"
+        err.data?.code === "UNAUTHORIZED"
           ? "You must be logged in to post"
           : "Failed to create post",
       );
@@ -47,7 +47,7 @@ export function CreatePostForm() {
     <Form {...form}>
       <form
         className="flex w-full max-w-2xl flex-col gap-4"
-        onSubmit={form.handleSubmit(async (data) => {
+        onSubmit={form.handleSubmit((data) => {
           createPost.mutate(data);
         })}
       >
@@ -123,7 +123,7 @@ export function PostCard(props: {
     },
     onError: (err) => {
       toast.error(
-        err?.data?.code === "UNAUTHORIZED"
+        err.data?.code === "UNAUTHORIZED"
           ? "You must be logged in to delete a post"
           : "Failed to delete post",
       );

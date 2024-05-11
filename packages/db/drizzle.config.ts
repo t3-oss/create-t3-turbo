@@ -1,20 +1,14 @@
 import type { Config } from "drizzle-kit";
 
-const uri = [
-  "mysql://",
-  process.env.DB_USERNAME,
-  ":",
-  process.env.DB_PASSWORD,
-  "@",
-  process.env.DB_HOST,
-  ":3306/",
-  process.env.DB_NAME,
-  '?ssl={"rejectUnauthorized":true}',
-].join("");
+if (!process.env.POSTGRES_URL) {
+  throw new Error("Missing POSTGRES_URL");
+}
+
+const nonPoolingUrl = process.env.POSTGRES_URL.replace(":6543", ":5432");
 
 export default {
-  schema: "./src/schema",
-  driver: "mysql2",
-  dbCredentials: { uri },
+  schema: "./src/schema.ts",
+  dialect: "postgresql",
+  dbCredentials: { url: nonPoolingUrl },
   tablesFilter: ["t3turbo_*"],
 } satisfies Config;

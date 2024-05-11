@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "./base.json",
+  "compilerOptions": {
+    /** Emit types for internal packages to speed up editor performance. */
+    "declaration": true,
+    "declarationMap": true,
+    "noEmit": false,
+    "emitDeclarationOnly": true
+  }
+}

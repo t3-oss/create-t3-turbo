@@ -4,8 +4,6 @@ import { z } from "zod";
 import { desc, eq } from "@acme/db";
 import { CreatePostSchema, Post } from "@acme/db/schema";
 
-// import { CreatePostSchema } from "@acme/validators";
-
 import { protectedProcedure, publicProcedure } from "../trpc";
 
 export const postRouter = {

@@ -17,7 +17,7 @@ export const signIn = async () => {
   const sessionToken = String(url.queryParams?.session_token);
   if (!sessionToken) return;
 
-  await setToken(sessionToken);
+  setToken(sessionToken);
 };
 
 export const useUser = () => {

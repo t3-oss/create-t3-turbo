@@ -32,7 +32,7 @@ export const accounts = pgTable(
       .notNull()
       .references(() => users.id, { onDelete: "cascade" }),
     type: varchar("type", { length: 255 })
-      .$type<"oauth" | "oidc" | "email">()
+      .$type<"email" | "oauth" | "oidc" | "webauthn">()
       .notNull(),
     provider: varchar("provider", { length: 255 }).notNull(),
     providerAccountId: varchar("providerAccountId", { length: 255 }).notNull(),

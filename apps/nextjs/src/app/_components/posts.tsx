@@ -3,7 +3,7 @@
 import { use } from "react";
 
 import type { RouterOutputs } from "@acme/api";
-import { createPostSchema } from "@acme/db/schema";
+import { CreatePostSchema } from "@acme/db/schema";
 import { cn } from "@acme/ui";
 import { Button } from "@acme/ui/button";
 import {
@@ -21,7 +21,7 @@ import { api } from "~/trpc/react";
 
 export function CreatePostForm() {
   const form = useForm({
-    schema: createPostSchema,
+    schema: CreatePostSchema,
     defaultValues: {
       content: "",
       title: "",

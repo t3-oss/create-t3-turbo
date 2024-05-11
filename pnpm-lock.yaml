@@ -252,8 +252,8 @@ importers:
         specifier: ^18.3.0
         version: 18.3.0
       dotenv-cli:
-        specifier: ^7.4.1
-        version: 7.4.1
+        specifier: ^7.4.2
+        version: 7.4.2
       eslint:
         specifier: ^9.2.0
         version: 9.2.0
@@ -384,8 +384,8 @@ importers:
         specifier: workspace:*
         version: link:../../tooling/typescript
       dotenv-cli:
-        specifier: ^7.4.1
-        version: 7.4.1
+        specifier: ^7.4.2
+        version: 7.4.2
       drizzle-kit:
         specifier: ^0.21.1
         version: 0.21.1
@@ -4076,8 +4076,8 @@ packages:
     resolution: {integrity: sha512-xaBe6ZT4DHPkg0k4Ytbvn5xoxgpG0jOS1dYxSOwAHPuNLjP3/OzN0gH55SrLqpx8cBfSaVt91lXYkApjb+nYdQ==}
     engines: {node: '>=16'}
 
-  dotenv-cli@7.4.1:
-    resolution: {integrity: sha512-fE1aywjRrWGxV3miaiUr3d2zC/VAiuzEGghi+QzgIA9fEf/M5hLMaRSXb4IxbUAwGmaLi0IozdZddnVU96acag==}
+  dotenv-cli@7.4.2:
+    resolution: {integrity: sha512-SbUj8l61zIbzyhIbg0FwPJq6+wjbzdn9oEtozQpZ6kW2ihCcapKVZj49oCT3oPM+mgQm+itgvUQcG5szxVrZTA==}
     hasBin: true
 
   dotenv-expand@10.0.0:
@@ -12102,7 +12102,7 @@ snapshots:
     dependencies:
       type-fest: 3.13.1
 
-  dotenv-cli@7.4.1:
+  dotenv-cli@7.4.2:
     dependencies:
       cross-spawn: 7.0.3
       dotenv: 16.4.5

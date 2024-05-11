@@ -1,16 +1,37 @@
-import { relations } from "drizzle-orm";
+import { relations, sql } from "drizzle-orm";
 import {
   integer,
+  pgTable,
   primaryKey,
   text,
   timestamp,
   uuid,
   varchar,
 } from "drizzle-orm/pg-core";
+import { createInsertSchema } from "drizzle-zod";
+import { z } from "zod";
 
-import { pgTable } from "./_table";
+export const Post = pgTable("post", {
+  id: uuid("id").notNull().primaryKey().defaultRandom(),
+  title: varchar("name", { length: 256 }).notNull(),
+  content: text("content").notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt", {
+    mode: "date",
+    withTimezone: true,
+  }).$onUpdateFn(() => sql`now()`),
+});
 
-export const users = pgTable("user", {
+export const CreatePostSchema = createInsertSchema(Post, {
+  title: z.string().max(256),
+  content: z.string().max(256),
+}).omit({
+  id: true,
+  createdAt: true,
+  updatedAt: true,
+});
+
+export const User = pgTable("user", {
   id: uuid("id").notNull().primaryKey().defaultRandom(),
   name: varchar("name", { length: 255 }),
   email: varchar("email", { length: 255 }).notNull(),
@@ -21,16 +42,16 @@ export const users = pgTable("user", {
   image: varchar("image", { length: 255 }),
 });
 
-export const usersRelations = relations(users, ({ many }) => ({
-  accounts: many(accounts),
+export const UserRelations = relations(User, ({ many }) => ({
+  accounts: many(Account),
 }));
 
-export const accounts = pgTable(
+export const Account = pgTable(
   "account",
   {
     userId: uuid("userId")
       .notNull()
-      .references(() => users.id, { onDelete: "cascade" }),
+      .references(() => User.id, { onDelete: "cascade" }),
     type: varchar("type", { length: 255 })
       .$type<"email" | "oauth" | "oidc" | "webauthn">()
       .notNull(),
@@ -51,36 +72,21 @@ export const accounts = pgTable(
   }),
 );
 
-export const accountsRelations = relations(accounts, ({ one }) => ({
-  user: one(users, { fields: [accounts.userId], references: [users.id] }),
+export const AccountRelations = relations(Account, ({ one }) => ({
+  user: one(User, { fields: [Account.userId], references: [User.id] }),
 }));
 
-export const sessions = pgTable("session", {
+export const Session = pgTable("session", {
   sessionToken: varchar("sessionToken", { length: 255 }).notNull().primaryKey(),
   userId: uuid("userId")
     .notNull()
-    .references(() => users.id, { onDelete: "cascade" }),
+    .references(() => User.id, { onDelete: "cascade" }),
   expires: timestamp("expires", {
     mode: "date",
     withTimezone: true,
   }).notNull(),
 });
 
-export const sessionsRelations = relations(sessions, ({ one }) => ({
-  user: one(users, { fields: [sessions.userId], references: [users.id] }),
+export const SessionRelations = relations(Session, ({ one }) => ({
+  user: one(User, { fields: [Session.userId], references: [User.id] }),
 }));
-
-export const verificationTokens = pgTable(
-  "verificationToken",
-  {
-    identifier: varchar("identifier", { length: 255 }).notNull(),
-    token: varchar("token", { length: 255 }).notNull(),
-    expires: timestamp("expires", {
-      mode: "date",
-      withTimezone: true,
-    }).notNull(),
-  },
-  (vt) => ({
-    compoundKey: primaryKey({ columns: [vt.identifier, vt.token] }),
-  }),
-);

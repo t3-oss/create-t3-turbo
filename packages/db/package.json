@@ -7,6 +7,14 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./src/index.ts"
+    },
+    "./client": {
+      "types": "./dist/client.d.ts",
+      "default": "./src/client.ts"
+    },
+    "./schema": {
+      "types": "./dist/schema.d.ts",
+      "default": "./src/schema.ts"
     }
   },
   "license": "MIT",
@@ -16,8 +24,8 @@
     "clean": "rm -rf .turbo node_modules",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint",
-    "push": "pnpm with-env drizzle-kit push --config src/config.ts",
-    "studio": "pnpm with-env drizzle-kit studio --config src/config.ts",
+    "push": "pnpm with-env drizzle-kit push",
+    "studio": "pnpm with-env drizzle-kit studio",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
     "with-env": "dotenv -e ../../.env --"
   },
@@ -25,6 +33,7 @@
     "@vercel/postgres": "^0.8.0",
     "@t3-oss/env-core": "^0.10.1",
     "drizzle-orm": "^0.30.10",
+    "drizzle-zod": "^0.5.1",
     "zod": "^3.23.6"
   },
   "devDependencies": {

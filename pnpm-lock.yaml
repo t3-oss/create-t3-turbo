@@ -364,6 +364,9 @@ importers:
       drizzle-orm:
         specifier: ^0.30.10
         version: 0.30.10(@neondatabase/serverless@0.7.2)(@planetscale/database@1.18.0)(@types/pg@8.6.6)(@types/react@18.3.1)(@vercel/postgres@0.8.0)(mysql2@3.9.7)(postgres@3.4.4)(react@18.3.1)
+      drizzle-zod:
+        specifier: ^0.5.1
+        version: 0.5.1(drizzle-orm@0.30.10(@neondatabase/serverless@0.7.2)(@planetscale/database@1.18.0)(@types/pg@8.6.6)(@types/react@18.3.1)(@vercel/postgres@0.8.0)(mysql2@3.9.7)(postgres@3.4.4)(react@18.3.1))(zod@3.23.6)
       zod:
         specifier: ^3.23.6
         version: 3.23.6
@@ -4220,6 +4223,12 @@ packages:
         optional: true
       sqlite3:
         optional: true
+
+  drizzle-zod@0.5.1:
+    resolution: {integrity: sha512-C/8bvzUH/zSnVfwdSibOgFjLhtDtbKYmkbPbUCq46QZyZCH6kODIMSOgZ8R7rVjoI+tCj3k06MRJMDqsIeoS4A==}
+    peerDependencies:
+      drizzle-orm: '>=0.23.13'
+      zod: '*'
 
   duplexer@0.1.2:
     resolution: {integrity: sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg==}
@@ -12326,6 +12335,11 @@ snapshots:
       mysql2: 3.9.7
       postgres: 3.4.4
       react: 18.3.1
+
+  drizzle-zod@0.5.1(drizzle-orm@0.30.10(@neondatabase/serverless@0.7.2)(@planetscale/database@1.18.0)(@types/pg@8.6.6)(@types/react@18.3.1)(@vercel/postgres@0.8.0)(mysql2@3.9.7)(postgres@3.4.4)(react@18.3.1))(zod@3.23.6):
+    dependencies:
+      drizzle-orm: 0.30.10(@neondatabase/serverless@0.7.2)(@planetscale/database@1.18.0)(@types/pg@8.6.6)(@types/react@18.3.1)(@vercel/postgres@0.8.0)(mysql2@3.9.7)(postgres@3.4.4)(react@18.3.1)
+      zod: 3.23.6
 
   duplexer@0.1.2: {}
 

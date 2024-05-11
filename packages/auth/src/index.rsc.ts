@@ -19,3 +19,5 @@ const {
 const auth = cache(defaultAuth);
 
 export { GET, POST, auth, signIn, signOut };
+
+export { invalidateSessionToken, validateToken } from "./config";

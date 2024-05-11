@@ -35,7 +35,7 @@ apps
   |   ├─ Nitro server to proxy OAuth requests in preview deployments
   |   └─ Uses Auth.js Core
   ├─ expo
-  |   ├─ Expo SDK 49
+  |   ├─ Expo SDK 50
   |   ├─ React Native using React 18
   |   ├─ Navigation using Expo Router
   |   ├─ Tailwind using NativeWind
@@ -51,7 +51,7 @@ packages
   ├─ auth
   |   └─ Authentication using next-auth. **NOTE: Only for Next.js app, not Expo**
   ├─ db
-  |   └─ Typesafe db calls using Drizzle & Planetscale
+  |   └─ Typesafe db calls using Drizzle & Supabase
   └─ ui
       └─ Start of a UI package for the webapp using shadcn-ui
 tooling
@@ -70,7 +70,7 @@ tooling
 ## Quick Start
 
 > **Note**
-> The [db](./packages/db) package is preconfigured to use PlanetScale and is **edge-bound** with the [database.js](https://github.com/planetscale/database-js) driver. If you're using something else, make the necessary modifications to the [schema](./packages/db/src/schema) as well as the [client](./packages/db/src/index.ts) and the [drizzle config](./packages/db/drizzle.config.ts). If you want to switch to non-edge database driver, remove `export const runtime = "edge";` [from all pages and api routes](https://github.com/t3-oss/create-t3-turbo/issues/634#issuecomment-1730240214).
+> The [db](./packages/db) package is preconfigured to use Supabase and is **edge-bound** with the [Vercel Postgres](https://github.com/vercel/storage/tree/main/packages/postgres) driver. If you're using something else, make the necessary modifications to the [schema](./packages/db/src/schema) as well as the [client](./packages/db/src/index.ts) and the [drizzle config](./packages/db/drizzle.config.ts). If you want to switch to non-edge database driver, remove `export const runtime = "edge";` [from all pages and api routes](https://github.com/t3-oss/create-t3-turbo/issues/634#issuecomment-1730240214).
 
 To get it running, follow the steps below:
 

@@ -11,7 +11,7 @@ import superjson from "superjson";
 import { ZodError } from "zod";
 
 import type { Session } from "@acme/auth";
-import { createDBClient } from "@acme/db/client";
+import { db } from "@acme/db/client";
 
 /**
  * 1. CONTEXT
@@ -36,7 +36,7 @@ export const createTRPCContext = (opts: {
 
   return {
     session,
-    db: createDBClient(),
+    db,
   };
 };
 

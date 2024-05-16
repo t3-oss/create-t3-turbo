@@ -1,0 +1,35 @@
+{
+  "folders": [
+    {
+      "name": "Next.js",
+      "path": "../apps/nextjs",
+    },
+    {
+      "name": "Expo",
+      "path": "../apps/expo",
+    },
+    {
+      "name": "Root",
+      "path": "../",
+    },
+  ],
+  "extensions": {
+    "recommendations": ["joshx.workspace-terminals"],
+  },
+  "settings": {
+    "search.useIgnoreFiles": true,
+    // use root .gitignore to ignore files from search
+    "search.useParentIgnoreFiles": true,
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [],
+    "compounds": [
+      {
+        "name": "Launch Next.js and Expo",
+        // from apps/nextjs/.vscode/launch.json and apps/expo/.vscode/launch.json
+        "configurations": ["Debug Next.js", "Debug Expo app"],
+      },
+    ],
+  },
+}

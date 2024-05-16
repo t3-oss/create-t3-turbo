@@ -1,18 +1,35 @@
-import type { NextRequest } from "next/server";
 import { cookies } from "next/headers";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-import { GET as DEFAULT_GET, POST } from "@acme/auth";
+import { GET as DEFAULT_GET, POST as DEFAULT_POST } from "@acme/auth";
+
+import { env } from "~/env";
 
 export const runtime = "edge";
 
 const EXPO_COOKIE_NAME = "__acme-expo-redirect-state";
-const AUTH_COOKIE_PATTERN = /authjs\.session-token=([^;]+)/;
+const AUTH_COOKIE_PATTERN = /authjs\.session-token=([^;]+).+/;
+
+function rewriteRequestUrl(req: NextRequest) {
+  if (env.VERCEL) {
+    return req;
+  }
+  const host = req.headers.get("host");
+  const newURL = new URL(req.url);
+  newURL.host = host ?? req.nextUrl.host;
+  return new NextRequest(newURL, req);
+}
+
+export const POST = async (req: NextRequest) => {
+  req = rewriteRequestUrl(req);
+  return DEFAULT_POST(req);
+};
 
 export const GET = async (
   req: NextRequest,
   props: { params: { nextauth: string[] } },
 ) => {
+  req = rewriteRequestUrl(req);
   const nextauthAction = props.params.nextauth[0];
   const isExpoSignIn = req.nextUrl.searchParams.get("expo-redirect");
   const isExpoCallback = cookies().get(EXPO_COOKIE_NAME);
@@ -32,7 +49,9 @@ export const GET = async (
     cookies().delete(EXPO_COOKIE_NAME);
 
     const authResponse = await DEFAULT_GET(req);
-    const setCookie = authResponse.headers.getSetCookie()[0];
+    const setCookie = authResponse.headers
+      .getSetCookie()
+      .find((cookie) => cookie.startsWith("authjs.session-token"));
     const match = setCookie?.match(AUTH_COOKIE_PATTERN)?.[1];
     if (!match)
       throw new Error(
@@ -48,5 +67,3 @@ export const GET = async (
   // Every other request just calls the default handler
   return DEFAULT_GET(req);
 };
-
-export { POST };

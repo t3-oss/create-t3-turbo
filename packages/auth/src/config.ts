@@ -6,6 +6,8 @@ import type {
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import Discord from "next-auth/providers/discord";
 
+import { skipCSRFCheck } from '@auth/core';
+
 import { db } from "@acme/db/client";
 import { Account, Session, User } from "@acme/db/schema";
 
@@ -25,6 +27,8 @@ const adapter = DrizzleAdapter(db, {
 
 export const authConfig = {
   adapter,
+  skipCSRFCheck,
+  trustHost: true,
   providers: [Discord],
   callbacks: {
     session: (opts) => {

@@ -8,6 +8,20 @@
       "command": "pnpm dev",
       "cwd": "${workspaceFolder}/apps/nextjs/",
       "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "name": "Expo",
+      "type": "expo",
+      "request": "attach",
+      "projectRoot": "${workspaceFolder}/apps/expo",
+      "bundlerPort": "8081",
+      "bundlerHost": "127.0.0.1"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Launch Next.js and Expo",
+      "configurations": ["Next.js", "Expo"]
     }
   ]
 }

@@ -32,8 +32,11 @@ export const GET = async (
     cookies().delete(EXPO_COOKIE_NAME);
 
     const authResponse = await DEFAULT_GET(req);
-    const setCookie = authResponse.headers.getSetCookie()[0];
+    const setCookie = authResponse.headers
+      .getSetCookie()
+      .find((cookie) => cookie.startsWith("authjs.session-token"));
     const match = setCookie?.match(AUTH_COOKIE_PATTERN)?.[1];
+      
     if (!match)
       throw new Error(
         "Unable to find session cookie: " +

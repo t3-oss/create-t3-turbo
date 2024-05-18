@@ -32,9 +32,10 @@ export const GET = async (
     cookies().delete(EXPO_COOKIE_NAME);
 
     const authResponse = await DEFAULT_GET(req);
-    const match = authResponse.headers
+    const setCookie = authResponse.headers
       .getSetCookie()
-      .find((c) => c.match(AUTH_COOKIE_PATTERN)?.[1]);
+      .find((cookie) => cookie.startsWith("authjs.session-token"));
+    const match = setCookie?.match(AUTH_COOKIE_PATTERN)?.[1];
       
     if (!match)
       throw new Error(

@@ -18,7 +18,7 @@ function PostCard(props: {
           asChild
           href={{
             pathname: "/post/[id]",
-            params: { id: props.post.id },
+            params: { id: props.post._id.toString() },
           }}
         >
           <Pressable className="">

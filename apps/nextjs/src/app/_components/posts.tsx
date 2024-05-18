@@ -107,7 +107,7 @@ export function PostList(props: {
   return (
     <div className="flex w-full flex-col gap-4">
       {posts.map((p) => {
-        return <PostCard key={p.id} post={p} />;
+        return <PostCard key={p._id.toString()} post={p} />;
       })}
     </div>
   );
@@ -140,7 +140,7 @@ export function PostCard(props: {
         <Button
           variant="ghost"
           className="cursor-pointer text-sm font-bold uppercase text-primary hover:bg-transparent hover:text-white"
-          onClick={() => deletePost.mutate(props.post.id)}
+          onClick={() => deletePost.mutate(props.post._id.toString())}
         >
           Delete
         </Button>

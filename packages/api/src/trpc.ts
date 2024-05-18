@@ -11,7 +11,7 @@ import superjson from "superjson";
 import { ZodError } from "zod";
 
 import type { Session } from "@acme/auth";
-import { db } from "@acme/db/client";
+import dbConnect from "@acme/db/dbConnect";
 
 /**
  * 1. CONTEXT
@@ -25,7 +25,7 @@ import { db } from "@acme/db/client";
  *
  * @see https://trpc.io/docs/server/context
  */
-export const createTRPCContext = (opts: {
+export const createTRPCContext = async (opts: {
   headers: Headers;
   session: Session | null;
 }) => {
@@ -34,9 +34,10 @@ export const createTRPCContext = (opts: {
 
   console.log(">>> tRPC Request from", source, "by", session?.user);
 
+  await dbConnect();
+
   return {
     session,
-    db,
   };
 };
 

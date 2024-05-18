@@ -1,16 +1,16 @@
 {
   "name": "@acme/db",
-  "version": "0.1.0",
   "private": true,
+  "version": "0.1.0",
   "type": "module",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./src/index.ts"
     },
-    "./client": {
-      "types": "./dist/client.d.ts",
-      "default": "./src/client.ts"
+    "./dbConnect": {
+      "types": "./dist/dbConnect.d.ts",
+      "default": "./src/dbConnect.ts"
     },
     "./schema": {
       "types": "./dist/schema.d.ts",
@@ -24,27 +24,20 @@
     "clean": "rm -rf .turbo node_modules",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint",
-    "push": "pnpm with-env drizzle-kit push",
-    "studio": "pnpm with-env drizzle-kit studio",
-    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+    "typecheck": "tsc --noEmit",
     "with-env": "dotenv -e ../../.env --"
-  },
-  "dependencies": {
-    "@vercel/postgres": "^0.8.0",
-    "@t3-oss/env-core": "^0.10.1",
-    "drizzle-orm": "^0.30.10",
-    "drizzle-zod": "^0.5.1",
-    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@acme/eslint-config": "workspace:*",
     "@acme/prettier-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
-    "dotenv-cli": "^7.4.2",
-    "drizzle-kit": "^0.21.1",
     "eslint": "^9.2.0",
     "prettier": "^3.2.5",
     "typescript": "^5.4.5"
   },
-  "prettier": "@acme/prettier-config"
+  "prettier": "@acme/prettier-config",
+  "dependencies": {
+    "@typegoose/typegoose": "^12.4.0",
+    "mongoose": "^8.4.0"
+  }
 }

@@ -2,7 +2,7 @@ import type { TRPCRouterRecord } from "@trpc/server";
 import { z } from "zod";
 
 import { Post } from "@acme/db";
-import { CreatePost } from "@acme/validators";
+import { CreatePostSchema } from "@acme/validators";
 
 import { protectedProcedure, publicProcedure } from "../trpc";
 
@@ -14,7 +14,7 @@ export const postRouter = {
     .query(({ input }) => Post.findById(input.id)),
 
   create: protectedProcedure
-    .input(CreatePost)
+    .input(CreatePostSchema)
     .mutation(({ input }) => Post.create(input)),
 
   delete: protectedProcedure

@@ -1,6 +1,18 @@
-import { getModelForClass, prop } from "@typegoose/typegoose";
+import {
+  getModelForClass,
+  modelOptions,
+  mongoose,
+  prop,
+} from "@typegoose/typegoose";
 import { TimeStamps } from "@typegoose/typegoose/lib/defaultClasses";
 
+@modelOptions({
+  schemaOptions: {
+    id: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
+  },
+})
 export class PostClass extends TimeStamps {
   @prop({ required: true })
   public title!: string;
@@ -9,4 +21,4 @@ export class PostClass extends TimeStamps {
   public content!: string;
 }
 
-export const Post = getModelForClass(PostClass);
+export const Post = mongoose.models.PostClass ?? getModelForClass(PostClass);

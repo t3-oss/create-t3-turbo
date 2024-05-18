@@ -23,7 +23,11 @@
     /** Transpile using Bundler (not tsc) */
     "module": "Preserve",
     "moduleResolution": "Bundler",
-    "noEmit": true
+    "noEmit": true,
+
+    /** Add support for Typegoose */
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   },
   "exclude": ["node_modules", "build", "dist", ".next", ".expo"]
 }

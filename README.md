@@ -1,4 +1,4 @@
-# create-t3-turbo
+# create-t3-turbo-mongo
 
 > **Note**
 > Due to high demand, this repo now uses the `app` directory with some new experimental features. If you want to use the more traditional `pages` router, [check out the repo before the update](https://github.com/t3-oss/create-t3-turbo/tree/414aff131ca124573e721f3779df3edb64989fd4).
@@ -8,14 +8,14 @@
 
 ## Installation
 
-There are two ways of initializing an app using the `create-t3-turbo` starter. You can either use this repository as a template:
+There are two ways of initializing an app using the `create-t3-turbo-mongo` starter. You can either use this repository as a template:
 
 ![use-as-template](https://github.com/t3-oss/create-t3-turbo/assets/51714798/bb6c2e5d-d8b6-416e-aeb3-b3e50e2ca994)
 
 or use Turbo's CLI to init your project (use PNPM as package manager):
 
 ```bash
-npx create-turbo@latest -e https://github.com/t3-oss/create-t3-turbo
+npx create-turbo@latest -e https://github.com/Labrys-Group/create-t3-turbo-mongo
 ```
 
 ## About
@@ -51,7 +51,7 @@ packages
   ├─ auth
   |   └─ Authentication using next-auth. **NOTE: Only for Next.js app, not Expo**
   ├─ db
-  |   └─ Typesafe db calls using Drizzle & Supabase
+  |   └─ Typesafe db calls using Typegoose & MongoDB 
   └─ ui
       └─ Start of a UI package for the webapp using shadcn-ui
 tooling
@@ -69,9 +69,6 @@ tooling
 
 ## Quick Start
 
-> **Note**
-> The [db](./packages/db) package is preconfigured to use Supabase and is **edge-bound** with the [Vercel Postgres](https://github.com/vercel/storage/tree/main/packages/postgres) driver. If you're using something else, make the necessary modifications to the [schema](./packages/db/src/schema) as well as the [client](./packages/db/src/index.ts) and the [drizzle config](./packages/db/drizzle.config.ts). If you want to switch to non-edge database driver, remove `export const runtime = "edge";` [from all pages and api routes](https://github.com/t3-oss/create-t3-turbo/issues/634#issuecomment-1730240214).
-
 To get it running, follow the steps below:
 
 ### 1. Setup dependencies
@@ -83,9 +80,6 @@ pnpm i
 # Configure environment variables
 # There is an `.env.example` in the root directory you can use for reference
 cp .env.example .env
-
-# Push the Drizzle schema to the database
-pnpm db:push
 ```
 
 ### 2. Configure Expo `dev`-script

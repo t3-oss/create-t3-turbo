@@ -1,4 +1,4 @@
-import { getModelForClass, mongoose, prop } from "@typegoose/typegoose";
+import { getModelForClass, prop } from "@typegoose/typegoose";
 import { TimeStamps } from "@typegoose/typegoose/lib/defaultClasses";
 
 export class PostClass extends TimeStamps {
@@ -9,4 +9,4 @@ export class PostClass extends TimeStamps {
   public content!: string;
 }
 
-export const Post = mongoose.models.PostClass ?? getModelForClass(PostClass);
+export const Post = getModelForClass(PostClass);

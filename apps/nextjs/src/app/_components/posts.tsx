@@ -18,6 +18,7 @@ import { toast } from "@acme/ui/toast";
 import { CreatePostSchema } from "@acme/validators";
 
 import { api } from "~/trpc/react";
+import superjson from 'superjson';
 
 export function CreatePostForm() {
   const form = useForm({
@@ -82,12 +83,10 @@ export function CreatePostForm() {
 }
 
 export function PostList(props: {
-  posts: Promise<RouterOutputs["post"]["all"]>;
+  posts: string;
 }) {
-  // TODO: Make `useSuspenseQuery` work without having to pass a promise from RSC
-  const initialData = use(props.posts);
   const { data: posts } = api.post.all.useQuery(undefined, {
-    initialData,
+    initialData: superjson.parse(props.posts)
   });
 
   if (posts.length === 0) {

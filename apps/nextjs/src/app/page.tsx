@@ -1,16 +1,13 @@
-import { Suspense } from "react";
-
 import { api } from "~/trpc/server";
 import { AuthShowcase } from "./_components/auth-showcase";
 import {
   CreatePostForm,
-  PostCardSkeleton,
   PostList,
 } from "./_components/posts";
+import superjson from 'superjson';
 
-export default function HomePage() {
-  // You can await this here if you don't want to show Suspense fallback below
-  const posts = api.post.all();
+export default async function HomePage() {
+  const posts = await api.post.all();
 
   return (
     <main className="container h-screen py-16">
@@ -23,17 +20,8 @@ export default function HomePage() {
 
         <CreatePostForm />
         <div className="w-full max-w-2xl overflow-y-scroll">
-          <Suspense
-            fallback={
-              <div className="flex w-full flex-col gap-4">
-                <PostCardSkeleton />
-                <PostCardSkeleton />
-                <PostCardSkeleton />
-              </div>
-            }
-          >
-            <PostList posts={posts} />
-          </Suspense>
+          {/* use superjson to get posts data over the use client boundary */}
+          <PostList posts={superjson.stringify(posts)} />
         </div>
       </div>
     </main>

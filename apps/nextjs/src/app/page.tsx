@@ -21,6 +21,7 @@ export default async function HomePage() {
         <CreatePostForm />
         <div className="w-full max-w-2xl overflow-y-scroll">
           {/* use superjson to get posts data over the use client boundary */}
+          {/* TODO: work out how to use Suspense with superjson */}
           <PostList posts={superjson.stringify(posts)} />
         </div>
       </div>

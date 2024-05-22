@@ -11,7 +11,8 @@
     "lint": "eslint",
     "start": "pnpm with-env next start",
     "typecheck": "tsc --noEmit",
-    "with-dev-env": "node ./scripts/write-dev-env.js && pnpm with-env",
+    "write-dev-env": "pnpm with-env node ./scripts/write-dev-env.js",
+    "with-dev-env": "pnpm write-dev-env && pnpm with-env",
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {

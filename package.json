@@ -19,11 +19,13 @@
     "lint:ws": "pnpm dlx sherif@latest",
     "postinstall": "pnpm lint:ws",
     "typecheck": "turbo typecheck",
-    "ui-add": "pnpm -F ui ui-add"
+    "ui-add": "pnpm -F ui ui-add",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@acme/prettier-config": "workspace:*",
     "@turbo/gen": "^1.13.3",
+    "husky": "^9.0.11",
     "lint-staged": "^15.2.4",
     "prettier": "^3.2.5",
     "turbo": "^1.13.3",

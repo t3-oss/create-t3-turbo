@@ -39,5 +39,11 @@
   "dependencies": {
     "@typegoose/typegoose": "^12.4.0",
     "mongoose": "^8.4.0"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --ignore-path ../../.gitignore --write"
+    ]
   }
 }

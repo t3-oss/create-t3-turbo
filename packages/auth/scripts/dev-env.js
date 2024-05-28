@@ -11,6 +11,9 @@ export const EnvVars = Object.freeze({
   AUTH_URL: "AUTH_URL",
 });
 
+/** @typedef {keyof typeof EnvVars} EnvVarsKeys */
+/** @typedef {import('@acme/scripts/dev-env.js').FallbackFn<EnvVarsKeys>} AuthFallbackFn */
+
 export const getDevEnv = makeGetDevEnv(
   [
     [EnvVars.HOSTNAME, hostnameFallbackFn],
@@ -38,7 +41,7 @@ const NEXTJS_INITIAL_HOSTNAME = "localhost";
 
 const NEXTJS_INITIAL_PROTOCOL = "http";
 
-/** @type {import('@acme/scripts/dev-env.js').FallbackFn} */
+/** @type {AuthFallbackFn} */
 export function hostnameFallbackFn() {
   const interfaces = networkInterfaces();
   /** @type {string[]} */
@@ -57,12 +60,12 @@ export function hostnameFallbackFn() {
   return address;
 }
 
-/** @type {import('@acme/scripts/dev-env.js').FallbackFn} */
-export async function portFallbackFn() {
+/** @type {AuthFallbackFn} */
+export function portFallbackFn() {
   return getUnusedPort(NEXTJS_INITIAL_PORT).then(String);
 }
 
-/** @type {import('@acme/scripts/dev-env.js').FallbackFn} */
+/** @type {AuthFallbackFn} */
 export function authUrlFallbackFn() {
   const protocol = NEXTJS_INITIAL_PROTOCOL;
 

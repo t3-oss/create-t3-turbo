@@ -2,11 +2,13 @@
 import fs from "fs/promises";
 
 /**
- * @typedef {() => string | Promise<string> | [string, ...[string, FallbackFn][]]} FallbackFn
+ * @template {string} Key
+ * @typedef {() => string | Promise<string> | [string, ...[Key, FallbackFn<Key>][]]} FallbackFn
  */
 
 /**
- * @param {[string, FallbackFn][]} entries
+ * @template {string} Key
+ * @param {[Key, FallbackFn<Key>][]} entries
  * @param {{
  *  log?: boolean,
  *  source?: string
@@ -23,8 +25,8 @@ export function makeGetDevEnv(
     title = `  Infering dev env variables from ${source}${readme && ` (see ${readme} for more info)`}:`,
   } = {},
 ) {
-  return () => {
-    /** @type [string, string][] */
+  return async () => {
+    /** @type [Key, string][] */
     const fallbacks = [];
     return reduceEnvVarValues(entries, undefined, fallbacks).then(
       (result) => (
@@ -41,12 +43,14 @@ export function makeGetDevEnv(
 }
 
 /**
- * @param {[string, FallbackFn][]} entries
- * @param {Record<string, string> | undefined} result
- * @param {[string, string][]} fallbacks
- * @returns {Promise<Record<string, string>>}
+ * @template {string} Key
+ * @param {[Key, FallbackFn<Key>][]} entries
+ * @param {Partial<Record<Key, string>> | undefined} result
+ * @param {[Key, string][]} fallbacks
+ * @returns {Promise<Partial<Record<Key, string>>>}
  */
-export async function reduceEnvVarValues(entries, result = {}, fallbacks = []) {
+export function reduceEnvVarValues(entries, result = {}, fallbacks = []) {
+  // @ts-expect-error: `reduce` call infering it's returning a tuple instead of the partial record?
   return entries.reduce(async (accPromise, [name, fallbackFn]) => {
     const acc = await accPromise;
     // eslint-disable-next-line no-restricted-properties
@@ -58,6 +62,7 @@ export async function reduceEnvVarValues(entries, result = {}, fallbacks = []) {
     if (fallbackEntries.length) {
       await reduceEnvVarValues(fallbackEntries, acc, fallbacks);
     }
+    // @ts-expect-error: not accepting the `string` value?
     acc[name] = fallbackValue;
     if (acc[name] !== envValue) {
       fallbacks.push([name, acc[name] ?? ""]);

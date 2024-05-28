@@ -1,5 +1,6 @@
 // @ts-check
 import fs from "fs/promises";
+import dotenv from "dotenv";
 
 /**
  * @template {string} Key
@@ -68,6 +69,22 @@ export function reduceEnvVarValues(entries, result = {}, fallbacks = []) {
       fallbacks.push([name, acc[name] ?? ""]);
     }
     return acc;
+  }, Promise.resolve(result));
+}
+
+/**
+ * @template {string} Key
+ * @param {ReturnType<typeof makeGetDevEnv<Key>>[]} getDevEnvs
+ * @param {Partial<Record<Key, string>>} result
+ */
+export async function makeDevEnv(getDevEnvs, result = {}) {
+  return getDevEnvs.reduce(async (accPromise, getDevEnv) => {
+    const acc = await accPromise;
+    const devEnv = await getDevEnv();
+    // @ts-expect-error: typed as `string` instead of `string | undefined`
+    // eslint-disable-next-line no-restricted-properties
+    dotenv.populate(process.env, devEnv);
+    return { ...acc, ...devEnv };
   }, Promise.resolve(result));
 }
 

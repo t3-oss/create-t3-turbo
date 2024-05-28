@@ -39,9 +39,9 @@ export const NEXTJS_INITIAL_PORT =
   3000;
 
 // this is not going to work in Expo, but using it anyway as default
-const NEXTJS_INITIAL_HOSTNAME = "localhost";
+export const NEXTJS_INITIAL_HOSTNAME = "localhost";
 
-const NEXTJS_INITIAL_PROTOCOL = "http";
+export const NEXTJS_INITIAL_PROTOCOL = "http";
 
 /** @type {AuthFallbackFn} */
 export function hostnameFallbackFn() {

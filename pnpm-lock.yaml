@@ -287,6 +287,9 @@ importers:
       '@acme/db':
         specifier: workspace:*
         version: link:../db
+      '@acme/scripts':
+        specifier: workspace:*
+        version: link:../scripts
       '@acme/validators':
         specifier: workspace:*
         version: link:../validators

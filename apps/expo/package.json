@@ -5,14 +5,16 @@
   "main": "expo-router/entry",
   "scripts": {
     "clean": "git clean -xdf .expo .turbo node_modules",
-    "dev": "expo start",
-    "dev:android": "expo start --android",
-    "dev:ios": "expo start --ios",
+    "dev": "pnpm with-dev-env expo start",
+    "dev:android": "pnpm with-dev-env expo start --android",
+    "dev:ios": "pnpm with-dev-env expo start --ios",
     "android": "expo run:android",
     "ios": "expo run:ios",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "with-dev-env": "dotenv -e ../../.env -e ../../.env.local --",
+    "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
     "@bacons/text-decoder": "^0.0.0",

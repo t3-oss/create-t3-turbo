@@ -9,6 +9,7 @@ export const EnvVars = Object.freeze({
   HOSTNAME: "HOSTNAME",
   PORT: "PORT",
   AUTH_URL: "AUTH_URL",
+  EXPO_PUBLIC_API_BASE_URL: "EXPO_PUBLIC_API_BASE_URL",
 });
 
 /** @typedef {keyof typeof EnvVars} EnvVarsKeys */
@@ -18,7 +19,8 @@ export const getDevEnv = makeGetDevEnv(
   [
     [EnvVars.HOSTNAME, hostnameFallbackFn],
     [EnvVars.PORT, portFallbackFn],
-    [EnvVars.AUTH_URL, authUrlFallbackFn],
+    [EnvVars.AUTH_URL, baseUrlFallbackFn],
+    [EnvVars.EXPO_PUBLIC_API_BASE_URL, baseUrlFallbackFn],
   ],
   {
     source: `/packages/auth/scripts/dev-env.js`,
@@ -66,7 +68,7 @@ export function portFallbackFn() {
 }
 
 /** @type {AuthFallbackFn} */
-export function authUrlFallbackFn() {
+export function baseUrlFallbackFn() {
   const protocol = NEXTJS_INITIAL_PROTOCOL;
 
   return `${protocol}://$${EnvVars.HOSTNAME}:$${EnvVars.PORT}`;

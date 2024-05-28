@@ -18,7 +18,11 @@
       ]
     },
     "dev": {
+      "dependsOn": ["@acme/nextjs#write-dev-env"],
       "persistent": true,
+      "cache": false
+    },
+    "write-dev-env": {
       "cache": false
     },
     "format": {

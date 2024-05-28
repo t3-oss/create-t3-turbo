@@ -2,12 +2,12 @@
 import * as auth from "@acme/auth/scripts/dev-env.js";
 import { addDevEnvToFile } from "@acme/scripts/dev-env.js";
 
-const filePath = ".env.development.local";
+const filePath = "../../.env.local";
 const devEnv = {
   ...(await auth.getDevEnv()),
 };
 
-addDevEnvToFile({
+await addDevEnvToFile({
   filePath,
   devEnv,
   source: "/apps/nextjs/scripts/write-dev-env.js",

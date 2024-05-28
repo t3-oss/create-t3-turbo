@@ -13,7 +13,7 @@
     "start": "pnpm with-env next start",
     "typecheck": "tsc --noEmit",
     "write-dev-env": "pnpm with-env node ./scripts/write-dev-env.js",
-    "with-dev-env": "pnpm write-dev-env && dotenv -e ../../.env -e ./.env.development.local --",
+    "with-dev-env": "dotenv -e ../../.env -e ../../.env.local --",
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {

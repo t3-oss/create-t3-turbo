@@ -2,7 +2,11 @@
 import fs from "fs/promises";
 
 /**
- * @param {[string, (() => string | Promise<string>)][]} entries
+ * @typedef {() => string | Promise<string> | [string, ...[string, FallbackFn][]]} FallbackFn
+ */
+
+/**
+ * @param {[string, FallbackFn][]} entries
  * @param {{
  *  log?: boolean,
  *  source?: string
@@ -22,40 +26,44 @@ export function makeGetDevEnv(
   return () => {
     /** @type [string, string][] */
     const fallbacks = [];
-    /** @type {Record<string, string>} */
-    const result = {};
-    return entries
-      .reduce(async (accPromise, [name, fallbackFn]) => {
-        const acc = await accPromise;
-        acc[name] = await getEnvVarValue(name, fallbackFn);
-        // eslint-disable-next-line no-restricted-properties
-        if (acc[name] !== process.env[name]) {
-          fallbacks.push([name, acc[name] ?? ""]);
-        }
-        return acc;
-      }, Promise.resolve(result))
-      .then(
-        (result) => (
-          log && fallbacks.length
-            ? (console.log(title),
-              fallbacks.forEach(([name, value]) =>
-                console.log(`  - ${name}=${value}`),
-              ))
-            : void 0,
-          result
-        ),
-      );
+    return reduceEnvVarValues(entries, undefined, fallbacks).then(
+      (result) => (
+        log && fallbacks.length
+          ? (console.log(title),
+            fallbacks.forEach(([name, value]) =>
+              console.log(`  - ${name}=${value}`),
+            ))
+          : void 0,
+        result
+      ),
+    );
   };
 }
 
 /**
- * @param {string} name
- * @param {(() => string | Promise<string>)} fallbackFn
- * @returns {Promise<string>}
+ * @param {[string, FallbackFn][]} entries
+ * @param {Record<string, string> | undefined} result
+ * @param {[string, string][]} fallbacks
+ * @returns {Promise<Record<string, string>>}
  */
-export async function getEnvVarValue(name, fallbackFn) {
-  // eslint-disable-next-line no-restricted-properties
-  return process.env[name] ?? (await fallbackFn());
+export async function reduceEnvVarValues(entries, result = {}, fallbacks = []) {
+  return entries.reduce(async (accPromise, [name, fallbackFn]) => {
+    const acc = await accPromise;
+    // eslint-disable-next-line no-restricted-properties
+    const envValue = process.env[name];
+    const fallbackOrEntries = envValue ?? (await fallbackFn());
+    const [fallbackValue, ...fallbackEntries] = Array.isArray(fallbackOrEntries)
+      ? fallbackOrEntries
+      : [fallbackOrEntries];
+    if (fallbackEntries.length) {
+      await reduceEnvVarValues(fallbackEntries, acc, fallbacks);
+    }
+    acc[name] = fallbackValue;
+    if (acc[name] !== envValue) {
+      fallbacks.push([name, acc[name] ?? ""]);
+    }
+    return acc;
+  }, Promise.resolve(result));
 }
 
 /**

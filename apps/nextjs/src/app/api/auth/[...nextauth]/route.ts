@@ -8,8 +8,13 @@ import { env } from "~/env";
 export const runtime = "edge";
 
 const EXPO_COOKIE_NAME = "__acme-expo-redirect-state";
-const AUTH_COOKIE_PATTERN = /authjs\.session-token=([^;]+).+/;
+const AUTH_COOKIE_PATTERN = /authjs\.session-token=([^;]+)/;
 
+/**
+ * Correct request.url for local development so that Expo can work. Does nothing in production.
+ * @param req The request to modify
+ * @returns The modified request.
+ */
 function rewriteRequestUrl(req: NextRequest) {
   if (env.VERCEL) {
     return req;
@@ -21,6 +26,7 @@ function rewriteRequestUrl(req: NextRequest) {
 }
 
 export const POST = async (req: NextRequest) => {
+  // First step must be to correct the request URL.
   req = rewriteRequestUrl(req);
   return DEFAULT_POST(req);
 };
@@ -29,6 +35,7 @@ export const GET = async (
   req: NextRequest,
   props: { params: { nextauth: string[] } },
 ) => {
+  // First step must be to correct the request URL.
   req = rewriteRequestUrl(req);
   const nextauthAction = props.params.nextauth[0];
   const isExpoSignIn = req.nextUrl.searchParams.get("expo-redirect");

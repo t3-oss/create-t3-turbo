@@ -51,7 +51,7 @@ export const GET = async (
     const authResponse = await DEFAULT_GET(req);
     const setCookie = authResponse.headers
       .getSetCookie()
-      .find((cookie) => cookie.startsWith("authjs.session-token"));
+      .find((cookie) => AUTH_COOKIE_PATTERN.test(cookie));
     const match = setCookie?.match(AUTH_COOKIE_PATTERN)?.[1];
       
     if (!match)

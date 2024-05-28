@@ -16,7 +16,7 @@ const AUTH_COOKIE_PATTERN = /authjs\.session-token=([^;]+)/;
  * @returns The modified request.
  */
 function rewriteRequestUrl(req: NextRequest) {
-  if (env.VERCEL) {
+  if (env.NODE_ENV === 'production') {
     return req;
   }
   const host = req.headers.get("host");

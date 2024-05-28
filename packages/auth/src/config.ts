@@ -25,10 +25,14 @@ const adapter = DrizzleAdapter(db, {
   sessionsTable: Session,
 });
 
+// eslint-disable-next-line no-restricted-properties
+const isSecureContext = process.env.NODE_ENV !== 'development';
+
 export const authConfig = {
   adapter,
-  skipCSRFCheck,
-  trustHost: true,
+  // In development, we need to skip checks to allow Expo to work
+  skipCSRFCheck: isSecureContext ? undefined : skipCSRFCheck,
+  trustHost: !isSecureContext,
   providers: [Discord],
   callbacks: {
     session: (opts) => {

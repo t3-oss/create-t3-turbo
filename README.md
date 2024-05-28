@@ -132,7 +132,9 @@ The generator sets up the `package.json`, `tsconfig.json` and a `index.ts`, as w
 
 ### 4. Configuring Next-Auth to work with Expo
 
-In order for the CSRF protection to work when developing locally, you will need to set the AUTH_URL to the same IP address your expo dev server is listening on. This address is displayed in your Expo CLI when starting the dev server.
+In order to get Next-Auth to work with Expo, you must either:
+- Add your local IP (e.g. 192.168.x.y) to your OAuth provider (by default Discord), and you may have to update this if it gets reassigned
+- Deploy the Auth Proxy and point your OAuth provider to the proxy
 
 ## FAQ
 

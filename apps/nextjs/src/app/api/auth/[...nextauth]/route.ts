@@ -53,6 +53,7 @@ export const GET = async (
       .getSetCookie()
       .find((cookie) => cookie.startsWith("authjs.session-token"));
     const match = setCookie?.match(AUTH_COOKIE_PATTERN)?.[1];
+      
     if (!match)
       throw new Error(
         "Unable to find session cookie: " +

@@ -2,7 +2,7 @@
 import * as auth from "@acme/auth/scripts/dev-env.js";
 import { addDevEnvToFile } from "@acme/scripts/dev-env.js";
 
-const filePath = ".env.local";
+const filePath = ".env.development.local";
 const devEnv = {
   ...(await auth.getDevEnv()),
 };

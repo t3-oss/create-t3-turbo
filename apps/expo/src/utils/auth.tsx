@@ -34,7 +34,7 @@ export const useSignIn = () => {
   return async () => {
     await signIn();
     await utils.invalidate();
-    router.push('/');
+    router.replace('/');
   };
 };
 
@@ -48,6 +48,6 @@ export const useSignOut = () => {
     if (!res.success) return;
     await deleteToken();
     await utils.invalidate();
-    router.push('/');
+    router.replace('/');
   };
 };

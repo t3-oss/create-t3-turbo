@@ -5,7 +5,10 @@
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
-    "./*": "./src/*.tsx"
+    "./*": [
+      "./src/*.tsx",
+      "./src/*.ts"
+    ]
   },
   "license": "MIT",
   "scripts": {

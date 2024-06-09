@@ -2,8 +2,8 @@
 
 import eslint from "@eslint/js";
 import importPlugin from "eslint-plugin-import";
+import turboPlugin from "eslint-plugin-turbo";
 import tseslint from "typescript-eslint";
-import turboPlugin from "eslint-plugin-turbo"
 
 /**
  * All packages that leverage t3-env should use this rule

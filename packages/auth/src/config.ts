@@ -31,9 +31,9 @@ export const isSecureContext = env.NODE_ENV !== "development";
 export const authConfig = {
   adapter,
   // In development, we need to skip checks to allow Expo to work
-  ...(env.NODE_ENV === "development"
+  ...(!isSecureContext
     ? {
-        skipCSRFCheck: isSecureContext ? undefined : skipCSRFCheck,
+        skipCSRFCheck: skipCSRFCheck,
         trustHost: true,
       }
     : {}),

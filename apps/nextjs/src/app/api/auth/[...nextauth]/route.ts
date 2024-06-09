@@ -16,7 +16,7 @@ const AUTH_COOKIE_PATTERN = /authjs\.session-token=([^;]+)/;
  * @param req The request to modify
  * @returns The modified request.
  */
-function rewriteRequestUrl(req: NextRequest) {
+function rewriteRequestUrlInDevelopment(req: NextRequest) {
   if (isSecureContext) return req;
 
   const host = req.headers.get("host");
@@ -25,18 +25,19 @@ function rewriteRequestUrl(req: NextRequest) {
   return new NextRequest(newURL, req);
 }
 
-export const POST = async (req: NextRequest) => {
+export const POST = async (_req: NextRequest) => {
   // First step must be to correct the request URL.
-  req = rewriteRequestUrl(req);
+  const req = rewriteRequestUrlInDevelopment(_req);
   return handlers.POST(req);
 };
 
 export const GET = async (
-  req: NextRequest,
+  _req: NextRequest,
   props: { params: { nextauth: string[] } },
 ) => {
   // First step must be to correct the request URL.
-  req = rewriteRequestUrl(req);
+  const req = rewriteRequestUrlInDevelopment(_req);
+
   const nextauthAction = props.params.nextauth[0];
   const isExpoSignIn = req.nextUrl.searchParams.get("expo-redirect");
   const isExpoCallback = cookies().get(EXPO_COOKIE_NAME);

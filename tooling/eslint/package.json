@@ -15,18 +15,18 @@
   },
   "dependencies": {
     "@next/eslint-plugin-next": "^14.2.3",
-    "eslint-config-turbo": "^1.13.3",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-react": "^7.34.1",
-    "eslint-plugin-react-hooks": "beta",
-    "typescript-eslint": "^7.8.0"
+    "eslint-plugin-react-hooks": "rc",
+    "eslint-plugin-turbo": "^2.0.3",
+    "typescript-eslint": "rc-v8"
   },
   "devDependencies": {
     "@acme/prettier-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
-    "eslint": "^9.2.0",
-    "prettier": "^3.2.5",
+    "eslint": "^9.4.0",
+    "prettier": "^3.3.1",
     "typescript": "^5.4.5"
   },
   "prettier": "@acme/prettier-config"

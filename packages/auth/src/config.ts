@@ -31,8 +31,12 @@ export const isSecureContext = env.NODE_ENV !== "development";
 export const authConfig = {
   adapter,
   // In development, we need to skip checks to allow Expo to work
-  skipCSRFCheck: isSecureContext ? undefined : skipCSRFCheck,
-  trustHost: !isSecureContext,
+  ...(!isSecureContext
+    ? {
+        skipCSRFCheck: skipCSRFCheck,
+        trustHost: true,
+      }
+    : {}),
   secret: env.AUTH_SECRET,
   providers: [Discord],
   callbacks: {

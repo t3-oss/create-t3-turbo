@@ -5,12 +5,7 @@ import { authConfig } from "./config";
 
 export type { Session } from "next-auth";
 
-const {
-  handlers: { GET, POST },
-  auth: defaultAuth,
-  signIn,
-  signOut,
-} = NextAuth(authConfig);
+const { handlers, auth: defaultAuth, signIn, signOut } = NextAuth(authConfig);
 
 /**
  * This is the main way to get session data for your RSCs.
@@ -18,6 +13,10 @@ const {
  */
 const auth = cache(defaultAuth);
 
-export { GET, POST, auth, signIn, signOut };
+export { handlers, auth, signIn, signOut };
 
-export { invalidateSessionToken, validateToken } from "./config";
+export {
+  invalidateSessionToken,
+  validateToken,
+  isSecureContext,
+} from "./config";

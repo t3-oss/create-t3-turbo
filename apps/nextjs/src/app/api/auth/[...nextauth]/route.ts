@@ -1,9 +1,7 @@
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
-import { GET as DEFAULT_GET, POST as DEFAULT_POST } from "@acme/auth";
-
-import { env } from "~/env";
+import { handlers, isSecureContext } from "@acme/auth";
 
 export const runtime = "edge";
 
@@ -11,14 +9,16 @@ const EXPO_COOKIE_NAME = "__acme-expo-redirect-state";
 const AUTH_COOKIE_PATTERN = /authjs\.session-token=([^;]+)/;
 
 /**
- * Correct request.url for local development so that Expo can work. Does nothing in production.
+ * Noop in production.
+ *
+ * In development, rewrite the request URL to use localhost instead of host IP address
+ * so that Expo Auth works without getting trapped by Next.js CSRF protection.
  * @param req The request to modify
  * @returns The modified request.
  */
 function rewriteRequestUrl(req: NextRequest) {
-  if (env.NODE_ENV === 'production') {
-    return req;
-  }
+  if (isSecureContext) return req;
+
   const host = req.headers.get("host");
   const newURL = new URL(req.url);
   newURL.host = host ?? req.nextUrl.host;
@@ -28,7 +28,7 @@ function rewriteRequestUrl(req: NextRequest) {
 export const POST = async (req: NextRequest) => {
   // First step must be to correct the request URL.
   req = rewriteRequestUrl(req);
-  return DEFAULT_POST(req);
+  return handlers.POST(req);
 };
 
 export const GET = async (
@@ -55,12 +55,15 @@ export const GET = async (
   if (nextauthAction === "callback" && !!isExpoCallback) {
     cookies().delete(EXPO_COOKIE_NAME);
 
-    const authResponse = await DEFAULT_GET(req);
+    // Run original handler, then extract the session token from the response
+    // Send it back via a query param in the Expo deep link. The Expo app
+    // will then get that and set it in the session storage.
+    const authResponse = await handlers.GET(req);
     const setCookie = authResponse.headers
       .getSetCookie()
       .find((cookie) => AUTH_COOKIE_PATTERN.test(cookie));
     const match = setCookie?.match(AUTH_COOKIE_PATTERN)?.[1];
-      
+
     if (!match)
       throw new Error(
         "Unable to find session cookie: " +
@@ -73,5 +76,5 @@ export const GET = async (
   }
 
   // Every other request just calls the default handler
-  return DEFAULT_GET(req);
+  return handlers.GET(req);
 };

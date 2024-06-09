@@ -49,7 +49,7 @@ packages
   ├─ api
   |   └─ tRPC v11 router definition
   ├─ auth
-  |   └─ Authentication using next-auth. **NOTE: Only for Next.js app, not Expo**
+  |   └─ Authentication using next-auth.
   ├─ db
   |   └─ Typesafe db calls using Drizzle & Supabase
   └─ ui
@@ -130,6 +130,12 @@ To add a new package, simply run `pnpm turbo gen init` in the monorepo root. Thi
 
 The generator sets up the `package.json`, `tsconfig.json` and a `index.ts`, as well as configures all the necessary configurations for tooling around your package such as formatting, linting and typechecking. When the package is created, you're ready to go build out the package.
 
+### 4. Configuring Next-Auth to work with Expo
+
+In order to get Next-Auth to work with Expo, you must either:
+- Add your local IP (e.g. 192.168.x.y) to your OAuth provider (by default Discord), and you may have to update this if it gets reassigned
+- Deploy the Auth Proxy and point your OAuth provider to the proxy
+
 ## FAQ
 
 ### Does the starter include Solito?
@@ -137,14 +143,6 @@ The generator sets up the `package.json`, `tsconfig.json` and a `index.ts`, as w
 No. Solito will not be included in this repo. It is a great tool if you want to share code between your Next.js and Expo app. However, the main purpose of this repo is not the integration between Next.js and Expo — it's the code splitting of your T3 App into a monorepo. The Expo app is just a bonus example of how you can utilize the monorepo with multiple apps but can just as well be any app such as Vite, Electron, etc.
 
 Integrating Solito into this repo isn't hard, and there are a few [official templates](https://github.com/nandorojo/solito/tree/master/example-monorepos) by the creators of Solito that you can use as a reference.
-
-### What auth solution should I use instead of Next-Auth.js for Expo?
-
-I've left this kind of open for you to decide. Some options are [Clerk](https://clerk.dev), [Supabase Auth](https://supabase.com/docs/guides/auth), [Firebase Auth](https://firebase.google.com/docs/auth/) or [Auth0](https://auth0.com/docs). Note that if you're dropping the Expo app for something more "browser-like", you can still use Next-Auth.js for those. [See an example in a Plasmo Chrome Extension here](https://github.com/t3-oss/create-t3-turbo/tree/chrome/apps/chrome).
-
-The Clerk.dev team even made an [official template repository](https://github.com/clerkinc/t3-turbo-and-clerk) integrating Clerk.dev with this repo.
-
-During Launch Week 7, Supabase [announced their fork](https://supabase.com/blog/launch-week-7-community-highlights#t3-turbo-x-supabase) of this repo integrating it with their newly announced auth improvements. You can check it out [here](https://github.com/supabase-community/create-t3-turbo).
 
 ### Does this pattern leak backend code to my client applications?
 

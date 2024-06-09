@@ -11,7 +11,19 @@ import superjson from "superjson";
 import { ZodError } from "zod";
 
 import type { Session } from "@acme/auth";
+import { auth, validateToken } from "@acme/auth";
 import { db } from "@acme/db/client";
+
+/**
+ * Isomorphic Session getter for API requests
+ * - Expo requests will have a session token in the Authorization header
+ * - Next.js requests will have a session token in cookies
+ */
+const isomorphicGetSession = async (headers: Headers) => {
+  const authToken = headers.get("Authorization") ?? null;
+  if (authToken) return validateToken(authToken);
+  return auth();
+};
 
 /**
  * 1. CONTEXT
@@ -25,18 +37,20 @@ import { db } from "@acme/db/client";
  *
  * @see https://trpc.io/docs/server/context
  */
-export const createTRPCContext = (opts: {
+export const createTRPCContext = async (opts: {
   headers: Headers;
   session: Session | null;
 }) => {
-  const session = opts.session;
-  const source = opts.headers.get("x-trpc-source") ?? "unknown";
+  const authToken = opts.headers.get("Authorization") ?? null;
+  const session = await isomorphicGetSession(opts.headers);
 
+  const source = opts.headers.get("x-trpc-source") ?? "unknown";
   console.log(">>> tRPC Request from", source, "by", session?.user);
 
   return {
     session,
     db,
+    token: authToken,
   };
 };
 

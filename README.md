@@ -114,7 +114,21 @@ pnpm db:push
 
 3. Run `pnpm dev` at the project root folder.
 
-### 3a. When it's time to add a new UI component
+### 3. Configuring Next-Auth to work with Expo
+
+In order to get Next-Auth to work with Expo, you must either:
+
+#### Deploy the Auth Proxy (RECOMMENDED)
+
+In [apps/auth-proxy](./apps/auth-proxy) you can find a Nitro server that proxies OAuth requests. By deploying this and setting the `AUTH_REDIRECT_PROXY_URL` environment variable to the URL of this proxy, you can get OAuth working in preview deployments and development for Expo apps. See more deployment instructions in the [auth proxy README](./apps/auth-proxy/README.md).
+
+By using the proxy server, the Next.js apps will forward any auth requests to the proxy server, which will handle the OAuth flow and then redirect back to the Next.js app. This makes it easy to get OAuth working since you'll have a stable URL that is publically accessible and doesn't change for every deployment and doesn't rely on what port the app is running on.
+
+#### Add your local IP to your OAuth provider
+
+You can alternatively add your local IP (e.g. `192.168.x.y:$PORT`) to your OAuth provider. This may not be as reliable as your local IP may change when you change networks. Some OAuth providers may also only support a single callback URL for each app making this approach unviable for some providers (e.g. GitHub).
+
+### 4a. When it's time to add a new UI component
 
 Run the `ui-add` script to add a new UI component using the interactive `shadcn/ui` CLI:
 
@@ -124,17 +138,11 @@ pnpm ui-add
 
 When the component(s) has been installed, you should be good to go and start using it in your app.
 
-### 3b. When it's time to add a new package
+### 4b. When it's time to add a new package
 
 To add a new package, simply run `pnpm turbo gen init` in the monorepo root. This will prompt you for a package name as well as if you want to install any dependencies to the new package (of course you can also do this yourself later).
 
 The generator sets up the `package.json`, `tsconfig.json` and a `index.ts`, as well as configures all the necessary configurations for tooling around your package such as formatting, linting and typechecking. When the package is created, you're ready to go build out the package.
-
-### 4. Configuring Next-Auth to work with Expo
-
-In order to get Next-Auth to work with Expo, you must either:
-- Add your local IP (e.g. 192.168.x.y) to your OAuth provider (by default Discord), and you may have to update this if it gets reassigned
-- Deploy the Auth Proxy and point your OAuth provider to the proxy
 
 ## FAQ
 

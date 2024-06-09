@@ -321,6 +321,9 @@ importers:
       '@acme/db':
         specifier: workspace:*
         version: link:../db
+      '@auth/core':
+        specifier: 0.31.0
+        version: 0.31.0
       '@auth/drizzle-adapter':
         specifier: ^1.1.0
         version: 1.1.0

@@ -5,13 +5,12 @@
   "scripts": {
     "build": "nitro build",
     "clean": "rm -rf .turbo node_modules",
-    "dev": "nitro dev --port 3001",
     "lint": "eslint",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@auth/core": "0.31.0"
+    "@auth/core": "0.32.0"
   },
   "devDependencies": {
     "@acme/eslint-config": "workspace:*",
@@ -19,10 +18,10 @@
     "@acme/tailwind-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
     "@types/node": "^20.12.9",
-    "eslint": "^9.2.0",
+    "eslint": "^9.4.0",
     "h3": "^1.11.1",
     "nitropack": "^2.9.6",
-    "prettier": "^3.2.5",
+    "prettier": "^3.3.1",
     "typescript": "^5.4.5"
   },
   "prettier": "@acme/prettier-config",

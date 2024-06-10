@@ -1,7 +1,7 @@
 {
   "name": "@acme/db",
-  "private": true,
   "version": "0.1.0",
+  "private": true,
   "type": "module",
   "exports": {
     ".": {
@@ -27,19 +27,21 @@
     "typecheck": "tsc --noEmit",
     "with-env": "dotenv -e ../../.env --"
   },
+  "dependencies": {
+    "@typegoose/typegoose": "^12.4.0",
+    "mongoose": "^8.4.0",
+    "zod": "^3.23.8",
+    "@t3-oss/env-core": "^0.10.1"
+  },
   "devDependencies": {
     "@acme/eslint-config": "workspace:*",
     "@acme/prettier-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
-    "eslint": "^9.2.0",
-    "prettier": "^3.2.5",
+    "eslint": "^9.4.0",
+    "prettier": "^3.3.1",
     "typescript": "^5.4.5"
   },
   "prettier": "@acme/prettier-config",
-  "dependencies": {
-    "@typegoose/typegoose": "^12.4.0",
-    "mongoose": "^8.4.0"
-  },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "eslint --fix",

@@ -9,5 +9,8 @@
   ],
   "updateInternalDeps": true,
   "rangeStrategy": "bump",
-  "automerge": true
+  "automerge": true,
+  "npm": {
+    "fileMatch": ["(^|/)package\\.json$", "(^|/)package\\.json\\.hbs$"]
+  }
 }

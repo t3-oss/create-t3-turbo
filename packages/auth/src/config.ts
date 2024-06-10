@@ -4,11 +4,10 @@ import type {
   Session as NextAuthSession,
 } from "next-auth";
 import { skipCSRFCheck } from "@auth/core";
-import { DrizzleAdapter } from "@auth/drizzle-adapter";
+import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import Discord from "next-auth/providers/discord";
 
-import { db } from "@acme/db/client";
-import { Account, Session, User } from "@acme/db/schema";
+import clientPromise from "@acme/db/db";
 
 import { env } from "../env";
 
@@ -20,11 +19,7 @@ declare module "next-auth" {
   }
 }
 
-const adapter = DrizzleAdapter(db, {
-  usersTable: User,
-  accountsTable: Account,
-  sessionsTable: Session,
-});
+const adapter = MongoDBAdapter(clientPromise);
 
 export const isSecureContext = env.NODE_ENV !== "development";
 
@@ -39,20 +34,6 @@ export const authConfig = {
     : {}),
   secret: env.AUTH_SECRET,
   providers: [Discord],
-  callbacks: {
-    session: (opts) => {
-      if (!("user" in opts))
-        throw new Error("unreachable with session strategy");
-
-      return {
-        ...opts.session,
-        user: {
-          ...opts.session.user,
-          id: opts.user.id,
-        },
-      };
-    },
-  },
 } satisfies NextAuthConfig;
 
 export const validateToken = async (

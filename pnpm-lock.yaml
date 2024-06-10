@@ -333,6 +333,9 @@ importers:
       '@auth/drizzle-adapter':
         specifier: ^1.2.0
         version: 1.2.0
+      '@auth/mongodb-adapter':
+        specifier: ^3.2.0
+        version: 3.2.0(mongodb@6.6.2(socks@2.8.1))
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.4.5)(zod@3.23.8)
@@ -624,6 +627,11 @@ packages:
 
   '@auth/drizzle-adapter@1.2.0':
     resolution: {integrity: sha512-95LHWlgtR4rQeHy4bACiVgTZdWkkEpVXYJim1IqbF1Hy0MnnMalmfGuIlNcOi64+6iC17j5FkDsMchqGwvj2Dg==}
+
+  '@auth/mongodb-adapter@3.2.0':
+    resolution: {integrity: sha512-bp9wNM4+G0zbif96Gh355CbN/v2UEEMvITqRA0HMK1rY/cHoEQn2qM5vBjEToeJXVS6c0Nlsr/bf/byJUPPU8w==}
+    peerDependencies:
+      mongodb: ^6
 
   '@babel/code-frame@7.10.4':
     resolution: {integrity: sha512-vG6SvB6oYEhvgisZNFRmRCUkLz11c7rp+tbNTynGqc6mS1d5ATd/sGyV6W0KZZnXRKMTzZDRgQT3Ou9jhpAfUg==}
@@ -7770,6 +7778,15 @@ snapshots:
   '@auth/drizzle-adapter@1.2.0':
     dependencies:
       '@auth/core': 0.32.0
+    transitivePeerDependencies:
+      - '@simplewebauthn/browser'
+      - '@simplewebauthn/server'
+      - nodemailer
+
+  '@auth/mongodb-adapter@3.2.0(mongodb@6.6.2(socks@2.8.1))':
+    dependencies:
+      '@auth/core': 0.32.0
+      mongodb: 6.6.2(socks@2.8.1)
     transitivePeerDependencies:
       - '@simplewebauthn/browser'
       - '@simplewebauthn/server'

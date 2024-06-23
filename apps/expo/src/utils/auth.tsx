@@ -14,12 +14,14 @@ export const signIn = async () => {
     redirectTo,
   );
 
-  if (result.type !== "success") return;
+  if (result.type !== "success") return result;
   const url = Linking.parse(result.url);
   const sessionToken = String(url.queryParams?.session_token);
-  if (!sessionToken) return;
+  if (!sessionToken) throw new Error("No session token found");
 
   setToken(sessionToken);
+
+  return result;
 };
 
 export const useUser = () => {
@@ -32,7 +34,9 @@ export const useSignIn = () => {
   const router = useRouter();
 
   return async () => {
-    await signIn();
+    const result = await signIn();
+    if (result?.type !== "success") return;
+
     await utils.invalidate();
     router.replace("/");
   };

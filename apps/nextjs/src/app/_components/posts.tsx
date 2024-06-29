@@ -1,6 +1,6 @@
 "use client";
 
-import { use } from "react";
+import superjson from "superjson";
 
 import type { RouterOutputs } from "@acme/api";
 import { cn } from "@acme/ui";
@@ -18,7 +18,6 @@ import { toast } from "@acme/ui/toast";
 import { CreatePostSchema } from "@acme/validators";
 
 import { api } from "~/trpc/react";
-import superjson from 'superjson';
 
 export function CreatePostForm() {
   const form = useForm({
@@ -82,11 +81,9 @@ export function CreatePostForm() {
   );
 }
 
-export function PostList(props: {
-  posts: string;
-}) {
+export function PostList(props: { posts: string }) {
   const { data: posts } = api.post.all.useQuery(undefined, {
-    initialData: superjson.parse(props.posts)
+    initialData: superjson.parse(props.posts),
   });
 
   if (posts.length === 0) {

@@ -27,8 +27,8 @@ importers:
   apps/auth-proxy:
     dependencies:
       '@auth/core':
-        specifier: 0.34.1
-        version: 0.34.1
+        specifier: 0.32.0
+        version: 0.32.0
     devDependencies:
       '@acme/eslint-config':
         specifier: workspace:*
@@ -322,8 +322,8 @@ importers:
         specifier: workspace:*
         version: link:../db
       '@auth/core':
-        specifier: 0.34.1
-        version: 0.34.1
+        specifier: 0.32.0
+        version: 0.32.0
       '@auth/drizzle-adapter':
         specifier: ^1.4.1
         version: 1.4.1

@@ -67,7 +67,7 @@ importers:
         specifier: ^0.0.0
         version: 0.0.0(react-native@0.74.3(@babel/core@7.24.7)(@babel/preset-env@7.24.7(@babel/core@7.24.7))(@types/react@18.3.3)(bufferutil@4.0.8)(react@18.3.1))
       '@expo/metro-config':
-        specifier: ^0.18.3
+        specifier: ^0.18.8
         version: 0.18.8
       '@shopify/flash-list':
         specifier: 1.6.4
@@ -85,25 +85,25 @@ importers:
         specifier: 11.0.0-rc.441
         version: 11.0.0-rc.441
       expo:
-        specifier: ~51.0.2
+        specifier: ~51.0.18
         version: 51.0.18(@babel/core@7.24.7)(@babel/preset-env@7.24.7(@babel/core@7.24.7))(bufferutil@4.0.8)
       expo-constants:
-        specifier: ~16.0.1
+        specifier: ~16.0.2
         version: 16.0.2(expo@51.0.18(@babel/core@7.24.7)(@babel/preset-env@7.24.7(@babel/core@7.24.7))(bufferutil@4.0.8))
       expo-dev-client:
-        specifier: ~4.0.13
+        specifier: ~4.0.19
         version: 4.0.19(expo@51.0.18(@babel/core@7.24.7)(@babel/preset-env@7.24.7(@babel/core@7.24.7))(bufferutil@4.0.8))
       expo-linking:
         specifier: ~6.3.1
         version: 6.3.1(expo@51.0.18(@babel/core@7.24.7)(@babel/preset-env@7.24.7(@babel/core@7.24.7))(bufferutil@4.0.8))
       expo-router:
-        specifier: ~3.5.11
+        specifier: ~3.5.17
         version: 3.5.17(expo-constants@16.0.2(expo@51.0.18(@babel/core@7.24.7)(@babel/preset-env@7.24.7(@babel/core@7.24.7))(bufferutil@4.0.8)))(expo-linking@6.3.1(expo@51.0.18(@babel/core@7.24.7)(@babel/preset-env@7.24.7(@babel/core@7.24.7))(bufferutil@4.0.8)))(expo-modules-autolinking@1.11.1)(expo-status-bar@1.12.1)(expo@51.0.18(@babel/core@7.24.7)(@babel/preset-env@7.24.7(@babel/core@7.24.7))(bufferutil@4.0.8))(react-native-reanimated@3.10.1(@babel/core@7.24.7)(react-native@0.74.3(@babel/core@7.24.7)(@babel/preset-env@7.24.7(@babel/core@7.24.7))(@types/react@18.3.3)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1))(react-native-safe-area-context@4.10.7(react-native@0.74.3(@babel/core@7.24.7)(@babel/preset-env@7.24.7(@babel/core@7.24.7))(@types/react@18.3.3)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1))(react-native-screens@3.31.1(react-native@0.74.3(@babel/core@7.24.7)(@babel/preset-env@7.24.7(@babel/core@7.24.7))(@types/react@18.3.3)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1))(react-native@0.74.3(@babel/core@7.24.7)(@babel/preset-env@7.24.7(@babel/core@7.24.7))(@types/react@18.3.3)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1)(typescript@5.5.3)
       expo-secure-store:
-        specifier: ^13.0.1
+        specifier: ^13.0.2
         version: 13.0.2(expo@51.0.18(@babel/core@7.24.7)(@babel/preset-env@7.24.7(@babel/core@7.24.7))(bufferutil@4.0.8))
       expo-splash-screen:
-        specifier: ~0.27.4
+        specifier: ~0.27.5
         version: 0.27.5(expo-modules-autolinking@1.11.1)(expo@51.0.18(@babel/core@7.24.7)(@babel/preset-env@7.24.7(@babel/core@7.24.7))(bufferutil@4.0.8))
       expo-status-bar:
         specifier: ~1.12.1
@@ -519,7 +519,7 @@ importers:
         version: 7.34.3(eslint@9.6.0)
       eslint-plugin-react-hooks:
         specifier: rc
-        version: 5.1.0-rc-3da26163a3-20240704(eslint@9.6.0)
+        version: 5.1.0-rc-f38c22b244-20240704(eslint@9.6.0)
       eslint-plugin-turbo:
         specifier: ^2.0.6
         version: 2.0.6(eslint@9.6.0)
@@ -4512,8 +4512,8 @@ packages:
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
 
-  eslint-plugin-react-hooks@5.1.0-rc-3da26163a3-20240704:
-    resolution: {integrity: sha512-ZWS9+jlDAb7fKq4ZMd2Vai/X1ffh+B4BBhZ0FbM6r0rdqm80IHkq6VoxhsPaK9QvlP/SL/xdmIf/dkSvL7ihRg==}
+  eslint-plugin-react-hooks@5.1.0-rc-f38c22b244-20240704:
+    resolution: {integrity: sha512-2AFn/7KOJFx6RGA+7d8VluRqhB31bay0binwDJZeYJCdvrNeDQS3SmKv1/7SExyexEHBZZE/0hy6P6IQIaIZkg==}
     engines: {node: '>=10'}
     peerDependencies:
       eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0
@@ -12861,7 +12861,7 @@ snapshots:
       safe-regex-test: 1.0.3
       string.prototype.includes: 2.0.0
 
-  eslint-plugin-react-hooks@5.1.0-rc-3da26163a3-20240704(eslint@9.6.0):
+  eslint-plugin-react-hooks@5.1.0-rc-f38c22b244-20240704(eslint@9.6.0):
     dependencies:
       eslint: 9.6.0
 

@@ -18,6 +18,19 @@ catalogs:
     zod:
       specifier: ^3.23.8
       version: 3.23.8
+  react:
+    '@types/react':
+      specifier: ^18.3.3
+      version: 18.3.3
+    '@types/react-dom':
+      specifier: ^18.3.0
+      version: 18.3.0
+    react:
+      specifier: 18.3.1
+      version: 18.3.1
+    react-dom:
+      specifier: 18.3.1
+      version: 18.3.1
 
 importers:
 
@@ -130,10 +143,10 @@ importers:
         specifier: ~4.0.36
         version: 4.0.36(@babel/core@7.24.7)(react-native-reanimated@3.10.1(@babel/core@7.24.7)(react-native@0.74.3(@babel/core@7.24.7)(@babel/preset-env@7.24.7(@babel/core@7.24.7))(@types/react@18.3.3)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1))(react-native-safe-area-context@4.10.7(react-native@0.74.3(@babel/core@7.24.7)(@babel/preset-env@7.24.7(@babel/core@7.24.7))(@types/react@18.3.3)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1))(react-native@0.74.3(@babel/core@7.24.7)(@babel/preset-env@7.24.7(@babel/core@7.24.7))(@types/react@18.3.3)(bufferutil@4.0.8)(react@18.3.1))(react@18.3.1)(tailwindcss@3.4.4(ts-node@10.9.2(@types/node@20.14.9)(typescript@5.5.3)))
       react:
-        specifier: 18.3.1
+        specifier: catalog:react
         version: 18.3.1
       react-dom:
-        specifier: 18.3.1
+        specifier: catalog:react
         version: 18.3.1(react@18.3.1)
       react-native:
         specifier: ~0.74.3
@@ -185,7 +198,7 @@ importers:
         specifier: ^7.20.5
         version: 7.20.5
       '@types/react':
-        specifier: ^18.3.3
+        specifier: catalog:react
         version: 18.3.3
       eslint:
         specifier: 'catalog:'
@@ -239,10 +252,10 @@ importers:
         specifier: ^14.2.4
         version: 14.2.4(@opentelemetry/api@1.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react:
-        specifier: 18.3.1
+        specifier: catalog:react
         version: 18.3.1
       react-dom:
-        specifier: 18.3.1
+        specifier: catalog:react
         version: 18.3.1(react@18.3.1)
       superjson:
         specifier: 2.2.1
@@ -267,10 +280,10 @@ importers:
         specifier: ^20.14.9
         version: 20.14.9
       '@types/react':
-        specifier: ^18.3.3
+        specifier: catalog:react
         version: 18.3.3
       '@types/react-dom':
-        specifier: ^18.3.0
+        specifier: catalog:react
         version: 18.3.0
       dotenv-cli:
         specifier: ^7.4.2
@@ -352,10 +365,10 @@ importers:
         specifier: 5.0.0-beta.19
         version: 5.0.0-beta.19(next@14.2.4(@opentelemetry/api@1.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
       react:
-        specifier: 18.3.1
+        specifier: catalog:react
         version: 18.3.1
       react-dom:
-        specifier: 18.3.1
+        specifier: catalog:react
         version: 18.3.1(react@18.3.1)
       zod:
         specifier: 'catalog:'
@@ -472,7 +485,7 @@ importers:
         specifier: workspace:*
         version: link:../../tooling/typescript
       '@types/react':
-        specifier: ^18.3.3
+        specifier: catalog:react
         version: 18.3.3
       eslint:
         specifier: 'catalog:'
@@ -481,7 +494,7 @@ importers:
         specifier: 'catalog:'
         version: 3.3.2
       react:
-        specifier: 18.3.1
+        specifier: catalog:react
         version: 18.3.1
       tailwindcss:
         specifier: ^3.4.4

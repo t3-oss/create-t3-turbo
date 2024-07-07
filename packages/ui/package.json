@@ -36,16 +36,16 @@
     "@acme/prettier-config": "workspace:*",
     "@acme/tailwind-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
-    "@types/react": "^18.3.3",
+    "@types/react": "catalog:react",
     "eslint": "catalog:",
     "prettier": "catalog:",
-    "react": "18.3.1",
+    "react": "catalog:react",
     "tailwindcss": "^3.4.4",
     "typescript": "catalog:",
     "zod": "catalog:"
   },
   "peerDependencies": {
-    "react": "18.3.1",
+    "react": "catalog:react",
     "zod": "catalog:"
   },
   "prettier": "@acme/prettier-config"

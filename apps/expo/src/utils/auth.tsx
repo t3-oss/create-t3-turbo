@@ -35,7 +35,7 @@ export const useSignIn = () => {
 
   return async () => {
     const result = await signIn();
-    if (result?.type !== "success") return;
+    if (result.type !== "success") return;
 
     await utils.invalidate();
     router.replace("/");

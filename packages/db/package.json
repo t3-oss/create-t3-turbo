@@ -30,8 +30,8 @@
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
-    "@vercel/postgres": "^0.8.0",
     "@t3-oss/env-core": "^0.10.1",
+    "@vercel/postgres": "^0.9.0",
     "drizzle-orm": "^0.31.2",
     "drizzle-zod": "^0.5.1",
     "zod": "^3.23.8"
@@ -41,10 +41,10 @@
     "@acme/prettier-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
     "dotenv-cli": "^7.4.2",
-    "drizzle-kit": "^0.22.6",
-    "eslint": "^9.4.0",
-    "prettier": "^3.3.1",
-    "typescript": "^5.4.5"
+    "drizzle-kit": "^0.22.8",
+    "eslint": "^9.6.0",
+    "prettier": "^3.3.2",
+    "typescript": "^5.5.3"
   },
   "prettier": "@acme/prettier-config"
 }

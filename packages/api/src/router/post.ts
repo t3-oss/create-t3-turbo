@@ -7,7 +7,15 @@ import { CreatePostSchema } from "@acme/validators";
 import { protectedProcedure, publicProcedure } from "../trpc";
 
 export const postRouter = {
-  all: publicProcedure.query(() => Post.find().limit(10)),
+  all: publicProcedure.query(async () => {
+    const posts = await Post.find().limit(10);
+
+    return posts.map((post) => ({
+      id: post._id.toString(),
+      title: post.title,
+      content: post.content,
+    }));
+  }),
 
   byId: publicProcedure
     .input(z.object({ id: z.string() }))

@@ -1,7 +1,5 @@
 "use client";
 
-import superjson from "superjson";
-
 import type { RouterOutputs } from "@acme/api";
 import { cn } from "@acme/ui";
 import { Button } from "@acme/ui/button";
@@ -81,10 +79,8 @@ export function CreatePostForm() {
   );
 }
 
-export function PostList(props: { posts: string }) {
-  const { data: posts } = api.post.all.useQuery(undefined, {
-    initialData: superjson.parse(props.posts),
-  });
+export function PostList() {
+  const [posts] = api.post.all.useSuspenseQuery();
 
   if (posts.length === 0) {
     return (

@@ -1,30 +1,44 @@
-import { api } from "~/trpc/server";
+import { Suspense } from "react";
+
+import { api, HydrateClient } from "~/trpc/server";
 import { AuthShowcase } from "./_components/auth-showcase";
 import {
   CreatePostForm,
+  PostCardSkeleton,
   PostList,
 } from "./_components/posts";
-import superjson from 'superjson';
 
-export default async function HomePage() {
-  const posts = await api.post.all();
+export const runtime = "edge";
+
+export default function HomePage() {
+  // You can await this here if you don't want to show Suspense fallback below
+  void api.post.all.prefetch();
 
   return (
-    <main className="container h-screen py-16">
-      <div className="flex flex-col items-center justify-center gap-4">
-        <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
-          Create <span className="text-primary">T3</span> Turbo{" "}
-          <span className="text-green-500">MongoDB</span>
-        </h1>
-        <AuthShowcase />
+    <HydrateClient>
+      <main className="container h-screen py-16">
+        <div className="flex flex-col items-center justify-center gap-4">
+          <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
+            Create <span className="text-primary">T3</span> Turbo
+          </h1>
+          <AuthShowcase />
 
-        <CreatePostForm />
-        <div className="w-full max-w-2xl overflow-y-scroll">
-          {/* use superjson to get posts data over the use client boundary */}
-          {/* TODO: work out how to use Suspense with superjson */}
-          <PostList posts={superjson.stringify(posts)} />
+          <CreatePostForm />
+          <div className="w-full max-w-2xl overflow-y-scroll">
+            <Suspense
+              fallback={
+                <div className="flex w-full flex-col gap-4">
+                  <PostCardSkeleton />
+                  <PostCardSkeleton />
+                  <PostCardSkeleton />
+                </div>
+              }
+            >
+              <PostList />
+            </Suspense>
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </HydrateClient>
   );
 }

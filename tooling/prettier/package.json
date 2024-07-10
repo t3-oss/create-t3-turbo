@@ -12,13 +12,13 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@ianvs/prettier-plugin-sort-imports": "^4.2.1",
-    "prettier": "^3.3.1",
-    "prettier-plugin-tailwindcss": "^0.5.14"
+    "@ianvs/prettier-plugin-sort-imports": "^4.3.0",
+    "prettier": "catalog:",
+    "prettier-plugin-tailwindcss": "^0.6.5"
   },
   "devDependencies": {
     "@acme/tsconfig": "workspace:*",
-    "typescript": "^5.4.5"
+    "typescript": "catalog:"
   },
   "prettier": "@acme/prettier-config",
   "lint-staged": {

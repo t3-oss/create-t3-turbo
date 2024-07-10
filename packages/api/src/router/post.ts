@@ -19,13 +19,25 @@ export const postRouter = {
 
   byId: publicProcedure
     .input(z.object({ id: z.string() }))
-    .query(({ input }) => Post.findById(input.id)),
+    .query(async ({ input }) => {
+      const post = await Post.findById(input.id);
+
+      if (!post) return null;
+
+      return {
+        id: post._id.toString(),
+        title: post.title,
+        content: post.content,
+      };
+    }),
 
   create: protectedProcedure
     .input(CreatePostSchema)
-    .mutation(({ input }) => Post.create(input)),
+    .mutation(async ({ input }) => {
+      await Post.create(input);
+    }),
 
-  delete: protectedProcedure
-    .input(z.string())
-    .mutation(({ input }) => Post.findByIdAndDelete(input)),
+  delete: protectedProcedure.input(z.string()).mutation(async ({ input }) => {
+    await Post.findByIdAndDelete(input);
+  }),
 } satisfies TRPCRouterRecord;

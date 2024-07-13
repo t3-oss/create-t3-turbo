@@ -11,6 +11,7 @@
     { "pattern": "packages/*/" },
     { "pattern": "tooling/*/" }
   ],
+  "prettier.ignorePath": ".gitignore",
   "tailwindCSS.experimental.classRegex": [
     ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
     ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]

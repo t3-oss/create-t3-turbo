@@ -7,7 +7,7 @@
     },
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["node_modules/.cache/tsbuildinfo.json"]
+      "outputs": ["node_modules/.cache/tsbuildinfo.json", "dist/**"]
     },
     "dev": {
       "cache": false,

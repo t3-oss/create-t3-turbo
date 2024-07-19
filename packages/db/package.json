@@ -6,21 +6,21 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "default": "./src/index.ts"
+      "default": "./dist/index.js"
     },
     "./client": {
       "types": "./dist/client.d.ts",
-      "default": "./src/client.ts"
+      "default": "./dist/client.js"
     },
     "./schema": {
       "types": "./dist/schema.d.ts",
-      "default": "./src/schema.ts"
+      "default": "./dist/schema.js"
     }
   },
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "dev": "tsc --watch",
+    "dev": "tsc",
     "clean": "rm -rf .turbo dist node_modules",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint",

@@ -1,0 +1,11 @@
+{
+  "extends": "@acme/tsconfig/internal-package.json",
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "ES2022"],
+    "jsx": "preserve",
+    "rootDir": ".",
+    "emitDeclarationOnly": true
+  },
+  "include": ["*.ts", "src"],
+  "exclude": ["node_modules"]
+}

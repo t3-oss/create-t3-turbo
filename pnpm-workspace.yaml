@@ -1,0 +1,21 @@
+packages:
+  - apps/*
+  - packages/*
+  - tooling/*
+
+catalog:
+  "@tanstack/react-query": ^5.51.9
+  "@trpc/client": ^11.0.0-rc.466
+  "@trpc/react-query": ^11.0.0-rc.466
+  "@trpc/server": ^11.0.0-rc.466
+  eslint: ^9.6.0
+  prettier: ^3.3.2
+  typescript: ^5.5.3
+  zod: ^3.23.8
+
+catalogs:
+  react18:
+    react: 18.3.1
+    react-dom: 18.3.1
+    "@types/react": ^18.3.3
+    "@types/react-dom": ^18.3.0

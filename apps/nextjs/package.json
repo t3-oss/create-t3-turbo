@@ -1,0 +1,50 @@
+{
+  "name": "@acme/nextjs",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "pnpm with-env next build",
+    "clean": "git clean -xdf .next .turbo node_modules",
+    "dev": "pnpm with-env next dev",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "eslint",
+    "start": "pnpm with-env next start",
+    "typecheck": "tsc --noEmit",
+    "with-env": "dotenv -e ../../.env --"
+  },
+  "dependencies": {
+    "@acme/api": "workspace:*",
+    "@acme/auth": "workspace:*",
+    "@acme/db": "workspace:*",
+    "@acme/ui": "workspace:*",
+    "@acme/validators": "workspace:*",
+    "@t3-oss/env-nextjs": "^0.10.1",
+    "@tanstack/react-query": "catalog:",
+    "@trpc/client": "catalog:",
+    "@trpc/react-query": "catalog:",
+    "@trpc/server": "catalog:",
+    "geist": "^1.3.0",
+    "next": "^14.2.4",
+    "react": "catalog:react18",
+    "react-dom": "catalog:react18",
+    "superjson": "2.2.1",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@acme/eslint-config": "workspace:*",
+    "@acme/prettier-config": "workspace:*",
+    "@acme/tailwind-config": "workspace:*",
+    "@acme/tsconfig": "workspace:*",
+    "@types/node": "^20.14.9",
+    "@types/react": "catalog:react18",
+    "@types/react-dom": "catalog:react18",
+    "dotenv-cli": "^7.4.2",
+    "eslint": "catalog:",
+    "jiti": "^1.21.6",
+    "prettier": "catalog:",
+    "tailwindcss": "^3.4.4",
+    "typescript": "catalog:"
+  },
+  "prettier": "@acme/prettier-config"
+}

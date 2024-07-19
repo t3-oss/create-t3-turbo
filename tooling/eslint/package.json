@@ -1,0 +1,33 @@
+{
+  "name": "@acme/eslint-config",
+  "private": true,
+  "version": "0.3.0",
+  "type": "module",
+  "exports": {
+    "./base": "./base.js",
+    "./nextjs": "./nextjs.js",
+    "./react": "./react.js"
+  },
+  "scripts": {
+    "clean": "rm -rf .turbo node_modules",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@next/eslint-plugin-next": "^14.2.4",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.9.0",
+    "eslint-plugin-react": "^7.34.3",
+    "eslint-plugin-react-hooks": "rc",
+    "eslint-plugin-turbo": "^2.0.8",
+    "typescript-eslint": "rc-v8"
+  },
+  "devDependencies": {
+    "@acme/prettier-config": "workspace:*",
+    "@acme/tsconfig": "workspace:*",
+    "eslint": "catalog:",
+    "prettier": "catalog:",
+    "typescript": "catalog:"
+  },
+  "prettier": "@acme/prettier-config"
+}

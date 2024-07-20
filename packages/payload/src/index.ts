@@ -27,5 +27,5 @@ const awaitedConfig = await importConfig("./payload.config.ts");
 // Get a local copy of Payload by passing your config
 const payload = await getPayload({ config: awaitedConfig });
 
+export * from "./payload-types";
 export { buildConfig, payload };
-export type { Config } from "./payload-types";

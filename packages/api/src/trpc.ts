@@ -12,12 +12,6 @@ import { ZodError } from "zod";
 
 import { payload } from "@acme/payload";
 
-import type { Config } from "./payload-types";
-
-declare module "payload" {
-  export interface GeneratedTypes extends Config {}
-}
-
 // import type { Session } from "@acme/auth";
 // import { auth, validateToken } from "@acme/auth";
 

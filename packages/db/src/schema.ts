@@ -42,6 +42,8 @@ export const User = pgTable("user", {
   image: varchar("image", { length: 255 }),
 });
 
+export const UserSchema = createInsertSchema(User);
+
 export const UserRelations = relations(User, ({ many }) => ({
   accounts: many(Account),
 }));

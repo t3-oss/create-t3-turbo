@@ -1,7 +1,8 @@
 import type { inferRouterInputs, inferRouterOutputs } from "@trpc/server";
 
 import type { AppRouter } from "./root";
-import { appRouter } from "./root";
+import { apiRouter, appRouter } from "./root";
+import { userContract } from "./router/user";
 import { createCallerFactory, createTRPCContext } from "./trpc";
 
 /**
@@ -29,5 +30,11 @@ type RouterInputs = inferRouterInputs<AppRouter>;
  **/
 type RouterOutputs = inferRouterOutputs<AppRouter>;
 
-export { createTRPCContext, appRouter, createCaller };
+export {
+  createTRPCContext,
+  appRouter,
+  createCaller,
+  apiRouter,
+  userContract as contract,
+};
 export type { AppRouter, RouterInputs, RouterOutputs };

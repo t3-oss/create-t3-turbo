@@ -4,8 +4,20 @@
   "version": "0.1.0",
   "type": "module",
   "exports": {
-    ".": "./src/index.ts"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./client": {
+      "types": "./dist/client.d.ts",
+      "default": "./dist/client.js"
+    },
+    "./schema": {
+      "types": "./dist/schema.d.ts",
+      "default": "./dist/schema.js"
+    }
   },
+  "types": "./src/index.ts",
   "license": "MIT",
   "scripts": {
     "build": "tsc",
@@ -13,7 +25,8 @@
     "dev": "tsc",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types"
   },
   "devDependencies": {
     "@acme/eslint-config": "workspace:*",

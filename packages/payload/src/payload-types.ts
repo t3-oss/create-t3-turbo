@@ -13,6 +13,7 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
+    posts: Post;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
@@ -79,6 +80,17 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "posts".
+ */
+export interface Post {
+  id: number;
+  title?: string | null;
+  content?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
@@ -117,9 +129,4 @@ export interface PayloadMigration {
  */
 export interface Auth {
   [k: string]: unknown;
-}
-
-
-declare module 'payload' {
-  export interface GeneratedTypes extends Config {}
 }

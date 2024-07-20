@@ -424,12 +424,9 @@ importers:
 
   packages/api:
     dependencies:
-      '@acme/auth':
+      '@acme/payload':
         specifier: workspace:*
-        version: link:../auth
-      '@acme/db':
-        specifier: workspace:*
-        version: link:../db
+        version: link:../payload
       '@acme/validators':
         specifier: workspace:*
         version: link:../validators

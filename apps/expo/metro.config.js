@@ -5,7 +5,7 @@ const { withNativeWind } = require("nativewind/metro");
 
 const path = require("path");
 
-module.exports = withTurborepoManagedCache(
+const config = withTurborepoManagedCache(
   withMonorepoPaths(
     withNativeWind(getDefaultConfig(__dirname), {
       input: "./src/styles.css",
@@ -13,6 +13,12 @@ module.exports = withTurborepoManagedCache(
     }),
   ),
 );
+
+// XXX: Resolve our exports in workspace packages
+// https://github.com/expo/expo/issues/26926
+config.resolver.unstable_enablePackageExports = true;
+
+module.exports = config;
 
 /**
  * Add the monorepo paths to the Metro config.

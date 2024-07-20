@@ -23,7 +23,7 @@ export const postRouter = {
     }),
 
   create: publicProcedure
-    .input(z.object({ title: z.string() }))
+    .input(z.object({ title: z.string(), content: z.string() }))
     .mutation(({ ctx, input }) => {
       return ctx.payload.create({
         collection: "posts",

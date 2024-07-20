@@ -2,14 +2,16 @@ import { useState } from "react";
 import { Button, Pressable, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Link, Stack } from "expo-router";
-import { FlashList } from "@shopify/flash-list";
+
+// import { FlashList } from "@shopify/flash-list";
 
 import type { RouterOutputs } from "~/utils/api";
 import { api } from "~/utils/api";
-import { useSignIn, useSignOut, useUser } from "~/utils/auth";
+
+// import { useSignIn, useSignOut, useUser } from "~/utils/auth";
 
 function PostCard(props: {
-  post: RouterOutputs["post"]["all"][number];
+  post: RouterOutputs["post"]["all"]["docs"][number];
   onDelete: () => void;
 }) {
   return (
@@ -29,7 +31,7 @@ function PostCard(props: {
             <Text className="mt-2 text-foreground">{props.post.content}</Text>
           </Pressable>
         </Link>
-      </View>
+      </View>{" "}
       <Pressable onPress={props.onDelete}>
         <Text className="font-bold uppercase text-primary">Delete</Text>
       </Pressable>
@@ -95,33 +97,33 @@ function CreatePost() {
   );
 }
 
-function MobileAuth() {
-  const user = useUser();
-  const signIn = useSignIn();
-  const signOut = useSignOut();
+// function MobileAuth() {
+//   const user = useUser();
+//   const signIn = useSignIn();
+//   const signOut = useSignOut();
 
-  return (
-    <>
-      <Text className="pb-2 text-center text-xl font-semibold text-white">
-        {user?.name ?? "Not logged in"}
-      </Text>
-      <Button
-        onPress={() => (user ? signOut() : signIn())}
-        title={user ? "Sign Out" : "Sign In With Discord"}
-        color={"#5B65E9"}
-      />
-    </>
-  );
-}
+//   return (
+//     <>
+//       <Text className="pb-2 text-center text-xl font-semibold text-white">
+//         {user?.name ?? "Not logged in"}
+//       </Text>
+//       <Button
+//         onPress={() => (user ? signOut() : signIn())}
+//         title={user ? "Sign Out" : "Sign In With Discord"}
+//         color={"#5B65E9"}
+//       />
+//     </>
+//   );
+// }
 
 export default function Index() {
-  const utils = api.useUtils();
+  // const utils = api.useUtils();
 
   const postQuery = api.post.all.useQuery();
 
-  const deletePostMutation = api.post.delete.useMutation({
-    onSettled: () => utils.post.all.invalidate(),
-  });
+  // const deletePostMutation = api.post.delete.useMutation({
+  //   onSettled: () => utils.post.all.invalidate(),
+  // });
 
   return (
     <SafeAreaView className="bg-background">
@@ -132,25 +134,20 @@ export default function Index() {
           Create <Text className="text-primary">T3</Text> Turbo
         </Text>
 
-        <MobileAuth />
+        {/* <MobileAuth /> */}
 
         <View className="py-2">
           <Text className="font-semibold italic text-primary">
             Press on a post
           </Text>
         </View>
-
+        {/* 
         <FlashList
           data={postQuery.data?.docs}
           estimatedItemSize={20}
           ItemSeparatorComponent={() => <View className="h-2" />}
-          renderItem={(p) => (
-            <PostCard
-              post={p.item}
-              onDelete={() => deletePostMutation.mutate(p.item.id)}
-            />
-          )}
-        />
+          renderItem={(p) => <PostCard post={p.item} />}
+        /> */}
 
         <CreatePost />
       </View>

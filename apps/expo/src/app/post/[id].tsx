@@ -12,7 +12,7 @@ export default function Post() {
 
   return (
     <SafeAreaView className="bg-background">
-      <Stack.Screen options={{ title: data.title }} />
+      <Stack.Screen options={{ title: data.title ?? "Title" }} />
       <View className="h-full w-full p-4">
         <Text className="py-2 text-3xl font-bold text-primary">
           {data.title}

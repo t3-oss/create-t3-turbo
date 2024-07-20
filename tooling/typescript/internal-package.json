@@ -2,6 +2,7 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "./base.json",
   "compilerOptions": {
+    "strictNullChecks": true,
     /** Emit types for internal packages to speed up editor performance. */
     "declaration": true,
     "declarationMap": true,

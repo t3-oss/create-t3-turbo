@@ -2,7 +2,6 @@
 import path from "path";
 import { fileURLToPath } from "url";
 import { postgresAdapter } from "@payloadcms/db-postgres";
-import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { buildConfig } from "payload";
 import sharp from "sharp";
 
@@ -18,9 +17,9 @@ export default buildConfig({
     user: Users.slug,
   },
   collections: [Users, Media, Posts],
-  editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {
+    declare: false,
     outputFile: path.resolve(dirname, "payload-types.ts"),
   },
   db: postgresAdapter({

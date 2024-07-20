@@ -141,7 +141,7 @@ export default function Index() {
         </View>
 
         <FlashList
-          data={postQuery.data}
+          data={postQuery.data?.docs}
           estimatedItemSize={20}
           ItemSeparatorComponent={() => <View className="h-2" />}
           renderItem={(p) => (

@@ -7,26 +7,18 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
-    },
-    "./client": {
-      "types": "./dist/client.d.ts",
-      "default": "./dist/client.js"
-    },
-    "./schema": {
-      "types": "./dist/schema.d.ts",
-      "default": "./dist/schema.js"
     }
   },
-  "types": "./src/index.ts",
   "license": "MIT",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --build --force",
     "clean": "rm -rf .turbo node_modules",
     "dev": "tsc",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types"
+    "payload": "payload",
+    "generate:types": "payload generate:types"
   },
   "devDependencies": {
     "@acme/eslint-config": "workspace:*",
@@ -38,6 +30,7 @@
   },
   "prettier": "@acme/prettier-config",
   "dependencies": {
-    "payload": "beta"
+    "payload": "beta",
+    "@payloadcms/db-postgres": "beta"
   }
 }

@@ -8,9 +8,7 @@
     "clean": "git clean -xdf .next .turbo node_modules",
     "dev": "pnpm with-env next dev",
     "format": "prettier --check . --ignore-path ../../.gitignore",
-    "generate:types": "payload generate:types",
     "lint": "eslint",
-    "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
     "start": "pnpm with-env next start",
     "typecheck": "tsc --noEmit",
     "with-env": "dotenv -e ../../.env --"
@@ -18,7 +16,6 @@
   "dependencies": {
     "@acme/payload": "workspace:*",
     "@acme/auth": "workspace:*",
-    "@acme/db": "workspace:*",
     "@acme/ui": "workspace:*",
     "@acme/validators": "workspace:*",
     "@t3-oss/env-nextjs": "^0.10.1",

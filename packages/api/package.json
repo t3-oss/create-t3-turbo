@@ -11,7 +11,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --build --force",
     "clean": "rm -rf .turbo dist node_modules",
     "dev": "tsc",
     "format": "prettier --check . --ignore-path ../../.gitignore",
@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@acme/auth": "workspace:*",
-    "@acme/db": "workspace:*",
+    "@acme/payload": "workspace:*",
     "@acme/validators": "workspace:*",
     "@trpc/server": "catalog:",
     "superjson": "2.2.1",

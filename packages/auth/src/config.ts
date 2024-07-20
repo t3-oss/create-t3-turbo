@@ -19,7 +19,7 @@ declare module "next-auth" {
     } & DefaultSession["user"];
   }
 }
-
+// TODO use payload.db.drizzle???
 const adapter = DrizzleAdapter(db, {
   usersTable: User,
   accountsTable: Account,

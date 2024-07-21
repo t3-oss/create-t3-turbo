@@ -1,7 +1,8 @@
 "use client";
 
+import * as z from "zod";
+
 import type { RouterOutputs } from "@acme/api";
-import { CreatePostSchema } from "@acme/db/schema";
 import { cn } from "@acme/ui";
 import { Button } from "@acme/ui/button";
 import {
@@ -19,7 +20,10 @@ import { api } from "~/trpc/react";
 
 export function CreatePostForm() {
   const form = useForm({
-    schema: CreatePostSchema,
+    schema: z.object({
+      title: z.string(),
+      content: z.string(),
+    }),
     defaultValues: {
       content: "",
       title: "",
@@ -82,7 +86,7 @@ export function CreatePostForm() {
 export function PostList() {
   const [posts] = api.post.all.useSuspenseQuery();
 
-  if (posts.length === 0) {
+  if (posts.docs.length === 0) {
     return (
       <div className="relative flex w-full flex-col gap-4">
         <PostCardSkeleton pulse={false} />
@@ -98,7 +102,7 @@ export function PostList() {
 
   return (
     <div className="flex w-full flex-col gap-4">
-      {posts.map((p) => {
+      {posts.docs.map((p) => {
         return <PostCard key={p.id} post={p} />;
       })}
     </div>
@@ -106,7 +110,7 @@ export function PostList() {
 }
 
 export function PostCard(props: {
-  post: RouterOutputs["post"]["all"][number];
+  post: RouterOutputs["post"]["all"]["docs"][number];
 }) {
   const utils = api.useUtils();
   const deletePost = api.post.delete.useMutation({
@@ -132,7 +136,7 @@ export function PostCard(props: {
         <Button
           variant="ghost"
           className="cursor-pointer text-sm font-bold uppercase text-primary hover:bg-transparent hover:text-white"
-          onClick={() => deletePost.mutate(props.post.id)}
+          onClick={() => deletePost.mutate(String(props.post.id))}
         >
           Delete
         </Button>

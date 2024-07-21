@@ -1,0 +1,13 @@
+diff --git a/src/index.d.ts b/src/index.d.ts
+index 1102a31d0a32a108209bbea5639b37a313805c03..dcb6eee863b04fb78286b2ff1481e527f1a3b8c2 100644
+--- a/src/index.d.ts
++++ b/src/index.d.ts
+@@ -1,4 +1,4 @@
+-export * from './lib/http-error';
+-export * from './lib/request';
+-export * from './lib/response';
+-export { RequestValidationError, ResponseValidationError } from './lib/types';
++export * from "./lib/http-error";
++export * from "./lib/request";
++export * from "./lib/response";
++export * from "./lib/types";

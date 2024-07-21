@@ -29,5 +29,10 @@
     "turbo": "^2.0.8",
     "typescript": "catalog:"
   },
-  "prettier": "@acme/prettier-config"
+  "prettier": "@acme/prettier-config",
+  "pnpm": {
+    "patchedDependencies": {
+      "@ts-rest/serverless@3.45.2": "patches/@ts-rest__serverless@3.45.2.patch"
+    }
+  }
 }

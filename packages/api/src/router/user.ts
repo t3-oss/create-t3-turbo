@@ -8,31 +8,30 @@ import { User, UserSchema } from "@acme/db/schema";
 
 const c = initContract();
 
-export const userContract = c.router(
-  {
-    getUserById: {
-      method: "GET",
-      path: "/users/:id",
-      pathParams: z.object({
-        id: z.coerce.string(),
-      }),
-      responses: {
-        200: UserSchema.nullable(),
-      },
+export const userContract = c.router({
+  getUser: {
+    method: "GET",
+    path: `/users/:id`,
+    pathParams: z.object({
+      id: z.coerce.string(),
+    }),
+    responses: {
+      200: UserSchema.pick({ id: true, name: true }).nullable(),
     },
+    summary: "Get a user by username",
   },
-  {
-    pathPrefix: "/api",
-  },
-);
+});
+
 export const userRouter = tsr.router(userContract, {
-  getUserById: async ({ params }) => {
-    // const user = await db.query.Post.findFirst({
-    //   where: eq(User.id, params.id),
+  getUser: async ({ params: { id } }) => {
+    console.log(id);
+    // const user = await db.query.User.findFirst({
+    //   where: eq(User.id, id),
     // });
+
     return {
-      status: 200,
-      body: { id: "1" },
+      status: 201,
+      body: { id: "1", name: "test" },
     };
   },
 });

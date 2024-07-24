@@ -1,5 +1,3 @@
-import "@bacons/text-decoder/install";
-
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useColorScheme } from "nativewind";

@@ -87,3 +87,8 @@ Use apply patch or wait for canary release?
 
 crashes whenever its called
 something related to api/trpc/[trpc]
+
+## Resources
+
+- trpc + payload with auth: https://github.com/contentql/pin-hcms/blob/main/src/trpc/index.ts#L17
+- react native starter kit with: nativewind, supabase auth, expo router, and react native reuseables https://github.com/a0m0rajab/rnr-base-bare/tree/master

@@ -6,7 +6,7 @@
     "build": "nitro build",
     "clean": "rm -rf .turbo node_modules",
     "lint": "eslint",
-    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "format": "prettier --check . --ignore-path ../../.gitignore --ignore-path ../../.prettierignore",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -18,11 +18,11 @@
     "@acme/tailwind-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
     "@types/node": "^20.14.9",
-    "eslint": "catalog:",
+    "eslint": "^9.6.0",
     "h3": "^1.12.0",
     "nitropack": "^2.9.7",
-    "prettier": "catalog:",
-    "typescript": "catalog:"
+    "prettier": "^3.3.2",
+    "typescript": "^5.5.3"
   },
   "prettier": "@acme/prettier-config"
 }

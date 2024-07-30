@@ -10,11 +10,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "incremental": true,
-    "lib": [
-      "es2022",
-      "dom",
-      "dom.iterable"
-    ],
+    "lib": ["es2022", "dom", "dom.iterable"],
     "module": "esnext",
     "jsx": "preserve",
     "plugins": [
@@ -23,15 +19,12 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@payload-config": [
-        "./src/payload.config.ts"
-      ]
+      "@/*": ["./src/*"],
+      "~/*": ["./src/*"],
+      "@payload-config": ["./src/payload.config.ts"]
     },
     "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json",
-    "target": "ES2017"
+    "target": "ES2022"
   },
   "include": [
     ".",
@@ -43,7 +36,5 @@
     "../cms/src/trpc",
     "../cms/tailwind.config.ts"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

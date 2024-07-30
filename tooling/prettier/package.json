@@ -8,17 +8,17 @@
   },
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
-    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "format": "prettier --check . --ignore-path ../../.gitignore --ignore-path ../../.prettierignore",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.3.0",
-    "prettier": "catalog:",
+    "prettier": "^3.3.2",
     "prettier-plugin-tailwindcss": "^0.6.5"
   },
   "devDependencies": {
     "@acme/tsconfig": "workspace:*",
-    "typescript": "catalog:"
+    "typescript": "^5.5.3"
   },
   "prettier": "@acme/prettier-config"
 }

@@ -18,7 +18,7 @@
     "build": "tsc",
     "clean": "rm -rf .turbo dist node_modules",
     "dev": "tsc",
-    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "format": "prettier --check . --ignore-path ../../.gitignore --ignore-path ../../.prettierignore",
     "lint": "eslint",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
     "ui-add": "pnpm dlx shadcn-ui add && prettier src --write --list-different"
@@ -41,17 +41,17 @@
     "@acme/prettier-config": "workspace:*",
     "@acme/tailwind-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
-    "@types/react": "catalog:react18",
-    "eslint": "catalog:",
-    "prettier": "catalog:",
-    "react": "catalog:react18",
+    "@types/react": "^18.3.3",
+    "eslint": "^9.6.0",
+    "prettier": "^3.3.2",
+    "react": "18.3.1",
     "tailwindcss": "^3.4.4",
-    "typescript": "catalog:",
-    "zod": "catalog:"
+    "typescript": "^5.5.3",
+    "zod": "workspace:*"
   },
   "peerDependencies": {
-    "react": "catalog:react18",
-    "zod": "catalog:"
+    "react": "18.3.1",
+    "zod": "workspace:*"
   },
   "prettier": "@acme/prettier-config"
 }

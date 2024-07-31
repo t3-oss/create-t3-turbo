@@ -8,7 +8,9 @@
   },
   "license": "MIT",
   "scripts": {
+    "build": "tsc",
     "clean": "rm -rf .turbo node_modules",
+    "dev": "tsc",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint",
     "typecheck": "tsc --noEmit"
@@ -17,9 +19,9 @@
     "@acme/eslint-config": "workspace:*",
     "@acme/prettier-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
-    "eslint": "^9.4.0",
-    "prettier": "^3.3.2",
-    "typescript": "^5.5.3"
+    "eslint": "catalog:",
+    "prettier": "catalog:",
+    "typescript": "catalog:"
   },
   "prettier": "@acme/prettier-config"
 }

@@ -14,6 +14,10 @@ Since building websites with next.js + payload is a "solved issue", this project
 
 `supabase db reset --linked`
 
+### Clean Turborepo Daemon
+
+`npx turbo daemon clean`
+
 ## Architecture / Stack Questions
 
 1. does the website need to share a lot of code, design and routes with native app?

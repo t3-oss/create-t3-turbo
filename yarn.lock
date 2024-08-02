@@ -165,6 +165,7 @@ __metadata:
     "@payloadcms/next": "npm:beta"
     "@payloadcms/plugin-cloud": "npm:beta"
     "@payloadcms/richtext-lexical": "npm:beta"
+    "@payloadcms/ui": "npm:3.0.0-beta.67"
     "@t3-oss/env-nextjs": "npm:^0.10.1"
     "@tanstack/react-query": "workspace:*"
     "@trpc/client": "workspace:*"
@@ -202,7 +203,6 @@ __metadata:
     "@acme/tsconfig": "workspace:*"
     "@payloadcms/db-postgres": "npm:beta"
     eslint: "npm:^9.6.0"
-    graphql: "npm:^16.8.1"
     payload: "npm:beta"
     prettier: "npm:^3.3.2"
     typescript: "npm:^5.5.3"
@@ -5425,12 +5425,56 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@payloadcms/translations@npm:3.0.0-beta.67":
+  version: 3.0.0-beta.67
+  resolution: "@payloadcms/translations@npm:3.0.0-beta.67"
+  dependencies:
+    date-fns: "npm:3.3.1"
+  checksum: 10c0/47d5ba3259f3217c48b4207ebad94817d55f344cb0bfaa9352bb07a5168b409fddfd3c9ed3cb6e256c044f90167471ca70dea7d426d6f7441285bca935c94daf
+  languageName: node
+  linkType: hard
+
 "@payloadcms/translations@npm:3.0.0-beta.71":
   version: 3.0.0-beta.71
   resolution: "@payloadcms/translations@npm:3.0.0-beta.71"
   dependencies:
     date-fns: "npm:3.3.1"
   checksum: 10c0/1fd7bae2280c6009cfb689a2a0313796be84b0ffd25dd95e8da5695f02d5ed192b8465a874340040ba17a352ba26455a899f1634e32782f629c832dd9e35c6e2
+  languageName: node
+  linkType: hard
+
+"@payloadcms/ui@npm:3.0.0-beta.67":
+  version: 3.0.0-beta.67
+  resolution: "@payloadcms/ui@npm:3.0.0-beta.67"
+  dependencies:
+    "@dnd-kit/core": "npm:6.0.8"
+    "@dnd-kit/sortable": "npm:7.0.2"
+    "@faceless-ui/modal": "npm:3.0.0-beta.2"
+    "@faceless-ui/scroll-info": "npm:2.0.0-beta.0"
+    "@faceless-ui/window-info": "npm:3.0.0-beta.0"
+    "@monaco-editor/react": "npm:4.5.1"
+    "@payloadcms/translations": "npm:3.0.0-beta.67"
+    body-scroll-lock: "npm:4.0.0-beta.0"
+    bson-objectid: "npm:2.0.4"
+    date-fns: "npm:3.3.1"
+    dequal: "npm:2.0.3"
+    md5: "npm:2.3.0"
+    object-to-formdata: "npm:4.5.1"
+    qs-esm: "npm:7.0.2"
+    react-animate-height: "npm:2.1.2"
+    react-datepicker: "npm:6.9.0"
+    react-image-crop: "npm:10.1.8"
+    react-select: "npm:5.8.0"
+    scheduler: "npm:0.25.0-rc-f994737d14-20240522"
+    sonner: "npm:^1.5.0"
+    use-context-selector: "npm:2.0.0"
+    uuid: "npm:10.0.0"
+  peerDependencies:
+    next: ^15.0.0-canary.53
+    payload: 3.0.0-beta.67
+    react: ^19.0.0 || ^19.0.0-rc-6230622a1a-20240610
+    react-dom: ^19.0.0 || ^19.0.0-rc-6230622a1a-20240610
+  checksum: 10c0/c1d347eef44924fd015502569046d0607417c61cbc5a6e044c8378bb6f265ef494aafa774df3c1e23739c26daf9fe0da22b79801029a446a85d339b785a5d17c
   languageName: node
   linkType: hard
 

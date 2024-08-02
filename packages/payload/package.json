@@ -21,6 +21,10 @@
     "payload": "payload",
     "generate:types": "payload generate:types"
   },
+  "dependencies": {
+    "@payloadcms/db-postgres": "beta",
+    "payload": "beta"
+  },
   "devDependencies": {
     "@acme/eslint-config": "workspace:*",
     "@acme/prettier-config": "workspace:*",
@@ -29,9 +33,5 @@
     "prettier": "^3.3.2",
     "typescript": "^5.5.3"
   },
-  "prettier": "@acme/prettier-config",
-  "dependencies": {
-    "@payloadcms/db-postgres": "beta",
-    "payload": "beta"
-  }
+  "prettier": "@acme/prettier-config"
 }

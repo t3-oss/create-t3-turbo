@@ -1,8 +1,14 @@
 import { useState } from "react";
-import { Button, Pressable, Text, TextInput, View } from "react-native";
+import {
+  Button,
+  FlatList,
+  Pressable,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Link, Stack } from "expo-router";
-import { FlashList } from "@shopify/flash-list";
 
 import type { RouterOutputs } from "~/utils/api";
 import { api } from "~/utils/api";
@@ -30,7 +36,7 @@ function PostCard(props: {
             <Text className="mt-2 text-foreground">{props.post.content}</Text>
           </Pressable>
         </Link>
-      </View>{" "}
+      </View>
       <Pressable onPress={props.onDelete}>
         <Text className="font-bold uppercase text-primary">Delete</Text>
       </Pressable>
@@ -116,13 +122,13 @@ function CreatePost() {
 // }
 
 export default function Index() {
-  // const utils = api.useUtils();
+  const utils = api.useUtils();
 
   const postQuery = api.post.all.useQuery();
 
-  // const deletePostMutation = api.post.delete.useMutation({
-  //   onSettled: () => utils.post.all.invalidate(),
-  // });
+  const deletePostMutation = api.post.delete.useMutation({
+    onSettled: () => utils.post.all.invalidate(),
+  });
 
   return (
     <SafeAreaView className="bg-background">
@@ -141,17 +147,19 @@ export default function Index() {
           </Text>
         </View>
 
-        {/* <FlashList
-          data={postQuery.data?.docs}
-          estimatedItemSize={20}
-          ItemSeparatorComponent={() => <View className="h-2" />}
-          renderItem={(p) => (
-            <PostCard
-              post={p.item}
-              onDelete={() => deletePostMutation.mutate(p.item.id)}
-            />
-          )}
-        /> */}
+        {!!postQuery.data?.docs.length && (
+          <FlatList
+            data={postQuery.data.docs}
+            ItemSeparatorComponent={() => <View className="h-2" />}
+            renderItem={({ item }) => (
+              <PostCard
+                key={item.id}
+                post={item}
+                onDelete={() => deletePostMutation.mutate(item.id)}
+              />
+            )}
+          />
+        )}
 
         <CreatePost />
       </View>

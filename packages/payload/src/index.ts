@@ -5,7 +5,6 @@ import dotenv from "dotenv";
 import { buildConfig, getPayload } from "payload";
 import sharp from "sharp";
 
-import { Media } from "./collections/Media";
 import { Posts } from "./collections/Posts";
 import { Users } from "./collections/Users";
 
@@ -21,7 +20,7 @@ export const config = buildConfig({
   admin: {
     user: Users.slug,
   },
-  collections: [Users, Media, Posts],
+  collections: [Users, Posts],
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {
     outputFile: path.resolve(dirname, "payload-types.ts"),

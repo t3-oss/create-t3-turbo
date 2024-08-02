@@ -1,0 +1,43 @@
+{
+  "name": "@acme/cms",
+  "version": "1.0.0",
+  "description": "A blank template to get started with Payload 3.0",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
+    "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
+    "devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
+    "generate:types": "payload generate:types",
+    "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
+    "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
+    "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
+  },
+  "dependencies": {
+    "@acme/payload": "workspace:*",
+    "@payloadcms/next": "beta",
+    "@payloadcms/ui": "beta",
+    "cross-env": "^7.0.3",
+    "graphql": "^16.8.1",
+    "next": "15.0.0-rc.0",
+    "react": "^19.0.0-rc-6230622a1a-20240610",
+    "react-dom": "^19.0.0-rc-6230622a1a-20240610",
+    "sharp": "0.32.6"
+  },
+  "devDependencies": {
+    "@acme/eslint-config": "workspace:*",
+    "@acme/prettier-config": "workspace:*",
+    "@acme/tailwind-config": "workspace:*",
+    "@acme/tsconfig": "workspace:*",
+    "@types/node": "^20.14.9",
+    "@types/react": "npm:types-react@19.0.0-rc.0",
+    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.0",
+    "eslint": "^9.6.0",
+    "typescript": "^5.5.3"
+  },
+  "overrides": {
+    "@types/react": "npm:types-react@19.0.0-rc.0",
+    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.0"
+  },
+  "prettier": "@acme/prettier-config"
+}

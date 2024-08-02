@@ -1,7 +1,7 @@
-// storage-adapter-import-placeholder
 import path from "path";
 import { fileURLToPath } from "url";
 import { postgresAdapter } from "@payloadcms/db-postgres";
+import dotenv from "dotenv";
 import { buildConfig } from "payload";
 import sharp from "sharp";
 
@@ -11,6 +11,7 @@ import { Users } from "./collections/Users";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
+dotenv.config();
 
 export default buildConfig({
   cors: "*",
@@ -27,6 +28,9 @@ export default buildConfig({
       connectionString: process.env.POSTGRES_URL || "",
     },
   }),
+  routes: {
+    admin: "/",
+  },
   sharp,
   plugins: [
     // storage-adapter-placeholder

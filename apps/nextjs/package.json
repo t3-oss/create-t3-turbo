@@ -6,7 +6,7 @@
   "scripts": {
     "build": "yarn with-env next build",
     "clean": "git clean -xdf .next .turbo node_modules",
-    "dev": "yarn with-env next dev",
+    "dev": "yarn with-env next dev -p 3000",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint",
     "start": "yarn with-env next start",

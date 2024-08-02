@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "yarn with-env next build",
-    "dev": "yarn with-env next dev",
+    "dev": "yarn with-env next dev -p 3001",
     "devsafe": "rm -rf .next && with-env next dev",
     "generate:types": "with-env payload generate:types",
     "lint": "yarn with-env next lint",

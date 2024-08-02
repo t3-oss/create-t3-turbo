@@ -24,15 +24,15 @@ export const postRouter = {
 
   create: publicProcedure
     .input(z.object({ title: z.string(), content: z.string() }))
-    .mutation(({ ctx, input }) => {
-      return ctx.payload.create({
+    .mutation(async ({ ctx, input }) => {
+      return await ctx.payload.create({
         collection: "posts",
         data: input,
       });
     }),
 
-  delete: publicProcedure.input(z.number()).mutation(({ ctx, input }) => {
-    return ctx.payload.delete({
+  delete: publicProcedure.input(z.number()).mutation(async ({ ctx, input }) => {
+    return await ctx.payload.delete({
       collection: "posts",
       id: input,
     });

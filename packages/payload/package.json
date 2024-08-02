@@ -7,8 +7,7 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
-    },
-    "./config": "./src/payload.config.ts"
+    }
   },
   "license": "MIT",
   "scripts": {
@@ -29,6 +28,9 @@
     "@acme/eslint-config": "workspace:*",
     "@acme/prettier-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
+    "@swc/cli": "^0.4.0",
+    "@swc/core": "^1.5.28",
+    "@swc/types": "0.1.10",
     "eslint": "^9.6.0",
     "prettier": "^3.3.2",
     "typescript": "^5.5.3"

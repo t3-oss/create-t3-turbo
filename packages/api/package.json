@@ -14,7 +14,7 @@
     "build": "tsc --build --force",
     "clean": "rm -rf .turbo dist node_modules",
     "dev": "tsc",
-    "format": "prettier --check . --ignore-path ../../.gitignore --ignore-path ../../.prettierignore",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
@@ -24,7 +24,7 @@
     "@acme/validators": "workspace:*",
     "@trpc/server": "workspace:*",
     "superjson": "2.2.1",
-    "zod": "workspace:*"
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@acme/eslint-config": "workspace:*",

@@ -6,7 +6,10 @@ import { z } from "zod";
 // import { env as authEnv } from "@acme/auth/env";
 
 export const env = createEnv({
-  extends: [vercel()],
+  extends: [
+    // authEnv,
+    vercel(),
+  ],
   shared: {
     NODE_ENV: z
       .enum(["development", "production", "test"])
@@ -16,9 +19,7 @@ export const env = createEnv({
    * Specify your server-side environment variables schema here.
    * This way you can ensure the app isn't built with invalid env vars.
    */
-  server: {
-    POSTGRES_URL: z.string().url(),
-  },
+  server: {},
 
   /**
    * Specify your client-side environment variables schema here.

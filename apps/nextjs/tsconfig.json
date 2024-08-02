@@ -1,40 +1,16 @@
 {
+  "extends": "@acme/tsconfig/base.json",
   "compilerOptions": {
-    "baseUrl": ".",
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "incremental": true,
     "lib": ["es2022", "dom", "dom.iterable"],
-    "module": "esnext",
     "jsx": "preserve",
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "~/*": ["./src/*"],
-      "@payload-config": ["./src/payload.config.ts"]
+      "~/*": ["./src/*"]
     },
+    "plugins": [{ "name": "next" }],
     "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json",
-    "target": "ES2022"
+    "module": "esnext"
   },
-  "include": [
-    ".",
-    "**/*.ts",
-    "**/*.tsx",
-    "next-env.d.ts",
-    ".next/types/**/*.ts",
-    "../cms/src/app/(app)",
-    "../cms/src/trpc",
-    "../cms/tailwind.config.ts"
-  ],
+  "include": [".", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }

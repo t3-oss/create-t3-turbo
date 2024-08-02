@@ -1,3 +1,3 @@
-import buildConfig from "@acme/payload/config";
+import { config as buildConfig } from "@acme/payload";
 
 export default buildConfig;

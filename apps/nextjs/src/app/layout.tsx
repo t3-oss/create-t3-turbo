@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { TRPCReactProvider } from "@/trpc/react";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 
@@ -7,13 +6,15 @@ import { cn } from "@acme/ui";
 import { ThemeProvider, ThemeToggle } from "@acme/ui/theme";
 import { Toaster } from "@acme/ui/toast";
 
-import "./globals.css";
+import { TRPCReactProvider } from "~/trpc/react";
 
-// import { env } from "~/env";
+import "~/app/globals.css";
+
+import { env } from "~/env";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.VERCEL_ENV === "production"
+    env.VERCEL_ENV === "production"
       ? "https://turbo.t3.gg"
       : "http://localhost:3000",
   ),

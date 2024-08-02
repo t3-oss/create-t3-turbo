@@ -10,7 +10,7 @@
   },
   "scripts": {
     "clean": "rm -rf .turbo node_modules",
-    "format": "prettier --check . --ignore-path ../../.gitignore --ignore-path ../../.prettierignore",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

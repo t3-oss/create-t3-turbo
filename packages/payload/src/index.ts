@@ -1,18 +1,45 @@
-import { getPayload } from "payload";
-// This is a helper function that will make sure we can safely load the Payload Config
-// and all of its client-side files, such as CSS, SCSS, etc.
-import { importConfig } from "payload/node";
+import path from "path";
+import { fileURLToPath } from "url";
+import { postgresAdapter } from "@payloadcms/db-postgres";
+import dotenv from "dotenv";
+import { buildConfig, getPayload } from "payload";
+import sharp from "sharp";
 
-import buildConfig from "./payload.config";
+import { Media } from "./collections/Media";
+import { Posts } from "./collections/Posts";
+import { Users } from "./collections/Users";
 
-const awaitedConfig = await importConfig("./payload.config.ts");
-
-// Get a local copy of Payload by passing your config
-const payload = await getPayload({ config: awaitedConfig });
-
-// tthis is necessary so that consumers of this package can infer types of the Payload config
+// this is necessary so that consumers of this package can infer types of the Payload config
 export * from "./payload-types";
 
-export { buildConfig };
+const filename = fileURLToPath(import.meta.url);
+const dirname = path.dirname(filename);
+dotenv.config({ path: path.resolve(dirname, "../.env") });
+
+export const config = buildConfig({
+  cors: "*",
+  admin: {
+    user: Users.slug,
+  },
+  collections: [Users, Media, Posts],
+  secret: process.env.PAYLOAD_SECRET || "",
+  typescript: {
+    outputFile: path.resolve(dirname, "payload-types.ts"),
+  },
+  db: postgresAdapter({
+    pool: {
+      connectionString: process.env.POSTGRES_URL || "",
+    },
+  }),
+  routes: {
+    admin: "/",
+  },
+  sharp,
+  plugins: [
+    // storage-adapter-placeholder
+  ],
+});
+// Get a local copy of Payload by passing your config
+const payload = await getPayload({ config });
 
 export default payload;

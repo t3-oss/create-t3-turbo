@@ -21,8 +21,8 @@ import { api } from "~/trpc/react";
 export function CreatePostForm() {
   const form = useForm({
     schema: z.object({
-      title: z.string(),
-      content: z.string(),
+      title: z.string().max(256),
+      content: z.string().max(256),
     }),
     defaultValues: {
       content: "",
@@ -136,7 +136,7 @@ export function PostCard(props: {
         <Button
           variant="ghost"
           className="cursor-pointer text-sm font-bold uppercase text-primary hover:bg-transparent hover:text-white"
-          onClick={() => deletePost.mutate(String(props.post.id))}
+          onClick={() => deletePost.mutate(props.post.id)}
         >
           Delete
         </Button>

@@ -8,6 +8,12 @@ An minimum example use case would be an Instagram-like app that allows uploading
 
 Since building websites with next.js + payload is a "solved issue", this project focuses on the more ambitious goal of creating a universal app whenever possible. This means the app is built in expo / RN first and we'll try our best to make it work as a website too. The web version will likely suck for a while until universal RSC / Expo Router SSR becomes available but it is the most future compatible approach.
 
+## Development
+
+### Reset Supabase DB
+
+`supabase db reset --linked`
+
 ## Architecture / Stack Questions
 
 1. does the website need to share a lot of code, design and routes with native app?

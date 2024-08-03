@@ -5,7 +5,7 @@
   "main": "expo-router/entry",
   "scripts": {
     "clean": "git clean -xdf .expo .turbo node_modules",
-    "dev": "expo start --go",
+    "dev": "EXPO_USE_METRO_WORKSPACE_ROOT=1 expo start --go",
     "dev:android": "expo start --android",
     "dev:ios": "expo start --ios",
     "android": "expo run:android",
@@ -30,6 +30,7 @@
     "expo-splash-screen": "~0.27.5",
     "expo-status-bar": "~1.12.1",
     "expo-web-browser": "^13.0.3",
+    "find-yarn-workspace-root": "^2.0.0",
     "nativewind": "~4.0.36",
     "react": "18.3.1",
     "react-dom": "18.2.0",
@@ -55,7 +56,7 @@
     "@types/react": "^18.3.3",
     "eslint": "workspace:*",
     "prettier": "workspace:*",
-    "tailwindcss": "^3.4.4",
+    "tailwindcss": "^3.4.7",
     "typescript": "workspace:*"
   },
   "prettier": "@acme/prettier-config"

@@ -1,6 +1,10 @@
-import * as SecureStore from "expo-secure-store";
+import { useStorageState } from "./hooks/useStorageState";
 
 const key = "session_token";
-export const getToken = () => SecureStore.getItem(key);
-export const deleteToken = () => SecureStore.deleteItemAsync(key);
-export const setToken = (v: string) => SecureStore.setItem(key, v);
+
+export const useToken = () => {
+  const [[isLoading, token], setToken] = useStorageState(key);
+  const getToken = () => token;
+  const deleteToken = () => setToken(null);
+  return { setToken, getToken, deleteToken, isLoading };
+};

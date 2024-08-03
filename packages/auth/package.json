@@ -19,9 +19,9 @@
   },
   "dependencies": {
     "@acme/payload": "workspace:*",
-    "@auth/core": "0.32.0",
-    "@auth/drizzle-adapter": "^1.4.1",
-    "@t3-oss/env-nextjs": "^0.10.1",
+    "@auth/core": "0.34.2",
+    "@auth/drizzle-adapter": "^1.4.2",
+    "@t3-oss/env-nextjs": "^0.11.0",
     "next": "^14.2.4",
     "next-auth": "5.0.0-beta.19",
     "react": "18.3.1",
@@ -32,9 +32,9 @@
     "@acme/eslint-config": "workspace:*",
     "@acme/prettier-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
-    "eslint": "^9.6.0",
-    "prettier": "^3.3.2",
-    "typescript": "^5.5.3"
+    "eslint": "workspace:*",
+    "prettier": "workspace:*",
+    "typescript": "workspace:*"
   },
   "prettier": "@acme/prettier-config"
 }

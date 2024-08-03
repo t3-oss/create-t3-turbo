@@ -14,15 +14,17 @@
     "build": "tsc --build --force",
     "clean": "rm -rf .turbo node_modules",
     "dev": "tsc",
-    "format": "prettier --check . --ignore-path ../../.gitignore --ignore-path ../../.prettierignore",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "payload": "payload",
-    "generate:types": "payload generate:types"
+    "generate:types": "payload generate:types",
+    "seed": "tsx ./seed/index.ts"
   },
   "dependencies": {
     "@payloadcms/db-postgres": "beta",
-    "payload": "beta"
+    "payload": "beta",
+    "tsx": "^4.16.5"
   },
   "devDependencies": {
     "@acme/eslint-config": "workspace:*",

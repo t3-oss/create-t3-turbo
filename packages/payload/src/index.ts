@@ -13,7 +13,9 @@ export * from "./payload-types";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
-dotenv.config({ path: path.resolve(dirname, "../.env") });
+dotenv.config({
+  path: path.resolve(dirname, "../../../.env"),
+});
 
 export const config = buildConfig({
   cors: "*",

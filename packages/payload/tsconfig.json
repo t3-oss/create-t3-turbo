@@ -1,8 +1,9 @@
 {
   "extends": "@acme/tsconfig/internal-package.json",
   "compilerOptions": {
+    "rootDir": "src",
     "paths": {
-      "@payload-config": ["./src/payload.config.ts"]
+      "@acme/payload/*": ["./dist/*"]
     }
   },
   "include": ["*.ts", "src"],

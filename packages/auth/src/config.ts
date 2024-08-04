@@ -4,11 +4,16 @@ import type {
   Session as NextAuthSession,
 } from "next-auth";
 import { skipCSRFCheck } from "@auth/core";
-import { DrizzleAdapter } from "@auth/drizzle-adapter";
-import Discord from "next-auth/providers/discord";
+import { CredentialsSignin } from "next-auth";
+import Credentials from "next-auth/providers/credentials";
 
-import { db } from "@acme/db/client";
-import { Account, Session, User } from "@acme/db/schema";
+// import { DrizzleAdapter } from "@auth/drizzle-adapter";
+// import Discord from "next-auth/providers/discord";
+
+// import { db } from "@acme/db/client";
+// import { Account, Session, User } from "@acme/db/schema";
+
+import payload from "@acme/payload";
 
 import { env } from "../env";
 
@@ -19,26 +24,49 @@ declare module "next-auth" {
     } & DefaultSession["user"];
   }
 }
-// TODO use payload.db.drizzle???
-const adapter = DrizzleAdapter(db, {
-  usersTable: User,
-  accountsTable: Account,
-  sessionsTable: Session,
-});
+// const adapter = DrizzleAdapter(db, {
+//   usersTable: User,
+//   accountsTable: Account,
+//   sessionsTable: Session,
+// });
 
 export const isSecureContext = env.NODE_ENV !== "development";
 
 export const authConfig = {
-  adapter,
+  // adapter,
   // In development, we need to skip checks to allow Expo to work
-  ...(!isSecureContext
-    ? {
-        skipCSRFCheck: skipCSRFCheck,
-        trustHost: true,
-      }
-    : {}),
+  // ...(!isSecureContext
+  //   ? {
+  //       skipCSRFCheck: skipCSRFCheck,
+  //       trustHost: true,
+  //     }
+  //   : {}),
   secret: env.AUTH_SECRET,
-  providers: [Discord],
+  providers: [
+    //Discord
+    Credentials({
+      credentials: {
+        email: {},
+        password: {},
+      },
+      authorize: async ({ email, password }) => {
+        const { token, user } = await payload.login({
+          collection: "users",
+          data: {
+            email: String(email),
+            password: String(password),
+          },
+        });
+
+        if (!user.id) {
+          throw new CredentialsSignin("Invalid credentials");
+        }
+
+        // NextAuth expects `id` to be a string
+        return { ...user, id: String(user.id) };
+      },
+    }),
+  ],
   callbacks: {
     session: (opts) => {
       if (!("user" in opts))
@@ -56,20 +84,22 @@ export const authConfig = {
 } satisfies NextAuthConfig;
 
 export const validateToken = async (
-  token: string,
+  req: Request,
 ): Promise<NextAuthSession | null> => {
-  const sessionToken = token.slice("Bearer ".length);
-  const session = await adapter.getSessionAndUser?.(sessionToken);
-  return session
+  const { user } = await payload.auth({ headers: req.headers });
+
+  return user
     ? {
         user: {
-          ...session.user,
+          ...user,
+          id: String(user.id), // NextAuth expects `id` to be a string
         },
-        expires: session.session.expires.toISOString(),
+        // mock session expiration
+        expires: new Date("2030-01-01").toISOString(),
       }
     : null;
 };
 
-export const invalidateSessionToken = async (token: string) => {
-  await adapter.deleteSession?.(token);
-};
+// export const invalidateSessionToken = async (token: string) => {
+//   await adapter.deleteSession?.(token);
+// };

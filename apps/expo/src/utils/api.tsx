@@ -7,7 +7,7 @@ import superjson from "superjson";
 import type { AppRouter } from "@acme/api";
 
 import { getBaseUrl } from "./base-url";
-import { useToken } from "./session-store";
+import { getToken } from "./session-store";
 
 /**
  * A set of typesafe hooks for consuming your API.
@@ -20,7 +20,6 @@ export type { RouterInputs, RouterOutputs } from "@acme/api";
  * Use only in _app.tsx
  */
 export function TRPCProvider(props: { children: React.ReactNode }) {
-  const { getToken } = useToken();
   const [queryClient] = useState(() => new QueryClient());
   const [trpcClient] = useState(() =>
     api.createClient({

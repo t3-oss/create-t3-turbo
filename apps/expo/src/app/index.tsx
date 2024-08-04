@@ -8,12 +8,12 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Link, Stack } from "expo-router";
+import { Link, Stack, useRouter } from "expo-router";
 
 import type { RouterOutputs } from "~/utils/api";
 import { api } from "~/utils/api";
-
-// import { useSignIn, useSignOut, useUser } from "~/utils/auth";
+import { useSignOut, useUser } from "~/utils/auth";
+import { setToken } from "~/utils/session-store";
 
 function PostCard(props: {
   post: RouterOutputs["post"]["all"]["docs"][number];
@@ -102,29 +102,90 @@ function CreatePost() {
   );
 }
 
-// function MobileAuth() {
-//   const user = useUser();
-//   const signIn = useSignIn();
-//   const signOut = useSignOut();
+function LoginForm() {
+  const utils = api.useUtils();
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-//   return (
-//     <>
-//       <Text className="pb-2 text-center text-xl font-semibold text-white">
-//         {user?.name ?? "Not logged in"}
-//       </Text>
-//       <Button
-//         onPress={() => (user ? signOut() : signIn())}
-//         title={user ? "Sign Out" : "Sign In With Discord"}
-//         color={"#5B65E9"}
-//       />
-//     </>
-//   );
-// }
+  const { mutate: signIn, error } = api.auth.signIn.useMutation({
+    async onSuccess({ token }) {
+      setToken(token);
+      setEmail("");
+      setPassword("");
+
+      await utils.invalidate();
+      router.replace("/");
+    },
+  });
+
+  return (
+    <View className="mt-4 flex gap-2">
+      <TextInput
+        className="items-center rounded-md border border-input bg-background px-3 text-lg leading-[1.25] text-foreground"
+        value={email}
+        onChangeText={setEmail}
+        placeholder="Email"
+      />
+      {error?.data?.zodError?.fieldErrors.email && (
+        <Text className="mb-2 text-destructive">
+          {error.data.zodError.fieldErrors.email}
+        </Text>
+      )}
+      <TextInput
+        className="items-center rounded-md border border-input bg-background px-3 text-lg leading-[1.25] text-foreground"
+        value={password}
+        onChangeText={setPassword}
+        placeholder="Content"
+      />
+      {error?.data?.zodError?.fieldErrors.password && (
+        <Text className="mb-2 text-destructive">
+          {error.data.zodError.fieldErrors.password}
+        </Text>
+      )}
+      <Pressable
+        className="flex items-center rounded bg-primary p-2"
+        onPress={() => {
+          signIn({
+            email,
+            password,
+          });
+        }}
+      >
+        <Text className="text-foreground">Login</Text>
+      </Pressable>
+      {error?.data?.code === "UNAUTHORIZED" && (
+        <Text className="mt-2 text-destructive">
+          Incorrect login credentials
+        </Text>
+      )}
+    </View>
+  );
+}
+
+function MobileAuth() {
+  const user = useUser();
+  const signOut = useSignOut();
+
+  return (
+    <>
+      <Text className="pb-2 text-center text-xl font-semibold text-white">
+        {user?.id ?? "Not logged in"}
+      </Text>
+      {!user?.id ? (
+        <LoginForm />
+      ) : (
+        <Button onPress={signOut} title="SignOut" color={"#5B65E9"} />
+      )}
+    </>
+  );
+}
 
 export default function Index() {
   const utils = api.useUtils();
 
   const postQuery = api.post.all.useQuery();
+  const { data: permissions } = api.auth.getUserPermissions.useQuery();
 
   const deletePostMutation = api.post.delete.useMutation({
     onSettled: () => utils.post.all.invalidate(),
@@ -139,29 +200,27 @@ export default function Index() {
           Create <Text className="text-primary">T3</Text> Turbo
         </Text>
 
-        {/* <MobileAuth /> */}
-
-        <View className="py-2">
-          <Text className="font-semibold italic text-primary">
-            Press on a post
-          </Text>
-        </View>
+        <MobileAuth />
 
         {!!postQuery.data?.docs.length && (
-          <FlatList
-            data={postQuery.data.docs}
-            ItemSeparatorComponent={() => <View className="h-2" />}
-            renderItem={({ item }) => (
-              <PostCard
-                key={item.id}
-                post={item}
-                onDelete={() => deletePostMutation.mutate(item.id)}
-              />
-            )}
-          />
+          <View className="py-2">
+            <Text className="mb-2 font-semibold italic text-primary">
+              Press on a post
+            </Text>
+            <FlatList
+              data={postQuery.data.docs}
+              ItemSeparatorComponent={() => <View className="h-2" />}
+              renderItem={({ item }) => (
+                <PostCard
+                  key={item.id}
+                  post={item}
+                  onDelete={() => deletePostMutation.mutate(item.id)}
+                />
+              )}
+            />
+          </View>
         )}
-
-        <CreatePost />
+        {permissions?.collections.posts?.create.permission && <CreatePost />}
       </View>
     </SafeAreaView>
   );

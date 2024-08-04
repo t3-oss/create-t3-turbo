@@ -10,19 +10,17 @@ import { initTRPC, TRPCError } from "@trpc/server";
 import superjson from "superjson";
 import { ZodError } from "zod";
 
+import { auth, validateToken } from "@acme/auth";
 import payload from "@acme/payload";
-
-// import type { Session } from "@acme/auth";
-// import { auth, validateToken } from "@acme/auth";
 
 /**
  * Isomorphic Session getter for API requests
  * - Expo requests will have a session token in the Authorization header
  * - Next.js requests will have a session token in cookies
  */
-// const isomorphicGetSession = async (headers: Headers) => {
-//   const authToken = headers.get("Authorization") ?? null;
-//   if (authToken) return validateToken(authToken);
+// const isomorphicGetSession = async (req: Request) => {
+//   const authToken = req.headers.get("Authorization") ?? null;
+//   if (authToken) return validateToken(req);
 //   return auth();
 // };
 
@@ -38,20 +36,17 @@ import payload from "@acme/payload";
  *
  * @see https://trpc.io/docs/server/context
  */
-export const createTRPCContext = async (opts: {
-  headers: Headers;
-  // session: Session | null;
-}) => {
-  // const authToken = opts.headers.get("Authorization") ?? null;
-  // const session = await isomorphicGetSession(opts.headers);
+export const createTRPCContext = async (req: Request) => {
+  const { user, permissions } = await payload.auth({ headers: req.headers });
 
-  // const source = opts.headers.get("x-trpc-source") ?? "unknown";
-  // console.log(">>> tRPC Request from", source, "by", session?.user);
+  const source = req.headers.get("x-trpc-source") ?? "unknown";
+  console.log(">>> tRPC Request from", source, "by", user);
 
   return {
     payload,
-    // session,
-    // token: authToken,
+    user,
+    req,
+    permissions,
   };
 };
 
@@ -108,14 +103,14 @@ export const publicProcedure = t.procedure;
  *
  * @see https://trpc.io/docs/procedures
  */
-// export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
-//   if (!ctx.session?.user) {
-//     throw new TRPCError({ code: "UNAUTHORIZED" });
-//   }
-//   return next({
-//     ctx: {
-//       // infers the `session` as non-nullable
-//       session: { ...ctx.session, user: ctx.session.user },
-//     },
-//   });
-// });
+export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
+  if (!ctx.user) {
+    throw new TRPCError({ code: "UNAUTHORIZED" });
+  }
+  return next({
+    ctx: {
+      // infers the `user` as non-nullable
+      user: ctx.user,
+    },
+  });
+});

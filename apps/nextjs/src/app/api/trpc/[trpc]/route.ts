@@ -1,1 +1,9 @@
-export { OPTIONS, handler as GET, handler as POST } from "@acme/api";
+import { handler, OPTIONS } from "@acme/api";
+import { auth } from "@acme/auth";
+
+const authHandler =
+  // auth(
+  handler;
+// );
+
+export { OPTIONS, authHandler as GET, authHandler as POST };

@@ -46,9 +46,11 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   plugins: [
     [
       "expo-router",
+
       {
         origin: "https://evanbacon.dev/",
       },
     ],
+    "expo-secure-store",
   ],
 });

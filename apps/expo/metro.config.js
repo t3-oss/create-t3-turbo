@@ -6,6 +6,11 @@ const findWorkspaceRoot = require("find-yarn-workspace-root");
 
 const path = require("path");
 
+const workspaceRoot = findWorkspaceRoot(__dirname);
+
+// Load the environment variables from the workspace root .env file
+require("@expo/env").load(workspaceRoot, { force: true });
+
 const config = withTurborepoManagedCache(
   withMonorepoPaths(
     withNativeWind(getDefaultConfig(__dirname), {
@@ -19,6 +24,27 @@ const config = withTurborepoManagedCache(
 // https://github.com/expo/expo/issues/26926
 config.resolver.unstable_enablePackageExports = true;
 
+// resolve prettier to an empty module because it causes issue with cjs bundling
+// config.resolver.resolveRequest = (context, moduleName, platform) => {
+//   if (platform === "web" && moduleName === "prettier") {
+//     return {
+//       type: "empty",
+//     };
+//   }
+
+//   // Ensure you call the default resolver.
+//   return context.resolveRequest(context, moduleName, platform);
+// };
+
+// Enabling tree shaking for web
+// config.transformer.getTransformOptions = async () => ({
+//   transform: {
+//     experimentalImportSupport: true,
+//   },
+// });
+
+// config.resetCache = true;
+
 module.exports = config;
 
 /**
@@ -31,7 +57,6 @@ module.exports = config;
  */
 function withMonorepoPaths(config) {
   const projectRoot = __dirname;
-  const workspaceRoot = findWorkspaceRoot(__dirname);
 
   // #1 - Watch all files in the monorepo
   config.watchFolders = [workspaceRoot];

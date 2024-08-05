@@ -7,11 +7,12 @@
  * The pieces you will need to use are documented accordingly near the end
  */
 import { initTRPC, TRPCError } from "@trpc/server";
+import { getPayload } from "payload";
 import superjson from "superjson";
 import { ZodError } from "zod";
 
 // import { auth, validateToken } from "@acme/auth";
-import payload from "@acme/payload";
+import { config } from "@acme/payload";
 
 /**
  * Isomorphic Session getter for API requests
@@ -37,6 +38,7 @@ import payload from "@acme/payload";
  * @see https://trpc.io/docs/server/context
  */
 export const createTRPCContext = async (req: Request) => {
+  const payload = await getPayload({ config });
   const { user, permissions } = await payload.auth({ headers: req.headers });
 
   const source = req.headers.get("x-trpc-source") ?? "unknown";

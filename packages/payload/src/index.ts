@@ -1,6 +1,6 @@
+import type { Config } from "payload";
 import { postgresAdapter } from "@payloadcms/db-postgres";
-import { buildConfig, getPayload } from "payload";
-import { loadEnv } from "payload/node";
+import { buildConfig } from "payload";
 
 import { Posts } from "./collections/Posts";
 import { Users } from "./collections/Users";
@@ -8,9 +8,7 @@ import { Users } from "./collections/Users";
 // this is necessary so that consumers of this package can infer types of the Payload config
 export * from "./payload-types";
 
-loadEnv(); // can only run in a node environemnt!
-
-export const config = buildConfig({
+const payloadConfig = {
   cors: "*",
   admin: {
     user: Users.slug,
@@ -28,8 +26,9 @@ export const config = buildConfig({
   plugins: [
     // storage-adapter-placeholder
   ],
-});
-// Get a local copy of Payload by passing your config
-const payload = await getPayload({ config });
+} satisfies Config;
 
-export default payload;
+export const config = buildConfig(payloadConfig);
+
+// const payload = await getPayload({ config });
+// export default payload;

@@ -31,13 +31,11 @@
     "//#clean": {
       "cache": false
     },
-    "push": {
-      "cache": false,
-      "interactive": true
+    "db:seed": {
+      "cache": false
     },
-    "studio": {
-      "cache": false,
-      "persistent": true
+    "db:drop": {
+      "cache": false
     },
     "ui-add": {
       "cache": false,

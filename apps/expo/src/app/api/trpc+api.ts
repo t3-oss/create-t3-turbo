@@ -1,5 +1,6 @@
 import { handler, OPTIONS } from "@acme/api";
-import { auth } from "@acme/auth";
+
+// import { auth } from "@acme/auth";
 
 const authHandler =
   // auth(

@@ -10,7 +10,7 @@ import { initTRPC, TRPCError } from "@trpc/server";
 import superjson from "superjson";
 import { ZodError } from "zod";
 
-import { auth, validateToken } from "@acme/auth";
+// import { auth, validateToken } from "@acme/auth";
 import payload from "@acme/payload";
 
 /**

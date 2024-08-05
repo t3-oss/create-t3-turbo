@@ -1,9 +1,6 @@
-import path from "path";
-import { fileURLToPath } from "url";
 import { postgresAdapter } from "@payloadcms/db-postgres";
-import dotenv from "dotenv";
 import { buildConfig, getPayload } from "payload";
-import sharp from "sharp";
+import { loadEnv } from "payload/node";
 
 import { Posts } from "./collections/Posts";
 import { Users } from "./collections/Users";
@@ -11,11 +8,7 @@ import { Users } from "./collections/Users";
 // this is necessary so that consumers of this package can infer types of the Payload config
 export * from "./payload-types";
 
-const filename = fileURLToPath(import.meta.url);
-const dirname = path.dirname(filename);
-dotenv.config({
-  path: path.resolve(dirname, "../../../.env"),
-});
+loadEnv(); // can only run in a node environemnt!
 
 export const config = buildConfig({
   cors: "*",
@@ -24,9 +17,6 @@ export const config = buildConfig({
   },
   collections: [Users, Posts],
   secret: process.env.PAYLOAD_SECRET || "",
-  typescript: {
-    outputFile: path.resolve(dirname, "payload-types.ts"),
-  },
   db: postgresAdapter({
     pool: {
       connectionString: process.env.POSTGRES_URL || "",
@@ -35,7 +25,6 @@ export const config = buildConfig({
   routes: {
     admin: "/",
   },
-  sharp,
   plugins: [
     // storage-adapter-placeholder
   ],

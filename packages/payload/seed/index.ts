@@ -1,8 +1,10 @@
-import payload from "@acme/payload";
+import { getPayload } from "@acme/payload";
 
 import { seedUsers } from "./collections/users";
 
 async function run() {
+  const payload = await getPayload();
+
   try {
     const isSeeded =
       (await payload.count({ collection: "users" })).totalDocs > 0;
@@ -13,7 +15,7 @@ async function run() {
 
     payload.logger.info("Seeding database...");
 
-    await seedUsers();
+    await seedUsers(payload);
 
     payload.logger.info("Database seeded successfully");
     process.exit(0);

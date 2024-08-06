@@ -1,6 +1,6 @@
 import type { Config } from "payload";
 import { postgresAdapter } from "@payloadcms/db-postgres";
-import { buildConfig } from "payload";
+import { buildConfig, getPayload as getPayloadPromise } from "payload";
 
 import { Posts } from "./collections/Posts";
 import { Users } from "./collections/Users";
@@ -26,6 +26,12 @@ const payloadConfig = {
 } satisfies Config;
 
 export const config = buildConfig(payloadConfig);
+
+// avoid top-level await for Expo CJS compatibility
+export async function getPayload() {
+  const payload = await getPayloadPromise({ config });
+  return payload;
+}
 
 // const payload = await getPayload({ config });
 // export default payload;

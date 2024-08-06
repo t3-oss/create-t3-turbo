@@ -6,7 +6,9 @@
     "baseUrl": ".",
     "paths": {
       "~/*": ["./src/*"],
-      "@payload-config": ["./src/payload.config.ts"]
+      "@payload-config": [
+        "../../node_modules/@acme/payload/dist/payload.config"
+      ]
     },
     "plugins": [{ "name": "next" }],
     "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json",

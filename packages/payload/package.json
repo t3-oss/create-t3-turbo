@@ -7,19 +7,24 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
+    },
+    "./config": {
+      "types": "./dist/payload.config.d.ts",
+      "default": "./dist/payload.config.js"
     }
   },
   "license": "MIT",
   "scripts": {
     "build": "tsc --build --force",
-    "clean": "rm -rf .turbo node_modules",
+    "clean": "rm -rf .turbo dist node_modules",
     "dev": "tsc",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "payload": "payload",
-    "generate:types": "payload generate:types",
-    "seed": "tsx ./seed/index.ts"
+    "generate:types": "PAYLOAD_CONFIG_PATH=src/payload.config.ts PAYLOAD_TS_OUTPUT_PATH=src/payload-types.ts payload generate:types",
+    "seed": "yarn with-env tsx ./seed/index.ts",
+    "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
     "@payloadcms/db-postgres": "beta",
@@ -30,6 +35,8 @@
     "@acme/eslint-config": "workspace:*",
     "@acme/prettier-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
+    "@swc/core": "1.6.1",
+    "dotenv-cli": "workspace:*",
     "eslint": "workspace:*",
     "prettier": "workspace:*",
     "typescript": "workspace:*"

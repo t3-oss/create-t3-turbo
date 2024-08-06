@@ -27,26 +27,27 @@ We would like to use an API route for trpc inside expo but API routes currently 
 
 3. For Auth, first use payload's email/password flow, then add oAuth later.
 
-4. Seperate it CMS admin and website and use trpc API endpoint in Next.js app.
+4. Use [gluestack.io](https://gluestack.io/ui/docs/) for web & native ui
 
-5. Use Shadcn/ui (or [RN Reusables](https://github.com/mrzachnugent/react-native-reusables/))
+5. Convert t3-turbo.gg template, then build something that better showcases Payload's features
 
-6. Convert t3-turbo.gg template, then build something that better showcases Payload's features
+6. Uses yarn instead of pnpm because less issues with React19 RC.
 
-7. Uses yarn instead of pnpm because less issues with React19 RC.
-
-8. For blob storage use vercel. For emails loops.so.
+7. For blob storage use vercel. For emails loops.so.
 
 ## Resources
-
-### Expo Router in Monorepo
-
-Set `EXPO_USE_METRO_WORKSPACE_ROOT=1` so that Expo Router can find the entrypoint in the monorepo (See https://docs.expo.dev/guides/monorepos/#change-default-entrypoint)
-
-### Auth
-
-trpc + payload with auth: https://github.com/contentql/pin-hcms/blob/main/src/trpc/index.ts#L17
 
 ### Starter kit
 
 react native starter kit with: nativewind, supabase auth, expo router, and react native reuseables https://github.com/a0m0rajab/rnr-base-bare/tree/master
+
+## Credit
+
+- https://github.com/arvl130/trpc-expo-api-routes-demo
+- https://github.com/contentql/pin-hcms
+
+## Roadmap
+
+- [ ] merge origin
+- [ ] env vars in expo & packages
+- [ ] top-level payload await

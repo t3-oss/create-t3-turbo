@@ -2,12 +2,12 @@ import * as Linking from "expo-linking";
 import { useRouter } from "expo-router";
 import * as Browser from "expo-web-browser";
 
-import { api } from "./api";
-import { getBaseUrl } from "./base-url";
-import { deleteToken, setToken } from "./session-store";
+import { api } from "@acme/api/provider";
+
+import { deleteToken, setToken } from "~/utils/token";
 
 export const signIn = async () => {
-  const signInUrl = `${getBaseUrl()}/api/auth/signin`;
+  const signInUrl = `/api/auth/signin`;
   const redirectTo = Linking.createURL("/login");
   const result = await Browser.openAuthSessionAsync(
     `${signInUrl}?expo-redirect=${encodeURIComponent(redirectTo)}`,
@@ -41,12 +41,9 @@ export const useSignIn = () => {
 
 export const useSignOut = () => {
   const utils = api.useUtils();
-  //   const signOut = api.auth.signOut.useMutation();
   const router = useRouter();
 
   return async () => {
-    // const res = await signOut.mutateAsync();
-    // if (!res.success) return;
     await deleteToken();
     await utils.invalidate();
     router.replace("/");

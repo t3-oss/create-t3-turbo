@@ -21,13 +21,15 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@acme/api@workspace:packages/api"
   dependencies:
-    "@acme/auth": "workspace:*"
     "@acme/eslint-config": "workspace:*"
     "@acme/payload": "workspace:*"
     "@acme/prettier-config": "workspace:*"
     "@acme/tsconfig": "workspace:*"
     "@acme/validators": "workspace:*"
-    "@trpc/server": "workspace:*"
+    "@tanstack/react-query": "npm:^5.51.9"
+    "@trpc/client": "npm:^11.0.0-rc.466"
+    "@trpc/react-query": "npm:^11.0.0-rc.466"
+    "@trpc/server": "npm:^11.0.0-rc.466"
     eslint: "workspace:*"
     prettier: "workspace:*"
     superjson: "npm:2.2.1"
@@ -51,28 +53,6 @@ __metadata:
     nitropack: "npm:^2.9.7"
     prettier: "npm:^3.3.3"
     typescript: "npm:^5.5.4"
-  languageName: unknown
-  linkType: soft
-
-"@acme/auth@workspace:*, @acme/auth@workspace:packages/auth":
-  version: 0.0.0-use.local
-  resolution: "@acme/auth@workspace:packages/auth"
-  dependencies:
-    "@acme/eslint-config": "workspace:*"
-    "@acme/payload": "workspace:*"
-    "@acme/prettier-config": "workspace:*"
-    "@acme/tsconfig": "workspace:*"
-    "@auth/core": "npm:0.34.2"
-    "@auth/drizzle-adapter": "npm:^1.4.2"
-    "@t3-oss/env-nextjs": "npm:^0.11.0"
-    eslint: "workspace:*"
-    next: "npm:^14.2.4"
-    next-auth: "npm:5.0.0-beta.19"
-    prettier: "workspace:*"
-    react: "npm:18.3.1"
-    react-dom: "npm:18.3.1"
-    typescript: "workspace:*"
-    zod: "workspace:*"
   languageName: unknown
   linkType: soft
 
@@ -134,10 +114,6 @@ __metadata:
     "@bacons/text-decoder": "npm:^0.0.0"
     "@expo/metro-config": "npm:^0.18.8"
     "@reactioncommerce/babel-remove-es-create-require": "npm:^1.0.0"
-    "@tanstack/react-query": "workspace:*"
-    "@trpc/client": "workspace:*"
-    "@trpc/react-query": "workspace:*"
-    "@trpc/server": "workspace:*"
     "@types/babel__core": "npm:^7.20.5"
     "@types/react": "npm:^18.3.3"
     babel-plugin-transform-import-meta: "npm:^2.2.1"
@@ -163,7 +139,6 @@ __metadata:
     react-native-safe-area-context: "npm:~4.10.1"
     react-native-screens: "npm:~3.31.1"
     react-native-web: "npm:~0.19.10"
-    superjson: "npm:2.2.1"
     tailwindcss: "npm:^3.4.7"
     typescript: "workspace:*"
   languageName: unknown
@@ -180,7 +155,6 @@ __metadata:
   resolution: "@acme/nextjs@workspace:apps/nextjs"
   dependencies:
     "@acme/api": "workspace:*"
-    "@acme/auth": "workspace:*"
     "@acme/eslint-config": "workspace:*"
     "@acme/prettier-config": "workspace:*"
     "@acme/tailwind-config": "workspace:*"
@@ -188,10 +162,6 @@ __metadata:
     "@acme/ui": "workspace:*"
     "@acme/validators": "workspace:*"
     "@t3-oss/env-nextjs": "npm:^0.11.0"
-    "@tanstack/react-query": "workspace:*"
-    "@trpc/client": "workspace:*"
-    "@trpc/react-query": "workspace:*"
-    "@trpc/server": "workspace:*"
     "@types/node": "workspace:*"
     "@types/react": "npm:^18.3.3"
     "@types/react-dom": "npm:^18.3.0"
@@ -323,32 +293,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@auth/core@npm:0.32.0":
-  version: 0.32.0
-  resolution: "@auth/core@npm:0.32.0"
-  dependencies:
-    "@panva/hkdf": "npm:^1.1.1"
-    "@types/cookie": "npm:0.6.0"
-    cookie: "npm:0.6.0"
-    jose: "npm:^5.1.3"
-    oauth4webapi: "npm:^2.9.0"
-    preact: "npm:10.11.3"
-    preact-render-to-string: "npm:5.2.3"
-  peerDependencies:
-    "@simplewebauthn/browser": ^9.0.1
-    "@simplewebauthn/server": ^9.0.2
-    nodemailer: ^6.8.0
-  peerDependenciesMeta:
-    "@simplewebauthn/browser":
-      optional: true
-    "@simplewebauthn/server":
-      optional: true
-    nodemailer:
-      optional: true
-  checksum: 10c0/8e48d6938feca1ce4af76983cbe070684c1b10cf1f3f6799492376d4ef81559c2f841f46da07ed9e9f59d2356abe649937deeefa36fa5f94ff5c43ab5466963e
-  languageName: node
-  linkType: hard
-
 "@auth/core@npm:0.34.2":
   version: 0.34.2
   resolution: "@auth/core@npm:0.34.2"
@@ -372,15 +316,6 @@ __metadata:
     nodemailer:
       optional: true
   checksum: 10c0/c4f0899f652200fd8516fc9c715dbc0c704fd7b8f99a4470fe398052c385284896cbc18e52028a8688e4d274a4972cff8acc50b28965268904679bef8ff15707
-  languageName: node
-  linkType: hard
-
-"@auth/drizzle-adapter@npm:^1.4.2":
-  version: 1.4.2
-  resolution: "@auth/drizzle-adapter@npm:1.4.2"
-  dependencies:
-    "@auth/core": "npm:0.34.2"
-  checksum: 10c0/bde453d3d454443cfeb4be20d7bb9cf90b56dcbff36a62b578c7e9d54b5a6ed245390f16a29d9be8312709a51dc3efdc6757d518c9b54be4b0d7dd3614013393
   languageName: node
   linkType: hard
 
@@ -3608,21 +3543,21 @@ __metadata:
   linkType: hard
 
 "@floating-ui/core@npm:^1.6.0":
-  version: 1.6.5
-  resolution: "@floating-ui/core@npm:1.6.5"
+  version: 1.6.6
+  resolution: "@floating-ui/core@npm:1.6.6"
   dependencies:
-    "@floating-ui/utils": "npm:^0.2.5"
-  checksum: 10c0/41651f6ebed3123809a3992966d9d6b740048fe255e4754df61043ce28b40ba7202cf7ac163873b7f4c5f9969930e9d7cd3691e178739304eed1adc42bb6c628
+    "@floating-ui/utils": "npm:^0.2.6"
+  checksum: 10c0/c94f6d0a800185b1839b879231ef65f8dc7736a52c0297ed042f23624519748ed1145469f3aa7f864474f3dccd9ec3bedeaba891f409464a176c8f3416b60619
   languageName: node
   linkType: hard
 
 "@floating-ui/dom@npm:^1.0.0, @floating-ui/dom@npm:^1.0.1":
-  version: 1.6.8
-  resolution: "@floating-ui/dom@npm:1.6.8"
+  version: 1.6.9
+  resolution: "@floating-ui/dom@npm:1.6.9"
   dependencies:
     "@floating-ui/core": "npm:^1.6.0"
-    "@floating-ui/utils": "npm:^0.2.5"
-  checksum: 10c0/d52e257bbf1f04da7882d847dfe128783966a19e6d6a9e6d09d57d32bdc7255efce7ae15c3be781e349ae3b18c4575e910afde3e73ae57c31763e8a799f19f45
+    "@floating-ui/utils": "npm:^0.2.6"
+  checksum: 10c0/71ab68e6880446835a865d05db0889e5cd40a6007e97325624d7ce57b50e7f8533934cdab667365219020e9c8ae840c1e1bd37b1e4cd6937ac48ca2e2f11e333
   languageName: node
   linkType: hard
 
@@ -3639,23 +3574,23 @@ __metadata:
   linkType: hard
 
 "@floating-ui/react@npm:^0.26.2":
-  version: 0.26.20
-  resolution: "@floating-ui/react@npm:0.26.20"
+  version: 0.26.21
+  resolution: "@floating-ui/react@npm:0.26.21"
   dependencies:
     "@floating-ui/react-dom": "npm:^2.1.1"
-    "@floating-ui/utils": "npm:^0.2.5"
+    "@floating-ui/utils": "npm:^0.2.6"
     tabbable: "npm:^6.0.0"
   peerDependencies:
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
-  checksum: 10c0/2fe96b8123734a9facb560b235bbb9a21849890f7a84a48c4e1d496dde045aafecb4575c3e035413f2d88a8324651c85b018bfbf8d57eb1fb9e469cdd211ca86
+  checksum: 10c0/13a6c458d9316a969fbb93840fdd3f23ca6a5ecd68a6069dc8e7384f1097f13d6221e2fdf211dd265d19b80a95e02bc97e0f77cfb408bea01eff7c4a9b49f5ea
   languageName: node
   linkType: hard
 
-"@floating-ui/utils@npm:^0.2.5":
-  version: 0.2.5
-  resolution: "@floating-ui/utils@npm:0.2.5"
-  checksum: 10c0/9e1c7330433c3a8f226c5a44ed1dcdda13b313c4126ce3281f970d1e471b1c9fd9e1559cc76a0592af25d55a3f81afe1a5778aa7b80e51c9fa01930cd1d5557e
+"@floating-ui/utils@npm:^0.2.6":
+  version: 0.2.6
+  resolution: "@floating-ui/utils@npm:0.2.6"
+  checksum: 10c0/8de3108e7862ca756be501dbe6ff49996ff15f545a282acf39bf268ae2977ceb14298bb155c5c7e6f7885df7fdcc6abb136eb94cde61a3b5a7d96f6dc5b74ad4
   languageName: node
   linkType: hard
 
@@ -5686,10 +5621,10 @@ __metadata:
   linkType: hard
 
 "@remix-run/node@npm:^2.7.2":
-  version: 2.11.0
-  resolution: "@remix-run/node@npm:2.11.0"
+  version: 2.11.1
+  resolution: "@remix-run/node@npm:2.11.1"
   dependencies:
-    "@remix-run/server-runtime": "npm:2.11.0"
+    "@remix-run/server-runtime": "npm:2.11.1"
     "@remix-run/web-fetch": "npm:^4.4.2"
     "@web3-storage/multipart-parser": "npm:^1.0.0"
     cookie-signature: "npm:^1.1.0"
@@ -5701,7 +5636,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 10c0/3f7e060c5cad3d39d188c6d0a01c16ec41b65fe7b50fd7e9b403de02e7cb5b0a7d1b97f24d41952d1eaab0798d1798ec5edc21d443effe6a5fad4010bb76a82a
+  checksum: 10c0/24c9b75530742cf6fef9f19a38967f2a90a6452df3205f55541f45b7f3f9fb39358a0a4bb3c5fb951795dfa005bfbab6055ff422f8e0ac2664ef49b49d672f49
   languageName: node
   linkType: hard
 
@@ -5712,9 +5647,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@remix-run/server-runtime@npm:2.11.0":
-  version: 2.11.0
-  resolution: "@remix-run/server-runtime@npm:2.11.0"
+"@remix-run/server-runtime@npm:2.11.1":
+  version: 2.11.1
+  resolution: "@remix-run/server-runtime@npm:2.11.1"
   dependencies:
     "@remix-run/router": "npm:1.19.0"
     "@types/cookie": "npm:^0.6.0"
@@ -5728,7 +5663,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 10c0/46bd3bc0db562c71954e88a36e4640f34b7cf289530b71111753d94f02ff651d0e5663289140e49d4fd24029fa9d821ed491fd7d5d7edc7a848d32ac2caf4528
+  checksum: 10c0/c3ce6f7cefbabfaa4c7d9dcbe06b6fb8a0a359f200dfcab3d7c1c3956ad032e0f156dd37098f4a034fafe5a6ed1e0b670daebb61a868f76f4752e8416b15d146
   languageName: node
   linkType: hard
 
@@ -14476,28 +14411,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-auth@npm:5.0.0-beta.19":
-  version: 5.0.0-beta.19
-  resolution: "next-auth@npm:5.0.0-beta.19"
-  dependencies:
-    "@auth/core": "npm:0.32.0"
-  peerDependencies:
-    "@simplewebauthn/browser": ^9.0.1
-    "@simplewebauthn/server": ^9.0.2
-    next: ^14 || ^15.0.0-0
-    nodemailer: ^6.6.5
-    react: ^18.2.0 || ^19.0.0-0
-  peerDependenciesMeta:
-    "@simplewebauthn/browser":
-      optional: true
-    "@simplewebauthn/server":
-      optional: true
-    nodemailer:
-      optional: true
-  checksum: 10c0/30804eae158b9e57cdeeeef81d4aee10aabff8c415403b34cab673eb5eeadfe2232d77d782a7b1ad862bb3dc60faacf51794a23e52679243d156531609b7875f
-  languageName: node
-  linkType: hard
-
 "next-themes@npm:^0.3.0":
   version: 0.3.0
   resolution: "next-themes@npm:0.3.0"
@@ -14969,7 +14882,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"oauth4webapi@npm:^2.10.4, oauth4webapi@npm:^2.9.0":
+"oauth4webapi@npm:^2.10.4":
   version: 2.11.1
   resolution: "oauth4webapi@npm:2.11.1"
   checksum: 10c0/69446298b68ac18179a4e8c818e2ad5610e39271405b8af7df1288e8180d6b9ca4051bd7563d9be1e94aa558453290051fdc7a441ed91a3ac238028908660a79
@@ -15993,13 +15906,13 @@ __metadata:
   linkType: hard
 
 "postcss@npm:^8.4.23, postcss@npm:^8.4.40, postcss@npm:~8.4.32":
-  version: 8.4.40
-  resolution: "postcss@npm:8.4.40"
+  version: 8.4.41
+  resolution: "postcss@npm:8.4.41"
   dependencies:
     nanoid: "npm:^3.3.7"
     picocolors: "npm:^1.0.1"
     source-map-js: "npm:^1.2.0"
-  checksum: 10c0/65ed67573e5443beaeb582282ff27a6be7c7fe3b4d9fa15761157616f2b97510cb1c335023c26220b005909f007337026d6e3ff092f25010b484ad484e80ea7f
+  checksum: 10c0/c1828fc59e7ec1a3bf52b3a42f615dba53c67960ed82a81df6441b485fe43c20aba7f4e7c55425762fd99c594ecabbaaba8cf5b30fd79dfec5b52a9f63a2d690
   languageName: node
   linkType: hard
 

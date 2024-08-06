@@ -14,10 +14,10 @@ const payloadConfig = {
     user: Users.slug,
   },
   collections: [Users, Posts],
-  secret: process.env.PAYLOAD_SECRET || "",
+  secret: process.env.PAYLOAD_SECRET ?? "",
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.POSTGRES_URL || "",
+      connectionString: process.env.POSTGRES_URL ?? "",
     },
   }),
   routes: {

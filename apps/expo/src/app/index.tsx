@@ -10,10 +10,11 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Link, Stack, useRouter } from "expo-router";
 
-import type { RouterOutputs } from "~/utils/api";
-import { api } from "~/utils/api";
+import type { RouterOutputs } from "@acme/api";
+import { api } from "@acme/api/provider";
+
 import { useSignOut, useUser } from "~/utils/auth";
-import { setToken } from "~/utils/session-store";
+import { setToken } from "~/utils/token";
 
 function PostCard(props: {
   post: RouterOutputs["post"]["all"]["docs"][number];
@@ -136,7 +137,7 @@ function LoginForm() {
         className="items-center rounded-md border border-input bg-background px-3 text-lg leading-[1.25] text-foreground"
         value={password}
         onChangeText={setPassword}
-        placeholder="Content"
+        placeholder="password"
       />
       {error?.data?.zodError?.fieldErrors.password && (
         <Text className="mb-2 text-destructive">

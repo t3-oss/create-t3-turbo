@@ -2,15 +2,13 @@ import type { TRPCRouterRecord } from "@trpc/server";
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 
-// import { invalidateSessionToken } from "@acme/auth";
-
 import { protectedProcedure, publicProcedure } from "../trpc";
 
 export const authRouter = {
-  getUser: publicProcedure.query(({ ctx }) => {
+  getUser: protectedProcedure.query(({ ctx }) => {
     return ctx.user;
   }),
-  getUserPermissions: publicProcedure.query(({ ctx }) => {
+  getUserPermissions: protectedProcedure.query(({ ctx }) => {
     return ctx.permissions;
   }),
   signIn: publicProcedure
@@ -31,11 +29,4 @@ export const authRouter = {
   getSecretMessage: protectedProcedure.query(() => {
     return "you can see this secret message!";
   }),
-  //   signOut: protectedProcedure.mutation(async (opts) => {
-  //     if (!opts.ctx.token) {
-  //       return { success: false };
-  //     }
-  //     await invalidateSessionToken(opts.ctx.token);
-  //     return { success: true };
-  //   }),
 } satisfies TRPCRouterRecord;

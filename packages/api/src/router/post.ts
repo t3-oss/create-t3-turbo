@@ -1,7 +1,7 @@
 import type { TRPCRouterRecord } from "@trpc/server";
 import { z } from "zod";
 
-import { publicProcedure } from "../trpc";
+import { protectedProcedure, publicProcedure } from "../trpc";
 
 export const postRouter = {
   all: publicProcedure.query(async ({ ctx }) => {
@@ -22,7 +22,7 @@ export const postRouter = {
       return post;
     }),
 
-  create: publicProcedure
+  create: protectedProcedure
     .input(z.object({ title: z.string(), content: z.string() }))
     .mutation(async ({ ctx, input }) => {
       return await ctx.payload.create({
@@ -31,10 +31,12 @@ export const postRouter = {
       });
     }),
 
-  delete: publicProcedure.input(z.number()).mutation(async ({ ctx, input }) => {
-    return await ctx.payload.delete({
-      collection: "posts",
-      id: input,
-    });
-  }),
+  delete: protectedProcedure
+    .input(z.number())
+    .mutation(async ({ ctx, input }) => {
+      return await ctx.payload.delete({
+        collection: "posts",
+        id: input,
+      });
+    }),
 } satisfies TRPCRouterRecord;

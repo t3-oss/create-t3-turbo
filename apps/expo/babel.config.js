@@ -8,7 +8,7 @@ module.exports = (api) => {
     ],
     plugins: ["react-native-reanimated/plugin"],
 
-    // Makes payload work in API routes.
+    // Necessary to use payload dependencies in API routes.
     // Remove when Expo Router supports dynamic imports + ESM in API routes.
     overrides: [
       {

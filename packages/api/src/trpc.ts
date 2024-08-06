@@ -15,17 +15,6 @@ import { ZodError } from "zod";
 import { config } from "@acme/payload";
 
 /**
- * Isomorphic Session getter for API requests
- * - Expo requests will have a session token in the Authorization header
- * - Next.js requests will have a session token in cookies
- */
-// const isomorphicGetSession = async (req: Request) => {
-//   const authToken = req.headers.get("Authorization") ?? null;
-//   if (authToken) return validateToken(req);
-//   return auth();
-// };
-
-/**
  * 1. CONTEXT
  *
  * This section defines the "contexts" that are available in the backend API.

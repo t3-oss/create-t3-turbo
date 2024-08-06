@@ -2,11 +2,12 @@ import type { Metadata, Viewport } from "next";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 
+import { TRPCReactProvider } from "@acme/api/provider";
 import { cn } from "@acme/ui";
 import { ThemeProvider, ThemeToggle } from "@acme/ui/theme";
 import { Toaster } from "@acme/ui/toast";
 
-import { TRPCReactProvider } from "~/trpc/react";
+import { getToken } from "~/utils/token";
 
 import "~/app/globals.css";
 
@@ -40,7 +41,11 @@ export const viewport: Viewport = {
   ],
 };
 
-export default function RootLayout(props: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -51,12 +56,18 @@ export default function RootLayout(props: { children: React.ReactNode }) {
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <TRPCReactProvider>{props.children}</TRPCReactProvider>
+          <TRPCReactProvider
+            source="nextjs-react"
+            token={getToken()}
+            baseUrl={metadata.metadataBase?.origin}
+          >
+            {children}
+          </TRPCReactProvider>
           <div className="absolute bottom-4 right-4">
             <ThemeToggle />
           </div>
           <Toaster />
-        </ThemeProvider>
+        </ThemeProvider>{" "}
       </body>
     </html>
   );

@@ -1,7 +1,7 @@
 import { SafeAreaView, Text, View } from "react-native";
 import { Stack, useGlobalSearchParams } from "expo-router";
 
-import { api } from "~/utils/api";
+import { api } from "@acme/api/provider";
 
 export default function Post() {
   const { id } = useGlobalSearchParams();

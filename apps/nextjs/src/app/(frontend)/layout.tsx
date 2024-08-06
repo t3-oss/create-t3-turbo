@@ -9,9 +9,9 @@ import { Toaster } from "@acme/ui/toast";
 
 import { getToken } from "~/utils/token";
 
-import "~/app/globals.css";
+import "./globals.css";
 
-import { env } from "~/env";
+import { env } from "../../env";
 
 export const metadata: Metadata = {
   metadataBase: new URL(

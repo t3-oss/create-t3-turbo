@@ -24,27 +24,7 @@ const config = withTurborepoManagedCache(
 // https://github.com/expo/expo/issues/26926
 config.resolver.unstable_enablePackageExports = true;
 
-// resolve prettier to an empty module because it causes issue with cjs bundling
-// config.resolver.resolveRequest = (context, moduleName, platform) => {
-//   if (platform === "web" && moduleName === "prettier") {
-//     return {
-//       type: "empty",
-//     };
-//   }
-
-//   // Ensure you call the default resolver.
-//   return context.resolveRequest(context, moduleName, platform);
-// };
-
-// Enabling tree shaking for web
-// config.transformer.getTransformOptions = async () => ({
-//   transform: {
-//     experimentalImportSupport: true,
-//   },
-// });
-
-// config.resetCache = true;
-
+config.resolver.requireCycleIgnorePatterns = [/(^|\/|\\)node_modules($|\/|\\)/];
 module.exports = config;
 
 /**

@@ -6,7 +6,8 @@
   "scripts": {
     "build": "yarn with-env next build",
     "clean": "git clean -xdf .next .turbo node_modules",
-    "dev": "yarn with-env next dev -p 3000",
+    "dev": "yarn with-env next dev",
+    "devsafe": "rm -rf .next && with-env next dev",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint",
     "start": "yarn with-env next start",
@@ -15,14 +16,17 @@
   },
   "dependencies": {
     "@acme/api": "workspace:*",
+    "@acme/payload": "workspace:*",
     "@acme/ui": "workspace:*",
     "@acme/validators": "workspace:*",
+    "@payloadcms/next": "beta",
+    "@payloadcms/ui": "beta",
     "@t3-oss/env-nextjs": "^0.11.0",
     "geist": "^1.3.1",
-    "next": "^14.2.4",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "superjson": "2.2.1",
+    "graphql": "^16.9.0",
+    "next": "15.0.0-rc.0",
+    "react": "^19.0.0-rc-6230622a1a-20240610",
+    "react-dom": "^19.0.0-rc-6230622a1a-20240610",
     "zod": "workspace:*"
   },
   "devDependencies": {
@@ -31,14 +35,15 @@
     "@acme/tailwind-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
     "@types/node": "workspace:*",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "dotenv-cli": "^7.4.2",
+    "@types/react": "npm:types-react@19.0.0-rc.0",
+    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.0",
+    "dotenv-cli": "workspace:*",
     "eslint": "workspace:*",
-    "jiti": "^1.21.6",
-    "prettier": "workspace:*",
-    "tailwindcss": "^3.4.7",
     "typescript": "workspace:*"
+  },
+  "overrides": {
+    "@types/react": "npm:types-react@19.0.0-rc.0",
+    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.0"
   },
   "prettier": "@acme/prettier-config"
 }

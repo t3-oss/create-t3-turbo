@@ -20,9 +20,6 @@ const payloadConfig = {
       connectionString: process.env.POSTGRES_URL ?? "",
     },
   }),
-  routes: {
-    admin: "/",
-  },
   plugins: [
     // storage-adapter-placeholder
   ],

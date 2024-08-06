@@ -164,19 +164,21 @@ function LoginForm() {
   );
 }
 
-function MobileAuth() {
+function AuthShowcase() {
   const user = useUser();
   const signOut = useSignOut();
 
   return (
     <>
-      <Text className="pb-2 text-center text-xl font-semibold text-white">
-        {user?.id ?? "Not logged in"}
+      <Text className="pb-2 text-center text-2xl">
+        {user?.email ? "Logged in as " + user.email : "Not logged in"}
       </Text>
       {!user?.id ? (
         <LoginForm />
       ) : (
-        <Button onPress={signOut} title="SignOut" color={"#5B65E9"} />
+        <View>
+          <Button onPress={signOut} title="SignOut" color={"#5B65E9"} />
+        </View>
       )}
     </>
   );
@@ -201,7 +203,7 @@ export default function Index() {
           Create <Text className="text-primary">T3</Text> Turbo
         </Text>
 
-        <MobileAuth />
+        <AuthShowcase />
 
         {!!postQuery.data?.docs.length && (
           <View className="py-2">

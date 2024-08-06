@@ -2,12 +2,9 @@ import type { Metadata, Viewport } from "next";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 
-import { TRPCReactProvider } from "@acme/api/provider";
 import { cn } from "@acme/ui";
-import { ThemeProvider, ThemeToggle } from "@acme/ui/theme";
-import { Toaster } from "@acme/ui/toast";
 
-import { getToken } from "~/utils/token";
+import { Providers } from "./providers";
 
 import "./globals.css";
 
@@ -55,19 +52,9 @@ export default function RootLayout({
           GeistMono.variable,
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <TRPCReactProvider
-            source="nextjs-react"
-            token={getToken()}
-            baseUrl={metadata.metadataBase?.origin}
-          >
-            {children}
-          </TRPCReactProvider>
-          <div className="absolute bottom-4 right-4">
-            <ThemeToggle />
-          </div>
-          <Toaster />
-        </ThemeProvider>{" "}
+        <Providers baseUrl={metadata.metadataBase?.origin}>
+          {children}
+        </Providers>
       </body>
     </html>
   );

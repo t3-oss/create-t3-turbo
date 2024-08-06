@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 
-// import { AuthShowcase } from "./_components/auth-showcase";
+import { AuthShowcase } from "./_components/auth-showcase";
 import {
   CreatePostForm,
   PostCardSkeleton,
@@ -14,9 +14,8 @@ export default function HomePage() {
         <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
           Create <span className="text-primary">T3</span> Turbo
         </h1>
-        {/* <AuthShowcase /> */}
+        <AuthShowcase />
 
-        <CreatePostForm />
         <div className="w-full max-w-2xl overflow-y-scroll">
           <Suspense
             fallback={
@@ -30,6 +29,7 @@ export default function HomePage() {
             <PostList />
           </Suspense>
         </div>
+        <CreatePostForm />
       </div>
     </main>
   );

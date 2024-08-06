@@ -25,7 +25,6 @@ export function TRPCReactProvider(props: {
 }) {
   const { token, source, baseUrl = "" } = props;
   const queryClient = getQueryClient();
-
   const [trpcClient] = useState(() =>
     api.createClient({
       links: [

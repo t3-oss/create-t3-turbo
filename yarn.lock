@@ -62,11 +62,12 @@ __metadata:
   dependencies:
     "@acme/prettier-config": "workspace:*"
     "@acme/tsconfig": "workspace:*"
-    "@next/eslint-plugin-next": "npm:^14.2.5"
+    "@eslint/compat": "npm:^1.1.1"
+    "@next/eslint-plugin-next": "npm:^14.2.4"
     eslint: "workspace:*"
     eslint-plugin-import: "npm:^2.29.1"
     eslint-plugin-jsx-a11y: "npm:^6.9.0"
-    eslint-plugin-react: "npm:^7.34.3"
+    eslint-plugin-react: "npm:^7.35.0"
     eslint-plugin-react-hooks: "npm:rc"
     eslint-plugin-turbo: "npm:^2.0.11"
     prettier: "workspace:*"
@@ -2903,6 +2904,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@eslint/compat@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "@eslint/compat@npm:1.1.1"
+  checksum: 10c0/ca8aa3811fa22d45913f5724978e6f3ae05fb7685b793de4797c9db3b0e22b530f0f492011b253754bffce879d7cece65762cc3391239b5d2249aef8230edc9a
+  languageName: node
+  linkType: hard
+
 "@eslint/config-array@npm:^0.17.1":
   version: 0.17.1
   resolution: "@eslint/config-array@npm:0.17.1"
@@ -4059,7 +4067,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/eslint-plugin-next@npm:^14.2.5":
+"@next/eslint-plugin-next@npm:^14.2.4":
   version: 14.2.5
   resolution: "@next/eslint-plugin-next@npm:14.2.5"
   dependencies:
@@ -10088,7 +10096,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-react@npm:^7.34.3":
+"eslint-plugin-react@npm:^7.35.0":
   version: 7.35.0
   resolution: "eslint-plugin-react@npm:7.35.0"
   dependencies:

@@ -33,7 +33,9 @@
     "eslint": "^9.6.0",
     "prettier": "^3.3.2",
     "typescript": "^5.5.3",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "metro-runtime@npm:^0.80.3": "patch:metro-runtime@npm%3A0.80.9#~/.yarn/patches/metro-runtime-npm-0.80.9-3f02d2003d.patch",
+    "metro-runtime@npm:0.80.9": "patch:metro-runtime@npm%3A0.80.9#~/.yarn/patches/metro-runtime-npm-0.80.9-3f02d2003d.patch"
   },
   "workspaces": [
     "apps/*",

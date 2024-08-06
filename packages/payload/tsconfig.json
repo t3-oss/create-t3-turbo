@@ -1,12 +1,6 @@
 {
   "extends": "@acme/tsconfig/internal-package.json",
-  "compilerOptions": {
-    "declarationDir": "dist",
-    "rootDir": "src",
-    "paths": {
-      "@acme/payload/*": ["./dist/*"]
-    }
-  },
-  "include": ["*.ts", "src"],
+  "compilerOptions": {},
+  "include": ["src"],
   "exclude": ["node_modules"]
 }

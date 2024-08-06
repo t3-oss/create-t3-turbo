@@ -7,8 +7,7 @@ import { createTRPCReact } from "@trpc/react-query";
 import SuperJSON from "superjson";
 
 import type { AppRouter } from "./root";
-
-// import { env } from "~/env";
+import { env } from "./env";
 
 export type { RouterInputs, RouterOutputs } from "@acme/api";
 export const api = createTRPCReact<AppRouter>();
@@ -32,7 +31,7 @@ export function TRPCReactProvider(props: {
       links: [
         loggerLink({
           enabled: (op) =>
-            process.env.NODE_ENV === "development" ||
+            env.NODE_ENV === "development" ||
             (op.direction === "down" && op.result instanceof Error),
           colorMode: "ansi",
         }),

@@ -11,7 +11,8 @@
     "./config": {
       "types": "./dist/payload.config.d.ts",
       "default": "./dist/payload.config.js"
-    }
+    },
+    "./env": "./src/env.ts"
   },
   "license": "MIT",
   "scripts": {
@@ -28,8 +29,10 @@
   },
   "dependencies": {
     "@payloadcms/db-postgres": "beta",
+    "@t3-oss/env-core": "workspace:*",
     "payload": "beta",
-    "tsx": "^4.16.5"
+    "tsx": "^4.16.5",
+    "zod": "workspace:*"
   },
   "devDependencies": {
     "@acme/eslint-config": "workspace:*",

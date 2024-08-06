@@ -4,8 +4,9 @@ import { buildConfig, getPayload as getPayloadPromise } from "payload";
 
 import { Posts } from "./collections/Posts";
 import { Users } from "./collections/Users";
+import { env } from "./env";
 
-// this is necessary so that consumers of this package can infer types of the Payload config
+// necessary so that consumers of this package can infer types of the Payload config
 export * from "./payload-types";
 
 const payloadConfig = {
@@ -14,10 +15,10 @@ const payloadConfig = {
     user: Users.slug,
   },
   collections: [Users, Posts],
-  secret: process.env.PAYLOAD_SECRET ?? "",
+  secret: env.PAYLOAD_SECRET,
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.POSTGRES_URL ?? "",
+      connectionString: env.DATABASE_URI,
     },
   }),
   plugins: [

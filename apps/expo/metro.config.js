@@ -3,13 +3,12 @@ const { getDefaultConfig } = require("expo/metro-config");
 const { FileStore } = require("metro-cache");
 const { withNativeWind } = require("nativewind/metro");
 const findWorkspaceRoot = require("find-yarn-workspace-root");
-
 const path = require("path");
 
-const workspaceRoot = findWorkspaceRoot(__dirname);
+// Import env files to validate at build time. Use jiti so we can load .ts files in here.
+const jiti = require("jiti")(__filename);
 
-// Load the environment variables from the workspace root .env file
-require("@expo/env").load(workspaceRoot, { force: true });
+jiti("./src/env.ts");
 
 const config = withTurborepoManagedCache(
   withMonorepoPaths(
@@ -24,7 +23,6 @@ const config = withTurborepoManagedCache(
 // https://github.com/expo/expo/issues/26926
 config.resolver.unstable_enablePackageExports = true;
 
-config.resolver.requireCycleIgnorePatterns = [/(^|\/|\\)node_modules($|\/|\\)/];
 module.exports = config;
 
 /**
@@ -37,6 +35,7 @@ module.exports = config;
  */
 function withMonorepoPaths(config) {
   const projectRoot = __dirname;
+  const workspaceRoot = findWorkspaceRoot(__dirname);
 
   // #1 - Watch all files in the monorepo
   config.watchFolders = [workspaceRoot];

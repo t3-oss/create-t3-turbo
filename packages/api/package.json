@@ -25,21 +25,21 @@
   "dependencies": {
     "@acme/payload": "workspace:*",
     "@acme/validators": "workspace:*",
-    "@t3-oss/env-core": "workspace:*",
+    "@t3-oss/env-core": "catalog:",
     "@tanstack/react-query": "^5.51.9",
     "@trpc/client": "^11.0.0-rc.466",
     "@trpc/react-query": "^11.0.0-rc.466",
     "@trpc/server": "^11.0.0-rc.466",
     "superjson": "2.2.1",
-    "zod": "workspace:*"
+    "zod": "catalog:"
   },
   "devDependencies": {
     "@acme/eslint-config": "workspace:*",
     "@acme/prettier-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
-    "eslint": "workspace:*",
-    "prettier": "workspace:*",
-    "typescript": "workspace:*"
+    "eslint": "catalog:",
+    "prettier": "catalog:",
+    "typescript": "catalog:"
   },
   "prettier": "@acme/prettier-config"
 }

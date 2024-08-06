@@ -21,26 +21,26 @@
     "@acme/validators": "workspace:*",
     "@payloadcms/next": "beta",
     "@payloadcms/ui": "beta",
-    "@t3-oss/env-nextjs": "workspace:*",
+    "@t3-oss/env-nextjs": "catalog:",
     "geist": "^1.3.1",
     "graphql": "^16.9.0",
     "next": "15.0.0-rc.0",
     "react": "^19.0.0-rc-6230622a1a-20240610",
     "react-dom": "^19.0.0-rc-6230622a1a-20240610",
-    "zod": "workspace:*"
+    "zod": "catalog:"
   },
   "devDependencies": {
     "@acme/eslint-config": "workspace:*",
     "@acme/prettier-config": "workspace:*",
     "@acme/tailwind-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
-    "@types/node": "workspace:*",
+    "@types/node": "catalog:",
     "@types/react": "npm:types-react@19.0.0-rc.0",
     "@types/react-dom": "npm:types-react-dom@19.0.0-rc.0",
-    "dotenv-cli": "workspace:*",
-    "eslint": "workspace:*",
-    "jiti": "workspace:*",
-    "typescript": "workspace:*"
+    "dotenv-cli": "catalog:",
+    "eslint": "catalog:",
+    "jiti": "catalog:",
+    "typescript": "catalog:"
   },
   "overrides": {
     "@types/react": "npm:types-react@19.0.0-rc.0",

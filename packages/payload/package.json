@@ -29,20 +29,20 @@
   },
   "dependencies": {
     "@payloadcms/db-postgres": "beta",
-    "@t3-oss/env-core": "workspace:*",
+    "@t3-oss/env-core": "catalog:",
     "payload": "beta",
     "tsx": "^4.16.5",
-    "zod": "workspace:*"
+    "zod": "catalog:"
   },
   "devDependencies": {
     "@acme/eslint-config": "workspace:*",
     "@acme/prettier-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
     "@swc/core": "1.6.1",
-    "dotenv-cli": "workspace:*",
-    "eslint": "workspace:*",
-    "prettier": "workspace:*",
-    "typescript": "workspace:*"
+    "dotenv-cli": "catalog:",
+    "eslint": "catalog:",
+    "prettier": "catalog:",
+    "typescript": "catalog:"
   },
   "prettier": "@acme/prettier-config"
 }

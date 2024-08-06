@@ -26,16 +26,16 @@ __metadata:
     "@acme/prettier-config": "workspace:*"
     "@acme/tsconfig": "workspace:*"
     "@acme/validators": "workspace:*"
-    "@t3-oss/env-core": "workspace:*"
+    "@t3-oss/env-core": "catalog:"
     "@tanstack/react-query": "npm:^5.51.9"
     "@trpc/client": "npm:^11.0.0-rc.466"
     "@trpc/react-query": "npm:^11.0.0-rc.466"
     "@trpc/server": "npm:^11.0.0-rc.466"
-    eslint: "workspace:*"
-    prettier: "workspace:*"
+    eslint: "catalog:"
+    prettier: "catalog:"
     superjson: "npm:2.2.1"
-    typescript: "workspace:*"
-    zod: "workspace:*"
+    typescript: "catalog:"
+    zod: "catalog:"
   languageName: unknown
   linkType: soft
 
@@ -48,12 +48,12 @@ __metadata:
     "@acme/tailwind-config": "workspace:*"
     "@acme/tsconfig": "workspace:*"
     "@auth/core": "npm:0.34.2"
-    "@types/node": "npm:^20.14.14"
-    eslint: "npm:^9.8.0"
+    "@types/node": "catalog:"
+    eslint: "catalog:"
     h3: "npm:^1.12.0"
     nitropack: "npm:^2.9.7"
-    prettier: "npm:^3.3.3"
-    typescript: "npm:^5.5.4"
+    prettier: "catalog:"
+    typescript: "catalog:"
   languageName: unknown
   linkType: soft
 
@@ -65,14 +65,14 @@ __metadata:
     "@acme/tsconfig": "workspace:*"
     "@eslint/compat": "npm:^1.1.1"
     "@next/eslint-plugin-next": "npm:^14.2.4"
-    eslint: "workspace:*"
+    eslint: "catalog:"
     eslint-plugin-import: "npm:^2.29.1"
     eslint-plugin-jsx-a11y: "npm:^6.9.0"
     eslint-plugin-react: "npm:^7.35.0"
     eslint-plugin-react-hooks: "npm:rc"
     eslint-plugin-turbo: "npm:^2.0.11"
-    prettier: "workspace:*"
-    typescript: "workspace:*"
+    prettier: "catalog:"
+    typescript: "catalog:"
     typescript-eslint: "npm:rc-v8"
   languageName: unknown
   linkType: soft
@@ -97,8 +97,8 @@ __metadata:
     "@types/babel__core": "npm:^7.20.5"
     "@types/react": "npm:^18.3.3"
     babel-plugin-transform-import-meta: "npm:^2.2.1"
-    dotenv-cli: "workspace:*"
-    eslint: "workspace:*"
+    dotenv-cli: "catalog:"
+    eslint: "catalog:"
     expo: "npm:^52.0.0-canary-20240719-83ee47b"
     expo-constants: "npm:~16.0.2"
     expo-dev-client: "npm:~4.0.19"
@@ -109,9 +109,9 @@ __metadata:
     expo-status-bar: "npm:~1.12.1"
     expo-web-browser: "npm:^13.0.3"
     find-yarn-workspace-root: "npm:^2.0.0"
-    jiti: "workspace:*"
+    jiti: "catalog:"
     nativewind: "npm:~4.0.36"
-    prettier: "workspace:*"
+    prettier: "catalog:"
     react: "npm:18.3.1"
     react-dom: "npm:18.2.0"
     react-native: "npm:~0.74.3"
@@ -121,8 +121,8 @@ __metadata:
     react-native-safe-area-context: "npm:~4.10.1"
     react-native-screens: "npm:~3.31.1"
     react-native-web: "npm:~0.19.10"
-    tailwindcss: "npm:^3.4.7"
-    typescript: "workspace:*"
+    tailwindcss: "catalog:"
+    typescript: "catalog:"
   languageName: unknown
   linkType: soft
 
@@ -146,20 +146,20 @@ __metadata:
     "@acme/validators": "workspace:*"
     "@payloadcms/next": "npm:beta"
     "@payloadcms/ui": "npm:beta"
-    "@t3-oss/env-nextjs": "workspace:*"
-    "@types/node": "workspace:*"
+    "@t3-oss/env-nextjs": "catalog:"
+    "@types/node": "catalog:"
     "@types/react": "npm:types-react@19.0.0-rc.0"
     "@types/react-dom": "npm:types-react-dom@19.0.0-rc.0"
-    dotenv-cli: "workspace:*"
-    eslint: "workspace:*"
+    dotenv-cli: "catalog:"
+    eslint: "catalog:"
     geist: "npm:^1.3.1"
     graphql: "npm:^16.9.0"
-    jiti: "workspace:*"
+    jiti: "catalog:"
     next: "npm:15.0.0-rc.0"
     react: "npm:^19.0.0-rc-6230622a1a-20240610"
     react-dom: "npm:^19.0.0-rc-6230622a1a-20240610"
-    typescript: "workspace:*"
-    zod: "workspace:*"
+    typescript: "catalog:"
+    zod: "catalog:"
   languageName: unknown
   linkType: soft
 
@@ -172,14 +172,14 @@ __metadata:
     "@acme/tsconfig": "workspace:*"
     "@payloadcms/db-postgres": "npm:beta"
     "@swc/core": "npm:1.6.1"
-    "@t3-oss/env-core": "workspace:*"
-    dotenv-cli: "workspace:*"
-    eslint: "workspace:*"
+    "@t3-oss/env-core": "catalog:"
+    dotenv-cli: "catalog:"
+    eslint: "catalog:"
     payload: "npm:beta"
-    prettier: "workspace:*"
+    prettier: "catalog:"
     tsx: "npm:^4.16.5"
-    typescript: "workspace:*"
-    zod: "workspace:*"
+    typescript: "catalog:"
+    zod: "catalog:"
   languageName: unknown
   linkType: soft
 
@@ -189,9 +189,9 @@ __metadata:
   dependencies:
     "@acme/tsconfig": "workspace:*"
     "@ianvs/prettier-plugin-sort-imports": "npm:^4.3.1"
-    prettier: "workspace:*"
+    prettier: "catalog:"
     prettier-plugin-tailwindcss: "npm:^0.6.5"
-    typescript: "workspace:*"
+    typescript: "catalog:"
   languageName: unknown
   linkType: soft
 
@@ -202,12 +202,12 @@ __metadata:
     "@acme/eslint-config": "workspace:*"
     "@acme/prettier-config": "workspace:*"
     "@acme/tsconfig": "workspace:*"
-    eslint: "workspace:*"
+    eslint: "catalog:"
     postcss: "npm:^8.4.40"
-    prettier: "workspace:*"
+    prettier: "catalog:"
     tailwindcss: "npm:^3.4.7"
     tailwindcss-animate: "npm:^1.0.7"
-    typescript: "workspace:*"
+    typescript: "catalog:"
   languageName: unknown
   linkType: soft
 
@@ -232,17 +232,17 @@ __metadata:
     "@radix-ui/react-slot": "npm:^1.1.0"
     "@types/react": "npm:^18.3.3"
     class-variance-authority: "npm:^0.7.0"
-    eslint: "workspace:*"
+    eslint: "catalog:"
     next-themes: "npm:^0.3.0"
-    prettier: "workspace:*"
+    prettier: "catalog:"
     react: "npm:18.3.1"
     react-hook-form: "npm:^7.52.2"
     sonner: "npm:^1.5.0"
     tailwind-merge: "npm:^2.4.0"
     tailwindcss: "npm:^3.4.7"
     tailwindcss-animate: "npm:^1.0.7"
-    typescript: "workspace:*"
-    zod: "workspace:*"
+    typescript: "catalog:"
+    zod: "catalog:"
   peerDependencies:
     react: 18.3.1
     zod: ^3.23.8
@@ -256,9 +256,9 @@ __metadata:
     "@acme/eslint-config": "workspace:*"
     "@acme/prettier-config": "workspace:*"
     "@acme/tsconfig": "workspace:*"
-    eslint: "workspace:*"
-    prettier: "workspace:*"
-    typescript: "workspace:*"
+    eslint: "catalog:"
+    prettier: "catalog:"
+    typescript: "catalog:"
     zod: "workspace:*"
   languageName: unknown
   linkType: soft

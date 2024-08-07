@@ -1,0 +1,31 @@
+# Troubleshooting: https://github.com/marketplace/actions/actions-template-sync#troubleshooting
+
+name: Sync from upstream
+on:
+  # push:
+  #   branches:
+  #     - main
+  # schedule:
+  #   - cron: "0 0 1 * *"
+  workflow_dispatch: # Enable manual trigger
+jobs:
+  repo-sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # submodules: true
+          token: ${{ secrets.SYNC_FROM_UPSTREAM }} # You need to add this to your repository secrets. Read troubleshooting above.
+
+      - name: actions-template-sync
+        uses: AndreasAugustin/actions-template-sync@v2 # Docs: https://github.com/marketplace/actions/actions-template-sync
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          source_repo_path: olivercaine/create-t3-turbo
+          upstream_branch: main
+          is_pr_cleanup: true # Update when upstream branch is changed
+          is_keep_branch_on_pr_cleanup: true # Create new PR but keep existing branch

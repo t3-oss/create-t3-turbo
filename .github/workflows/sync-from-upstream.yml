@@ -1,6 +1,6 @@
-# Works best when a source repo history is retained - do this by: [+] next to name in GitHub > Import repository
+# Works OOTB when the source's git history is retained. Do this by clicking [+] next to your name in GitHub > Import repository > add source git url
 
-# Troubleshooting: https://github.com/marketplace/actions/actions-template-sync#troubleshooting
+# Docs / troubleshooting: https://github.com/marketplace/actions/actions-template-sync#troubleshooting
 
 name: Sync from upstream
 on:
@@ -20,11 +20,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          token: ${{ secrets.SYNC_FROM_UPSTREAM }} # Create a fine-grained account-level Personal Access Token ( https://github.com/settings/tokens?type=beta ), then add it to <repo settings> > Secrets and variables > Actions > Repository secrets
           # submodules: true
-          token: ${{ secrets.SYNC_FROM_UPSTREAM }} # You need to add this to your repository secrets. Read troubleshooting above.
 
-      - name: actions-template-sync
-        uses: AndreasAugustin/actions-template-sync@v2 # Docs: https://github.com/marketplace/actions/actions-template-sync
+      - name: actions-template-sync # Requires <repo settings> > Actions > General > Allow GitHub Actions to create and approve pull requests, to be checked
+        uses: AndreasAugustin/actions-template-sync@v2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           source_repo_path: olivercaine/create-t3-turbo

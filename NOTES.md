@@ -9,4 +9,5 @@ nvm use
 pnpm store prune
 pnpm install
 pnpm lint
+pnpm build
 ```

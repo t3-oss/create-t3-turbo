@@ -5,7 +5,10 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./src/*"]
+      "~/*": ["./src/*"],
+      "@payload-config": [
+        "../../node_modules/@acme/payload/dist/payload.config"
+      ]
     },
     "plugins": [{ "name": "next" }],
     "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json",

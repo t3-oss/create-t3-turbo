@@ -7,11 +7,15 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
+    },
+    "./provider": {
+      "types": "./dist/provider.d.ts",
+      "default": "./dist/provider.jsx"
     }
   },
   "license": "MIT",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --build --force",
     "clean": "rm -rf .turbo dist node_modules",
     "dev": "tsc",
     "format": "prettier --check . --ignore-path ../../.gitignore",
@@ -19,10 +23,13 @@
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
-    "@acme/auth": "workspace:*",
-    "@acme/db": "workspace:*",
+    "@acme/payload": "workspace:*",
     "@acme/validators": "workspace:*",
-    "@trpc/server": "catalog:",
+    "@t3-oss/env-core": "catalog:",
+    "@tanstack/react-query": "^5.51.9",
+    "@trpc/client": "^11.0.0-rc.466",
+    "@trpc/react-query": "^11.0.0-rc.466",
+    "@trpc/server": "^11.0.0-rc.466",
     "superjson": "2.2.1",
     "zod": "catalog:"
   },

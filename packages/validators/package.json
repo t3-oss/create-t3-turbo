@@ -19,7 +19,7 @@
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
-    "zod": "catalog:"
+    "zod": "workspace:*"
   },
   "devDependencies": {
     "@acme/eslint-config": "workspace:*",

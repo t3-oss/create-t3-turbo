@@ -1,4 +1,5 @@
 import { fileURLToPath } from "url";
+import { withPayload } from "@payloadcms/next/withPayload";
 import createJiti from "jiti";
 
 // Import env files to validate at build time. Use jiti so we can load .ts files in here.
@@ -12,7 +13,6 @@ const config = {
   transpilePackages: [
     "@acme/api",
     "@acme/auth",
-    "@acme/db",
     "@acme/ui",
     "@acme/validators",
   ],
@@ -22,4 +22,4 @@ const config = {
   typescript: { ignoreBuildErrors: true },
 };
 
-export default config;
+export default withPayload(config);

@@ -3,10 +3,10 @@ import { createEnv } from "@t3-oss/env-nextjs";
 import { vercel } from "@t3-oss/env-nextjs/presets";
 import { z } from "zod";
 
-import { env as authEnv } from "@acme/auth/env";
+import { env as payloadEnv } from "@acme/payload/env";
 
 export const env = createEnv({
-  extends: [authEnv, vercel()],
+  extends: [payloadEnv, vercel()],
   shared: {
     NODE_ENV: z
       .enum(["development", "production", "test"])
@@ -16,9 +16,7 @@ export const env = createEnv({
    * Specify your server-side environment variables schema here.
    * This way you can ensure the app isn't built with invalid env vars.
    */
-  server: {
-    POSTGRES_URL: z.string().url(),
-  },
+  server: {},
 
   /**
    * Specify your client-side environment variables schema here.
@@ -30,7 +28,7 @@ export const env = createEnv({
   /**
    * Destructure all variables from `process.env` to make sure they aren't tree-shaken away.
    */
-  experimental__runtimeEnv: {
+  runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
 
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,

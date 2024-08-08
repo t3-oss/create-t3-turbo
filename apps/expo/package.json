@@ -4,7 +4,7 @@
   "private": true,
   "main": "index.ts",
   "scripts": {
-    "clean": "git clean -xdf .expo .turbo node_modules",
+    "clean": "git clean -xdf .cache .expo .turbo android ios node_modules",
     "dev": "expo start",
     "dev:android": "expo start --android",
     "dev:ios": "expo start --ios",

@@ -67,8 +67,8 @@ importers:
   apps/auth-proxy:
     dependencies:
       '@auth/core':
-        specifier: 0.32.0
-        version: 0.32.0
+        specifier: 0.34.2
+        version: 0.34.2
     devDependencies:
       '@acme/eslint-config':
         specifier: workspace:*
@@ -362,8 +362,8 @@ importers:
         specifier: workspace:*
         version: link:../db
       '@auth/core':
-        specifier: 0.32.0
-        version: 0.32.0
+        specifier: 0.34.2
+        version: 0.34.2
       '@auth/drizzle-adapter':
         specifier: ^1.4.1
         version: 1.4.1
@@ -666,6 +666,20 @@ packages:
 
   '@auth/core@0.34.1':
     resolution: {integrity: sha512-tuYU2VIbI8rFbkSwP710LmybB2FXJsPN7j3sjRVfN9SXVQBK2ej6LdewQaofpBGp4Mk+cC2UeiGNH0or4tgaeA==}
+    peerDependencies:
+      '@simplewebauthn/browser': ^9.0.1
+      '@simplewebauthn/server': ^9.0.2
+      nodemailer: ^6.8.0
+    peerDependenciesMeta:
+      '@simplewebauthn/browser':
+        optional: true
+      '@simplewebauthn/server':
+        optional: true
+      nodemailer:
+        optional: true
+
+  '@auth/core@0.34.2':
+    resolution: {integrity: sha512-KywHKRgLiF3l7PLyL73fjLSIBe1YNcA6sMeew4yMP6cfCWGXZrkkXd32AjRi1hlJ9nvovUBGZHvbn+LijO6ZeQ==}
     peerDependencies:
       '@simplewebauthn/browser': ^9.0.1
       '@simplewebauthn/server': ^9.0.2
@@ -8352,6 +8366,16 @@ snapshots:
       preact-render-to-string: 5.2.3(preact@10.11.3)
 
   '@auth/core@0.34.1':
+    dependencies:
+      '@panva/hkdf': 1.2.1
+      '@types/cookie': 0.6.0
+      cookie: 0.6.0
+      jose: 5.6.3
+      oauth4webapi: 2.11.1
+      preact: 10.11.3
+      preact-render-to-string: 5.2.3(preact@10.11.3)
+
+  '@auth/core@0.34.2':
     dependencies:
       '@panva/hkdf': 1.2.1
       '@types/cookie': 0.6.0

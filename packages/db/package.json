@@ -21,7 +21,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc",
-    "clean": "rm -rf .turbo dist node_modules",
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint",
     "push": "pnpm with-env drizzle-kit push",

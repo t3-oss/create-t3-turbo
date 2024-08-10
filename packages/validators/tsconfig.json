@@ -1,5 +1,8 @@
 {
   "extends": "@acme/tsconfig/internal-package.json",
+  "compilerOptions": {
+    "emitDeclarationOnly": true
+  },
   "include": ["src"],
   "exclude": ["node_modules"]
 }

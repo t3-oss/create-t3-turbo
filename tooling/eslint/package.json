@@ -9,7 +9,7 @@
     "./react": "./react.js"
   },
   "scripts": {
-    "clean": "rm -rf .turbo node_modules",
+    "clean": "git clean -xdf .cache .turbo node_modules",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "typecheck": "tsc --noEmit"
   },
@@ -21,7 +21,7 @@
     "eslint-plugin-react": "^7.35.0",
     "eslint-plugin-react-hooks": "rc",
     "eslint-plugin-turbo": "^2.0.8",
-    "typescript-eslint": "rc-v8"
+    "typescript-eslint": "^8.0.1"
   },
   "devDependencies": {
     "@acme/prettier-config": "workspace:*",

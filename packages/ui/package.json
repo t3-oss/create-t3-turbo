@@ -10,7 +10,10 @@
     },
     "./*": {
       "types": "./dist/src/*.d.ts",
-      "default": "./src/*.tsx"
+      "default": [
+        "./src/*.ts",
+        "./src/*.tsx"
+      ]
     }
   },
   "license": "MIT",

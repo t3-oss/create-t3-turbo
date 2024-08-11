@@ -10,7 +10,7 @@ and update the POSTGRES_URL in the .env file
 
 You can get the DB connection string from: Supabase > Project > Home > Connect > ORMs > Change Prisma to Drizzle > .env
 
-The below is an example of a working and testing DB string:
+The below is an example of a working and tested DB string:
 
 ```
 POSTGRES_URL="postgresql://postgres.<USER>:<PASSWORD>@aws-0-ap-southeast-2.pooler.supabase.com:6543/postgres?workaround=supabase-pooler.vercel"

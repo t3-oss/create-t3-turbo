@@ -480,9 +480,6 @@ importers:
       tailwind-merge:
         specifier: ^2.4.0
         version: 2.4.0
-      tailwindcss-animate:
-        specifier: ^1.0.7
-        version: 1.0.7(tailwindcss@3.4.9(ts-node@10.9.2(@types/node@22.2.0)(typescript@5.5.4)))
     devDependencies:
       '@acme/eslint-config':
         specifier: workspace:*
@@ -508,9 +505,6 @@ importers:
       react:
         specifier: catalog:react18
         version: 18.3.1
-      tailwindcss:
-        specifier: ^3.4.9
-        version: 3.4.9(ts-node@10.9.2(@types/node@22.2.0)(typescript@5.5.4))
       typescript:
         specifier: 'catalog:'
         version: 5.5.4

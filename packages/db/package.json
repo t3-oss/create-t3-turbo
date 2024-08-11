@@ -6,15 +6,15 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
+      "default": "./src/index.ts"
     },
     "./client": {
       "types": "./dist/client.d.ts",
-      "default": "./dist/client.js"
+      "default": "./src/client.ts"
     },
     "./schema": {
       "types": "./dist/schema.d.ts",
-      "default": "./dist/schema.js"
+      "default": "./src/schema.ts"
     }
   },
   "license": "MIT",

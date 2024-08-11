@@ -407,9 +407,6 @@ importers:
 
   packages/db:
     dependencies:
-      '@t3-oss/env-core':
-        specifier: ^0.11.0
-        version: 0.11.0(typescript@5.5.4)(zod@3.23.8)
       '@vercel/postgres':
         specifier: ^0.9.0
         version: 0.9.0

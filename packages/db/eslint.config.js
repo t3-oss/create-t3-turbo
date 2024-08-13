@@ -1,4 +1,10 @@
 import baseConfig from "@acme/eslint-config/base";
 
 /** @type {import('typescript-eslint').Config} */
-export default [...baseConfig];
+export default [
+  {
+    ignores: ["dist/**"],
+  },
+  ...baseConfig,
+  ...restrictEnvAccess,
+];

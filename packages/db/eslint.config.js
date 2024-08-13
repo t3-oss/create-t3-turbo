@@ -6,5 +6,4 @@ export default [
     ignores: ["dist/**"],
   },
   ...baseConfig,
-  ...restrictEnvAccess,
 ];

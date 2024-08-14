@@ -2,9 +2,9 @@
   "name": "create-t3-turbo",
   "private": true,
   "engines": {
-    "node": ">=20.15.0"
+    "node": ">=20.16.0"
   },
-  "packageManager": "pnpm@9.6.0",
+  "packageManager": "pnpm@9.7.0",
   "scripts": {
     "build": "turbo run build",
     "clean": "git clean -xdf node_modules",
@@ -24,9 +24,9 @@
   },
   "devDependencies": {
     "@acme/prettier-config": "workspace:*",
-    "@turbo/gen": "^2.0.8",
+    "@turbo/gen": "^2.0.13",
     "prettier": "catalog:",
-    "turbo": "^2.0.8",
+    "turbo": "^2.0.13",
     "typescript": "catalog:"
   },
   "prettier": "@acme/prettier-config"

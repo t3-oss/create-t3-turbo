@@ -24,7 +24,7 @@
     "typecheck": "tsc --noEmit",
     "payload": "payload",
     "generate:types": "PAYLOAD_CONFIG_PATH=src/payload.config.ts PAYLOAD_TS_OUTPUT_PATH=src/payload-types.ts payload generate:types",
-    "seed": "yarn with-env tsx ./seed/index.ts",
+    "seed": "pnpm with-env tsx ./seed/index.ts",
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {

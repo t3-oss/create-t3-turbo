@@ -4,12 +4,12 @@
   "engines": {
     "node": ">=20.15.0"
   },
-  "packageManager": "yarn@4.3.1",
+  "packageManager": "pnpm@9.6.0",
   "scripts": {
     "build": "turbo run build",
     "clean": "git clean -xdf node_modules",
     "clean:workspaces": "turbo run clean",
-    "db:seed": "yarn workspace @acme/payload seed",
+    "db:seed": "pnpm -F @acme/payload seed",
     "db:drop": "supabase db reset --linked",
     "dev": "turbo watch dev",
     "dev:next": "turbo watch dev -F @acme/nextjs...",
@@ -17,34 +17,17 @@
     "format:fix": "turbo run format --continue -- --write --cache --cache-location node_modules/.cache/.prettiercache",
     "lint": "turbo run lint --continue -- --cache --cache-location node_modules/.cache/.eslintcache",
     "lint:fix": "turbo run lint --continue -- --fix --cache --cache-location node_modules/.cache/.eslintcache",
-    "lint:ws": "yarn dlx sherif@latest -i react -i react-dom -i next",
-    "postinstall": "yarn lint:ws",
+    "lint:ws": "pnpm dlx sherif@latest -i react -i react-dom -i next",
+    "postinstall": "pnpm lint:ws",
     "typecheck": "turbo run typecheck",
     "ui-add": "turbo run ui-add"
   },
   "devDependencies": {
     "@acme/prettier-config": "workspace:*",
-    "@turbo/gen": "^2.0.11",
-    "turbo": "^2.0.11"
+    "@turbo/gen": "^2.0.8",
+    "prettier": "catalog:",
+    "turbo": "^2.0.8",
+    "typescript": "catalog:"
   },
-  "resolutions": {
-    "@types/node": "^20.14.14",
-    "dotenv-cli": "^7.4.2",
-    "eslint": "^9.6.0",
-    "prettier": "^3.3.2",
-    "typescript": "^5.5.3",
-    "zod": "^3.23.8",
-    "tailwindcss": "^3.4.7",
-    "metro-runtime@npm:^0.80.3": "patch:metro-runtime@npm%3A0.80.9#~/.yarn/patches/metro-runtime-npm-0.80.9-3f02d2003d.patch",
-    "metro-runtime@npm:0.80.9": "patch:metro-runtime@npm%3A0.80.9#~/.yarn/patches/metro-runtime-npm-0.80.9-3f02d2003d.patch",
-    "@t3-oss/env-core": "^0.11.0",
-    "@t3-oss/env-nextjs": "^0.11.0",
-    "jiti": "^1.21.6"
-  },
-  "workspaces": [
-    "apps/*",
-    "packages/*",
-    "tooling/*"
-  ],
   "prettier": "@acme/prettier-config"
 }

@@ -37,9 +37,14 @@
     "@acme/eslint-config": "workspace:*",
     "@acme/prettier-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:react18",
     "eslint": "catalog:",
     "prettier": "catalog:",
     "typescript": "catalog:"
   },
-  "prettier": "@acme/prettier-config"
+  "prettier": "@acme/prettier-config",
+  "peerDependencies": {
+    "react": "^18.3.1 || ^19.0.0-rc-06d0b89e-20240801"
+  }
 }

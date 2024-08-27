@@ -553,10 +553,10 @@ importers:
         version: 7.35.0(eslint@9.9.0(jiti@1.21.6))
       eslint-plugin-react-hooks:
         specifier: rc
-        version: 5.1.0-rc-49496d49-20240814(eslint@9.9.0(jiti@1.21.6))
+        version: 5.1.0-rc-f90a6bcc-20240827(eslint@9.9.0(jiti@1.21.6))
       eslint-plugin-turbo:
-        specifier: ^2.0.13
-        version: 2.0.13(eslint@9.9.0(jiti@1.21.6))
+        specifier: ^2.1.0
+        version: 2.1.0(eslint@9.9.0(jiti@1.21.6))
       typescript-eslint:
         specifier: ^8.1.0
         version: 8.1.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4)
@@ -4380,8 +4380,8 @@ packages:
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
 
-  eslint-plugin-react-hooks@5.1.0-rc-49496d49-20240814:
-    resolution: {integrity: sha512-A5hwoU0WxNLjuPa9vH0+4Sh+GOcfBIgZJ0cbwu9UECyD8VbIv+N3all4yyHqFQqcz10qzoHHLSuRFE4O7AC5PQ==}
+  eslint-plugin-react-hooks@5.1.0-rc-f90a6bcc-20240827:
+    resolution: {integrity: sha512-4VVGsX8nzU9WbsHmdNDi8z4KBehX0DxSDuoO2cb/OpY9kcXDbaaOpUcR8r6USp+6WhqP2/yJ6nrCdT79rnaVtg==}
     engines: {node: '>=10'}
     peerDependencies:
       eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0
@@ -4392,8 +4392,8 @@ packages:
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9.7
 
-  eslint-plugin-turbo@2.0.13:
-    resolution: {integrity: sha512-hpHRtQVETm07OBvj8kFy/+sgts+i36wFM8xd4yr9Wt3TWtmC4mealtgSvSEx61vdkqbDhKMP4CftgpHj2DI4yw==}
+  eslint-plugin-turbo@2.1.0:
+    resolution: {integrity: sha512-+CWVY29y7Qa+gvrKSzP+TOYrHAlNLCh/97K5VtDdnpH54h/JFmnd3U0aSG6WANe0HgAK8NHQfeWFDdRzfDqbKA==}
     peerDependencies:
       eslint: '>6.6.0'
 
@@ -12450,7 +12450,7 @@ snapshots:
       safe-regex-test: 1.0.3
       string.prototype.includes: 2.0.0
 
-  eslint-plugin-react-hooks@5.1.0-rc-49496d49-20240814(eslint@9.9.0(jiti@1.21.6)):
+  eslint-plugin-react-hooks@5.1.0-rc-f90a6bcc-20240827(eslint@9.9.0(jiti@1.21.6)):
     dependencies:
       eslint: 9.9.0(jiti@1.21.6)
 
@@ -12476,7 +12476,7 @@ snapshots:
       string.prototype.matchall: 4.0.11
       string.prototype.repeat: 1.0.0
 
-  eslint-plugin-turbo@2.0.13(eslint@9.9.0(jiti@1.21.6)):
+  eslint-plugin-turbo@2.1.0(eslint@9.9.0(jiti@1.21.6)):
     dependencies:
       dotenv: 16.0.3
       eslint: 9.9.0(jiti@1.21.6)

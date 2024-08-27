@@ -61,8 +61,8 @@ importers:
         specifier: 'catalog:'
         version: 3.3.3
       turbo:
-        specifier: ^2.0.13
-        version: 2.0.13
+        specifier: ^2.1.0
+        version: 2.1.0
       typescript:
         specifier: 'catalog:'
         version: 5.5.4
@@ -553,7 +553,7 @@ importers:
         version: 7.35.0(eslint@9.9.0(jiti@1.21.6))
       eslint-plugin-react-hooks:
         specifier: rc
-        version: 5.1.0-rc-49496d49-20240814(eslint@9.9.0(jiti@1.21.6))
+        version: 5.1.0-rc-f90a6bcc-20240827(eslint@9.9.0(jiti@1.21.6))
       eslint-plugin-turbo:
         specifier: ^2.0.13
         version: 2.0.13(eslint@9.9.0(jiti@1.21.6))
@@ -4380,8 +4380,8 @@ packages:
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
 
-  eslint-plugin-react-hooks@5.1.0-rc-49496d49-20240814:
-    resolution: {integrity: sha512-A5hwoU0WxNLjuPa9vH0+4Sh+GOcfBIgZJ0cbwu9UECyD8VbIv+N3all4yyHqFQqcz10qzoHHLSuRFE4O7AC5PQ==}
+  eslint-plugin-react-hooks@5.1.0-rc-f90a6bcc-20240827:
+    resolution: {integrity: sha512-4VVGsX8nzU9WbsHmdNDi8z4KBehX0DxSDuoO2cb/OpY9kcXDbaaOpUcR8r6USp+6WhqP2/yJ6nrCdT79rnaVtg==}
     engines: {node: '>=10'}
     peerDependencies:
       eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0
@@ -7568,41 +7568,41 @@ packages:
   tslib@2.6.3:
     resolution: {integrity: sha512-xNvxJEOUiWPGhUuUdQgAJPKOOJfGnIyKySOc09XkKsgdUV/3E2zvwZYdejjmRgPCgcym1juLH3226yA7sEFJKQ==}
 
-  turbo-darwin-64@2.0.13:
-    resolution: {integrity: sha512-1qoFGvSE/kG1Njl1a1b35+AlJyCBE/+cb7GcglxuUM0Fh0JNR6FIWGhiubUhFLoIdFkdRbPpTH5smhPpRk757w==}
+  turbo-darwin-64@2.1.0:
+    resolution: {integrity: sha512-gHwpDk2gyB7qZ57gUUwDIS/IkglqEjjVtPZCTxmCRg28Tiwjui0azsLVKrnHP9UZHllozwbi28x8HXLXLEFF1w==}
     cpu: [x64]
     os: [darwin]
 
-  turbo-darwin-arm64@2.0.13:
-    resolution: {integrity: sha512-3fgbjKeRjvZTKJhn6eOyA6SaFXlRHx/z7qAWYcTbq7iu2zd+n0OHRyah9Voy2ZihiGAI0Bw4QfVWo3d1qTabgA==}
+  turbo-darwin-arm64@2.1.0:
+    resolution: {integrity: sha512-GLaqGetNC6eS4eqXgsheLOHic/OcnGCGDi5boVf+TFZTXYH6YE15L4ugZha4xHXCr1KouCLILHh+f8EHEmWylg==}
     cpu: [arm64]
     os: [darwin]
 
-  turbo-linux-64@2.0.13:
-    resolution: {integrity: sha512-1nMO5NWHWs4jI5SV8SMlGtR3/jBlud1ld/ltayYwOXm6zdznj0/mTNNE9AjfOs/aAei2wZE1HWUHXe46q/nZtw==}
+  turbo-linux-64@2.1.0:
+    resolution: {integrity: sha512-VzBOsj7JyGoZtiNZZ6brjnY7UehRnClluw7pwznuLPzClkqOOPMd2jOcgkWxnP/xW4NBmOoFANXXrtvKBD4f2w==}
     cpu: [x64]
     os: [linux]
 
-  turbo-linux-arm64@2.0.13:
-    resolution: {integrity: sha512-JkQYAAMbEW3jkzhbtY4hi0Q61tlSd46qLEVBQqnur9VymC4TfD6kllVMpRtbmXv8jdfGPu+rEIeYrzjHpyqMfg==}
+  turbo-linux-arm64@2.1.0:
+    resolution: {integrity: sha512-St7svJnOO5g4F6R7Z32e10I/0M3e6qpNjEYybXwPNul9NSfnUXeky4WoKaALwqNhyJ7nYemoFpZ1d+i8hFQTHg==}
     cpu: [arm64]
     os: [linux]
 
   turbo-stream@2.2.0:
     resolution: {integrity: sha512-FKFg7A0To1VU4CH9YmSMON5QphK0BXjSoiC7D9yMh+mEEbXLUP9qJ4hEt1qcjKtzncs1OpcnjZO8NgrlVbZH+g==}
 
-  turbo-windows-64@2.0.13:
-    resolution: {integrity: sha512-QYJfYPnmb3j16CR4mucYicC+tlY1fsFws6fkqZe2b8jBpRyOslxkEk4XJWCsvUizPSYpOdAnTL9baunLH7hWrA==}
+  turbo-windows-64@2.1.0:
+    resolution: {integrity: sha512-iSobNud2MrJ1SZ1upVPlErT8xexsr0MQtKapdfq6z0M0rBnrDGEq5bUCSScWyGu+O4+glB4br9xkTAkGFqaxqQ==}
     cpu: [x64]
     os: [win32]
 
-  turbo-windows-arm64@2.0.13:
-    resolution: {integrity: sha512-dnVN19dq7jszcKVBy4+T1IMmMY1ergigJZdl76Bbc99QOwaXsTR7ci4sle89HvJb+F1z/MXSq8ePvRTcy6dKRw==}
+  turbo-windows-arm64@2.1.0:
+    resolution: {integrity: sha512-d61jN4rjE5PnUfF66GKrKoj8S8Ql4FGXzFFzZz4kjsHpZZzCTtqlzPZBmd1byzGYhDPTorTqG3G1USohbdyohA==}
     cpu: [arm64]
     os: [win32]
 
-  turbo@2.0.13:
-    resolution: {integrity: sha512-xZYCpvy+Q5X05HQLVbup/nUva/EPd8QKX/WLfztz8Yhh7yH+VN9t+P9ACG2U0ThlrqX4uFS0tuE0jaCLvL1Imw==}
+  turbo@2.1.0:
+    resolution: {integrity: sha512-A969/LO/sPHKlapIarY2VVzqQ5JnnW2/1kksZlnMEpsRD6gwOELvVL+ozfMiO7av9RILt3UeN02L17efr6HUCA==}
     hasBin: true
 
   type-check@0.4.0:
@@ -12450,7 +12450,7 @@ snapshots:
       safe-regex-test: 1.0.3
       string.prototype.includes: 2.0.0
 
-  eslint-plugin-react-hooks@5.1.0-rc-49496d49-20240814(eslint@9.9.0(jiti@1.21.6)):
+  eslint-plugin-react-hooks@5.1.0-rc-f90a6bcc-20240827(eslint@9.9.0(jiti@1.21.6)):
     dependencies:
       eslint: 9.9.0(jiti@1.21.6)
 
@@ -16162,34 +16162,34 @@ snapshots:
 
   tslib@2.6.3: {}
 
-  turbo-darwin-64@2.0.13:
+  turbo-darwin-64@2.1.0:
     optional: true
 
-  turbo-darwin-arm64@2.0.13:
+  turbo-darwin-arm64@2.1.0:
     optional: true
 
-  turbo-linux-64@2.0.13:
+  turbo-linux-64@2.1.0:
     optional: true
 
-  turbo-linux-arm64@2.0.13:
+  turbo-linux-arm64@2.1.0:
     optional: true
 
   turbo-stream@2.2.0: {}
 
-  turbo-windows-64@2.0.13:
+  turbo-windows-64@2.1.0:
     optional: true
 
-  turbo-windows-arm64@2.0.13:
+  turbo-windows-arm64@2.1.0:
     optional: true
 
-  turbo@2.0.13:
+  turbo@2.1.0:
     optionalDependencies:
-      turbo-darwin-64: 2.0.13
-      turbo-darwin-arm64: 2.0.13
-      turbo-linux-64: 2.0.13
-      turbo-linux-arm64: 2.0.13
-      turbo-windows-64: 2.0.13
-      turbo-windows-arm64: 2.0.13
+      turbo-darwin-64: 2.1.0
+      turbo-darwin-arm64: 2.1.0
+      turbo-linux-64: 2.1.0
+      turbo-linux-arm64: 2.1.0
+      turbo-windows-64: 2.1.0
+      turbo-windows-arm64: 2.1.0
 
   type-check@0.4.0:
     dependencies:

@@ -6,18 +6,18 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
+      "default": "./src/index.ts"
     },
     "./config": {
       "types": "./dist/payload.config.d.ts",
-      "default": "./dist/payload.config.js"
+      "default": "./src/payload.config.ts"
     },
     "./env": "./src/env.ts"
   },
   "license": "MIT",
   "scripts": {
-    "build": "tsc --build --force",
-    "clean": "rm -rf .turbo dist node_modules",
+    "build": "tsc",
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
     "dev": "tsc",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint",
@@ -38,7 +38,6 @@
     "@acme/eslint-config": "workspace:*",
     "@acme/prettier-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
-    "@swc/core": "1.6.1",
     "dotenv-cli": "catalog:",
     "eslint": "catalog:",
     "prettier": "catalog:",

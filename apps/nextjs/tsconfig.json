@@ -5,7 +5,8 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./src/*"]
+      "~/*": ["./src/*"],
+      "@paylad-config": ["./src/payload.config.ts"]
     },
     "plugins": [{ "name": "next" }],
     "module": "esnext"

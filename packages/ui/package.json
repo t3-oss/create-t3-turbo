@@ -10,13 +10,16 @@
     },
     "./*": {
       "types": "./dist/src/*.d.ts",
-      "default": "./src/*.tsx"
+      "default": [
+        "./src/*.ts",
+        "./src/*.tsx"
+      ]
     }
   },
   "license": "MIT",
   "scripts": {
-    "build": "tsc --build --force",
-    "clean": "rm -rf .turbo dist node_modules",
+    "build": "tsc",
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
     "dev": "tsc",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint",
@@ -33,25 +36,22 @@
     "next-themes": "^0.3.0",
     "react-hook-form": "^7.52.2",
     "sonner": "^1.5.0",
-    "tailwind-merge": "^2.4.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwind-merge": "^2.5.2"
   },
   "devDependencies": {
     "@acme/eslint-config": "workspace:*",
     "@acme/prettier-config": "workspace:*",
-    "@acme/tailwind-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
-    "@types/react": "^18.3.3",
+    "@types/react": "catalog:react18",
     "eslint": "catalog:",
     "prettier": "catalog:",
-    "react": "18.3.1",
-    "tailwindcss": "^3.4.7",
+    "react": "catalog:react18",
     "typescript": "catalog:",
     "zod": "catalog:"
   },
   "peerDependencies": {
-    "react": "18.3.1",
-    "zod": "^3.23.8"
+    "react": "^18.3.1 || ^19.0.0-rc-06d0b89e-20240801",
+    "zod": "catalog:"
   },
   "prettier": "@acme/prettier-config"
 }

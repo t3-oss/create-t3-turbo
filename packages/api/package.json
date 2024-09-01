@@ -6,17 +6,17 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "default": "./dist/index.js"
+      "default": "./src/index.ts"
     },
     "./provider": {
       "types": "./dist/provider.d.ts",
-      "default": "./dist/provider.jsx"
+      "default": "./src/provider.tsx"
     }
   },
   "license": "MIT",
   "scripts": {
-    "build": "tsc --build --force",
-    "clean": "rm -rf .turbo dist node_modules",
+    "build": "tsc",
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
     "dev": "tsc",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint",
@@ -37,9 +37,14 @@
     "@acme/eslint-config": "workspace:*",
     "@acme/prettier-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:react18",
     "eslint": "catalog:",
     "prettier": "catalog:",
     "typescript": "catalog:"
   },
-  "prettier": "@acme/prettier-config"
+  "prettier": "@acme/prettier-config",
+  "peerDependencies": {
+    "react": "^18.3.1 || ^19.0.0-rc-06d0b89e-20240801"
+  }
 }

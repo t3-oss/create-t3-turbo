@@ -1,0 +1,42 @@
+{
+  "name": "@acme/payload",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "default": "./src/payload.config.ts"
+    },
+    "./env": "./src/env.ts"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "dev": "tsc",
+    "format": "prettier --check . --ignore-path ../../.gitignore '!**/payload-types.ts'",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+    "payload": "payload",
+    "generate:types": "PAYLOAD_CONFIG_PATH=src/payload.config.ts PAYLOAD_TS_OUTPUT_PATH=src/payload-types.ts payload generate:types",
+    "seed": "pnpm with-env tsx ./src/seed/index.ts",
+    "with-env": "dotenv -e ../../.env --"
+  },
+  "dependencies": {
+    "@payloadcms/db-postgres": "beta",
+    "@t3-oss/env-core": "catalog:",
+    "payload": "beta",
+    "tsx": "^4.16.5",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@acme/eslint-config": "workspace:*",
+    "@acme/prettier-config": "workspace:*",
+    "@acme/tsconfig": "workspace:*",
+    "dotenv-cli": "catalog:",
+    "eslint": "catalog:",
+    "prettier": "catalog:",
+    "typescript": "catalog:"
+  },
+  "prettier": "@acme/prettier-config"
+}

@@ -5,6 +5,11 @@ const { withNativeWind } = require("nativewind/metro");
 
 const path = require("path");
 
+// Import env files to validate at build time. Use jiti so we can load .ts files in here.
+const jiti = require("jiti")(__filename);
+
+jiti("./src/env.ts");
+
 const config = withTurborepoManagedCache(
   withMonorepoPaths(
     withNativeWind(getDefaultConfig(__dirname), {

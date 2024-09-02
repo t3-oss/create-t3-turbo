@@ -7,6 +7,10 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./src/index.ts"
+    },
+    "./provider": {
+      "types": "./dist/provider.d.ts",
+      "default": "./src/provider.tsx"
     }
   },
   "license": "MIT",
@@ -19,10 +23,14 @@
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
-    "@acme/auth": "workspace:*",
-    "@acme/db": "workspace:*",
+    "@acme/payload": "workspace:*",
     "@acme/validators": "workspace:*",
-    "@trpc/server": "catalog:",
+    "@t3-oss/env-core": "catalog:",
+    "@tanstack/react-query": "^5.51.9",
+    "@trpc/client": "^11.0.0-rc.466",
+    "@trpc/react-query": "^11.0.0-rc.466",
+    "@trpc/server": "^11.0.0-rc.466",
+    "payload": "beta",
     "superjson": "2.2.1",
     "zod": "catalog:"
   },
@@ -30,9 +38,14 @@
     "@acme/eslint-config": "workspace:*",
     "@acme/prettier-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
+    "@types/node": "catalog:",
+    "@types/react": "catalog:react18",
     "eslint": "catalog:",
     "prettier": "catalog:",
     "typescript": "catalog:"
   },
-  "prettier": "@acme/prettier-config"
+  "prettier": "@acme/prettier-config",
+  "peerDependencies": {
+    "react": "^18.3.1 || ^19.0.0-rc-06d0b89e-20240801"
+  }
 }

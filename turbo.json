@@ -31,13 +31,11 @@
     "//#clean": {
       "cache": false
     },
-    "push": {
-      "cache": false,
-      "interactive": true
+    "db:seed": {
+      "cache": false
     },
-    "studio": {
-      "cache": false,
-      "persistent": true
+    "db:drop": {
+      "cache": false
     },
     "ui-add": {
       "cache": false,
@@ -45,12 +43,13 @@
     }
   },
   "globalEnv": [
-    "POSTGRES_URL",
+    "DATABASE_URI",
     "AUTH_DISCORD_ID",
     "AUTH_DISCORD_SECRET",
     "AUTH_REDIRECT_PROXY_URL",
     "AUTH_SECRET",
-    "PORT"
+    "PORT",
+    "PAYLOAD_SECRET"
   ],
   "globalPassThroughEnv": [
     "NODE_ENV",

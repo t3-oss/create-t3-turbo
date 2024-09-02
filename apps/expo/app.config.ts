@@ -29,6 +29,10 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       backgroundColor: "#1F104A",
     },
   },
+  web: {
+    bundler: "metro",
+    output: "server",
+  },
   // extra: {
   //   eas: {
   //     projectId: "your-eas-project-id",
@@ -38,5 +42,14 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     tsconfigPaths: true,
     typedRoutes: true,
   },
-  plugins: ["expo-router"],
+  plugins: [
+    [
+      "expo-router",
+
+      {
+        origin: "https://evanbacon.dev/",
+      },
+    ],
+    "expo-secure-store",
+  ],
 });

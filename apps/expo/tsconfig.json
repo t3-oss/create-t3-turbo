@@ -2,6 +2,7 @@
   "extends": ["@acme/tsconfig/base.json"],
   "compilerOptions": {
     "baseUrl": ".",
+    "lib": ["es2022", "dom", "dom.iterable"],
     "paths": {
       "~/*": ["./src/*"]
     },
@@ -9,6 +10,13 @@
     "types": ["nativewind/types"],
     "checkJs": false
   },
-  "include": ["src", "*.ts", "*.js", ".expo/types/**/*.ts", "expo-env.d.ts"],
+  "include": [
+    "src",
+    "*.ts",
+    "*.js",
+    ".expo/types/**/*.ts",
+    "expo-env.d.ts",
+    "api/index.ts"
+  ],
   "exclude": ["node_modules"]
 }

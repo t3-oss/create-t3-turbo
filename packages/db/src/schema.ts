@@ -1,7 +1,6 @@
 import { relations, sql } from "drizzle-orm";
 import {
   integer,
-  pgTable,
   primaryKey,
   text,
   timestamp,
@@ -10,6 +9,7 @@ import {
 } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
+import { pgTable } from "./table";
 
 export const Post = pgTable("post", {
   id: uuid("id").notNull().primaryKey().defaultRandom(),

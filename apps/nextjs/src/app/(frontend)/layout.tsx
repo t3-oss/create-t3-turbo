@@ -52,9 +52,7 @@ export default function RootLayout({
           GeistMono.variable,
         )}
       >
-        <Providers baseUrl={metadata.metadataBase?.origin}>
-          {children}
-        </Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

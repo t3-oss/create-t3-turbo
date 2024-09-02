@@ -6,20 +6,10 @@ import { Toaster } from "@acme/ui/toast";
 
 import { getToken } from "~/utils/token";
 
-export const Providers = ({
-  children,
-  baseUrl,
-}: {
-  children: React.ReactNode;
-  baseUrl?: string;
-}) => {
+export const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-      <TRPCReactProvider
-        source="nextjs-react"
-        token={getToken()}
-        baseUrl={baseUrl}
-      >
+      <TRPCReactProvider source="nextjs-react" token={getToken()}>
         {children}
       </TRPCReactProvider>
       <div className="absolute bottom-4 right-4">

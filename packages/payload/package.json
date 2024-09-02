@@ -5,11 +5,6 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./src/index.ts"
-    },
-    "./config": {
-      "types": "./dist/payload.config.d.ts",
       "default": "./src/payload.config.ts"
     },
     "./env": "./src/env.ts"
@@ -19,12 +14,12 @@
     "build": "tsc",
     "clean": "git clean -xdf .cache .turbo dist node_modules",
     "dev": "tsc",
-    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "format": "prettier --check . --ignore-path ../../.gitignore '!**/payload-types.ts'",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
     "payload": "payload",
     "generate:types": "PAYLOAD_CONFIG_PATH=src/payload.config.ts PAYLOAD_TS_OUTPUT_PATH=src/payload-types.ts payload generate:types",
-    "seed": "pnpm with-env tsx ./seed/index.ts",
+    "seed": "pnpm with-env tsx ./src/seed/index.ts",
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {

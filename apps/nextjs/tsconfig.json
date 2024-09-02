@@ -6,7 +6,7 @@
     "baseUrl": ".",
     "paths": {
       "~/*": ["./src/*"],
-      "@payload-config": ["./src/payload.config.ts"]
+      "@payload-config": ["./node_modules/@acme/payload/src/payload.config.ts"]
     },
     "plugins": [{ "name": "next" }],
     "module": "esnext"

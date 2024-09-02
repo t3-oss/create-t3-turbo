@@ -7,11 +7,12 @@
  * The pieces you will need to use are documented accordingly near the end
  */
 import { initTRPC, TRPCError } from "@trpc/server";
+// import { auth, validateToken } from "@acme/auth";
+import { getPayload } from "payload";
 import superjson from "superjson";
 import { ZodError } from "zod";
 
-// import { auth, validateToken } from "@acme/auth";
-import { getPayload } from "@acme/payload";
+import config from "@acme/payload";
 
 /**
  * 1. CONTEXT
@@ -26,7 +27,7 @@ import { getPayload } from "@acme/payload";
  * @see https://trpc.io/docs/server/context
  */
 export const createTRPCContext = async (req: Request) => {
-  const payload = await getPayload();
+  const payload = await getPayload({ config });
   const { user, permissions } = await payload.auth({ headers: req.headers });
 
   const source = req.headers.get("x-trpc-source") ?? "unknown";

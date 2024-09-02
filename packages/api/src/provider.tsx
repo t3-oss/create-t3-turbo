@@ -21,9 +21,8 @@ export function TRPCReactProvider(props: {
   children: React.ReactNode;
   source: string;
   token: string | null;
-  baseUrl?: string;
 }) {
-  const { token, source, baseUrl = "" } = props;
+  const { token, source } = props;
   const queryClient = getQueryClient();
   const [trpcClient] = useState(() =>
     api.createClient({
@@ -36,7 +35,7 @@ export function TRPCReactProvider(props: {
         }),
         httpBatchLink({
           transformer: SuperJSON,
-          url: `${baseUrl}/api/trpc`,
+          url: `${getBaseUrl()}/api/trpc`,
           headers() {
             const headers = new Headers();
             if (token) headers.set("Authorization", `Bearer ${token}`);
@@ -56,3 +55,9 @@ export function TRPCReactProvider(props: {
     </QueryClientProvider>
   );
 }
+
+const getBaseUrl = () => {
+  if (typeof window !== "undefined") return window.location.origin;
+  if (env.VERCEL_URL) return `https://${env.VERCEL_URL}`;
+  return `http://localhost:${process.env.PORT ?? 3000}`;
+};

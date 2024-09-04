@@ -16,13 +16,17 @@
     "postinstall": "npx tailwindcss -i ./src/styles.css -o ./node_modules/.cache/nativewind/styles.css.web.css"
   },
   "dependencies": {
-    "@acme/api": "workspace:*",
+    "@acme/auth": "workspace:*",
     "@acme/payload": "workspace:*",
     "@bacons/text-decoder": "^0.0.0",
     "@expo/metro-config": "^0.18.11",
     "@expo/metro-runtime": "~3.2.3",
     "@expo/server": "^0.4.4",
     "@t3-oss/env-core": "catalog:",
+    "@tanstack/react-query": "catalog:",
+    "@trpc/client": "catalog:",
+    "@trpc/react-query": "catalog:",
+    "@trpc/server": "catalog:",
     "expo": "~51.0.31",
     "expo-constants": "~16.0.2",
     "expo-dev-client": "~4.0.25",
@@ -42,9 +46,11 @@
     "react-native-safe-area-context": "~4.10.5",
     "react-native-screens": "~3.31.1",
     "react-native-web": "~0.19.12",
+    "superjson": "2.2.1",
     "zod": "catalog:"
   },
   "devDependencies": {
+    "@acme/api": "workspace:*",
     "@acme/eslint-config": "workspace:*",
     "@acme/prettier-config": "workspace:*",
     "@acme/tailwind-config": "workspace:*",

@@ -12,6 +12,18 @@ catalogs:
     '@t3-oss/env-nextjs':
       specifier: ^0.11.0
       version: 0.11.1
+    '@tanstack/react-query':
+      specifier: ^5.51.23
+      version: 5.52.1
+    '@trpc/client':
+      specifier: ^11.0.0-rc.477
+      version: 11.0.0-rc.485
+    '@trpc/react-query':
+      specifier: ^11.0.0-rc.477
+      version: 11.0.0-rc.485
+    '@trpc/server':
+      specifier: ^11.0.0-rc.477
+      version: 11.0.0-rc.485
     '@types/node':
       specifier: ^20.14.15
       version: 20.16.1
@@ -124,9 +136,9 @@ importers:
 
   apps/expo:
     dependencies:
-      '@acme/api':
+      '@acme/auth':
         specifier: workspace:*
-        version: link:../../packages/api
+        version: link:../../packages/auth
       '@acme/payload':
         specifier: workspace:*
         version: link:../../packages/payload
@@ -145,6 +157,18 @@ importers:
       '@t3-oss/env-core':
         specifier: 'catalog:'
         version: 0.11.1(typescript@5.5.4)(zod@3.23.8)
+      '@tanstack/react-query':
+        specifier: 'catalog:'
+        version: 5.52.1(react@18.3.1)
+      '@trpc/client':
+        specifier: 'catalog:'
+        version: 11.0.0-rc.485(@trpc/server@11.0.0-rc.485)
+      '@trpc/react-query':
+        specifier: 'catalog:'
+        version: 11.0.0-rc.485(@tanstack/react-query@5.52.1(react@18.3.1))(@trpc/client@11.0.0-rc.485(@trpc/server@11.0.0-rc.485))(@trpc/server@11.0.0-rc.485)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@trpc/server':
+        specifier: 'catalog:'
+        version: 11.0.0-rc.485
       expo:
         specifier: ~51.0.31
         version: 51.0.31(@babel/core@7.25.2)(@babel/preset-env@7.25.4(@babel/core@7.25.2))
@@ -202,10 +226,16 @@ importers:
       react-native-web:
         specifier: ~0.19.12
         version: 0.19.12(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      superjson:
+        specifier: 2.2.1
+        version: 2.2.1
       zod:
         specifier: 'catalog:'
         version: 3.23.8
     devDependencies:
+      '@acme/api':
+        specifier: workspace:*
+        version: link:../../packages/api
       '@acme/eslint-config':
         specifier: workspace:*
         version: link:../../tooling/eslint
@@ -263,6 +293,9 @@ importers:
       '@acme/api':
         specifier: workspace:*
         version: link:../../packages/api
+      '@acme/auth':
+        specifier: workspace:*
+        version: link:../../packages/auth
       '@acme/payload':
         specifier: workspace:*
         version: link:../../packages/payload
@@ -281,6 +314,18 @@ importers:
       '@t3-oss/env-nextjs':
         specifier: 'catalog:'
         version: 0.11.1(typescript@5.5.4)(zod@3.23.8)
+      '@tanstack/react-query':
+        specifier: 'catalog:'
+        version: 5.52.1(react@19.0.0-rc-06d0b89e-20240801)
+      '@trpc/client':
+        specifier: 'catalog:'
+        version: 11.0.0-rc.485(@trpc/server@11.0.0-rc.485)
+      '@trpc/react-query':
+        specifier: 'catalog:'
+        version: 11.0.0-rc.485(@tanstack/react-query@5.52.1(react@19.0.0-rc-06d0b89e-20240801))(@trpc/client@11.0.0-rc.485(@trpc/server@11.0.0-rc.485))(@trpc/server@11.0.0-rc.485)(react-dom@19.0.0-rc-06d0b89e-20240801(react@19.0.0-rc-06d0b89e-20240801))(react@19.0.0-rc-06d0b89e-20240801)
+      '@trpc/server':
+        specifier: 'catalog:'
+        version: 11.0.0-rc.485
       geist:
         specifier: ^1.3.1
         version: 1.3.1(next@15.0.0-canary.104(babel-plugin-react-compiler@0.0.0)(react-dom@19.0.0-rc-06d0b89e-20240801(react@19.0.0-rc-06d0b89e-20240801))(react@19.0.0-rc-06d0b89e-20240801)(sass@1.77.4))
@@ -299,6 +344,9 @@ importers:
       react-dom:
         specifier: catalog:react19
         version: 19.0.0-rc-06d0b89e-20240801(react@19.0.0-rc-06d0b89e-20240801)
+      superjson:
+        specifier: 2.2.1
+        version: 2.2.1
       zod:
         specifier: 'catalog:'
         version: 3.23.8
@@ -345,33 +393,21 @@ importers:
 
   packages/api:
     dependencies:
+      '@acme/auth':
+        specifier: workspace:*
+        version: link:../auth
       '@acme/payload':
         specifier: workspace:*
         version: link:../payload
       '@acme/validators':
         specifier: workspace:*
         version: link:../validators
-      '@t3-oss/env-core':
-        specifier: 'catalog:'
-        version: 0.11.1(typescript@5.5.4)(zod@3.23.8)
-      '@tanstack/react-query':
-        specifier: ^5.51.9
-        version: 5.52.1(react@18.3.1)
-      '@trpc/client':
-        specifier: ^11.0.0-rc.466
-        version: 11.0.0-rc.485(@trpc/server@11.0.0-rc.485)
-      '@trpc/react-query':
-        specifier: ^11.0.0-rc.466
-        version: 11.0.0-rc.485(@tanstack/react-query@5.52.1(react@18.3.1))(@trpc/client@11.0.0-rc.485(@trpc/server@11.0.0-rc.485))(@trpc/server@11.0.0-rc.485)(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@18.3.1))(react@18.3.1)
       '@trpc/server':
-        specifier: ^11.0.0-rc.466
+        specifier: 'catalog:'
         version: 11.0.0-rc.485
       payload:
         specifier: beta
-        version: 3.0.0-beta.97(graphql@16.9.0)(monaco-editor@0.38.0)(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@18.3.1))(react@18.3.1)(typescript@5.5.4)
-      react:
-        specifier: ^18.3.1 || ^19.0.0-rc-06d0b89e-20240801
-        version: 18.3.1
+        version: 3.0.0-beta.97(graphql@16.9.0)(monaco-editor@0.38.0)(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-06d0b89e-20240801))(react@19.0.0-rc-06d0b89e-20240801)(typescript@5.5.4)
       superjson:
         specifier: 2.2.1
         version: 2.2.1
@@ -388,12 +424,49 @@ importers:
       '@acme/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/typescript
-      '@types/node':
+      eslint:
         specifier: 'catalog:'
-        version: 20.16.1
-      '@types/react':
-        specifier: catalog:react18
-        version: 18.3.4
+        version: 9.9.1(jiti@1.21.6)
+      prettier:
+        specifier: 'catalog:'
+        version: 3.3.3
+      typescript:
+        specifier: 'catalog:'
+        version: 5.5.4
+
+  packages/auth:
+    dependencies:
+      '@acme/payload':
+        specifier: workspace:*
+        version: link:../payload
+      '@auth/core':
+        specifier: 0.34.2
+        version: 0.34.2
+      '@auth/drizzle-adapter':
+        specifier: ^1.4.2
+        version: 1.4.2
+      '@t3-oss/env-nextjs':
+        specifier: ^0.11.0
+        version: 0.11.1(typescript@5.5.4)(zod@3.23.8)
+      next-auth:
+        specifier: 5.0.0-beta.20
+        version: 5.0.0-beta.20(next@15.0.0-canary.104(babel-plugin-react-compiler@0.0.0)(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-06d0b89e-20240801))(react@19.0.0-rc-06d0b89e-20240801)(sass@1.77.4))(react@19.0.0-rc-06d0b89e-20240801)
+      payload:
+        specifier: beta
+        version: 3.0.0-beta.98(graphql@16.9.0)(monaco-editor@0.38.0)(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-06d0b89e-20240801))(react@19.0.0-rc-06d0b89e-20240801)(typescript@5.5.4)
+      zod:
+        specifier: 'catalog:'
+        version: 3.23.8
+    devDependencies:
+      '@acme/eslint-config':
+        specifier: workspace:*
+        version: link:../../tooling/eslint
+      '@acme/prettier-config':
+        specifier: workspace:*
+        version: link:../../tooling/prettier
+      '@acme/tsconfig':
+        specifier: workspace:*
+        version: link:../../tooling/typescript
       eslint:
         specifier: 'catalog:'
         version: 9.9.1(jiti@1.21.6)
@@ -663,6 +736,9 @@ packages:
         optional: true
       nodemailer:
         optional: true
+
+  '@auth/drizzle-adapter@1.4.2':
+    resolution: {integrity: sha512-rqukaT9CeWB8VOt6g2bQ6uYMHVOQIYCBkzddZXWshi8aqwLABatpRWAc+pehpcMDn0RSW/uvKMs7tkON+Bho9Q==}
 
   '@babel/code-frame@7.10.4':
     resolution: {integrity: sha512-vG6SvB6oYEhvgisZNFRmRCUkLz11c7rp+tbNTynGqc6mS1d5ATd/sGyV6W0KZZnXRKMTzZDRgQT3Ou9jhpAfUg==}
@@ -2643,6 +2719,9 @@ packages:
 
   '@payloadcms/translations@3.0.0-beta.97':
     resolution: {integrity: sha512-iT7rRVRYxY0JXJ4pmDgEKmrXq5nao8msSDPMa0hs4+V9qNC2Iqtjp7LV07O5lNtuzshuUhkUnlx5wkK152fZLQ==}
+
+  '@payloadcms/translations@3.0.0-beta.98':
+    resolution: {integrity: sha512-wc+O8wnPuamDGR3hxKEG7AlrLKjLI8UicIqeyX4T1ZrUcJaX6aUkXhxcyvk/3GFK0A9SLMo/NbriUQn1aizb+A==}
 
   '@payloadcms/ui@3.0.0-beta.97':
     resolution: {integrity: sha512-Aqt26Tucw5v6m+lJj9QRUtu7ZZrxax3/Y1uKVO+azkDVebhmXXuTO9yRsshKYurGurLv965/v0VAF3BWEh3kOw==}
@@ -6640,6 +6719,22 @@ packages:
     resolution: {integrity: sha512-dBpDMdxv9Irdq66304OLfEmQ9tbNRFnFTuZiLo+bD+r332bBmMJ8GBLXklIXXgxd3+v9+KUnZaUR5PJMa75Gsg==}
     engines: {node: '>= 0.4.0'}
 
+  next-auth@5.0.0-beta.20:
+    resolution: {integrity: sha512-+48SjV9k9AtUU3JbEIa4PXNjKIewfFjVGL7Xs2RKkuQ5QqegDNIQiIG8sLk6/qo7RTScQYIGKgeQ5IuQRtrTQg==}
+    peerDependencies:
+      '@simplewebauthn/browser': ^9.0.1
+      '@simplewebauthn/server': ^9.0.2
+      next: ^14.0.0-0 || ^15.0.0-0
+      nodemailer: ^6.6.5
+      react: ^18.2.0 || ^19.0.0-0
+    peerDependenciesMeta:
+      '@simplewebauthn/browser':
+        optional: true
+      '@simplewebauthn/server':
+        optional: true
+      nodemailer:
+        optional: true
+
   next-themes@0.3.0:
     resolution: {integrity: sha512-/QHIrsYpd6Kfk7xakK4svpDI5mmXP0gfvCoJdGpZQ2TOrQZmsW0QxjaiLn8wbIKjtm4BTSqLoix4lxYYOnLJ/w==}
     peerDependencies:
@@ -7039,6 +7134,13 @@ packages:
 
   payload@3.0.0-beta.97:
     resolution: {integrity: sha512-t735A6oQtjwXej0eIaJljuSW529sLiAJZux5WeO8nWGzrqK6LpOJL38jLVogqzN+GeEAypjIvl2xqiIXHteDIg==}
+    engines: {node: ^18.20.2 || >=20.9.0}
+    hasBin: true
+    peerDependencies:
+      graphql: ^16.8.1
+
+  payload@3.0.0-beta.98:
+    resolution: {integrity: sha512-0fFYwKDIv19n473LooqncKsTxRZ6euhEaI2q+Z0bc2n0tmCdVemIoCycK0gmKT6T0DOCov5v0MjrwRTJlEPgDw==}
     engines: {node: ^18.20.2 || >=20.9.0}
     hasBin: true
     peerDependencies:
@@ -9019,6 +9121,14 @@ snapshots:
       oauth4webapi: 2.12.0
       preact: 10.11.3
       preact-render-to-string: 5.2.3(preact@10.11.3)
+
+  '@auth/drizzle-adapter@1.4.2':
+    dependencies:
+      '@auth/core': 0.34.2
+    transitivePeerDependencies:
+      - '@simplewebauthn/browser'
+      - '@simplewebauthn/server'
+      - nodemailer
 
   '@babel/code-frame@7.10.4':
     dependencies:
@@ -11019,13 +11129,6 @@ snapshots:
       react: 19.0.0-rc-06d0b89e-20240801
       react-dom: 19.0.0-rc-06d0b89e-20240801(react@19.0.0-rc-06d0b89e-20240801)
 
-  '@monaco-editor/react@4.6.0(monaco-editor@0.38.0)(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@18.3.1))(react@18.3.1)':
-    dependencies:
-      '@monaco-editor/loader': 1.4.0(monaco-editor@0.38.0)
-      monaco-editor: 0.38.0
-      react: 18.3.1
-      react-dom: 19.0.0-rc-fb9a90fa48-20240614(react@18.3.1)
-
   '@monaco-editor/react@4.6.0(monaco-editor@0.38.0)(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-06d0b89e-20240801))(react@19.0.0-rc-06d0b89e-20240801)':
     dependencies:
       '@monaco-editor/loader': 1.4.0(monaco-editor@0.38.0)
@@ -11281,6 +11384,10 @@ snapshots:
       - utf-8-validate
 
   '@payloadcms/translations@3.0.0-beta.97':
+    dependencies:
+      date-fns: 3.3.1
+
+  '@payloadcms/translations@3.0.0-beta.98':
     dependencies:
       date-fns: 3.3.1
 
@@ -12306,6 +12413,11 @@ snapshots:
       '@tanstack/query-core': 5.52.0
       react: 18.3.1
 
+  '@tanstack/react-query@5.52.1(react@19.0.0-rc-06d0b89e-20240801)':
+    dependencies:
+      '@tanstack/query-core': 5.52.0
+      react: 19.0.0-rc-06d0b89e-20240801
+
   '@tokenizer/token@0.3.0': {}
 
   '@tootallnate/quickjs-emscripten@0.23.0': {}
@@ -12314,13 +12426,21 @@ snapshots:
     dependencies:
       '@trpc/server': 11.0.0-rc.485
 
-  '@trpc/react-query@11.0.0-rc.485(@tanstack/react-query@5.52.1(react@18.3.1))(@trpc/client@11.0.0-rc.485(@trpc/server@11.0.0-rc.485))(@trpc/server@11.0.0-rc.485)(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@18.3.1))(react@18.3.1)':
+  '@trpc/react-query@11.0.0-rc.485(@tanstack/react-query@5.52.1(react@18.3.1))(@trpc/client@11.0.0-rc.485(@trpc/server@11.0.0-rc.485))(@trpc/server@11.0.0-rc.485)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@tanstack/react-query': 5.52.1(react@18.3.1)
       '@trpc/client': 11.0.0-rc.485(@trpc/server@11.0.0-rc.485)
       '@trpc/server': 11.0.0-rc.485
       react: 18.3.1
-      react-dom: 19.0.0-rc-fb9a90fa48-20240614(react@18.3.1)
+      react-dom: 18.3.1(react@18.3.1)
+
+  '@trpc/react-query@11.0.0-rc.485(@tanstack/react-query@5.52.1(react@19.0.0-rc-06d0b89e-20240801))(@trpc/client@11.0.0-rc.485(@trpc/server@11.0.0-rc.485))(@trpc/server@11.0.0-rc.485)(react-dom@19.0.0-rc-06d0b89e-20240801(react@19.0.0-rc-06d0b89e-20240801))(react@19.0.0-rc-06d0b89e-20240801)':
+    dependencies:
+      '@tanstack/react-query': 5.52.1(react@19.0.0-rc-06d0b89e-20240801)
+      '@trpc/client': 11.0.0-rc.485(@trpc/server@11.0.0-rc.485)
+      '@trpc/server': 11.0.0-rc.485
+      react: 19.0.0-rc-06d0b89e-20240801
+      react-dom: 19.0.0-rc-06d0b89e-20240801(react@19.0.0-rc-06d0b89e-20240801)
 
   '@trpc/server@11.0.0-rc.485': {}
 
@@ -15993,6 +16113,12 @@ snapshots:
 
   netmask@2.0.2: {}
 
+  next-auth@5.0.0-beta.20(next@15.0.0-canary.104(babel-plugin-react-compiler@0.0.0)(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-06d0b89e-20240801))(react@19.0.0-rc-06d0b89e-20240801)(sass@1.77.4))(react@19.0.0-rc-06d0b89e-20240801):
+    dependencies:
+      '@auth/core': 0.34.2
+      next: 15.0.0-canary.104(babel-plugin-react-compiler@0.0.0)(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-06d0b89e-20240801))(react@19.0.0-rc-06d0b89e-20240801)(sass@1.77.4)
+      react: 19.0.0-rc-06d0b89e-20240801
+
   next-themes@0.3.0(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@18.3.1))(react@18.3.1):
     dependencies:
       react: 18.3.1
@@ -16009,6 +16135,35 @@ snapshots:
       postcss: 8.4.31
       react: 19.0.0-rc-06d0b89e-20240801
       react-dom: 19.0.0-rc-06d0b89e-20240801(react@19.0.0-rc-06d0b89e-20240801)
+      styled-jsx: 5.1.6(react@19.0.0-rc-06d0b89e-20240801)
+    optionalDependencies:
+      '@next/swc-darwin-arm64': 15.0.0-canary.104
+      '@next/swc-darwin-x64': 15.0.0-canary.104
+      '@next/swc-linux-arm64-gnu': 15.0.0-canary.104
+      '@next/swc-linux-arm64-musl': 15.0.0-canary.104
+      '@next/swc-linux-x64-gnu': 15.0.0-canary.104
+      '@next/swc-linux-x64-musl': 15.0.0-canary.104
+      '@next/swc-win32-arm64-msvc': 15.0.0-canary.104
+      '@next/swc-win32-ia32-msvc': 15.0.0-canary.104
+      '@next/swc-win32-x64-msvc': 15.0.0-canary.104
+      babel-plugin-react-compiler: 0.0.0
+      sass: 1.77.4
+      sharp: 0.33.5
+    transitivePeerDependencies:
+      - '@babel/core'
+      - babel-plugin-macros
+
+  next@15.0.0-canary.104(babel-plugin-react-compiler@0.0.0)(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-06d0b89e-20240801))(react@19.0.0-rc-06d0b89e-20240801)(sass@1.77.4):
+    dependencies:
+      '@next/env': 15.0.0-canary.104
+      '@swc/counter': 0.1.3
+      '@swc/helpers': 0.5.12
+      busboy: 1.6.0
+      caniuse-lite: 1.0.30001653
+      graceful-fs: 4.2.11
+      postcss: 8.4.31
+      react: 19.0.0-rc-06d0b89e-20240801
+      react-dom: 19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-06d0b89e-20240801)
       styled-jsx: 5.1.6(react@19.0.0-rc-06d0b89e-20240801)
     optionalDependencies:
       '@next/swc-darwin-arm64': 15.0.0-canary.104
@@ -16534,9 +16689,9 @@ snapshots:
       - react-dom
       - typescript
 
-  payload@3.0.0-beta.97(graphql@16.9.0)(monaco-editor@0.38.0)(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@18.3.1))(react@18.3.1)(typescript@5.5.4):
+  payload@3.0.0-beta.97(graphql@16.9.0)(monaco-editor@0.38.0)(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-06d0b89e-20240801))(react@19.0.0-rc-06d0b89e-20240801)(typescript@5.5.4):
     dependencies:
-      '@monaco-editor/react': 4.6.0(monaco-editor@0.38.0)(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@18.3.1))(react@18.3.1)
+      '@monaco-editor/react': 4.6.0(monaco-editor@0.38.0)(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-06d0b89e-20240801))(react@19.0.0-rc-06d0b89e-20240801)
       '@next/env': 15.0.0-rc.0
       '@payloadcms/translations': 3.0.0-beta.97
       '@types/busboy': 1.5.4
@@ -16569,11 +16724,11 @@ snapshots:
       - react-dom
       - typescript
 
-  payload@3.0.0-beta.97(graphql@16.9.0)(monaco-editor@0.38.0)(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-06d0b89e-20240801))(react@19.0.0-rc-06d0b89e-20240801)(typescript@5.5.4):
+  payload@3.0.0-beta.98(graphql@16.9.0)(monaco-editor@0.38.0)(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-06d0b89e-20240801))(react@19.0.0-rc-06d0b89e-20240801)(typescript@5.5.4):
     dependencies:
       '@monaco-editor/react': 4.6.0(monaco-editor@0.38.0)(react-dom@19.0.0-rc-fb9a90fa48-20240614(react@19.0.0-rc-06d0b89e-20240801))(react@19.0.0-rc-06d0b89e-20240801)
       '@next/env': 15.0.0-rc.0
-      '@payloadcms/translations': 3.0.0-beta.97
+      '@payloadcms/translations': 3.0.0-beta.98
       '@types/busboy': 1.5.4
       ajv: 8.14.0
       bson-objectid: 2.0.4

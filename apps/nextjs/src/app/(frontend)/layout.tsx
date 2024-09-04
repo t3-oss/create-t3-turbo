@@ -3,12 +3,14 @@ import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 
 import { cn } from "@acme/ui";
+import { ThemeProvider, ThemeToggle } from "@acme/ui/theme";
+import { Toaster } from "@acme/ui/toast";
 
-import { Providers } from "./providers";
+import { TRPCReactProvider } from "~/trpc/react";
 
-import "./globals.css";
+import "~/app/globals.css";
 
-import { env } from "../../env";
+import { env } from "~/env";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -38,11 +40,7 @@ export const viewport: Viewport = {
   ],
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -52,7 +50,13 @@ export default function RootLayout({
           GeistMono.variable,
         )}
       >
-        <Providers>{children}</Providers>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <TRPCReactProvider>{props.children}</TRPCReactProvider>
+          <div className="absolute bottom-4 right-4">
+            <ThemeToggle />
+          </div>
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );

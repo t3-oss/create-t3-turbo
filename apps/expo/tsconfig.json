@@ -2,7 +2,6 @@
   "extends": ["@acme/tsconfig/base.json"],
   "compilerOptions": {
     "baseUrl": ".",
-    "lib": ["es2022", "dom", "dom.iterable"],
     "paths": {
       "~/*": ["./src/*"]
     },

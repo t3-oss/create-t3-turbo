@@ -29,10 +29,5 @@
     "turbo": "^2.0.13",
     "typescript": "catalog:"
   },
-  "prettier": "@acme/prettier-config",
-  "pnpm": {
-    "patchedDependencies": {
-      "@expo/server@0.4.4": "patches/@expo__server@0.4.4.patch"
-    }
-  }
+  "prettier": "@acme/prettier-config"
 }

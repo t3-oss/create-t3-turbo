@@ -1,3 +1,4 @@
+/// <reference types="react/experimental" />
 import { cache } from "react";
 import { headers } from "next/headers";
 import { createHydrationHelpers } from "@trpc/react-query/rsc";

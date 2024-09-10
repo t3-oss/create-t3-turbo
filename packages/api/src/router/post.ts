@@ -13,7 +13,7 @@ export const postRouter = {
   }),
 
   byId: publicProcedure
-    .input(z.object({ id: z.number() }))
+    .input(z.object({ id: z.string() }))
     .query(async ({ ctx, input }) => {
       const post = await ctx.payload.findByID({
         collection: "posts",
@@ -32,7 +32,7 @@ export const postRouter = {
     }),
 
   delete: protectedProcedure
-    .input(z.number())
+    .input(z.string())
     .mutation(async ({ ctx, input }) => {
       return await ctx.payload.delete({
         collection: "posts",

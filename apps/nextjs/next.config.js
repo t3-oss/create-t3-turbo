@@ -13,6 +13,7 @@ const config = {
   transpilePackages: [
     "@acme/api",
     "@acme/auth",
+    "@acme/payload",
     "@acme/ui",
     "@acme/validators",
   ],

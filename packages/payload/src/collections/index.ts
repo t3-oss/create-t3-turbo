@@ -1,2 +1,5 @@
 export { Posts } from "./Posts";
-export { Users } from "./Users";
+export { Customers } from "./Customers";
+export { Admins } from "./Admins";
+export { Sessions } from "./Sessions";
+export { Accounts } from "./Accounts";

@@ -8,26 +8,30 @@
 
 export interface Config {
   auth: {
-    users: UserAuthOperations;
+    admins: AdminAuthOperations;
   };
   collections: {
-    users: User;
+    admins: Admin;
     posts: Post;
+    customers: Customer;
+    sessions: Session;
+    accounts: Account;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
   db: {
-    defaultIDType: number;
+    defaultIDType: string;
   };
   globals: {};
   locale: null;
-  user: User & {
-    collection: 'users';
+  user: Admin & {
+    collection: 'admins';
   };
 }
-export interface UserAuthOperations {
+export interface AdminAuthOperations {
   forgotPassword: {
     email: string;
+    password: string;
   };
   login: {
     email: string;
@@ -39,14 +43,15 @@ export interface UserAuthOperations {
   };
   unlock: {
     email: string;
+    password: string;
   };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users".
+ * via the `definition` "admins".
  */
-export interface User {
-  id: number;
+export interface Admin {
+  id: string;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -63,9 +68,55 @@ export interface User {
  * via the `definition` "posts".
  */
 export interface Post {
-  id: number;
+  id: string;
   title?: string | null;
   content?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "customers".
+ */
+export interface Customer {
+  id: string;
+  name?: string | null;
+  email?: string | null;
+  emailVerified?: string | null;
+  image?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "sessions".
+ */
+export interface Session {
+  id: string;
+  sessionToken?: string | null;
+  userId: string | Customer;
+  expires?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "accounts".
+ */
+export interface Account {
+  id: string;
+  userId: string | Customer;
+  type: 'oauth' | 'oidc' | 'email' | 'webauthn';
+  provider: string;
+  providerAccountId: string;
+  refreshToken?: string | null;
+  accessToken?: string | null;
+  accessTokenExpires?: string | null;
+  expires_at?: number | null;
+  token_type?: string | null;
+  scope?: string | null;
+  id_token?: string | null;
+  session_state?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -74,10 +125,10 @@ export interface Post {
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
-  id: number;
+  id: string;
   user: {
-    relationTo: 'users';
-    value: number | User;
+    relationTo: 'admins';
+    value: string | Admin;
   };
   key?: string | null;
   value?:
@@ -97,7 +148,7 @@ export interface PayloadPreference {
  * via the `definition` "payload-migrations".
  */
 export interface PayloadMigration {
-  id: number;
+  id: string;
   name?: string | null;
   batch?: number | null;
   updatedAt: string;

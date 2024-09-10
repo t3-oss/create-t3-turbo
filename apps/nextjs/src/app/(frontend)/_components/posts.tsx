@@ -3,7 +3,6 @@
 import * as z from "zod";
 
 import type { RouterOutputs } from "@acme/api";
-import { api } from "@acme/api/provider";
 import { cn } from "@acme/ui";
 import { Button } from "@acme/ui/button";
 import {
@@ -17,10 +16,9 @@ import {
 import { Input } from "@acme/ui/input";
 import { toast } from "@acme/ui/toast";
 
-export function CreatePostForm() {
-  const { data: permissions } = api.auth.getUserPermissions.useQuery();
-  const canCreatePost = permissions?.collections.posts?.create.permission;
+import { api } from "~/trpc/react";
 
+export function CreatePostForm() {
   const form = useForm({
     schema: z.object({
       title: z.string().max(256),
@@ -46,10 +44,6 @@ export function CreatePostForm() {
       );
     },
   });
-
-  if (!canCreatePost) {
-    return null;
-  }
 
   return (
     <Form {...form}>

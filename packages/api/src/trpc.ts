@@ -12,7 +12,20 @@ import { getPayload } from "payload";
 import superjson from "superjson";
 import { ZodError } from "zod";
 
+import type { Session } from "@acme/auth";
+import { auth, validateToken } from "@acme/auth";
 import config from "@acme/payload";
+
+/**
+ * Isomorphic Session getter for API requests
+ * - Expo requests will have a session token in the Authorization header
+ * - Next.js requests will have a session token in cookies
+ */
+const isomorphicGetSession = async (headers: Headers) => {
+  const authToken = headers.get("Authorization") ?? null;
+  if (authToken) return validateToken(authToken);
+  return auth();
+};
 
 /**
  * 1. CONTEXT
@@ -26,17 +39,23 @@ import config from "@acme/payload";
  *
  * @see https://trpc.io/docs/server/context
  */
-export const createTRPCContext = async (req: Request) => {
+export const createTRPCContext = async (opts: {
+  headers: Headers;
+  session: Session | null;
+}) => {
   const payload = await getPayload({ config });
-  const { user, permissions } = await payload.auth({ headers: req.headers });
+  const { user, permissions } = await payload.auth({ headers: opts.headers });
+  const authToken = opts.headers.get("Authorization") ?? null;
+  const session = await isomorphicGetSession(opts.headers);
 
-  const source = req.headers.get("x-trpc-source") ?? "unknown";
-  console.log(">>> tRPC Request from", source, "by", user);
+  const source = opts.headers.get("x-trpc-source") ?? "unknown";
+  console.log(">>> tRPC Request from", source, "by", session?.user);
 
   return {
+    session,
     payload,
+    token: authToken,
     user,
-    req,
     permissions,
   };
 };
@@ -120,13 +139,13 @@ export const publicProcedure = t.procedure.use(timingMiddleware);
 export const protectedProcedure = t.procedure
   .use(timingMiddleware)
   .use(({ ctx, next }) => {
-    if (!ctx.user) {
+    if (!ctx.session?.user) {
       throw new TRPCError({ code: "UNAUTHORIZED" });
     }
     return next({
       ctx: {
-        // infers the `user` as non-nullable
-        user: ctx.user,
+        // infers the `session` as non-nullable
+        session: { ...ctx.session, user: ctx.session.user },
       },
     });
   });

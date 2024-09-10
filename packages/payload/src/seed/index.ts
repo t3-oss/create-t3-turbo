@@ -1,14 +1,14 @@
 import { getPayload } from "payload";
 
 import config from "../payload.config";
-import { seedUsers } from "./collections/users";
+import { seedAdmins } from "./collections/admins";
 
 async function run() {
   const payload = await getPayload({ config });
 
   try {
     const isSeeded =
-      (await payload.count({ collection: "users" })).totalDocs > 0;
+      (await payload.count({ collection: "admins" })).totalDocs > 0;
     if (isSeeded) {
       payload.logger.info(`— Database already seeded, skipping...`);
       process.exit(0);
@@ -16,7 +16,7 @@ async function run() {
 
     payload.logger.info("Seeding database...");
 
-    await seedUsers(payload);
+    await seedAdmins(payload);
 
     payload.logger.info("Database seeded successfully");
     process.exit(0);

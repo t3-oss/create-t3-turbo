@@ -4,11 +4,10 @@ import type {
   Session as NextAuthSession,
 } from "next-auth";
 import { skipCSRFCheck } from "@auth/core";
-import { DrizzleAdapter } from "@auth/drizzle-adapter";
+import { PrismaAdapter } from "@auth/prisma-adapter";
 import Discord from "next-auth/providers/discord";
 
-import { db } from "@acme/db/client";
-import { Account, Session, User } from "@acme/db/schema";
+import { db } from "@acme/db";
 
 import { env } from "../env";
 
@@ -20,11 +19,7 @@ declare module "next-auth" {
   }
 }
 
-const adapter = DrizzleAdapter(db, {
-  usersTable: User,
-  accountsTable: Account,
-  sessionsTable: Session,
-});
+const adapter = PrismaAdapter(db);
 
 export const isSecureContext = env.NODE_ENV !== "development";
 

@@ -5,14 +5,14 @@
     "node": ">=20.16.0",
     "pnpm": "^9.6.0"
   },
-  "packageManager": "pnpm@9.7.0",
+  "packageManager": "pnpm@9.7.1",
   "scripts": {
     "build": "turbo run build",
     "clean": "git clean -xdf node_modules",
     "clean:workspaces": "turbo run clean",
     "db:push": "turbo -F @acme/db push",
     "db:studio": "turbo -F @acme/db studio",
-    "dev": "turbo watch dev",
+    "dev": "turbo watch dev --continue",
     "dev:next": "turbo watch dev -F @acme/nextjs...",
     "format": "turbo run format --continue -- --cache --cache-location .cache/.prettiercache",
     "format:fix": "turbo run format --continue -- --write --cache --cache-location .cache/.prettiercache",
@@ -25,9 +25,9 @@
   },
   "devDependencies": {
     "@acme/prettier-config": "workspace:*",
-    "@turbo/gen": "^2.0.13",
+    "@turbo/gen": "^2.1.1",
     "prettier": "catalog:",
-    "turbo": "^2.0.13",
+    "turbo": "^2.1.1",
     "typescript": "catalog:"
   },
   "prettier": "@acme/prettier-config"

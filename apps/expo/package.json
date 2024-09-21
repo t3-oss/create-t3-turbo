@@ -15,6 +15,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@acme/api": "workspace:*",
     "@bacons/text-decoder": "^0.0.0",
     "@expo/metro-config": "^0.18.11",
     "@shopify/flash-list": "1.7.1",
@@ -43,7 +44,6 @@
     "superjson": "2.2.1"
   },
   "devDependencies": {
-    "@acme/api": "workspace:*",
     "@acme/eslint-config": "workspace:*",
     "@acme/prettier-config": "workspace:*",
     "@acme/tailwind-config": "workspace:*",

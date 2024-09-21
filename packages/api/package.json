@@ -7,6 +7,10 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./src/index.ts"
+    },
+    "./transformer": {
+      "types": "./dist/transformer.d.ts",
+      "default": "./src/transformer.ts"
     }
   },
   "license": "MIT",

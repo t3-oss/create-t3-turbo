@@ -7,12 +7,13 @@
  * The pieces you will need to use are documented accordingly near the end
  */
 import { initTRPC, TRPCError } from "@trpc/server";
-import superjson from "superjson";
 import { ZodError } from "zod";
 
 import type { Session } from "@acme/auth";
 import { auth, validateToken } from "@acme/auth";
 import { db } from "@acme/db/client";
+
+import { transformer } from "./transformer";
 
 /**
  * Isomorphic Session getter for API requests
@@ -61,7 +62,7 @@ export const createTRPCContext = async (opts: {
  * transformer
  */
 const t = initTRPC.context<typeof createTRPCContext>().create({
-  transformer: superjson,
+  transformer,
   errorFormatter: ({ shape, error }) => ({
     ...shape,
     data: {

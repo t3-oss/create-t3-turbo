@@ -19,7 +19,7 @@ export const Post = pgTable("post", {
   updatedAt: timestamp("updatedAt", {
     mode: "date",
     withTimezone: true,
-  }).$onUpdateFn(() => sql`now()`),
+  }).$onUpdateFn(() => new Date()),
 });
 
 export const CreatePostSchema = createInsertSchema(Post, {

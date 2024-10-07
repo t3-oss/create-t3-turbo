@@ -414,11 +414,11 @@ importers:
         specifier: ^0.9.0
         version: 0.9.0
       drizzle-orm:
-        specifier: ^0.33.0
-        version: 0.33.0(@neondatabase/serverless@0.9.4)(@opentelemetry/api@1.9.0)(@planetscale/database@1.19.0)(@types/pg@8.11.6)(@types/react@18.3.3)(@vercel/postgres@0.9.0)(mysql2@3.11.0)(postgres@3.4.4)(react@18.3.1)
+        specifier: ^0.34.0
+        version: 0.34.0(@neondatabase/serverless@0.9.4)(@opentelemetry/api@1.9.0)(@planetscale/database@1.19.0)(@types/pg@8.11.6)(@types/react@18.3.3)(@vercel/postgres@0.9.0)(mysql2@3.11.0)(postgres@3.4.4)(react@18.3.1)
       drizzle-zod:
         specifier: ^0.5.1
-        version: 0.5.1(drizzle-orm@0.33.0(@neondatabase/serverless@0.9.4)(@opentelemetry/api@1.9.0)(@planetscale/database@1.19.0)(@types/pg@8.11.6)(@types/react@18.3.3)(@vercel/postgres@0.9.0)(mysql2@3.11.0)(postgres@3.4.4)(react@18.3.1))(zod@3.23.8)
+        version: 0.5.1(drizzle-orm@0.34.0(@neondatabase/serverless@0.9.4)(@opentelemetry/api@1.9.0)(@planetscale/database@1.19.0)(@types/pg@8.11.6)(@types/react@18.3.3)(@vercel/postgres@0.9.0)(mysql2@3.11.0)(postgres@3.4.4)(react@18.3.1))(zod@3.23.8)
       zod:
         specifier: 'catalog:'
         version: 3.23.8
@@ -436,8 +436,8 @@ importers:
         specifier: ^7.4.2
         version: 7.4.2
       drizzle-kit:
-        specifier: ^0.24.2
-        version: 0.24.2
+        specifier: ^0.25.0
+        version: 0.25.0
       eslint:
         specifier: 'catalog:'
         version: 9.9.0(jiti@1.21.6)
@@ -553,7 +553,7 @@ importers:
         version: 7.35.0(eslint@9.9.0(jiti@1.21.6))
       eslint-plugin-react-hooks:
         specifier: rc
-        version: 5.1.0-rc-4f604941-20240830(eslint@9.9.0(jiti@1.21.6))
+        version: 5.1.0-rc-1460d67c-20241003(eslint@9.9.0(jiti@1.21.6))
       eslint-plugin-turbo:
         specifier: ^2.1.1
         version: 2.1.1(eslint@9.9.0(jiti@1.21.6))
@@ -1439,9 +1439,11 @@ packages:
 
   '@esbuild-kit/core-utils@3.3.2':
     resolution: {integrity: sha512-sPRAnw9CdSsRmEtnsl2WXWdyquogVpB3yZ3dgwJfe8zrOzTsV7cJvmwrKVa+0ma5BoiGJ+BoqkMvawbayKUsqQ==}
+    deprecated: 'Merged into tsx: https://tsx.is'
 
   '@esbuild-kit/esm-loader@2.6.5':
     resolution: {integrity: sha512-FxEMIkJKnodyA1OaCUoEvbYRkoZlLZ4d/eXFu9Fh8CbBBgP5EmZxrfTRyN0qpXZ4vOvqnE5YdRdcrmUUXuU+dA==}
+    deprecated: 'Merged into tsx: https://tsx.is'
 
   '@esbuild/aix-ppc64@0.19.12':
     resolution: {integrity: sha512-bmoCYyWdEL3wDQIVbcyzRyeKLgk2WtWLTWz1ZIAZF/EGbNOwSA6ew3PftJ1PqMiOOGu0OyFMzG53L0zqIpPeNA==}
@@ -4112,17 +4114,17 @@ packages:
     resolution: {integrity: sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==}
     engines: {node: '>=12'}
 
-  drizzle-kit@0.24.2:
-    resolution: {integrity: sha512-nXOaTSFiuIaTMhS8WJC2d4EBeIcN9OSt2A2cyFbQYBAZbi7lRsVGJNqDpEwPqYfJz38yxbY/UtbvBBahBfnExQ==}
+  drizzle-kit@0.25.0:
+    resolution: {integrity: sha512-Rcf0nYCAKizwjWQCY+d3zytyuTbDb81NcaPor+8NebESlUz1+9W3uGl0+r9FhU4Qal5Zv9j/7neXCSCe7DHzjA==}
     hasBin: true
 
-  drizzle-orm@0.33.0:
-    resolution: {integrity: sha512-SHy72R2Rdkz0LEq0PSG/IdvnT3nGiWuRk+2tXZQ90GVq/XQhpCzu/EFT3V2rox+w8MlkBQxifF8pCStNYnERfA==}
+  drizzle-orm@0.34.0:
+    resolution: {integrity: sha512-6l9v65YoCr53UOWjyPPNYYQsZYvtzgxMKxljQ5VlJcS3/zM81MXnWeSfqQFlrUHxoTNgyi9BWHysUE8+c0odzA==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
       '@cloudflare/workers-types': '>=3'
       '@electric-sql/pglite': '>=0.1.1'
-      '@libsql/client': '*'
+      '@libsql/client': '>=0.10.0'
       '@neondatabase/serverless': '>=0.1'
       '@op-engineering/op-sqlite': '>=2'
       '@opentelemetry/api': ^1.4.1
@@ -4380,8 +4382,8 @@ packages:
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
 
-  eslint-plugin-react-hooks@5.1.0-rc-4f604941-20240830:
-    resolution: {integrity: sha512-7IHBSzlQL498kfaPzQWV1t8dR/v3QTbXtG2x2bVjl5YOLpmf+I045NU78HMX7wAOaepWjsOwF591Q/O+nr3CJQ==}
+  eslint-plugin-react-hooks@5.1.0-rc-1460d67c-20241003:
+    resolution: {integrity: sha512-6RB5ld4hvk8hDc0JNMyid5/+SQ0ZyRtmmZV2lSvnWAA0zLIANUpSf7QNb7gtPYVop4qSu79hJpBsDGwdtXluig==}
     engines: {node: '>=10'}
     peerDependencies:
       eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0
@@ -12114,7 +12116,7 @@ snapshots:
 
   dotenv@16.4.5: {}
 
-  drizzle-kit@0.24.2:
+  drizzle-kit@0.25.0:
     dependencies:
       '@drizzle-team/brocli': 0.10.1
       '@esbuild-kit/esm-loader': 2.6.5
@@ -12123,7 +12125,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.33.0(@neondatabase/serverless@0.9.4)(@opentelemetry/api@1.9.0)(@planetscale/database@1.19.0)(@types/pg@8.11.6)(@types/react@18.3.3)(@vercel/postgres@0.9.0)(mysql2@3.11.0)(postgres@3.4.4)(react@18.3.1):
+  drizzle-orm@0.34.0(@neondatabase/serverless@0.9.4)(@opentelemetry/api@1.9.0)(@planetscale/database@1.19.0)(@types/pg@8.11.6)(@types/react@18.3.3)(@vercel/postgres@0.9.0)(mysql2@3.11.0)(postgres@3.4.4)(react@18.3.1):
     optionalDependencies:
       '@neondatabase/serverless': 0.9.4
       '@opentelemetry/api': 1.9.0
@@ -12135,9 +12137,9 @@ snapshots:
       postgres: 3.4.4
       react: 18.3.1
 
-  drizzle-zod@0.5.1(drizzle-orm@0.33.0(@neondatabase/serverless@0.9.4)(@opentelemetry/api@1.9.0)(@planetscale/database@1.19.0)(@types/pg@8.11.6)(@types/react@18.3.3)(@vercel/postgres@0.9.0)(mysql2@3.11.0)(postgres@3.4.4)(react@18.3.1))(zod@3.23.8):
+  drizzle-zod@0.5.1(drizzle-orm@0.34.0(@neondatabase/serverless@0.9.4)(@opentelemetry/api@1.9.0)(@planetscale/database@1.19.0)(@types/pg@8.11.6)(@types/react@18.3.3)(@vercel/postgres@0.9.0)(mysql2@3.11.0)(postgres@3.4.4)(react@18.3.1))(zod@3.23.8):
     dependencies:
-      drizzle-orm: 0.33.0(@neondatabase/serverless@0.9.4)(@opentelemetry/api@1.9.0)(@planetscale/database@1.19.0)(@types/pg@8.11.6)(@types/react@18.3.3)(@vercel/postgres@0.9.0)(mysql2@3.11.0)(postgres@3.4.4)(react@18.3.1)
+      drizzle-orm: 0.34.0(@neondatabase/serverless@0.9.4)(@opentelemetry/api@1.9.0)(@planetscale/database@1.19.0)(@types/pg@8.11.6)(@types/react@18.3.3)(@vercel/postgres@0.9.0)(mysql2@3.11.0)(postgres@3.4.4)(react@18.3.1)
       zod: 3.23.8
 
   duplexer@0.1.2: {}
@@ -12450,7 +12452,7 @@ snapshots:
       safe-regex-test: 1.0.3
       string.prototype.includes: 2.0.0
 
-  eslint-plugin-react-hooks@5.1.0-rc-4f604941-20240830(eslint@9.9.0(jiti@1.21.6)):
+  eslint-plugin-react-hooks@5.1.0-rc-1460d67c-20241003(eslint@9.9.0(jiti@1.21.6)):
     dependencies:
       eslint: 9.9.0(jiti@1.21.6)
 

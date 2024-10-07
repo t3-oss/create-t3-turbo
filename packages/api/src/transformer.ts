@@ -9,6 +9,9 @@ import SuperJSON from "superjson";
  * ? Even though this helps swapping transformers, bear in mind that distributed Expo apps
  * ? will have the previous transformer bundled in their device, which will cause a mismatch
  * ? in how the data is sent and received (basically, all API requests will fail).
+ *
+ * For more information about transformers, check the official tRPC documentation.
+ * @see https://trpc.io/docs/server/data-transformers
  */
 export const transformer: TRPCCombinedDataTransformer = {
   input: {

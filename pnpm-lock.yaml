@@ -86,8 +86,8 @@ importers:
         specifier: workspace:*
         version: link:../../tooling/typescript
       '@types/node':
-        specifier: ^20.16.10
-        version: 20.16.10
+        specifier: ^20.16.11
+        version: 20.16.11
       eslint:
         specifier: 'catalog:'
         version: 9.12.0(jiti@2.3.3)
@@ -292,8 +292,8 @@ importers:
         specifier: workspace:*
         version: link:../../tooling/typescript
       '@types/node':
-        specifier: ^20.16.10
-        version: 20.16.10
+        specifier: ^20.16.11
+        version: 20.16.11
       '@types/react':
         specifier: catalog:react18
         version: 18.3.11
@@ -314,7 +314,7 @@ importers:
         version: 3.3.3
       tailwindcss:
         specifier: 'catalog:'
-        version: 3.4.13(ts-node@10.9.2(@types/node@20.16.10)(typescript@5.6.2))
+        version: 3.4.13(ts-node@10.9.2(@types/node@20.16.11)(typescript@5.6.2))
       typescript:
         specifier: 'catalog:'
         version: 5.6.2
@@ -3117,8 +3117,8 @@ packages:
   '@types/node@18.19.54':
     resolution: {integrity: sha512-+BRgt0G5gYjTvdLac9sIeE0iZcJxi4Jc4PV5EUzqi+88jmQLr+fRZdv2tCTV7IHKSGxM6SaLoOXQWWUiLUItMw==}
 
-  '@types/node@20.16.10':
-    resolution: {integrity: sha512-vQUKgWTjEIRFCvK6CyriPH3MZYiYlNy0fKiEYHWbcoWLEgs4opurGGKlebrTLqdSMIbXImH6XExNiIyNUv3WpA==}
+  '@types/node@20.16.11':
+    resolution: {integrity: sha512-y+cTCACu92FyA5fgQSAI8A1H429g7aSK2HsO7K4XYUWc4dY5IUz55JSDIYT6/VsOLfGy8vmvQYC2hfb0iF16Uw==}
 
   '@types/node@22.7.4':
     resolution: {integrity: sha512-y+NPi1rFzDs1NdQHHToqeiX2TIS79SWEAw9GYhkkx8bD0ChpfqC+n2j5OXOCpzfojBEBt6DnEnnG9MY0zk1XLg==}
@@ -9874,14 +9874,14 @@ snapshots:
     dependencies:
       '@jest/fake-timers': 29.7.0
       '@jest/types': 29.6.3
-      '@types/node': 20.16.10
+      '@types/node': 20.16.11
       jest-mock: 29.7.0
 
   '@jest/fake-timers@29.7.0':
     dependencies:
       '@jest/types': 29.6.3
       '@sinonjs/fake-timers': 10.3.0
-      '@types/node': 20.16.10
+      '@types/node': 20.16.11
       jest-message-util: 29.7.0
       jest-mock: 29.7.0
       jest-util: 29.7.0
@@ -9894,7 +9894,7 @@ snapshots:
     dependencies:
       '@types/istanbul-lib-coverage': 2.0.6
       '@types/istanbul-reports': 3.0.4
-      '@types/node': 20.16.10
+      '@types/node': 20.16.11
       '@types/yargs': 15.0.19
       chalk: 4.1.2
 
@@ -9903,7 +9903,7 @@ snapshots:
       '@jest/schemas': 29.6.3
       '@types/istanbul-lib-coverage': 2.0.6
       '@types/istanbul-reports': 3.0.4
-      '@types/node': 20.16.10
+      '@types/node': 20.16.11
       '@types/yargs': 17.0.33
       chalk: 4.1.2
 
@@ -11122,13 +11122,13 @@ snapshots:
   '@types/glob@7.2.0':
     dependencies:
       '@types/minimatch': 5.1.2
-      '@types/node': 20.16.10
+      '@types/node': 20.16.11
 
   '@types/hammerjs@2.0.45': {}
 
   '@types/http-proxy@1.17.15':
     dependencies:
-      '@types/node': 20.16.10
+      '@types/node': 20.16.11
 
   '@types/inquirer@6.5.0':
     dependencies:
@@ -11153,13 +11153,13 @@ snapshots:
 
   '@types/node-forge@1.3.11':
     dependencies:
-      '@types/node': 20.16.10
+      '@types/node': 20.16.11
 
   '@types/node@18.19.54':
     dependencies:
       undici-types: 5.26.5
 
-  '@types/node@20.16.10':
+  '@types/node@20.16.11':
     dependencies:
       undici-types: 6.19.8
 
@@ -11169,14 +11169,14 @@ snapshots:
 
   '@types/pg@8.11.10':
     dependencies:
-      '@types/node': 20.16.10
+      '@types/node': 20.16.11
       pg-protocol: 1.7.0
       pg-types: 4.0.2
     optional: true
 
   '@types/pg@8.11.6':
     dependencies:
-      '@types/node': 20.16.10
+      '@types/node': 20.16.11
       pg-protocol: 1.7.0
       pg-types: 4.0.2
 
@@ -11197,7 +11197,7 @@ snapshots:
 
   '@types/through@0.0.33':
     dependencies:
-      '@types/node': 20.16.10
+      '@types/node': 20.16.11
 
   '@types/tinycolor2@1.4.6': {}
 
@@ -11895,7 +11895,7 @@ snapshots:
 
   chrome-launcher@0.15.2:
     dependencies:
-      '@types/node': 20.16.10
+      '@types/node': 20.16.11
       escape-string-regexp: 4.0.0
       is-wsl: 2.2.0
       lighthouse-logger: 1.4.2
@@ -13868,7 +13868,7 @@ snapshots:
       '@jest/environment': 29.7.0
       '@jest/fake-timers': 29.7.0
       '@jest/types': 29.6.3
-      '@types/node': 20.16.10
+      '@types/node': 20.16.11
       jest-mock: 29.7.0
       jest-util: 29.7.0
 
@@ -13889,13 +13889,13 @@ snapshots:
   jest-mock@29.7.0:
     dependencies:
       '@jest/types': 29.6.3
-      '@types/node': 20.16.10
+      '@types/node': 20.16.11
       jest-util: 29.7.0
 
   jest-util@29.7.0:
     dependencies:
       '@jest/types': 29.6.3
-      '@types/node': 20.16.10
+      '@types/node': 20.16.11
       chalk: 4.1.2
       ci-info: 3.9.0
       graceful-fs: 4.2.11
@@ -13912,7 +13912,7 @@ snapshots:
 
   jest-worker@29.7.0:
     dependencies:
-      '@types/node': 20.16.10
+      '@types/node': 20.16.11
       jest-util: 29.7.0
       merge-stream: 2.0.0
       supports-color: 8.1.1
@@ -15167,13 +15167,13 @@ snapshots:
       camelcase-css: 2.0.1
       postcss: 8.4.47
 
-  postcss-load-config@4.0.2(postcss@8.4.47)(ts-node@10.9.2(@types/node@20.16.10)(typescript@5.6.2)):
+  postcss-load-config@4.0.2(postcss@8.4.47)(ts-node@10.9.2(@types/node@20.16.11)(typescript@5.6.2)):
     dependencies:
       lilconfig: 3.1.2
       yaml: 2.5.1
     optionalDependencies:
       postcss: 8.4.47
-      ts-node: 10.9.2(@types/node@20.16.10)(typescript@5.6.2)
+      ts-node: 10.9.2(@types/node@20.16.11)(typescript@5.6.2)
 
   postcss-load-config@4.0.2(postcss@8.4.47)(ts-node@10.9.2(@types/node@22.7.4)(typescript@5.6.2)):
     dependencies:
@@ -16204,7 +16204,7 @@ snapshots:
     dependencies:
       tailwindcss: 3.4.13(ts-node@10.9.2(@types/node@22.7.4)(typescript@5.6.2))
 
-  tailwindcss@3.4.13(ts-node@10.9.2(@types/node@20.16.10)(typescript@5.6.2)):
+  tailwindcss@3.4.13(ts-node@10.9.2(@types/node@20.16.11)(typescript@5.6.2)):
     dependencies:
       '@alloc/quick-lru': 5.2.0
       arg: 5.0.2
@@ -16223,7 +16223,7 @@ snapshots:
       postcss: 8.4.47
       postcss-import: 15.1.0(postcss@8.4.47)
       postcss-js: 4.0.1(postcss@8.4.47)
-      postcss-load-config: 4.0.2(postcss@8.4.47)(ts-node@10.9.2(@types/node@20.16.10)(typescript@5.6.2))
+      postcss-load-config: 4.0.2(postcss@8.4.47)(ts-node@10.9.2(@types/node@20.16.11)(typescript@5.6.2))
       postcss-nested: 6.2.0(postcss@8.4.47)
       postcss-selector-parser: 6.1.2
       resolve: 1.22.8
@@ -16370,14 +16370,14 @@ snapshots:
 
   ts-interface-checker@0.1.13: {}
 
-  ts-node@10.9.2(@types/node@20.16.10)(typescript@5.6.2):
+  ts-node@10.9.2(@types/node@20.16.11)(typescript@5.6.2):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.11
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 20.16.10
+      '@types/node': 20.16.11
       acorn: 8.12.1
       acorn-walk: 8.3.4
       arg: 4.1.3

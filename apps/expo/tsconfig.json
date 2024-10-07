@@ -3,7 +3,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./src/*"]
+      "~/*": ["./src/*"],
+      "@acme/api/transformer": ["../../packages/api/src/transformer.ts"]
     },
     "jsx": "react-native",
     "types": ["nativewind/types"],

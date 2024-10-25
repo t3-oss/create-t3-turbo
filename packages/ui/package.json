@@ -34,7 +34,7 @@
     "@radix-ui/react-slot": "^1.1.0",
     "class-variance-authority": "^0.7.0",
     "next-themes": "^0.3.0",
-    "react-hook-form": "^7.53.0",
+    "react-hook-form": "^7.53.1",
     "sonner": "^1.5.0",
     "tailwind-merge": "^2.5.4"
   },
@@ -43,15 +43,15 @@
     "@acme/prettier-config": "workspace:*",
     "@acme/tailwind-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
-    "@types/react": "catalog:react18",
+    "@types/react": "catalog:react19",
     "eslint": "catalog:",
     "prettier": "catalog:",
-    "react": "catalog:react18",
+    "react": "catalog:react19",
     "typescript": "catalog:",
     "zod": "catalog:"
   },
   "peerDependencies": {
-    "react": "catalog:react18",
+    "react": "catalog:react19",
     "zod": "catalog:"
   },
   "prettier": "@acme/prettier-config"

@@ -5,10 +5,10 @@ packages:
 
 catalog:
   "@tanstack/react-query": ^5.59.15
-  "@trpc/client": ^11.0.0-rc.477
-  "@trpc/react-query": ^11.0.0-rc.477
-  "@trpc/server": ^11.0.0-rc.477
-  eslint: ^9.12.0
+  "@trpc/client": ^11.0.0-rc.593
+  "@trpc/react-query": ^11.0.0-rc.593
+  "@trpc/server": ^11.0.0-rc.593
+  eslint: ^9.13.0
   prettier: ^3.3.3
   tailwindcss: ^3.4.14
   typescript: ^5.6.3
@@ -20,3 +20,9 @@ catalogs:
     react-dom: 18.3.1
     "@types/react": ^18.3.11
     "@types/react-dom": ^18.3.1
+
+  react19:
+    react: rc
+    react-dom: rc
+    "@types/react": npm:types-react@rc
+    "@types/react-dom": npm:types-react-dom@rc

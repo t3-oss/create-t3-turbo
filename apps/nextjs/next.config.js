@@ -1,7 +1,9 @@
-import type { NextConfig } from "next";
+import { fileURLToPath } from "url";
+import createJiti from "jiti";
 
-import "./src/env";
+createJiti(fileURLToPath(import.meta.url))("./src/env");
 
+/** @type {import("next").NextConfig} */
 const config = {
   /** Enables hot reloading for local packages without a build step */
   transpilePackages: [
@@ -15,6 +17,6 @@ const config = {
   /** We already do linting and typechecking as separate tasks in CI */
   eslint: { ignoreDuringBuilds: true },
   typescript: { ignoreBuildErrors: true },
-} satisfies NextConfig;
+};
 
 export default config;

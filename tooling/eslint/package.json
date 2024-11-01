@@ -1,5 +1,5 @@
 {
-  "name": "@acme/eslint-config",
+  "name": "@battle-stadium/eslint-config",
   "private": true,
   "version": "0.3.0",
   "type": "module",
@@ -24,12 +24,12 @@
     "typescript-eslint": "^8.9.0"
   },
   "devDependencies": {
-    "@acme/prettier-config": "workspace:*",
-    "@acme/tsconfig": "workspace:*",
+    "@battle-stadium/prettier-config": "workspace:*",
+    "@battle-stadium/tsconfig": "workspace:*",
     "@types/eslint__js": "8.42.3",
     "eslint": "catalog:",
     "prettier": "catalog:",
     "typescript": "catalog:"
   },
-  "prettier": "@acme/prettier-config"
+  "prettier": "@battle-stadium/prettier-config"
 }

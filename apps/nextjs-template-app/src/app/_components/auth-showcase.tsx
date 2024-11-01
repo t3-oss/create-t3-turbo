@@ -1,7 +1,7 @@
-import { auth, signIn, signOut } from "@acme/auth";
-import { Button } from "@acme/ui/button";
+import { auth, signIn, signOut } from "@battle-stadium/auth";
+import { Button } from "@battle-stadium/ui/button";
 
-export async function AuthShowcase() {
+export async function AuthShowcase () {
   const session = await auth();
 
   if (!session) {
@@ -9,10 +9,10 @@ export async function AuthShowcase() {
       <form>
         <Button
           size="lg"
-          formAction={async () => {
+          formAction={ async () => {
             "use server";
             await signIn("discord");
-          }}
+          } }
         >
           Sign in with Discord
         </Button>
@@ -23,16 +23,16 @@ export async function AuthShowcase() {
   return (
     <div className="flex flex-col items-center justify-center gap-4">
       <p className="text-center text-2xl">
-        <span>Logged in as {session.user.name}</span>
+        <span>Logged in as { session.user.name }</span>
       </p>
 
       <form>
         <Button
           size="lg"
-          formAction={async () => {
+          formAction={ async () => {
             "use server";
             await signOut();
-          }}
+          } }
         >
           Sign out
         </Button>

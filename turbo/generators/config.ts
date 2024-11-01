@@ -8,7 +8,7 @@ interface PackageJson {
   devDependencies: Record<string, string>;
 }
 
-export default function generator(plop: PlopTypes.NodePlopAPI): void {
+export default function generator (plop: PlopTypes.NodePlopAPI): void {
   plop.setGenerator("init", {
     description: "Generate a new package for the Acme Monorepo",
     prompts: [
@@ -16,7 +16,7 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
         type: "input",
         name: "name",
         message:
-          "What is the name of the package? (You can skip the `@acme/` prefix)",
+          "What is the name of the package? (You can skip the `@battle-stadium/` prefix)",
       },
       {
         type: "input",
@@ -28,8 +28,8 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
     actions: [
       (answers) => {
         if ("name" in answers && typeof answers.name === "string") {
-          if (answers.name.startsWith("@acme/")) {
-            answers.name = answers.name.replace("@acme/", "");
+          if (answers.name.startsWith("@battle-stadium/")) {
+            answers.name = answers.name.replace("@battle-stadium/", "");
           }
         }
         return "Config sanitized";
@@ -57,7 +57,7 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
       {
         type: "modify",
         path: "packages/{{ name }}/package.json",
-        async transform(content, answers) {
+        async transform (content, answers) {
           if ("deps" in answers && typeof answers.deps === "string") {
             const pkg = JSON.parse(content) as PackageJson;
             for (const dep of answers.deps.split(" ").filter(Boolean)) {

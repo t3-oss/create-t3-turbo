@@ -1,7 +1,7 @@
 import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
 
-import { appRouter, createTRPCContext } from "@acme/api";
-import { auth } from "@acme/auth";
+import { appRouter, createTRPCContext } from "@battle-stadium/api";
+import { auth } from "@battle-stadium/auth";
 
 export const runtime = "edge";
 
@@ -34,7 +34,7 @@ const handler = auth(async (req) => {
         session: req.auth,
         headers: req.headers,
       }),
-    onError({ error, path }) {
+    onError ({ error, path }) {
       console.error(`>>> tRPC Error on '${path}'`, error);
     },
   });

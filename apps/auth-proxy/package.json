@@ -1,5 +1,5 @@
 {
-  "name": "@acme/auth-proxy",
+  "name": "@battle-stadium/auth-proxy",
   "private": true,
   "type": "module",
   "scripts": {
@@ -13,10 +13,10 @@
     "@auth/core": "0.34.2"
   },
   "devDependencies": {
-    "@acme/eslint-config": "workspace:*",
-    "@acme/prettier-config": "workspace:*",
-    "@acme/tailwind-config": "workspace:*",
-    "@acme/tsconfig": "workspace:*",
+    "@battle-stadium/eslint-config": "workspace:*",
+    "@battle-stadium/prettier-config": "workspace:*",
+    "@battle-stadium/tailwind-config": "workspace:*",
+    "@battle-stadium/tsconfig": "workspace:*",
     "@types/node": "^20.16.11",
     "eslint": "catalog:",
     "h3": "^1.13.0",
@@ -24,5 +24,5 @@
     "prettier": "catalog:",
     "typescript": "catalog:"
   },
-  "prettier": "@acme/prettier-config"
+  "prettier": "@battle-stadium/prettier-config"
 }

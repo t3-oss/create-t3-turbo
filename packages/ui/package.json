@@ -1,5 +1,5 @@
 {
-  "name": "@acme/ui",
+  "name": "@battle-stadium/ui",
   "private": true,
   "version": "0.1.0",
   "type": "module",
@@ -39,10 +39,10 @@
     "tailwind-merge": "^2.5.4"
   },
   "devDependencies": {
-    "@acme/eslint-config": "workspace:*",
-    "@acme/prettier-config": "workspace:*",
-    "@acme/tailwind-config": "workspace:*",
-    "@acme/tsconfig": "workspace:*",
+    "@battle-stadium/eslint-config": "workspace:*",
+    "@battle-stadium/prettier-config": "workspace:*",
+    "@battle-stadium/tailwind-config": "workspace:*",
+    "@battle-stadium/tsconfig": "workspace:*",
     "@types/react": "catalog:react18",
     "eslint": "catalog:",
     "prettier": "catalog:",
@@ -54,5 +54,5 @@
     "react": "catalog:react18",
     "zod": "catalog:"
   },
-  "prettier": "@acme/prettier-config"
+  "prettier": "@battle-stadium/prettier-config"
 }

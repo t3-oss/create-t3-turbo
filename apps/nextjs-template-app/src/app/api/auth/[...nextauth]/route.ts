@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
-import { handlers, isSecureContext } from "@acme/auth";
+import { handlers, isSecureContext } from "@battle-stadium/auth";
 
 export const runtime = "edge";
 
@@ -16,7 +16,7 @@ const AUTH_COOKIE_PATTERN = /authjs\.session-token=([^;]+)/;
  * @param req The request to modify
  * @returns The modified request.
  */
-function rewriteRequestUrlInDevelopment(req: NextRequest) {
+function rewriteRequestUrlInDevelopment (req: NextRequest) {
   if (isSecureContext) return req;
 
   const host = req.headers.get("host");
@@ -68,7 +68,7 @@ export const GET = async (
     if (!match)
       throw new Error(
         "Unable to find session cookie: " +
-          JSON.stringify(authResponse.headers.getSetCookie()),
+        JSON.stringify(authResponse.headers.getSetCookie()),
       );
 
     const url = new URL(isExpoCallback.value);

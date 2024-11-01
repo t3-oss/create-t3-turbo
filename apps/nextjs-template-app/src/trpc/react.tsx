@@ -7,7 +7,7 @@ import { loggerLink, unstable_httpBatchStreamLink } from "@trpc/client";
 import { createTRPCReact } from "@trpc/react-query";
 import SuperJSON from "superjson";
 
-import type { AppRouter } from "@acme/api";
+import type { AppRouter } from "@battle-stadium/api";
 
 import { env } from "~/env";
 import { createQueryClient } from "./query-client";
@@ -25,7 +25,7 @@ const getQueryClient = () => {
 
 export const api = createTRPCReact<AppRouter>();
 
-export function TRPCReactProvider(props: { children: React.ReactNode }) {
+export function TRPCReactProvider (props: { children: React.ReactNode }) {
   const queryClient = getQueryClient();
 
   const [trpcClient] = useState(() =>
@@ -39,7 +39,7 @@ export function TRPCReactProvider(props: { children: React.ReactNode }) {
         unstable_httpBatchStreamLink({
           transformer: SuperJSON,
           url: getBaseUrl() + "/api/trpc",
-          headers() {
+          headers () {
             const headers = new Headers();
             headers.set("x-trpc-source", "nextjs-react");
             return headers;
@@ -50,9 +50,9 @@ export function TRPCReactProvider(props: { children: React.ReactNode }) {
   );
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <api.Provider client={trpcClient} queryClient={queryClient}>
-        {props.children}
+    <QueryClientProvider client={ queryClient }>
+      <api.Provider client={ trpcClient } queryClient={ queryClient }>
+        { props.children }
       </api.Provider>
     </QueryClientProvider>
   );

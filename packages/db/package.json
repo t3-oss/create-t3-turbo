@@ -1,5 +1,5 @@
 {
-  "name": "@acme/db",
+  "name": "@battle-stadium/db",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -36,14 +36,14 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@acme/eslint-config": "workspace:*",
-    "@acme/prettier-config": "workspace:*",
-    "@acme/tsconfig": "workspace:*",
+    "@battle-stadium/eslint-config": "workspace:*",
+    "@battle-stadium/prettier-config": "workspace:*",
+    "@battle-stadium/tsconfig": "workspace:*",
     "dotenv-cli": "^7.4.2",
     "drizzle-kit": "^0.26.2",
     "eslint": "catalog:",
     "prettier": "catalog:",
     "typescript": "catalog:"
   },
-  "prettier": "@acme/prettier-config"
+  "prettier": "@battle-stadium/prettier-config"
 }

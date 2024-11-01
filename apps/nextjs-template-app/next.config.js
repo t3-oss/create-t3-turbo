@@ -10,11 +10,11 @@ const config = {
 
   /** Enables hot reloading for local packages without a build step */
   transpilePackages: [
-    "@acme/api",
-    "@acme/auth",
-    "@acme/db",
-    "@acme/ui",
-    "@acme/validators",
+    "@battle-stadium/api",
+    "@battle-stadium/auth",
+    "@battle-stadium/db",
+    "@battle-stadium/ui",
+    "@battle-stadium/validators",
   ],
 
   /** We already do linting and typechecking as separate tasks in CI */

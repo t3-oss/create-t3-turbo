@@ -18,7 +18,7 @@ import {
   useFormContext,
 } from "react-hook-form";
 
-import { cn } from "@acme/ui";
+import { cn } from "@battle-stadium/ui";
 
 import { Label } from "./label";
 
@@ -26,7 +26,7 @@ const useForm = <
   TOut extends FieldValues,
   TDef extends ZodTypeDef,
   TIn extends FieldValues,
->(
+> (
   props: Omit<UseFormProps<TIn>, "resolver"> & {
     schema: ZodType<TOut, TDef, TIn>;
   },
@@ -55,12 +55,12 @@ const FormFieldContext = React.createContext<FormFieldContextValue | null>(
 const FormField = <
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
->({
+> ({
   ...props
 }: ControllerProps<TFieldValues, TName>) => {
   return (
-    <FormFieldContext.Provider value={{ name: props.name }}>
-      <Controller {...props} />
+    <FormFieldContext.Provider value={ { name: props.name } }>
+      <Controller { ...props } />
     </FormFieldContext.Provider>
   );
 };
@@ -102,8 +102,8 @@ const FormItem = React.forwardRef<
   const id = React.useId();
 
   return (
-    <FormItemContext.Provider value={{ id }}>
-      <div ref={ref} className={cn("space-y-2", className)} {...props} />
+    <FormItemContext.Provider value={ { id } }>
+      <div ref={ ref } className={ cn("space-y-2", className) } { ...props } />
     </FormItemContext.Provider>
   );
 });
@@ -117,10 +117,10 @@ const FormLabel = React.forwardRef<
 
   return (
     <Label
-      ref={ref}
-      className={cn(error && "text-destructive", className)}
-      htmlFor={formItemId}
-      {...props}
+      ref={ ref }
+      className={ cn(error && "text-destructive", className) }
+      htmlFor={ formItemId }
+      { ...props }
     />
   );
 });
@@ -135,15 +135,15 @@ const FormControl = React.forwardRef<
 
   return (
     <Slot
-      ref={ref}
-      id={formItemId}
+      ref={ ref }
+      id={ formItemId }
       aria-describedby={
         !error
           ? `${formDescriptionId}`
           : `${formDescriptionId} ${formMessageId}`
       }
-      aria-invalid={!!error}
-      {...props}
+      aria-invalid={ !!error }
+      { ...props }
     />
   );
 });
@@ -157,10 +157,10 @@ const FormDescription = React.forwardRef<
 
   return (
     <p
-      ref={ref}
-      id={formDescriptionId}
-      className={cn("text-[0.8rem] text-muted-foreground", className)}
-      {...props}
+      ref={ ref }
+      id={ formDescriptionId }
+      className={ cn("text-[0.8rem] text-muted-foreground", className) }
+      { ...props }
     />
   );
 });
@@ -179,12 +179,12 @@ const FormMessage = React.forwardRef<
 
   return (
     <p
-      ref={ref}
-      id={formMessageId}
-      className={cn("text-[0.8rem] font-medium text-destructive", className)}
-      {...props}
+      ref={ ref }
+      id={ formMessageId }
+      className={ cn("text-[0.8rem] font-medium text-destructive", className) }
+      { ...props }
     >
-      {body}
+      { body }
     </p>
   );
 });

@@ -43,15 +43,15 @@
     "@battle-stadium/prettier-config": "workspace:*",
     "@battle-stadium/tailwind-config": "workspace:*",
     "@battle-stadium/tsconfig": "workspace:*",
-    "@types/react": "catalog:react18",
+    "@types/react": "catalog:",
     "eslint": "catalog:",
     "prettier": "catalog:",
-    "react": "catalog:react18",
+    "react": "catalog:",
     "typescript": "catalog:",
     "zod": "catalog:"
   },
   "peerDependencies": {
-    "react": "catalog:react18",
+    "react": "catalog:",
     "zod": "catalog:"
   },
   "prettier": "@battle-stadium/prettier-config"

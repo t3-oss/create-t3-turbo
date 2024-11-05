@@ -33,7 +33,7 @@ export const authConfig = {
   // In development, we need to skip checks to allow Expo to work
   ...(!isSecureContext
     ? {
-        skipCSRFCheck: skipCSRFCheck,
+        skipCSRFCheck,
         trustHost: true,
       }
     : {}),

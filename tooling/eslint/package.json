@@ -1,7 +1,7 @@
 {
   "name": "@battle-stadium/eslint-config",
-  "private": true,
   "version": "0.3.0",
+  "private": true,
   "type": "module",
   "exports": {
     "./base": "./base.js",
@@ -11,25 +11,31 @@
   "scripts": {
     "clean": "git clean -xdf .cache .turbo node_modules",
     "format": "prettier --check . --ignore-path ../../.gitignore",
+    "sort-packages": "pnpx sort-package-json",
     "typecheck": "tsc --noEmit"
   },
+  "prettier": "@battle-stadium/prettier-config",
   "dependencies": {
     "@eslint/compat": "^1.2.0",
     "@next/eslint-plugin-next": "^14.2.15",
+    "eslint-config-next": "^15.0.2",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-drizzle": "^0.2.3",
     "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-jsx-a11y": "^6.10.0",
-    "eslint-plugin-react": "^7.37.1",
+    "eslint-plugin-jsx-a11y": "catalog:",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-react": "catalog:",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-turbo": "^2.1.3",
+    "eslint-plugin-unused-imports": "^4.1.4",
     "typescript-eslint": "^8.9.0"
   },
   "devDependencies": {
     "@battle-stadium/prettier-config": "workspace:*",
-    "@battle-stadium/tsconfig": "workspace:*",
+    "@battle-stadium/typescript-config": "workspace:*",
     "@types/eslint__js": "8.42.3",
     "eslint": "catalog:",
     "prettier": "catalog:",
     "typescript": "catalog:"
-  },
-  "prettier": "@battle-stadium/prettier-config"
+  }
 }

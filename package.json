@@ -1,11 +1,6 @@
 {
   "name": "create-t3-turbo",
   "private": true,
-  "engines": {
-    "node": ">=20.16.0",
-    "pnpm": "^9"
-  },
-  "packageManager": "pnpm@9.12.3",
   "scripts": {
     "build": "turbo run build",
     "clean": "git clean -xdf node_modules",
@@ -16,13 +11,14 @@
     "dev:next": "turbo watch dev -F @battle-stadium/nextjs...",
     "format": "turbo run format --continue -- --cache --cache-location .cache/.prettiercache",
     "format:fix": "turbo run format --continue -- --write --cache --cache-location .cache/.prettiercache",
+    "postinstall": "pnpm lint:ws",
     "lint": "turbo run lint --continue -- --cache --cache-location .cache/.eslintcache",
     "lint:fix": "turbo run lint --continue -- --fix --cache --cache-location .cache/.eslintcache",
     "lint:ws": "pnpm dlx sherif@latest",
-    "postinstall": "pnpm lint:ws",
     "typecheck": "turbo run typecheck",
     "ui-add": "turbo run ui-add"
   },
+  "prettier": "@battle-stadium/prettier-config",
   "devDependencies": {
     "@battle-stadium/prettier-config": "workspace:*",
     "@turbo/gen": "^2.2.3",
@@ -30,5 +26,10 @@
     "turbo": "^2.2.3",
     "typescript": "catalog:"
   },
-  "prettier": "@battle-stadium/prettier-config"
+  "packageManager": "pnpm@9.12.3",
+  "engines": {
+    "node": ">=20.16.0",
+    "pnpm": "^9",
+    "sort-packages": "pnpx sort-package-json"
+  }
 }

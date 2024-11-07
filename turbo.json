@@ -51,7 +51,30 @@
     "AUTH_DISCORD_SECRET",
     "AUTH_REDIRECT_PROXY_URL",
     "AUTH_SECRET",
-    "PORT"
+    "PORT",
+
+    // Database
+    "DATABASE_URL",
+
+    // Upload/Storage
+    "UPLOADTHING_TOKEN",
+
+    // Authentication/Authorization
+    "VERCEL_OIDC_TOKEN",
+    "CLERK_SECRET_KEY",
+    "CLERK_SIGN_IN_URL",
+    "CLERK_SIGN_UP_URL",
+
+    // API Configuration
+    "PROD_API_BASE_URL",
+    "WEBSOCKET_URL",
+    "LOCAL_DEV_BACKEND_HOST",
+    "LOCAL_DEV_BACKEND_PORT",
+
+    // Misc Configuration
+    "COOKIE_DOMAIN",
+    "MEASUREMENT_ID",
+    "SKIP_ENV_VALIDATION"
   ],
   "globalPassThroughEnv": [
     "NODE_ENV",

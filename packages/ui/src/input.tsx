@@ -9,7 +9,7 @@ function Input({
   className,
   type,
   ...props
-}: InputProps & { ref: React.Ref<HTMLInputElement> }) {
+}: InputProps & { ref?: React.Ref<HTMLInputElement> }) {
   return (
     <input
       ref={ref}

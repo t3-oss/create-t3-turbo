@@ -15,8 +15,6 @@ export default [
       ...reactPlugin.configs["jsx-runtime"].rules,
       ...hooksPlugin.configs.recommended.rules,
       "react-compiler/react-compiler": "error",
-      // https://github.com/reactwg/react-compiler/discussions/18#discussioncomment-11009257
-      "react-hooks/exhaustive-deps": "off",
     },
     languageOptions: {
       globals: {

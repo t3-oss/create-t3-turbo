@@ -2,14 +2,11 @@ import * as React from "react";
 
 import { cn } from "@acme/ui";
 
-type InputProps = React.InputHTMLAttributes<HTMLInputElement>;
+type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
+  ref?: React.Ref<HTMLInputElement>;
+};
 
-function Input({
-  ref,
-  className,
-  type,
-  ...props
-}: InputProps & { ref?: React.Ref<HTMLInputElement> }) {
+function Input({ ref, className, type, ...props }: InputProps) {
   return (
     <input
       ref={ref}

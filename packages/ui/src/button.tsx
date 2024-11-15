@@ -1,4 +1,5 @@
 import type { VariantProps } from "class-variance-authority";
+import type { ComponentProps } from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva } from "class-variance-authority";
 
@@ -35,7 +36,7 @@ const buttonVariants = cva(
 );
 
 interface ButtonProps
-  extends React.ComponentProps<"button">,
+  extends ComponentProps<"button">,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
 }

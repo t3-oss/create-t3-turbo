@@ -1,13 +1,3 @@
-import type {
-  DropdownMenuCheckboxItemProps,
-  DropdownMenuContentProps,
-  DropdownMenuItemProps,
-  DropdownMenuLabelProps,
-  DropdownMenuRadioItemProps,
-  DropdownMenuSeparatorProps,
-  DropdownMenuSubContentProps,
-  DropdownMenuSubTriggerProps,
-} from "@radix-ui/react-dropdown-menu";
 import type { ComponentProps } from "react";
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import {
@@ -30,7 +20,7 @@ function DropdownMenuSubTrigger({
   inset,
   children,
   ...props
-}: DropdownMenuSubTriggerProps & {
+}: ComponentProps<typeof DropdownMenuPrimitive.SubTrigger> & {
   inset?: boolean;
 }) {
   return (
@@ -51,7 +41,7 @@ function DropdownMenuSubTrigger({
 function DropdownMenuSubContent({
   className,
   ...props
-}: DropdownMenuSubContentProps) {
+}: ComponentProps<typeof DropdownMenuPrimitive.SubContent>) {
   return (
     <DropdownMenuPrimitive.SubContent
       className={cn(
@@ -67,7 +57,7 @@ function DropdownMenuContent({
   className,
   sideOffset = 4,
   ...props
-}: DropdownMenuContentProps) {
+}: ComponentProps<typeof DropdownMenuPrimitive.Content>) {
   return (
     <DropdownMenuPrimitive.Portal>
       <DropdownMenuPrimitive.Content
@@ -87,7 +77,7 @@ function DropdownMenuItem({
   className,
   inset,
   ...props
-}: DropdownMenuItemProps & {
+}: ComponentProps<typeof DropdownMenuPrimitive.Item> & {
   inset?: boolean;
 }) {
   return (
@@ -106,7 +96,7 @@ function DropdownMenuCheckboxItem({
   className,
   children,
   ...props
-}: DropdownMenuCheckboxItemProps) {
+}: ComponentProps<typeof DropdownMenuPrimitive.CheckboxItem>) {
   return (
     <DropdownMenuPrimitive.CheckboxItem
       className={cn(
@@ -129,7 +119,7 @@ function DropdownMenuRadioItem({
   className,
   children,
   ...props
-}: DropdownMenuRadioItemProps) {
+}: ComponentProps<typeof DropdownMenuPrimitive.RadioItem>) {
   return (
     <DropdownMenuPrimitive.RadioItem
       className={cn(
@@ -152,7 +142,7 @@ function DropdownMenuLabel({
   className,
   inset,
   ...props
-}: DropdownMenuLabelProps & {
+}: ComponentProps<typeof DropdownMenuPrimitive.Label> & {
   inset?: boolean;
 }) {
   return (
@@ -170,7 +160,7 @@ function DropdownMenuLabel({
 function DropdownMenuSeparator({
   className,
   ...props
-}: DropdownMenuSeparatorProps) {
+}: ComponentProps<typeof DropdownMenuPrimitive.Separator>) {
   return (
     <DropdownMenuPrimitive.Separator
       className={cn("-mx-1 my-1 h-px bg-muted", className)}

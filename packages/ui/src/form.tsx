@@ -1,7 +1,5 @@
 "use client";
 
-import type { LabelProps } from "@radix-ui/react-label";
-import type { SlotProps } from "@radix-ui/react-slot";
 import type { ComponentProps } from "react";
 import type {
   ControllerProps,
@@ -100,7 +98,7 @@ function FormItem({ className, ...props }: ComponentProps<"div">) {
   );
 }
 
-function FormLabel({ className, ...props }: LabelProps) {
+function FormLabel({ className, ...props }: ComponentProps<typeof Label>) {
   const { error, formItemId } = useFormField();
 
   return (
@@ -112,7 +110,7 @@ function FormLabel({ className, ...props }: LabelProps) {
   );
 }
 
-function FormControl({ ...props }: SlotProps) {
+function FormControl({ ...props }: ComponentProps<typeof Slot>) {
   const { error, formItemId, formDescriptionId, formMessageId } =
     useFormField();
 

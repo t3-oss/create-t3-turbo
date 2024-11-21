@@ -10,7 +10,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@auth/core": "0.37.2"
+    "@auth/core": "catalog:"
   },
   "devDependencies": {
     "@acme/eslint-config": "workspace:*",
@@ -20,7 +20,7 @@
     "@types/node": "^20.17.6",
     "eslint": "catalog:",
     "h3": "^1.13.0",
-    "nitropack": "^2.10.2",
+    "nitropack": "^2.10.4",
     "prettier": "catalog:",
     "typescript": "catalog:"
   },

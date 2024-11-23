@@ -29,5 +29,8 @@ catalogs:
   react19:
     react: rc
     react-dom: rc
-    "@types/react": npm:types-react@rc
-    "@types/react-dom": npm:types-react-dom@rc
+    "@types/react": ^18.3.11
+    "@types/react-dom": ^18.3.1
+    # Type clashes in monorepo when using R19 types
+    # "@types/react": npm:types-react@rc
+    # "@types/react-dom": npm:types-react-dom@rc

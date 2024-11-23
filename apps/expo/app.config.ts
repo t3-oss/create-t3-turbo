@@ -7,7 +7,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   scheme: "expo",
   version: "0.1.0",
   orientation: "portrait",
-  icon: "./assets/icon.png",
+  icon: "./assets/icon-light.png",
   userInterfaceStyle: "automatic",
   updates: {
     fallbackToCacheTimeout: 0,
@@ -17,15 +17,15 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     bundleIdentifier: "your.bundle.identifier",
     supportsTablet: true,
     icon: {
-      light: "./assets/icon.png",
-      dark: "./assets/icon.png",
+      light: "./assets/icon-light.png",
+      dark: "./assets/icon-dark.png",
       // tinted: "",
     },
   },
   android: {
     package: "your.bundle.identifier",
     adaptiveIcon: {
-      foregroundImage: "./assets/icon.png",
+      foregroundImage: "./assets/icon-light.png",
       backgroundColor: "#1F104A",
     },
   },
@@ -44,12 +44,12 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     [
       "expo-splash-screen",
       {
-        backgroundColor: "#1F104A",
-        image: "./assets/icon.png",
-        // dark: {
-        //   backgroundColor: "#1F104A",
-        //   image: "./assets/icon.png",
-        // },
+        backgroundColor: "#E4E4E7",
+        image: "./assets/icon-light.png",
+        dark: {
+          backgroundColor: "#18181B",
+          image: "./assets/icon-dark.png",
+        },
       },
     ],
   ],

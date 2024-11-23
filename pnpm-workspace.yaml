@@ -4,7 +4,11 @@ packages:
   - tooling/*
 
 catalog:
-  "@auth/core": 0.37.4
+  # Auth
+  "@auth/core": 0.37.2
+  "@auth/drizzle-adapter": ~1.7.4
+  "next-auth": 5.0.0-beta.25
+
   "@tanstack/react-query": ^5.61.0
   "@trpc/client": ^11.0.0-rc.638
   "@trpc/react-query": ^11.0.0-rc.638

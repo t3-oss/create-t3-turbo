@@ -10,7 +10,7 @@
     "dev:ios": "expo start --ios",
     "android": "expo run:android",
     "ios": "expo run:ios",
-    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "format": "prettier --check . --ignore-path ../../.gitignore --ignore-path .prettierignore",
     "lint": "eslint",
     "typecheck": "tsc --noEmit"
   },

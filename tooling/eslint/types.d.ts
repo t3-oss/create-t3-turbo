@@ -23,6 +23,8 @@ declare module "eslint-plugin-react" {
   export const rules: Record<string, Rule.RuleModule>;
 }
 
+declare module "eslint-plugin-react-compiler" {}
+
 declare module "eslint-plugin-react-hooks" {
   import type { Linter, Rule } from "eslint";
 

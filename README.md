@@ -76,10 +76,7 @@ tooling
 ## Quick Start
 
 > **Note**
-> Due to a [bug](https://github.com/vercel/next.js/issues/53562) affecting windows development, the edge runtime is currently disabled by default. If your environment supports it, you can enable the edge runtime by adding the line `export const runtime = "edge";` [to all pages and api routes](https://github.com/t3-oss/create-t3-turbo/issues/634#issuecomment-1730240214). The pages and routes included in this template include this line commented out, for illustration purposes.
-
-> **Note**
-> The [db](./packages/db) package is preconfigured to use Supabase and is **edge-bound** with the [Vercel Postgres](https://github.com/vercel/storage/tree/main/packages/postgres) driver. If you're using something else, make the necessary modifications to the [schema](./packages/db/src/schema.ts) as well as the [client](./packages/db/src/index.ts) and the [drizzle config](./packages/db/drizzle.config.ts).
+> The [db](./packages/db) package is preconfigured to use Supabase and is **edge-bound** with the [Vercel Postgres](https://github.com/vercel/storage/tree/main/packages/postgres) driver. If you're using something else, make the necessary modifications to the [schema](./packages/db/src/schema.ts) as well as the [client](./packages/db/src/index.ts) and the [drizzle config](./packages/db/drizzle.config.ts). If you want to switch to non-edge database driver, remove `export const runtime = "edge";` [from all pages and api routes](https://github.com/t3-oss/create-t3-turbo/issues/634#issuecomment-1730240214).
 
 To get it running, follow the steps below:
 

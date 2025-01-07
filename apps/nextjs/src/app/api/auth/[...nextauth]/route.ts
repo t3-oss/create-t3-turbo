@@ -3,8 +3,6 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { handlers, isSecureContext } from "@acme/auth";
 
-// Uncomment this line to enable edge runtime if your environment supports it
-// export const runtime = "edge";
 
 const EXPO_COOKIE_NAME = "__acme-expo-redirect-state";
 const AUTH_COOKIE_PATTERN = /authjs\.session-token=([^;]+)/;

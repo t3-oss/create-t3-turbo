@@ -14,6 +14,17 @@ import type { Session } from "@acme/auth";
 import { auth, validateToken } from "@acme/auth";
 import { db } from "@acme/db/client";
 
+/** Context object passed to all tRPC procedures containing session, database and auth token 
+ * 
+ * This is used to pass the context to the tRPC procedures.
+ * It also enables the type inference for the context in the tRPC procedures.
+*/
+export interface TRPCContext {
+  session: Session | null;
+  db: typeof db;
+  token: string | null;
+}
+
 /**
  * Isomorphic Session getter for API requests
  * - Expo requests will have a session token in the Authorization header
@@ -40,7 +51,7 @@ const isomorphicGetSession = async (headers: Headers) => {
 export const createTRPCContext = async (opts: {
   headers: Headers;
   session: Session | null;
-}) => {
+}): Promise<TRPCContext> => {
   const authToken = opts.headers.get("Authorization") ?? null;
   const session = await isomorphicGetSession(opts.headers);
 

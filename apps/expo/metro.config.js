@@ -5,7 +5,7 @@ const { withNativeWind } = require("nativewind/metro");
 
 const path = require("path");
 
-module.exports = withTurborepoManagedCache(
+const config = withTurborepoManagedCache(
   withMonorepoPaths(
     withNativeWind(getDefaultConfig(__dirname), {
       input: "./src/styles.css",
@@ -13,6 +13,12 @@ module.exports = withTurborepoManagedCache(
     }),
   ),
 );
+
+// XXX: Resolve our exports in workspace packages
+// https://github.com/expo/expo/issues/26926
+config.resolver.unstable_enablePackageExports = true;
+
+module.exports = config;
 
 /**
  * Add the monorepo paths to the Metro config.
@@ -39,8 +45,7 @@ function withMonorepoPaths(config) {
 }
 
 /**
- * Move the Metro cache to the `node_modules/.cache/metro` folder.
- * This repository configured Turborepo to use this cache location as well.
+ * Move the Metro cache to the `.cache/metro` folder.
  * If you have any environment variables, you can configure Turborepo to invalidate it when needed.
  *
  * @see https://turbo.build/repo/docs/reference/configuration#env
@@ -49,7 +54,7 @@ function withMonorepoPaths(config) {
  */
 function withTurborepoManagedCache(config) {
   config.cacheStores = [
-    new FileStore({ root: path.join(__dirname, "node_modules/.cache/metro") }),
+    new FileStore({ root: path.join(__dirname, ".cache/metro") }),
   ];
   return config;
 }

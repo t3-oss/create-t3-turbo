@@ -12,18 +12,18 @@
   },
   "license": "MIT",
   "scripts": {
-    "clean": "rm -rf .turbo node_modules",
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@acme/db": "workspace:*",
-    "@auth/core": "0.32.0",
+    "@auth/core": "0.37.2",
     "@auth/mongodb-adapter": "^3.2.0",
-    "@t3-oss/env-nextjs": "^0.10.1",
-    "next": "^14.2.4",
-    "next-auth": "5.0.0-beta.19",
+    "@t3-oss/env-nextjs": "^0.12.0",
+    "next": "^14.2.23",
+    "next-auth": "5.0.0-beta.25",
     "react": "catalog:react18",
     "react-dom": "catalog:react18",
     "zod": "catalog:"

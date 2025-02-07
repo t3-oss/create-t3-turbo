@@ -12,8 +12,8 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "dev": "tsc --watch",
-    "clean": "rm -rf .turbo node_modules",
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "dev": "tsc",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
@@ -22,8 +22,8 @@
     "@acme/auth": "workspace:*",
     "@acme/db": "workspace:*",
     "@acme/validators": "workspace:*",
-    "@trpc/server": "11.0.0-rc.441",
-    "superjson": "2.2.1",
+    "@trpc/server": "catalog:",
+    "superjson": "2.2.2",
     "zod": "catalog:"
   },
   "devDependencies": {

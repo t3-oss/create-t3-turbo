@@ -19,7 +19,7 @@ function PostCard(props: {
           asChild
           href={{
             pathname: "/post/[id]",
-            params: { id: props.post._id.toString() },
+            params: { id: props.post.id },
           }}
         >
           <Pressable className="">
@@ -147,7 +147,7 @@ export default function Index() {
           renderItem={(p) => (
             <PostCard
               post={p.item}
-              onDelete={() => deletePostMutation.mutate(p.item._id.toString())}
+              onDelete={() => deletePostMutation.mutate(p.item.id)}
             />
           )}
         />

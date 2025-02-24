@@ -19,23 +19,11 @@ updates:
     schedule:
       interval: "weekly"
     groups:
-      dev-version-updates:
+      version-updates:
         applies-to: version-updates
-        dependency-type: development
         patterns:
           - "*"
-      dev-security-updates:
+      security-updates:
         applies-to: security-updates
-        dependency-type: development
-        patterns:
-          - "*"
-      prod-version-updates:
-        applies-to: version-updates
-        dependency-type: production
-        patterns:
-          - "*"
-      prod-security-updates:
-        applies-to: security-updates
-        dependency-type: production
         patterns:
           - "*"

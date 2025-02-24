@@ -16,21 +16,29 @@
     "dev": "tsc",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+    "test": "NODE_ENV=test pnpm with-env vitest",
+    "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
     "@acme/auth": "workspace:*",
     "@acme/db": "workspace:*",
     "@acme/validators": "workspace:*",
+    "@swc/core": "^1.10.18",
     "@trpc/server": "catalog:",
     "superjson": "2.2.2",
+    "unplugin-swc": "^1.5.1",
+    "vitest": "^1.6.1",
     "zod": "catalog:"
   },
   "devDependencies": {
     "@acme/eslint-config": "workspace:*",
     "@acme/prettier-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
+    "@types/mongodb": "^4.0.7",
+    "dotenv-cli": "^8.0.0",
     "eslint": "catalog:",
+    "mongodb-memory-server": "^10.1.4",
     "prettier": "catalog:",
     "typescript": "catalog:"
   },

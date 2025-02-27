@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node -r dotenv/config dotenv_config_path=../../.env.vault ./node_modules/.bin/next build",
+    "build": "pnpm vercel-prebuild && pnpm with-env next build",
+    "vercel-prebuild": "if [ \"$VERCEL\" = \"1\" ]; then cp ../../.env .env; fi",
     "clean": "git clean -xdf .cache .next .turbo node_modules",
     "dev": "pnpm with-env next dev",
     "test": "pnpm with-env vitest",

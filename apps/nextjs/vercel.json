@@ -1,0 +1,3 @@
+{
+  "buildCommand": "cd ../../ && npx dotenv-vault@latest decrypt $DOTENV_KEY > .env && cd apps/nextjs && cp ../../.env .env && turbo run build"
+}

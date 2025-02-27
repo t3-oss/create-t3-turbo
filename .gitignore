@@ -51,3 +51,8 @@ dist/
 # turbo
 .turbo
 .idea
+
+.env*
+.flaskenv*
+!.env.project
+!.env.vault

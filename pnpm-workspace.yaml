@@ -25,17 +25,8 @@ catalog:
   "@trpc/server": ^11.0.0-rc.824
 
 catalogs:
-  react18:
-    react: 18.3.1
-    react-dom: 18.3.1
-    "@types/react": ^18.3.11
-    "@types/react-dom": ^18.3.1
-
   react19:
     react: 19.0.0
     react-dom: 19.0.0
     "@types/react": ^19.0.0
     "@types/react-dom": ^19.0.0
-    # Type clashes in monorepo when using R19 types
-    # "@types/react": npm:types-react@rc
-    # "@types/react-dom": npm:types-react-dom@rc

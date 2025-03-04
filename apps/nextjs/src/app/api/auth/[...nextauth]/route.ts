@@ -49,12 +49,12 @@ async function handleExpoSigninCallback(req: NextRequest, redirectURL: string) {
 
 export const POST = async (
   _req: NextRequest,
-  props: { params: { nextauth: string[] } },
+  props: { params: Promise<{ nextauth: string[] }> },
 ) => {
   // First step must be to correct the request URL.
   const req = rewriteRequestUrlInDevelopment(_req);
 
-  const nextauthAction = props.params.nextauth[0];
+  const nextauthAction = (await props.params).nextauth[0];
   const isExpoCallback = (await cookies()).get(EXPO_COOKIE_NAME);
 
   // callback handler required separately in the POST handler

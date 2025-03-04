@@ -1,4 +1,3 @@
-/// <reference types="react/canary" />
 import { cache } from "react";
 import NextAuth from "next-auth";
 

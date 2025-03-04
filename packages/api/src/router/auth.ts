@@ -6,14 +6,7 @@ import { protectedProcedure, publicProcedure } from "../trpc";
 
 export const authRouter = {
   getSession: publicProcedure.query(({ ctx }) => {
-    const user = ctx.session?.user;
-    if (!user) return null;
-
-    return {
-      id: user.id,
-      name: user.name ?? null,
-      image: user.image ?? null,
-    };
+    return ctx.session;
   }),
   getSecretMessage: protectedProcedure.query(() => {
     return "you can see this secret message!";

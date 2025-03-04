@@ -72,18 +72,15 @@ export const GET = async (
 ) => {
   // First step must be to correct the request URL.
   const req = rewriteRequestUrlInDevelopment(_req);
-  const jar = await cookies();
 
-  const params = await props.params;
-
-  const nextauthAction = params.nextauth[0];
+  const nextauthAction = (await props.params).nextauth[0];
   const isExpoSignIn = req.nextUrl.searchParams.get("expo-redirect");
-  const isExpoCallback = jar.get(EXPO_COOKIE_NAME);
+  const isExpoCallback = (await cookies()).get(EXPO_COOKIE_NAME);
 
   if (nextauthAction === "signin" && !!isExpoSignIn) {
     // set a cookie we can read in the callback
     // to know to send the user back to expo
-    jar.set({
+    (await cookies()).set({
       name: EXPO_COOKIE_NAME,
       value: isExpoSignIn,
       maxAge: 60 * 10, // 10 min

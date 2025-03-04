@@ -3,8 +3,6 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { handlers, isSecureContext } from "@acme/auth";
 
-export const runtime = "edge";
-
 const EXPO_COOKIE_NAME = "__acme-expo-redirect-state";
 const AUTH_COOKIE_PATTERN = /authjs\.session-token=([^;]+)/;
 
@@ -37,6 +35,7 @@ export const GET = async (
 ) => {
   // First step must be to correct the request URL.
   const req = rewriteRequestUrlInDevelopment(_req);
+  const jar = await cookies();
 
   const params = await props.params;
   const jar = await cookies();

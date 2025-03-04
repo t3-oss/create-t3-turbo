@@ -41,7 +41,10 @@ apps
   |   ├─ Nitro server to proxy OAuth requests in preview deployments
   |   └─ Uses Auth.js Core
   ├─ expo
-  |   ├─ Expo SDK 51
+  |   ├─ Expo SDK 53 (EXPERIMENTAL)
+  |   |   > [!WARNING]
+  |   |   > Using Expo SDK 53 (canary) to unblock Next.js 15 / React 19 support.
+  |   |   > This is experimental and might not work as expected.
   |   ├─ React Native using React 18
   |   ├─ Navigation using Expo Router
   |   ├─ Tailwind using NativeWind

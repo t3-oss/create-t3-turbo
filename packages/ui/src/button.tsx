@@ -1,7 +1,7 @@
 import type { VariantProps } from "class-variance-authority";
 import * as React from "react";
-import { Slot } from "radix-ui";
 import { cva } from "class-variance-authority";
+import { Slot } from "radix-ui";
 
 import { cn } from "@acme/ui";
 
@@ -32,7 +32,7 @@ const buttonVariants = cva(
       variant: "primary",
       size: "md",
     },
-  },
+  }
 );
 
 interface ButtonProps
@@ -51,7 +51,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       />
     );
-  },
+  }
 );
 Button.displayName = "Button";
 

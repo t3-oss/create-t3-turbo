@@ -19,8 +19,8 @@
     "@shopify/flash-list": "1.7.3",
     "@tanstack/react-query": "catalog:",
     "@trpc/client": "catalog:",
-    "@trpc/react-query": "catalog:",
     "@trpc/server": "catalog:",
+    "@trpc/tanstack-react-query": "catalog:",
     "expo": "53.0.0-canary-20250304-f08e984",
     "expo-constants": "18.0.0-canary-20250304-f08e984",
     "expo-dev-client": "5.0.13-canary-20250304-f08e984",
@@ -39,7 +39,7 @@
     "react-native-reanimated": "~3.17.1",
     "react-native-safe-area-context": "~5.2.0-beta.0",
     "react-native-screens": "~4.9.1",
-    "superjson": "2.2.1"
+    "superjson": "2.2.2"
   },
   "devDependencies": {
     "@acme/api": "workspace:*",
@@ -47,9 +47,9 @@
     "@acme/prettier-config": "workspace:*",
     "@acme/tailwind-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
-    "@babel/core": "^7.26.0",
-    "@babel/preset-env": "^7.26.0",
-    "@babel/runtime": "^7.26.0",
+    "@babel/core": "^7.26.7",
+    "@babel/preset-env": "^7.26.7",
+    "@babel/runtime": "^7.26.7",
     "@types/babel__core": "^7.20.5",
     "@types/react": "catalog:react19",
     "eslint": "catalog:",

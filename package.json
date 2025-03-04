@@ -3,9 +3,9 @@
   "private": true,
   "engines": {
     "node": ">=22.11.0",
-    "pnpm": "^9.14.4"
+    "pnpm": "^9.15.4"
   },
-  "packageManager": "pnpm@9.14.4",
+  "packageManager": "pnpm@9.15.4",
   "scripts": {
     "build": "turbo run build",
     "clean": "git clean -xdf node_modules",
@@ -25,9 +25,9 @@
   },
   "devDependencies": {
     "@acme/prettier-config": "workspace:*",
-    "@turbo/gen": "^2.3.3",
+    "@turbo/gen": "^2.3.4",
     "prettier": "catalog:",
-    "turbo": "^2.3.3",
+    "turbo": "^2.3.4",
     "typescript": "catalog:"
   },
   "prettier": "@acme/prettier-config"

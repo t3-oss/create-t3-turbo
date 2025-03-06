@@ -38,7 +38,7 @@ export const useSignIn = () => {
     const success = await signIn();
     if (!success) return;
 
-    await queryClient.invalidateQueries(trpc.queryFilter());
+    await queryClient.invalidateQueries(trpc.pathFilter());
     router.replace("/");
   };
 };
@@ -52,7 +52,7 @@ export const useSignOut = () => {
     const res = await signOut.mutateAsync();
     if (!res.success) return;
     await deleteToken();
-    await queryClient.invalidateQueries(trpc.queryFilter());
+    await queryClient.invalidateQueries(trpc.pathFilter());
     router.replace("/");
   };
 };

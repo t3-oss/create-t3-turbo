@@ -19,19 +19,20 @@
   },
   "dependencies": {
     "@acme/db": "workspace:*",
-    "@auth/core": "0.37.2",
-    "@auth/drizzle-adapter": "1.7.4",
+    "@auth/core": "catalog:",
+    "@auth/drizzle-adapter": "catalog:",
     "@t3-oss/env-nextjs": "^0.12.0",
-    "next": "^14.2.23",
-    "next-auth": "5.0.0-beta.25",
-    "react": "catalog:react18",
-    "react-dom": "catalog:react18",
+    "next": "^15.2.1",
+    "next-auth": "catalog:",
+    "react": "catalog:react19",
+    "react-dom": "catalog:react19",
     "zod": "catalog:"
   },
   "devDependencies": {
     "@acme/eslint-config": "workspace:*",
     "@acme/prettier-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
+    "@types/react": "catalog:react19",
     "eslint": "catalog:",
     "prettier": "catalog:",
     "typescript": "catalog:"

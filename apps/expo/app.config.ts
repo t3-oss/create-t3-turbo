@@ -7,13 +7,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   scheme: "expo",
   version: "0.1.0",
   orientation: "portrait",
-  icon: "./assets/icon.png",
+  icon: "./assets/icon-light.png",
   userInterfaceStyle: "automatic",
-  splash: {
-    image: "./assets/icon.png",
-    resizeMode: "contain",
-    backgroundColor: "#1F104A",
-  },
   updates: {
     fallbackToCacheTimeout: 0,
   },
@@ -21,11 +16,16 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ios: {
     bundleIdentifier: "your.bundle.identifier",
     supportsTablet: true,
+    icon: {
+      light: "./assets/icon-light.png",
+      dark: "./assets/icon-dark.png",
+      // tinted: "",
+    },
   },
   android: {
     package: "your.bundle.identifier",
     adaptiveIcon: {
-      foregroundImage: "./assets/icon.png",
+      foregroundImage: "./assets/icon-light.png",
       backgroundColor: "#1F104A",
     },
   },
@@ -38,5 +38,20 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     tsconfigPaths: true,
     typedRoutes: true,
   },
-  plugins: ["expo-router"],
+  plugins: [
+    "expo-router",
+    "expo-secure-store",
+    "expo-web-browser",
+    [
+      "expo-splash-screen",
+      {
+        backgroundColor: "#E4E4E7",
+        image: "./assets/icon-light.png",
+        dark: {
+          backgroundColor: "#18181B",
+          image: "./assets/icon-dark.png",
+        },
+      },
+    ],
+  ],
 });

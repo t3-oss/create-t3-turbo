@@ -38,7 +38,7 @@ export function CreatePostForm() {
     trpc.post.create.mutationOptions({
       onSuccess: async () => {
         form.reset();
-        await queryClient.invalidateQueries(trpc.post.queryFilter());
+        await queryClient.invalidateQueries(trpc.post.pathFilter());
       },
       onError: (err) => {
         toast.error(
@@ -123,7 +123,7 @@ export function PostCard(props: {
   const deletePost = useMutation(
     trpc.post.delete.mutationOptions({
       onSuccess: async () => {
-        await queryClient.invalidateQueries(trpc.post.queryFilter());
+        await queryClient.invalidateQueries(trpc.post.pathFilter());
       },
       onError: (err) => {
         toast.error(

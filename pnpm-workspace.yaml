@@ -4,19 +4,29 @@ packages:
   - tooling/*
 
 catalog:
-  "@tanstack/react-query": ^5.66.5
-  "@trpc/client": ^11.0.0-rc.772
-  "@trpc/tanstack-react-query": ^11.0.0-rc.772
-  "@trpc/server": ^11.0.0-rc.772
+  # Auth
+  "@auth/core": 0.37.2
+  "@auth/drizzle-adapter": ~1.7.4
+  "next-auth": 5.0.0-beta.25
+
+  # Dev tooling
   eslint: ^9.19.0
   prettier: ^3.4.2
-  tailwindcss: ^3.4.14
+  tailwindcss: ^3.4.15
   typescript: ^5.7.3
+
+  # Misc
   zod: ^3.24.1
 
+  # Tanstack & tRPC
+  "@tanstack/react-query": ^5.67.1
+  "@trpc/client": ^11.0.0-rc.824
+  "@trpc/tanstack-react-query": ^11.0.0-rc.824
+  "@trpc/server": ^11.0.0-rc.824
+
 catalogs:
-  react18:
-    react: 18.3.1
-    react-dom: 18.3.1
-    "@types/react": ^18.3.11
-    "@types/react-dom": ^18.3.1
+  react19:
+    react: 19.0.0
+    react-dom: 19.0.0
+    "@types/react": ^19.0.0
+    "@types/react-dom": ^19.0.0

@@ -45,6 +45,10 @@ const config: Config = {
     ],
   ],
 
+  customFields: {
+    clerkPublishableKey: "pk_test_cGV0LWZvYWwtMzIuY2xlcmsuYWNjb3VudHMuZGV2JA",
+  },
+
   themeConfig: {
     // Replace with your project's social card
     image: "img/docusaurus-social-card.jpg",

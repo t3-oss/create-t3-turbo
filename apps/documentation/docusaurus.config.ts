@@ -45,9 +45,11 @@ const config: Config = {
     ],
   ],
 
-  customFields: {
-    clerkPublishableKey: "pk_test_cGV0LWZvYWwtMzIuY2xlcmsuYWNjb3VudHMuZGV2JA",
+  markdown: {
+    mermaid: true,
   },
+
+  themes: ["@docusaurus/theme-mermaid"],
 
   themeConfig: {
     // Replace with your project's social card
@@ -61,9 +63,9 @@ const config: Config = {
       items: [
         {
           type: "docSidebar",
-          sidebarId: "tutorialSidebar",
+          sidebarId: "repoConfigurationSidebar",
           position: "left",
-          label: "Tutorial",
+          label: "Repo Configuration",
         },
         {
           href: "https://github.com/Labrys-Group/create-t3-turbo-mongo",
@@ -71,47 +73,6 @@ const config: Config = {
           position: "right",
         },
       ],
-    },
-    footer: {
-      style: "dark",
-      links: [
-        {
-          title: "Docs",
-          items: [
-            {
-              label: "Tutorial",
-              to: "/docs/intro",
-            },
-          ],
-        },
-        {
-          title: "Community",
-          items: [
-            {
-              label: "Stack Overflow",
-              href: "https://stackoverflow.com/questions/tagged/docusaurus",
-            },
-            {
-              label: "Discord",
-              href: "https://discordapp.com/invite/docusaurus",
-            },
-            {
-              label: "X",
-              href: "https://x.com/docusaurus",
-            },
-          ],
-        },
-        {
-          title: "More",
-          items: [
-            {
-              label: "GitHub",
-              href: "https://github.com/facebook/docusaurus",
-            },
-          ],
-        },
-      ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,

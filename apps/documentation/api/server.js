@@ -9,7 +9,12 @@ const app = express();
 app.use(clerkMiddleware());
 
 // Serve the static Docusaurus build
-const docusaurusBuildDir = path.join(process.cwd(), "build");
+// In Vercel serverless functions, process.cwd() points to /var/task
+// We need to use a relative path from the server.js file to the build directory
+const docusaurusBuildDir = path.join(__dirname, "..", "build");
+
+// Log the build directory path for debugging
+console.log("Build directory path:", docusaurusBuildDir);
 
 app.get("/login", (req, res) => {
   res.sendFile(path.join(docusaurusBuildDir, "login.html"));

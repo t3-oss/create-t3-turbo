@@ -22,7 +22,7 @@ function HomepageHeader() {
             className="button button--secondary button--lg"
             to="/docs/category/template-setup"
           >
-            Repo Setup and Configuration
+            Repo Structure
           </Link>
         </div>
       </div>

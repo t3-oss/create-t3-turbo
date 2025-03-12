@@ -1,10 +1,8 @@
-# Docusaurus
+---
+sidebar_position: 2
+---
 
-## Local Development
-
-From the `apps/documentation` directory run `pnpm run start` to start the Docusaurus server.
-
-## Deployment
+# Deployment
 
 To share with PMs and clients this Docusaurus project can be deployed through Vercel and secured using Clerk.
 
@@ -12,7 +10,7 @@ To share with PMs and clients this Docusaurus project can be deployed through Ve
 
 Docusaurus is configured to use Clerk for authentication. Follow the steps below to set up a new Clerk Application.
 
-1. Sign in to [Clerk](https://dashboard.clerk.com)
+1. Sign in to [Clerk](https://dashboard.clerk.com), it's best to use a group email address for the project (e.g. `project@labrys.io`)
 2. In the dashboard click "Create application"
 3. Enter a name and click "Create application"
 4. Once the application has been created, navigate to the "Configure" tab

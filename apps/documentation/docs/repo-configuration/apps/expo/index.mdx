@@ -1,0 +1,20 @@
+# Expo
+
+:::tip
+
+The `apps/expo` folder can be safely deleted if you are not using Expo in your project.
+
+:::
+
+The Expo app is set up with the following:
+
+- Expo SDK 51
+- React Native with React 18
+- Navigation using Expo Router
+- Tailwind using NativeWind
+- Typesafe API calls using tRPC
+
+import { useCurrentSidebarCategory } from "@docusaurus/theme-common";
+import DocCardList from "@theme/DocCardList";
+
+<DocCardList items={useCurrentSidebarCategory().items} />

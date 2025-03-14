@@ -47,6 +47,14 @@ export const Highlight = ({children, color}) => (
 I can write **Markdown** alongside my _JSX_!
 ```
 
+## Importing components
+
+:::warning[TODO]
+
+Work out how to import components from other packages in the monorepo.
+
+:::
+
 ## Importing code snippets
 
 You can not only import a file containing a component definition, but also import any code file as raw text, and then insert it in a code block, thanks to [Webpack raw-loader](https://webpack.js.org/loaders/raw-loader/). You can import code snippets from another file as it is:
@@ -65,3 +73,9 @@ import MyComponentSource from '!!raw-loader!@site/src/components/myComponent';
 
 <CodeBlock language="jsx">{MyComponentSource}</CodeBlock>
 ```
+
+:::note
+
+See [User](../../../docs/models/user.mdx) for an example of importing from another package in the monorepo.
+
+:::

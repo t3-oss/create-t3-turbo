@@ -20,9 +20,15 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/category/template-setup"
+            to="/docs/category/apps"
           >
             Repo Structure
+          </Link>
+          <Link
+            className="button button--secondary button--lg"
+            to="/docs/category/features"
+          >
+            Documentation
           </Link>
         </div>
       </div>

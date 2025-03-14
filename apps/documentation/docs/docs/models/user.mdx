@@ -1,0 +1,23 @@
+# User
+
+:::tip
+
+Use the syntax below to import raw files and render in a code block
+
+:::
+
+### MDX
+
+```mdx
+import ModelSource from "!!raw-loader!../../../../../packages/db/src/schema/User";
+import CodeBlock from "@theme/CodeBlock";
+
+<CodeBlock language="ts">{ModelSource}</CodeBlock>
+```
+
+### Result
+
+import ModelSource from "!!raw-loader!../../../../../packages/db/src/schema/User";
+import CodeBlock from "@theme/CodeBlock";
+
+<CodeBlock language="ts">{ModelSource}</CodeBlock>

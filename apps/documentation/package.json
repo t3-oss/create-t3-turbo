@@ -26,15 +26,20 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "prism-react-renderer": "^2.3.0",
+    "raw-loader": "^4.0.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@acme/eslint-config": "workspace:*",
+    "@acme/prettier-config": "workspace:*",
     "@docusaurus/module-type-aliases": "3.7.0",
     "@docusaurus/tsconfig": "3.7.0",
     "@docusaurus/types": "3.7.0",
     "@types/express": "^5.0.0",
     "@types/node": "^22.10.10",
+    "eslint": "catalog:",
+    "prettier": "catalog:",
     "ts-node": "^10.9.2",
     "typescript": "catalog:"
   },
@@ -52,5 +57,12 @@
   },
   "engines": {
     "node": ">=18.0"
+  },
+  "prettier": "@acme/prettier-config",
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --ignore-path ../../.gitignore --write"
+    ]
   }
 }

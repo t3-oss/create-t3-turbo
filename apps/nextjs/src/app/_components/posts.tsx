@@ -1,5 +1,11 @@
 "use client";
 
+import {
+  useMutation,
+  useQueryClient,
+  useSuspenseQuery,
+} from "@tanstack/react-query";
+
 import type { RouterOutputs } from "@acme/api";
 import { CreatePostSchema } from "@acme/db/schema";
 import { cn } from "@acme/ui";
@@ -15,9 +21,10 @@ import {
 import { Input } from "@acme/ui/input";
 import { toast } from "@acme/ui/toast";
 
-import { api } from "~/trpc/react";
+import { useTRPC } from "~/trpc/react";
 
 export function CreatePostForm() {
+  const trpc = useTRPC();
   const form = useForm({
     schema: CreatePostSchema,
     defaultValues: {
@@ -26,20 +33,22 @@ export function CreatePostForm() {
     },
   });
 
-  const utils = api.useUtils();
-  const createPost = api.post.create.useMutation({
-    onSuccess: async () => {
-      form.reset();
-      await utils.post.invalidate();
-    },
-    onError: (err) => {
-      toast.error(
-        err.data?.code === "UNAUTHORIZED"
-          ? "You must be logged in to post"
-          : "Failed to create post",
-      );
-    },
-  });
+  const queryClient = useQueryClient();
+  const createPost = useMutation(
+    trpc.post.create.mutationOptions({
+      onSuccess: async () => {
+        form.reset();
+        await queryClient.invalidateQueries(trpc.post.pathFilter());
+      },
+      onError: (err) => {
+        toast.error(
+          err.data?.code === "UNAUTHORIZED"
+            ? "You must be logged in to post"
+            : "Failed to create post",
+        );
+      },
+    }),
+  );
 
   return (
     <Form {...form}>
@@ -80,7 +89,8 @@ export function CreatePostForm() {
 }
 
 export function PostList() {
-  const [posts] = api.post.all.useSuspenseQuery();
+  const trpc = useTRPC();
+  const { data: posts } = useSuspenseQuery(trpc.post.all.queryOptions());
 
   if (posts.length === 0) {
     return (
@@ -108,19 +118,22 @@ export function PostList() {
 export function PostCard(props: {
   post: RouterOutputs["post"]["all"][number];
 }) {
-  const utils = api.useUtils();
-  const deletePost = api.post.delete.useMutation({
-    onSuccess: async () => {
-      await utils.post.invalidate();
-    },
-    onError: (err) => {
-      toast.error(
-        err.data?.code === "UNAUTHORIZED"
-          ? "You must be logged in to delete a post"
-          : "Failed to delete post",
-      );
-    },
-  });
+  const trpc = useTRPC();
+  const queryClient = useQueryClient();
+  const deletePost = useMutation(
+    trpc.post.delete.mutationOptions({
+      onSuccess: async () => {
+        await queryClient.invalidateQueries(trpc.post.pathFilter());
+      },
+      onError: (err) => {
+        toast.error(
+          err.data?.code === "UNAUTHORIZED"
+            ? "You must be logged in to delete a post"
+            : "Failed to delete post",
+        );
+      },
+    }),
+  );
 
   return (
     <div className="flex flex-row rounded-lg bg-muted p-4">

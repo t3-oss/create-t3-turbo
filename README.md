@@ -41,14 +41,17 @@ apps
   |   ├─ Nitro server to proxy OAuth requests in preview deployments
   |   └─ Uses Auth.js Core
   ├─ expo
-  |   ├─ Expo SDK 51
-  |   ├─ React Native using React 18
+  |   ├─ Expo SDK 53 (EXPERIMENTAL)
+  |   |   > [!WARNING]
+  |   |   > Using Expo SDK 53 (canary) to unblock Next.js 15 / React 19 support.
+  |   |   > This is experimental and might not work as expected.
+  |   ├─ React Native using React 19
   |   ├─ Navigation using Expo Router
   |   ├─ Tailwind using NativeWind
   |   └─ Typesafe API calls using tRPC
   └─ next.js
-      ├─ Next.js 14
-      ├─ React 18
+      ├─ Next.js 15
+      ├─ React 19
       ├─ Tailwind CSS
       └─ E2E Typesafe API Server & Client
 packages
@@ -76,7 +79,7 @@ tooling
 ## Quick Start
 
 > **Note**
-> The [db](./packages/db) package is preconfigured to use Supabase and is **edge-bound** with the [Vercel Postgres](https://github.com/vercel/storage/tree/main/packages/postgres) driver. If you're using something else, make the necessary modifications to the [schema](./packages/db/src/schema) as well as the [client](./packages/db/src/index.ts) and the [drizzle config](./packages/db/drizzle.config.ts). If you want to switch to non-edge database driver, remove `export const runtime = "edge";` [from all pages and api routes](https://github.com/t3-oss/create-t3-turbo/issues/634#issuecomment-1730240214).
+> The [db](./packages/db) package is preconfigured to use Supabase and is **edge-bound** with the [Vercel Postgres](https://github.com/vercel/storage/tree/main/packages/postgres) driver. If you're using something else, make the necessary modifications to the [schema](./packages/db/src/schema.ts) as well as the [client](./packages/db/src/index.ts) and the [drizzle config](./packages/db/drizzle.config.ts). If you want to switch to non-edge database driver, remove `export const runtime = "edge";` [from all pages and api routes](https://github.com/t3-oss/create-t3-turbo/issues/634#issuecomment-1730240214).
 
 To get it running, follow the steps below:
 

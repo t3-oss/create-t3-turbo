@@ -1,6 +1,5 @@
 "use client";
 
-import type { ComponentProps } from "react";
 import type {
   ControllerProps,
   FieldPath,
@@ -8,9 +7,9 @@ import type {
   UseFormProps,
 } from "react-hook-form";
 import type { ZodType, ZodTypeDef } from "zod";
-import { createContext, use, useId } from "react";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Slot } from "@radix-ui/react-slot";
+import * as React from "react";
+import { standardSchemaResolver } from "@hookform/resolvers/standard-schema";
+import { Slot } from "radix-ui";
 import {
   useForm as __useForm,
   Controller,
@@ -21,7 +20,9 @@ import { cn } from "@acme/ui";
 
 import { Label } from "./label";
 
-function useForm<
+export { FormProvider as Form, useFieldArray } from "react-hook-form";
+
+export function useForm<
   TOut extends FieldValues,
   TDef extends ZodTypeDef,
   TIn extends FieldValues,
@@ -32,7 +33,7 @@ function useForm<
 ) {
   const form = __useForm<TIn, unknown, TOut>({
     ...props,
-    resolver: zodResolver(props.schema, undefined),
+    resolver: standardSchemaResolver(props.schema, undefined),
   });
 
   return form;
@@ -45,9 +46,11 @@ interface FormFieldContextValue<
   name: TName;
 }
 
-const FormFieldContext = createContext<FormFieldContextValue | null>(null);
+const FormFieldContext = React.createContext<FormFieldContextValue | null>(
+  null,
+);
 
-function FormField<
+export function FormField<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 >({ ...props }: ControllerProps<TFieldValues, TName>) {
@@ -58,16 +61,16 @@ function FormField<
   );
 }
 
-function useFormField() {
+export function useFormField() {
   const { getFieldState, formState } = useFormContext();
 
-  const fieldContext = use(FormFieldContext);
+  const fieldContext = React.use(FormFieldContext);
   if (!fieldContext) {
     throw new Error("useFormField should be used within <FormField>");
   }
   const fieldState = getFieldState(fieldContext.name, formState);
 
-  const itemContext = use(FormItemContext);
+  const itemContext = React.use(FormItemContext);
   const { id } = itemContext;
 
   return {
@@ -84,12 +87,12 @@ interface FormItemContextValue {
   id: string;
 }
 
-const FormItemContext = createContext<FormItemContextValue>(
+const FormItemContext = React.createContext<FormItemContextValue>(
   {} as FormItemContextValue,
 );
 
-function FormItem({ className, ...props }: ComponentProps<"div">) {
-  const id = useId();
+export function FormItem({ className, ...props }: React.ComponentProps<"div">) {
+  const id = React.useId();
 
   return (
     <FormItemContext.Provider value={{ id }}>
@@ -98,7 +101,10 @@ function FormItem({ className, ...props }: ComponentProps<"div">) {
   );
 }
 
-function FormLabel({ className, ...props }: ComponentProps<typeof Label>) {
+export function FormLabel({
+  className,
+  ...props
+}: React.ComponentProps<typeof Label>) {
   const { error, formItemId } = useFormField();
 
   return (
@@ -110,12 +116,14 @@ function FormLabel({ className, ...props }: ComponentProps<typeof Label>) {
   );
 }
 
-function FormControl({ ...props }: ComponentProps<typeof Slot>) {
+export function FormControl({
+  ...props
+}: React.ComponentProps<typeof Slot.Slot>) {
   const { error, formItemId, formDescriptionId, formMessageId } =
     useFormField();
 
   return (
-    <Slot
+    <Slot.Slot
       id={formItemId}
       aria-describedby={
         !error
@@ -128,7 +136,10 @@ function FormControl({ ...props }: ComponentProps<typeof Slot>) {
   );
 }
 
-function FormDescription({ className, ...props }: ComponentProps<"p">) {
+export function FormDescription({
+  className,
+  ...props
+}: React.ComponentProps<"p">) {
   const { formDescriptionId } = useFormField();
 
   return (
@@ -140,7 +151,11 @@ function FormDescription({ className, ...props }: ComponentProps<"p">) {
   );
 }
 
-function FormMessage({ className, children, ...props }: ComponentProps<"p">) {
+export function FormMessage({
+  className,
+  children,
+  ...props
+}: React.ComponentProps<"p">) {
   const { error, formMessageId } = useFormField();
   const body = error ? String(error.message) : children;
 
@@ -158,16 +173,3 @@ function FormMessage({ className, children, ...props }: ComponentProps<"p">) {
     </p>
   );
 }
-
-export {
-  useForm,
-  useFormField,
-  FormItem,
-  FormLabel,
-  FormControl,
-  FormDescription,
-  FormMessage,
-  FormField,
-};
-
-export { FormProvider as Form, useFieldArray } from "react-hook-form";

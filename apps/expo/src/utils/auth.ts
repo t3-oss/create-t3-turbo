@@ -1,8 +1,9 @@
 import * as Linking from "expo-linking";
 import { useRouter } from "expo-router";
 import * as Browser from "expo-web-browser";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
-import { api } from "./api";
+import { trpc } from "./api";
 import { getBaseUrl } from "./base-url";
 import { deleteToken, setToken } from "./session-store";
 
@@ -25,33 +26,33 @@ export const signIn = async () => {
 };
 
 export const useUser = () => {
-  const { data: session } = api.auth.getSession.useQuery();
+  const { data: session } = useQuery(trpc.auth.getSession.queryOptions());
   return session?.user ?? null;
 };
 
 export const useSignIn = () => {
-  const utils = api.useUtils();
+  const queryClient = useQueryClient();
   const router = useRouter();
 
   return async () => {
     const success = await signIn();
     if (!success) return;
 
-    await utils.invalidate();
+    await queryClient.invalidateQueries(trpc.pathFilter());
     router.replace("/");
   };
 };
 
 export const useSignOut = () => {
-  const utils = api.useUtils();
-  const signOut = api.auth.signOut.useMutation();
+  const queryClient = useQueryClient();
+  const signOut = useMutation(trpc.auth.signOut.mutationOptions());
   const router = useRouter();
 
   return async () => {
     const res = await signOut.mutateAsync();
     if (!res.success) return;
     await deleteToken();
-    await utils.invalidate();
+    await queryClient.invalidateQueries(trpc.pathFilter());
     router.replace("/");
   };
 };

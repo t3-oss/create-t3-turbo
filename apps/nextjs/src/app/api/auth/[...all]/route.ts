@@ -1,5 +1,4 @@
 import { auth } from "@acme/auth";
 
-const handler = auth.handler;
-
-export { handler as GET, handler as POST };
+export const GET = auth.handler;
+export const POST = auth.handler;

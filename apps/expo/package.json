@@ -15,12 +15,14 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@better-auth/expo": "1.2.5-beta.5",
     "@expo/metro-config": "^0.19.9",
     "@shopify/flash-list": "1.7.3",
     "@tanstack/react-query": "catalog:",
     "@trpc/client": "catalog:",
     "@trpc/server": "catalog:",
     "@trpc/tanstack-react-query": "catalog:",
+    "better-auth": "1.2.5-beta.5",
     "expo": "53.0.0-canary-20250304-f08e984",
     "expo-constants": "18.0.0-canary-20250304-f08e984",
     "expo-dev-client": "5.0.13-canary-20250304-f08e984",

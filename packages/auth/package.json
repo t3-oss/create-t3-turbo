@@ -8,6 +8,8 @@
       "react-server": "./src/index.rsc.ts",
       "default": "./src/index.ts"
     },
+    "./middleware": "./src/middleware.ts",
+    "./client": "./src/client.ts",
     "./env": "./env.ts"
   },
   "license": "MIT",
@@ -15,15 +17,15 @@
     "clean": "git clean -xdf .cache .turbo dist node_modules",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint",
+    "generate": "dotenv -e ../../.env -- pnpx @better-auth/cli generate --output ../db/src/auth-schema.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@acme/db": "workspace:*",
-    "@auth/core": "catalog:",
-    "@auth/drizzle-adapter": "catalog:",
+    "@better-auth/expo": "1.2.5-beta.5",
     "@t3-oss/env-nextjs": "^0.12.0",
-    "next": "^15.2.1",
-    "next-auth": "catalog:",
+    "better-auth": "1.2.5-beta.5",
+    "next": "^15.2.3",
     "react": "catalog:react19",
     "react-dom": "catalog:react19",
     "zod": "catalog:"

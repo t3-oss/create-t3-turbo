@@ -10,6 +10,7 @@
     "build": "turbo run build",
     "clean": "git clean -xdf node_modules",
     "clean:workspaces": "turbo run clean",
+    "auth:generate": "pnpm -F @acme/auth generate",
     "db:push": "turbo -F @acme/db push",
     "db:studio": "turbo -F @acme/db studio",
     "dev": "turbo watch dev --continue",
@@ -21,13 +22,15 @@
     "lint:ws": "pnpm dlx sherif@latest",
     "postinstall": "pnpm lint:ws",
     "typecheck": "turbo run typecheck",
-    "ui-add": "turbo run ui-add"
+    "ui-add": "turbo run ui-add",
+    "android": "expo run:android",
+    "ios": "expo run:ios"
   },
   "devDependencies": {
     "@acme/prettier-config": "workspace:*",
-    "@turbo/gen": "^2.3.4",
+    "@turbo/gen": "^2.4.4",
     "prettier": "catalog:",
-    "turbo": "^2.3.4",
+    "turbo": "^2.4.4",
     "typescript": "catalog:"
   },
   "prettier": "@acme/prettier-config"

@@ -2,7 +2,7 @@ import type { ComponentProps } from "react";
 
 import { cn } from "@acme/ui";
 
-function Input({ className, ...props }: ComponentProps<"input">) {
+export function Input({ className, ...props }: ComponentProps<"input">) {
   return (
     <input
       className={cn(
@@ -13,5 +13,3 @@ function Input({ className, ...props }: ComponentProps<"input">) {
     />
   );
 }
-
-export { Input };

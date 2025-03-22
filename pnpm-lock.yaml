@@ -426,8 +426,8 @@ importers:
         specifier: ^0.38.4
         version: 0.38.4(@neondatabase/serverless@0.10.0)(@opentelemetry/api@1.9.0)(@planetscale/database@1.19.0)(@types/pg@8.11.10)(@types/react@19.0.10)(@vercel/postgres@0.10.0(utf-8-validate@6.0.4))(mysql2@3.11.3)(postgres@3.4.4)(react@19.0.0)
       drizzle-zod:
-        specifier: ^0.6.1
-        version: 0.6.1(drizzle-orm@0.38.4(@neondatabase/serverless@0.10.0)(@opentelemetry/api@1.9.0)(@planetscale/database@1.19.0)(@types/pg@8.11.10)(@types/react@19.0.10)(@vercel/postgres@0.10.0(utf-8-validate@6.0.4))(mysql2@3.11.3)(postgres@3.4.4)(react@19.0.0))(zod@3.24.2)
+        specifier: ^0.7.0
+        version: 0.7.0(drizzle-orm@0.38.4(@neondatabase/serverless@0.10.0)(@opentelemetry/api@1.9.0)(@planetscale/database@1.19.0)(@types/pg@8.11.10)(@types/react@19.0.10)(@vercel/postgres@0.10.0(utf-8-validate@6.0.4))(mysql2@3.11.3)(postgres@3.4.4)(react@19.0.0))(zod@3.24.2)
       zod:
         specifier: 'catalog:'
         version: 3.24.2
@@ -4608,8 +4608,8 @@ packages:
       sqlite3:
         optional: true
 
-  drizzle-zod@0.6.1:
-    resolution: {integrity: sha512-huEbUgnsuR8tupnmLiyB2F1I2H9dswI3GfM36IbIqx9i0YUeYjRsDpJVyFVeziUvI1ogT9JHRL2Q03cC4QmvxA==}
+  drizzle-zod@0.7.0:
+    resolution: {integrity: sha512-xgCRYYVEzRkeXTS33GSMgoowe3vKsMNBjSI+cwG1oLQVEhAWWbqtb/AAMlm7tkmV4fG/uJjEmWzdzlEmTgWOoQ==}
     peerDependencies:
       drizzle-orm: '>=0.36.0'
       zod: '>=3.0.0'
@@ -12768,7 +12768,7 @@ snapshots:
       postgres: 3.4.4
       react: 19.0.0
 
-  drizzle-zod@0.6.1(drizzle-orm@0.38.4(@neondatabase/serverless@0.10.0)(@opentelemetry/api@1.9.0)(@planetscale/database@1.19.0)(@types/pg@8.11.10)(@types/react@19.0.10)(@vercel/postgres@0.10.0(utf-8-validate@6.0.4))(mysql2@3.11.3)(postgres@3.4.4)(react@19.0.0))(zod@3.24.2):
+  drizzle-zod@0.7.0(drizzle-orm@0.38.4(@neondatabase/serverless@0.10.0)(@opentelemetry/api@1.9.0)(@planetscale/database@1.19.0)(@types/pg@8.11.10)(@types/react@19.0.10)(@vercel/postgres@0.10.0(utf-8-validate@6.0.4))(mysql2@3.11.3)(postgres@3.4.4)(react@19.0.0))(zod@3.24.2):
     dependencies:
       drizzle-orm: 0.38.4(@neondatabase/serverless@0.10.0)(@opentelemetry/api@1.9.0)(@planetscale/database@1.19.0)(@types/pg@8.11.10)(@types/react@19.0.10)(@vercel/postgres@0.10.0(utf-8-validate@6.0.4))(mysql2@3.11.3)(postgres@3.4.4)(react@19.0.0)
       zod: 3.24.2

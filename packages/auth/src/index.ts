@@ -24,7 +24,7 @@ export function initAuth(options: {
       discord: {
         clientId: options.discordClientId,
         clientSecret: options.discordClientSecret,
-        redirectURI: `http://${options.baseUrl}/api/auth/callback/discord`,
+        redirectURI: `${options.baseUrl}/api/auth/callback/discord`,
       },
     },
     trustedOrigins: ["expo://"],

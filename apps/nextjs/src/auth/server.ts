@@ -7,8 +7,14 @@ import { initAuth } from "@acme/auth";
 
 import { env } from "~/env";
 
+const baseUrl = env.VERCEL_PROJECT_PRODUCTION_URL
+  ? `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`
+  : env.VERCEL_URL
+    ? `https://${env.VERCEL_URL}`
+    : "http://localhost:3000";
+
 export const auth = initAuth({
-  baseUrl: env.BETTER_AUTH_URL,
+  baseUrl,
   secret: env.AUTH_SECRET,
   discordClientId: env.AUTH_DISCORD_ID,
   discordClientSecret: env.AUTH_DISCORD_SECRET,

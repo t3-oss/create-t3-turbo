@@ -1,10 +1,37 @@
-import { headers } from "next/headers";
+import type { BetterAuthOptions } from "better-auth";
+import { expo } from "@better-auth/expo";
+import { betterAuth } from "better-auth";
+import { drizzleAdapter } from "better-auth/adapters/drizzle";
+import { oAuthProxy } from "better-auth/plugins";
 
-import { auth } from "./auth";
+import { db } from "@acme/db/client";
 
-export const getSession = async () =>
-  auth.api.getSession({
-    headers: await headers(),
-  });
+export function initAuth(options: {
+  baseUrl: string;
+  secret: string | undefined;
 
-export * from "./auth";
+  discordClientId: string;
+  discordClientSecret: string;
+}) {
+  const config = {
+    database: drizzleAdapter(db, {
+      provider: "pg",
+    }),
+    baseURL: options.baseUrl,
+    secret: options.secret,
+    plugins: [oAuthProxy(), expo()],
+    socialProviders: {
+      discord: {
+        clientId: options.discordClientId,
+        clientSecret: options.discordClientSecret,
+        redirectURI: `http://${options.baseUrl}/api/auth/callback/discord`,
+      },
+    },
+    trustedOrigins: ["expo://"],
+  } satisfies BetterAuthOptions;
+
+  return betterAuth(config);
+}
+
+export type Auth = ReturnType<typeof initAuth>;
+export type Session = Auth["$Infer"]["Session"];

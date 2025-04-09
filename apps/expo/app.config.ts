@@ -19,7 +19,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     icon: {
       light: "./assets/icon-light.png",
       dark: "./assets/icon-dark.png",
-      // tinted: "",
     },
   },
   android: {
@@ -38,6 +37,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     tsconfigPaths: true,
     typedRoutes: true,
   },
+  newArchEnabled: true,
   plugins: [
     "expo-router",
     "expo-secure-store",

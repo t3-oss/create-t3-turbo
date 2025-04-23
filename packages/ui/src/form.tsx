@@ -27,7 +27,7 @@ export function useForm<
   TDef extends ZodTypeDef,
   TIn extends FieldValues,
 >(
-  props: Omit<UseFormProps<TIn>, "resolver"> & {
+  props: Omit<UseFormProps<TIn, unknown, TOut>, "resolver"> & {
     schema: ZodType<TOut, TDef, TIn>;
   },
 ) {

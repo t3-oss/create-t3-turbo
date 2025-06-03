@@ -13,6 +13,7 @@ export function initAuth(options: {
   discordClientId: string;
   discordClientSecret: string;
 }) {
+  console.log("INIT AUTH", options);
   const config = {
     database: drizzleAdapter(db, {
       provider: "pg",

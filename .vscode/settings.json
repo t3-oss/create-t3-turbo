@@ -15,13 +15,11 @@
     { "pattern": "tooling/*/" }
   ],
   "prettier.ignorePath": ".gitignore",
-  "tailwindCSS.experimental.classRegex": [
-    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
-    ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
-  ],
+  "tailwindCSS.classFunctions": ["cva", "cx", "cn"],
   "tailwindCSS.experimental.configFile": "./tooling/tailwind/web.ts",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "typescript.preferences.autoImportFileExcludePatterns": [
+    "zod/dist/types/index.d.ts", // Force auto-imports to v4
     "next/router.d.ts",
     "next/dist/client/router.d.ts"
   ],

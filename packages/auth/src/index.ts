@@ -25,7 +25,7 @@ export function initAuth(options: {
         /**
          * Auto-inference blocked by https://github.com/better-auth/better-auth/pull/2891
          */
-        currentURL: options.baseUrl,
+        // currentURL: options.baseUrl,
         productionURL: options.productionUrl,
       }),
       expo(),

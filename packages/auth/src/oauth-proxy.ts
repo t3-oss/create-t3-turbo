@@ -79,6 +79,10 @@ export const oAuthProxy = (opts?: OAuthProxyOptions) => {
         },
         async (ctx) => {
           const cookies = ctx.query.cookies;
+          console.log("[better-auth][oauth-proxy]", {
+            cookies,
+            callbackURL: ctx.query.callbackURL,
+          });
           const decryptedCookies = await symmetricDecrypt({
             key: ctx.context.secret,
             data: cookies,
@@ -87,7 +91,7 @@ export const oAuthProxy = (opts?: OAuthProxyOptions) => {
             "[better-auth][oauth-proxy] setting cookies",
             decryptedCookies,
           );
-          ctx.setHeader("set-cookie", decryptedCookies);
+          ctx.setHeader("set-cookie", decryptedCookies.replace("Secure;", ""));
           throw ctx.redirect(ctx.query.callbackURL);
         },
       ),

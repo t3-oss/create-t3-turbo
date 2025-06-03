@@ -49,7 +49,7 @@ catalogs:
 
 patchedDependencies:
   better-auth:
-    hash: d38ed0b446d2baf53bc15e12506c1ff25e861d25c55550266c6d29425dbb0afb
+    hash: 1e85f800eff0ad4dfb5da7aa92b459b31884e4eb0fb7de9c1b3dc4afd9662d61
     path: patches/better-auth.patch
 
 importers:
@@ -76,7 +76,7 @@ importers:
     dependencies:
       '@better-auth/expo':
         specifier: 1.2.8
-        version: 1.2.8(better-auth@1.2.8(patch_hash=d38ed0b446d2baf53bc15e12506c1ff25e861d25c55550266c6d29425dbb0afb))
+        version: 1.2.8(better-auth@1.2.8(patch_hash=1e85f800eff0ad4dfb5da7aa92b459b31884e4eb0fb7de9c1b3dc4afd9662d61))
       '@expo/metro-config':
         specifier: ^0.20.14
         version: 0.20.14
@@ -97,7 +97,7 @@ importers:
         version: 11.2.0(@tanstack/react-query@5.80.2(react@19.0.0))(@trpc/client@11.2.0(@trpc/server@11.2.0(typescript@5.8.3))(typescript@5.8.3))(@trpc/server@11.2.0(typescript@5.8.3))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.8.3)
       better-auth:
         specifier: 1.2.8
-        version: 1.2.8(patch_hash=d38ed0b446d2baf53bc15e12506c1ff25e861d25c55550266c6d29425dbb0afb)
+        version: 1.2.8(patch_hash=1e85f800eff0ad4dfb5da7aa92b459b31884e4eb0fb7de9c1b3dc4afd9662d61)
       expo:
         specifier: 53.0.9
         version: 53.0.9(@babel/core@7.27.4)(@expo/metro-runtime@5.0.4(react-native@0.79.2(@babel/core@7.27.4)(@types/react@19.1.6)(bufferutil@4.0.8)(react@19.0.0)))(bufferutil@4.0.8)(graphql@15.8.0)(react-native@0.79.2(@babel/core@7.27.4)(@types/react@19.1.6)(bufferutil@4.0.8)(react@19.0.0))(react@19.0.0)
@@ -334,13 +334,13 @@ importers:
         version: link:../db
       '@better-auth/expo':
         specifier: 1.2.8
-        version: 1.2.8(better-auth@1.2.8(patch_hash=d38ed0b446d2baf53bc15e12506c1ff25e861d25c55550266c6d29425dbb0afb))
+        version: 1.2.8(better-auth@1.2.8(patch_hash=1e85f800eff0ad4dfb5da7aa92b459b31884e4eb0fb7de9c1b3dc4afd9662d61))
       '@t3-oss/env-nextjs':
         specifier: ^0.13.6
         version: 0.13.6(arktype@2.1.20)(typescript@5.8.3)(valibot@1.0.0-beta.15(typescript@5.8.3))(zod@3.25.49)
       better-auth:
         specifier: 1.2.8
-        version: 1.2.8(patch_hash=d38ed0b446d2baf53bc15e12506c1ff25e861d25c55550266c6d29425dbb0afb)
+        version: 1.2.8(patch_hash=1e85f800eff0ad4dfb5da7aa92b459b31884e4eb0fb7de9c1b3dc4afd9662d61)
       next:
         specifier: ^15.3.3
         version: 15.3.3(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -8086,10 +8086,10 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.27.1
 
-  '@better-auth/expo@1.2.8(better-auth@1.2.8(patch_hash=d38ed0b446d2baf53bc15e12506c1ff25e861d25c55550266c6d29425dbb0afb))':
+  '@better-auth/expo@1.2.8(better-auth@1.2.8(patch_hash=1e85f800eff0ad4dfb5da7aa92b459b31884e4eb0fb7de9c1b3dc4afd9662d61))':
     dependencies:
       '@better-fetch/fetch': 1.1.18
-      better-auth: 1.2.8(patch_hash=d38ed0b446d2baf53bc15e12506c1ff25e861d25c55550266c6d29425dbb0afb)
+      better-auth: 1.2.8(patch_hash=1e85f800eff0ad4dfb5da7aa92b459b31884e4eb0fb7de9c1b3dc4afd9662d61)
       better-call: 1.0.9
       zod: 3.25.49
 
@@ -10546,7 +10546,7 @@ snapshots:
 
   basic-ftp@5.0.5: {}
 
-  better-auth@1.2.8(patch_hash=d38ed0b446d2baf53bc15e12506c1ff25e861d25c55550266c6d29425dbb0afb):
+  better-auth@1.2.8(patch_hash=1e85f800eff0ad4dfb5da7aa92b459b31884e4eb0fb7de9c1b3dc4afd9662d61):
     dependencies:
       '@better-auth/utils': 0.2.5
       '@better-fetch/fetch': 1.1.18

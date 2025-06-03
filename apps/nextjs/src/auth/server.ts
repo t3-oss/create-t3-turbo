@@ -15,6 +15,7 @@ const baseUrl = env.VERCEL_PROJECT_PRODUCTION_URL
 
 export const auth = initAuth({
   baseUrl,
+  productionUrl: `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`,
   secret: env.AUTH_SECRET,
   discordClientId: env.AUTH_DISCORD_ID,
   discordClientSecret: env.AUTH_DISCORD_SECRET,

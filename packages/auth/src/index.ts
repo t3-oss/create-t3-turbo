@@ -8,6 +8,7 @@ import { db } from "@acme/db/client";
 
 export function initAuth(options: {
   baseUrl: string;
+  productionUrl: string;
   secret: string | undefined;
 
   discordClientId: string;
@@ -20,7 +21,13 @@ export function initAuth(options: {
     }),
     baseURL: options.baseUrl,
     secret: options.secret,
-    plugins: [oAuthProxy(), expo()],
+    plugins: [
+      oAuthProxy({
+        currentURL: options.baseUrl,
+        productionURL: options.productionUrl,
+      }),
+      expo(),
+    ],
     socialProviders: {
       discord: {
         clientId: options.discordClientId,

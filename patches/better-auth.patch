@@ -1,0 +1,22 @@
+diff --git a/dist/plugins/oauth-proxy/index.mjs b/dist/plugins/oauth-proxy/index.mjs
+index e163acf98f26479abcfd3df36b9855e679ed5f3d..0eaae73abab4ee46780714f3455d858793cac144 100644
+--- a/dist/plugins/oauth-proxy/index.mjs
++++ b/dist/plugins/oauth-proxy/index.mjs
+@@ -99,7 +99,16 @@ const oAuthProxy = (opts) => {
+             key: ctx.context.secret,
+             data: cookies
+           });
+-          ctx.setHeader("set-cookie", decryptedCookies);
++          // https://github.com/better-auth/better-auth/pull/2895
++          const isSecureContext = ctx.request
++            ? new URL(ctx.request.url).protocol === "https:"
++            : (ctx.context.options.advanced?.useSecureCookies ?? true);
++          const cookieToSet = isSecureContext
++            ? decryptedCookies
++            : decryptedCookies
++              .replace("Secure;", "")
++              .replace("__Secure-better-auth", "better-auth");
++          ctx.setHeader("set-cookie", cookieToSet);
+           throw ctx.redirect(ctx.query.callbackURL);
+         }
+       )

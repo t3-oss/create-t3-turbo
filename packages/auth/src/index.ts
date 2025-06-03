@@ -2,9 +2,10 @@ import type { BetterAuthOptions } from "better-auth";
 import { expo } from "@better-auth/expo";
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
-import { oAuthProxy } from "better-auth/plugins";
 
 import { db } from "@acme/db/client";
+
+import { oAuthProxy } from "./oauth-proxy";
 
 export function initAuth(options: {
   baseUrl: string;

@@ -11,14 +11,13 @@ const config = withTurborepoManagedCache(
     configPath: "./tailwind.config.ts",
   }),
 );
-
 module.exports = config;
 
 /**
  * Move the Metro cache to the `.cache/metro` folder.
  * If you have any environment variables, you can configure Turborepo to invalidate it when needed.
  *
- * @see https://turbo.build/repo/docs/reference/configuration#env
+ * @see https://turborepo.com/docs/reference/configuration#env
  * @param {import('expo/metro-config').MetroConfig} config
  * @returns {import('expo/metro-config').MetroConfig}
  */

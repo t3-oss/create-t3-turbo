@@ -14,7 +14,6 @@ export function initAuth(options: {
   discordClientId: string;
   discordClientSecret: string;
 }) {
-  console.log("INIT AUTH", options);
   const config = {
     database: drizzleAdapter(db, {
       provider: "pg",
@@ -23,6 +22,9 @@ export function initAuth(options: {
     secret: options.secret,
     plugins: [
       oAuthProxy({
+        /**
+         * Auto-inference blocked by https://github.com/better-auth/better-auth/pull/2891
+         */
         currentURL: options.baseUrl,
         productionURL: options.productionUrl,
       }),

@@ -91,7 +91,12 @@ export const oAuthProxy = (opts?: OAuthProxyOptions) => {
             "[better-auth][oauth-proxy] setting cookies",
             decryptedCookies,
           );
-          ctx.setHeader("set-cookie", decryptedCookies.replace("Secure;", ""));
+          ctx.setHeader(
+            "set-cookie",
+            decryptedCookies
+              .replace("Secure;", "")
+              .replace("__Secure-better-auth", "better-auth"),
+          );
           throw ctx.redirect(ctx.query.callbackURL);
         },
       ),

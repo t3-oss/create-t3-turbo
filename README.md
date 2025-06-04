@@ -3,6 +3,9 @@
 > [!NOTE]
 >
 > create-t3-turbo now uses better-auth for authentication!
+> Look out for bugs as we're working through the last issues,
+> especially, the oauth proxy might not play very nice with Expo
+> so you might need to disable that in [`@acme/auth`](./packages/auth/src/index.ts)
 
 ## Installation
 

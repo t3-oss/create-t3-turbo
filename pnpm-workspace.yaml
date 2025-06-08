@@ -8,17 +8,18 @@ catalog:
   tailwindcss: ^3.4.15
   typescript: ^5.8.3
   zod: ^3.25.49
-  '@tanstack/react-query': ^5.80.2
-  '@trpc/client': ^11.2.0
-  '@trpc/tanstack-react-query': ^11.2.0
-  '@trpc/server': ^11.2.0
+  "@tanstack/react-query": ^5.80.2
+  "@trpc/client": ^11.2.0
+  "@trpc/tanstack-react-query": ^11.2.0
+  "@trpc/server": ^11.2.0
 catalogs:
   react19:
     react: 19.0.0
     react-dom: 19.0.0
-    '@types/react': ^19.1.6
-    '@types/react-dom': ^19.1.5
+    "@types/react": ^19.1.6
+    "@types/react-dom": ^19.1.5
 onlyBuiltDependencies:
   - esbuild
-patchedDependencies:
-  better-auth: patches/better-auth.patch
+overrides:
+  better-auth: https://pkg.pr.new/better-auth/better-auth@2895
+  "@better-auth/expo": https://pkg.pr.new/better-auth/better-auth/@better-auth/expo@2895

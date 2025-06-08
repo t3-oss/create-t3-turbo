@@ -103,8 +103,8 @@ function MobileAuth() {
 
   return (
     <>
-      <Text className="pb-2 text-center text-xl font-semibold text-white">
-        {session?.user.name ?? "Not logged in"}
+      <Text className="pb-2 text-center text-xl font-semibold text-zinc-900">
+        {session?.user.name ? `Hello, ${session.user.name}` : "Not logged in"}
       </Text>
       <Button
         onPress={() =>

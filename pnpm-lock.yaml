@@ -173,8 +173,8 @@ importers:
         specifier: ^7.27.2
         version: 7.27.2(@babel/core@7.27.4)
       '@babel/runtime':
-        specifier: ^7.27.4
-        version: 7.27.4
+        specifier: ^7.27.6
+        version: 7.27.6
       '@types/babel__core':
         specifier: ^7.20.5
         version: 7.20.5
@@ -1324,8 +1324,8 @@ packages:
     resolution: {integrity: sha512-H7QhL0ucCGOObsUETNbB2PuzF4gAvN8p32P6r91bX7M/hk4bx+3yz2hTwHL9d/Efzwu1upeb4/cd7oSxCzup3w==}
     engines: {node: '>=6.9.0'}
 
-  '@babel/runtime@7.27.4':
-    resolution: {integrity: sha512-t3yaEOuGu9NlIZ+hIeGbBjFtZT7j2cb2tg0fuaJKeGotchRjjLfrBA9Kwf8quhpP1EUuxModQg04q/mBwyg8uA==}
+  '@babel/runtime@7.27.6':
+    resolution: {integrity: sha512-vbavdySgbTTrmFE+EsiqUTzlOr5bzlnJtUv9PynGCAKvfQqjIXbvFdumPM/GxMDfyuGMJaJAU6TO4zc1Jf1i8Q==}
     engines: {node: '>=6.9.0'}
 
   '@babel/template@7.27.2':
@@ -8051,7 +8051,7 @@ snapshots:
     dependencies:
       core-js-pure: 3.42.0
 
-  '@babel/runtime@7.27.4': {}
+  '@babel/runtime@7.27.6': {}
 
   '@babel/template@7.27.2':
     dependencies:
@@ -8312,7 +8312,7 @@ snapshots:
   '@expo/cli@0.24.13(bufferutil@4.0.8)(graphql@15.8.0)':
     dependencies:
       '@0no-co/graphql.web': 1.1.2(graphql@15.8.0)
-      '@babel/runtime': 7.27.4
+      '@babel/runtime': 7.27.6
       '@expo/code-signing-certificates': 0.0.5
       '@expo/config': 11.0.10
       '@expo/config-plugins': 10.0.2
@@ -11631,7 +11631,7 @@ snapshots:
 
   expo@53.0.9(@babel/core@7.27.4)(@expo/metro-runtime@5.0.4(react-native@0.79.2(@babel/core@7.27.4)(@types/react@19.1.6)(bufferutil@4.0.8)(react@19.0.0)))(bufferutil@4.0.8)(graphql@15.8.0)(react-native@0.79.2(@babel/core@7.27.4)(@types/react@19.1.6)(bufferutil@4.0.8)(react@19.0.0))(react@19.0.0):
     dependencies:
-      '@babel/runtime': 7.27.4
+      '@babel/runtime': 7.27.6
       '@expo/cli': 0.24.13(bufferutil@4.0.8)(graphql@15.8.0)
       '@expo/config': 11.0.10
       '@expo/config-plugins': 10.0.2
@@ -12675,7 +12675,7 @@ snapshots:
 
   metro-runtime@0.82.4:
     dependencies:
-      '@babel/runtime': 7.27.4
+      '@babel/runtime': 7.27.6
       flow-enums-runtime: 0.0.6
 
   metro-source-map@0.82.4:

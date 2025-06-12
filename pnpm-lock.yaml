@@ -377,11 +377,11 @@ importers:
         specifier: ^0.10.0
         version: 0.10.0(utf-8-validate@6.0.4)
       drizzle-orm:
-        specifier: ^0.44.1
-        version: 0.44.1(@neondatabase/serverless@0.10.0)(@opentelemetry/api@1.9.0)(@planetscale/database@1.19.0)(@types/pg@8.11.10)(@vercel/postgres@0.10.0(utf-8-validate@6.0.4))(gel@2.0.0)(kysely@0.28.2)(mysql2@3.11.3)(postgres@3.4.4)
+        specifier: ^0.44.2
+        version: 0.44.2(@neondatabase/serverless@0.10.0)(@opentelemetry/api@1.9.0)(@planetscale/database@1.19.0)(@types/pg@8.11.10)(@vercel/postgres@0.10.0(utf-8-validate@6.0.4))(gel@2.0.0)(kysely@0.28.2)(mysql2@3.11.3)(postgres@3.4.4)
       drizzle-zod:
         specifier: ^0.8.2
-        version: 0.8.2(drizzle-orm@0.44.1(@neondatabase/serverless@0.10.0)(@opentelemetry/api@1.9.0)(@planetscale/database@1.19.0)(@types/pg@8.11.10)(@vercel/postgres@0.10.0(utf-8-validate@6.0.4))(gel@2.0.0)(kysely@0.28.2)(mysql2@3.11.3)(postgres@3.4.4))(zod@3.25.49)
+        version: 0.8.2(drizzle-orm@0.44.2(@neondatabase/serverless@0.10.0)(@opentelemetry/api@1.9.0)(@planetscale/database@1.19.0)(@types/pg@8.11.10)(@vercel/postgres@0.10.0(utf-8-validate@6.0.4))(gel@2.0.0)(kysely@0.28.2)(mysql2@3.11.3)(postgres@3.4.4))(zod@3.25.49)
       zod:
         specifier: 'catalog:'
         version: 3.25.49
@@ -3955,8 +3955,8 @@ packages:
     resolution: {integrity: sha512-PUjYKWtzOzPtdtQlTHQG3qfv4Y0XT8+Eas6UbxCmxTj7qgMf+39dDujf1BP1I+qqZtw9uzwTh8jYtkMuCq+B0Q==}
     hasBin: true
 
-  drizzle-orm@0.44.1:
-    resolution: {integrity: sha512-prIWOlwJbiYInvcJxE+IMiJCtMiFVrSUJCwx6AXSJvGOdLu35qZ46QncTZDgloiLNCG0XxTC8agQElSmsl++TA==}
+  drizzle-orm@0.44.2:
+    resolution: {integrity: sha512-zGAqBzWWkVSFjZpwPOrmCrgO++1kZ5H/rZ4qTGeGOe18iXGVJWf3WPfHOVwFIbmi8kHjfJstC6rJomzGx8g/dQ==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
       '@cloudflare/workers-types': '>=4'
@@ -11037,7 +11037,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.44.1(@neondatabase/serverless@0.10.0)(@opentelemetry/api@1.9.0)(@planetscale/database@1.19.0)(@types/pg@8.11.10)(@vercel/postgres@0.10.0(utf-8-validate@6.0.4))(gel@2.0.0)(kysely@0.28.2)(mysql2@3.11.3)(postgres@3.4.4):
+  drizzle-orm@0.44.2(@neondatabase/serverless@0.10.0)(@opentelemetry/api@1.9.0)(@planetscale/database@1.19.0)(@types/pg@8.11.10)(@vercel/postgres@0.10.0(utf-8-validate@6.0.4))(gel@2.0.0)(kysely@0.28.2)(mysql2@3.11.3)(postgres@3.4.4):
     optionalDependencies:
       '@neondatabase/serverless': 0.10.0
       '@opentelemetry/api': 1.9.0
@@ -11049,9 +11049,9 @@ snapshots:
       mysql2: 3.11.3
       postgres: 3.4.4
 
-  drizzle-zod@0.8.2(drizzle-orm@0.44.1(@neondatabase/serverless@0.10.0)(@opentelemetry/api@1.9.0)(@planetscale/database@1.19.0)(@types/pg@8.11.10)(@vercel/postgres@0.10.0(utf-8-validate@6.0.4))(gel@2.0.0)(kysely@0.28.2)(mysql2@3.11.3)(postgres@3.4.4))(zod@3.25.49):
+  drizzle-zod@0.8.2(drizzle-orm@0.44.2(@neondatabase/serverless@0.10.0)(@opentelemetry/api@1.9.0)(@planetscale/database@1.19.0)(@types/pg@8.11.10)(@vercel/postgres@0.10.0(utf-8-validate@6.0.4))(gel@2.0.0)(kysely@0.28.2)(mysql2@3.11.3)(postgres@3.4.4))(zod@3.25.49):
     dependencies:
-      drizzle-orm: 0.44.1(@neondatabase/serverless@0.10.0)(@opentelemetry/api@1.9.0)(@planetscale/database@1.19.0)(@types/pg@8.11.10)(@vercel/postgres@0.10.0(utf-8-validate@6.0.4))(gel@2.0.0)(kysely@0.28.2)(mysql2@3.11.3)(postgres@3.4.4)
+      drizzle-orm: 0.44.2(@neondatabase/serverless@0.10.0)(@opentelemetry/api@1.9.0)(@planetscale/database@1.19.0)(@types/pg@8.11.10)(@vercel/postgres@0.10.0(utf-8-validate@6.0.4))(gel@2.0.0)(kysely@0.28.2)(mysql2@3.11.3)(postgres@3.4.4)
       zod: 3.25.49
 
   dunder-proto@1.0.1:

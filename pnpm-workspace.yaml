@@ -9,9 +9,9 @@ catalog:
   typescript: ^5.8.3
   zod: ^3.25.49
   "@tanstack/react-query": ^5.80.7
-  "@trpc/client": ^11.4.0
-  "@trpc/tanstack-react-query": ^11.4.0
-  "@trpc/server": ^11.4.0
+  "@trpc/client": ^11.4.1
+  "@trpc/tanstack-react-query": ^11.4.1
+  "@trpc/server": ^11.4.1
 catalogs:
   react19:
     react: 19.0.0
@@ -20,3 +20,7 @@ catalogs:
     "@types/react-dom": ^19.1.5
 onlyBuiltDependencies:
   - esbuild
+overrides:
+  "@trpc/client": "https://pkg.pr.new/trpc/trpc/@trpc/client@6826"
+  "@trpc/server": "https://pkg.pr.new/trpc/trpc/@trpc/server@6826"
+  "@trpc/tanstack-react-query": "https://pkg.pr.new/trpc/trpc/@trpc/tanstack-react-query@6826"

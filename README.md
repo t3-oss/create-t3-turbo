@@ -27,7 +27,7 @@ npx create-turbo@latest -e https://github.com/t3-oss/create-t3-turbo
 
 Ever wondered how to migrate your T3 application into a monorepo? Stop right here! This is the perfect starter repo to get you running with the perfect stack!
 
-It uses [Turborepo](https://turborepo.org) and contains:
+It uses [Turborepo](https://turborepo.com) and contains:
 
 ```text
 .github

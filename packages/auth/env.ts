@@ -17,3 +17,5 @@ export function authEnv() {
       !!process.env.CI || process.env.npm_lifecycle_event === "lint",
   });
 }
+
+export const env = authEnv();

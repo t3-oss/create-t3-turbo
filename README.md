@@ -93,7 +93,31 @@ cp .env.example .env
 pnpm db:push
 ```
 
-### 2. Configure Expo `dev`-script
+### 2. Generate Better Auth Schema
+
+This project uses [Better Auth](https://www.better-auth.com) for authentication. The auth schema needs to be generated using the Better Auth CLI before you can use the authentication features.
+
+```bash
+# Generate the Better Auth schema
+pnpm --filter @acme/auth generate
+```
+
+This command runs the Better Auth CLI with the following configuration:
+
+- **Config file**: `packages/auth/script/auth-cli.ts` - A CLI-only configuration file (isolated from src to prevent imports)
+- **Output**: `packages/db/src/auth-schema.ts` - Generated Drizzle schema for authentication tables
+
+The generation process:
+
+1. Reads the Better Auth configuration from `packages/auth/script/auth-cli.ts`
+2. Generates the appropriate database schema based on your auth setup
+3. Outputs a Drizzle-compatible schema file to the `@acme/db` package
+
+> **Note**: The `auth-cli.ts` file is placed in the `script/` directory (instead of `src/`) to prevent accidental imports from other parts of the codebase. This file is exclusively for CLI schema generation and should **not** be used directly in your application. For runtime authentication, use the configuration from `packages/auth/src/index.ts`.
+
+For more information about the Better Auth CLI, see the [official documentation](https://www.better-auth.com/docs/concepts/cli#generate).
+
+### 3. Configure Expo `dev`-script
 
 #### Use iOS Simulator
 
@@ -119,7 +143,7 @@ pnpm db:push
 
 3. Run `pnpm dev` at the project root folder.
 
-### 3. Configuring Better-Auth to work with Expo
+### 4. Configuring Better-Auth to work with Expo
 
 In order to get Better-Auth to work with Expo, you must either:
 
@@ -133,7 +157,7 @@ By using the proxy plugin, the Next.js apps will forward any auth requests to th
 
 You can alternatively add your local IP (e.g. `192.168.x.y:$PORT`) to your OAuth provider. This may not be as reliable as your local IP may change when you change networks. Some OAuth providers may also only support a single callback URL for each app making this approach unviable for some providers (e.g. GitHub).
 
-### 4a. When it's time to add a new UI component
+### 5a. When it's time to add a new UI component
 
 Run the `ui-add` script to add a new UI component using the interactive `shadcn/ui` CLI:
 
@@ -143,7 +167,7 @@ pnpm ui-add
 
 When the component(s) has been installed, you should be good to go and start using it in your app.
 
-### 4b. When it's time to add a new package
+### 5b. When it's time to add a new package
 
 To add a new package, simply run `pnpm turbo gen init` in the monorepo root. This will prompt you for a package name as well as if you want to install any dependencies to the new package (of course you can also do this yourself later).
 

@@ -1,7 +1,10 @@
 import nextPlugin from "@next/eslint-plugin-next";
 
+import reactConfig from "./react.js";
+
 /** @type {Awaited<import('typescript-eslint').Config>} */
 export default [
+  ...reactConfig,
   {
     files: ["**/*.ts", "**/*.tsx"],
     plugins: {

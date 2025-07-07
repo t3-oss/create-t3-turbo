@@ -1,8 +1,11 @@
 import reactPlugin from "eslint-plugin-react";
 import * as reactHooks from "eslint-plugin-react-hooks";
 
+import baseConfig from "./base.js";
+
 /** @type {Awaited<import('typescript-eslint').Config>} */
 export default [
+  ...baseConfig,
   reactHooks.configs.recommended,
   {
     files: ["**/*.ts", "**/*.tsx"],

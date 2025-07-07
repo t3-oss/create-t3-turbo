@@ -71,7 +71,7 @@ importers:
     dependencies:
       '@better-auth/expo':
         specifier: 1.2.9
-        version: 1.2.9(better-auth@1.2.9)
+        version: 1.2.9(better-auth@1.2.10)
       '@expo/metro-config':
         specifier: ^0.20.14
         version: 0.20.14
@@ -91,8 +91,8 @@ importers:
         specifier: 'catalog:'
         version: 11.4.0(@tanstack/react-query@5.80.7(react@19.0.0))(@trpc/client@11.4.0(@trpc/server@11.4.0(typescript@5.8.3))(typescript@5.8.3))(@trpc/server@11.4.0(typescript@5.8.3))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.8.3)
       better-auth:
-        specifier: 1.2.9
-        version: 1.2.9
+        specifier: 1.2.10
+        version: 1.2.10
       expo:
         specifier: 53.0.9
         version: 53.0.9(@babel/core@7.27.4)(@expo/metro-runtime@5.0.4(react-native@0.79.2(@babel/core@7.27.4)(@types/react@19.1.6)(bufferutil@4.0.8)(react@19.0.0)))(bufferutil@4.0.8)(graphql@15.8.0)(react-native@0.79.2(@babel/core@7.27.4)(@types/react@19.1.6)(bufferutil@4.0.8)(react@19.0.0))(react@19.0.0)
@@ -329,13 +329,13 @@ importers:
         version: link:../db
       '@better-auth/expo':
         specifier: 1.2.9
-        version: 1.2.9(better-auth@1.2.9)
+        version: 1.2.9(better-auth@1.2.10)
       '@t3-oss/env-nextjs':
         specifier: ^0.13.6
         version: 0.13.6(arktype@2.1.20)(typescript@5.8.3)(valibot@1.0.0-beta.15(typescript@5.8.3))(zod@3.25.49)
       better-auth:
-        specifier: 1.2.9
-        version: 1.2.9
+        specifier: 1.2.10
+        version: 1.2.10
       next:
         specifier: ^15.3.3
         version: 15.3.3(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -3491,8 +3491,8 @@ packages:
     resolution: {integrity: sha512-4Bcg1P8xhUuqcii/S0Z9wiHIrQVPMermM1any+MX5GeGD7faD3/msQUDGLol9wOcz4/jbg/WJnGqoJF6LiBdtg==}
     engines: {node: '>=10.0.0'}
 
-  better-auth@1.2.9:
-    resolution: {integrity: sha512-WLqBXDzuaCQetQctLGC5oTfGmL32zUvxnM4Y+LZkhwseMaZWq5EKI+c/ZATgz2YkFt7726q659PF8CfB9P1VuA==}
+  better-auth@1.2.10:
+    resolution: {integrity: sha512-nEj1RG4DdLUuJiV5CR93ORyPCptGRBwksaPPCkUtGo9ka+UIlTpaiKoTaTqVLLYlqwX4bOj9tJ32oBNdf2G3Kg==}
 
   better-call@1.0.9:
     resolution: {integrity: sha512-Qfm0gjk0XQz0oI7qvTK1hbqTsBY4xV2hsHAxF8LZfUYl3RaECCIifXuVqtPpZJWvlCCMlQSvkvhhyuApGUba6g==}
@@ -8081,10 +8081,10 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.27.1
 
-  '@better-auth/expo@1.2.9(better-auth@1.2.9)':
+  '@better-auth/expo@1.2.9(better-auth@1.2.10)':
     dependencies:
       '@better-fetch/fetch': 1.1.18
-      better-auth: 1.2.9
+      better-auth: 1.2.10
       better-call: 1.0.9
       zod: 3.25.49
 
@@ -10541,7 +10541,7 @@ snapshots:
 
   basic-ftp@5.0.5: {}
 
-  better-auth@1.2.9:
+  better-auth@1.2.10:
     dependencies:
       '@better-auth/utils': 0.2.5
       '@better-fetch/fetch': 1.1.18

@@ -31,8 +31,8 @@ catalogs:
       specifier: ^5.8.3
       version: 5.8.3
     zod:
-      specifier: ^3.25.49
-      version: 3.25.49
+      specifier: ^3.25.76
+      version: 3.25.76
   react19:
     '@types/react':
       specifier: ^19.1.6
@@ -213,7 +213,7 @@ importers:
         version: link:../../packages/validators
       '@t3-oss/env-nextjs':
         specifier: ^0.13.6
-        version: 0.13.6(arktype@2.1.20)(typescript@5.8.3)(valibot@1.0.0-beta.15(typescript@5.8.3))(zod@3.25.49)
+        version: 0.13.6(arktype@2.1.20)(typescript@5.8.3)(valibot@1.0.0-beta.15(typescript@5.8.3))(zod@3.25.76)
       '@tanstack/react-query':
         specifier: 'catalog:'
         version: 5.80.7(react@19.0.0)
@@ -240,7 +240,7 @@ importers:
         version: 2.2.2
       zod:
         specifier: 'catalog:'
-        version: 3.25.49
+        version: 3.25.76
     devDependencies:
       '@acme/eslint-config':
         specifier: workspace:*
@@ -301,7 +301,7 @@ importers:
         version: 2.2.2
       zod:
         specifier: 'catalog:'
-        version: 3.25.49
+        version: 3.25.76
     devDependencies:
       '@acme/eslint-config':
         specifier: workspace:*
@@ -332,7 +332,7 @@ importers:
         version: 1.2.12(better-auth@1.2.12)
       '@t3-oss/env-nextjs':
         specifier: ^0.13.6
-        version: 0.13.6(arktype@2.1.20)(typescript@5.8.3)(valibot@1.0.0-beta.15(typescript@5.8.3))(zod@3.25.49)
+        version: 0.13.6(arktype@2.1.20)(typescript@5.8.3)(valibot@1.0.0-beta.15(typescript@5.8.3))(zod@3.25.76)
       better-auth:
         specifier: 1.2.12
         version: 1.2.12
@@ -347,7 +347,7 @@ importers:
         version: 19.0.0(react@19.0.0)
       zod:
         specifier: 'catalog:'
-        version: 3.25.49
+        version: 3.25.76
     devDependencies:
       '@acme/eslint-config':
         specifier: workspace:*
@@ -384,10 +384,10 @@ importers:
         version: 0.44.1(@neondatabase/serverless@0.10.0)(@opentelemetry/api@1.9.0)(@planetscale/database@1.19.0)(@prisma/client@5.22.0(prisma@5.22.0))(@types/better-sqlite3@7.6.13)(@types/pg@8.11.10)(@vercel/postgres@0.10.0(utf-8-validate@6.0.4))(better-sqlite3@11.10.0)(gel@2.0.0)(kysely@0.28.2)(mysql2@3.11.3)(postgres@3.4.4)(prisma@5.22.0)
       drizzle-zod:
         specifier: ^0.8.2
-        version: 0.8.2(drizzle-orm@0.44.1(@neondatabase/serverless@0.10.0)(@opentelemetry/api@1.9.0)(@planetscale/database@1.19.0)(@prisma/client@5.22.0(prisma@5.22.0))(@types/better-sqlite3@7.6.13)(@types/pg@8.11.10)(@vercel/postgres@0.10.0(utf-8-validate@6.0.4))(better-sqlite3@11.10.0)(gel@2.0.0)(kysely@0.28.2)(mysql2@3.11.3)(postgres@3.4.4)(prisma@5.22.0))(zod@3.25.49)
+        version: 0.8.2(drizzle-orm@0.44.1(@neondatabase/serverless@0.10.0)(@opentelemetry/api@1.9.0)(@planetscale/database@1.19.0)(@prisma/client@5.22.0(prisma@5.22.0))(@types/better-sqlite3@7.6.13)(@types/pg@8.11.10)(@vercel/postgres@0.10.0(utf-8-validate@6.0.4))(better-sqlite3@11.10.0)(gel@2.0.0)(kysely@0.28.2)(mysql2@3.11.3)(postgres@3.4.4)(prisma@5.22.0))(zod@3.25.76)
       zod:
         specifier: 'catalog:'
-        version: 3.25.49
+        version: 3.25.76
     devDependencies:
       '@acme/eslint-config':
         specifier: workspace:*
@@ -470,13 +470,13 @@ importers:
         version: 5.8.3
       zod:
         specifier: 'catalog:'
-        version: 3.25.49
+        version: 3.25.76
 
   packages/validators:
     dependencies:
       zod:
         specifier: 'catalog:'
-        version: 3.25.49
+        version: 3.25.76
     devDependencies:
       '@acme/eslint-config':
         specifier: workspace:*
@@ -7489,6 +7489,9 @@ packages:
   zod@3.25.49:
     resolution: {integrity: sha512-JMMPMy9ZBk3XFEdbM3iL1brx4NUSejd6xr3ELrrGEfGb355gjhiAWtG3K5o+AViV/3ZfkIrCzXsZn6SbLwTR8Q==}
 
+  zod@3.25.76:
+    resolution: {integrity: sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==}
+
 snapshots:
 
   '@0no-co/graphql.web@1.1.2(graphql@15.8.0)':
@@ -8444,7 +8447,7 @@ snapshots:
       semver: 7.7.2
       tinyexec: 0.3.2
       yocto-spinner: 0.1.2
-      zod: 3.25.49
+      zod: 3.25.76
     transitivePeerDependencies:
       - '@aws-sdk/client-rds-data'
       - '@cloudflare/workers-types'
@@ -10325,21 +10328,21 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@t3-oss/env-core@0.13.6(arktype@2.1.20)(typescript@5.8.3)(valibot@1.0.0-beta.15(typescript@5.8.3))(zod@3.25.49)':
+  '@t3-oss/env-core@0.13.6(arktype@2.1.20)(typescript@5.8.3)(valibot@1.0.0-beta.15(typescript@5.8.3))(zod@3.25.76)':
     optionalDependencies:
       arktype: 2.1.20
       typescript: 5.8.3
       valibot: 1.0.0-beta.15(typescript@5.8.3)
-      zod: 3.25.49
+      zod: 3.25.76
 
-  '@t3-oss/env-nextjs@0.13.6(arktype@2.1.20)(typescript@5.8.3)(valibot@1.0.0-beta.15(typescript@5.8.3))(zod@3.25.49)':
+  '@t3-oss/env-nextjs@0.13.6(arktype@2.1.20)(typescript@5.8.3)(valibot@1.0.0-beta.15(typescript@5.8.3))(zod@3.25.76)':
     dependencies:
-      '@t3-oss/env-core': 0.13.6(arktype@2.1.20)(typescript@5.8.3)(valibot@1.0.0-beta.15(typescript@5.8.3))(zod@3.25.49)
+      '@t3-oss/env-core': 0.13.6(arktype@2.1.20)(typescript@5.8.3)(valibot@1.0.0-beta.15(typescript@5.8.3))(zod@3.25.76)
     optionalDependencies:
       arktype: 2.1.20
       typescript: 5.8.3
       valibot: 1.0.0-beta.15(typescript@5.8.3)
-      zod: 3.25.49
+      zod: 3.25.76
 
   '@tanstack/query-core@5.80.7': {}
 
@@ -11583,10 +11586,10 @@ snapshots:
       postgres: 3.4.4
       prisma: 5.22.0
 
-  drizzle-zod@0.8.2(drizzle-orm@0.44.1(@neondatabase/serverless@0.10.0)(@opentelemetry/api@1.9.0)(@planetscale/database@1.19.0)(@prisma/client@5.22.0(prisma@5.22.0))(@types/better-sqlite3@7.6.13)(@types/pg@8.11.10)(@vercel/postgres@0.10.0(utf-8-validate@6.0.4))(better-sqlite3@11.10.0)(gel@2.0.0)(kysely@0.28.2)(mysql2@3.11.3)(postgres@3.4.4)(prisma@5.22.0))(zod@3.25.49):
+  drizzle-zod@0.8.2(drizzle-orm@0.44.1(@neondatabase/serverless@0.10.0)(@opentelemetry/api@1.9.0)(@planetscale/database@1.19.0)(@prisma/client@5.22.0(prisma@5.22.0))(@types/better-sqlite3@7.6.13)(@types/pg@8.11.10)(@vercel/postgres@0.10.0(utf-8-validate@6.0.4))(better-sqlite3@11.10.0)(gel@2.0.0)(kysely@0.28.2)(mysql2@3.11.3)(postgres@3.4.4)(prisma@5.22.0))(zod@3.25.76):
     dependencies:
       drizzle-orm: 0.44.1(@neondatabase/serverless@0.10.0)(@opentelemetry/api@1.9.0)(@planetscale/database@1.19.0)(@prisma/client@5.22.0(prisma@5.22.0))(@types/better-sqlite3@7.6.13)(@types/pg@8.11.10)(@vercel/postgres@0.10.0(utf-8-validate@6.0.4))(better-sqlite3@11.10.0)(gel@2.0.0)(kysely@0.28.2)(mysql2@3.11.3)(postgres@3.4.4)(prisma@5.22.0)
-      zod: 3.25.49
+      zod: 3.25.76
 
   dunder-proto@1.0.1:
     dependencies:
@@ -15343,3 +15346,5 @@ snapshots:
       zod: 3.25.49
 
   zod@3.25.49: {}
+
+  zod@3.25.76: {}

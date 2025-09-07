@@ -2,6 +2,7 @@ packages:
   - apps/*
   - packages/*
   - tooling/*
+
 catalog:
   eslint: ^9.35.0
   prettier: ^3.6.2
@@ -18,7 +19,12 @@ catalogs:
     react-dom: 19.1.1
     "@types/react": ^19.1.12
     "@types/react-dom": ^19.1.9
+
 onlyBuiltDependencies:
   - esbuild
+
 overrides:
   "@types/minimatch": 5.1.2
+
+nodeLinker: hoisted
+linkWorkspacePackages: true

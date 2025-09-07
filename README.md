@@ -27,7 +27,7 @@ npx create-turbo@latest -e https://github.com/t3-oss/create-t3-turbo
 
 Ever wondered how to migrate your T3 application into a monorepo? Stop right here! This is the perfect starter repo to get you running with the perfect stack!
 
-It uses [Turborepo](https://turborepo.org) and contains:
+It uses [Turborepo](https://turborepo.com) and contains:
 
 ```text
 .github
@@ -37,14 +37,11 @@ It uses [Turborepo](https://turborepo.org) and contains:
   └─ Recommended extensions and settings for VSCode users
 apps
   ├─ expo
-  |   ├─ Expo SDK 53 (EXPERIMENTAL)
-  |   |   > [!WARNING]
-  |   |   > Using Expo SDK 53 (canary) to unblock Next.js 15 / React 19 support.
-  |   |   > This is experimental and might not work as expected.
-  |   ├─ React Native using React 19
-  |   ├─ Navigation using Expo Router
-  |   ├─ Tailwind using NativeWind
-  |   └─ Typesafe API calls using tRPC
+  │   ├─ Expo SDK 53
+  │   ├─ React Native using React 19
+  │   ├─ Navigation using Expo Router
+  │   ├─ Tailwind using NativeWind
+  │   └─ Typesafe API calls using tRPC
   └─ next.js
       ├─ Next.js 15
       ├─ React 19
@@ -52,20 +49,20 @@ apps
       └─ E2E Typesafe API Server & Client
 packages
   ├─ api
-  |   └─ tRPC v11 router definition
+  │   └─ tRPC v11 router definition
   ├─ auth
-  |   └─ Authentication using better-auth.
+  │   └─ Authentication using better-auth.
   ├─ db
-  |   └─ Typesafe db calls using Drizzle & Supabase
+  │   └─ Typesafe db calls using Drizzle & Supabase
   └─ ui
       └─ Start of a UI package for the webapp using shadcn-ui
 tooling
   ├─ eslint
-  |   └─ shared, fine-grained, eslint presets
+  │   └─ shared, fine-grained, eslint presets
   ├─ prettier
-  |   └─ shared prettier configuration
+  │   └─ shared prettier configuration
   ├─ tailwind
-  |   └─ shared tailwind configuration
+  │   └─ shared tailwind configuration
   └─ typescript
       └─ shared tsconfig you can extend from
 ```

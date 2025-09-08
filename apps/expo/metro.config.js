@@ -1,17 +1,15 @@
 // Learn more: https://docs.expo.dev/guides/monorepos/
+const path = require("node:path");
 const { getDefaultConfig } = require("expo/metro-config");
 const { FileStore } = require("metro-cache");
 const { withNativeWind } = require("nativewind/metro");
 
-const path = require("node:path");
-
-const config = withTurborepoManagedCache(
+module.exports = withTurborepoManagedCache(
   withNativeWind(getDefaultConfig(__dirname), {
     input: "./src/styles.css",
     configPath: "./tailwind.config.ts",
   }),
 );
-module.exports = config;
 
 /**
  * Move the Metro cache to the `.cache/metro` folder.

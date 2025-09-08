@@ -1,16 +1,15 @@
 // Learn more: https://docs.expo.dev/guides/monorepos/
+const path = require("node:path");
 const { getDefaultConfig } = require("expo/metro-config");
 const { FileStore } = require("metro-cache");
 const { withReactNativeCSS } = require("react-native-css/metro");
-
 const path = require("node:path");
 
-const config = withTurborepoManagedCache(
+module.exports = withTurborepoManagedCache(
   withReactNativeCSS(getDefaultConfig(__dirname), {
     globalClassNamePolyfill: true,
   }),
 );
-module.exports = config;
 
 /**
  * Move the Metro cache to the `.cache/metro` folder.

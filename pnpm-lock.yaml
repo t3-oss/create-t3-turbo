@@ -139,8 +139,8 @@ importers:
         specifier: 0.79.2
         version: 0.79.2(@babel/core@7.28.4)(@types/react@19.1.12)(bufferutil@4.0.8)(react@19.1.1)
       react-native-gesture-handler:
-        specifier: ~2.25.0
-        version: 2.25.0(react-native@0.79.2(@babel/core@7.28.4)(@types/react@19.1.12)(bufferutil@4.0.8)(react@19.1.1))(react@19.1.1)
+        specifier: ~2.28.0
+        version: 2.28.0(react-native@0.79.2(@babel/core@7.28.4)(@types/react@19.1.12)(bufferutil@4.0.8)(react@19.1.1))(react@19.1.1)
       react-native-reanimated:
         specifier: ~3.18.0
         version: 3.18.0(@babel/core@7.28.4)(react-native@0.79.2(@babel/core@7.28.4)(@types/react@19.1.12)(bufferutil@4.0.8)(react@19.1.1))(react@19.1.1)
@@ -6527,8 +6527,8 @@ packages:
       react: '*'
       react-native: '*'
 
-  react-native-gesture-handler@2.25.0:
-    resolution: {integrity: sha512-NPjJi6mislXxvjxQPU9IYwBjb1Uejp8GvAbE1Lhh+xMIMEvmgAvVIp5cz1P+xAbV6uYcRRArm278+tEInGOqWg==}
+  react-native-gesture-handler@2.28.0:
+    resolution: {integrity: sha512-0msfJ1vRxXKVgTgvL+1ZOoYw3/0z1R+Ked0+udoJhyplC2jbVKIJ8Z1bzWdpQRCV3QcQ87Op0zJVE5DhKK2A0A==}
     peerDependencies:
       react: '*'
       react-native: '*'
@@ -10704,7 +10704,7 @@ snapshots:
 
   '@types/pg@8.11.10':
     dependencies:
-      '@types/node': 24.3.1
+      '@types/node': 22.18.1
       pg-protocol: 1.10.3
       pg-types: 4.1.0
     optional: true
@@ -14467,7 +14467,7 @@ snapshots:
       react: 19.1.1
       react-native: 0.79.2(@babel/core@7.28.4)(@types/react@19.1.12)(bufferutil@4.0.8)(react@19.1.1)
 
-  react-native-gesture-handler@2.25.0(react-native@0.79.2(@babel/core@7.28.4)(@types/react@19.1.12)(bufferutil@4.0.8)(react@19.1.1))(react@19.1.1):
+  react-native-gesture-handler@2.28.0(react-native@0.79.2(@babel/core@7.28.4)(@types/react@19.1.12)(bufferutil@4.0.8)(react@19.1.1))(react@19.1.1):
     dependencies:
       '@egjs/hammerjs': 2.0.17
       hoist-non-react-statics: 3.3.2

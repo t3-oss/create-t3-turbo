@@ -79,8 +79,8 @@ importers:
         specifier: ^0.20.14
         version: 0.20.14
       '@legendapp/list':
-        specifier: ^1.0.15
-        version: 1.0.15(react-native@0.79.2(@babel/core@7.28.4)(@types/react@19.1.12)(bufferutil@4.0.8)(react@19.1.1))(react@19.1.1)
+        specifier: ^2.0.2
+        version: 2.0.2(react-native@0.79.2(@babel/core@7.28.4)(@types/react@19.1.12)(bufferutil@4.0.8)(react@19.1.1))(react@19.1.1)
       '@tanstack/react-query':
         specifier: 'catalog:'
         version: 5.87.1(react@19.1.1)
@@ -2123,8 +2123,8 @@ packages:
   '@jridgewell/trace-mapping@0.3.9':
     resolution: {integrity: sha512-3Belt6tdc8bPgAtbcmdtNJlirVoTmEb5e2gC94PnkwEW9jI6CAHUeoG85tjWP5WquqfavoMtMwiG4P926ZKKuQ==}
 
-  '@legendapp/list@1.0.15':
-    resolution: {integrity: sha512-26YMHveV/Y36408gm7gvk55QHMRx4Y8c4dKolAOvSCKmJ8EozY9hWFe3AaBhQyY/BokodjGpMLDs30HvsJq2HA==}
+  '@legendapp/list@2.0.2':
+    resolution: {integrity: sha512-DgLg5ryUZgh0n1PGty8WB6XvFvha8M5uyK6pg1G/CFHu5IjS+PI4z378rFijfZfGQZzATZWxG3skj/PIecqTEw==}
     peerDependencies:
       react: '*'
       react-native: '*'
@@ -3685,8 +3685,8 @@ packages:
   brace-expansion@1.1.11:
     resolution: {integrity: sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA==}
 
-  brace-expansion@2.0.1:
-    resolution: {integrity: sha512-XnAIvQ8eM+kC6aULx6wuQiwVsnzsi9d3WxzV3FpWTGA19F621kwdbsAcFKXgKUHZWsy+mY6iL1sHTxWEFCytDA==}
+  brace-expansion@2.0.2:
+    resolution: {integrity: sha512-Jt0vHyM+jmUBqojB7E1NIYadt0vI0Qxjxd2TErW94wDz+E2LAm5vKMXXwg6ZZBTHPuUlDgQHKXvjGBdfcF1ZDQ==}
 
   braces@3.0.3:
     resolution: {integrity: sha512-yQbXgO/OSZVD2IsiLlro+7Hf6Q18EJrKSEsdoMzKePKXct3gvD8oLcOQdIzGupr5Fj+EDe8gO/lxc1BzfMpxvA==}
@@ -9442,7 +9442,7 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@legendapp/list@1.0.15(react-native@0.79.2(@babel/core@7.28.4)(@types/react@19.1.12)(bufferutil@4.0.8)(react@19.1.1))(react@19.1.1)':
+  '@legendapp/list@2.0.2(react-native@0.79.2(@babel/core@7.28.4)(@types/react@19.1.12)(bufferutil@4.0.8)(react@19.1.1))(react@19.1.1)':
     dependencies:
       react: 19.1.1
       react-native: 0.79.2(@babel/core@7.28.4)(@types/react@19.1.12)(bufferutil@4.0.8)(react@19.1.1)
@@ -10665,7 +10665,7 @@ snapshots:
   '@types/glob@7.2.0':
     dependencies:
       '@types/minimatch': 5.1.2
-      '@types/node': 22.18.1
+      '@types/node': 24.3.1
 
   '@types/graceful-fs@4.1.9':
     dependencies:
@@ -10704,7 +10704,7 @@ snapshots:
 
   '@types/pg@8.11.10':
     dependencies:
-      '@types/node': 22.18.1
+      '@types/node': 24.3.1
       pg-protocol: 1.10.3
       pg-types: 4.1.0
     optional: true
@@ -10732,7 +10732,7 @@ snapshots:
 
   '@types/through@0.0.33':
     dependencies:
-      '@types/node': 22.18.1
+      '@types/node': 24.3.1
 
   '@types/tinycolor2@1.4.6': {}
 
@@ -11309,7 +11309,7 @@ snapshots:
       balanced-match: 1.0.2
       concat-map: 0.0.1
 
-  brace-expansion@2.0.1:
+  brace-expansion@2.0.2:
     dependencies:
       balanced-match: 1.0.2
 
@@ -13706,7 +13706,7 @@ snapshots:
 
   minimatch@9.0.5:
     dependencies:
-      brace-expansion: 2.0.1
+      brace-expansion: 2.0.2
 
   minimist@1.2.8: {}
 

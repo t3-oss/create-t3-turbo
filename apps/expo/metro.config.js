@@ -3,7 +3,6 @@ const path = require("node:path");
 const { getDefaultConfig } = require("expo/metro-config");
 const { FileStore } = require("metro-cache");
 const { withReactNativeCSS } = require("react-native-css/metro");
-const path = require("node:path");
 
 module.exports = withTurborepoManagedCache(
   withReactNativeCSS(getDefaultConfig(__dirname), {

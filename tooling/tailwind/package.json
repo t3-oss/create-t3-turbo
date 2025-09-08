@@ -10,9 +10,7 @@
   "license": "MIT",
   "scripts": {
     "clean": "git clean -xdf .cache .turbo node_modules",
-    "format": "prettier --check . --ignore-path ../../.gitignore",
-    "lint": "eslint",
-    "typecheck": "tsc --noEmit"
+    "format": "prettier --check . --ignore-path ../../.gitignore"
   },
   "dependencies": {
     "postcss": "^8.5.6",

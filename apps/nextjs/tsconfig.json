@@ -3,12 +3,10 @@
   "compilerOptions": {
     "lib": ["ES2022", "dom", "dom.iterable"],
     "jsx": "preserve",
-    "baseUrl": ".",
     "paths": {
       "~/*": ["./src/*"]
     },
-    "plugins": [{ "name": "next" }],
-    "module": "esnext"
+    "plugins": [{ "name": "next" }]
   },
   "include": [".", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]

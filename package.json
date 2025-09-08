@@ -2,10 +2,10 @@
   "name": "create-t3-turbo",
   "private": true,
   "engines": {
-    "node": ">=22.14.0",
-    "pnpm": ">=9.6.0"
+    "node": ">=22.19.0",
+    "pnpm": ">=10.15.1"
   },
-  "packageManager": "pnpm@10.11.1",
+  "packageManager": "pnpm@10.15.1",
   "scripts": {
     "build": "turbo run build",
     "clean": "git clean -xdf node_modules",

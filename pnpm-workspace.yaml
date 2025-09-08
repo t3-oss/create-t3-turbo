@@ -2,23 +2,30 @@ packages:
   - apps/*
   - packages/*
   - tooling/*
+
 catalog:
-  eslint: ^9.35.0
-  prettier: ^3.6.2
-  tailwindcss: ^3.4.15
-  typescript: ^5.9.2
-  zod: ^4.1.5
   "@tanstack/react-query": ^5.87.1
   "@trpc/client": ^11.5.1
-  "@trpc/tanstack-react-query": ^11.5.1
   "@trpc/server": ^11.5.1
+  "@trpc/tanstack-react-query": ^11.5.1
+  eslint: ^9.35.0
+  prettier: ^3.6.2
+  tailwindcss: ^3.4.17
+  typescript: ^5.9.2
+  zod: ^4.1.5
+
 catalogs:
   react19:
-    react: 19.1.1
-    react-dom: 19.1.1
     "@types/react": ^19.1.12
     "@types/react-dom": ^19.1.9
+    react: 19.1.1
+    react-dom: 19.1.1
+
 onlyBuiltDependencies:
   - esbuild
+
 overrides:
   "@types/minimatch": 5.1.2
+
+nodeLinker: hoisted
+linkWorkspacePackages: true

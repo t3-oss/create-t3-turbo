@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@eslint/compat": "^1.3.2",
+    "@eslint/js": "catalog:",
     "@next/eslint-plugin-next": "^15.5.2",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
@@ -25,6 +26,7 @@
   "devDependencies": {
     "@acme/prettier-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
+    "@types/node": "^22.18.1",
     "eslint": "catalog:",
     "prettier": "catalog:",
     "typescript": "catalog:"

@@ -38,6 +38,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   experiments: {
     tsconfigPaths: true,
     typedRoutes: true,
+    reactCanary: true,
+    reactCompiler: true,
   },
   plugins: [
     "expo-router",

@@ -115,7 +115,7 @@ function MobileAuth() {
                 callbackURL: "/",
               })
         }
-        className="bg-[#5B65E9]"
+        className="bg-primary flex items-center rounded-sm p-2"
       >
         <Text>{session ? "Sign Out" : "Sign In With Discord"}</Text>
       </Pressable>

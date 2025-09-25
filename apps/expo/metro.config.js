@@ -3,11 +3,11 @@ const path = require("node:path");
 const { getDefaultConfig } = require("expo/metro-config");
 const { FileStore } = require("metro-cache");
 const { withReactNativeCSS } = require("react-native-css/metro");
+const { withNativewind } = require("nativewind/metro");
 
+/** @type {import('expo/metro-config').MetroConfig} */
 module.exports = withTurborepoManagedCache(
-  withReactNativeCSS(getDefaultConfig(__dirname), {
-    globalClassNamePolyfill: true,
-  }),
+  withNativewind(getDefaultConfig(__dirname)),
 );
 
 /**

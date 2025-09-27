@@ -3,8 +3,8 @@
   "private": true,
   "type": "module",
   "exports": {
-    "./native": "./native.ts",
-    "./web": "./web.ts"
+    "./theme": "./theme.css",
+    "./postcss-config": "./postcss-config.js"
   },
   "license": "MIT",
   "scripts": {
@@ -14,9 +14,9 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@tailwindcss/postcss": "catalog:",
     "postcss": "^8.5.6",
-    "tailwindcss": "catalog:",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss": "catalog:"
   },
   "devDependencies": {
     "@acme/eslint-config": "workspace:*",

@@ -172,12 +172,12 @@ importers:
       '@acme/prettier-config':
         specifier: workspace:*
         version: link:../../tooling/prettier
+      '@acme/tailwind-config':
+        specifier: workspace:*
+        version: link:../../tooling/tailwind
       '@acme/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/typescript
-      '@tailwindcss/postcss':
-        specifier: 'catalog:'
-        version: 4.1.13
       '@types/react':
         specifier: catalog:react19
         version: 19.1.12
@@ -251,12 +251,12 @@ importers:
       '@acme/prettier-config':
         specifier: workspace:*
         version: link:../../tooling/prettier
+      '@acme/tailwind-config':
+        specifier: workspace:*
+        version: link:../../tooling/tailwind
       '@acme/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/typescript
-      '@tailwindcss/postcss':
-        specifier: 'catalog:'
-        version: 4.1.13
       '@types/node':
         specifier: ^22.18.1
         version: 22.18.1
@@ -569,6 +569,40 @@ importers:
       '@types/node':
         specifier: ^22.18.1
         version: 22.18.1
+      typescript:
+        specifier: 'catalog:'
+        version: 5.9.2
+
+  tooling/tailwind:
+    dependencies:
+      '@tailwindcss/postcss':
+        specifier: 'catalog:'
+        version: 4.1.13
+      postcss:
+        specifier: ^8.5.6
+        version: 8.5.6
+      tailwindcss:
+        specifier: 'catalog:'
+        version: 4.1.13
+    devDependencies:
+      '@acme/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint
+      '@acme/prettier-config':
+        specifier: workspace:*
+        version: link:../prettier
+      '@acme/tsconfig':
+        specifier: workspace:*
+        version: link:../typescript
+      '@types/node':
+        specifier: ^22.18.1
+        version: 22.18.1
+      eslint:
+        specifier: 'catalog:'
+        version: 9.35.0(jiti@2.5.1)
+      prettier:
+        specifier: 'catalog:'
+        version: 3.6.2
       typescript:
         specifier: 'catalog:'
         version: 5.9.2

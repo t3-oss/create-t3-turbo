@@ -1,19 +1,15 @@
 import reactPlugin from "eslint-plugin-react";
-import * as reactHooks from "eslint-plugin-react-hooks";
+import reactHooks from "eslint-plugin-react-hooks";
 
-/** @type {Awaited<import('typescript-eslint').Config>} */
 export default [
-  reactHooks.configs.recommended,
+  reactHooks.configs.flat["recommended-latest"],
   {
     files: ["**/*.ts", "**/*.tsx"],
-    plugins: {
-      react: reactPlugin,
-    },
-    rules: {
-      ...reactPlugin.configs["jsx-runtime"].rules,
-      "react-hooks/react-compiler": "error",
-    },
+    ...reactPlugin.configs.flat.recommended,
+    ...reactPlugin.configs.flat["jsx-runtime"],
     languageOptions: {
+      ...reactPlugin.configs.flat.recommended?.languageOptions,
+      ...reactPlugin.configs.flat["jsx-runtime"]?.languageOptions,
       globals: {
         React: "writable",
       },

@@ -37,15 +37,15 @@ It uses [Turborepo](https://turborepo.com) and contains:
   └─ Recommended extensions and settings for VSCode users
 apps
   ├─ expo
-  │   ├─ Expo SDK 53
-  │   ├─ React Native using React 19
+  │   ├─ Expo SDK 54
+  │   ├─ React Native 0.81 using React 19
   │   ├─ Navigation using Expo Router
-  │   ├─ Tailwind using NativeWind
+  │   ├─ Tailwind CSS v4 using NativeWind v5
   │   └─ Typesafe API calls using tRPC
   └─ next.js
       ├─ Next.js 15
       ├─ React 19
-      ├─ Tailwind CSS
+      ├─ Tailwind CSS v4
       └─ E2E Typesafe API Server & Client
 packages
   ├─ api
@@ -62,7 +62,7 @@ tooling
   ├─ prettier
   │   └─ shared prettier configuration
   ├─ tailwind
-  │   └─ shared tailwind configuration
+  │   └─ shared tailwind theme and configuration
   └─ typescript
       └─ shared tsconfig you can extend from
 ```

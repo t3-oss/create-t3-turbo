@@ -103,7 +103,7 @@ function MobileAuth() {
 
   return (
     <>
-      <Text className="pb-2 text-center text-xl font-semibold text-zinc-900">
+      <Text className="text-foreground pb-2 text-center text-xl font-semibold">
         {session?.user.name ? `Hello, ${session.user.name}` : "Not logged in"}
       </Text>
       <Pressable

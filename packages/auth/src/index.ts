@@ -1,4 +1,4 @@
-import type { BetterAuthOptions } from "better-auth";
+import type { BetterAuthOptions, BetterAuthPlugin } from "better-auth";
 import { expo } from "@better-auth/expo";
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
@@ -6,13 +6,15 @@ import { oAuthProxy } from "better-auth/plugins";
 
 import { db } from "@acme/db/client";
 
-export function initAuth(options: {
+export function initAuth<TPlugins extends BetterAuthPlugin[]>(options: {
   baseUrl: string;
   productionUrl: string;
   secret: string | undefined;
 
   discordClientId: string;
   discordClientSecret: string;
+
+  plugins?: TPlugins;
 }) {
   const config = {
     database: drizzleAdapter(db, {
@@ -29,6 +31,7 @@ export function initAuth(options: {
         productionURL: options.productionUrl,
       }),
       expo(),
+      ...(options.plugins ?? []),
     ],
     socialProviders: {
       discord: {

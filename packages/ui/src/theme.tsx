@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
-import * as z from "zod";
+import * as z from "zod/v4";
 
 import { Button } from "./button";
 import {
@@ -68,6 +68,7 @@ const getNextTheme = (current: ThemeMode): ThemeMode => {
     getSystemTheme() === "dark"
       ? ["auto", "light", "dark"]
       : ["auto", "dark", "light"];
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   return themes[(themes.indexOf(current) + 1) % themes.length]!;
 };
 
@@ -94,12 +95,12 @@ export const themeDetectorScript = (function () {
   return `(${themeFn.toString()})();`;
 })();
 
-type ThemeContextProps = {
+interface ThemeContextProps {
   themeMode: ThemeMode;
   resolvedTheme: ResolvedTheme;
   setTheme: (theme: ThemeMode) => void;
   toggleMode: () => void;
-};
+}
 const ThemeContext = React.createContext<ThemeContextProps | undefined>(
   undefined,
 );

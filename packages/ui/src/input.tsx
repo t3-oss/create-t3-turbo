@@ -1,5 +1,3 @@
-import * as React from "react";
-
 import { cn } from "@acme/ui";
 
 export function Input({

@@ -4,17 +4,17 @@ packages:
   - tooling/*
 
 catalog:
-  "@tanstack/react-query": ^5.87.1
-  "@trpc/client": ^11.5.1
-  "@trpc/server": ^11.5.1
-  "@trpc/tanstack-react-query": ^11.5.1
-  "@eslint/js": ^9.35.0
-  eslint: ^9.35.0
+  "@eslint/js": ^9.37.0
+  "@tailwindcss/postcss": ^4.1.14
+  "@tanstack/react-query": ^5.90.2
+  "@trpc/client": ^11.6.0
+  "@trpc/server": ^11.6.0
+  "@trpc/tanstack-react-query": ^11.6.0
+  eslint: ^9.37.0
   prettier: ^3.6.2
-  tailwindcss: ^4.1.13
-  "@tailwindcss/postcss": ^4.1.13
-  typescript: ^5.9.2
-  zod: ^4.1.5
+  tailwindcss: ^4.1.14
+  typescript: ^5.9.3
+  zod: ^4.1.12
 
 catalogs:
   react19:
@@ -23,16 +23,14 @@ catalogs:
     react: 19.1.1
     react-dom: 19.1.1
 
+linkWorkspacePackages: true
+
 onlyBuiltDependencies:
   - esbuild
 
 overrides:
   "@types/minimatch": 5.1.2
-  "lightningcss": "1.30.1" # https://github.com/nativewind/nativewind/issues/1605
 
-linkWorkspacePackages: true
-
-# FIXME: https://github.com/prettier/prettier/issues/17565
 publicHoistPattern:
   - "@ianvs/prettier-plugin-sort-imports"
-  - "prettier-plugin-tailwindcss"
+  - prettier-plugin-tailwindcss

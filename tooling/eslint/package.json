@@ -3,9 +3,9 @@
   "private": true,
   "type": "module",
   "exports": {
-    "./base": "./base.js",
-    "./nextjs": "./nextjs.js",
-    "./react": "./react.js"
+    "./base": "./base.ts",
+    "./nextjs": "./nextjs.ts",
+    "./react": "./react.ts"
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo node_modules",

@@ -30,3 +30,8 @@ overrides:
   "@types/minimatch": 5.1.2
 
 linkWorkspacePackages: true
+
+# FIXME: https://github.com/prettier/prettier/issues/17565
+publicHoistPattern:
+  - "@ianvs/prettier-plugin-sort-imports"
+  - "prettier-plugin-tailwindcss"

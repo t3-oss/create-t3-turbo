@@ -6,7 +6,9 @@
 
 @source '../../../packages/ui/src/*.{ts,tsx}';
 
-/* @custom-variant dark (&:is(.dark *)); */
+@custom-variant light (&:is(.light *));
+@custom-variant dark (&:is(.dark *));
+@custom-variant auto (&:is(.auto *));
 
 @utility container {
   margin-inline: auto;

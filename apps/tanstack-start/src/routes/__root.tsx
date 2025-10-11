@@ -11,6 +11,7 @@ import {
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 
 import type { AppRouter } from "@acme/api";
+import { ThemeProvider, ThemeToggle } from "@acme/ui/theme";
 import { Toaster } from "@acme/ui/toast";
 
 import appCss from "~/styles.css?url";
@@ -35,16 +36,21 @@ function RootComponent() {
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
-    <html>
-      <head>
-        <HeadContent />
-      </head>
-      <body className="bg-background text-foreground min-h-screen font-sans antialiased">
-        {children}
-        <Toaster />
-        <TanStackRouterDevtools position="bottom-right" />
-        <Scripts />
-      </body>
-    </html>
+    <ThemeProvider>
+      <html lang="en" suppressHydrationWarning>
+        <head>
+          <HeadContent />
+        </head>
+        <body className="bg-background text-foreground min-h-screen font-sans antialiased">
+          {children}
+          <div className="absolute right-4 bottom-12">
+            <ThemeToggle />
+          </div>
+          <Toaster />
+          <TanStackRouterDevtools position="bottom-right" />
+          <Scripts />
+        </body>
+      </html>
+    </ThemeProvider>
   );
 }

@@ -59,7 +59,7 @@ export function CreatePostForm() {
       className="w-full max-w-2xl"
       onSubmit={(event) => {
         event.preventDefault();
-        form.handleSubmit();
+        void form.handleSubmit();
       }}
     >
       <FieldGroup>

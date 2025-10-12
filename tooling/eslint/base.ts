@@ -5,12 +5,13 @@ import { includeIgnoreFile } from "@eslint/compat";
 import eslint from "@eslint/js";
 import importPlugin from "eslint-plugin-import";
 import turboPlugin from "eslint-plugin-turbo";
+import { defineConfig } from "eslint/config";
 import tseslint from "typescript-eslint";
 
 /**
  * All packages that leverage t3-env should use this rule
  */
-export const restrictEnvAccess = tseslint.config(
+export const restrictEnvAccess = defineConfig(
   { ignores: ["**/env.ts"] },
   {
     files: ["**/*.js", "**/*.ts", "**/*.tsx"],
@@ -37,7 +38,7 @@ export const restrictEnvAccess = tseslint.config(
   },
 );
 
-export default tseslint.config(
+export const baseConfig = defineConfig(
   // Ignore files not tracked by VCS and any config files
   includeIgnoreFile(path.join(import.meta.dirname, "../../.gitignore")),
   { ignores: ["**/*.config.*"] },
@@ -75,17 +76,15 @@ export default tseslint.config(
       ],
       "@typescript-eslint/no-non-null-assertion": "error",
       "import/consistent-type-specifier-style": ["error", "prefer-top-level"],
-      "no-restricted-imports": [
-        "error",
-        {
-          name: "zod",
-          message: "Use `import { z } from 'zod/v4'` instead to ensure v4.",
-        },
-      ],
     },
   },
   {
     linterOptions: { reportUnusedDisableDirectives: true },
-    languageOptions: { parserOptions: { projectService: true } },
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
   },
 );

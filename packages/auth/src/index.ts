@@ -38,6 +38,11 @@ export function initAuth(options: {
       },
     },
     trustedOrigins: ["expo://"],
+    onAPIError: {
+      onError(error, ctx) {
+        console.error("BETTER AUTH API ERROR", error, ctx);
+      },
+    },
   } satisfies BetterAuthOptions;
 
   return betterAuth(config);

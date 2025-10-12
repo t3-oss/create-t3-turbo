@@ -7,7 +7,7 @@ import type { AppRouter } from "./root";
  * @example
  * type PostByIdInput = RouterInputs['post']['byId']
  *      ^? { id: number }
- **/
+ */
 type RouterInputs = inferRouterInputs<AppRouter>;
 
 /**
@@ -15,7 +15,7 @@ type RouterInputs = inferRouterInputs<AppRouter>;
  * @example
  * type AllPostsOutput = RouterOutputs['post']['all']
  *      ^? Post[]
- **/
+ */
 type RouterOutputs = inferRouterOutputs<AppRouter>;
 
 export { type AppRouter, appRouter } from "./root";

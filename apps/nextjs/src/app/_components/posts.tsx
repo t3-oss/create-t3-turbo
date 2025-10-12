@@ -1,5 +1,6 @@
 "use client";
 
+import { useForm } from "@tanstack/react-form";
 import {
   useMutation,
   useQueryClient,
@@ -11,13 +12,12 @@ import { CreatePostSchema } from "@acme/db/schema";
 import { cn } from "@acme/ui";
 import { Button } from "@acme/ui/button";
 import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-  useForm,
-} from "@acme/ui/form";
+  Field,
+  FieldContent,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+} from "@acme/ui/field";
 import { Input } from "@acme/ui/input";
 import { toast } from "@acme/ui/toast";
 
@@ -25,13 +25,6 @@ import { useTRPC } from "~/trpc/react";
 
 export function CreatePostForm() {
   const trpc = useTRPC();
-  const form = useForm({
-    schema: CreatePostSchema,
-    defaultValues: {
-      content: "",
-      title: "",
-    },
-  });
 
   const queryClient = useQueryClient();
   const createPost = useMutation(
@@ -50,41 +43,77 @@ export function CreatePostForm() {
     }),
   );
 
+  const form = useForm({
+    defaultValues: {
+      content: "",
+      title: "",
+    },
+    validators: {
+      onSubmit: CreatePostSchema,
+    },
+    onSubmit: (data) => createPost.mutate(data.value),
+  });
+
   return (
-    <Form {...form}>
-      <form
-        className="flex w-full max-w-2xl flex-col gap-4"
-        onSubmit={form.handleSubmit((data) => {
-          createPost.mutate(data);
-        })}
-      >
-        <FormField
-          control={form.control}
+    <form
+      className="w-full max-w-2xl"
+      onSubmit={(event) => {
+        event.preventDefault();
+        void form.handleSubmit();
+      }}
+    >
+      <FieldGroup>
+        <form.Field
           name="title"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input {...field} placeholder="Title" />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+          children={(field) => {
+            const isInvalid =
+              field.state.meta.isTouched && !field.state.meta.isValid;
+            return (
+              <Field data-invalid={isInvalid}>
+                <FieldContent>
+                  <FieldLabel htmlFor={field.name}>Bug Title</FieldLabel>
+                </FieldContent>
+                <Input
+                  id={field.name}
+                  name={field.name}
+                  value={field.state.value}
+                  onBlur={field.handleBlur}
+                  onChange={(e) => field.handleChange(e.target.value)}
+                  aria-invalid={isInvalid}
+                  placeholder="Title"
+                />
+                {isInvalid && <FieldError errors={field.state.meta.errors} />}
+              </Field>
+            );
+          }}
         />
-        <FormField
-          control={form.control}
+        <form.Field
           name="content"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input {...field} placeholder="Content" />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+          children={(field) => {
+            const isInvalid =
+              field.state.meta.isTouched && !field.state.meta.isValid;
+            return (
+              <Field data-invalid={isInvalid}>
+                <FieldContent>
+                  <FieldLabel htmlFor={field.name}>Content</FieldLabel>
+                </FieldContent>
+                <Input
+                  id={field.name}
+                  name={field.name}
+                  value={field.state.value}
+                  onBlur={field.handleBlur}
+                  onChange={(e) => field.handleChange(e.target.value)}
+                  aria-invalid={isInvalid}
+                  placeholder="Content"
+                />
+                {isInvalid && <FieldError errors={field.state.meta.errors} />}
+              </Field>
+            );
+          }}
         />
-        <Button>Create</Button>
-      </form>
-    </Form>
+      </FieldGroup>
+      <Button type="submit">Create</Button>
+    </form>
   );
 }
 

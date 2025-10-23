@@ -3,6 +3,7 @@ import { expo } from "@better-auth/expo";
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { oAuthProxy } from "better-auth/plugins";
+import { nextCookies } from "better-auth/next-js";
 
 import { db } from "@acme/db/client";
 
@@ -25,6 +26,7 @@ export function initAuth(options: {
         productionURL: options.productionUrl,
       }),
       expo(),
+      nextCookies(),
     ],
     socialProviders: {
       discord: {

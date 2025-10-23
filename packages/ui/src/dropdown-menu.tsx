@@ -1,21 +1,18 @@
 "use client";
 
-import {
-  CheckIcon,
-  ChevronRightIcon,
-  DotFilledIcon,
-} from "@radix-ui/react-icons";
-import { DropdownMenu as DropdownMenuPrimitive } from "radix-ui";
+import type * as React from "react";
+import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
+import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react";
 
 import { cn } from "@acme/ui";
 
-export function DropdownMenu({
+function DropdownMenu({
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Root>) {
   return <DropdownMenuPrimitive.Root data-slot="dropdown-menu" {...props} />;
 }
 
-export function DropdownMenuPortal({
+function DropdownMenuPortal({
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Portal>) {
   return (
@@ -23,7 +20,7 @@ export function DropdownMenuPortal({
   );
 }
 
-export function DropdownMenuTrigger({
+function DropdownMenuTrigger({
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Trigger>) {
   return (
@@ -34,7 +31,7 @@ export function DropdownMenuTrigger({
   );
 }
 
-export function DropdownMenuContent({
+function DropdownMenuContent({
   className,
   sideOffset = 4,
   ...props
@@ -54,7 +51,7 @@ export function DropdownMenuContent({
   );
 }
 
-export function DropdownMenuGroup({
+function DropdownMenuGroup({
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Group>) {
   return (
@@ -62,7 +59,7 @@ export function DropdownMenuGroup({
   );
 }
 
-export function DropdownMenuItem({
+function DropdownMenuItem({
   className,
   inset,
   variant = "default",
@@ -85,7 +82,7 @@ export function DropdownMenuItem({
   );
 }
 
-export function DropdownMenuCheckboxItem({
+function DropdownMenuCheckboxItem({
   className,
   children,
   checked,
@@ -111,7 +108,7 @@ export function DropdownMenuCheckboxItem({
   );
 }
 
-export function DropdownMenuRadioGroup({
+function DropdownMenuRadioGroup({
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.RadioGroup>) {
   return (
@@ -122,7 +119,7 @@ export function DropdownMenuRadioGroup({
   );
 }
 
-export function DropdownMenuRadioItem({
+function DropdownMenuRadioItem({
   className,
   children,
   ...props
@@ -138,7 +135,7 @@ export function DropdownMenuRadioItem({
     >
       <span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
         <DropdownMenuPrimitive.ItemIndicator>
-          <DotFilledIcon className="size-2 fill-current" />
+          <CircleIcon className="size-2 fill-current" />
         </DropdownMenuPrimitive.ItemIndicator>
       </span>
       {children}
@@ -146,7 +143,7 @@ export function DropdownMenuRadioItem({
   );
 }
 
-export function DropdownMenuLabel({
+function DropdownMenuLabel({
   className,
   inset,
   ...props
@@ -166,7 +163,7 @@ export function DropdownMenuLabel({
   );
 }
 
-export function DropdownMenuSeparator({
+function DropdownMenuSeparator({
   className,
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Separator>) {
@@ -179,7 +176,7 @@ export function DropdownMenuSeparator({
   );
 }
 
-export function DropdownMenuShortcut({
+function DropdownMenuShortcut({
   className,
   ...props
 }: React.ComponentProps<"span">) {
@@ -195,13 +192,13 @@ export function DropdownMenuShortcut({
   );
 }
 
-export function DropdownMenuSub({
+function DropdownMenuSub({
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Sub>) {
   return <DropdownMenuPrimitive.Sub data-slot="dropdown-menu-sub" {...props} />;
 }
 
-export function DropdownMenuSubTrigger({
+function DropdownMenuSubTrigger({
   className,
   inset,
   children,
@@ -214,7 +211,7 @@ export function DropdownMenuSubTrigger({
       data-slot="dropdown-menu-sub-trigger"
       data-inset={inset}
       className={cn(
-        "focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground outline-hidden flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm data-[inset]:pl-8",
+        "focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground outline-hidden flex cursor-default select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm data-[inset]:pl-8 [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
         className,
       )}
       {...props}
@@ -225,7 +222,7 @@ export function DropdownMenuSubTrigger({
   );
 }
 
-export function DropdownMenuSubContent({
+function DropdownMenuSubContent({
   className,
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.SubContent>) {
@@ -240,3 +237,21 @@ export function DropdownMenuSubContent({
     />
   );
 }
+
+export {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuPortal,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+};

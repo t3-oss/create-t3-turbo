@@ -5,13 +5,11 @@ import { useMemo } from "react";
 import { cva } from "class-variance-authority";
 
 import { cn } from "@acme/ui";
-import { Label } from "@acme/ui/label";
-import { Separator } from "@acme/ui/separator";
 
-export function FieldSet({
-  className,
-  ...props
-}: React.ComponentProps<"fieldset">) {
+import { Label } from "./label";
+import { Separator } from "./separator";
+
+function FieldSet({ className, ...props }: React.ComponentProps<"fieldset">) {
   return (
     <fieldset
       data-slot="field-set"
@@ -25,7 +23,7 @@ export function FieldSet({
   );
 }
 
-export function FieldLegend({
+function FieldLegend({
   className,
   variant = "legend",
   ...props
@@ -45,10 +43,7 @@ export function FieldLegend({
   );
 }
 
-export function FieldGroup({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
+function FieldGroup({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="field-group"
@@ -85,7 +80,7 @@ const fieldVariants = cva(
   },
 );
 
-export function Field({
+function Field({
   className,
   orientation = "vertical",
   ...props
@@ -101,10 +96,7 @@ export function Field({
   );
 }
 
-export function FieldContent({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
+function FieldContent({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="field-content"
@@ -117,7 +109,7 @@ export function FieldContent({
   );
 }
 
-export function FieldLabel({
+function FieldLabel({
   className,
   ...props
 }: React.ComponentProps<typeof Label>) {
@@ -135,10 +127,7 @@ export function FieldLabel({
   );
 }
 
-export function FieldTitle({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
+function FieldTitle({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="field-label"
@@ -151,10 +140,7 @@ export function FieldTitle({
   );
 }
 
-export function FieldDescription({
-  className,
-  ...props
-}: React.ComponentProps<"p">) {
+function FieldDescription({ className, ...props }: React.ComponentProps<"p">) {
   return (
     <p
       data-slot="field-description"
@@ -169,7 +155,7 @@ export function FieldDescription({
   );
 }
 
-export function FieldSeparator({
+function FieldSeparator({
   children,
   className,
   ...props
@@ -199,10 +185,10 @@ export function FieldSeparator({
   );
 }
 
-export function FieldError({
+function FieldError({
   className,
   children,
-  errors: maybeErrors,
+  errors,
   ...props
 }: React.ComponentProps<"div"> & {
   errors?: ({ message?: string } | undefined)[];
@@ -212,25 +198,27 @@ export function FieldError({
       return children;
     }
 
-    const errors = (maybeErrors ?? []).filter((error) => error !== undefined);
-
-    if (errors.length === 0) {
+    if (!errors?.length) {
       return null;
     }
 
-    if (errors.length === 1 && errors[0]?.message) {
-      return errors[0].message;
+    const uniqueErrors = [
+      ...new Map(errors.map((error) => [error?.message, error])).values(),
+    ];
+
+    if (uniqueErrors.length == 1) {
+      return uniqueErrors[0]?.message;
     }
 
     return (
       <ul className="ml-4 flex list-disc flex-col gap-1">
-        {errors.map(
+        {uniqueErrors.map(
           (error, index) =>
-            error.message && <li key={index}>{error.message}</li>,
+            error?.message && <li key={index}>{error.message}</li>,
         )}
       </ul>
     );
-  }, [children, maybeErrors]);
+  }, [children, errors]);
 
   if (!content) {
     return null;
@@ -247,3 +235,16 @@ export function FieldError({
     </div>
   );
 }
+
+export {
+  Field,
+  FieldContent,
+  FieldDescription,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+  FieldLegend,
+  FieldSeparator,
+  FieldSet,
+  FieldTitle,
+};

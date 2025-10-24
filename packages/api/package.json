@@ -10,6 +10,7 @@
   },
   "license": "MIT",
   "scripts": {
+    "updates": "ncu -u",
     "build": "tsc",
     "clean": "git clean -xdf .cache .turbo dist node_modules",
     "dev": "tsc",
@@ -22,7 +23,7 @@
     "@acme/db": "workspace:*",
     "@acme/validators": "workspace:*",
     "@trpc/server": "catalog:",
-    "superjson": "2.2.2",
+    "superjson": "2.2.3",
     "zod": "catalog:"
   },
   "devDependencies": {

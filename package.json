@@ -5,8 +5,9 @@
     "node": ">=22.20.0",
     "pnpm": ">=10.15.1"
   },
-  "packageManager": "pnpm@10.15.1",
+  "packageManager": "pnpm@10.19.1-oidc-test.0+sha512.a1b2c1c19f998f27ae8bb0cabef18261c79b887685ffe2c025d92d6469c3d3ef529031515a161186524379984188a19820d082240b29690fc575934a612caf4c",
   "scripts": {
+    "updates": "turbo run updates && ncu -u",
     "build": "turbo run build",
     "clean": "git clean -xdf node_modules",
     "clean:workspaces": "turbo run clean",
@@ -30,6 +31,7 @@
     "@acme/prettier-config": "workspace:*",
     "@turbo/gen": "^2.5.8",
     "dotenv-cli": "^10.0.0",
+    "npm-check-updates": "^19.1.1",
     "prettier": "catalog:",
     "turbo": "^2.5.8",
     "typescript": "catalog:"

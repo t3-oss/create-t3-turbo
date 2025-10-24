@@ -15,6 +15,7 @@
   },
   "license": "MIT",
   "scripts": {
+    "updates": "ncu -u",
     "clean": "git clean -xdf .cache .turbo dist node_modules",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint --flag unstable_native_nodejs_ts_config",
@@ -60,7 +61,7 @@
     "radix-ui": "^1.4.3",
     "react-day-picker": "^9.11.1",
     "react-resizable-panels": "^3.0.6",
-    "recharts": "2.15.4",
+    "recharts": "3.3.0",
     "sonner": "^2.0.7",
     "tailwind-merge": "^3.3.1",
     "vaul": "^1.1.2"

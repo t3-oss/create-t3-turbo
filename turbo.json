@@ -14,6 +14,11 @@
       "cache": false,
       "persistent": false
     },
+    "updates": {
+      "dependsOn": ["^updates"],
+      "cache": false,
+      "persistent": false
+    },
     "format": {
       "outputs": [".cache/.prettiercache"],
       "outputLogs": "new-only"

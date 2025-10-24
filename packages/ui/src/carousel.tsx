@@ -110,7 +110,7 @@ function Carousel({
         carouselRef,
         api: api,
         opts,
-        orientation: orientation,
+        orientation,
         scrollPrev,
         scrollNext,
         canScrollPrev,

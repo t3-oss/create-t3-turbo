@@ -1,10 +1,5 @@
 "use client";
 
-import type {
-  NameType,
-  Payload,
-  ValueType,
-} from "recharts/types/component/DefaultTooltipContent";
 import * as React from "react";
 import * as RechartsPrimitive from "recharts";
 
@@ -191,9 +186,7 @@ function ChartTooltipContent({
             const key = `${nameKey ?? item.name ?? item.dataKey ?? "value"}`;
             const itemConfig = getPayloadConfigFromPayload(config, item, key);
             const indicatorColor =
-              color ??
-              (item.payload as { fill: string | undefined }).fill ??
-              item.color;
+              color ?? (item.payload as { fill?: string }).fill ?? item.color;
 
             return (
               <div
@@ -209,7 +202,7 @@ function ChartTooltipContent({
                     item.name,
                     item,
                     index,
-                    item.payload as Payload<ValueType, NameType>[],
+                    item.payload as Parameters<typeof formatter>[4],
                   )
                 ) : (
                   <>

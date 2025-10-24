@@ -4,14 +4,7 @@
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
-    "./button": "./src/button.tsx",
-    "./dropdown-menu": "./src/dropdown-menu.tsx",
-    "./field": "./src/field.tsx",
-    "./input": "./src/input.tsx",
-    "./label": "./src/label.tsx",
-    "./separator": "./src/separator.tsx",
-    "./theme": "./src/theme.tsx",
-    "./toast": "./src/toast.tsx"
+    "./*": "./src/*.tsx"
   },
   "license": "MIT",
   "scripts": {
@@ -55,13 +48,15 @@
     "cmdk": "^1.1.1",
     "date-fns": "^4.1.0",
     "embla-carousel-react": "^8.6.0",
+    "framer-motion": "^12.23.24",
     "input-otp": "^1.4.2",
     "lucide-react": "^0.546.0",
     "next-themes": "^0.4.6",
     "radix-ui": "^1.4.3",
     "react-day-picker": "^9.11.1",
+    "react-hook-form": "^7.65.0",
     "react-resizable-panels": "^3.0.6",
-    "recharts": "3.3.0",
+    "recharts": "2.15.4",
     "sonner": "^2.0.7",
     "tailwind-merge": "^3.3.1",
     "vaul": "^1.1.2"

@@ -6,6 +6,7 @@ import {
   useQueryClient,
   useSuspenseQuery,
 } from "@tanstack/react-query";
+import { toast } from "sonner";
 
 import type { RouterOutputs } from "@acme/api";
 import { CreatePostSchema } from "@acme/db/schema";
@@ -19,7 +20,6 @@ import {
   FieldLabel,
 } from "@acme/ui/field";
 import { Input } from "@acme/ui/input";
-import { toast } from "@acme/ui/toast";
 
 import { useTRPC } from "~/trpc/react";
 

@@ -4,16 +4,16 @@ packages:
   - tooling/*
 
 catalog:
-  "@better-auth/cli": 1.4.0-beta.13
-  "@better-auth/expo": 1.4.0-beta.13
-  "@expo/metro-runtime": "^6.1.2"
-  "@eslint/js": ^9.37.0
-  "@tailwindcss/postcss": ^4.1.14
-  "@tanstack/react-form": ^1.23.7
-  "@tanstack/react-query": ^5.90.2
-  "@trpc/client": ^11.6.0
-  "@trpc/server": ^11.6.0
-  "@trpc/tanstack-react-query": ^11.6.0
+  '@better-auth/cli': 1.4.0-beta.13
+  '@better-auth/expo': 1.4.0-beta.13
+  '@eslint/js': ^9.37.0
+  '@expo/metro-runtime': ^6.1.2
+  '@tailwindcss/postcss': ^4.1.14
+  '@tanstack/react-form': ^1.23.7
+  '@tanstack/react-query': ^5.90.2
+  '@trpc/client': ^11.6.0
+  '@trpc/server': ^11.6.0
+  '@trpc/tanstack-react-query': ^11.6.0
   better-auth: 1.4.0-beta.13
   eslint: ^9.37.0
   prettier: ^3.6.2
@@ -23,8 +23,8 @@ catalog:
 
 catalogs:
   react19:
-    "@types/react": ^19.1.12
-    "@types/react-dom": ^19.1.9
+    '@types/react': ^19.1.12
+    '@types/react-dom': ^19.1.9
     react: 19.1.1
     react-dom: 19.1.1
 
@@ -34,10 +34,10 @@ onlyBuiltDependencies:
   - esbuild
 
 overrides:
-  "@types/minimatch": 5.1.2
-  "better-sqlite3": "^12.4.1"
-  "ws": "^6.1.2"
+  '@types/minimatch': 5.1.2
+  better-sqlite3: ^12.4.1
+  ws: ^6.1.2
 
 publicHoistPattern:
-  - "@ianvs/prettier-plugin-sort-imports"
+  - '@ianvs/prettier-plugin-sort-imports'
   - prettier-plugin-tailwindcss

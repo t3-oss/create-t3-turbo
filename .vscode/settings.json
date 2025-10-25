@@ -17,6 +17,12 @@
   "files.associations": {
     "*.css": "tailwindcss"
   },
+  "files.readonlyInclude": {
+    "**/routeTree.gen.ts": true
+  },
+  "files.watcherExclude": {
+    "**/routeTree.gen.ts": true
+  },
   "prettier.ignorePath": ".gitignore",
   "tailwindCSS.classFunctions": ["cva", "cx", "cn"],
   "typescript.enablePromptUseWorkspaceTsdk": true,

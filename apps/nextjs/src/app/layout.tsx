@@ -8,7 +8,7 @@ import { Toaster } from "@acme/ui/toast";
 import { env } from "~/env";
 import { TRPCReactProvider } from "~/trpc/react";
 
-import "~/app/globals.css";
+import "~/app/styles.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -57,7 +57,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
           geistMono.variable,
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider>
           <TRPCReactProvider>{props.children}</TRPCReactProvider>
           <div className="absolute right-4 bottom-4">
             <ThemeToggle />

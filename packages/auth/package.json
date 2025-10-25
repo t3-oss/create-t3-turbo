@@ -19,11 +19,8 @@
   "dependencies": {
     "@acme/db": "workspace:*",
     "@better-auth/expo": "catalog:",
-    "@t3-oss/env-nextjs": "^0.13.8",
+    "@t3-oss/env-core": "^0.13.8",
     "better-auth": "catalog:",
-    "next": "^15.5.4",
-    "react": "catalog:react19",
-    "react-dom": "catalog:react19",
     "zod": "catalog:"
   },
   "devDependencies": {
@@ -31,7 +28,6 @@
     "@acme/prettier-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
     "@better-auth/cli": "catalog:",
-    "@types/react": "catalog:react19",
     "eslint": "catalog:",
     "prettier": "catalog:",
     "typescript": "catalog:"

@@ -22,8 +22,8 @@ catalogs:
       specifier: ^1.23.7
       version: 1.23.7
     '@tanstack/react-query':
-      specifier: ^5.90.2
-      version: 5.90.2
+      specifier: ^5.90.5
+      version: 5.90.5
     '@trpc/client':
       specifier: ^11.6.0
       version: 11.6.0
@@ -101,7 +101,7 @@ importers:
         version: 2.0.11(react-native@0.81.4(@babel/core@7.28.4)(@types/react@19.1.12)(bufferutil@4.0.8)(react@19.1.1))(react@19.1.1)
       '@tanstack/react-query':
         specifier: 'catalog:'
-        version: 5.90.2(react@19.1.1)
+        version: 5.90.5(react@19.1.1)
       '@trpc/client':
         specifier: 'catalog:'
         version: 11.6.0(@trpc/server@11.6.0(typescript@5.9.3))(typescript@5.9.3)
@@ -110,7 +110,7 @@ importers:
         version: 11.6.0(typescript@5.9.3)
       '@trpc/tanstack-react-query':
         specifier: 'catalog:'
-        version: 11.6.0(@tanstack/react-query@5.90.2(react@19.1.1))(@trpc/client@11.6.0(@trpc/server@11.6.0(typescript@5.9.3))(typescript@5.9.3))(@trpc/server@11.6.0(typescript@5.9.3))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.9.3)
+        version: 11.6.0(@tanstack/react-query@5.90.5(react@19.1.1))(@trpc/client@11.6.0(@trpc/server@11.6.0(typescript@5.9.3))(typescript@5.9.3))(@trpc/server@11.6.0(typescript@5.9.3))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.9.3)
       better-auth:
         specifier: 'catalog:'
         version: 1.4.0-beta.9(better-sqlite3@12.2.0)(next@15.5.4(@babel/core@7.28.4)(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
@@ -234,7 +234,7 @@ importers:
         version: 1.23.7(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@tanstack/react-query':
         specifier: 'catalog:'
-        version: 5.90.2(react@19.1.1)
+        version: 5.90.5(react@19.1.1)
       '@trpc/client':
         specifier: 'catalog:'
         version: 11.6.0(@trpc/server@11.6.0(typescript@5.9.3))(typescript@5.9.3)
@@ -243,7 +243,7 @@ importers:
         version: 11.6.0(typescript@5.9.3)
       '@trpc/tanstack-react-query':
         specifier: 'catalog:'
-        version: 11.6.0(@tanstack/react-query@5.90.2(react@19.1.1))(@trpc/client@11.6.0(@trpc/server@11.6.0(typescript@5.9.3))(typescript@5.9.3))(@trpc/server@11.6.0(typescript@5.9.3))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.9.3)
+        version: 11.6.0(@tanstack/react-query@5.90.5(react@19.1.1))(@trpc/client@11.6.0(@trpc/server@11.6.0(typescript@5.9.3))(typescript@5.9.3))(@trpc/server@11.6.0(typescript@5.9.3))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.9.3)
       better-auth:
         specifier: 'catalog:'
         version: 1.4.0-beta.9(better-sqlite3@12.2.0)(next@15.5.4(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
@@ -3203,8 +3203,8 @@ packages:
   '@tanstack/form-core@1.24.3':
     resolution: {integrity: sha512-e+HzSD49NWr4aIqJWtPPzmi+/phBJAP3nSPN8dvxwmJWqAxuB/cH138EcmCFf3+oA7j3BXvwvTY0I+8UweGPjQ==}
 
-  '@tanstack/query-core@5.90.2':
-    resolution: {integrity: sha512-k/TcR3YalnzibscALLwxeiLUub6jN5EDLwKDiO7q5f4ICEoptJ+n9+7vcEFy5/x/i6Q+Lb/tXrsKCggf5uQJXQ==}
+  '@tanstack/query-core@5.90.5':
+    resolution: {integrity: sha512-wLamYp7FaDq6ZnNehypKI5fNvxHPfTYylE0m/ZpuuzJfJqhR5Pxg9gvGBHZx4n7J+V5Rg5mZxHHTlv25Zt5u+w==}
 
   '@tanstack/react-form@1.23.7':
     resolution: {integrity: sha512-p/j9Gi2+s135sOjj48RjM+6xZQr1FVpliQlETLYBEGmmmxWHgYYs2b62mTDSnuv7AqtuZhpQ+t0CRFVfbQLsFA==}
@@ -3215,8 +3215,8 @@ packages:
       '@tanstack/react-start':
         optional: true
 
-  '@tanstack/react-query@5.90.2':
-    resolution: {integrity: sha512-CLABiR+h5PYfOWr/z+vWFt5VsOA2ekQeRQBFSKlcoW6Ndx/f8rfyVmq4LbgOM4GG2qtxAxjLYLOpCNTYm4uKzw==}
+  '@tanstack/react-query@5.90.5':
+    resolution: {integrity: sha512-pN+8UWpxZkEJ/Rnnj2v2Sxpx1WFlaa9L6a4UO89p6tTQbeo+m0MS8oYDjbggrR8QcTyjKoYWKS3xJQGr3ExT8Q==}
     peerDependencies:
       react: ^18 || ^19
 
@@ -9014,7 +9014,7 @@ snapshots:
       metro-babel-transformer: 0.83.1
       metro-cache: 0.83.1
       metro-cache-key: 0.83.1
-      metro-config: 0.83.1(bufferutil@4.0.8)
+      metro-config: 0.83.1(bufferutil@4.0.8)(utf-8-validate@6.0.4)
       metro-core: 0.83.1
       metro-file-map: 0.83.1
       metro-resolver: 0.83.1
@@ -10405,7 +10405,7 @@ snapshots:
       debug: 4.4.3
       invariant: 2.2.4
       metro: 0.83.3(bufferutil@4.0.8)(utf-8-validate@6.0.4)
-      metro-config: 0.83.3(bufferutil@4.0.8)
+      metro-config: 0.83.3(bufferutil@4.0.8)(utf-8-validate@6.0.4)
       metro-core: 0.83.3
       semver: 7.7.3
     transitivePeerDependencies:
@@ -10719,7 +10719,7 @@ snapshots:
       '@tanstack/devtools-event-client': 0.3.3
       '@tanstack/store': 0.7.7
 
-  '@tanstack/query-core@5.90.2': {}
+  '@tanstack/query-core@5.90.5': {}
 
   '@tanstack/react-form@1.23.7(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:
@@ -10731,9 +10731,9 @@ snapshots:
     transitivePeerDependencies:
       - react-dom
 
-  '@tanstack/react-query@5.90.2(react@19.1.1)':
+  '@tanstack/react-query@5.90.5(react@19.1.1)':
     dependencies:
-      '@tanstack/query-core': 5.90.2
+      '@tanstack/query-core': 5.90.5
       react: 19.1.1
 
   '@tanstack/react-store@0.7.7(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
@@ -10756,9 +10756,9 @@ snapshots:
     dependencies:
       typescript: 5.9.3
 
-  '@trpc/tanstack-react-query@11.6.0(@tanstack/react-query@5.90.2(react@19.1.1))(@trpc/client@11.6.0(@trpc/server@11.6.0(typescript@5.9.3))(typescript@5.9.3))(@trpc/server@11.6.0(typescript@5.9.3))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.9.3)':
+  '@trpc/tanstack-react-query@11.6.0(@tanstack/react-query@5.90.5(react@19.1.1))(@trpc/client@11.6.0(@trpc/server@11.6.0(typescript@5.9.3))(typescript@5.9.3))(@trpc/server@11.6.0(typescript@5.9.3))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(typescript@5.9.3)':
     dependencies:
-      '@tanstack/react-query': 5.90.2(react@19.1.1)
+      '@tanstack/react-query': 5.90.5(react@19.1.1)
       '@trpc/client': 11.6.0(@trpc/server@11.6.0(typescript@5.9.3))(typescript@5.9.3)
       '@trpc/server': 11.6.0(typescript@5.9.3)
       react: 19.1.1
@@ -13756,12 +13756,42 @@ snapshots:
       - supports-color
       - utf-8-validate
 
+  metro-config@0.83.1(bufferutil@4.0.8)(utf-8-validate@6.0.4):
+    dependencies:
+      connect: 3.7.0
+      cosmiconfig: 5.2.1
+      flow-enums-runtime: 0.0.6
+      jest-validate: 29.7.0
+      metro: 0.83.1(bufferutil@4.0.8)(utf-8-validate@6.0.4)
+      metro-cache: 0.83.1
+      metro-core: 0.83.1
+      metro-runtime: 0.83.1
+    transitivePeerDependencies:
+      - bufferutil
+      - supports-color
+      - utf-8-validate
+
   metro-config@0.83.3(bufferutil@4.0.8):
     dependencies:
       connect: 3.7.0
       flow-enums-runtime: 0.0.6
       jest-validate: 29.7.0
       metro: 0.83.3(bufferutil@4.0.8)
+      metro-cache: 0.83.3
+      metro-core: 0.83.3
+      metro-runtime: 0.83.3
+      yaml: 2.8.1
+    transitivePeerDependencies:
+      - bufferutil
+      - supports-color
+      - utf-8-validate
+
+  metro-config@0.83.3(bufferutil@4.0.8)(utf-8-validate@6.0.4):
+    dependencies:
+      connect: 3.7.0
+      flow-enums-runtime: 0.0.6
+      jest-validate: 29.7.0
+      metro: 0.83.3(bufferutil@4.0.8)(utf-8-validate@6.0.4)
       metro-cache: 0.83.3
       metro-core: 0.83.3
       metro-runtime: 0.83.3
@@ -14066,7 +14096,7 @@ snapshots:
       metro-babel-transformer: 0.83.1
       metro-cache: 0.83.1
       metro-cache-key: 0.83.1
-      metro-config: 0.83.1(bufferutil@4.0.8)
+      metro-config: 0.83.1(bufferutil@4.0.8)(utf-8-validate@6.0.4)
       metro-core: 0.83.1
       metro-file-map: 0.83.1
       metro-resolver: 0.83.1
@@ -14160,7 +14190,7 @@ snapshots:
       metro-babel-transformer: 0.83.3
       metro-cache: 0.83.3
       metro-cache-key: 0.83.3
-      metro-config: 0.83.3(bufferutil@4.0.8)
+      metro-config: 0.83.3(bufferutil@4.0.8)(utf-8-validate@6.0.4)
       metro-core: 0.83.3
       metro-file-map: 0.83.3
       metro-resolver: 0.83.3

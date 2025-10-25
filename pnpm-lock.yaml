@@ -7,8 +7,8 @@ settings:
 catalogs:
   default:
     '@better-auth/cli':
-      specifier: 1.4.0-beta.9
-      version: 1.4.0-beta.9
+      specifier: 1.4.0-beta.13
+      version: 1.4.0-beta.13
     '@better-auth/expo':
       specifier: 1.4.0-beta.9
       version: 1.4.0-beta.9
@@ -372,7 +372,7 @@ importers:
         version: link:../../tooling/typescript
       '@better-auth/cli':
         specifier: 'catalog:'
-        version: 1.4.0-beta.9(@neondatabase/serverless@0.10.0)(@opentelemetry/api@1.9.0)(@planetscale/database@1.19.0)(@types/pg@8.11.10)(@types/react@19.1.12)(@vercel/postgres@0.10.0(utf-8-validate@6.0.4))(kysely@0.28.5)(mysql2@3.11.3)(postgres@3.4.4)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+        version: 1.4.0-beta.13(@neondatabase/serverless@0.10.0)(@opentelemetry/api@1.9.0)(@planetscale/database@1.19.0)(@types/pg@8.11.10)(@types/react@19.1.12)(@vercel/postgres@0.10.0(utf-8-validate@6.0.4))(kysely@0.28.5)(mysql2@3.11.3)(postgres@3.4.4)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       eslint:
         specifier: 'catalog:'
         version: 9.38.0(jiti@2.6.1)
@@ -1183,9 +1183,19 @@ packages:
     resolution: {integrity: sha512-qQ5m48eI/MFLQ5PxQj4PFaprjyCTLI37ElWMmNs0K8Lk3dVeOdNpB3ks8jc7yM5CDmVC73eMVk/trk3fgmrUpA==}
     engines: {node: '>=6.9.0'}
 
-  '@better-auth/cli@1.4.0-beta.9':
-    resolution: {integrity: sha512-N7poVoYqC+pj4oUabUQN3qz+vnHJEOArPcm00qf9qRJJEGhOa252NX34/utvtfsnvvyXWE7n2U6WQz1lf6JH1w==}
+  '@better-auth/cli@1.4.0-beta.13':
+    resolution: {integrity: sha512-zrw7Kd/u/yUNs9/kaAOG0HugwxBVp+ZEva0gC+1jJC0SHuuIO01dG3CSlFd21/gqi7IljdPxj+yE2iMPflChlA==}
     hasBin: true
+
+  '@better-auth/core@1.4.0-beta.13':
+    resolution: {integrity: sha512-EGySsNv6HQYnlRQDIa7otIMrwFoC0gGLxBum9lC6C3wAsF4l4pn/ECcdIriFpc9ewLb8mGkeMSpvjVBUBND6ew==}
+    peerDependencies:
+      '@better-auth/utils': 0.3.0
+      '@better-fetch/fetch': 1.1.18
+      better-call: 1.0.24
+      jose: ^6.1.0
+      kysely: ^0.28.5
+      nanostores: ^1.0.1
 
   '@better-auth/core@1.4.0-beta.9':
     resolution: {integrity: sha512-4YanGHTihKhKamN2T4ndjYTR5By162kk88DPt2xwwVc2t/MnSO7TiVBB0V5gZ6JM6YMX2aSPTfMbk89AEjpvCQ==}
@@ -1207,6 +1217,11 @@ packages:
       expo-linking: '>=7.0.0'
       expo-secure-store: '>=14.0.0'
       expo-web-browser: '>=14.0.0'
+
+  '@better-auth/telemetry@1.4.0-beta.13':
+    resolution: {integrity: sha512-910f+APALhhD79TiujzXp85Pnd2M3TlcTgBfiYF+mk3ouIkBJkl2N6D2ElcgwfiNTg50cFuTkP3AFPYioz8Arw==}
+    peerDependencies:
+      '@better-auth/core': 1.4.0-beta.13
 
   '@better-auth/telemetry@1.4.0-beta.9':
     resolution: {integrity: sha512-lvl3nq648uAt3ACpjtBBW1Nhec1lxciWYKy+9wgkQRKuE+l4NyxVdfCnDAxxUPAScQNJ+6zMXgt9ZRW5cJJ8bQ==}
@@ -3757,6 +3772,35 @@ packages:
     resolution: {integrity: sha512-4Bcg1P8xhUuqcii/S0Z9wiHIrQVPMermM1any+MX5GeGD7faD3/msQUDGLol9wOcz4/jbg/WJnGqoJF6LiBdtg==}
     engines: {node: '>=10.0.0'}
 
+  better-auth@1.4.0-beta.13:
+    resolution: {integrity: sha512-VOzbsCldupk2AdNfzDmpCVajX83nwITX8S9I8TdEUURgr3kB/CDVrsN6S8t0AClMnGgB4XaeKiXUNN30CCG4aA==}
+    peerDependencies:
+      '@lynx-js/react': '*'
+      '@sveltejs/kit': '*'
+      next: '*'
+      react: '*'
+      react-dom: '*'
+      solid-js: '*'
+      svelte: '*'
+      vue: '*'
+    peerDependenciesMeta:
+      '@lynx-js/react':
+        optional: true
+      '@sveltejs/kit':
+        optional: true
+      next:
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
+      solid-js:
+        optional: true
+      svelte:
+        optional: true
+      vue:
+        optional: true
+
   better-auth@1.4.0-beta.9:
     resolution: {integrity: sha512-JmVvaC/VCtFtI/sUGkoaLnzV/nnMn13XR6Vrkf4zGxah6g38S0GPvD7iZlBHehTN6Fb5aUwWPKgqFowxyOm2xw==}
     peerDependencies:
@@ -3788,6 +3832,9 @@ packages:
 
   better-call@1.0.19:
     resolution: {integrity: sha512-sI3GcA1SCVa3H+CDHl8W8qzhlrckwXOTKhqq3OOPXjgn5aTOMIqGY34zLY/pHA6tRRMjTUC3lz5Mi7EbDA24Kw==}
+
+  better-call@1.0.24:
+    resolution: {integrity: sha512-iGqL29cstPp4xLD2MjKL1EmyAqQHjYS+cBMt4W27rPs3vf+kuqkVPA0NYaf7JciBOzVsJdNj4cbZWXC5TardWQ==}
 
   better-opn@3.0.2:
     resolution: {integrity: sha512-aVNobHnJqLiUelTaHat9DZ1qM2w0C0Eym4LPI/3JxOnSokGVdsl1T1kN7TFvsEAD8G47A6VKQ0TVHqbBnYMJlQ==}
@@ -7969,7 +8016,7 @@ snapshots:
     dependencies:
       '@babel/template': 7.27.2
       '@babel/traverse': 7.28.4
-      '@babel/types': 7.28.4
+      '@babel/types': 7.28.5
     transitivePeerDependencies:
       - supports-color
 
@@ -8328,7 +8375,7 @@ snapshots:
       '@babel/helper-module-imports': 7.27.1
       '@babel/helper-plugin-utils': 7.27.1
       '@babel/plugin-syntax-jsx': 7.27.1(@babel/core@7.28.5)
-      '@babel/types': 7.28.4
+      '@babel/types': 7.28.5
     transitivePeerDependencies:
       - supports-color
 
@@ -8486,7 +8533,7 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.28.5
 
-  '@better-auth/cli@1.4.0-beta.9(@neondatabase/serverless@0.10.0)(@opentelemetry/api@1.9.0)(@planetscale/database@1.19.0)(@types/pg@8.11.10)(@types/react@19.1.12)(@vercel/postgres@0.10.0(utf-8-validate@6.0.4))(kysely@0.28.5)(mysql2@3.11.3)(postgres@3.4.4)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
+  '@better-auth/cli@1.4.0-beta.13(@neondatabase/serverless@0.10.0)(@opentelemetry/api@1.9.0)(@planetscale/database@1.19.0)(@types/pg@8.11.10)(@types/react@19.1.12)(@vercel/postgres@0.10.0(utf-8-validate@6.0.4))(kysely@0.28.5)(mysql2@3.11.3)(postgres@3.4.4)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
     dependencies:
       '@babel/core': 7.28.5
       '@babel/preset-react': 7.27.1(@babel/core@7.28.5)
@@ -8497,7 +8544,7 @@ snapshots:
       '@prisma/client': 5.22.0(prisma@5.22.0)
       '@types/better-sqlite3': 7.6.13
       '@types/prompts': 2.4.9
-      better-auth: 1.4.0-beta.9(better-sqlite3@12.2.0)(next@16.0.0(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+      better-auth: 1.4.0-beta.13(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       better-sqlite3: 12.2.0
       c12: 3.2.0
       chalk: 5.6.2
@@ -8549,6 +8596,16 @@ snapshots:
       - svelte
       - vue
 
+  '@better-auth/core@1.4.0-beta.13(@better-auth/utils@0.3.0)(@better-fetch/fetch@1.1.18)(better-call@1.0.24)(jose@6.1.0)(kysely@0.28.5)(nanostores@1.0.1)':
+    dependencies:
+      '@better-auth/utils': 0.3.0
+      '@better-fetch/fetch': 1.1.18
+      better-call: 1.0.24
+      jose: 6.1.0
+      kysely: 0.28.5
+      nanostores: 1.0.1
+      zod: 4.1.12
+
   '@better-auth/core@1.4.0-beta.9(@better-auth/utils@0.3.0)(@better-fetch/fetch@1.1.18)(better-call@1.0.19)(better-sqlite3@12.2.0)(jose@6.1.0)(kysely@0.28.5)(nanostores@1.0.1)':
     dependencies:
       '@better-auth/utils': 0.3.0
@@ -8581,6 +8638,12 @@ snapshots:
       expo-secure-store: 15.0.7(expo@54.0.13)
       expo-web-browser: 15.0.8(expo@54.0.13)(react-native@0.82.0(@babel/core@7.28.5)(@types/react@19.1.12)(bufferutil@4.0.8)(react@19.1.1)(utf-8-validate@6.0.4))
       zod: 4.1.12
+
+  '@better-auth/telemetry@1.4.0-beta.13(@better-auth/core@1.4.0-beta.13(@better-auth/utils@0.3.0)(@better-fetch/fetch@1.1.18)(better-call@1.0.24)(jose@6.1.0)(kysely@0.28.5)(nanostores@1.0.1))':
+    dependencies:
+      '@better-auth/core': 1.4.0-beta.13(@better-auth/utils@0.3.0)(@better-fetch/fetch@1.1.18)(better-call@1.0.24)(jose@6.1.0)(kysely@0.28.5)(nanostores@1.0.1)
+      '@better-auth/utils': 0.3.0
+      '@better-fetch/fetch': 1.1.18
 
   '@better-auth/telemetry@1.4.0-beta.9(@better-auth/core@1.4.0-beta.9(@better-auth/utils@0.3.0)(@better-fetch/fetch@1.1.18)(better-call@1.0.19)(better-sqlite3@12.2.0)(jose@6.1.0)(kysely@0.28.5)(nanostores@1.0.1))':
     dependencies:
@@ -10627,7 +10690,7 @@ snapshots:
       debug: 4.4.3
       invariant: 2.2.4
       metro: 0.83.3(bufferutil@4.0.8)(utf-8-validate@6.0.4)
-      metro-config: 0.83.3(bufferutil@4.0.8)
+      metro-config: 0.83.3(bufferutil@4.0.8)(utf-8-validate@6.0.4)
       metro-core: 0.83.3
       semver: 7.7.3
     transitivePeerDependencies:
@@ -11049,16 +11112,16 @@ snapshots:
 
   '@types/babel__generator@7.27.0':
     dependencies:
-      '@babel/types': 7.28.4
+      '@babel/types': 7.28.5
 
   '@types/babel__template@7.4.4':
     dependencies:
-      '@babel/parser': 7.28.4
-      '@babel/types': 7.28.4
+      '@babel/parser': 7.28.5
+      '@babel/types': 7.28.5
 
   '@types/babel__traverse@7.28.0':
     dependencies:
-      '@babel/types': 7.28.4
+      '@babel/types': 7.28.5
 
   '@types/better-sqlite3@7.6.13':
     dependencies:
@@ -11512,7 +11575,7 @@ snapshots:
   babel-plugin-jest-hoist@29.6.3:
     dependencies:
       '@babel/template': 7.27.2
-      '@babel/types': 7.28.4
+      '@babel/types': 7.28.5
       '@types/babel__core': 7.20.5
       '@types/babel__traverse': 7.28.0
 
@@ -11629,6 +11692,26 @@ snapshots:
 
   basic-ftp@5.0.5: {}
 
+  better-auth@1.4.0-beta.13(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
+    dependencies:
+      '@better-auth/core': 1.4.0-beta.13(@better-auth/utils@0.3.0)(@better-fetch/fetch@1.1.18)(better-call@1.0.24)(jose@6.1.0)(kysely@0.28.5)(nanostores@1.0.1)
+      '@better-auth/telemetry': 1.4.0-beta.13(@better-auth/core@1.4.0-beta.13(@better-auth/utils@0.3.0)(@better-fetch/fetch@1.1.18)(better-call@1.0.24)(jose@6.1.0)(kysely@0.28.5)(nanostores@1.0.1))
+      '@better-auth/utils': 0.3.0
+      '@better-fetch/fetch': 1.1.18
+      '@noble/ciphers': 2.0.0
+      '@noble/hashes': 2.0.0
+      '@simplewebauthn/browser': 13.1.2
+      '@simplewebauthn/server': 13.1.2
+      better-call: 1.0.24
+      defu: 6.1.4
+      jose: 6.1.0
+      kysely: 0.28.5
+      nanostores: 1.0.1
+      zod: 4.1.12
+    optionalDependencies:
+      react: 19.1.1
+      react-dom: 19.1.1(react@19.1.1)
+
   better-auth@1.4.0-beta.9(better-sqlite3@12.2.0)(next@16.0.0(@opentelemetry/api@1.9.0)(babel-plugin-react-compiler@1.0.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
     dependencies:
       '@better-auth/core': 1.4.0-beta.9(@better-auth/utils@0.3.0)(@better-fetch/fetch@1.1.18)(better-call@1.0.19)(better-sqlite3@12.2.0)(jose@6.1.0)(kysely@0.28.5)(nanostores@1.0.1)
@@ -11653,6 +11736,14 @@ snapshots:
       - better-sqlite3
 
   better-call@1.0.19:
+    dependencies:
+      '@better-auth/utils': 0.3.0
+      '@better-fetch/fetch': 1.1.18
+      rou3: 0.5.1
+      set-cookie-parser: 2.7.1
+      uncrypto: 0.1.3
+
+  better-call@1.0.24:
     dependencies:
       '@better-auth/utils': 0.3.0
       '@better-fetch/fetch': 1.1.18
@@ -14021,6 +14112,21 @@ snapshots:
       - supports-color
       - utf-8-validate
 
+  metro-config@0.83.3(bufferutil@4.0.8)(utf-8-validate@6.0.4):
+    dependencies:
+      connect: 3.7.0
+      flow-enums-runtime: 0.0.6
+      jest-validate: 29.7.0
+      metro: 0.83.3(bufferutil@4.0.8)(utf-8-validate@6.0.4)
+      metro-cache: 0.83.3
+      metro-core: 0.83.3
+      metro-runtime: 0.83.3
+      yaml: 2.8.1
+    transitivePeerDependencies:
+      - bufferutil
+      - supports-color
+      - utf-8-validate
+
   metro-core@0.83.1:
     dependencies:
       flow-enums-runtime: 0.0.6
@@ -14155,7 +14261,7 @@ snapshots:
   metro-transform-plugins@0.83.3:
     dependencies:
       '@babel/core': 7.28.4
-      '@babel/generator': 7.28.3
+      '@babel/generator': 7.28.5
       '@babel/template': 7.27.2
       '@babel/traverse': 7.28.4
       flow-enums-runtime: 0.0.6
@@ -14206,9 +14312,9 @@ snapshots:
   metro-transform-worker@0.83.3(bufferutil@4.0.8):
     dependencies:
       '@babel/core': 7.28.4
-      '@babel/generator': 7.28.3
-      '@babel/parser': 7.28.4
-      '@babel/types': 7.28.4
+      '@babel/generator': 7.28.5
+      '@babel/parser': 7.28.5
+      '@babel/types': 7.28.5
       flow-enums-runtime: 0.0.6
       metro: 0.83.3(bufferutil@4.0.8)
       metro-babel-transformer: 0.83.3
@@ -14226,9 +14332,9 @@ snapshots:
   metro-transform-worker@0.83.3(bufferutil@4.0.8)(utf-8-validate@6.0.4):
     dependencies:
       '@babel/core': 7.28.4
-      '@babel/generator': 7.28.3
-      '@babel/parser': 7.28.4
-      '@babel/types': 7.28.4
+      '@babel/generator': 7.28.5
+      '@babel/parser': 7.28.5
+      '@babel/types': 7.28.5
       flow-enums-runtime: 0.0.6
       metro: 0.83.3(bufferutil@4.0.8)(utf-8-validate@6.0.4)
       metro-babel-transformer: 0.83.3
@@ -14410,7 +14516,7 @@ snapshots:
       metro-babel-transformer: 0.83.3
       metro-cache: 0.83.3
       metro-cache-key: 0.83.3
-      metro-config: 0.83.3(bufferutil@4.0.8)
+      metro-config: 0.83.3(bufferutil@4.0.8)(utf-8-validate@6.0.4)
       metro-core: 0.83.3
       metro-file-map: 0.83.3
       metro-resolver: 0.83.3

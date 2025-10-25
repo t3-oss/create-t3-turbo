@@ -5,7 +5,7 @@
   "scripts": {
     "build": "pnpm with-env next build",
     "clean": "git clean -xdf .cache .next .turbo node_modules",
-    "dev": "pnpm with-env next dev --turbopack",
+    "dev": "pnpm with-env next dev",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint --flag unstable_native_nodejs_ts_config",
     "start": "pnpm with-env next start",
@@ -25,10 +25,10 @@
     "@trpc/server": "catalog:",
     "@trpc/tanstack-react-query": "catalog:",
     "better-auth": "catalog:",
-    "next": "^15.5.4",
+    "next": "^16.0.0",
     "react": "catalog:react19",
     "react-dom": "catalog:react19",
-    "superjson": "2.2.2",
+    "superjson": "2.2.3",
     "zod": "catalog:"
   },
   "devDependencies": {

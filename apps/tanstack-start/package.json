@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "pnpm with-env vite dev",
-    "build": "vite build && tsc --noEmit",
+    "build": "vite build",
     "start": "vite start",
     "format": "prettier --check . --ignore-path ../../.gitignore --ignore-path .prettierignore",
     "lint": "eslint --flag unstable_native_nodejs_ts_config",
+    "typecheck": "tsc --noEmit",
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
@@ -29,6 +30,7 @@
     "@trpc/server": "catalog:",
     "@trpc/tanstack-react-query": "catalog:",
     "better-auth": "1.3.27",
+    "nitro": "npm:nitro-nightly@latest",
     "react": "catalog:react19",
     "react-dom": "catalog:react19",
     "superjson": "2.2.3",

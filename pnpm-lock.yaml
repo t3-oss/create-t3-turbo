@@ -403,7 +403,7 @@ importers:
         specifier: catalog:react19
         version: 19.1.9(@types/react@19.1.12)
       '@vitejs/plugin-react':
-        specifier: ^4.3.4
+        specifier: ^4.7.0
         version: 4.7.0(vite@7.1.12(@types/node@22.18.12)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))
       eslint:
         specifier: 'catalog:'
@@ -8774,8 +8774,8 @@ snapshots:
     dependencies:
       '@babel/core': 7.28.5
       '@babel/helper-module-imports': 7.27.1
-      '@babel/helper-validator-identifier': 7.27.1
-      '@babel/traverse': 7.28.4
+      '@babel/helper-validator-identifier': 7.28.5
+      '@babel/traverse': 7.28.5
     transitivePeerDependencies:
       - supports-color
 
@@ -8829,7 +8829,7 @@ snapshots:
   '@babel/helpers@7.28.4':
     dependencies:
       '@babel/template': 7.27.2
-      '@babel/types': 7.28.4
+      '@babel/types': 7.28.5
 
   '@babel/highlight@7.25.9':
     dependencies:
@@ -9301,8 +9301,8 @@ snapshots:
   '@babel/template@7.27.2':
     dependencies:
       '@babel/code-frame': 7.27.1
-      '@babel/parser': 7.28.4
-      '@babel/types': 7.28.4
+      '@babel/parser': 7.28.5
+      '@babel/types': 7.28.5
 
   '@babel/traverse@7.28.4':
     dependencies:
@@ -10175,7 +10175,7 @@ snapshots:
       metro-runtime: 0.83.2
       metro-source-map: 0.83.2
       metro-transform-plugins: 0.83.2
-      metro-transform-worker: 0.83.2(bufferutil@4.0.8)(utf-8-validate@6.0.4)
+      metro-transform-worker: 0.83.2(bufferutil@4.0.8)
     transitivePeerDependencies:
       - bufferutil
       - supports-color
@@ -12370,7 +12370,7 @@ snapshots:
 
   '@types/babel__traverse@7.28.0':
     dependencies:
-      '@babel/types': 7.28.4
+      '@babel/types': 7.28.5
 
   '@types/better-sqlite3@7.6.13':
     dependencies:
@@ -15654,26 +15654,6 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  metro-transform-worker@0.83.2(bufferutil@4.0.8)(utf-8-validate@6.0.4):
-    dependencies:
-      '@babel/core': 7.28.5
-      '@babel/generator': 7.28.5
-      '@babel/parser': 7.28.5
-      '@babel/types': 7.28.5
-      flow-enums-runtime: 0.0.6
-      metro: 0.83.2(bufferutil@4.0.8)(utf-8-validate@6.0.4)
-      metro-babel-transformer: 0.83.2
-      metro-cache: 0.83.2
-      metro-cache-key: 0.83.2
-      metro-minify-terser: 0.83.2
-      metro-source-map: 0.83.2
-      metro-transform-plugins: 0.83.2
-      nullthrows: 1.1.1
-    transitivePeerDependencies:
-      - bufferutil
-      - supports-color
-      - utf-8-validate
-
   metro-transform-worker@0.83.3(bufferutil@4.0.8):
     dependencies:
       '@babel/core': 7.28.5
@@ -15795,7 +15775,7 @@ snapshots:
       metro-source-map: 0.83.2
       metro-symbolicate: 0.83.2
       metro-transform-plugins: 0.83.2
-      metro-transform-worker: 0.83.2(bufferutil@4.0.8)(utf-8-validate@6.0.4)
+      metro-transform-worker: 0.83.2(bufferutil@4.0.8)
       mime-types: 2.1.35
       nullthrows: 1.1.1
       serialize-error: 2.1.0

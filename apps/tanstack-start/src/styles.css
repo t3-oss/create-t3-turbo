@@ -4,11 +4,11 @@
 @import "@fontsource-variable/geist";
 @import "@fontsource-variable/geist-mono";
 
-@source '../../../packages/ui/src/*.{ts,tsx}';
+@source "../../../packages/ui/src/*.{ts,tsx}";
 
-@custom-variant light (&:is(.light *));
-@custom-variant dark (&:is(.dark *));
-@custom-variant auto (&:is(.auto *));
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant light (&:where(.light, .light *));
+@custom-variant auto (&:where(.auto, .auto *));
 
 @utility container {
   margin-inline: auto;

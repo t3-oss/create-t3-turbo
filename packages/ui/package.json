@@ -19,7 +19,7 @@
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint --flag unstable_native_nodejs_ts_config",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
-    "ui-add": "pnpm dlx shadcn@latest add && prettier src --write --list-different"
+    "ui-add": "bunx shadcn@latest add && prettier src --write --list-different"
   },
   "dependencies": {
     "@radix-ui/react-icons": "^1.3.2",

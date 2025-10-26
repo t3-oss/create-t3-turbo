@@ -15,10 +15,10 @@
     "db:studio": "turbo -F @acme/db studio",
     "dev": "turbo watch dev --continue",
     "dev:next": "turbo watch dev -F @acme/nextjs...",
-    "format": "turbo run format --continue -- --cache --cache-location .cache/.prettiercache",
-    "format:fix": "turbo run format --continue -- --write --cache --cache-location .cache/.prettiercache",
-    "lint": "turbo run lint --continue -- --cache --cache-location .cache/.eslintcache",
-    "lint:fix": "turbo run lint --continue -- --fix --cache --cache-location .cache/.eslintcache",
+    "format": "oxfmt --check",
+    "format:fix": "oxfmt",
+    "lint": "oxlint --type-aware --deny-warnings --report-unused-disable-directives",
+    "lint:fix": "oxlint --type-aware --fix",
     "lint:ws": "pnpm dlx sherif@latest",
     "postinstall": "pnpm lint:ws",
     "typecheck": "turbo run typecheck",
@@ -27,12 +27,10 @@
     "ios": "expo run:ios"
   },
   "devDependencies": {
-    "@acme/prettier-config": "workspace:*",
+    "@acme/oxlint-config": "workspace:*",
     "@turbo/gen": "^2.5.8",
     "dotenv-cli": "^10.0.0",
-    "prettier": "catalog:",
     "turbo": "^2.5.8",
     "typescript": "catalog:"
-  },
-  "prettier": "@acme/prettier-config"
+  }
 }

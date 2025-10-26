@@ -59,10 +59,8 @@ packages
   └─ ui
       └─ Start of a UI package for the webapp using shadcn-ui
 tooling
-  ├─ eslint
-  │   └─ shared, fine-grained, eslint presets
-  ├─ prettier
-  │   └─ shared prettier configuration
+  ├─ oxlint
+  │   └─ shared, fine-grained, oxlint presets
   ├─ tailwind
   │   └─ shared tailwind theme and configuration
   └─ typescript

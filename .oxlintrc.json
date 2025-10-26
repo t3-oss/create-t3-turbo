@@ -1,0 +1,5 @@
+{
+  "$schema": "./tooling/oxlint/node_modules/oxlint/configuration_schema.json",
+  "extends": ["./tooling/oxlint/base.json"],
+  "ignorePatterns": ["turbo/generators/**"]
+}

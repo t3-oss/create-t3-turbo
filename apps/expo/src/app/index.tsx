@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import { Pressable, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Link, Stack } from "expo-router";
@@ -101,21 +101,29 @@ function CreatePost() {
 function MobileAuth() {
   const { data: session } = authClient.useSession();
 
+  const [isPending, startTransition] = useTransition();
+  const onPress = () => {
+    startTransition(async () => {
+      if (session) {
+        await authClient.signOut();
+      } else {
+        await authClient.signIn.social({
+          provider: "discord",
+          callbackURL: "/",
+        });
+      }
+    });
+  };
+
   return (
     <>
       <Text className="text-foreground pb-2 text-center text-xl font-semibold">
         {session?.user.name ? `Hello, ${session.user.name}` : "Not logged in"}
       </Text>
       <Pressable
-        onPress={() =>
-          session
-            ? authClient.signOut()
-            : authClient.signIn.social({
-                provider: "discord",
-                callbackURL: "/",
-              })
-        }
         className="bg-primary flex items-center rounded-sm p-2"
+        disabled={isPending}
+        onPress={onPress}
       >
         <Text>{session ? "Sign Out" : "Sign In With Discord"}</Text>
       </Pressable>

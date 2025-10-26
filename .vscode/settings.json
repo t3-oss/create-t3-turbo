@@ -1,19 +1,12 @@
 {
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.oxc": "explicit"
   },
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.defaultFormatter": "oxc.oxc-vscode",
   "[typescript,typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "editor.formatOnSave": true,
-  "eslint.rules.customizations": [{ "rule": "*", "severity": "warn" }],
-  "eslint.runtime": "node",
-  "eslint.workingDirectories": [
-    { "pattern": "apps/*/" },
-    { "pattern": "packages/*/" },
-    { "pattern": "tooling/*/" }
-  ],
   "files.associations": {
     "*.css": "tailwindcss"
   },
@@ -23,7 +16,9 @@
   "files.watcherExclude": {
     "**/routeTree.gen.ts": true
   },
-  "prettier.ignorePath": ".gitignore",
+  "oxc.fmt.experimental": true,
+  "oxc.unusedDisableDirectives": "deny",
+  "oxc.typeAware": true,
   "tailwindCSS.classFunctions": ["cva", "cx", "cn"],
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "typescript.preferences.autoImportFileExcludePatterns": [

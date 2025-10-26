@@ -36,8 +36,8 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
       },
       {
         type: "add",
-        path: "packages/{{ name }}/eslint.config.ts",
-        templateFile: "templates/eslint.config.ts.hbs",
+        path: "packages/{{ name }}/.oxlintrc.json",
+        templateFile: "templates/.oxlintrc.json.hbs",
       },
       {
         type: "add",
@@ -62,7 +62,7 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
             const pkg = JSON.parse(content) as PackageJson;
             for (const dep of answers.deps.split(" ").filter(Boolean)) {
               const version = await fetch(
-                `https://registry.npmjs.org/-/package/${dep}/dist-tags`,
+                `https://registry.npmjs.org/-/package/${dep}/dist-tags`
               )
                 .then((res) => res.json())
                 .then((json) => json.latest);
@@ -83,9 +83,7 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
           //   stdio: "inherit",
           // });
           execSync("pnpm i", { stdio: "inherit" });
-          execSync(
-            `pnpm prettier --write packages/${answers.name}/** --list-different`,
-          );
+          execSync(`pnpm oxfmt packages/${answers.name}/** --list-different`);
           return "Package scaffolded";
         }
         return "Package not scaffolded";

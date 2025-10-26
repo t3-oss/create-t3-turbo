@@ -17,7 +17,7 @@
     "dev:next": "turbo watch dev -F @acme/nextjs...",
     "format": "oxfmt --check",
     "format:fix": "oxfmt",
-    "lint": "oxlint --type-aware --deny-warnings",
+    "lint": "oxlint --type-aware --deny-warnings --report-unused-disable-directives",
     "lint:fix": "oxlint --type-aware --fix",
     "lint:ws": "pnpm dlx sherif@latest",
     "postinstall": "pnpm lint:ws",

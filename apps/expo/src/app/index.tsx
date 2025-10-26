@@ -51,7 +51,7 @@ function CreatePost() {
         setContent("");
         await queryClient.invalidateQueries(trpc.post.all.queryFilter());
       },
-    })
+    }),
   );
 
   return (
@@ -140,7 +140,7 @@ export default function Index() {
     trpc.post.delete.mutationOptions({
       onSettled: () =>
         queryClient.invalidateQueries(trpc.post.all.queryFilter()),
-    })
+    }),
   );
 
   return (

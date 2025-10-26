@@ -79,12 +79,12 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
          * Install deps and format everything
          */
         if ("name" in answers && typeof answers.name === "string") {
-          // execSync("pnpm dlx sherif@latest --fix", {
+          // execSync("bunx sherif@latest --fix", {
           //   stdio: "inherit",
           // });
-          execSync("pnpm i", { stdio: "inherit" });
+          execSync("bun i", { stdio: "inherit" });
           execSync(
-            `pnpm prettier --write packages/${answers.name}/** --list-different`,
+            `bun prettier --write packages/${answers.name}/** --list-different`,
           );
           return "Package scaffolded";
         }

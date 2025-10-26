@@ -2,15 +2,87 @@
   "name": "create-t3-turbo",
   "private": true,
   "engines": {
-    "node": "^22.21.0",
-    "pnpm": "^10.19.0"
+    "node": "^22.21.0"
   },
-  "packageManager": "pnpm@10.19.0",
+  "packageManager": "bun@1.3.0",
+  "workspaces": {
+    "packages": [
+      "apps/*",
+      "packages/*",
+      "tooling/*"
+    ],
+    "catalog": {
+      "@better-auth/cli": "1.4.0-beta.9",
+      "@better-auth/expo": "1.4.0-beta.9",
+      "@eslint/js": "^9.38.0",
+      "@tailwindcss/postcss": "^4.1.16",
+      "@tailwindcss/vite": "^4.1.16",
+      "@tanstack/react-form": "^1.23.8",
+      "@tanstack/react-query": "^5.90.5",
+      "@trpc/client": "^11.6.0",
+      "@trpc/server": "^11.6.0",
+      "@trpc/tanstack-react-query": "^11.6.0",
+      "@types/node": "^22.18.12",
+      "@vitejs/plugin-react": "5.1.0",
+      "better-auth": "1.4.0-beta.9",
+      "eslint": "^9.38.0",
+      "prettier": "^3.6.2",
+      "tailwindcss": "^4.1.16",
+      "typescript": "^5.9.3",
+      "zod": "^4.1.12",
+      "vite": "npm:rolldown-vite@latest"
+    },
+    "catalogs": {
+      "react19": {
+        "@types/react": "^19.1.12",
+        "@types/react-dom": "^19.1.9",
+        "react": "19.1.1",
+        "react-dom": "19.1.1"
+      }
+    }
+  },
+  "catalog": {
+    "@better-auth/cli": "1.4.0-beta.9",
+    "@better-auth/expo": "1.4.0-beta.9",
+    "@eslint/js": "9.38.0",
+    "@tailwindcss/postcss": "4.1.16",
+    "@tailwindcss/vite": "4.1.16",
+    "@tanstack/react-form": "1.23.8",
+    "@tanstack/react-query": "5.90.5",
+    "@trpc/client": "11.6.0",
+    "@trpc/server": "11.6.0",
+    "@trpc/tanstack-react-query": "11.6.0",
+    "@types/node": "22.18.12",
+    "better-auth": "1.4.0-beta.9",
+    "eslint": "9.38.0",
+    "prettier": "3.6.2",
+    "tailwindcss": "4.1.16",
+    "typescript": "5.9.3",
+    "zod": "4.1.12"
+  },
+  "catalogs": {
+    "react19": {
+      "@types/react": "^19.1.12",
+      "@types/react-dom": "^19.1.9",
+      "react": "19.1.1",
+      "react-dom": "19.1.1"
+    }
+  },
+  "devDependencies": {
+    "@acme/prettier-config": "workspace:*",
+    "@ianvs/prettier-plugin-sort-imports": "^4.7.0",
+    "@turbo/gen": "^2.5.8",
+    "dotenv-cli": "^10.0.0",
+    "prettier": "catalog:",
+    "prettier-plugin-tailwindcss": "^0.7.1",
+    "turbo": "^2.5.8",
+    "typescript": "catalog:"
+  },
   "scripts": {
     "build": "turbo run build",
     "clean": "git clean -xdf node_modules",
     "clean:workspaces": "turbo run clean",
-    "auth:generate": "pnpm -F @acme/auth generate",
+    "auth:generate": "bun run -F @acme/auth generate",
     "db:push": "turbo -F @acme/db push",
     "db:studio": "turbo -F @acme/db studio",
     "dev": "turbo watch dev --continue",
@@ -19,20 +91,16 @@
     "format:fix": "turbo run format --continue -- --write --cache --cache-location .cache/.prettiercache",
     "lint": "turbo run lint --continue -- --cache --cache-location .cache/.eslintcache",
     "lint:fix": "turbo run lint --continue -- --fix --cache --cache-location .cache/.eslintcache",
-    "lint:ws": "pnpm dlx sherif@latest",
-    "postinstall": "pnpm lint:ws",
+    "lint:ws": "bunx sherif@latest",
+    "postinstall": "bun run lint:ws",
     "typecheck": "turbo run typecheck",
     "ui-add": "turbo run ui-add",
     "android": "expo run:android",
     "ios": "expo run:ios"
   },
-  "devDependencies": {
-    "@acme/prettier-config": "workspace:*",
-    "@turbo/gen": "^2.5.8",
-    "dotenv-cli": "^10.0.0",
-    "prettier": "catalog:",
-    "turbo": "^2.5.8",
-    "typescript": "catalog:"
-  },
-  "prettier": "@acme/prettier-config"
+  "prettier": "@acme/prettier-config",
+  "overrides": {
+    "@types/minimatch": "5.1.2",
+    "vite": "npm:rolldown-vite@latest"
+  }
 }

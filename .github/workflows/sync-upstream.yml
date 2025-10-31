@@ -1,0 +1,98 @@
+name: Sync Upstream
+
+on:
+  schedule:
+    # Run every day at 2 AM UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch: # Allow manual triggering
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0 # Fetch all history for all branches and tags
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Add upstream remote
+        run: |
+          git remote add upstream https://github.com/t3-oss/create-t3-turbo.git || true
+          git fetch upstream
+
+      - name: Check for upstream changes
+        id: check
+        run: |
+          # Get the latest commit from upstream main
+          UPSTREAM_COMMIT=$(git rev-parse upstream/main)
+          # Check if we have this commit locally
+          if git merge-base --is-ancestor $UPSTREAM_COMMIT HEAD; then
+            echo "already_synced=true" >> $GITHUB_OUTPUT
+            echo "No new changes from upstream"
+          else
+            echo "already_synced=false" >> $GITHUB_OUTPUT
+            echo "New changes detected from upstream"
+          fi
+
+      - name: Create sync branch and merge upstream
+        if: steps.check.outputs.already_synced == 'false'
+        run: |
+          # Create a new branch for the sync
+          BRANCH_NAME="sync-upstream-$(date +%Y%m%d-%H%M%S)"
+          git checkout -b $BRANCH_NAME
+
+          # Merge upstream changes
+          git merge upstream/main --no-edit --allow-unrelated-histories || {
+            echo "Merge conflict detected. Creating PR for manual resolution."
+            git merge --abort || true
+            git merge upstream/main --no-commit --allow-unrelated-histories || true
+            git commit -m "Sync with upstream t3-oss/create-t3-turbo" || true
+          }
+
+          # Push the branch
+          git push origin $BRANCH_NAME
+          echo "branch_name=$BRANCH_NAME" >> $GITHUB_ENV
+
+      - name: Create Pull Request
+        if: steps.check.outputs.already_synced == 'false'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const branchName = process.env.branch_name;
+
+            try {
+              const { data: pr } = await github.rest.pulls.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: `Sync with upstream t3-oss/create-t3-turbo`,
+                head: branchName,
+                base: 'main',
+                body: `This PR syncs changes from the upstream repository [t3-oss/create-t3-turbo](https://github.com/t3-oss/create-t3-turbo).
+
+## Changes
+This automated sync includes the latest changes from the upstream repository.
+
+## Review Notes
+- Please review the changes carefully before merging
+- Check for any conflicts with custom modifications in this fork
+- Ensure CI passes before merging
+
+---
+🤖 This PR was automatically created by the sync-upstream workflow.`,
+              });
+
+              console.log(`Pull request created: ${pr.html_url}`);
+            } catch (error) {
+              if (error.status === 422) {
+                console.log('Pull request already exists or no changes to sync');
+              } else {
+                throw error;
+              }
+            }

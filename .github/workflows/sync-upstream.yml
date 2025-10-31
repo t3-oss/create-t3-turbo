@@ -71,21 +71,10 @@ jobs:
               const { data: pr } = await github.rest.pulls.create({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                title: `Sync with upstream t3-oss/create-t3-turbo`,
+                title: 'Sync with upstream t3-oss/create-t3-turbo',
                 head: branchName,
                 base: 'main',
-                body: `This PR syncs changes from the upstream repository [t3-oss/create-t3-turbo](https://github.com/t3-oss/create-t3-turbo).
-
-## Changes
-This automated sync includes the latest changes from the upstream repository.
-
-## Review Notes
-- Please review the changes carefully before merging
-- Check for any conflicts with custom modifications in this fork
-- Ensure CI passes before merging
-
----
-🤖 This PR was automatically created by the sync-upstream workflow.`,
+                body: 'This PR syncs changes from the upstream repository [t3-oss/create-t3-turbo](https://github.com/t3-oss/create-t3-turbo).\n\n## Changes\nThis automated sync includes the latest changes from the upstream repository.\n\n## Review Notes\n- Please review the changes carefully before merging\n- Check for any conflicts with custom modifications in this fork\n- Ensure CI passes before merging\n\n---\n🤖 This PR was automatically created by the sync-upstream workflow.',
               });
 
               console.log(`Pull request created: ${pr.html_url}`);

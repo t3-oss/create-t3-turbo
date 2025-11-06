@@ -4,12 +4,12 @@ import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod/v4";
 
 export const Post = pgTable("post", (t) => ({
-  id: t.uuid().notNull().primaryKey().defaultRandom(),
-  title: t.varchar({ length: 256 }).notNull(),
-  content: t.text().notNull(),
-  createdAt: t.timestamp().defaultNow().notNull(),
+  id: t.uuid("id").notNull().primaryKey().defaultRandom(),
+  title: t.varchar("title", { length: 256 }).notNull(),
+  content: t.text("content").notNull(),
+  createdAt: t.timestamp("createdAt").defaultNow().notNull(),
   updatedAt: t
-    .timestamp({ mode: "date", withTimezone: true })
+    .timestamp("updatedAt", { mode: "date", withTimezone: true })
     .$onUpdateFn(() => sql`now()`),
 }));
 

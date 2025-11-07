@@ -26,3 +26,10 @@ echo "DONE"
 
 echo "Setup DB."
 pnpm db:push
+
+echo "Setup Vitest and co..."
+cd apps/nextjs || exit 1
+pnpm add -D vitest @vitejs/plugin-react jsdom @testing-library/react @testing-library/dom @testing-library/jest-dom vite-tsconfig-paths
+pnpm pkg set 'scripts.spec=vitest'
+cd ../..
+echo "DONE"

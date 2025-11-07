@@ -17,6 +17,21 @@ If any any point the documentation is outdated or needs improvement, _obviously_
 
 ## Tests
 
+* Colocate your tests with your production code
+  * eg: `src/app/page.tsx` and `src/app/page.spec.tsx`
+  * write _specs_ like: `it "renders stuff"` instead of `test("what")`
+
+TODO: pg broken
+TODO: wider linting airbnb etc
+TODO: enforce specs with eslint
+TODO: dbcleaner and factories?
+TODO: GHA
+
+### Resources
+
+* https://vitest.dev/api/expect.html
+* https://www.betterspecs.org - it's Ruby, but it's clear and simple
+
 ## Good dev
 
 * Boyscout rule: leave things better than you found them (including this setup)

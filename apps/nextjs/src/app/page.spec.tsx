@@ -1,6 +1,8 @@
-import { render, screen } from "@testing-library/react";
-import { describe, expect, it, beforeEach, vi } from "vitest";
 import type { ReactNode } from "react";
+import { render, screen } from "@testing-library/react";
+import { beforeEach, describe, expect, it, vi } from "vitest";
+
+import HomePage from "./page";
 
 const { prefetchSpy, mockQueryOptionsResult, queryOptionsSpy } = vi.hoisted(
   () => {
@@ -37,13 +39,9 @@ vi.mock("./_components/posts", () => ({
   CreatePostForm: () => (
     <button data-testid="create-post-form">Create Post</button>
   ),
-  PostCardSkeleton: () => (
-    <div data-testid="post-card-skeleton">Skeleton</div>
-  ),
+  PostCardSkeleton: () => <div data-testid="post-card-skeleton">Skeleton</div>,
   PostList: () => <div data-testid="post-list">Post List</div>,
 }));
-
-import HomePage from "./page";
 
 describe("HomePage", () => {
   beforeEach(() => {

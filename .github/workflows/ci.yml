@@ -4,7 +4,7 @@ on:
   pull_request:
     branches: ["**"]
   push:
-    branches: ["**"]
+    branches: [main]
   merge_group:
 
 concurrency:
@@ -45,17 +45,16 @@ jobs:
       - name: Format
         run: pnpm format
 
-  # TODO:
-  # typecheck:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v5
+  typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
 
-  #     - name: Setup
-  #       uses: ./tooling/github/setup
+      - name: Setup
+        uses: ./tooling/github/setup
 
-  #     - name: Typecheck
-  #       run: pnpm typecheck
+      - name: Typecheck
+        run: pnpm typecheck
 
   test:
     runs-on: ubuntu-latest

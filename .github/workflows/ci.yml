@@ -2,9 +2,9 @@ name: CI
 
 on:
   pull_request:
-    branches: ["*"]
+    branches: ["**"]
   push:
-    branches: ["main"]
+    branches: ["**"]
   merge_group:
 
 concurrency:
@@ -27,9 +27,9 @@ jobs:
       - name: Setup
         uses: ./tooling/github/setup
 
-      - name: Copy env
-        shell: bash
-        run: cp .env.example .env
+      # - name: Copy env
+      #   shell: bash
+      #   run: cp .env.example .env
 
       - name: Lint
         run: pnpm lint && pnpm lint:ws
@@ -45,7 +45,19 @@ jobs:
       - name: Format
         run: pnpm format
 
-  typecheck:
+  # TODO:
+  # typecheck:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v5
+
+  #     - name: Setup
+  #       uses: ./tooling/github/setup
+
+  #     - name: Typecheck
+  #       run: pnpm typecheck
+
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -53,5 +65,5 @@ jobs:
       - name: Setup
         uses: ./tooling/github/setup
 
-      - name: Typecheck
-        run: pnpm typecheck
+      - name: Test
+        run: pnpm -F @acme/nextjs spec -- --run

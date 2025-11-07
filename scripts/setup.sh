@@ -33,3 +33,7 @@ pnpm add -D vitest @vitejs/plugin-react jsdom @testing-library/react @testing-li
 pnpm pkg set 'scripts.spec=vitest'
 cd ../..
 echo "DONE"
+
+echo "Testing..."
+pnpm -F @acme/nextjs spec run || exit 2
+echo "DONE"

@@ -15,6 +15,13 @@ If any any point the documentation is outdated or needs improvement, _obviously_
 # Update packages/auth/script/auth-cli.ts
 ```
 
+## Development
+
+```sh
+pnpm format:fix
+pnpm lint:fix
+```
+
 ## Tests
 
 * Colocate your tests with your production code

@@ -1,3 +1,1 @@
-import postcssConfig from "@acme/tailwind-config/postcss-config";
-
-export default postcssConfig;
+export { default } from "@acme/tailwind-config/postcss-config";

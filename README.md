@@ -1,5 +1,7 @@
 # create-t3-turbo
 
+See [ACME_README.md](./ACME_README.md) first.
+
 > [!NOTE]
 >
 > create-t3-turbo now includes the option to use Tanstack Start for the web app!

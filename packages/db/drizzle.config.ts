@@ -10,5 +10,6 @@ export default {
   schema: "./src/schema.ts",
   dialect: "postgresql",
   dbCredentials: { url: nonPoolingUrl },
-  casing: "snake_case",
+  // casing: "snake_case", // t3 forgot to update this and broke the post model
+  casing: "camelCase", // No need to map db names and TS fields
 } satisfies Config;

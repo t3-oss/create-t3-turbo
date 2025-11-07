@@ -7,3 +7,4 @@ pnpm lint:ws
 pnpm format
 pnpm typecheck
 pnpm --filter @acme/nextjs vitest run
+pnpm build

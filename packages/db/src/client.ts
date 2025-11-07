@@ -19,8 +19,13 @@ const isLocalConnection =
 const nonPoolingConnectionString =
   process.env.POSTGRES_URL_NON_POOLING ?? connectionString;
 
+const createLocalPool = (): Pool =>
+  new Pool({
+    connectionString: nonPoolingConnectionString,
+  });
+
 export const db = isLocalConnection
-  ? drizzleNode(new Pool({ connectionString: nonPoolingConnectionString }), {
+  ? drizzleNode(createLocalPool(), {
       schema,
       casing: "camelCase",
     })

@@ -35,5 +35,6 @@ cd ../..
 echo "DONE"
 
 echo "Testing..."
-pnpm -F @acme/nextjs spec run || exit 2
+# pnpm -F @acme/nextjs spec run || exit 2
+./scripts/ci-local.sh
 echo "DONE"

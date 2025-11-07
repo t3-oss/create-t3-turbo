@@ -34,6 +34,8 @@ TODO: enforce specs with eslint
 TODO: dbcleaner and factories?
 TODO: GHA
 TODO: Husky pre-commit
+TODO: Mongo
+TODO: Trunk?
 
 ### Resources
 

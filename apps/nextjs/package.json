@@ -11,7 +11,7 @@
     "start": "pnpm with-env next start",
     "typecheck": "tsc --noEmit",
     "with-env": "dotenv -e ../../.env --",
-    "spec": "vitest"
+    "spec": "vitest run"
   },
   "dependencies": {
     "@acme/api": "workspace:*",
@@ -45,6 +45,7 @@
     "@types/react": "catalog:react19",
     "@types/react-dom": "catalog:react19",
     "@vitejs/plugin-react": "catalog:",
+    "@vitest/coverage-v8": "^4.0.8",
     "eslint": "catalog:",
     "jiti": "^2.5.1",
     "jsdom": "^27.0.0",

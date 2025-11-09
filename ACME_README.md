@@ -36,6 +36,7 @@ TODO: GHA
 TODO: Husky pre-commit
 TODO: Mongo
 TODO: Trunk?
+TODO: Cypress
 
 ### Resources
 

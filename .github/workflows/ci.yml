@@ -65,4 +65,4 @@ jobs:
         uses: ./tooling/github/setup
 
       - name: Test
-        run: pnpm -F @acme/nextjs spec -- --run
+        run: pnpm -F @acme/nextjs spec -- --run --coverage

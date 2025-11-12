@@ -22,11 +22,11 @@ export const makeTRPCClient = createIsomorphicFn()
         unstable_localLink({
           router: Api.appRouter,
           transformer: SuperJSON,
-          createContext: () =>
-            Api.createTRPCContext({
-              auth: auth,
-              headers: getRequestHeaders(),
-            }),
+          createContext: () => {
+            const headers = new Headers(getRequestHeaders());
+            headers.set("x-trpc-source", "tanstack-start-server");
+            return Api.createTRPCContext({ auth, headers });
+          },
         }),
       ],
     });
@@ -44,7 +44,7 @@ export const makeTRPCClient = createIsomorphicFn()
           url: getBaseUrl() + "/api/trpc",
           headers() {
             const headers = new Headers();
-            headers.set("x-trpc-source", "nextjs-react");
+            headers.set("x-trpc-source", "tanstack-start-client");
             return headers;
           },
         }),

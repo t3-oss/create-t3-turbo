@@ -17,7 +17,7 @@ There are two ways of initializing an app using the `create-t3-turbo` starter. Y
 or use Turbo's CLI to init your project (use PNPM as package manager):
 
 ```bash
-npx create-turbo@latest -e https://github.com/t3-oss/create-t3-turbo
+npx create-turbo@latest -e https://github.com/Labrys-Group/create-t3-turbo
 ```
 
 ## About

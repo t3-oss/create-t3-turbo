@@ -1,9 +1,15 @@
 name: Sync Upstream
 
+# This workflow syncs changes from t3-oss/create-t3-turbo upstream repository.
+# When merge conflicts occur:
+# - If ONLY pnpm-lock.yaml conflicts: automatically resolve by accepting upstream's
+#   lockfile and running 'pnpm install', then create PR with notice
+# - If other files conflict: abort merge and create issue for manual resolution
+
 on:
   schedule:
     # Run the first of every month
-    - cron: '0 2 1 * *'
+    - cron: "0 2 1 * *"
   workflow_dispatch: # Allow manual triggering
 
 jobs:
@@ -32,11 +38,11 @@ jobs:
           # Get the latest commit from upstream main
           UPSTREAM_COMMIT=$(git rev-parse upstream/main)
           # Check if we have this commit locally
-          if git merge-base --is-ancestor $UPSTREAM_COMMIT HEAD; then
-            echo "already_synced=true" >> $GITHUB_OUTPUT
+          if git merge-base --is-ancestor "$UPSTREAM_COMMIT" HEAD; then
+            echo "already_synced=true" >> "$GITHUB_OUTPUT"
             echo "No new changes from upstream"
           else
-            echo "already_synced=false" >> $GITHUB_OUTPUT
+            echo "already_synced=false" >> "$GITHUB_OUTPUT"
             echo "New changes detected from upstream"
 
             # Get the list of new commits from upstream
@@ -55,36 +61,99 @@ jobs:
         run: |
           # Create a new branch for the sync
           BRANCH_NAME="sync-upstream-$(date +%Y%m%d-%H%M%S)"
-          git checkout -b $BRANCH_NAME
-          echo "branch_name=$BRANCH_NAME" >> $GITHUB_ENV
+          git checkout -b "$BRANCH_NAME"
+          echo "branch_name=$BRANCH_NAME" >> "$GITHUB_ENV"
 
           # Attempt to merge upstream changes
           if git merge upstream/main --no-edit --allow-unrelated-histories; then
             echo "Merge successful"
-            echo "merge_status=success" >> $GITHUB_OUTPUT
+            echo "merge_status=success" >> "$GITHUB_OUTPUT"
             # Push the branch
-            git push origin $BRANCH_NAME
+            git push origin "$BRANCH_NAME"
           else
             echo "Merge conflict detected"
-            echo "merge_status=conflict" >> $GITHUB_OUTPUT
+            echo "merge_status=conflict" >> "$GITHUB_OUTPUT"
+            # Don't abort - let analyze step handle conflicts
+          fi
 
-            # Get list of conflicted files
-            CONFLICTED_FILES=$(git diff --name-only --diff-filter=U)
-            echo "conflicted_files<<EOF" >> $GITHUB_OUTPUT
-            echo "$CONFLICTED_FILES" >> $GITHUB_OUTPUT
-            echo "EOF" >> $GITHUB_OUTPUT
+      - name: Analyze conflicts
+        if: steps.check.outputs.already_synced == 'false' && steps.merge.outputs.merge_status == 'conflict'
+        id: analyze
+        run: |
+          # Get list of conflicted files
+          CONFLICTED_FILES=$(git diff --name-only --diff-filter=U)
 
-            # Abort the merge to clean up
+          # Check if ONLY pnpm-lock.yaml conflicts
+          if [ "$CONFLICTED_FILES" = "pnpm-lock.yaml" ]; then
+            echo "only_lockfile=true" >> "$GITHUB_OUTPUT"
+            echo "Only pnpm-lock.yaml conflicts detected - will auto-resolve"
+          else
+            echo "only_lockfile=false" >> "$GITHUB_OUTPUT"
+            echo "Multiple files conflict - manual resolution required"
+          fi
+
+          # Store conflicted files for issue creation
+          {
+            echo "conflicted_files<<EOF"
+            echo "$CONFLICTED_FILES"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+          # Abort merge if not auto-resolving
+          if [ "$CONFLICTED_FILES" != "pnpm-lock.yaml" ]; then
             git merge --abort
           fi
 
+      - name: Setup Node.js
+        if: steps.check.outputs.already_synced == 'false' && steps.analyze.outputs.only_lockfile == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Setup pnpm
+        if: steps.check.outputs.already_synced == 'false' && steps.analyze.outputs.only_lockfile == 'true'
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.19.0
+          run_install: false
+
+      - name: Auto-resolve lockfile conflict
+        if: steps.check.outputs.already_synced == 'false' && steps.analyze.outputs.only_lockfile == 'true'
+        id: auto_resolve
+        run: |
+          echo "Auto-resolving pnpm-lock.yaml conflict..."
+
+          # Accept upstream's lockfile (preserves their dependency resolutions)
+          git checkout --theirs pnpm-lock.yaml
+
+          # Update lockfile based on merged package.json
+          if ! pnpm install --no-frozen-lockfile; then
+            echo "pnpm install failed - aborting merge"
+            echo "resolution_status=failed" >> "$GITHUB_OUTPUT"
+            git merge --abort
+            exit 1
+          fi
+
+          # Stage the updated lockfile
+          git add pnpm-lock.yaml
+
+          # Complete the merge commit
+          git commit --no-edit
+
+          # Push the branch
+          git push origin "${{ env.branch_name }}"
+
+          echo "resolution_status=success" >> "$GITHUB_OUTPUT"
+          echo "Lockfile conflict auto-resolved successfully"
+
       - name: Create Pull Request
-        if: steps.check.outputs.already_synced == 'false' && steps.merge.outputs.merge_status == 'success'
+        if: steps.check.outputs.already_synced == 'false' && (steps.merge.outputs.merge_status == 'success' || (steps.analyze.outputs.only_lockfile == 'true' && steps.auto_resolve.outputs.resolution_status == 'success'))
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const branchName = process.env.branch_name;
+
             const newCommits = fromJSON(process.env['new_commits']);
 
             // Build the PR body with new commits
@@ -93,6 +162,11 @@ jobs:
             if (newCommits && newCommits.trim()) {
               prBody += '## New Commits from Upstream\n\n';
               prBody += newCommits + '\n\n';
+            }
+
+            // Add auto-resolution notice if applicable
+            if (autoResolved) {
+              prBody += '## ⚠️ Auto-Resolution Notice\n\nThe pnpm-lock.yaml file had merge conflicts and was automatically resolved by accepting upstream\'s lockfile and running `pnpm install`.\nPlease verify the lockfile changes are correct before merging.\n\n';
             }
 
             prBody += '## Review Notes\n';
@@ -122,13 +196,13 @@ jobs:
             }
 
       - name: Create Issue for Merge Conflict
-        if: steps.check.outputs.already_synced == 'false' && steps.merge.outputs.merge_status == 'conflict'
+        if: steps.check.outputs.already_synced == 'false' && steps.merge.outputs.merge_status == 'conflict' && steps.analyze.outputs.only_lockfile == 'false'
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const branchName = process.env.branch_name;
-            const conflictedFiles = `${{ steps.merge.outputs.conflicted_files }}`;
+            const conflictedFiles = `${{ steps.analyze.outputs.conflicted_files }}`;
 
             const issueBody = `## 🔄 Upstream Sync Failed - Merge Conflict
 

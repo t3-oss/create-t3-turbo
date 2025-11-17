@@ -42,25 +42,35 @@ jobs:
 
       - name: Create sync branch and merge upstream
         if: steps.check.outputs.already_synced == 'false'
+        id: merge
         run: |
           # Create a new branch for the sync
           BRANCH_NAME="sync-upstream-$(date +%Y%m%d-%H%M%S)"
           git checkout -b $BRANCH_NAME
-
-          # Merge upstream changes
-          git merge upstream/main --no-edit --allow-unrelated-histories || {
-            echo "Merge conflict detected. Creating PR for manual resolution."
-            git merge --abort || true
-            git merge upstream/main --no-commit --allow-unrelated-histories || true
-            git commit -m "Sync with upstream t3-oss/create-t3-turbo" || true
-          }
-
-          # Push the branch
-          git push origin $BRANCH_NAME
           echo "branch_name=$BRANCH_NAME" >> $GITHUB_ENV
 
+          # Attempt to merge upstream changes
+          if git merge upstream/main --no-edit --allow-unrelated-histories; then
+            echo "Merge successful"
+            echo "merge_status=success" >> $GITHUB_OUTPUT
+            # Push the branch
+            git push origin $BRANCH_NAME
+          else
+            echo "Merge conflict detected"
+            echo "merge_status=conflict" >> $GITHUB_OUTPUT
+
+            # Get list of conflicted files
+            CONFLICTED_FILES=$(git diff --name-only --diff-filter=U)
+            echo "conflicted_files<<EOF" >> $GITHUB_OUTPUT
+            echo "$CONFLICTED_FILES" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+
+            # Abort the merge to clean up
+            git merge --abort
+          fi
+
       - name: Create Pull Request
-        if: steps.check.outputs.already_synced == 'false'
+        if: steps.check.outputs.already_synced == 'false' && steps.merge.outputs.merge_status == 'success'
         uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -84,4 +94,62 @@ jobs:
               } else {
                 throw error;
               }
+            }
+
+      - name: Create Issue for Merge Conflict
+        if: steps.check.outputs.already_synced == 'false' && steps.merge.outputs.merge_status == 'conflict'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const branchName = process.env.branch_name;
+            const conflictedFiles = `${{ steps.merge.outputs.conflicted_files }}`;
+
+            const issueBody = `## 🔄 Upstream Sync Failed - Merge Conflict
+
+            The automated sync from [t3-oss/create-t3-turbo](https://github.com/t3-oss/create-t3-turbo) failed due to merge conflicts.
+
+            ### Conflicted Files
+            \`\`\`
+            ${conflictedFiles}
+            \`\`\`
+
+            ### What to do
+            1. Manually sync the upstream changes:
+               \`\`\`bash
+               git fetch upstream
+               git checkout -b ${branchName}
+               git merge upstream/main
+               \`\`\`
+            2. Resolve the conflicts in the files listed above
+            3. Commit the resolved changes:
+               \`\`\`bash
+               git add .
+               git commit -m "Resolve merge conflicts from upstream sync"
+               \`\`\`
+            4. Push and create a PR:
+               \`\`\`bash
+               git push origin ${branchName}
+               \`\`\`
+
+            ### Additional Information
+            - **Workflow Run**: [${context.runId}](https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId})
+            - **Attempted Branch**: \`${branchName}\`
+
+            ---
+            🤖 This issue was automatically created by the sync-upstream workflow.`;
+
+            try {
+              const { data: issue } = await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: `Upstream sync failed: Merge conflict in branch ${branchName}`,
+                body: issueBody,
+                labels: ['upstream-sync', 'merge-conflict']
+              });
+
+              console.log(`Issue created: ${issue.html_url}`);
+            } catch (error) {
+              console.error('Failed to create issue:', error);
+              throw error;
             }

@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git rev-parse:*)",
+      "Bash(gh pr view:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(gh pr create:*)",
+      "Bash(if [ -f .github/PULL_REQUEST_TEMPLATE.md ])",
+      "Bash(then)",
+      "Bash(cat:*)",
+      "Bash(elif [ -f .github/pull_request_template.md ])",
+      "Bash(elif [ -f docs/PULL_REQUEST_TEMPLATE.md ])",
+      "Bash(elif [ -f PULL_REQUEST_TEMPLATE.md ])",
+      "Bash(else)",
+      "Bash(fi)",
+      "Bash(gh pr edit:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

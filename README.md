@@ -20,6 +20,17 @@ or use Turbo's CLI to init your project (use PNPM as package manager):
 npx create-turbo@latest -e https://github.com/Labrys-Group/create-t3-turbo
 ```
 
+## Keeping Your Fork Updated
+
+This repository includes an automated workflow to sync with the upstream [t3-oss/create-t3-turbo](https://github.com/t3-oss/create-t3-turbo) repository. The workflow runs automatically on the first of every month, but you can also trigger it manually:
+
+**[📥 Trigger Sync Upstream Workflow](https://github.com/Labrys-Group/create-t3-turbo/actions/workflows/sync-upstream.yml)**
+
+When triggered, the workflow will:
+- Check for new changes from the upstream repository
+- Create a pull request with the changes if any are found
+- Allow you to review and merge the updates at your convenience
+
 ## About
 
 Ever wondered how to migrate your T3 application into a monorepo? Stop right here! This is the perfect starter repo to get you running with the perfect stack!

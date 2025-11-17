@@ -154,7 +154,10 @@ jobs:
           script: |
             const branchName = process.env.branch_name;
 
-            const newCommits = fromJSON(process.env['new_commits']);
+            const newCommits = process.env['new_commits'] || '';
+
+            // Check if lockfile was auto-resolved
+            const autoResolved = '${{ steps.analyze.outputs.only_lockfile }}' === 'true' && '${{ steps.auto_resolve.outputs.resolution_status }}' === 'success';
 
             // Build the PR body with new commits
             let prBody = 'This PR syncs changes from the upstream repository [t3-oss/create-t3-turbo](https://github.com/t3-oss/create-t3-turbo).\n\n';

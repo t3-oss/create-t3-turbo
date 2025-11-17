@@ -38,6 +38,15 @@ jobs:
           else
             echo "already_synced=false" >> $GITHUB_OUTPUT
             echo "New changes detected from upstream"
+
+            # Get the list of new commits from upstream
+            MERGE_BASE=$(git merge-base HEAD upstream/main)
+            COMMITS=$(git log --pretty=format:"- %s ([%h](https://github.com/t3-oss/create-t3-turbo/commit/%H)) by %an" $MERGE_BASE..upstream/main)
+
+            # Store commits in output (handle multiline)
+            echo "new_commits<<EOF" >> $GITHUB_OUTPUT
+            echo "$COMMITS" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
           fi
 
       - name: Create sync branch and merge upstream
@@ -76,6 +85,22 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const branchName = process.env.branch_name;
+            const newCommits = fromJSON(process.env['new_commits']);
+
+            // Build the PR body with new commits
+            let prBody = 'This PR syncs changes from the upstream repository [t3-oss/create-t3-turbo](https://github.com/t3-oss/create-t3-turbo).\n\n';
+
+            if (newCommits && newCommits.trim()) {
+              prBody += '## New Commits from Upstream\n\n';
+              prBody += newCommits + '\n\n';
+            }
+
+            prBody += '## Review Notes\n';
+            prBody += '- Please review the changes carefully before merging\n';
+            prBody += '- Check for any conflicts with custom modifications in this fork\n';
+            prBody += '- Ensure CI passes before merging\n\n';
+            prBody += '---\n';
+            prBody += '🤖 This PR was automatically created by the sync-upstream workflow.';
 
             try {
               const { data: pr } = await github.rest.pulls.create({
@@ -84,7 +109,7 @@ jobs:
                 title: 'Sync with upstream t3-oss/create-t3-turbo',
                 head: branchName,
                 base: 'main',
-                body: 'This PR syncs changes from the upstream repository [t3-oss/create-t3-turbo](https://github.com/t3-oss/create-t3-turbo).\n\n## Changes\nThis automated sync includes the latest changes from the upstream repository.\n\n## Review Notes\n- Please review the changes carefully before merging\n- Check for any conflicts with custom modifications in this fork\n- Ensure CI passes before merging\n\n---\n🤖 This PR was automatically created by the sync-upstream workflow.',
+                body: prBody,
               });
 
               console.log(`Pull request created: ${pr.html_url}`);

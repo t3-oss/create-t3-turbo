@@ -126,3 +126,8 @@ export const protectedProcedure = t.procedure
       },
     });
   });
+
+/**
+ * Create a caller factory for testing
+ */
+export const createCallerFactory = t.createCallerFactory;

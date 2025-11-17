@@ -14,6 +14,10 @@
     "./schema": {
       "types": "./dist/schema.d.ts",
       "default": "./src/schema.ts"
+    },
+    "./mocks": {
+      "types": "./dist/mocks/index.d.ts",
+      "default": "./src/mocks/index.ts"
     }
   },
   "license": "MIT",
@@ -38,6 +42,7 @@
     "@acme/eslint-config": "workspace:*",
     "@acme/prettier-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
+    "@electric-sql/pglite": "^0.3.14",
     "drizzle-kit": "^0.31.5",
     "eslint": "catalog:",
     "prettier": "catalog:",

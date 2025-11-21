@@ -1,18 +1,20 @@
-## Purpose
+## 📋 **Summary**
 
-<!-- What does this PR accomplish? Why is this change needed? -->
+<!-- Describe what this PR does and why it’s needed -->
 
-## Approach
+## ✅ **Checklist**
 
-<!-- How did you implement this? What are the key technical decisions? -->
+- [ ] My code follows the style guidelines of this project
+- [ ] I have performed a self-review of my code
+- [ ] I have commented my code if necessary
+- [ ] I have added tests that prove my fix is effective or my feature works
 
-## Testing
+## 🔗 **Linked Issue**
 
-<!-- How has this been tested? What scenarios have been verified? -->
-- [ ]
-- [ ]
+fixes #[issue_number]
 
-## Breaking Changes
+## 🧪 **Testing Steps**
 
-<!-- List any breaking changes or write "None" -->
+<!-- Describe steps to test this PR locally -->
 
+## 📸 **Screenshots or Logs (if applicable)**

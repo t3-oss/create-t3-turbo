@@ -27,3 +27,7 @@ All these are optional depending on the size and context of the work being done.
 * Important decisions with ramifications on future work
 * Tradeoffs
 * Heads up for new reusable components
+
+---
+
+Reviewers please follow [this checklist](https://medium.com/@dorinbaba/the-perfect-pr-review-checklist-no-one-is-talking-about-50ca213a4ac1).

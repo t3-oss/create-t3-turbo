@@ -36,8 +36,8 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
       },
       {
         type: "add",
-        path: "packages/{{ name }}/eslint.config.ts",
-        templateFile: "templates/eslint.config.ts.hbs",
+        path: "packages/{{ name }}/.oxlintrc.json",
+        templateFile: "templates/.oxlintrc.json.hbs",
       },
       {
         type: "add",
@@ -83,9 +83,7 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
           //   stdio: "inherit",
           // });
           execSync("pnpm i", { stdio: "inherit" });
-          execSync(
-            `pnpm prettier --write packages/${answers.name}/** --list-different`,
-          );
+          execSync(`pnpm oxfmt packages/${answers.name}/** --list-different`);
           return "Package scaffolded";
         }
         return "Package not scaffolded";

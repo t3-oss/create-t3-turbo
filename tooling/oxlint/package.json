@@ -1,0 +1,18 @@
+{
+  "name": "@acme/oxlint-config",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "oxlint": "./node_modules/.bin/oxlint",
+    "oxfmt": "./node_modules/.bin/oxfmt",
+    "tsgolint": "./node_modules/.bin/tsgolint"
+  },
+  "scripts": {
+    "clean": "git clean -xdf node_modules"
+  },
+  "dependencies": {
+    "oxfmt": "0.15.0",
+    "oxlint": "1.30.0",
+    "oxlint-tsgolint": "^0.8.2"
+  }
+}

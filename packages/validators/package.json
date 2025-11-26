@@ -13,7 +13,6 @@
     "build": "tsc",
     "clean": "git clean -xdf .cache .turbo dist node_modules",
     "dev": "tsc",
-    
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {

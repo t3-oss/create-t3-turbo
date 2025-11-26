@@ -4,7 +4,7 @@ import { setupRouterSsrQueryIntegration } from "@tanstack/react-router-ssr-query
 import { createTRPCOptionsProxy } from "@trpc/tanstack-react-query";
 import SuperJSON from "superjson";
 
-import { trpcClient, TRPCProvider } from "~/lib/trpc";
+import { makeTRPCClient, TRPCProvider } from "~/lib/trpc";
 import { routeTree } from "./routeTree.gen";
 
 export function getRouter() {
@@ -14,6 +14,7 @@ export function getRouter() {
       hydrate: { deserializeData: SuperJSON.deserialize },
     },
   });
+  const trpcClient = makeTRPCClient();
   const trpc = createTRPCOptionsProxy({
     client: trpcClient,
     queryClient,
@@ -37,10 +38,4 @@ export function getRouter() {
   });
 
   return router;
-}
-
-declare module "@tanstack/react-router" {
-  interface Register {
-    router: ReturnType<typeof getRouter>;
-  }
 }

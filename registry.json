@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "Labrys",
+  "homepage": "https://labrys.io",
+  "items": [
+    {
+      "name": "MINUTE_IN_MS",
+      "type": "registry:block",
+      "title": "One Minute in Milliseconds, ie: 60_000",
+      "description": "A constant representing one minute in milliseconds.",
+      "files": [
+        {
+          "path": "registry/time/MINUTE_IN_MS.ts",
+          "type": "registry:component"
+        }
+      ]
+    }
+  ]
+}

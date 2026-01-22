@@ -89,8 +89,12 @@ To get it running, follow the steps below:
 pnpm i
 
 # Configure environment variables
-# There is an `.env.example` in the root directory you can use for reference
-cp .env.example .env
+# Each package that needs env vars has its own .env.example
+# Copy and configure for the packages you're using:
+cp apps/nextjs/.env.example apps/nextjs/.env        # If using Next.js
+cp apps/tanstack-start/.env.example apps/tanstack-start/.env  # If using TanStack Start
+cp packages/db/.env.example packages/db/.env        # For database migrations
+cp packages/auth/.env.example packages/auth/.env    # For auth CLI
 
 # Push the Drizzle schema to the database
 pnpm db:push

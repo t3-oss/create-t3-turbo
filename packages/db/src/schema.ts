@@ -205,6 +205,37 @@ export const organizationInvite = pgTable("organization_invite", (t) => ({
   createdAt: t.timestamp().defaultNow().notNull(),
 }));
 
+// ─── SSO / SAML Connections (Enterprise) ────────────────────────────────────
+
+export const ssoConnection = pgTable("sso_connection", (t) => ({
+  id: t.uuid().notNull().primaryKey().defaultRandom(),
+  organizationId: t
+    .uuid()
+    .notNull()
+    .references(() => organization.id, { onDelete: "cascade" }),
+  provider: t.varchar({ length: 50 }).notNull().default("saml"),
+  /** IdP Entity ID */
+  idpEntityId: t.text().notNull(),
+  /** IdP SSO URL (redirect target) */
+  idpSsoUrl: t.text().notNull(),
+  /** IdP X.509 certificate (PEM) for signature verification */
+  idpCertificate: t.text().notNull(),
+  /** IdP metadata URL (for auto-refresh) */
+  idpMetadataUrl: t.text(),
+  /** IdP Single Logout URL */
+  idpSloUrl: t.text(),
+  /** Whether this connection is active */
+  enabled: t.boolean().notNull().default(true),
+  /** Whether to enforce SSO (block email/password login for this org's domain) */
+  enforced: t.boolean().notNull().default(false),
+  /** Email domains that map to this SSO connection (e.g., ["acme.com"]) */
+  domains: t.json().$type<string[]>().notNull().default([]),
+  createdAt: t.timestamp().defaultNow().notNull(),
+  updatedAt: t
+    .timestamp({ mode: "date", withTimezone: true })
+    .$onUpdateFn(() => sql`now()`),
+}));
+
 // ─── Audit Log (SOC2 Compliance) ────────────────────────────────────────────
 
 export const auditLog = pgTable("audit_log", (t) => ({

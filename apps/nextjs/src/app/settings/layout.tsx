@@ -7,6 +7,7 @@ const settingsNav = [
   { label: "General", href: "/settings" },
   { label: "Profile", href: "/settings/profile" },
   { label: "Billing", href: "/settings/billing" },
+  { label: "Sessions", href: "/settings/sessions" },
 ];
 
 export default async function SettingsLayout({

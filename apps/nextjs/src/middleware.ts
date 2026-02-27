@@ -1,3 +1,5 @@
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 import createMiddleware from "next-intl/middleware";
 
 import { integrations } from "@gmacko/config";
@@ -6,15 +8,25 @@ import { routing } from "./i18n/routing";
 
 const intlMiddleware = createMiddleware(routing);
 
-export default function middleware(
-  request: Parameters<typeof intlMiddleware>[0],
-) {
-  // If i18n is disabled, skip locale routing
-  if (!integrations.i18n) {
-    return;
+export default function middleware(request: NextRequest) {
+  // Generate X-Request-ID for tracing
+  const requestId =
+    request.headers.get("x-request-id") ??
+    `req_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 9)}`;
+
+  // If i18n is enabled, run the locale middleware
+  if (integrations.i18n) {
+    const response = intlMiddleware(request);
+    if (response) {
+      response.headers.set("x-request-id", requestId);
+      return response;
+    }
   }
 
-  return intlMiddleware(request);
+  // For non-i18n paths or when i18n is disabled, pass through with request ID
+  const response = NextResponse.next();
+  response.headers.set("x-request-id", requestId);
+  return response;
 }
 
 export const config = {

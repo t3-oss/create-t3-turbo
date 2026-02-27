@@ -9,6 +9,7 @@ import { Toaster } from "@gmacko/ui/toast";
 import { env } from "~/env";
 import { TRPCReactProvider } from "~/trpc/react";
 import { AppCommandPalette } from "./_components/command-palette";
+import { WebSiteJsonLd } from "./_components/json-ld";
 import { Providers } from "./providers";
 
 import "~/app/styles.css";
@@ -53,6 +54,17 @@ const geistMono = Geist_Mono({
 export default function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <WebSiteJsonLd
+          name="gmacko.dev"
+          url={
+            env.VERCEL_ENV === "production"
+              ? "https://gmacko.dev"
+              : "http://localhost:3000"
+          }
+          description="Production-ready monorepo with auth, payments, analytics, and multi-platform support."
+        />
+      </head>
       <body
         className={cn(
           "bg-background text-foreground min-h-screen font-sans antialiased",

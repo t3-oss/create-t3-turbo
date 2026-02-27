@@ -28,6 +28,8 @@ can be replaced with a constructor argument.
 | `@gmacko/analytics` | `@gmacko/saas-analytics` | `@gmacko/config` (for `integrations.posthog` flag) | Replace with `initAnalytics({ enabled: boolean, ...config })` factory. |
 | `@gmacko/flags` | `@gmacko/feature-flags` | None (only React as peer dep) | Already standalone. Just publish. |
 | `@gmacko/rate-limit` | `@gmacko/rate-limit` | None (ioredis as optional peer) | Born standalone. Publish as-is. |
+| `@gmacko/cache` | `@gmacko/cache` | None (ioredis as optional peer) | Born standalone. Publish as-is. In-memory + Redis store pattern. |
+| `@gmacko/permissions` | `@gmacko/permissions` | None | Pure logic, no external deps. Publish as-is. |
 
 **Extraction Steps (per package):**
 
@@ -61,6 +63,9 @@ a store/provider interface instead of importing it directly.
 | `@gmacko/jobs` | None (in-memory only) | Already standalone. For the DB-backed option, accept a generic `JobStore` interface. |
 | `@gmacko/audit` | `@gmacko/db` for the audit_log table | Accept a generic `AuditStore` interface: `{ insert(event): Promise<string>, query(filters): Promise<AuditEntry[]> }`. Ship a Drizzle adapter. |
 | `@gmacko/webhooks` | `@gmacko/jobs` for delivery, `@gmacko/logging` | Accept a `{ enqueue(type, payload): Promise<string> }` interface. The logging dependency is already optional (falls back to console). |
+| `@gmacko/metering` | `@gmacko/logging` | Accept a generic `UsageStore` interface. Ship with in-memory default. Stripe integration via `onFlush` callback. |
+| `@gmacko/ws` | `@gmacko/logging`, `ws` (optional peer) | Accept a logger interface. The `ws` package is already optional with graceful fallback. |
+| `@gmacko/grpc` | `@gmacko/logging`, `@grpc/grpc-js` (optional peer) | Accept a logger interface. Proto-loader and grpc-js are already optional peers. |
 
 **Extraction Steps (per package):**
 
@@ -96,14 +101,19 @@ create more complexity than value.
 ## Extraction Priority Order
 
 1. **`@gmacko/rate-limit`** — Born standalone, zero deps, highest standalone value
-2. **`@gmacko/feature-flags`** — Already standalone, just needs publishing
-3. **`@gmacko/saas-logger`** — High reuse, single config flag to decouple
-4. **`@gmacko/saas-monitoring`** — Same pattern as logger, pairs well
-5. **`@gmacko/saas-analytics`** — Same pattern, completes the observability trio
-6. **`@gmacko/jobs`** — Generic queue pattern, useful everywhere
-7. **`@gmacko/email`** — SaaS email templates are universal
-8. **`@gmacko/webhooks`** — Webhook delivery is a common SaaS need
-9. **`@gmacko/audit`** — Audit logging is compliance-critical, benefits from standardization
+2. **`@gmacko/cache`** — Born standalone, in-memory + Redis, universal need
+3. **`@gmacko/permissions`** — Pure logic, zero deps, every app needs RBAC
+4. **`@gmacko/feature-flags`** — Already standalone, just needs publishing
+5. **`@gmacko/saas-logger`** — High reuse, single config flag to decouple
+6. **`@gmacko/saas-monitoring`** — Same pattern as logger, pairs well
+7. **`@gmacko/saas-analytics`** — Same pattern, completes the observability trio
+8. **`@gmacko/jobs`** — Generic queue pattern, useful everywhere
+9. **`@gmacko/metering`** — Usage-based billing is common in B2B SaaS
+10. **`@gmacko/email`** — SaaS email templates are universal
+11. **`@gmacko/webhooks`** — Webhook delivery is a common SaaS need
+12. **`@gmacko/ws`** — WebSocket server with rooms/auth, useful for collaborative features
+13. **`@gmacko/grpc`** — gRPC stubs for microservice communication
+14. **`@gmacko/audit`** — Audit logging is compliance-critical, benefits from standardization
 
 ## Versioning Strategy
 

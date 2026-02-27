@@ -1,0 +1,42 @@
+{
+  "name": "@gmacko/ws",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./src/index.ts"
+    }
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "dev": "tsc",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
+  },
+  "dependencies": {
+    "@gmacko/logging": "workspace:*"
+  },
+  "peerDependencies": {
+    "ws": ">=8"
+  },
+  "peerDependenciesMeta": {
+    "ws": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@gmacko/eslint-config": "workspace:*",
+    "@gmacko/prettier-config": "workspace:*",
+    "@gmacko/tsconfig": "workspace:*",
+    "@types/node": "catalog:",
+    "@types/ws": "^8.18.3",
+    "eslint": "catalog:",
+    "prettier": "catalog:",
+    "typescript": "catalog:"
+  },
+  "prettier": "@gmacko/prettier-config"
+}

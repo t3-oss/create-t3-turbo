@@ -1,0 +1,7 @@
+# Lint and format staged files
+pnpm lint-staged
+
+# Secrets scanning (runs only if gitleaks is installed)
+if command -v gitleaks &> /dev/null; then
+  gitleaks protect --staged --verbose
+fi

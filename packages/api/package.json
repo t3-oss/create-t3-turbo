@@ -18,6 +18,10 @@
     "./deprecation": {
       "types": "./dist/middleware/deprecation.d.ts",
       "default": "./src/middleware/deprecation.ts"
+    },
+    "./pagination": {
+      "types": "./dist/lib/pagination.d.ts",
+      "default": "./src/lib/pagination.ts"
     }
   },
   "license": "MIT",

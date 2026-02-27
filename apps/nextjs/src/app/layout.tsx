@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import { cn } from "@gmacko/ui";
+import { SkipToContent } from "@gmacko/ui/skip-to-content";
 import { ThemeProvider, ThemeToggle } from "@gmacko/ui/theme";
 import { Toaster } from "@gmacko/ui/toast";
 
@@ -58,9 +59,12 @@ export default function RootLayout(props: { children: React.ReactNode }) {
           geistMono.variable,
         )}
       >
+        <SkipToContent />
         <ThemeProvider>
           <Providers>
-            <TRPCReactProvider>{props.children}</TRPCReactProvider>
+            <TRPCReactProvider>
+              <main id="main-content">{props.children}</main>
+            </TRPCReactProvider>
           </Providers>
           <div className="fixed right-4 bottom-4 z-50">
             <ThemeToggle />

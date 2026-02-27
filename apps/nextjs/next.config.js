@@ -1,8 +1,13 @@
+import bundleAnalyzer from "@next/bundle-analyzer";
 import { withSentryConfig } from "@sentry/nextjs";
 import { createJiti } from "jiti";
 import createNextIntlPlugin from "next-intl/plugin";
 
 import { integrations } from "@gmacko/config";
+
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+});
 
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
@@ -114,8 +119,11 @@ const sentryConfig = {
   automaticVercelMonitors: true,
 };
 
-// Apply i18n plugin conditionally, then Sentry if enabled
-const configWithI18n = integrations.i18n ? withNextIntl(config) : config;
+// Apply plugins: bundle analyzer → i18n → Sentry
+const configWithAnalyzer = withBundleAnalyzer(config);
+const configWithI18n = integrations.i18n
+  ? withNextIntl(configWithAnalyzer)
+  : configWithAnalyzer;
 
 export default integrations.sentry
   ? withSentryConfig(configWithI18n, sentryConfig)

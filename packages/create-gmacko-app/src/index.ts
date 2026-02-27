@@ -2,10 +2,10 @@ import { Command } from "commander";
 import pc from "picocolors";
 import validateNpmPackageName from "validate-npm-package-name";
 
-import type { CliOptions, IntegrationConfig } from "./types.js";
+import type { CliOptions, IntegrationConfig, LlmProvider } from "./types.js";
 import { getDefaultOptions, runPrompts } from "./prompts.js";
 import { scaffold } from "./scaffold.js";
-import { DEFAULT_INTEGRATIONS } from "./types.js";
+import { DEFAULT_INTEGRATIONS, DEFAULT_LANDING_PAGE } from "./types.js";
 
 const program = new Command();
 
@@ -34,6 +34,14 @@ program
   .option("--realtime-provider <provider>", "Realtime provider (pusher, ably)")
   .option("--storage-provider <provider>", "Storage provider (uploadthing)")
   .option("--package-scope <scope>", "Package scope (default: @gmacko)")
+  .option(
+    "--landing-llm <provider>",
+    "Generate custom landing page with LLM (claude, codex, gemini)",
+  )
+  .option(
+    "--landing-prompt <prompt>",
+    "Product description for AI landing page generation",
+  )
   .action(async (appName: string, opts: Record<string, unknown>) => {
     const validation = validateNpmPackageName(appName);
     if (!validation.validForNewPackages) {
@@ -67,6 +75,15 @@ program
           opts.realtimeProvider as string | undefined,
           opts.storageProvider as string | undefined,
         );
+      }
+
+      // Landing page generation via CLI flags
+      if (opts.landingLlm) {
+        options.landingPage = {
+          generate: true,
+          provider: opts.landingLlm as LlmProvider,
+          prompt: (opts.landingPrompt as string) ?? "",
+        };
       }
     } else {
       options = await runPrompts(appName, {

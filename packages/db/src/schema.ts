@@ -73,4 +73,76 @@ export const UpdateUserPreferencesSchema =
     userId: true,
   });
 
+// ─── Subscription / Billing ────────────────────────────────────────────────
+
+export const subscriptionPlanEnum = [
+  "free",
+  "starter",
+  "pro",
+  "enterprise",
+] as const;
+export type SubscriptionPlan = (typeof subscriptionPlanEnum)[number];
+
+export const subscriptionStatusEnum = [
+  "active",
+  "canceled",
+  "past_due",
+  "trialing",
+  "paused",
+  "incomplete",
+] as const;
+export type SubscriptionStatus = (typeof subscriptionStatusEnum)[number];
+
+export const subscription = pgTable("subscription", (t) => ({
+  id: t.uuid().notNull().primaryKey().defaultRandom(),
+  userId: t
+    .text()
+    .notNull()
+    .unique()
+    .references(() => user.id, { onDelete: "cascade" }),
+  stripeCustomerId: t.varchar({ length: 255 }),
+  stripeSubscriptionId: t.varchar({ length: 255 }),
+  stripePriceId: t.varchar({ length: 255 }),
+  plan: t
+    .varchar({ length: 20 })
+    .$type<SubscriptionPlan>()
+    .notNull()
+    .default("free"),
+  status: t
+    .varchar({ length: 20 })
+    .$type<SubscriptionStatus>()
+    .notNull()
+    .default("active"),
+  currentPeriodStart: t.timestamp({ mode: "date", withTimezone: true }),
+  currentPeriodEnd: t.timestamp({ mode: "date", withTimezone: true }),
+  cancelAtPeriodEnd: t.boolean().notNull().default(false),
+  createdAt: t.timestamp().defaultNow().notNull(),
+  updatedAt: t
+    .timestamp({ mode: "date", withTimezone: true })
+    .$onUpdateFn(() => sql`now()`),
+}));
+
+export const CreateSubscriptionSchema = createInsertSchema(subscription).omit({
+  id: true,
+  createdAt: true,
+  updatedAt: true,
+});
+
+// ─── Purchase / One-Time Payment ───────────────────────────────────────────
+
+export const purchase = pgTable("purchase", (t) => ({
+  id: t.uuid().notNull().primaryKey().defaultRandom(),
+  userId: t
+    .text()
+    .notNull()
+    .references(() => user.id, { onDelete: "cascade" }),
+  stripePaymentIntentId: t.varchar({ length: 255 }),
+  stripeProductId: t.varchar({ length: 255 }),
+  amount: t.integer().notNull(),
+  currency: t.varchar({ length: 3 }).notNull().default("usd"),
+  status: t.varchar({ length: 20 }).notNull().default("succeeded"),
+  metadata: t.json().$type<Record<string, string>>(),
+  createdAt: t.timestamp().defaultNow().notNull(),
+}));
+
 export * from "./auth-schema";

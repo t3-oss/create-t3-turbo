@@ -14,21 +14,21 @@ import "~/app/styles.css";
 export const metadata: Metadata = {
   metadataBase: new URL(
     env.VERCEL_ENV === "production"
-      ? "https://turbo.t3.gg"
+      ? "https://gmacko.dev"
       : "http://localhost:3000",
   ),
-  title: "Create T3 Turbo",
-  description: "Simple monorepo with shared backend for web & mobile apps",
+  title: "gmacko.dev — Full-Stack SaaS Starter",
+  description:
+    "Production-ready monorepo with auth, payments, analytics, and multi-platform support. Ship faster with type-safe full-stack scaffolding.",
   openGraph: {
-    title: "Create T3 Turbo",
-    description: "Simple monorepo with shared backend for web & mobile apps",
-    url: "https://create-t3-turbo.vercel.app",
-    siteName: "Create T3 Turbo",
+    title: "gmacko.dev — Full-Stack SaaS Starter",
+    description:
+      "Production-ready monorepo with auth, payments, analytics, and multi-platform support.",
+    url: "https://gmacko.dev",
+    siteName: "gmacko.dev",
   },
   twitter: {
     card: "summary_large_image",
-    site: "@jullerino",
-    creator: "@jullerino",
   },
 };
 
@@ -62,7 +62,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
           <Providers>
             <TRPCReactProvider>{props.children}</TRPCReactProvider>
           </Providers>
-          <div className="absolute right-4 bottom-4">
+          <div className="fixed right-4 bottom-4 z-50">
             <ThemeToggle />
           </div>
           <Toaster />

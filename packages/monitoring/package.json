@@ -14,6 +14,10 @@
     "./native": {
       "types": "./dist/native/index.d.ts",
       "default": "./src/native/index.ts"
+    },
+    "./web/hooks": {
+      "types": "./dist/web/hooks.d.ts",
+      "default": "./src/web/hooks.tsx"
     }
   },
   "license": "MIT",

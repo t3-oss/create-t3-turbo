@@ -1,0 +1,135 @@
+name: Dependency Health
+
+on:
+  # Run weekly on Monday at 9am UTC
+  schedule:
+    - cron: "0 9 * * 1"
+  # Allow manual trigger
+  workflow_dispatch:
+  # Run on PRs that modify dependencies
+  pull_request:
+    paths:
+      - "package.json"
+      - "**/package.json"
+      - "pnpm-lock.yaml"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  audit:
+    name: Vulnerability Audit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run audit
+        run: pnpm audit --prod
+        continue-on-error: true
+
+      - name: Check for critical vulnerabilities
+        run: |
+          # Fail the job only on critical/high severity vulnerabilities
+          pnpm audit --prod --audit-level=high || {
+            echo "::error::High or critical vulnerabilities found. Run 'pnpm audit' locally for details."
+            exit 1
+          }
+
+  outdated:
+    name: Outdated Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Check outdated dependencies
+        run: |
+          echo "## Outdated Dependencies" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          pnpm outdated --recursive 2>/dev/null | tee /tmp/outdated.txt || true
+          if [ -s /tmp/outdated.txt ]; then
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            cat /tmp/outdated.txt >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+          else
+            echo "All dependencies are up to date! :white_check_mark:" >> $GITHUB_STEP_SUMMARY
+          fi
+
+  bundle-size:
+    name: Bundle Size Check
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm build
+        env:
+          SKIP_ENV_VALIDATION: true
+
+      - name: Check bundle size
+        run: |
+          echo "## Bundle Size Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Extract route sizes from Next.js build output
+          BUILD_DIR="apps/nextjs/.next"
+          if [ -d "$BUILD_DIR" ]; then
+            # Report total JS bundle size
+            TOTAL_SIZE=$(find "$BUILD_DIR/static" -name "*.js" -exec wc -c {} + 2>/dev/null | tail -1 | awk '{print $1}')
+            TOTAL_KB=$((${TOTAL_SIZE:-0} / 1024))
+
+            echo "| Metric | Size |" >> $GITHUB_STEP_SUMMARY
+            echo "|--------|------|" >> $GITHUB_STEP_SUMMARY
+            echo "| Total JS (static) | ${TOTAL_KB} KB |" >> $GITHUB_STEP_SUMMARY
+
+            # Budget check: warn if total JS exceeds 500KB
+            BUDGET_KB=500
+            if [ "$TOTAL_KB" -gt "$BUDGET_KB" ]; then
+              echo "" >> $GITHUB_STEP_SUMMARY
+              echo ":warning: **Bundle size exceeds ${BUDGET_KB}KB budget** (${TOTAL_KB}KB)" >> $GITHUB_STEP_SUMMARY
+              echo "::warning::Bundle size ${TOTAL_KB}KB exceeds ${BUDGET_KB}KB budget"
+            else
+              echo "" >> $GITHUB_STEP_SUMMARY
+              echo ":white_check_mark: Bundle size within ${BUDGET_KB}KB budget" >> $GITHUB_STEP_SUMMARY
+            fi
+          fi

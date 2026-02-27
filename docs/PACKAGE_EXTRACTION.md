@@ -30,6 +30,7 @@ can be replaced with a constructor argument.
 | `@gmacko/rate-limit` | `@gmacko/rate-limit` | None (ioredis as optional peer) | Born standalone. Publish as-is. |
 | `@gmacko/cache` | `@gmacko/cache` | None (ioredis as optional peer) | Born standalone. Publish as-is. In-memory + Redis store pattern. |
 | `@gmacko/permissions` | `@gmacko/permissions` | None | Pure logic, no external deps. Publish as-is. |
+| `@gmacko/metrics` | `@gmacko/metrics` | None (prom-client as optional peer) | Born standalone. In-memory fallback + Prometheus integration. Publish as-is. |
 
 **Extraction Steps (per package):**
 
@@ -103,17 +104,18 @@ create more complexity than value.
 1. **`@gmacko/rate-limit`** — Born standalone, zero deps, highest standalone value
 2. **`@gmacko/cache`** — Born standalone, in-memory + Redis, universal need
 3. **`@gmacko/permissions`** — Pure logic, zero deps, every app needs RBAC
-4. **`@gmacko/feature-flags`** — Already standalone, just needs publishing
-5. **`@gmacko/saas-logger`** — High reuse, single config flag to decouple
-6. **`@gmacko/saas-monitoring`** — Same pattern as logger, pairs well
-7. **`@gmacko/saas-analytics`** — Same pattern, completes the observability trio
-8. **`@gmacko/jobs`** — Generic queue pattern, useful everywhere
-9. **`@gmacko/metering`** — Usage-based billing is common in B2B SaaS
-10. **`@gmacko/email`** — SaaS email templates are universal
-11. **`@gmacko/webhooks`** — Webhook delivery is a common SaaS need
-12. **`@gmacko/ws`** — WebSocket server with rooms/auth, useful for collaborative features
-13. **`@gmacko/grpc`** — gRPC stubs for microservice communication
-14. **`@gmacko/audit`** — Audit logging is compliance-critical, benefits from standardization
+4. **`@gmacko/metrics`** — Born standalone, Prometheus + in-memory, every service needs metrics
+5. **`@gmacko/feature-flags`** — Already standalone, just needs publishing
+6. **`@gmacko/saas-logger`** — High reuse, single config flag to decouple
+7. **`@gmacko/saas-monitoring`** — Same pattern as logger, pairs well
+8. **`@gmacko/saas-analytics`** — Same pattern, completes the observability trio
+9. **`@gmacko/jobs`** — Generic queue pattern, useful everywhere
+10. **`@gmacko/metering`** — Usage-based billing is common in B2B SaaS
+11. **`@gmacko/email`** — SaaS email templates are universal
+12. **`@gmacko/webhooks`** — Webhook delivery is a common SaaS need
+13. **`@gmacko/ws`** — WebSocket server with rooms/auth, useful for collaborative features
+14. **`@gmacko/grpc`** — gRPC stubs for microservice communication
+15. **`@gmacko/audit`** — Audit logging is compliance-critical, benefits from standardization
 
 ## Versioning Strategy
 

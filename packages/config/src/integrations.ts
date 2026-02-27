@@ -45,6 +45,9 @@ export const integrations = {
   // Caching layer — Redis in production, in-memory in dev (default OFF)
   cache: false,
 
+  // Application metrics — Prometheus endpoint at /api/metrics (default OFF)
+  metrics: false,
+
   // Maintenance mode — redirects all traffic to /maintenance (default OFF)
   maintenance: false,
 } as const;
@@ -64,4 +67,5 @@ export const isOpenApiEnabled = () => integrations.openapi;
 export const isWebSocketEnabled = () => integrations.websocket;
 export const isGrpcEnabled = () => integrations.grpc;
 export const isCacheEnabled = () => integrations.cache;
+export const isMetricsEnabled = () => integrations.metrics;
 export const isMaintenanceEnabled = () => integrations.maintenance;

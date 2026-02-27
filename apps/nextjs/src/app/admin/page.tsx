@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 
+import { PageHeader } from "@gmacko/ui/page-header";
 import { Skeleton } from "@gmacko/ui/skeleton";
 
 import { HydrateClient, prefetch, trpc } from "~/trpc/server";
@@ -35,7 +36,13 @@ export default async function AdminPage() {
   return (
     <HydrateClient>
       <div className="p-6">
-        <h1 className="mb-6 text-3xl font-bold">Admin Dashboard</h1>
+        <PageHeader
+          title="Admin Dashboard"
+          breadcrumbs={[
+            { label: "Admin", href: "/admin" },
+            { label: "Dashboard" },
+          ]}
+        />
         <Suspense fallback={<AdminDashboardSkeleton />}>
           <AdminDashboard />
         </Suspense>

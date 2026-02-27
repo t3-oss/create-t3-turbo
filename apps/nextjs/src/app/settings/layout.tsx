@@ -2,13 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 
 import { getSession } from "~/auth/server";
-
-const settingsNav = [
-  { label: "General", href: "/settings" },
-  { label: "Profile", href: "/settings/profile" },
-  { label: "Billing", href: "/settings/billing" },
-  { label: "Sessions", href: "/settings/sessions" },
-];
+import { SETTINGS_NAV } from "~/constants";
 
 export default async function SettingsLayout({
   children,
@@ -27,7 +21,7 @@ export default async function SettingsLayout({
         {/* Sidebar Navigation */}
         <aside className="w-full shrink-0 md:w-48">
           <nav className="flex gap-1 md:flex-col">
-            {settingsNav.map((item) => (
+            {SETTINGS_NAV.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}

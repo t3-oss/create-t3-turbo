@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 
+import { PageHeader } from "@gmacko/ui/page-header";
 import { Skeleton } from "@gmacko/ui/skeleton";
 
 import { HydrateClient, prefetch, trpc } from "~/trpc/server";
@@ -21,7 +22,14 @@ export default async function AdminUsersPage() {
   return (
     <HydrateClient>
       <div className="p-6">
-        <h1 className="mb-6 text-3xl font-bold">User Management</h1>
+        <PageHeader
+          title="User Management"
+          description="View and manage all users in your application."
+          breadcrumbs={[
+            { label: "Admin", href: "/admin" },
+            { label: "Users" },
+          ]}
+        />
         <Suspense fallback={<UsersListSkeleton />}>
           <UsersList />
         </Suspense>

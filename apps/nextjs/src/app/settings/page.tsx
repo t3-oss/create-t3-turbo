@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import dynamic from "next/dynamic";
 
+import { PageHeader } from "@gmacko/ui/page-header";
 import { Skeleton } from "@gmacko/ui/skeleton";
 
 import { PreferencesSection } from "./_components/preferences";
@@ -15,10 +16,14 @@ const ApiKeysSection = dynamic(
 export default function SettingsPage() {
   return (
     <div>
-      <h1 className="mb-2 text-3xl font-bold">Settings</h1>
-      <p className="text-muted-foreground mb-8">
-        Manage your preferences, notifications, and API keys.
-      </p>
+      <PageHeader
+        title="Settings"
+        description="Manage your preferences, notifications, and API keys."
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Settings" },
+        ]}
+      />
 
       <div className="space-y-8">
         <PreferencesSection />

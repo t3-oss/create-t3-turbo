@@ -145,4 +145,81 @@ export const purchase = pgTable("purchase", (t) => ({
   createdAt: t.timestamp().defaultNow().notNull(),
 }));
 
+// ─── Organizations / Multi-Tenancy ──────────────────────────────────────────
+
+export const organizationRoleEnum = [
+  "owner",
+  "admin",
+  "member",
+] as const;
+export type OrganizationRole = (typeof organizationRoleEnum)[number];
+
+export const organization = pgTable("organization", (t) => ({
+  id: t.uuid().notNull().primaryKey().defaultRandom(),
+  name: t.varchar({ length: 256 }).notNull(),
+  slug: t.varchar({ length: 256 }).notNull().unique(),
+  logo: t.text(),
+  createdAt: t.timestamp().defaultNow().notNull(),
+  updatedAt: t
+    .timestamp({ mode: "date", withTimezone: true })
+    .$onUpdateFn(() => sql`now()`),
+}));
+
+export const organizationMember = pgTable("organization_member", (t) => ({
+  id: t.uuid().notNull().primaryKey().defaultRandom(),
+  organizationId: t
+    .uuid()
+    .notNull()
+    .references(() => organization.id, { onDelete: "cascade" }),
+  userId: t
+    .text()
+    .notNull()
+    .references(() => user.id, { onDelete: "cascade" }),
+  role: t
+    .varchar({ length: 20 })
+    .$type<OrganizationRole>()
+    .notNull()
+    .default("member"),
+  createdAt: t.timestamp().defaultNow().notNull(),
+}));
+
+export const organizationInvite = pgTable("organization_invite", (t) => ({
+  id: t.uuid().notNull().primaryKey().defaultRandom(),
+  organizationId: t
+    .uuid()
+    .notNull()
+    .references(() => organization.id, { onDelete: "cascade" }),
+  email: t.varchar({ length: 256 }).notNull(),
+  role: t
+    .varchar({ length: 20 })
+    .$type<OrganizationRole>()
+    .notNull()
+    .default("member"),
+  invitedBy: t
+    .text()
+    .notNull()
+    .references(() => user.id, { onDelete: "cascade" }),
+  token: t.text().notNull().unique(),
+  expiresAt: t.timestamp({ mode: "date", withTimezone: true }).notNull(),
+  acceptedAt: t.timestamp({ mode: "date", withTimezone: true }),
+  createdAt: t.timestamp().defaultNow().notNull(),
+}));
+
+// ─── Audit Log (SOC2 Compliance) ────────────────────────────────────────────
+
+export const auditLog = pgTable("audit_log", (t) => ({
+  id: t.uuid().notNull().primaryKey().defaultRandom(),
+  userId: t.text().references(() => user.id, { onDelete: "set null" }),
+  organizationId: t
+    .uuid()
+    .references(() => organization.id, { onDelete: "set null" }),
+  action: t.varchar({ length: 100 }).notNull(),
+  resource: t.varchar({ length: 100 }).notNull(),
+  resourceId: t.text(),
+  metadata: t.json().$type<Record<string, unknown>>(),
+  ipAddress: t.varchar({ length: 45 }),
+  userAgent: t.text(),
+  createdAt: t.timestamp().defaultNow().notNull(),
+}));
+
 export * from "./auth-schema";

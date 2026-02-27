@@ -15,3 +15,5 @@ export {
   validateVersionHeader,
 } from "./versioning";
 export type { VersionedContext } from "./versioning";
+
+export { rateLimitMiddleware, rateLimits } from "./rate-limit";

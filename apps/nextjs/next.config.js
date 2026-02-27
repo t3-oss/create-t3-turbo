@@ -31,7 +31,21 @@ const config = {
     "@gmacko/validators",
   ],
 
-  typescript: { ignoreBuildErrors: true },
+  // Allow external avatar images from OAuth providers
+  images: {
+    remotePatterns: [
+      { protocol: "https", hostname: "**.googleusercontent.com" },
+      { protocol: "https", hostname: "avatars.githubusercontent.com" },
+      { protocol: "https", hostname: "cdn.discordapp.com" },
+      { protocol: "https", hostname: "graph.microsoft.com" },
+    ],
+  },
+
+  // React Compiler for automatic memoization (React 19+)
+  experimental: {
+    reactCompiler: true,
+    ppr: "incremental",
+  },
 
   // Security headers
   async headers() {

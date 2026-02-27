@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
+import Image from "next/image";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import { Button } from "@gmacko/ui/button";
@@ -124,9 +125,11 @@ function UserRow({
     <div className="grid grid-cols-12 items-center gap-4 px-4 py-3">
       <div className="col-span-4 flex items-center gap-3">
         {user.image ? (
-          <img
+          <Image
             src={user.image}
             alt={user.name}
+            width={40}
+            height={40}
             className="size-10 rounded-full"
           />
         ) : (

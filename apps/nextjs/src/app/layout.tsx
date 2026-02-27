@@ -8,6 +8,7 @@ import { Toaster } from "@gmacko/ui/toast";
 
 import { env } from "~/env";
 import { TRPCReactProvider } from "~/trpc/react";
+import { AppCommandPalette } from "./_components/command-palette";
 import { Providers } from "./providers";
 
 import "~/app/styles.css";
@@ -64,6 +65,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
           <Providers>
             <TRPCReactProvider>
               <main id="main-content">{props.children}</main>
+              <AppCommandPalette />
             </TRPCReactProvider>
           </Providers>
           <div className="fixed right-4 bottom-4 z-50">

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 import { Button } from "@gmacko/ui/button";
 import { Input } from "@gmacko/ui/input";
@@ -33,10 +34,11 @@ export function ProfileForm({ user }: ProfileFormProps) {
         <div className="flex items-center gap-6">
           <div className="bg-muted flex h-20 w-20 items-center justify-center overflow-hidden rounded-full">
             {user.image ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
+              <Image
                 src={user.image}
                 alt={user.name}
+                width={80}
+                height={80}
                 className="h-full w-full object-cover"
               />
             ) : (

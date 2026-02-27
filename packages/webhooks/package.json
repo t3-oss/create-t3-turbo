@@ -1,38 +1,26 @@
 {
-  "name": "@gmacko/logging",
+  "name": "@gmacko/webhooks",
   "private": true,
   "type": "module",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./src/index.ts"
-    },
-    "./context": {
-      "types": "./dist/context.d.ts",
-      "default": "./src/context.ts"
     }
   },
   "license": "MIT",
   "scripts": {
     "build": "tsc",
     "clean": "git clean -xdf .cache .turbo dist node_modules",
-    "dev": "tsc --watch",
+    "dev": "tsc",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
-    "@gmacko/config": "workspace:*",
-    "pino": "^9.6.0",
-    "pino-pretty": "^13.0.0"
-  },
-  "peerDependencies": {
-    "@sentry/nextjs": ">=8.0.0"
-  },
-  "peerDependenciesMeta": {
-    "@sentry/nextjs": {
-      "optional": true
-    }
+    "@gmacko/db": "workspace:*",
+    "@gmacko/jobs": "workspace:*",
+    "@gmacko/logging": "workspace:*"
   },
   "devDependencies": {
     "@gmacko/eslint-config": "workspace:*",

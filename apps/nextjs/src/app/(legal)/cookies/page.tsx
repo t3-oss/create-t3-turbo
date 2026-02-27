@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 
 const APP_NAME = process.env.APP_NAME ?? "Gmacko";
 
+export const dynamic = "force-static";
+
 export const metadata: Metadata = {
   title: `Cookie Policy — ${APP_NAME}`,
 };
@@ -11,7 +13,7 @@ export default function CookiePolicyPage() {
     <div>
       <h1>Cookie Policy</h1>
       <p className="text-muted-foreground text-sm">
-        Last updated: {new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+        Last updated: February 2026
       </p>
 
       <h2>1. What Are Cookies</h2>

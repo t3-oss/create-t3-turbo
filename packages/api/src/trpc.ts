@@ -7,6 +7,7 @@ import type { Auth } from "@gmacko/auth";
 import { and, eq, isNull } from "@gmacko/db";
 import { db } from "@gmacko/db/client";
 import { apiKeys, user } from "@gmacko/db/schema";
+import { createLogger } from "@gmacko/logging";
 
 export type ApiKeyPermission = "read" | "write" | "delete" | "admin";
 
@@ -134,7 +135,9 @@ export const createTRPCRouter = t.router;
  * You can remove this if you don't like it, but it can help catch unwanted waterfalls by simulating
  * network latency that would occur in production but not in local development.
  */
-const timingMiddleware = t.middleware(async ({ next, path }) => {
+const trpcLogger = createLogger({ component: "trpc" });
+
+const timingMiddleware = t.middleware(async ({ next, path, ctx }) => {
   const start = Date.now();
 
   if (t._config.isDev) {
@@ -145,8 +148,14 @@ const timingMiddleware = t.middleware(async ({ next, path }) => {
 
   const result = await next();
 
-  const end = Date.now();
-  console.log(`[TRPC] ${path} took ${end - start}ms to execute`);
+  const durationMs = Date.now() - start;
+  const userId = ctx.session?.user?.id;
+
+  if (durationMs > 3000) {
+    trpcLogger.warn({ path, durationMs, userId }, "Slow tRPC procedure");
+  } else {
+    trpcLogger.info({ path, durationMs, userId }, `${path} completed`);
+  }
 
   return result;
 });

@@ -1,39 +1,23 @@
 {
-  "name": "@gmacko/logging",
+  "name": "@gmacko/rate-limit",
   "private": true,
   "type": "module",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./src/index.ts"
-    },
-    "./context": {
-      "types": "./dist/context.d.ts",
-      "default": "./src/context.ts"
     }
   },
   "license": "MIT",
   "scripts": {
     "build": "tsc",
     "clean": "git clean -xdf .cache .turbo dist node_modules",
-    "dev": "tsc --watch",
+    "dev": "tsc",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
-  "dependencies": {
-    "@gmacko/config": "workspace:*",
-    "pino": "^9.6.0",
-    "pino-pretty": "^13.0.0"
-  },
-  "peerDependencies": {
-    "@sentry/nextjs": ">=8.0.0"
-  },
-  "peerDependenciesMeta": {
-    "@sentry/nextjs": {
-      "optional": true
-    }
-  },
+  "dependencies": {},
   "devDependencies": {
     "@gmacko/eslint-config": "workspace:*",
     "@gmacko/prettier-config": "workspace:*",
@@ -42,6 +26,14 @@
     "eslint": "catalog:",
     "prettier": "catalog:",
     "typescript": "catalog:"
+  },
+  "peerDependencies": {
+    "ioredis": ">=5"
+  },
+  "peerDependenciesMeta": {
+    "ioredis": {
+      "optional": true
+    }
   },
   "prettier": "@gmacko/prettier-config"
 }

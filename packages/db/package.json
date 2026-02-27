@@ -18,6 +18,10 @@
     "./schema": {
       "types": "./dist/schema.d.ts",
       "default": "./src/schema.ts"
+    },
+    "./tenant": {
+      "types": "./dist/tenant.d.ts",
+      "default": "./src/tenant.ts"
     }
   },
   "license": "MIT",

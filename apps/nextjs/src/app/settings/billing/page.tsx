@@ -1,10 +1,10 @@
 import { Suspense } from "react";
 import dynamic from "next/dynamic";
-import { redirect } from "next/navigation";
 
+import { PageHeader } from "@gmacko/ui/page-header";
 import { Skeleton } from "@gmacko/ui/skeleton";
 
-import { getSession } from "~/auth/server";
+import { requireAuth } from "~/lib/guards";
 
 const SubscriptionManager = dynamic(
   () =>
@@ -26,22 +26,23 @@ function SubscriptionManagerSkeleton() {
 }
 
 export default async function BillingPage() {
-  const session = await getSession();
-
-  if (!session) {
-    redirect("/");
-  }
+  await requireAuth();
 
   return (
-    <main className="container mx-auto max-w-4xl px-4 py-8">
-      <h1 className="mb-2 text-3xl font-bold">Billing & Subscription</h1>
-      <p className="text-muted-foreground mb-8">
-        Manage your subscription plan and billing information.
-      </p>
+    <div>
+      <PageHeader
+        title="Billing & Subscription"
+        description="Manage your subscription plan and billing information."
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Settings", href: "/settings" },
+          { label: "Billing" },
+        ]}
+      />
 
       <Suspense fallback={<SubscriptionManagerSkeleton />}>
         <SubscriptionManager />
       </Suspense>
-    </main>
+    </div>
   );
 }

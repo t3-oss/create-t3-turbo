@@ -1,21 +1,22 @@
-import { redirect } from "next/navigation";
+import { PageHeader } from "@gmacko/ui/page-header";
 
-import { getSession } from "~/auth/server";
+import { requireAuth } from "~/lib/guards";
 import { ProfileForm } from "./_components/profile-form";
 
 export default async function ProfilePage() {
-  const session = await getSession();
-
-  if (!session) {
-    redirect("/");
-  }
+  const session = await requireAuth();
 
   return (
-    <main className="container mx-auto max-w-4xl px-4 py-8">
-      <h1 className="mb-2 text-3xl font-bold">Profile</h1>
-      <p className="text-muted-foreground mb-8">
-        Manage your personal information and account settings.
-      </p>
+    <div>
+      <PageHeader
+        title="Profile"
+        description="Manage your personal information and account settings."
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Settings", href: "/settings" },
+          { label: "Profile" },
+        ]}
+      />
 
       <ProfileForm
         user={{
@@ -24,6 +25,6 @@ export default async function ProfilePage() {
           image: session.user.image ?? undefined,
         }}
       />
-    </main>
+    </div>
   );
 }

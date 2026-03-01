@@ -205,6 +205,35 @@ export const organizationInvite = pgTable("organization_invite", (t) => ({
   createdAt: t.timestamp().defaultNow().notNull(),
 }));
 
+// ─── In-App Notifications ────────────────────────────────────────────────────
+
+export const notificationTypeEnum = [
+  "info",
+  "success",
+  "warning",
+  "error",
+] as const;
+export type NotificationType = (typeof notificationTypeEnum)[number];
+
+export const notification = pgTable("notification", (t) => ({
+  id: t.uuid().notNull().primaryKey().defaultRandom(),
+  userId: t
+    .text()
+    .notNull()
+    .references(() => user.id, { onDelete: "cascade" }),
+  type: t
+    .varchar({ length: 20 })
+    .$type<NotificationType>()
+    .notNull()
+    .default("info"),
+  title: t.varchar({ length: 256 }).notNull(),
+  body: t.text().notNull(),
+  /** Optional link to navigate to when clicked */
+  href: t.text(),
+  read: t.boolean().notNull().default(false),
+  createdAt: t.timestamp().defaultNow().notNull(),
+}));
+
 // ─── SSO / SAML Connections (Enterprise) ────────────────────────────────────
 
 export const ssoConnection = pgTable("sso_connection", (t) => ({

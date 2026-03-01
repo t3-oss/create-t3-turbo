@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 
 import { getSession } from "~/auth/server";
 import { AppSidebar, MobileSidebar } from "~/components/app-sidebar";
+import { NotificationBell } from "~/components/notification-bell";
 
 /**
  * Dashboard layout — wraps all authenticated app pages.
@@ -51,6 +52,7 @@ export default async function DashboardLayout({
               to search
             </div>
           </div>
+          <NotificationBell />
           <Link
             href="/settings"
             prefetch

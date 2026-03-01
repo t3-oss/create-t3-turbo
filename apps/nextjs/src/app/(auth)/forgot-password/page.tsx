@@ -29,7 +29,7 @@ export default function ForgotPasswordPage() {
     try {
       await authClient.forgetPassword({
         email,
-        redirectTo: "/sign-in",
+        redirectTo: "/reset-password",
       });
     } catch {
       // Intentionally swallow — don't reveal if email exists

@@ -67,7 +67,7 @@ export default function ForgotPasswordPage() {
           reset link.
         </p>
         <Button variant="outline" className="mt-6" asChild>
-          <Link href="/sign-in">Back to sign in</Link>
+          <Link href="/sign-in" prefetch>Back to sign in</Link>
         </Button>
       </div>
     );
@@ -103,7 +103,7 @@ export default function ForgotPasswordPage() {
 
       <p className="text-muted-foreground mt-6 text-center text-sm">
         Remember your password?{" "}
-        <Link href="/sign-in" className="text-foreground font-medium hover:underline">
+        <Link href="/sign-in" prefetch className="text-foreground font-medium hover:underline">
           Sign in
         </Link>
       </p>

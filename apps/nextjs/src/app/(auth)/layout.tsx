@@ -11,7 +11,7 @@ import { APP_NAME } from "~/constants";
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center px-4 py-12">
-      <Link href="/" className="mb-8 flex items-center gap-2 text-lg font-bold">
+      <Link href="/" prefetch className="mb-8 flex items-center gap-2 text-lg font-bold">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"

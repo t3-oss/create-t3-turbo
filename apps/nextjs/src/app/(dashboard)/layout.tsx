@@ -2,7 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 
 import { getSession } from "~/auth/server";
-import { AppSidebar } from "~/components/app-sidebar";
+import { AppSidebar, MobileSidebar } from "~/components/app-sidebar";
 
 /**
  * Dashboard layout — wraps all authenticated app pages.
@@ -12,9 +12,14 @@ import { AppSidebar } from "~/components/app-sidebar";
  *   (dashboard)/dashboard/    → main dashboard page
  *   (dashboard)/projects/     → projects list, create, detail
  *   (dashboard)/team/         → team management
+ *   (dashboard)/analytics/    → usage analytics
  *
  * This route group does NOT affect the URL — /dashboard, /projects, /team
  * all appear at the root level.
+ *
+ * Navigation preloading:
+ * - All <Link> components use prefetch (Next.js default) for instant nav
+ * - AppSidebar also calls router.prefetch() on mount for key routes
  */
 export default async function DashboardLayout({
   children,
@@ -33,6 +38,9 @@ export default async function DashboardLayout({
       <div className="flex flex-1 flex-col overflow-auto">
         {/* Top bar */}
         <header className="bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-40 flex h-14 items-center gap-4 border-b px-6 backdrop-blur">
+          {/* Mobile hamburger — hidden on desktop */}
+          <MobileSidebar user={session.user} />
+
           <div className="flex flex-1 items-center gap-4">
             {/* Search placeholder — wire up to command palette */}
             <div className="text-muted-foreground flex-1 text-sm">
@@ -45,6 +53,7 @@ export default async function DashboardLayout({
           </div>
           <Link
             href="/settings"
+            prefetch
             className="text-muted-foreground hover:text-foreground text-sm transition-colors"
           >
             Settings

@@ -33,18 +33,21 @@ export default function MarketingLayout({
           <nav className="hidden items-center gap-6 md:flex">
             <Link
               href="/pricing"
+              prefetch
               className="text-muted-foreground hover:text-foreground text-sm transition-colors"
             >
               Pricing
             </Link>
             <Link
               href="/blog"
+              prefetch
               className="text-muted-foreground hover:text-foreground text-sm transition-colors"
             >
               Blog
             </Link>
             <Link
               href="/about"
+              prefetch
               className="text-muted-foreground hover:text-foreground text-sm transition-colors"
             >
               About
@@ -53,10 +56,10 @@ export default function MarketingLayout({
 
           <div className="flex items-center gap-3">
             <Button variant="outline" size="sm" asChild>
-              <Link href="/dashboard">Sign In</Link>
+              <Link href="/sign-in" prefetch>Sign In</Link>
             </Button>
             <Button size="sm" asChild>
-              <Link href="/dashboard">Get Started</Link>
+              <Link href="/sign-up" prefetch>Get Started</Link>
             </Button>
           </div>
         </div>
@@ -74,18 +77,21 @@ export default function MarketingLayout({
           <nav className="flex gap-4">
             <Link
               href="/privacy"
+              prefetch
               className="text-muted-foreground hover:text-foreground text-sm transition-colors"
             >
               Privacy
             </Link>
             <Link
               href="/terms"
+              prefetch
               className="text-muted-foreground hover:text-foreground text-sm transition-colors"
             >
               Terms
             </Link>
             <Link
               href="/cookies"
+              prefetch
               className="text-muted-foreground hover:text-foreground text-sm transition-colors"
             >
               Cookies

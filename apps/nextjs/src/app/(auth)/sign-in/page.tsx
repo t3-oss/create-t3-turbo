@@ -130,6 +130,7 @@ export default function SignInPage() {
             <Label htmlFor="password">Password</Label>
             <Link
               href="/forgot-password"
+              prefetch
               className="text-muted-foreground hover:text-foreground text-xs transition-colors"
             >
               Forgot password?
@@ -159,7 +160,7 @@ export default function SignInPage() {
 
       <p className="text-muted-foreground mt-6 text-center text-sm">
         Don&apos;t have an account?{" "}
-        <Link href="/sign-up" className="text-foreground font-medium hover:underline">
+        <Link href="/sign-up" prefetch className="text-foreground font-medium hover:underline">
           Sign up
         </Link>
       </p>

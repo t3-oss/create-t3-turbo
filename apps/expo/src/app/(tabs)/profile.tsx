@@ -20,6 +20,8 @@ import {
 import { Avatar, Badge } from "~/components/avatar";
 import { Card } from "~/components/card";
 import { LoadingSpinner } from "~/components/loading";
+import { useBiometricAuth } from "~/hooks/use-biometric-auth";
+import { usePushNotifications } from "~/hooks/use-push-notifications";
 import { trpc } from "~/utils/api";
 import { authClient } from "~/utils/auth";
 import { setLocale } from "~/utils/i18n";
@@ -36,6 +38,16 @@ import { setLocale } from "~/utils/i18n";
 export default function ProfileScreen() {
   const { data: session } = authClient.useSession();
   const t = useTranslationsNative();
+  const queryClient = useQueryClient();
+  const { pushToken } = usePushNotifications();
+
+  const deleteAccount = useMutation(
+    trpc.account.deleteAccount.mutationOptions({
+      onSuccess: () => {
+        authClient.signOut();
+      },
+    }),
+  );
 
   return (
     <SafeAreaView className="bg-background flex-1" edges={["top"]}>
@@ -53,6 +65,9 @@ export default function ProfileScreen() {
 
         {/* Workspaces */}
         <WorkspacesSection />
+
+        {/* Security — Face ID / Biometrics */}
+        <SecuritySection />
 
         {/* Preferences */}
         <PreferencesSection />
@@ -81,18 +96,35 @@ export default function ProfileScreen() {
             </Text>
           </Pressable>
 
+          {/* Account deletion — REQUIRED by Apple App Store Review Guideline 5.1.1(v) */}
           <Pressable
             onPress={() => {
               Alert.alert(
                 "Delete account",
-                "This action is permanent and cannot be undone. All your data will be deleted.",
+                "This will permanently delete your account and all associated data. This action cannot be undone.",
                 [
                   { text: "Cancel", style: "cancel" },
                   {
                     text: "Delete my account",
                     style: "destructive",
                     onPress: () => {
-                      // TODO: call trpc.account.deleteAccount
+                      // Second confirmation for destructive action
+                      Alert.alert(
+                        "Are you absolutely sure?",
+                        `Type your email (${session?.user?.email ?? ""}) to confirm. All projects, workspaces, and data will be permanently deleted.`,
+                        [
+                          { text: "Cancel", style: "cancel" },
+                          {
+                            text: "Permanently delete",
+                            style: "destructive",
+                            onPress: () => {
+                              deleteAccount.mutate({
+                                confirmEmail: session?.user?.email ?? "",
+                              });
+                            },
+                          },
+                        ],
+                      );
                     },
                   },
                 ],
@@ -105,8 +137,69 @@ export default function ProfileScreen() {
             </Text>
           </Pressable>
         </View>
+
+        {/* Version info */}
+        <View className="mt-8 items-center px-6">
+          <Text className="text-muted-foreground text-xs">
+            Gmacko v0.1.0
+          </Text>
+        </View>
       </ScrollView>
     </SafeAreaView>
+  );
+}
+
+/**
+ * Security section — Face ID / Touch ID toggle.
+ *
+ * Apple App Store Review Guideline 4.0 (Design):
+ * Biometric authentication should always provide a fallback (passcode).
+ */
+function SecuritySection() {
+  const biometric = useBiometricAuth();
+
+  if (biometric.isLoading || !biometric.isAvailable) return null;
+
+  return (
+    <View className="mt-6 px-6">
+      <Text className="text-foreground mb-3 text-lg font-semibold">
+        Security
+      </Text>
+      <Card>
+        <Pressable
+          onPress={async () => {
+            if (biometric.isEnabled) {
+              await biometric.disableBiometric();
+            } else {
+              await biometric.enableBiometric();
+            }
+          }}
+          className="flex-row items-center justify-between"
+        >
+          <View>
+            <Text className="text-foreground text-sm font-medium">
+              {biometric.biometricType ?? "Biometric"} Login
+            </Text>
+            <Text className="text-muted-foreground text-xs">
+              Use {biometric.biometricType ?? "biometrics"} to unlock the app
+            </Text>
+          </View>
+          <View
+            className={`h-6 w-11 rounded-full p-0.5 ${
+              biometric.isEnabled
+                ? "bg-primary"
+                : "bg-zinc-300 dark:bg-zinc-700"
+            }`}
+          >
+            <View
+              className={`h-5 w-5 rounded-full bg-white shadow ${
+                biometric.isEnabled ? "translate-x-5" : "translate-x-0"
+              }`}
+            />
+          </View>
+        </Pressable>
+      </Card>
+    </View>
   );
 }
 

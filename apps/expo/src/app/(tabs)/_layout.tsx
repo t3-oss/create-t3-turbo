@@ -67,6 +67,15 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="subscription"
+        options={{
+          title: "Upgrade",
+          tabBarIcon: ({ color, size }) => (
+            <TabBarIcon name="subscription" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="profile"
         options={{
           title: "Profile",
@@ -86,10 +95,11 @@ export default function TabLayout() {
 import { Text } from "react-native";
 
 const ICONS: Record<string, string> = {
-  home: "\u2302",        // ⌂
-  projects: "\u25A3",    // ▣
-  notifications: "\u266A", // ♪ (bell-like)
-  profile: "\u2603",     // ☃ (placeholder)
+  home: "\u2302",          // ⌂
+  projects: "\u25A3",      // ▣
+  notifications: "\u266A", // ♪
+  subscription: "\u2B50",  // ⭐
+  profile: "\u2699",       // ⚙
 };
 
 // Using simple text-based icons to avoid adding a dependency.

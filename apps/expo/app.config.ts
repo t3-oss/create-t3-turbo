@@ -7,6 +7,9 @@ const SENTRY_DSN = process.env.SENTRY_DSN;
 const POSTHOG_KEY = process.env.POSTHOG_KEY;
 const POSTHOG_HOST = process.env.POSTHOG_HOST ?? "https://us.i.posthog.com";
 
+const REVENUECAT_API_KEY_IOS = process.env.REVENUECAT_API_KEY_IOS;
+const REVENUECAT_API_KEY_ANDROID = process.env.REVENUECAT_API_KEY_ANDROID;
+
 const getAppName = (): string => {
   switch (APP_ENV) {
     case "production":
@@ -48,6 +51,25 @@ export default ({ config }: ConfigContext): ExpoConfig => {
     "expo-router",
     "expo-secure-store",
     "expo-web-browser",
+    // Biometric authentication (Face ID / Touch ID / Fingerprint)
+    [
+      "expo-local-authentication",
+      {
+        faceIDPermission:
+          "Allow $(PRODUCT_NAME) to use Face ID for quick, secure login.",
+      },
+    ],
+    // App Tracking Transparency (required for iOS 14.5+ / App Store Review 5.1.2)
+    [
+      "expo-tracking-transparency",
+      {
+        userTrackingPermission:
+          "Allow $(PRODUCT_NAME) to collect app-related data for improving your experience. Your data is never sold to third parties.",
+      },
+    ],
+    // Push notifications
+    "expo-notifications",
+    // Splash screen
     [
       "expo-splash-screen",
       {
@@ -92,6 +114,21 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       },
       infoPlist: {
         CFBundleDisplayName: getAppName(),
+        // Face ID usage description (App Store Review Guideline 5.1.1)
+        NSFaceIDUsageDescription:
+          "$(PRODUCT_NAME) uses Face ID for quick and secure authentication.",
+        // Camera (if user uploads profile photos etc.)
+        NSCameraUsageDescription:
+          "$(PRODUCT_NAME) needs camera access to take profile photos.",
+        // Photo library
+        NSPhotoLibraryUsageDescription:
+          "$(PRODUCT_NAME) needs photo library access to select profile photos.",
+        // Push notifications background mode
+        UIBackgroundModes: ["remote-notification"],
+      },
+      // In-app purchases entitlement
+      entitlements: {
+        "com.apple.developer.in-app-payments": [],
       },
     },
     android: {
@@ -101,6 +138,13 @@ export default ({ config }: ConfigContext): ExpoConfig => {
         backgroundColor: "#1F104A",
       },
       edgeToEdgeEnabled: true,
+      permissions: [
+        "USE_BIOMETRIC",
+        "USE_FINGERPRINT",
+        "RECEIVE_BOOT_COMPLETED",
+        "VIBRATE",
+        "com.android.vending.BILLING",
+      ],
     },
     extra: {
       APP_ENV,
@@ -108,6 +152,8 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       SENTRY_DSN,
       POSTHOG_KEY,
       POSTHOG_HOST,
+      REVENUECAT_API_KEY_IOS,
+      REVENUECAT_API_KEY_ANDROID,
       eas: {
         projectId: process.env.EAS_PROJECT_ID,
       },

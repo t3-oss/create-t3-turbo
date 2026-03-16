@@ -2,6 +2,12 @@ import pino from "pino";
 
 import { integrations } from "@gmacko/config";
 
+export {
+  withRequestContext,
+  getRequestContext,
+  updateRequestContext,
+} from "./context";
+
 export type LogLevel = "trace" | "debug" | "info" | "warn" | "error" | "fatal";
 
 export interface LogContext {
@@ -137,10 +143,23 @@ function createBaseLogger() {
 const baseLogger = createBaseLogger();
 
 /**
- * Create a child logger with additional context
+ * Create a child logger with additional context.
+ * Automatically merges in the current AsyncLocalStorage request context
+ * so callers don't need to explicitly pass requestId/userId.
  */
 export function createLogger(context: LogContext = {}) {
-  return baseLogger.child(context);
+  // Lazy import to avoid circular deps at module load time
+  let requestContext: LogContext = {};
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const { getRequestContext } = require("./context") as {
+      getRequestContext: () => LogContext;
+    };
+    requestContext = getRequestContext();
+  } catch {
+    // context module not available (e.g., edge runtime without node:async_hooks)
+  }
+  return baseLogger.child({ ...requestContext, ...context });
 }
 
 /**

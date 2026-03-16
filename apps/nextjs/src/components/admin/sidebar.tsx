@@ -90,7 +90,7 @@ export function AdminSidebar() {
               className={cn("w-full justify-start gap-2")}
               asChild
             >
-              <Link href={item.href}>
+              <Link href={item.href} prefetch>
                 {item.icon}
                 {item.title}
               </Link>
@@ -103,7 +103,7 @@ export function AdminSidebar() {
 
       <div className="p-4">
         <Button variant="ghost" className="w-full justify-start gap-2" asChild>
-          <Link href="/">
+          <Link href="/" prefetch>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"

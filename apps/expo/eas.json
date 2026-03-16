@@ -13,7 +13,9 @@
       "env": {
         "SENTRY_ORG": "${SENTRY_ORG}",
         "SENTRY_PROJECT": "${SENTRY_PROJECT_MOBILE}",
-        "SENTRY_AUTH_TOKEN": "${SENTRY_AUTH_TOKEN}"
+        "SENTRY_AUTH_TOKEN": "${SENTRY_AUTH_TOKEN}",
+        "REVENUECAT_API_KEY_IOS": "${REVENUECAT_API_KEY_IOS}",
+        "REVENUECAT_API_KEY_ANDROID": "${REVENUECAT_API_KEY_ANDROID}"
       }
     },
     "development": {

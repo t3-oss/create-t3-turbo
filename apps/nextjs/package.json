@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "pnpm with-env next build",
+    "build:analyze": "ANALYZE=true pnpm build",
     "clean": "git clean -xdf .cache .next .turbo node_modules playwright-report test-results",
     "dev": "pnpm with-env next dev",
     "format": "prettier --check . --ignore-path ../../.gitignore",
@@ -22,6 +23,7 @@
     "@gmacko/config": "workspace:*",
     "@gmacko/db": "workspace:*",
     "@gmacko/i18n": "workspace:*",
+    "@gmacko/metrics": "workspace:*",
     "@gmacko/monitoring": "workspace:*",
     "@gmacko/ui": "workspace:*",
     "@gmacko/validators": "workspace:*",
@@ -41,10 +43,12 @@
     "zod": "catalog:"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^15.3.3",
     "@gmacko/eslint-config": "workspace:*",
     "@gmacko/prettier-config": "workspace:*",
     "@gmacko/tailwind-config": "workspace:*",
     "@gmacko/tsconfig": "workspace:*",
+    "@axe-core/playwright": "^4.10.1",
     "@playwright/test": "^1.52.0",
     "@types/node": "catalog:",
     "@types/react": "catalog:react19",

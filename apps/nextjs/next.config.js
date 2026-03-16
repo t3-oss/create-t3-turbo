@@ -1,8 +1,13 @@
+import bundleAnalyzer from "@next/bundle-analyzer";
 import { withSentryConfig } from "@sentry/nextjs";
 import { createJiti } from "jiti";
 import createNextIntlPlugin from "next-intl/plugin";
 
 import { integrations } from "@gmacko/config";
+
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+});
 
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
@@ -26,7 +31,21 @@ const config = {
     "@gmacko/validators",
   ],
 
-  typescript: { ignoreBuildErrors: true },
+  // Allow external avatar images from OAuth providers
+  images: {
+    remotePatterns: [
+      { protocol: "https", hostname: "**.googleusercontent.com" },
+      { protocol: "https", hostname: "avatars.githubusercontent.com" },
+      { protocol: "https", hostname: "cdn.discordapp.com" },
+      { protocol: "https", hostname: "graph.microsoft.com" },
+    ],
+  },
+
+  // React Compiler for automatic memoization (React 19+)
+  experimental: {
+    reactCompiler: true,
+    ppr: "incremental",
+  },
 
   // Security headers
   async headers() {
@@ -44,7 +63,7 @@ const config = {
           },
           {
             key: "X-Frame-Options",
-            value: "SAMEORIGIN",
+            value: "DENY",
           },
           {
             key: "X-Content-Type-Options",
@@ -52,11 +71,30 @@ const config = {
           },
           {
             key: "Referrer-Policy",
-            value: "origin-when-cross-origin",
+            value: "strict-origin-when-cross-origin",
           },
           {
             key: "Permissions-Policy",
-            value: "camera=(), microphone=(), geolocation=()",
+            value: "camera=(), microphone=(), geolocation=(), interest-cohort=()",
+          },
+          {
+            // CSP — adjust connect-src for your PostHog/Sentry hosts
+            key: "Content-Security-Policy",
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-eval' 'unsafe-inline'",
+              "style-src 'self' 'unsafe-inline'",
+              "img-src 'self' data: https:",
+              "font-src 'self'",
+              "connect-src 'self' https://*.posthog.com https://*.sentry.io https://*.ingest.sentry.io wss:",
+              "frame-ancestors 'none'",
+              "base-uri 'self'",
+              "form-action 'self'",
+            ].join("; "),
+          },
+          {
+            key: "X-Permitted-Cross-Domain-Policies",
+            value: "none",
           },
         ],
       },
@@ -95,8 +133,11 @@ const sentryConfig = {
   automaticVercelMonitors: true,
 };
 
-// Apply i18n plugin conditionally, then Sentry if enabled
-const configWithI18n = integrations.i18n ? withNextIntl(config) : config;
+// Apply plugins: bundle analyzer → i18n → Sentry
+const configWithAnalyzer = withBundleAnalyzer(config);
+const configWithI18n = integrations.i18n
+  ? withNextIntl(configWithAnalyzer)
+  : configWithAnalyzer;
 
 export default integrations.sentry
   ? withSentryConfig(configWithI18n, sentryConfig)

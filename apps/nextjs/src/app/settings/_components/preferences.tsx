@@ -5,6 +5,8 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import { Button } from "@gmacko/ui/button";
 import { Label } from "@gmacko/ui/label";
+import { Switch } from "@gmacko/ui/switch";
+import { toast } from "@gmacko/ui/toast";
 
 import { useTRPC } from "~/trpc/react";
 
@@ -23,6 +25,7 @@ export function PreferencesSection() {
         void queryClient.invalidateQueries({
           queryKey: trpc.settings.getPreferences.queryKey(),
         });
+        toast.success("Preferences saved");
       },
     }),
   );
@@ -84,28 +87,34 @@ export function PreferencesSection() {
         </div>
 
         <div>
-          <Label className="mb-2 block">Notifications</Label>
-          <div className="flex flex-col gap-2">
-            <label className="flex items-center gap-2">
-              <input
-                type="checkbox"
+          <Label className="mb-3 block">Notifications</Label>
+          <div className="flex flex-col gap-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium">Email notifications</p>
+                <p className="text-muted-foreground text-xs">
+                  Receive email updates about activity
+                </p>
+              </div>
+              <Switch
                 checked={preferences?.emailNotifications ?? true}
-                onChange={() => handleNotificationToggle("email")}
+                onCheckedChange={() => handleNotificationToggle("email")}
                 disabled={isPending}
-                className="h-4 w-4 rounded border-gray-300"
               />
-              <span>Email notifications</span>
-            </label>
-            <label className="flex items-center gap-2">
-              <input
-                type="checkbox"
+            </div>
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium">Push notifications</p>
+                <p className="text-muted-foreground text-xs">
+                  Receive push notifications on your devices
+                </p>
+              </div>
+              <Switch
                 checked={preferences?.pushNotifications ?? true}
-                onChange={() => handleNotificationToggle("push")}
+                onCheckedChange={() => handleNotificationToggle("push")}
                 disabled={isPending}
-                className="h-4 w-4 rounded border-gray-300"
               />
-              <span>Push notifications</span>
-            </label>
+            </div>
           </div>
         </div>
       </div>

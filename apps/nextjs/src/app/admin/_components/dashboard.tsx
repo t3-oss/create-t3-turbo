@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 
@@ -61,9 +62,11 @@ export function AdminDashboard() {
               >
                 <div className="flex items-center gap-3">
                   {user.image ? (
-                    <img
+                    <Image
                       src={user.image}
                       alt={user.name}
+                      width={32}
+                      height={32}
                       className="size-8 rounded-full"
                     />
                   ) : (

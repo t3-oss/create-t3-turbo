@@ -19,9 +19,17 @@ export default defineConfig({
     screenshot: "only-on-failure",
   },
   projects: [
+    // Auth setup — run first, saves browser state to .auth/user.json
+    {
+      name: "setup",
+      testMatch: /auth\.setup\.ts/,
+    },
     {
       name: "chromium",
       use: { ...devices["Desktop Chrome"] },
+      // To run tests as authenticated user, uncomment the next line:
+      // dependencies: ["setup"],
+      // use: { ...devices["Desktop Chrome"], storageState: ".auth/user.json" },
     },
     {
       name: "firefox",

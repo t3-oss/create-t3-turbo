@@ -1,24 +1,36 @@
-import { redirect } from "next/navigation";
+import { Suspense } from "react";
+import dynamic from "next/dynamic";
 
-import { getSession } from "~/auth/server";
-import { ApiKeysSection } from "./_components/api-keys";
+import { PageHeader } from "@gmacko/ui/page-header";
+import { Skeleton } from "@gmacko/ui/skeleton";
+
 import { PreferencesSection } from "./_components/preferences";
 
-export default async function SettingsPage() {
-  const session = await getSession();
+const ApiKeysSection = dynamic(
+  () => import("./_components/api-keys").then((m) => m.ApiKeysSection),
+  {
+    loading: () => <Skeleton className="h-64 w-full rounded-lg" />,
+  },
+);
 
-  if (!session) {
-    redirect("/");
-  }
-
+export default function SettingsPage() {
   return (
-    <main className="container mx-auto max-w-4xl px-4 py-8">
-      <h1 className="mb-8 text-3xl font-bold">Settings</h1>
+    <div>
+      <PageHeader
+        title="Settings"
+        description="Manage your preferences, notifications, and API keys."
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Settings" },
+        ]}
+      />
 
       <div className="space-y-8">
         <PreferencesSection />
-        <ApiKeysSection />
+        <Suspense fallback={<Skeleton className="h-64 w-full rounded-lg" />}>
+          <ApiKeysSection />
+        </Suspense>
       </div>
-    </main>
+    </div>
   );
 }

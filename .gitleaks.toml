@@ -1,0 +1,14 @@
+# Gitleaks configuration
+# Install: brew install gitleaks (macOS) or go install github.com/gitleaks/gitleaks/v8@latest
+# Usage: gitleaks detect --source . --verbose
+# Pre-commit: included in .husky/pre-commit
+
+title = "gitleaks config"
+
+[allowlist]
+  description = "Global allowlist"
+  paths = [
+    '''\.env\.example$''',
+    '''pnpm-lock\.yaml$''',
+    '''\.changeset/.*''',
+  ]

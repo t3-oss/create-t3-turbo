@@ -18,7 +18,10 @@
     "db:push": "turbo -F @gmacko/db push",
     "db:check": "pnpm -F @gmacko/db check",
     "db:seed": "pnpm -F @gmacko/db seed",
+    "db:seed:local": "pnpm -F @gmacko/db seed:local",
+    "db:push:local": "pnpm -F @gmacko/db push:local",
     "db:studio": "turbo -F @gmacko/db studio",
+    "db:studio:local": "pnpm -F @gmacko/db studio:local",
     "dev": "turbo watch dev --continue",
     "dev:next": "turbo watch dev -F @gmacko/nextjs...",
     "dev:mobile": "./scripts/dev-mobile.sh",
@@ -27,6 +30,7 @@
     "lint": "turbo run lint --continue -- --cache --cache-location .cache/.eslintcache",
     "lint:fix": "turbo run lint --continue -- --fix --cache --cache-location .cache/.eslintcache",
     "lint:ws": "pnpm dlx sherif@latest",
+    "prepare": "husky",
     "postinstall": "pnpm lint:ws",
     "typecheck": "turbo run typecheck",
     "test": "turbo run test",
@@ -34,6 +38,9 @@
     "test:coverage": "turbo run test -- --coverage",
     "e2e": "turbo run e2e",
     "e2e:web": "turbo run e2e -F @gmacko/nextjs",
+    "check-deps": "./scripts/check-deps.sh",
+    "load-test:smoke": "k6 run apps/nextjs/load-tests/smoke.js",
+    "load-test:stress": "k6 run apps/nextjs/load-tests/stress.js",
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release": "turbo run build --filter='@gmacko/mcp-server' --filter='@gmacko/trpc-client' && changeset publish",
@@ -46,9 +53,20 @@
     "@gmacko/prettier-config": "workspace:*",
     "@turbo/gen": "^2.5.8",
     "dotenv-cli": "^10.0.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.0",
     "prettier": "catalog:",
     "turbo": "^2.5.8",
     "typescript": "catalog:"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,mjs,cjs}": [
+      "eslint --fix --cache --cache-location .cache/.eslintcache",
+      "prettier --write --cache --cache-location .cache/.prettiercache"
+    ],
+    "*.{json,md,mdx,yaml,yml,css}": [
+      "prettier --write --cache --cache-location .cache/.prettiercache"
+    ]
   },
   "prettier": "@gmacko/prettier-config"
 }

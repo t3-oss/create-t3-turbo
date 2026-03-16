@@ -4,8 +4,10 @@ import { useState, useTransition } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import { Button } from "@gmacko/ui/button";
+import { Checkbox } from "@gmacko/ui/checkbox";
 import { Input } from "@gmacko/ui/input";
 import { Label } from "@gmacko/ui/label";
+import { toast } from "@gmacko/ui/toast";
 
 import { useTRPC } from "~/trpc/react";
 
@@ -45,6 +47,9 @@ export function ApiKeysSection() {
         void queryClient.invalidateQueries({
           queryKey: trpc.settings.listApiKeys.queryKey(),
         });
+        toast.success("API key created", {
+          description: "Copy your key now — you won't be able to see it again.",
+        });
       },
     }),
   );
@@ -55,6 +60,7 @@ export function ApiKeysSection() {
         void queryClient.invalidateQueries({
           queryKey: trpc.settings.listApiKeys.queryKey(),
         });
+        toast.success("API key revoked");
       },
     }),
   );
@@ -99,6 +105,7 @@ export function ApiKeysSection() {
 
   const copyToClipboard = async (text: string) => {
     await navigator.clipboard.writeText(text);
+    toast.success("Copied to clipboard");
   };
 
   if (isLoading) {
@@ -177,11 +184,9 @@ export function ApiKeysSection() {
             <div className="flex flex-wrap gap-2">
               {PERMISSIONS.map((permission) => (
                 <label key={permission} className="flex items-center gap-2">
-                  <input
-                    type="checkbox"
+                  <Checkbox
                     checked={selectedPermissions.includes(permission)}
-                    onChange={() => togglePermission(permission)}
-                    className="h-4 w-4 rounded border-gray-300"
+                    onCheckedChange={() => togglePermission(permission)}
                   />
                   <span className="capitalize">{permission}</span>
                 </label>

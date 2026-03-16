@@ -5,11 +5,13 @@ import type {
   CliOptions,
   IntegrationConfig,
   IntegrationPreset,
-  PlatformConfig,
+  LandingPageConfig,
+  LlmProvider,
 } from "./types.js";
 import {
   CORE_INTEGRATIONS,
   DEFAULT_INTEGRATIONS,
+  DEFAULT_LANDING_PAGE,
   EVERYTHING_INTEGRATIONS,
 } from "./types.js";
 
@@ -47,7 +49,11 @@ export async function runPrompts(
     options: [
       { value: "web", label: "Web (Next.js)", hint: "recommended" },
       { value: "mobile", label: "Mobile (Expo)", hint: "recommended" },
-      { value: "tanstackStart", label: "TanStack Start", hint: "experimental" },
+      {
+        value: "tanstackStart",
+        label: "TanStack Start",
+        hint: "experimental",
+      },
     ],
     initialValues: ["web", "mobile"],
     required: true,
@@ -117,6 +123,11 @@ export async function runPrompts(
     integrations = await promptCustomIntegrations();
   }
 
+  // ─── Landing Page Customization ────────────────────────────────────
+  const landingPage = await promptLandingPage(
+    (platforms as string[]).includes("web"),
+  );
+
   const includeAi = await p.confirm({
     message: "Include Gmacko AI workflow system?",
     initialValue: true,
@@ -177,6 +188,7 @@ export async function runPrompts(
       tanstackStart: (platforms as string[]).includes("tanstackStart"),
     },
     integrations,
+    landingPage,
     includeAi: includeAi as boolean,
     includeProvision: includeProvision as boolean,
     prune: prune as boolean,
@@ -185,15 +197,97 @@ export async function runPrompts(
   };
 }
 
+async function promptLandingPage(
+  hasWeb: boolean,
+): Promise<LandingPageConfig> {
+  if (!hasWeb) return DEFAULT_LANDING_PAGE;
+
+  const customize = await p.confirm({
+    message: "Generate a custom landing page with AI?",
+    initialValue: false,
+  });
+
+  if (p.isCancel(customize) || !customize) {
+    return DEFAULT_LANDING_PAGE;
+  }
+
+  const provider = (await p.select({
+    message: "Which LLM should generate the landing page?",
+    options: [
+      {
+        value: "claude",
+        label: "Claude (Anthropic)",
+        hint: "Requires ANTHROPIC_API_KEY",
+      },
+      {
+        value: "codex",
+        label: "Codex / GPT (OpenAI)",
+        hint: "Requires OPENAI_API_KEY",
+      },
+      {
+        value: "gemini",
+        label: "Gemini (Google)",
+        hint: "Requires GOOGLE_API_KEY",
+      },
+    ],
+    initialValue: "claude",
+  })) as LlmProvider;
+
+  if (p.isCancel(provider)) {
+    p.cancel("Operation cancelled.");
+    process.exit(0);
+  }
+
+  const prompt = await p.text({
+    message:
+      "Describe your product for the landing page (features, audience, tone):",
+    placeholder:
+      "A project management tool for remote teams with real-time collaboration...",
+    validate: (value) => {
+      if (value.length < 10)
+        return "Please provide at least a short description (10+ characters)";
+      if (value.length > 2000)
+        return "Description must be 2000 characters or less";
+    },
+  });
+
+  if (p.isCancel(prompt)) {
+    p.cancel("Operation cancelled.");
+    process.exit(0);
+  }
+
+  return {
+    generate: true,
+    provider,
+    prompt: prompt as string,
+  };
+}
+
 async function promptCustomIntegrations(): Promise<IntegrationConfig> {
   const selected = await p.multiselect({
     message: "Enable integrations",
     options: [
-      { value: "sentry", label: "Sentry (monitoring)", hint: "recommended" },
-      { value: "posthog", label: "PostHog (analytics)", hint: "recommended" },
+      {
+        value: "sentry",
+        label: "Sentry (monitoring)",
+        hint: "recommended",
+      },
+      {
+        value: "posthog",
+        label: "PostHog (analytics)",
+        hint: "recommended",
+      },
       { value: "stripe", label: "Stripe (payments)", hint: "web" },
-      { value: "revenuecat", label: "RevenueCat (mobile IAP)", hint: "mobile" },
-      { value: "notifications", label: "Push Notifications", hint: "mobile" },
+      {
+        value: "revenuecat",
+        label: "RevenueCat (mobile IAP)",
+        hint: "mobile",
+      },
+      {
+        value: "notifications",
+        label: "Push Notifications",
+        hint: "mobile",
+      },
       { value: "email", label: "Email" },
       { value: "realtime", label: "Realtime" },
       { value: "storage", label: "Storage" },
@@ -259,7 +353,10 @@ async function promptCustomIntegrations(): Promise<IntegrationConfig> {
       enabled: selectedSet.has("realtime"),
       provider: realtimeProvider,
     },
-    storage: { enabled: selectedSet.has("storage"), provider: storageProvider },
+    storage: {
+      enabled: selectedSet.has("storage"),
+      provider: storageProvider,
+    },
   };
 }
 
@@ -274,6 +371,7 @@ export function getDefaultOptions(appName: string): CliOptions {
       tanstackStart: false,
     },
     integrations: DEFAULT_INTEGRATIONS,
+    landingPage: DEFAULT_LANDING_PAGE,
     includeAi: true,
     includeProvision: true,
     prune: false,

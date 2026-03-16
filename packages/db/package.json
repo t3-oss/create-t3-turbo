@@ -11,9 +11,17 @@
       "types": "./dist/client.d.ts",
       "default": "./src/client.ts"
     },
+    "./client-local": {
+      "types": "./dist/client-local.d.ts",
+      "default": "./src/client-local.ts"
+    },
     "./schema": {
       "types": "./dist/schema.d.ts",
       "default": "./src/schema.ts"
+    },
+    "./tenant": {
+      "types": "./dist/tenant.d.ts",
+      "default": "./src/tenant.ts"
     }
   },
   "license": "MIT",
@@ -26,9 +34,12 @@
     "generate": "pnpm with-env drizzle-kit generate",
     "migrate": "pnpm with-env drizzle-kit migrate",
     "push": "pnpm with-env drizzle-kit push",
+    "push:local": "DATABASE_DRIVER=pg pnpm with-env drizzle-kit push",
     "check": "pnpm with-env drizzle-kit check",
     "seed": "pnpm with-env tsx src/seed.ts",
+    "seed:local": "DATABASE_DRIVER=pg pnpm with-env tsx src/seed.ts",
     "studio": "pnpm with-env drizzle-kit studio",
+    "studio:local": "pnpm with-env drizzle-kit studio --config drizzle.config.local.ts",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
     "with-env": "dotenv -e ../../.env --"
   },

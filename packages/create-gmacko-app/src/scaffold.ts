@@ -5,6 +5,7 @@ import fs from "fs-extra";
 import pc from "picocolors";
 
 import type { CliOptions, IntegrationConfig } from "./types.js";
+import { generateLandingPage } from "./generate-landing.js";
 import { runProvisioning } from "./provision.js";
 
 const TEMPLATE_REPO = "https://github.com/gmackorg/create-gmacko-app.git";
@@ -70,6 +71,20 @@ export async function scaffold(options: CliOptions): Promise<void> {
 
   spinner.stop("Project configured");
 
+  // ─── LLM Landing Page Generation ──────────────────────────────────
+  if (options.landingPage.generate && options.platforms.web) {
+    const generatedPage = await generateLandingPage(
+      options.landingPage,
+      options.displayName,
+    );
+
+    if (generatedPage) {
+      const pagePath = path.join(targetDir, "apps/nextjs/src/app/page.tsx");
+      fs.writeFileSync(pagePath, generatedPage);
+      p.log.success("Custom landing page written to apps/nextjs/src/app/page.tsx");
+    }
+  }
+
   if (options.git) {
     spinner.start("Initializing git repository...");
     try {
@@ -121,7 +136,17 @@ ${pc.bold("Next steps:")}
   ${pc.cyan("cp")} .env.example .env
   ${pc.dim("# Update .env with your credentials")}
   ${pc.cyan("pnpm")} db:push
+  ${pc.cyan("pnpm")} db:seed ${pc.dim("# Seeds default accounts: admin@example.com/admin123, test@example.com/test123")}
   ${pc.cyan("pnpm")} dev
+
+${pc.bold("Default accounts:")}
+  ${pc.dim("Admin:")} admin@example.com / admin123
+  ${pc.dim("Test:")}  test@example.com  / test123
+
+${pc.bold("Database:")}
+  ${pc.dim("Production:")} Neon Postgres (set DATABASE_URL)
+  ${pc.dim("Local dev:")}  docker compose up postgres ${pc.dim("or")} DATABASE_DRIVER=pglite pnpm dev
+  ${pc.dim("Migrations:")} pnpm db:generate && pnpm db:migrate
 `);
 }
 

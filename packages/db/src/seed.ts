@@ -1,57 +1,140 @@
 /**
  * Database Seeding Script
  *
- * Seeds the database with sample data for development/testing.
+ * Seeds the database with default admin/test accounts and sample data.
  * Run with: pnpm --filter @gmacko/db seed
+ *
+ * Default Accounts:
+ *   Admin:  admin@example.com / admin123
+ *   Test:   test@example.com  / test123
  *
  * This script is idempotent - it clears existing seed data before inserting.
  */
 
-import { randomUUID } from "crypto";
+import { createHash, randomUUID } from "crypto";
 import { eq, inArray } from "drizzle-orm";
 
 import { db } from "./client";
-import { apiKeys, Post, user, userPreferences } from "./schema";
+import {
+  account,
+  apiKeys,
+  Post,
+  subscription,
+  user,
+  userPreferences,
+} from "./schema";
 
-// Seed user IDs - using fixed IDs makes the seed idempotent
-const SEED_USER_IDS = [
-  "seed_user_alice_001",
-  "seed_user_bob_002",
-  "seed_user_charlie_003",
-];
+// ─── Fixed Seed IDs (makes seeding idempotent) ────────────────────────────
 
-// Sample user data
-const sampleUsers = [
+const SEED_USER_IDS = {
+  admin: "seed_admin_001",
+  test: "seed_test_002",
+  alice: "seed_user_alice_003",
+  bob: "seed_user_bob_004",
+} as const;
+
+const ALL_SEED_IDS = Object.values(SEED_USER_IDS);
+
+function hashPassword(password: string): string {
+  return createHash("sha256").update(password).digest("hex");
+}
+
+// ─── Default Accounts ──────────────────────────────────────────────────────
+
+const defaultAccounts = [
   {
-    id: SEED_USER_IDS[0]!,
-    name: "Alice Johnson",
-    email: "alice.seed@example.com",
+    id: SEED_USER_IDS.admin,
+    name: "Admin User",
+    email: "admin@example.com",
     emailVerified: true,
-    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=alice",
+    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=admin",
+    role: "admin" as const,
+    createdAt: new Date("2024-01-01T00:00:00Z"),
+    updatedAt: new Date("2024-01-01T00:00:00Z"),
+  },
+  {
+    id: SEED_USER_IDS.test,
+    name: "Test User",
+    email: "test@example.com",
+    emailVerified: true,
+    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=test",
+    role: "user" as const,
     createdAt: new Date("2024-01-15T10:00:00Z"),
     updatedAt: new Date("2024-01-15T10:00:00Z"),
   },
   {
-    id: SEED_USER_IDS[1]!,
-    name: "Bob Smith",
-    email: "bob.seed@example.com",
+    id: SEED_USER_IDS.alice,
+    name: "Alice Johnson",
+    email: "alice@example.com",
     emailVerified: true,
-    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=bob",
+    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=alice",
+    role: "user" as const,
     createdAt: new Date("2024-02-20T14:30:00Z"),
     updatedAt: new Date("2024-02-20T14:30:00Z"),
   },
   {
-    id: SEED_USER_IDS[2]!,
-    name: "Charlie Davis",
-    email: "charlie.seed@example.com",
+    id: SEED_USER_IDS.bob,
+    name: "Bob Smith",
+    email: "bob@example.com",
     emailVerified: false,
     image: null,
+    role: "user" as const,
     createdAt: new Date("2024-03-10T09:15:00Z"),
     updatedAt: new Date("2024-03-10T09:15:00Z"),
   },
 ];
 
-// Sample posts data
+// Credential accounts for email/password login (Better Auth compatible)
+const credentialAccounts = [
+  {
+    id: `acct_${SEED_USER_IDS.admin}`,
+    accountId: SEED_USER_IDS.admin,
+    providerId: "credential",
+    userId: SEED_USER_IDS.admin,
+    password: hashPassword("admin123"),
+    createdAt: new Date("2024-01-01T00:00:00Z"),
+    updatedAt: new Date("2024-01-01T00:00:00Z"),
+  },
+  {
+    id: `acct_${SEED_USER_IDS.test}`,
+    accountId: SEED_USER_IDS.test,
+    providerId: "credential",
+    userId: SEED_USER_IDS.test,
+    password: hashPassword("test123"),
+    createdAt: new Date("2024-01-15T10:00:00Z"),
+    updatedAt: new Date("2024-01-15T10:00:00Z"),
+  },
+];
+
+// ─── Subscriptions ─────────────────────────────────────────────────────────
+
+const sampleSubscriptions = [
+  {
+    id: randomUUID(),
+    userId: SEED_USER_IDS.admin,
+    stripeCustomerId: "cus_seed_admin",
+    stripeSubscriptionId: "sub_seed_admin",
+    stripePriceId: "price_pro_monthly",
+    plan: "pro" as const,
+    status: "active" as const,
+    currentPeriodStart: new Date("2024-01-01T00:00:00Z"),
+    currentPeriodEnd: new Date("2025-01-01T00:00:00Z"),
+  },
+  {
+    id: randomUUID(),
+    userId: SEED_USER_IDS.test,
+    stripeCustomerId: "cus_seed_test",
+    stripeSubscriptionId: null,
+    stripePriceId: null,
+    plan: "free" as const,
+    status: "active" as const,
+    currentPeriodStart: new Date("2024-01-15T00:00:00Z"),
+    currentPeriodEnd: null,
+  },
+];
+
+// ─── Sample Content ────────────────────────────────────────────────────────
+
 const samplePosts = [
   {
     id: randomUUID(),
@@ -85,11 +168,10 @@ const samplePosts = [
   },
 ];
 
-// Sample user preferences
 const samplePreferences = [
   {
     id: randomUUID(),
-    userId: SEED_USER_IDS[0]!,
+    userId: SEED_USER_IDS.admin,
     theme: "dark" as const,
     language: "en",
     timezone: "America/New_York",
@@ -98,70 +180,60 @@ const samplePreferences = [
   },
   {
     id: randomUUID(),
-    userId: SEED_USER_IDS[1]!,
+    userId: SEED_USER_IDS.test,
+    theme: "system" as const,
+    language: "en",
+    timezone: "UTC",
+    emailNotifications: true,
+    pushNotifications: true,
+  },
+  {
+    id: randomUUID(),
+    userId: SEED_USER_IDS.alice,
     theme: "light" as const,
     language: "es",
     timezone: "Europe/Madrid",
     emailNotifications: true,
     pushNotifications: false,
   },
-  {
-    id: randomUUID(),
-    userId: SEED_USER_IDS[2]!,
-    theme: "system" as const,
-    language: "en",
-    timezone: "UTC",
-    emailNotifications: false,
-    pushNotifications: false,
-  },
 ];
 
-// Sample API keys (keyHash is a placeholder - in real usage, hash the actual key)
 const sampleApiKeys = [
   {
     id: randomUUID(),
-    userId: SEED_USER_IDS[0]!,
-    name: "Development API Key",
-    keyHash: "sha256_placeholder_dev_key_hash_alice",
-    keyPrefix: "gm_dev_alice",
-    permissions: ["read", "write"],
-    expiresAt: new Date("2025-12-31T23:59:59Z"),
-  },
-  {
-    id: randomUUID(),
-    userId: SEED_USER_IDS[0]!,
-    name: "Production Read-Only",
-    keyHash: "sha256_placeholder_prod_key_hash_alice",
-    keyPrefix: "gm_prd_alice",
-    permissions: ["read"],
+    userId: SEED_USER_IDS.admin,
+    name: "Admin Development Key",
+    keyHash: createHash("sha256").update("gmk_admin_dev_key_seed").digest("hex"),
+    keyPrefix: "gmk_admin_d",
+    permissions: ["read", "write", "delete", "admin"],
     expiresAt: null,
   },
   {
     id: randomUUID(),
-    userId: SEED_USER_IDS[1]!,
-    name: "CI/CD Pipeline Key",
-    keyHash: "sha256_placeholder_cicd_key_hash_bob",
-    keyPrefix: "gm_ci_bob",
-    permissions: ["read", "write", "delete"],
-    expiresAt: new Date("2025-06-30T23:59:59Z"),
+    userId: SEED_USER_IDS.test,
+    name: "Test Read-Only Key",
+    keyHash: createHash("sha256").update("gmk_test_readonly_seed").digest("hex"),
+    keyPrefix: "gmk_test_ro",
+    permissions: ["read"],
+    expiresAt: new Date("2026-12-31T23:59:59Z"),
   },
 ];
+
+// ─── Seed Functions ────────────────────────────────────────────────────────
 
 async function clearSeedData() {
   console.log("Clearing existing seed data...");
 
-  // Delete in order respecting foreign key constraints
-  // API keys and preferences reference users, so delete them first
-  await db.delete(apiKeys).where(inArray(apiKeys.userId, SEED_USER_IDS));
+  await db.delete(apiKeys).where(inArray(apiKeys.userId, ALL_SEED_IDS));
   await db
     .delete(userPreferences)
-    .where(inArray(userPreferences.userId, SEED_USER_IDS));
+    .where(inArray(userPreferences.userId, ALL_SEED_IDS));
+  await db
+    .delete(subscription)
+    .where(inArray(subscription.userId, ALL_SEED_IDS));
+  await db.delete(account).where(inArray(account.userId, ALL_SEED_IDS));
+  await db.delete(user).where(inArray(user.id, ALL_SEED_IDS));
 
-  // Delete seed users
-  await db.delete(user).where(inArray(user.id, SEED_USER_IDS));
-
-  // Delete posts by checking for seed-specific content pattern
-  // Posts don't have userId, so we delete by email pattern in title
   for (const post of samplePosts) {
     await db.delete(Post).where(eq(Post.title, post.title));
   }
@@ -171,47 +243,71 @@ async function clearSeedData() {
 
 async function seedUsers() {
   console.log("Seeding users...");
-  await db.insert(user).values(sampleUsers);
-  console.log(`Inserted ${sampleUsers.length} users.`);
+  await db.insert(user).values(defaultAccounts);
+  console.log(`  Inserted ${defaultAccounts.length} users`);
+  console.log("  Default accounts:");
+  console.log("    Admin: admin@example.com / admin123");
+  console.log("    Test:  test@example.com  / test123");
+}
+
+async function seedCredentialAccounts() {
+  console.log("Seeding credential accounts...");
+  await db.insert(account).values(credentialAccounts);
+  console.log(`  Inserted ${credentialAccounts.length} credential accounts`);
+}
+
+async function seedSubscriptions() {
+  console.log("Seeding subscriptions...");
+  await db.insert(subscription).values(sampleSubscriptions);
+  console.log(`  Inserted ${sampleSubscriptions.length} subscriptions`);
 }
 
 async function seedPosts() {
   console.log("Seeding posts...");
   await db.insert(Post).values(samplePosts);
-  console.log(`Inserted ${samplePosts.length} posts.`);
+  console.log(`  Inserted ${samplePosts.length} posts`);
 }
 
 async function seedUserPreferences() {
   console.log("Seeding user preferences...");
   await db.insert(userPreferences).values(samplePreferences);
-  console.log(`Inserted ${samplePreferences.length} user preferences.`);
+  console.log(`  Inserted ${samplePreferences.length} user preferences`);
 }
 
 async function seedApiKeys() {
   console.log("Seeding API keys...");
   await db.insert(apiKeys).values(sampleApiKeys);
-  console.log(`Inserted ${sampleApiKeys.length} API keys.`);
+  console.log(`  Inserted ${sampleApiKeys.length} API keys`);
+  console.log("  Known test keys:");
+  console.log("    Admin key: gmk_admin_dev_key_seed");
+  console.log("    Test key:  gmk_test_readonly_seed");
 }
 
+// ─── Main ──────────────────────────────────────────────────────────────────
+
 async function main() {
-  console.log("Starting database seed...\n");
+  console.log("========================================");
+  console.log("  Database Seed Script");
+  console.log("========================================\n");
 
   try {
-    // Clear existing seed data first (idempotent)
     await clearSeedData();
-
-    // Seed in order respecting foreign key constraints
     await seedUsers();
+    await seedCredentialAccounts();
+    await seedSubscriptions();
     await seedPosts();
     await seedUserPreferences();
     await seedApiKeys();
 
-    console.log("\nDatabase seeding completed successfully!");
-    console.log("\nSeed Summary:");
-    console.log(`  - Users: ${sampleUsers.length}`);
-    console.log(`  - Posts: ${samplePosts.length}`);
-    console.log(`  - User Preferences: ${samplePreferences.length}`);
-    console.log(`  - API Keys: ${sampleApiKeys.length}`);
+    console.log("\n========================================");
+    console.log("  Seeding Complete!");
+    console.log("========================================");
+    console.log(`  Users:          ${defaultAccounts.length}`);
+    console.log(`  Subscriptions:  ${sampleSubscriptions.length}`);
+    console.log(`  Posts:          ${samplePosts.length}`);
+    console.log(`  Preferences:    ${samplePreferences.length}`);
+    console.log(`  API Keys:       ${sampleApiKeys.length}`);
+    console.log("========================================\n");
   } catch (error) {
     console.error("Error seeding database:", error);
     process.exit(1);

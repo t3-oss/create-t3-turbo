@@ -2,11 +2,14 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import { cn } from "@gmacko/ui";
+import { SkipToContent } from "@gmacko/ui/skip-to-content";
 import { ThemeProvider, ThemeToggle } from "@gmacko/ui/theme";
 import { Toaster } from "@gmacko/ui/toast";
 
 import { env } from "~/env";
 import { TRPCReactProvider } from "~/trpc/react";
+import { AppCommandPalette } from "./_components/command-palette";
+import { WebSiteJsonLd } from "./_components/json-ld";
 import { Providers } from "./providers";
 
 import "~/app/styles.css";
@@ -14,21 +17,21 @@ import "~/app/styles.css";
 export const metadata: Metadata = {
   metadataBase: new URL(
     env.VERCEL_ENV === "production"
-      ? "https://turbo.t3.gg"
+      ? "https://gmacko.dev"
       : "http://localhost:3000",
   ),
-  title: "Create T3 Turbo",
-  description: "Simple monorepo with shared backend for web & mobile apps",
+  title: "gmacko.dev — Full-Stack SaaS Starter",
+  description:
+    "Production-ready monorepo with auth, payments, analytics, and multi-platform support. Ship faster with type-safe full-stack scaffolding.",
   openGraph: {
-    title: "Create T3 Turbo",
-    description: "Simple monorepo with shared backend for web & mobile apps",
-    url: "https://create-t3-turbo.vercel.app",
-    siteName: "Create T3 Turbo",
+    title: "gmacko.dev — Full-Stack SaaS Starter",
+    description:
+      "Production-ready monorepo with auth, payments, analytics, and multi-platform support.",
+    url: "https://gmacko.dev",
+    siteName: "gmacko.dev",
   },
   twitter: {
     card: "summary_large_image",
-    site: "@jullerino",
-    creator: "@jullerino",
   },
 };
 
@@ -51,6 +54,17 @@ const geistMono = Geist_Mono({
 export default function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <WebSiteJsonLd
+          name="gmacko.dev"
+          url={
+            env.VERCEL_ENV === "production"
+              ? "https://gmacko.dev"
+              : "http://localhost:3000"
+          }
+          description="Production-ready monorepo with auth, payments, analytics, and multi-platform support."
+        />
+      </head>
       <body
         className={cn(
           "bg-background text-foreground min-h-screen font-sans antialiased",
@@ -58,11 +72,15 @@ export default function RootLayout(props: { children: React.ReactNode }) {
           geistMono.variable,
         )}
       >
+        <SkipToContent />
         <ThemeProvider>
           <Providers>
-            <TRPCReactProvider>{props.children}</TRPCReactProvider>
+            <TRPCReactProvider>
+              <main id="main-content">{props.children}</main>
+              <AppCommandPalette />
+            </TRPCReactProvider>
           </Providers>
-          <div className="absolute right-4 bottom-4">
+          <div className="fixed right-4 bottom-4 z-50">
             <ThemeToggle />
           </div>
           <Toaster />

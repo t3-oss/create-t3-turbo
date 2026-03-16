@@ -35,6 +35,21 @@ export const integrations = {
 
   // OpenAPI documentation (default OFF)
   openapi: false,
+
+  // WebSocket server (default OFF)
+  websocket: false,
+
+  // gRPC services (default OFF)
+  grpc: false,
+
+  // Caching layer — Redis in production, in-memory in dev (default OFF)
+  cache: false,
+
+  // Application metrics — Prometheus endpoint at /api/metrics (default OFF)
+  metrics: false,
+
+  // Maintenance mode — redirects all traffic to /maintenance (default OFF)
+  maintenance: false,
 } as const;
 
 export type Integrations = typeof integrations;
@@ -49,3 +64,8 @@ export const isRealtimeEnabled = () => integrations.realtime.enabled;
 export const isStorageEnabled = () => integrations.storage.enabled;
 export const isI18nEnabled = () => integrations.i18n;
 export const isOpenApiEnabled = () => integrations.openapi;
+export const isWebSocketEnabled = () => integrations.websocket;
+export const isGrpcEnabled = () => integrations.grpc;
+export const isCacheEnabled = () => integrations.cache;
+export const isMetricsEnabled = () => integrations.metrics;
+export const isMaintenanceEnabled = () => integrations.maintenance;

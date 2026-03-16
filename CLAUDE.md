@@ -159,3 +159,21 @@ See `.env.example` for the full list with documentation. Required:
 - Changesets for versioning published packages
 - Renovate for automated dependency updates
 - Docker workflow for containerized deployments
+
+## gstack
+
+Use the `/browse` skill from gstack for all web browsing. Never use `mcp__claude-in-chrome__*` tools.
+
+Available skills:
+- `/plan-ceo-review` — CEO-level plan review
+- `/plan-eng-review` — Engineering plan review
+- `/review` — Code review
+- `/ship` — Ship code
+- `/browse` — Headless browser for QA and web browsing
+- `/qa` — QA testing
+- `/qa-only` — QA testing only (no code changes)
+- `/setup-browser-cookies` — Set up browser cookies for authenticated browsing
+- `/retro` — Retrospective
+- `/document-release` — Document a release
+
+If gstack skills aren't working, run `cd .claude/skills/gstack && ./setup` to build the binary and register skills.

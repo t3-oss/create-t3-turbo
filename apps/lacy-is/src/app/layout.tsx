@@ -1,6 +1,7 @@
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 
 import { ThemeProvider, ThemeToggle } from "@/components/ui/theme";
 import { cn } from "@/lib/utils";
@@ -43,6 +44,13 @@ export const viewport: Viewport = {
 export default function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <Script
+          defer
+          src="https://analytics.lacy.sh/script.js"
+          data-website-id="878d3543-4405-4200-acf4-822f2bbe981b"
+        />
+      </head>
       <body
         className={cn(
           "min-h-screen bg-background font-sans text-foreground antialiased",

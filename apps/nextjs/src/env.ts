@@ -5,6 +5,13 @@ import { z } from "zod/v4";
 import { authEnv } from "@acme/auth/env";
 
 export const env = createEnv({
+  onValidationError(error) {
+    const missing = error.map((i) => (i.path ?? []).join(".")).join(", ");
+    throw new Error(
+      `❌ Missing or invalid environment variables: ${missing}\n` +
+        `   Check your .env file or Vercel project settings.`,
+    );
+  },
   extends: [authEnv(), vercel()],
   shared: {
     NODE_ENV: z

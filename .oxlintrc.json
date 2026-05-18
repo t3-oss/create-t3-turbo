@@ -1,0 +1,17 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["react", "typescript"],
+  "env": {
+    "browser": true,
+    "es2025": true
+  },
+  "ignorePatterns": [
+    "dist",
+    ".nitro",
+    ".output",
+    ".tanstack",
+    ".expo",
+    "expo-plugins",
+    "node_modules"
+  ]
+}

@@ -15,12 +15,18 @@
       "persistent": false
     },
     "format": {
-      "outputs": [".cache/.prettiercache"],
+      "outputLogs": "new-only"
+    },
+    "format:fix": {
+      "cache": false,
       "outputLogs": "new-only"
     },
     "lint": {
+      "dependsOn": ["^topo", "^build"]
+    },
+    "lint:fix": {
       "dependsOn": ["^topo", "^build"],
-      "outputs": [".cache/.eslintcache"]
+      "cache": false
     },
     "typecheck": {
       "dependsOn": ["^topo", "^build"],

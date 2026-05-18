@@ -1,20 +1,12 @@
 # create-t3-turbo
 
-> [!NOTE]
->
-> create-t3-turbo now includes the option to use Tanstack Start for the web app!
-
 ## Installation
 
 > [!NOTE]
 >
 > Make sure to follow the system requirements specified in [`package.json#engines`](./package.json#L4) before proceeding.
 
-There are two ways of initializing an app using the `create-t3-turbo` starter. You can either use this repository as a template:
-
-![use-as-template](https://github.com/t3-oss/create-t3-turbo/assets/51714798/bb6c2e5d-d8b6-416e-aeb3-b3e50e2ca994)
-
-or use Turbo's CLI to init your project (use PNPM as package manager):
+You can use this repository as a template or init via Turbo's CLI (use PNPM as package manager):
 
 ```bash
 npx create-turbo@latest -e https://github.com/t3-oss/create-t3-turbo
@@ -22,9 +14,7 @@ npx create-turbo@latest -e https://github.com/t3-oss/create-t3-turbo
 
 ## About
 
-Ever wondered how to migrate your T3 application into a monorepo? Stop right here! This is the perfect starter repo to get you running with the perfect stack!
-
-It uses [Turborepo](https://turborepo.com) and contains:
+A monorepo starter for T3 apps powered by [Turborepo](https://turborepo.com).
 
 ```text
 .github
@@ -33,36 +23,30 @@ It uses [Turborepo](https://turborepo.com) and contains:
 .vscode
   └─ Recommended extensions and settings for VSCode users
 apps
-  ├─ expo
+  ├─ mobile
   │   ├─ Expo SDK 54
   │   ├─ React Native 0.81 using React 19
   │   ├─ Navigation using Expo Router
   │   ├─ Tailwind CSS v4 using NativeWind v5
   │   └─ Typesafe API calls using tRPC
-  ├─ nextjs
-  │   ├─ Next.js 15
-  │   ├─ React 19
-  │   ├─ Tailwind CSS v4
-  │   └─ E2E Typesafe API Server & Client
-  └─ tanstack-start
-      ├─ Tanstack Start v1 (rc)
+  └─ web
+      ├─ TanStack Start v1
       ├─ React 19
+      ├─ Vite 7 with Rolldown bundler
       ├─ Tailwind CSS v4
       └─ E2E Typesafe API Server & Client
 packages
   ├─ api
   │   └─ tRPC v11 router definition
   ├─ auth
-  │   └─ Authentication using better-auth.
+  │   └─ Authentication using better-auth
   ├─ db
   │   └─ Typesafe db calls using Drizzle & Supabase
   └─ ui
-      └─ Start of a UI package for the webapp using shadcn-ui
+      └─ Shared UI package using shadcn-ui
 tooling
-  ├─ eslint
-  │   └─ shared, fine-grained, eslint presets
-  ├─ prettier
-  │   └─ shared prettier configuration
+  ├─ oxc (via root .oxlintrc.json)
+  │   └─ oxlint for linting, oxfmt for formatting
   ├─ tailwind
   │   └─ shared tailwind theme and configuration
   └─ typescript
@@ -79,10 +63,6 @@ tooling
 To get it running, follow the steps below:
 
 ### 1. Setup dependencies
-
-> [!NOTE]
->
-> While the repo does contain both a Next.js and Tanstack Start version of a web app, you can pick which one you like to use and delete the other folder before starting the setup.
 
 ```bash
 # Install dependencies
@@ -126,7 +106,7 @@ For more information about the Better Auth CLI, see the [official documentation]
 
 1. Make sure you have XCode and XCommand Line Tools installed [as shown on expo docs](https://docs.expo.dev/workflow/ios-simulator).
 
-   > **NOTE:** If you just installed XCode, or if you have updated it, you need to open the simulator manually once. Run `npx expo start` from `apps/expo`, and then enter `I` to launch Expo Go. After the manual launch, you can run `pnpm dev` in the root directory.
+   > **NOTE:** If you just installed XCode, or if you have updated it, you need to open the simulator manually once. Run `npx expo start` from `apps/mobile`, and then enter `I` to launch Expo Go. After the manual launch, you can run `pnpm dev` in the root directory.
 
    ```diff
    +  "dev": "expo start --ios",
@@ -138,7 +118,7 @@ For more information about the Better Auth CLI, see the [official documentation]
 
 1. Install Android Studio tools [as shown on expo docs](https://docs.expo.dev/workflow/android-studio-emulator).
 
-2. Change the `dev` script at `apps/expo/package.json` to open the Android emulator.
+2. Change the `dev` script at `apps/mobile/package.json` to open the Android emulator.
 
    ```diff
    +  "dev": "expo start --android",
@@ -150,15 +130,13 @@ For more information about the Better Auth CLI, see the [official documentation]
 
 In order to get Better-Auth to work with Expo, you must either:
 
-#### Deploy the Auth Proxy (RECOMMENDED)
+#### Deploy the web app (RECOMMENDED)
 
-Better-auth comes with an [auth proxy plugin](https://www.better-auth.com/docs/plugins/oauth-proxy). By deploying the Next.js app, you can get OAuth working in preview deployments and development for Expo apps.
-
-By using the proxy plugin, the Next.js apps will forward any auth requests to the proxy server, which will handle the OAuth flow and then redirect back to the Next.js app. This makes it easy to get OAuth working since you'll have a stable URL that is publicly accessible and doesn't change for every deployment and doesn't rely on what port the app is running on. So if port 3000 is taken and your Next.js app starts at port 3001 instead, your auth should still work without having to reconfigure the OAuth provider.
+By deploying the TanStack Start app (`apps/web`), you get a stable public URL for OAuth redirects that works across preview deployments and development for the mobile app.
 
 #### Add your local IP to your OAuth provider
 
-You can alternatively add your local IP (e.g. `192.168.x.y:$PORT`) to your OAuth provider. This may not be as reliable as your local IP may change when you change networks. Some OAuth providers may also only support a single callback URL for each app making this approach unviable for some providers (e.g. GitHub).
+You can alternatively add your local IP (e.g. `192.168.x.y:$PORT`) to your OAuth provider. This may not be as reliable as your local IP may change when you change networks.
 
 ### 5a. When it's time to add a new UI component
 
@@ -180,42 +158,27 @@ The generator sets up the `package.json`, `tsconfig.json` and a `index.ts`, as w
 
 ### Does the starter include Solito?
 
-No. Solito will not be included in this repo. It is a great tool if you want to share code between your Next.js and Expo app. However, the main purpose of this repo is not the integration between Next.js and Expo — it's the code splitting of your T3 App into a monorepo. The Expo app is just a bonus example of how you can utilize the monorepo with multiple apps but can just as well be any app such as Vite, Electron, etc.
-
-Integrating Solito into this repo isn't hard, and there are a few [official templates](https://github.com/nandorojo/solito/tree/master/example-monorepos) by the creators of Solito that you can use as a reference.
+No. Solito will not be included in this repo. It is a great tool if you want to share code between your web and mobile app. However, the main purpose of this repo is the code splitting of your T3 App into a monorepo. The mobile app is just a bonus example of how you can utilize the monorepo with multiple apps.
 
 ### Does this pattern leak backend code to my client applications?
 
-No, it does not. The `api` package should only be a production dependency in the Next.js application where it's served. The Expo app, and all other apps you may add in the future, should only add the `api` package as a dev dependency. This lets you have full typesafety in your client applications, while keeping your backend code safe.
+No, it does not. The `api` package should only be a production dependency in the web application where it's served. The mobile app, and all other apps you may add in the future, should only add the `api` package as a dev dependency. This lets you have full typesafety in your client applications, while keeping your backend code safe.
 
 If you need to share runtime code between the client and server, such as input validation schemas, you can create a separate `shared` package for this and import it on both sides.
 
 ## Deployment
 
-### Next.js
+### TanStack Start (`apps/web`)
 
-#### Prerequisites
+Deploy the `apps/web` app to any hosting provider that supports Node.js. For Vercel:
 
-> **Note**
-> Please note that the Next.js application with tRPC must be deployed in order for the Expo app to communicate with the server in a production environment.
-
-#### Deploy to Vercel
-
-Let's deploy the Next.js application to [Vercel](https://vercel.com). If you've never deployed a Turborepo app there, don't worry, the steps are quite straightforward. You can also read the [official Turborepo guide](https://vercel.com/docs/concepts/monorepos/turborepo) on deploying to Vercel.
-
-1. Create a new project on Vercel, select the `apps/nextjs` folder as the root directory. Vercel's zero-config system should handle all configurations for you.
-
+1. Create a new project on Vercel, select `apps/web` as the root directory.
 2. Add your `POSTGRES_URL` environment variable.
+3. Done! Your app should successfully deploy.
 
-3. Done! Your app should successfully deploy. Assign your domain and use that instead of `localhost` for the `url` in the Expo app so that your Expo app can communicate with your backend when you are not in development.
+### Expo / Mobile (`apps/mobile`)
 
-### Auth Proxy
-
-The auth proxy comes as a better-auth plugin. This is required for the Next.js app to be able to authenticate users in preview deployments. The auth proxy is not used for OAuth request in production deployments. The easiest way to get it running is to deploy the Next.js app to vercel.
-
-### Expo
-
-Deploying your Expo application works slightly differently compared to Next.js on the web. Instead of "deploying" your app online, you need to submit production builds of your app to app stores, like [Apple App Store](https://www.apple.com/app-store) and [Google Play](https://play.google.com/store/apps). You can read the full [guide to distributing your app](https://docs.expo.dev/distribution/introduction), including best practices, in the Expo docs.
+Deploying your Expo application works slightly differently compared to web apps. Instead of "deploying" your app online, you need to submit production builds of your app to app stores, like [Apple App Store](https://www.apple.com/app-store) and [Google Play](https://play.google.com/store/apps). You can read the full [guide to distributing your app](https://docs.expo.dev/distribution/introduction), including best practices, in the Expo docs.
 
 1. Make sure to modify the `getBaseUrl` function to point to your backend's production URL:
 
@@ -231,7 +194,7 @@ Deploying your Expo application works slightly differently compared to Next.js o
    eas login
 
    # Configure your Expo app
-   cd apps/expo
+   cd apps/mobile
    eas build:configure
    ```
 
@@ -259,7 +222,7 @@ Deploying your Expo application works slightly differently compared to Next.js o
 
    ```bash
    # Add the `expo-updates` library to your Expo app
-   cd apps/expo
+   cd apps/mobile
    pnpm expo install expo-updates
 
    # Configure EAS Update
@@ -271,7 +234,7 @@ Deploying your Expo application works slightly differently compared to Next.js o
 8. Now that everything is ready for updates, let's create a new update for `production` builds. With the `--auto` flag, EAS Update uses your current git branch name and commit message for this update. See [How EAS Update works](https://docs.expo.dev/eas-update/how-eas-update-works/#publishing-an-update) for more information.
 
    ```bash
-   cd apps/expo
+   cd apps/mobile
    eas update --auto
    ```
 

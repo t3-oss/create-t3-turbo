@@ -242,7 +242,11 @@ describe("create-gmacko-app scaffold", () => {
       expect(forgeGraphConfig).toContain(
         "# primary web service path: apps/nextjs",
       );
-      expect(forgeGraphConfig).toContain("# healthcheck path: /api/health");
+      expect(forgeGraphConfig).toContain(
+        "# healthcheck path: /.well-known/forge-health",
+      );
+      expect(forgeGraphConfig).toContain("resources:");
+      expect(forgeGraphConfig).toContain("- type: postgres");
       expect(forgeGraphConfig).toContain(
         "# database strategy: colocated-postgres",
       );
@@ -289,6 +293,31 @@ describe("create-gmacko-app scaffold", () => {
         "# preview domain: pr.preview.gmac.io",
       );
       expect(forgeGraphConfig).toContain("# production domain: app.gmac.io");
+    }, 120000);
+
+    it("should scaffold with forgegraph integration config", async () => {
+      const appName = generateAppName("forgegraph-integration");
+      const result = await runCli({
+        appName,
+        flags: ["--yes", "--no-install", "--no-git", "--forgegraph"],
+        cwd: tempDir,
+      });
+
+      appsToClean.push(result.appPath);
+      expect(result.exitCode).toBe(0);
+
+      const integrationsConfig = readFile(
+        result.appPath,
+        "packages/config/src/integrations.ts",
+      );
+      expect(integrationsConfig).toContain("forgegraph: true");
+
+      const forgeGraphConfig = readFile(result.appPath, ".forgegraph.yaml");
+      expect(forgeGraphConfig).toContain(
+        "# healthcheck path: /.well-known/forge-health",
+      );
+      expect(forgeGraphConfig).toContain("resources:");
+      expect(forgeGraphConfig).toContain("- type: postgres");
     }, 120000);
 
     it("should scaffold vinext support when requested", async () => {

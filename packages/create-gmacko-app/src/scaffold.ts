@@ -189,7 +189,6 @@ function updateIntegrationsConfig(
   const content = `export const integrations = {
   sentry: ${integrations.sentry},
   posthog: ${integrations.posthog},
-  telemetry: ${integrations.forgegraph},
   forgegraph: ${integrations.forgegraph},
   stripe: ${integrations.stripe},
   revenuecat: ${integrations.revenuecat},
@@ -234,7 +233,6 @@ export const isRealtimeEnabled = () => integrations.realtime.enabled;
 export const isStorageEnabled = () => integrations.storage.enabled;
 export const isI18nEnabled = () => integrations.i18n;
 export const isOpenApiEnabled = () => integrations.openapi;
-export const isTelemetryEnabled = () => integrations.telemetry;
 export const isForgeGraphEnabled = () => integrations.forgegraph;
 export const isSaasCollaborationEnabled = () => saasFeatures.collaboration;
 export const isSaasBillingEnabled = () => saasFeatures.billing;

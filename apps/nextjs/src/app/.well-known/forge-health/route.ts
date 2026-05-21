@@ -15,16 +15,23 @@ interface ForgeHealthResponse {
   checks: Record<string, ForgeHealthCheck>;
 }
 
+let cached: { result: ForgeHealthCheck; expiresAt: number } | null = null;
+const CACHE_TTL_MS = 5_000;
+
 async function checkPostgres(): Promise<ForgeHealthCheck> {
+  if (cached && Date.now() < cached.expiresAt) return cached.result;
+
   const start = Date.now();
   try {
     await db.execute("SELECT 1");
     const latencyMs = Date.now() - start;
-    return {
+    const result: ForgeHealthCheck = {
       status: latencyMs > 2000 ? "degraded" : "healthy",
       latencyMs,
       checkedAt: new Date().toISOString(),
     };
+    cached = { result, expiresAt: Date.now() + CACHE_TTL_MS };
+    return result;
   } catch (error) {
     return {
       status: "unhealthy",

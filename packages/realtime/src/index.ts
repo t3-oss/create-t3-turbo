@@ -8,6 +8,8 @@ let redisInitPromise: Promise<import("ioredis").default> | null = null;
 let subscriberClient: import("ioredis").default | null = null;
 let subscriberInitPromise: Promise<import("ioredis").default> | null = null;
 const channelRefCounts = new Map<string, number>();
+const queues: import("bullmq").Queue[] = [];
+const workers: import("bullmq").Worker[] = [];
 
 export interface RedisConfig {
   url?: string;
@@ -152,7 +154,9 @@ export async function createQueue(
   const connection = await initRedis(config);
   if (!connection) return null;
 
-  return new Queue(name, { connection });
+  const queue = new Queue(name, { connection });
+  queues.push(queue);
+  return queue;
 }
 
 export async function createWorker<T = unknown>(
@@ -169,10 +173,16 @@ export async function createWorker<T = unknown>(
   const connection = await initRedis(config);
   if (!connection) return null;
 
-  return new Worker<T>(name, processor, { connection });
+  const worker = new Worker<T>(name, processor, { connection });
+  workers.push(worker);
+  return worker;
 }
 
 export async function shutdown(): Promise<void> {
+  await Promise.all(workers.map((w) => w.close()));
+  await Promise.all(queues.map((q) => q.close()));
+  workers.length = 0;
+  queues.length = 0;
   await subscriberClient?.quit();
   await redisClient?.quit();
   redisClient = null;

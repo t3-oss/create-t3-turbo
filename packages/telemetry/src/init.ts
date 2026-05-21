@@ -17,7 +17,7 @@ let initialized = false;
 
 export function initTelemetry(): void {
   if (initialized) return;
-  if (!integrations.telemetry) return;
+  if (!integrations.forgegraph) return;
   if (process.env.OTEL_ENABLED === "false") return;
 
   const endpoint =

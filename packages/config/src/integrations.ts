@@ -1,7 +1,6 @@
 export const integrations = {
   sentry: true,
   posthog: true,
-  telemetry: true,
   forgegraph: false,
   stripe: false,
   revenuecat: false,
@@ -80,7 +79,6 @@ export const isRealtimeEnabled = () => integrations.realtime.enabled;
 export const isStorageEnabled = () => integrations.storage.enabled;
 export const isI18nEnabled = () => integrations.i18n;
 export const isOpenApiEnabled = () => integrations.openapi;
-export const isTelemetryEnabled = () => integrations.telemetry;
 export const isForgeGraphEnabled = () => integrations.forgegraph;
 export const isSaasCollaborationEnabled = () => saasFeatures.collaboration;
 export const isSaasBillingEnabled = () => saasFeatures.billing;

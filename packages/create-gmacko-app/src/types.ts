@@ -1,11 +1,12 @@
 export interface IntegrationConfig {
   sentry: boolean;
   posthog: boolean;
+  forgegraph: boolean;
   stripe: boolean;
   revenuecat: boolean;
   notifications: boolean;
   email: { enabled: boolean; provider: "resend" | "sendgrid" | "none" };
-  realtime: { enabled: boolean; provider: "pusher" | "ably" | "none" };
+  realtime: { enabled: boolean; provider: "redis" | "none" };
   storage: { enabled: boolean; provider: "uploadthing" | "none" };
 }
 
@@ -52,6 +53,7 @@ export type IntegrationPreset =
 export const DEFAULT_INTEGRATIONS: IntegrationConfig = {
   sentry: true,
   posthog: true,
+  forgegraph: true,
   stripe: false,
   revenuecat: false,
   notifications: false,
@@ -63,6 +65,7 @@ export const DEFAULT_INTEGRATIONS: IntegrationConfig = {
 export const CORE_INTEGRATIONS: IntegrationConfig = {
   sentry: false,
   posthog: false,
+  forgegraph: false,
   stripe: false,
   revenuecat: false,
   notifications: false,
@@ -74,10 +77,11 @@ export const CORE_INTEGRATIONS: IntegrationConfig = {
 export const EVERYTHING_INTEGRATIONS: IntegrationConfig = {
   sentry: true,
   posthog: true,
+  forgegraph: true,
   stripe: true,
   revenuecat: true,
   notifications: true,
   email: { enabled: true, provider: "resend" },
-  realtime: { enabled: true, provider: "pusher" },
+  realtime: { enabled: true, provider: "redis" },
   storage: { enabled: true, provider: "uploadthing" },
 };

@@ -20,20 +20,29 @@ export function initTelemetry(): void {
   if (!integrations.telemetry) return;
   if (process.env.OTEL_ENABLED === "false") return;
 
-  const endpoint = process.env.OTEL_EXPORTER_OTLP_ENDPOINT;
+  const endpoint =
+    process.env.OTEL_EXPORTER_OTLP_ENDPOINT ||
+    (process.env.FG_APP ? "https://otlp.forgegraf.com" : "");
   if (!endpoint) return;
 
   initialized = true;
 
   try {
     const serviceName =
-      process.env.OTEL_SERVICE_NAME || process.env.SERVICE_NAME || "gmacko-app";
+      process.env.FG_APP ||
+      process.env.OTEL_SERVICE_NAME ||
+      process.env.SERVICE_NAME ||
+      "gmacko-app";
 
     const resource = resourceFromAttributes({
       [ATTR_SERVICE_NAME]: serviceName,
       [SEMRESATTRS_DEPLOYMENT_ENVIRONMENT]:
-        process.env.NODE_ENV ?? "development",
-      [ATTR_SERVICE_VERSION]: process.env.npm_package_version ?? "0.0.0",
+        process.env.FG_STAGE || process.env.NODE_ENV || "development",
+      [ATTR_SERVICE_VERSION]:
+        process.env.FG_COMMIT_HASH ||
+        process.env.npm_package_version ||
+        "0.0.0",
+      ...(process.env.FG_NODE && { "host.name": process.env.FG_NODE }),
     });
 
     const traceExporter = new OTLPTraceExporter({

@@ -118,6 +118,19 @@ export async function runPrompts(
     integrations = await promptCustomIntegrations();
   }
 
+  if (integrationPreset !== "custom") {
+    const forgegraph = await p.confirm({
+      message:
+        "Enable ForgeGraph integrations (health endpoint, structured logging, OTEL)?",
+      initialValue: true,
+    });
+    if (p.isCancel(forgegraph)) {
+      p.cancel("Operation cancelled.");
+      process.exit(0);
+    }
+    integrations = { ...integrations, forgegraph: forgegraph as boolean };
+  }
+
   const saasLayers = await promptSaasLayers();
 
   const includeAi = await p.confirm({
@@ -208,7 +221,7 @@ export async function runPrompts(
     forgegraphProductionNode: "change-me-production-node",
     forgegraphPreviewDomain: "change-me.preview.example.com",
     forgegraphProductionDomain: "change-me.example.com",
-    integrations,
+    integrations: { ...integrations },
     includeAi: includeAi as boolean,
     includeProvision: includeProvision as boolean,
     prune: prune as boolean,
@@ -306,14 +319,22 @@ async function promptCustomIntegrations(): Promise<IntegrationConfig> {
     options: [
       { value: "sentry", label: "Sentry (monitoring)", hint: "recommended" },
       { value: "posthog", label: "PostHog (analytics)", hint: "recommended" },
+      {
+        value: "forgegraph",
+        label: "ForgeGraph (health, logging, OTEL)",
+        hint: "recommended",
+      },
       { value: "stripe", label: "Stripe (payments)", hint: "web" },
       { value: "revenuecat", label: "RevenueCat (mobile IAP)", hint: "mobile" },
       { value: "notifications", label: "Push Notifications", hint: "mobile" },
       { value: "email", label: "Email" },
-      { value: "realtime", label: "Realtime" },
+      {
+        value: "realtime",
+        label: "Realtime + Jobs (Redis + BullMQ)",
+      },
       { value: "storage", label: "Storage" },
     ],
-    initialValues: ["sentry", "posthog"],
+    initialValues: ["sentry", "posthog", "forgegraph"],
     required: false,
   });
 
@@ -341,23 +362,6 @@ async function promptCustomIntegrations(): Promise<IntegrationConfig> {
     emailProvider = provider as "resend" | "sendgrid";
   }
 
-  let realtimeProvider: "pusher" | "ably" | "none" = "none";
-  if (selectedSet.has("realtime")) {
-    const provider = await p.select({
-      message: "Realtime provider?",
-      options: [
-        { value: "pusher", label: "Pusher" },
-        { value: "ably", label: "Ably" },
-      ],
-      initialValue: "pusher",
-    });
-    if (p.isCancel(provider)) {
-      p.cancel("Operation cancelled.");
-      process.exit(0);
-    }
-    realtimeProvider = provider as "pusher" | "ably";
-  }
-
   let storageProvider: "uploadthing" | "none" = "none";
   if (selectedSet.has("storage")) {
     storageProvider = "uploadthing";
@@ -366,13 +370,14 @@ async function promptCustomIntegrations(): Promise<IntegrationConfig> {
   return {
     sentry: selectedSet.has("sentry"),
     posthog: selectedSet.has("posthog"),
+    forgegraph: selectedSet.has("forgegraph"),
     stripe: selectedSet.has("stripe"),
     revenuecat: selectedSet.has("revenuecat"),
     notifications: selectedSet.has("notifications"),
     email: { enabled: selectedSet.has("email"), provider: emailProvider },
     realtime: {
       enabled: selectedSet.has("realtime"),
-      provider: realtimeProvider,
+      provider: selectedSet.has("realtime") ? "redis" : "none",
     },
     storage: { enabled: selectedSet.has("storage"), provider: storageProvider },
   };

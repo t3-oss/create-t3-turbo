@@ -189,6 +189,8 @@ function updateIntegrationsConfig(
   const content = `export const integrations = {
   sentry: ${integrations.sentry},
   posthog: ${integrations.posthog},
+  telemetry: ${integrations.forgegraph},
+  forgegraph: ${integrations.forgegraph},
   stripe: ${integrations.stripe},
   revenuecat: ${integrations.revenuecat},
   notifications: ${integrations.notifications},
@@ -198,7 +200,7 @@ function updateIntegrationsConfig(
   },
   realtime: {
     enabled: ${integrations.realtime.enabled},
-    provider: "${integrations.realtime.provider}" as "pusher" | "ably" | "none",
+    provider: "${integrations.realtime.provider}" as "redis" | "none",
   },
   storage: {
     enabled: ${integrations.storage.enabled},
@@ -232,6 +234,8 @@ export const isRealtimeEnabled = () => integrations.realtime.enabled;
 export const isStorageEnabled = () => integrations.storage.enabled;
 export const isI18nEnabled = () => integrations.i18n;
 export const isOpenApiEnabled = () => integrations.openapi;
+export const isTelemetryEnabled = () => integrations.telemetry;
+export const isForgeGraphEnabled = () => integrations.forgegraph;
 export const isSaasCollaborationEnabled = () => saasFeatures.collaboration;
 export const isSaasBillingEnabled = () => saasFeatures.billing;
 export const isSaasMeteringEnabled = () => saasFeatures.metering;
@@ -529,8 +533,11 @@ function buildScaffoldProfileBlock(options: CliOptions): string {
     options.integrations.email.enabled
       ? `Email (${options.integrations.email.provider})`
       : null,
+    options.integrations.forgegraph
+      ? "ForgeGraph (health, logging, OTEL)"
+      : null,
     options.integrations.realtime.enabled
-      ? `Realtime (${options.integrations.realtime.provider})`
+      ? "Realtime + Jobs (Redis + BullMQ)"
       : null,
     options.integrations.storage.enabled
       ? `Storage (${options.integrations.storage.provider})`
@@ -592,7 +599,15 @@ function getHealthcheckHint(options: CliOptions): string {
 
 function createForgeGraphConfig(targetDir: string, options: CliOptions): void {
   const primaryServicePath = getPrimaryServicePath(options);
-  const healthcheckHint = getHealthcheckHint(options);
+  const healthcheckHint = options.integrations.forgegraph
+    ? "/.well-known/forge-health"
+    : getHealthcheckHint(options);
+
+  const resources: string[] = [];
+  resources.push("  - type: postgres");
+  if (options.integrations.realtime.enabled) {
+    resources.push("  - type: redis");
+  }
 
   fs.writeFileSync(
     path.join(targetDir, ".forgegraph.yaml"),
@@ -605,6 +620,9 @@ stages:
   - name: production
     nodeId: ${options.forgegraphProductionNode}
     sortOrder: 20
+
+resources:
+${resources.join("\n")}
 
 # ForgeGraph operator notes:
 # flakeRef: .

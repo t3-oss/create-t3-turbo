@@ -79,18 +79,26 @@ const isDev = process.env.NODE_ENV !== "production";
 /**
  * Create the base pino logger instance
  */
+function forgeContext(): Record<string, string> {
+  const ctx: Record<string, string> = {};
+  if (process.env.FG_APP) ctx.app = process.env.FG_APP;
+  if (process.env.FG_STAGE) ctx.stage = process.env.FG_STAGE;
+  if (process.env.FG_NODE) ctx.node = process.env.FG_NODE;
+  if (process.env.FG_COMMIT_HASH) ctx.commitHash = process.env.FG_COMMIT_HASH;
+  return ctx;
+}
+
 function createBaseLogger() {
   return pino({
     level: process.env.LOG_LEVEL ?? (isDev ? "debug" : "info"),
 
-    // Add standard fields
     base: {
       env: process.env.NODE_ENV ?? "development",
       service: process.env.SERVICE_NAME ?? "gmacko-app",
       version: process.env.npm_package_version ?? "0.0.0",
+      ...forgeContext(),
     },
 
-    // Timestamp format
     timestamp: pino.stdTimeFunctions.isoTime,
 
     // Inject OTel trace context (traceId, spanId) into every log line
@@ -536,7 +544,13 @@ export function createRequestLoggingHandler(
   options: RequestLoggingOptions = {},
 ) {
   const {
-    ignorePaths = ["/health", "/healthz", "/_health", "/api/health"],
+    ignorePaths = [
+      "/health",
+      "/healthz",
+      "/_health",
+      "/api/health",
+      "/.well-known/forge-health",
+    ],
     slowRequestThresholdMs = 3000,
   } = options;
 

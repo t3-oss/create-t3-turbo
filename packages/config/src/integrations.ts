@@ -1,42 +1,24 @@
 export const integrations = {
-  // Monitoring & Analytics (default ON)
   sentry: true,
   posthog: true,
-
-  // Telemetry (default ON)
   telemetry: true,
-
-  // Payments - Web (default OFF)
+  forgegraph: false,
   stripe: false,
-
-  // Payments - Mobile (default OFF)
   revenuecat: false,
-
-  // Push Notifications (default OFF)
   notifications: false,
-
-  // Communication (default OFF)
   email: {
     enabled: false,
     provider: "none" as "resend" | "sendgrid" | "none",
   },
-
-  // Realtime (default OFF)
   realtime: {
     enabled: false,
-    provider: "none" as "pusher" | "ably" | "none",
+    provider: "none" as "redis" | "none",
   },
-
-  // Storage (default OFF)
   storage: {
     enabled: false,
     provider: "none" as "uploadthing" | "none",
   },
-
-  // Internationalization (default OFF)
   i18n: true,
-
-  // OpenAPI documentation (default OFF)
   openapi: false,
 } as const;
 
@@ -99,6 +81,7 @@ export const isStorageEnabled = () => integrations.storage.enabled;
 export const isI18nEnabled = () => integrations.i18n;
 export const isOpenApiEnabled = () => integrations.openapi;
 export const isTelemetryEnabled = () => integrations.telemetry;
+export const isForgeGraphEnabled = () => integrations.forgegraph;
 export const isSaasCollaborationEnabled = () => saasFeatures.collaboration;
 export const isSaasBillingEnabled = () => saasFeatures.billing;
 export const isSaasMeteringEnabled = () => saasFeatures.metering;

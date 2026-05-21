@@ -48,7 +48,10 @@ program
     "Comma-separated list of integrations (sentry,posthog,stripe,revenuecat,notifications,email,realtime,storage)",
   )
   .option("--email-provider <provider>", "Email provider (resend, sendgrid)")
-  .option("--realtime-provider <provider>", "Realtime provider (pusher, ably)")
+  .option(
+    "--forgegraph",
+    "Enable ForgeGraph integrations (health, logging, OTEL)",
+  )
   .option("--storage-provider <provider>", "Storage provider (uploadthing)")
   .option("--package-scope <scope>", "Package scope (default: @gmacko)")
   .option(
@@ -119,11 +122,14 @@ program
           opts.forgegraphProductionDomain as string;
       }
       if (opts.packageScope) options.packageScope = opts.packageScope as string;
+      if (opts.forgegraph !== undefined) {
+        options.integrations.forgegraph = opts.forgegraph === true;
+      }
       if (opts.integrations !== undefined) {
         options.integrations = parseIntegrations(
           opts.integrations as string,
           opts.emailProvider as string | undefined,
-          opts.realtimeProvider as string | undefined,
+          opts.forgegraph === true,
         );
       }
     } else {
@@ -138,6 +144,9 @@ program
       applyOperatorLaneFlags(options, opts);
       if (opts.saasBootstrap !== undefined) {
         options.saasBootstrap = opts.saasBootstrap === true;
+      }
+      if (opts.forgegraph !== undefined) {
+        options.integrations.forgegraph = opts.forgegraph === true;
       }
       if (opts.forgegraphServer) {
         options.forgegraphServer = opts.forgegraphServer as string;
@@ -165,7 +174,7 @@ program
 function parseIntegrations(
   list: string,
   emailProvider?: string,
-  realtimeProvider?: string,
+  forgegraph?: boolean,
 ): IntegrationConfig {
   const items = list.split(",").map((s) => s.trim().toLowerCase());
   const set = new Set(items);
@@ -173,6 +182,7 @@ function parseIntegrations(
   return {
     sentry: set.has("sentry"),
     posthog: set.has("posthog"),
+    forgegraph: forgegraph ?? set.has("forgegraph"),
     stripe: set.has("stripe"),
     revenuecat: set.has("revenuecat"),
     notifications: set.has("notifications"),
@@ -184,9 +194,7 @@ function parseIntegrations(
     },
     realtime: {
       enabled: set.has("realtime"),
-      provider: set.has("realtime")
-        ? ((realtimeProvider as "pusher" | "ably") ?? "pusher")
-        : "none",
+      provider: set.has("realtime") ? "redis" : "none",
     },
     storage: {
       enabled: set.has("storage"),

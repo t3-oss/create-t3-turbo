@@ -4,7 +4,10 @@ import { createLogger } from "@gmacko/logging";
 const log = createLogger({ module: "realtime" });
 
 let redisClient: import("ioredis").default | null = null;
+let redisInitPromise: Promise<import("ioredis").default> | null = null;
 let subscriberClient: import("ioredis").default | null = null;
+let subscriberInitPromise: Promise<import("ioredis").default> | null = null;
+const channelRefCounts = new Map<string, number>();
 
 export interface RedisConfig {
   url?: string;
@@ -43,9 +46,13 @@ export async function initRedis(
     return null;
   }
 
-  if (!redisClient) {
-    redisClient = await createRedisClient(config);
+  if (!redisInitPromise) {
+    redisInitPromise = createRedisClient(config);
+    redisInitPromise.catch(() => {
+      redisInitPromise = null;
+    });
   }
+  redisClient = await redisInitPromise;
   return redisClient;
 }
 
@@ -78,21 +85,41 @@ export async function subscribe(
     return async () => {};
   }
 
-  if (!subscriberClient) {
-    subscriberClient = await createRedisClient();
+  if (!subscriberInitPromise) {
+    subscriberInitPromise = createRedisClient();
+    subscriberInitPromise.catch(() => {
+      subscriberInitPromise = null;
+    });
+  }
+  subscriberClient = await subscriberInitPromise;
+
+  const refCount = channelRefCounts.get(channel) ?? 0;
+  channelRefCounts.set(channel, refCount + 1);
+  if (refCount === 0) {
+    await subscriberClient.subscribe(channel);
   }
 
-  await subscriberClient.subscribe(channel);
-
-  const listener = (_ch: string, message: string) => {
+  const listener = (ch: string, message: string) => {
+    if (ch !== channel) return;
     try {
-      const parsed = JSON.parse(message) as {
+      const parsed: unknown = JSON.parse(message);
+      if (
+        typeof parsed !== "object" ||
+        parsed === null ||
+        typeof (parsed as Record<string, unknown>).event !== "string" ||
+        typeof (parsed as Record<string, unknown>).data !== "object" ||
+        (parsed as Record<string, unknown>).data === null
+      ) {
+        log.warn({ channel }, "invalid redis message shape");
+        return;
+      }
+      const { event, data } = parsed as {
         event: string;
         data: Record<string, unknown>;
       };
-      handler(parsed.event, parsed.data);
+      handler(event, data);
     } catch {
-      log.warn({ channel, message }, "failed to parse redis message");
+      log.warn({ channel }, "failed to parse redis message");
     }
   };
 
@@ -100,7 +127,13 @@ export async function subscribe(
 
   return async () => {
     subscriberClient?.off("message", listener);
-    await subscriberClient?.unsubscribe(channel);
+    const current = channelRefCounts.get(channel) ?? 1;
+    if (current <= 1) {
+      channelRefCounts.delete(channel);
+      await subscriberClient?.unsubscribe(channel);
+    } else {
+      channelRefCounts.set(channel, current - 1);
+    }
   };
 }
 
@@ -140,8 +173,11 @@ export async function createWorker<T = unknown>(
 }
 
 export async function shutdown(): Promise<void> {
-  await redisClient?.quit();
   await subscriberClient?.quit();
+  await redisClient?.quit();
   redisClient = null;
+  redisInitPromise = null;
   subscriberClient = null;
+  subscriberInitPromise = null;
+  channelRefCounts.clear();
 }

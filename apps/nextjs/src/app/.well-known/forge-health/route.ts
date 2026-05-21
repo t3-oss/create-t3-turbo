@@ -30,7 +30,12 @@ async function checkPostgres(): Promise<ForgeHealthCheck> {
       status: "unhealthy",
       latencyMs: Date.now() - start,
       checkedAt: new Date().toISOString(),
-      error: error instanceof Error ? error.message : "connection failed",
+      error:
+        process.env.NODE_ENV === "production"
+          ? "connection failed"
+          : error instanceof Error
+            ? error.message
+            : "connection failed",
     };
   }
 }

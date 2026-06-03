@@ -1,6 +1,6 @@
 import Constants from "expo-constants";
 
-export type AppEnvironment = "development" | "staging" | "production";
+export type AppEnvironment = "development" | "preview" | "production";
 
 interface ObservabilityConfig {
   sentryDsn?: string;
@@ -12,16 +12,21 @@ interface EnvironmentConfig {
   apiUrl: string;
   environment: AppEnvironment;
   isDevelopment: boolean;
-  isStaging: boolean;
+  isPreview: boolean;
   isProduction: boolean;
   enableDebugMode: boolean;
   observability: ObservabilityConfig;
 }
 
 function getAppEnvironment(): AppEnvironment {
-  const env = Constants.expoConfig?.extra?.APP_ENV ?? process.env.APP_ENV;
+  // Read the build variant (APP_VARIANT); tolerate the legacy APP_ENV/"staging".
+  const env =
+    Constants.expoConfig?.extra?.APP_VARIANT ??
+    process.env.APP_VARIANT ??
+    Constants.expoConfig?.extra?.APP_ENV ??
+    process.env.APP_ENV;
   if (env === "production") return "production";
-  if (env === "staging") return "staging";
+  if (env === "preview" || env === "staging") return "preview";
   return "development";
 }
 
@@ -36,7 +41,7 @@ function getApiUrl(): string {
       return (
         process.env.EXPO_PUBLIC_PRODUCTION_API_URL ?? "https://api.yourapp.com"
       );
-    case "staging":
+    case "preview":
       return (
         process.env.EXPO_PUBLIC_STAGING_API_URL ??
         "https://staging-api.yourapp.com"
@@ -85,7 +90,7 @@ function getSentryDsnForEnvironment(
         process.env.EXPO_PUBLIC_SENTRY_DSN_PROD ??
         process.env.EXPO_PUBLIC_SENTRY_DSN
       );
-    case "staging":
+    case "preview":
       return (
         process.env.EXPO_PUBLIC_SENTRY_DSN_STAGING ??
         process.env.EXPO_PUBLIC_SENTRY_DSN
@@ -108,7 +113,7 @@ function getPosthogKeyForEnvironment(
         process.env.EXPO_PUBLIC_POSTHOG_KEY_PROD ??
         process.env.EXPO_PUBLIC_POSTHOG_KEY
       );
-    case "staging":
+    case "preview":
       return (
         process.env.EXPO_PUBLIC_POSTHOG_KEY_STAGING ??
         process.env.EXPO_PUBLIC_POSTHOG_KEY
@@ -129,7 +134,7 @@ export function getEnvConfig(): EnvironmentConfig {
     apiUrl: getApiUrl(),
     environment,
     isDevelopment: environment === "development",
-    isStaging: environment === "staging",
+    isPreview: environment === "preview",
     isProduction: environment === "production",
     enableDebugMode: environment !== "production",
     observability: getObservabilityConfig(),

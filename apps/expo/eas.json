@@ -21,7 +21,7 @@
       "developmentClient": true,
       "distribution": "internal",
       "env": {
-        "APP_ENV": "development",
+        "APP_VARIANT": "development",
         "API_URL": "http://localhost:3000",
         "SENTRY_DSN": "${EXPO_PUBLIC_SENTRY_DSN_DEV}",
         "POSTHOG_KEY": "${EXPO_PUBLIC_POSTHOG_KEY_DEV}",
@@ -42,11 +42,11 @@
         "simulator": true
       }
     },
-    "beta": {
+    "preview": {
       "extends": "base",
       "distribution": "internal",
       "env": {
-        "APP_ENV": "staging",
+        "APP_VARIANT": "preview",
         "API_URL": "${STAGING_API_URL}",
         "SENTRY_DSN": "${EXPO_PUBLIC_SENTRY_DSN_STAGING}",
         "POSTHOG_KEY": "${EXPO_PUBLIC_POSTHOG_KEY_STAGING}",
@@ -58,24 +58,24 @@
       "android": {
         "buildType": "apk"
       },
-      "channel": "beta"
+      "channel": "preview"
     },
-    "beta:production-api": {
-      "extends": "beta",
+    "preview:production-api": {
+      "extends": "preview",
       "env": {
-        "APP_ENV": "staging",
+        "APP_VARIANT": "preview",
         "API_URL": "${PRODUCTION_API_URL}",
         "SENTRY_DSN": "${EXPO_PUBLIC_SENTRY_DSN_STAGING}",
         "POSTHOG_KEY": "${EXPO_PUBLIC_POSTHOG_KEY_STAGING}",
         "POSTHOG_HOST": "${EXPO_PUBLIC_POSTHOG_HOST}"
       },
-      "channel": "beta-production"
+      "channel": "preview-production"
     },
     "production": {
       "extends": "base",
       "autoIncrement": true,
       "env": {
-        "APP_ENV": "production",
+        "APP_VARIANT": "production",
         "API_URL": "${PRODUCTION_API_URL}",
         "SENTRY_DSN": "${EXPO_PUBLIC_SENTRY_DSN_PROD}",
         "POSTHOG_KEY": "${EXPO_PUBLIC_POSTHOG_KEY_PROD}",
@@ -102,7 +102,7 @@
         "track": "internal"
       }
     },
-    "beta": {
+    "preview": {
       "ios": {
         "appleId": "${APPLE_ID}",
         "ascAppId": "${ASC_APP_ID}",

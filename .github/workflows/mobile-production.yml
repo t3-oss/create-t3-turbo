@@ -1,0 +1,76 @@
+name: Mobile Production Build
+
+# Production mobile builds are produced ONLY through CI. This workflow is the
+# single sanctioned path to a store build for apps/expo. Development and preview
+# builds run anywhere (locally or via a runner); they never reach this workflow.
+#
+# Requires an EXPO_TOKEN repository secret. Removed automatically by
+# create-gmacko-app when the mobile (Expo) lane is not selected.
+
+on:
+  workflow_dispatch:
+    inputs:
+      platform:
+        description: "Platform to build"
+        type: choice
+        options:
+          - all
+          - ios
+          - android
+        default: all
+      submit:
+        description: "Submit the build to the store after it completes"
+        type: boolean
+        default: false
+  push:
+    tags:
+      - "mobile-v*"
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  build:
+    name: EAS production build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/expo
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: "pnpm"
+
+      - name: Setup EAS
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        working-directory: .
+
+      - name: EAS build (production)
+        run: |
+          eas build \
+            --profile production \
+            --platform ${{ github.event.inputs.platform || 'all' }} \
+            --non-interactive \
+            --no-wait
+
+      - name: EAS submit (production)
+        if: github.event.inputs.submit == 'true'
+        run: |
+          eas submit \
+            --profile production \
+            --platform ${{ github.event.inputs.platform || 'all' }} \
+            --non-interactive \
+            --latest

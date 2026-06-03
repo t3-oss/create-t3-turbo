@@ -1,6 +1,10 @@
 import type { ConfigContext, ExpoConfig } from "expo/config";
 
-const APP_ENV = process.env.APP_ENV ?? "development";
+// Three build variants (development / preview / production). `APP_VARIANT` is set
+// per EAS profile in eas.json, or inline for local expo commands. Each variant
+// gets its own bundle id + name so all three install side-by-side; production is
+// produced only through CI (.github/workflows/mobile-production.yml).
+const APP_VARIANT = process.env.APP_VARIANT ?? "development";
 const API_URL = process.env.API_URL ?? "http://localhost:3000";
 const ASSOCIATED_DOMAIN =
   process.env.EXPO_PUBLIC_APP_DOMAIN ?? "change-me.example.com";
@@ -10,11 +14,11 @@ const POSTHOG_KEY = process.env.POSTHOG_KEY;
 const POSTHOG_HOST = process.env.POSTHOG_HOST ?? "https://us.i.posthog.com";
 
 const getAppName = (): string => {
-  switch (APP_ENV) {
+  switch (APP_VARIANT) {
     case "production":
       return "Gmacko";
-    case "staging":
-      return "Gmacko (Beta)";
+    case "preview":
+      return "Gmacko (Preview)";
     default:
       return "Gmacko (Dev)";
   }
@@ -23,11 +27,11 @@ const getAppName = (): string => {
 const getBundleId = (): string => {
   // Scaffold note: replace these app identifiers and domains before store submission.
   const base = "com.gmacko.app";
-  switch (APP_ENV) {
+  switch (APP_VARIANT) {
     case "production":
       return base;
-    case "staging":
-      return `${base}.beta`;
+    case "preview":
+      return `${base}.preview`;
     default:
       return `${base}.dev`;
   }
@@ -121,7 +125,7 @@ export default ({ config }: ConfigContext): ExpoConfig => {
       },
     },
     extra: {
-      APP_ENV,
+      APP_VARIANT,
       API_URL,
       SENTRY_DSN,
       POSTHOG_KEY,

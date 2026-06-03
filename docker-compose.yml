@@ -1,7 +1,5 @@
-version: "3.8"
-
 services:
-  # Local PostgreSQL for development
+  # ─── Local PostgreSQL for development ───────────────────────────────
   postgres:
     image: postgres:16-alpine
     container_name: gmacko-postgres
@@ -20,7 +18,7 @@ services:
       timeout: 5s
       retries: 5
 
-  # Redis for caching (optional)
+  # ─── Redis for caching (optional) ──────────────────────────────────
   redis:
     image: redis:7-alpine
     container_name: gmacko-redis
@@ -35,7 +33,19 @@ services:
       timeout: 5s
       retries: 5
 
-  # Next.js application (production build)
+  # ─── Stripe CLI (for webhook testing) ──────────────────────────────
+  stripe-cli:
+    image: stripe/stripe-cli:latest
+    container_name: gmacko-stripe
+    command: listen --forward-to http://web:3000/api/webhooks/stripe
+    environment:
+      STRIPE_API_KEY: ${STRIPE_SECRET_KEY:-}
+    profiles:
+      - stripe
+    depends_on:
+      - web
+
+  # ─── Next.js application (production build) ────────────────────────
   web:
     build:
       context: .
@@ -51,8 +61,17 @@ services:
         condition: service_healthy
     environment:
       DATABASE_URL: postgresql://postgres:postgres@postgres:5432/gmacko_dev
+      DATABASE_DRIVER: pg
       AUTH_SECRET: ${AUTH_SECRET:-development-secret-change-in-production}
       NODE_ENV: production
+      # Sentry (optional)
+      NEXT_PUBLIC_SENTRY_DSN: ${NEXT_PUBLIC_SENTRY_DSN:-}
+      # PostHog (optional)
+      NEXT_PUBLIC_POSTHOG_KEY: ${NEXT_PUBLIC_POSTHOG_KEY:-}
+      NEXT_PUBLIC_POSTHOG_HOST: ${NEXT_PUBLIC_POSTHOG_HOST:-https://us.i.posthog.com}
+      # Stripe (optional)
+      STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY:-}
+      STRIPE_WEBHOOK_SECRET: ${STRIPE_WEBHOOK_SECRET:-}
     ports:
       - "3000:3000"
     healthcheck:

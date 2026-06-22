@@ -5,13 +5,13 @@
   "tsx": true,
   "tailwind": {
     "config": "",
-    "css": "unused.css",
+    "css": "../../tooling/tailwind/theme.css",
     "baseColor": "zinc",
     "cssVariables": true
   },
   "aliases": {
     "utils": "@acme/ui",
-    "components": "src/",
-    "ui": "src/"
+    "components": "@acme/ui",
+    "ui": "@acme/ui"
   }
 }

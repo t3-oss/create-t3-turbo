@@ -497,7 +497,9 @@ describe("create-gmacko-app scaffold", () => {
         `const base = "com.gmacko.${appName.replace(/-/g, "")}"`,
       );
       expect(expoConfig).toContain(`return "${expectedDisplayName}";`);
-      expect(expoConfig).toContain(`return "${expectedDisplayName} (Beta)";`);
+      expect(expoConfig).toContain(
+        `return "${expectedDisplayName} (Preview)";`,
+      );
       expect(expoConfig).toContain(`return "${expectedDisplayName} (Dev)";`);
       expect(expoConfig).toContain("EXPO_PUBLIC_APP_DOMAIN");
       expect(expoConfig).toContain('"change-me.example.com"');

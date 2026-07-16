@@ -16,6 +16,11 @@ export function authEnv() {
       AUTH_GOOGLE_URL: z.string().url().optional(),
       AUTH_GOOGLE_TOKEN_URL: z.string().url().optional(),
       AUTH_APPLE_URL: z.string().url().optional(),
+      // Comma-separated origins of bring-your-own SSO identity providers
+      // (e.g. "https://gmacko.okta.com,https://login.microsoftonline.com").
+      // OIDC discovery refuses issuers outside the trusted-origins list, so
+      // operators must allow-list their IdP here before registering it.
+      AUTH_SSO_TRUSTED_ISSUERS: z.string().optional(),
       AUTH_SECRET:
         process.env.NODE_ENV === "production"
           ? z.string().min(1)

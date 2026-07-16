@@ -14,10 +14,14 @@
     "format": "biome check .",
     "lint": "oxlint .",
     "generate": "dotenv -e ../../.env -- pnpx @better-auth/cli generate --config script/auth-cli.ts --output ../db/src/auth-schema.ts",
-    "typecheck": "tsc --noEmit"
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "verify:flows": "dotenv -e ../../.env -- tsx script/verify-flows.ts"
   },
   "dependencies": {
     "@better-auth/expo": "catalog:",
+    "@better-auth/sso": "catalog:",
     "@gmacko/db": "workspace:*",
     "@gmacko/logging": "workspace:*",
     "@t3-oss/env-core": "^0.13.10",
@@ -27,9 +31,13 @@
   "devDependencies": {
     "@better-auth/cli": "catalog:",
     "@biomejs/biome": "catalog:",
+    "@gmacko/config": "workspace:*",
     "@gmacko/tsconfig": "workspace:*",
     "@types/node": "catalog:",
+    "dotenv-cli": "^11.0.0",
     "oxlint": "catalog:",
-    "typescript": "catalog:"
+    "tsx": "^4.21.0",
+    "typescript": "catalog:",
+    "vitest": "^4.1.0"
   }
 }

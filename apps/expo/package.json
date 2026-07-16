@@ -24,7 +24,8 @@
     "e2e:studio": "maestro studio",
     "format": "biome check .",
     "lint": "oxlint .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
   },
   "dependencies": {
     "@better-auth/expo": "catalog:",
@@ -41,6 +42,7 @@
     "better-auth": "catalog:",
     "expo": "~55.0.7",
     "expo-apple-authentication": "~55.0.9",
+    "expo-camera": "~55.0.17",
     "expo-clipboard": "^55.0.9",
     "expo-constants": "~55.0.8",
     "expo-dev-client": "~55.0.17",
@@ -74,6 +76,7 @@
     "@types/react": "catalog:react19",
     "oxlint": "catalog:",
     "tailwindcss": "catalog:",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "vitest": "^4.1.0"
   }
 }

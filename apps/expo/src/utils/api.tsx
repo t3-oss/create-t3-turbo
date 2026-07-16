@@ -6,6 +6,7 @@ import superjson from "superjson";
 
 import { authClient } from "./auth";
 import { getBaseUrl } from "./base-url";
+import { getToken } from "./session-store";
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -37,6 +38,13 @@ export const trpc = createTRPCOptionsProxy<AppRouter>({
           const cookies = authClient.getCookie();
           if (cookies) {
             headers.set("Cookie", cookies);
+          }
+
+          // Device-paired sessions authenticate with a bearer session token
+          // instead of a cookie (handled by the server's `bearer` plugin).
+          const pairedToken = getToken();
+          if (pairedToken) {
+            headers.set("Authorization", `Bearer ${pairedToken}`);
           }
           return headers;
         },

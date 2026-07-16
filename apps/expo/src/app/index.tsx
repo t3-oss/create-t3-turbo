@@ -10,6 +10,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import type { RouterOutputs } from "~/utils/api";
 import { trpc } from "~/utils/api";
 import { authClient } from "~/utils/auth";
+import { deleteToken } from "~/utils/session-store";
 
 function PostCard(props: {
   post: RouterOutputs["post"]["all"][number];
@@ -148,20 +149,36 @@ function MobileAuth() {
           : t("auth.dontHaveAccount")}
       </Text>
       <Pressable
-        onPress={() =>
-          session
-            ? authClient.signOut()
-            : authClient.signIn.social({
-                provider: "github",
-                callbackURL: "/",
-              })
-        }
+        onPress={async () => {
+          if (session) {
+            try {
+              await authClient.signOut();
+            } finally {
+              // Always drop the device-paired bearer token, even when the
+              // server-side revocation fails — a lingering token would keep
+              // authenticating requests as the signed-out user.
+              await deleteToken();
+            }
+            return;
+          }
+          await authClient.signIn.social({
+            provider: "github",
+            callbackURL: "/",
+          });
+        }}
         className="bg-primary flex items-center rounded-sm p-2"
       >
         <Text>
           {session ? t("auth.signOut") : t("auth.signIn") + " With GitHub"}
         </Text>
       </Pressable>
+      {!session ? (
+        <Link asChild href="/pair">
+          <Pressable className="border-input mt-3 flex items-center rounded-sm border p-2">
+            <Text className="text-foreground">Sign in with QR Code</Text>
+          </Pressable>
+        </Link>
+      ) : null}
       {!session && appleAuthAvailable ? (
         <AppleAuthentication.AppleAuthenticationButton
           buttonType={AppleAuthentication.AppleAuthenticationButtonType.SIGN_IN}

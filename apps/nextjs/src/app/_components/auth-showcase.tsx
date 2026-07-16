@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import { auth, getSession } from "~/auth/server";
 import { env } from "~/env";
 import { MagicLinkForm } from "./magic-link-form";
+import { SsoForm } from "./sso-form";
 
 export async function AuthShowcase() {
   const session = await getSession();
@@ -24,6 +25,16 @@ export async function AuthShowcase() {
         </div>
 
         <MagicLinkForm bypassMagicLink={env.BYPASS_MAGIC_LINK} />
+
+        <div className="flex w-full items-center gap-3 py-2">
+          <div className="h-px flex-1 bg-border" />
+          <span className="text-muted-foreground text-sm">
+            or use your organization
+          </span>
+          <div className="h-px flex-1 bg-border" />
+        </div>
+
+        <SsoForm />
       </div>
     );
   }

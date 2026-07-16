@@ -19,6 +19,7 @@
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
+    "@better-auth/sso": "catalog:",
     "@gmacko/analytics": "workspace:*",
     "@gmacko/api": "workspace:*",
     "@gmacko/auth": "workspace:*",
@@ -42,6 +43,7 @@
     "next-intl": "^4.8.3",
     "react": "catalog:react19",
     "react-dom": "catalog:react19",
+    "react-qr-code": "^2.0.18",
     "superjson": "catalog:",
     "zod": "catalog:"
   },

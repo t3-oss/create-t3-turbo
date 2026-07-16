@@ -1,6 +1,6 @@
 import "server-only";
 
-import { initAuth } from "@gmacko/auth";
+import { initAuth, parseSsoTrustedIssuers } from "@gmacko/auth";
 import { nextCookies } from "better-auth/next-js";
 import { headers } from "next/headers";
 import { cache } from "react";
@@ -30,6 +30,7 @@ export const auth = initAuth({
   googleTokenUrl: env.AUTH_GOOGLE_TOKEN_URL,
   appleUrl: env.AUTH_APPLE_URL,
   bypassMagicLink: env.BYPASS_MAGIC_LINK,
+  ssoTrustedIssuers: parseSsoTrustedIssuers(env.AUTH_SSO_TRUSTED_ISSUERS),
   // eslint-disable-next-line @typescript-eslint/no-explicit-any -- pkg.pr.new causes duplicate @better-auth/core type instances
   extraPlugins: [nextCookies() as any],
 });

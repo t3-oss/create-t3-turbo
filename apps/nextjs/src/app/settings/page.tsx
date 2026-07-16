@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 
 import { auth, getSession } from "~/auth/server";
 import { ApiKeysSection } from "./_components/api-keys";
+import { PairDeviceSection } from "./_components/pair-device";
 import { PreferencesSection } from "./_components/preferences";
 
 const COLLABORATION_ROLES = ["member", "admin"] as const;
@@ -151,6 +152,7 @@ export default async function SettingsPage() {
 
       <div className="space-y-8">
         <PreferencesSection />
+        <PairDeviceSection />
         <ApiKeysSection />
         {billingOverview.billing.visible ? (
           <section className="rounded-lg border p-6">

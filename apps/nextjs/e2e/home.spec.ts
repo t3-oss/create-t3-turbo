@@ -21,7 +21,7 @@ test.describe("Home Page", () => {
     await page.goto("/");
 
     const signInButton = page.getByRole("button", {
-      name: /sign in with discord/i,
+      name: /sign in with github/i,
     });
     await expect(signInButton).toBeVisible();
   });

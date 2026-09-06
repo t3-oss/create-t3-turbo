@@ -235,7 +235,7 @@ Deploying your Expo application works slightly differently compared to Next.js o
    eas build:configure
    ```
 
-3. After the initial setup, you can create your first build. You can build for Android and iOS platforms and use different [`eas.json` build profiles](https://docs.expo.dev/build-reference/eas-json) to create production builds or development, or test builds. Let's make a production build for iOS.
+3. After the initial setup, you can create your first build. You can build for Android and iOS platforms and use different [`eas.json` build profiles](https://docs.expo.dev/build/eas-json/) to create production builds or development, or test builds. Let's make a production build for iOS.
 
    ```bash
    eas build --platform ios --profile production

@@ -5,8 +5,6 @@ import { getDefaultConfig } from "expo/metro-config";
 import { FileStore } from "@expo/metro/metro-cache";
 import { withUniwindConfig } from "uniwind/metro";
 
-// `MetroConfig` is deeply `Readonly`, so the cache store goes into a new object
-// rather than being assigned onto the default config.
 const defaultConfig: MetroConfig = getDefaultConfig(__dirname);
 
 const config: MetroConfig = {

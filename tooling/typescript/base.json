@@ -10,12 +10,6 @@
     "resolveJsonModule": true,
     "moduleDetection": "force",
     "isolatedModules": true,
-
-    /**
-     * TypeScript 7 no longer pulls `@types/*` in automatically from pnpm's
-     * symlinked `node_modules/@types`, so the Node globals are named here.
-     * Types reached through an import are unaffected.
-     */
     "types": ["node"],
 
     /** Keep TSC performant in monorepos */

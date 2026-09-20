@@ -3,8 +3,6 @@ packages:
   - packages/*
   - tooling/*
 
-# pnpm 11 replaced `onlyBuiltDependencies` with `allowBuilds`, and pnpm 12
-# fails the install while an entry is still undecided.
 allowBuilds:
   "@tailwindcss/oxide": true
   esbuild: true

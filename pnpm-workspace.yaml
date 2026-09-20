@@ -3,6 +3,20 @@ packages:
   - packages/*
   - tooling/*
 
+# pnpm 11 replaced `onlyBuiltDependencies` with `allowBuilds`, and pnpm 12
+# fails the install while an entry is still undecided.
+allowBuilds:
+  "@tailwindcss/oxide": true
+  esbuild: true
+  "@prisma/client": false
+  "@prisma/engines": false
+  better-sqlite3: false
+  bufferutil: false
+  core-js-pure: false
+  prisma: false
+  sharp: false
+  utf-8-validate: false
+
 catalog:
   "@better-auth/cli": 1.4.0-beta.9
   "@better-auth/expo": 1.4.0-beta.9
@@ -14,7 +28,7 @@ catalog:
   "@trpc/client": ^11.7.1
   "@trpc/server": ^11.7.1
   "@trpc/tanstack-react-query": ^11.7.1
-  "@types/node": ^22.18.12
+  "@types/node": ^24.13.6
   "@vitejs/plugin-react": 5.1.0
   better-auth: 1.4.0-beta.9
   eslint: ^9.38.0
@@ -32,10 +46,6 @@ catalogs:
     react-dom: 19.3.0
 
 linkWorkspacePackages: true
-
-onlyBuiltDependencies:
-  - "@tailwindcss/oxide"
-  - esbuild
 
 overrides:
   "@types/minimatch": 5.1.2

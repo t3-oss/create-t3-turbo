@@ -10,7 +10,4 @@ runs:
         node-version-file: ".nvmrc"
 
     - shell: bash
-      run: pnpm add -g turbo
-
-    - shell: bash
       run: pnpm install

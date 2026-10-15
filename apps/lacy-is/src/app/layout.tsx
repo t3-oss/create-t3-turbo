@@ -13,24 +13,32 @@ import "~/app/globals.css";
 import { Toaster } from "@/components/ui/sonner";
 import { env } from "~/env";
 
+const title = "Lacy Morrow";
+const description =
+  "Personal site of Lacy Morrow, developer and founder. Links to Shipkit and fly5.";
+
 export const metadata: Metadata = {
   metadataBase: new URL(
     env.VERCEL_ENV === "production"
-      ? "https://turbo.t3.gg"
+      ? "https://lacy.is"
       : "http://localhost:3000",
   ),
-  title: "Create T3 Turbo",
-  description: "Simple monorepo with shared backend for web & mobile apps",
+  title: { default: title, template: `%s | ${title}` },
+  description,
+  authors: [{ name: "Lacy Morrow", url: "https://lacymorrow.com" }],
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Create T3 Turbo",
-    description: "Simple monorepo with shared backend for web & mobile apps",
-    url: "https://create-t3-turbo.vercel.app",
-    siteName: "Create T3 Turbo",
+    type: "website",
+    title,
+    description,
+    url: "https://lacy.is",
+    siteName: "lacy.is",
   },
   twitter: {
-    card: "summary_large_image",
-    site: "@jullerino",
-    creator: "@jullerino",
+    card: "summary",
+    creator: "@lacybuilds",
+    title,
+    description,
   },
 };
 

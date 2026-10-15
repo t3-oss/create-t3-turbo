@@ -52,8 +52,25 @@ const HomePage = async () => {
       return "https://lacymorrow.com"; // Fallback URL
     });
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "lacy.is",
+    url: "https://lacy.is",
+    author: {
+      "@type": "Person",
+      name: "Lacy Morrow",
+      url: "https://lacymorrow.com",
+      sameAs: ["https://twitter.com/lacybuilds"],
+    },
+  };
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-center">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <AnimatedNoise opacity={0.1} />
       <LacyLogo />
       <article className="flex max-w-lg flex-col">
@@ -72,6 +89,15 @@ const HomePage = async () => {
           ]}
         />
       </article>
+      <p className="mt-8 text-sm text-muted-foreground">
+        by{" "}
+        <a
+          href="https://lacymorrow.com"
+          className="underline underline-offset-4"
+        >
+          Lacy Morrow
+        </a>
+      </p>
     </main>
   );
 };

@@ -4,7 +4,6 @@
   "type": "module",
   "exports": {
     "./base": "./base.ts",
-    "./nextjs": "./nextjs.ts",
     "./react": "./react.ts"
   },
   "scripts": {
@@ -15,12 +14,9 @@
   "dependencies": {
     "@eslint/compat": "^1.4.0",
     "@eslint/js": "catalog:",
-    "@next/eslint-plugin-next": "^16.0.0",
     "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
-    "eslint-plugin-turbo": "^2.5.8",
     "typescript-eslint": "^8.46.2"
   },
   "devDependencies": {

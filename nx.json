@@ -1,0 +1,16 @@
+{
+  "plugins": ["nx/plugins/package-json"],
+  "targetDefaults": {
+    "build": { "dependsOn": ["^build"], "cache": true, "inputs": ["default", "^default"], "outputs": ["{projectRoot}/dist", "{projectRoot}/.cache/tsbuildinfo.json"] },
+    "lint": { "dependsOn": ["^build"], "cache": true, "outputs": ["{projectRoot}/.cache/.eslintcache"] },
+    "typecheck": { "dependsOn": ["^build"], "cache": true, "outputs": ["{projectRoot}/.cache/tsbuildinfo.json"] },
+    "format": { "cache": true, "outputs": ["{projectRoot}/.cache/.prettiercache"] },
+    "check": { "dependsOn": ["^build"], "cache": true },
+    "test": { "cache": true },
+    "dev": { "cache": false },
+    "clean": { "cache": false },
+    "migration:create": { "cache": false },
+    "migration:up": { "cache": false }
+  },
+  "defaultBase": "main"
+}

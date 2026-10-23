@@ -1,10 +1,15 @@
-import type { BetterAuthOptions, BetterAuthPlugin } from "better-auth";
+import type {
+  Auth as BetterAuth,
+  BetterAuthOptions,
+  BetterAuthPlugin,
+} from "better-auth";
 import { expo } from "@better-auth/expo";
 import { betterAuth } from "better-auth";
+import { getMigrations } from "better-auth/db/migration";
 import { oAuthProxy } from "better-auth/plugins";
 import { DatabaseSync } from "node:sqlite";
 
-export function initAuth<
+export async function initAuth<
   TExtraPlugins extends BetterAuthPlugin[] = [],
 >(options: {
   baseUrl: string;
@@ -14,8 +19,8 @@ export function initAuth<
   discordClientId: string;
   discordClientSecret: string;
   extraPlugins?: TExtraPlugins;
-}) {
-  const config = {
+}): Promise<Auth> {
+  const config: BetterAuthOptions = {
     // eslint-disable-next-line no-restricted-properties -- DATABASE_URL is shared with @acme/db, not part of authEnv()
     database: new DatabaseSync(process.env.DATABASE_URL ?? "./sqlite.db"),
     baseURL: options.baseUrl,
@@ -40,20 +45,18 @@ export function initAuth<
         console.error("BETTER AUTH API ERROR", error, ctx);
       },
     },
-  } satisfies BetterAuthOptions;
+  };
+
+  // better-auth validates the schema as soon as it initializes, so create the
+  // tables first: a fresh database would otherwise log "Database schema
+  // mismatch" before the auth routes are ready.
+  const { runMigrations } = await getMigrations(config);
+  await runMigrations();
 
   const auth = betterAuth(config);
-
-  // better-auth only creates its tables when asked; run the adapter's
-  // migrations in the background on init so the schema exists before first use.
-  void auth.$context
-    .then((ctx) => ctx.runMigrations())
-    .catch((error: unknown) => {
-      console.error("BETTER AUTH MIGRATION ERROR", error);
-    });
 
   return auth;
 }
 
-export type Auth = ReturnType<typeof initAuth>;
+export type Auth = BetterAuth<BetterAuthOptions>;
 export type Session = Auth["$Infer"]["Session"];

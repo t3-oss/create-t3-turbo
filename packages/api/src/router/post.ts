@@ -1,3 +1,4 @@
+import { wrap } from "@mikro-orm/core";
 import { Elysia } from "elysia";
 
 import type { Auth } from "@acme/auth";
@@ -19,9 +20,10 @@ export const postRoutes = (auth: Auth, orm: Orm) =>
         .limit(10)
         .execute();
     })
-    .get("/api/posts/:id", ({ params: { id } }) =>
-      orm.em.fork().findOne(Post, { id }),
-    )
+    .get("/api/posts/:id", async ({ params: { id } }) => {
+      const post = await orm.em.fork().findOne(Post, { id });
+      return post ? wrap(post).toObject() : null;
+    })
     .post(
       "/api/posts",
       async ({ body }) => {
@@ -30,7 +32,7 @@ export const postRoutes = (auth: Auth, orm: Orm) =>
         const em = orm.em.fork();
         const post = em.create(Post, { ...body, id: crypto.randomUUID() });
         await em.flush();
-        return post;
+        return wrap(post).toObject();
       },
       { body: CreatePostSchema, auth: true },
     )
@@ -39,11 +41,11 @@ export const postRoutes = (auth: Auth, orm: Orm) =>
       async ({ params: { id } }) => {
         const em = orm.em.fork();
         const post = await em.findOne(Post, { id });
-        if (post) {
-          em.remove(post);
-          await em.flush();
-        }
-        return post;
+        if (!post) return null;
+        const removed = wrap(post).toObject();
+        em.remove(post);
+        await em.flush();
+        return removed;
       },
       { auth: true },
     );

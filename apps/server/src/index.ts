@@ -7,7 +7,7 @@ import { initDb } from "@acme/db";
 import { env } from "./env";
 
 const orm = await initDb();
-const auth = initAuth<BetterAuthPlugin[]>({
+const auth = await initAuth<BetterAuthPlugin[]>({
   baseUrl: env.BETTER_AUTH_URL,
   productionUrl: env.BETTER_AUTH_URL,
   secret: env.AUTH_SECRET,

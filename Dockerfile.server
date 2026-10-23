@@ -1,0 +1,16 @@
+FROM node:22 AS deps
+RUN corepack enable
+WORKDIR /app
+COPY package.json pnpm-workspace.yaml pnpm-lock.yaml nx.json ./
+COPY apps apps
+COPY packages packages
+COPY tooling tooling
+RUN pnpm install --frozen-lockfile
+
+FROM oven/bun:1 AS run
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY --from=deps /app ./
+ENV DATABASE_URL=/data/sqlite.db
+EXPOSE 3000
+CMD ["sh", "-c", "cd packages/db && bunx --bun mikro-orm migration:up && cd /app && exec bun apps/server/src/index.ts"]

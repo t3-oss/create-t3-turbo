@@ -1,0 +1,166 @@
+@import "@acme/tailwind-config/theme";
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  text-align: center;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+nav {
+  padding: 1rem;
+  background-color: #282c34;
+}
+
+nav > a {
+  display: inline-block;
+  margin: 0 0.125rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 0.5rem;
+  color: #93c5fd;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    background-color 150ms ease,
+    color 150ms ease;
+}
+
+nav > a:hover {
+  background-color: rgb(255 255 255 / 10%);
+  color: #dbeafe;
+}
+
+main {
+  padding: 3rem 1rem;
+}
+
+.logo {
+  animation: logo-spin infinite 20s linear;
+  height: 24vmin;
+  pointer-events: none;
+}
+
+.increment {
+  font-size: 1rem;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+}
+
+main a {
+  color: #1d5f91;
+  font-weight: 600;
+  text-decoration-color: #7bb6df;
+  text-decoration-thickness: 0.1em;
+  text-underline-offset: 0.2em;
+  transition: color 150ms ease;
+}
+
+main a:hover {
+  color: #123f63;
+}
+
+a:focus-visible {
+  outline: 3px solid #0284c7;
+  outline-offset: 3px;
+  border-radius: 0.2rem;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Demo page (src/routes/index.tsx) — shared tokens from @acme/tailwind-config/theme. */
+
+.auth {
+  margin-bottom: 1.5rem;
+}
+
+.signed-in {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.post-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 28rem;
+  margin: 0 auto 2rem;
+  padding: 1.25rem;
+  text-align: left;
+  background-color: var(--card);
+  color: var(--card-foreground);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+}
+
+.post-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-weight: 600;
+}
+
+.post-form input,
+.post-form textarea {
+  padding: 0.5rem;
+  font: inherit;
+  color: var(--foreground);
+  background-color: var(--input);
+  border: 1px solid var(--border);
+  border-radius: 0.375rem;
+}
+
+.post-form button,
+.auth button {
+  padding: 0.5rem 1rem;
+  font: inherit;
+  font-weight: 600;
+  color: var(--primary-foreground);
+  background-color: var(--primary);
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+}
+
+.form-error {
+  margin: 0;
+  color: var(--destructive);
+}
+
+.post-list ul {
+  max-width: 32rem;
+  margin: 0 auto;
+  padding: 0;
+  text-align: left;
+  list-style: none;
+}
+
+.post-list li {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+}
+
+.post-list h3 {
+  margin: 0 0 0.5rem;
+}
+
+.post-list p {
+  margin: 0;
+  color: var(--muted-foreground);
+}
+
+.empty {
+  color: var(--muted-foreground);
+}

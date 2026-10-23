@@ -1,0 +1,12 @@
+FROM node:22 AS build
+RUN corepack enable
+WORKDIR /app
+COPY package.json pnpm-workspace.yaml pnpm-lock.yaml nx.json ./
+COPY apps apps
+COPY packages packages
+COPY tooling tooling
+RUN pnpm install --frozen-lockfile
+RUN pnpm nx run @acme/web:build
+
+FROM nginx:alpine AS run
+COPY --from=build /app/apps/web/dist/client /usr/share/nginx/html

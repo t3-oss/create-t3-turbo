@@ -1,34 +1,49 @@
-import type { TRPCRouterRecord } from "@trpc/server";
-import { z } from "zod/v4";
+import { Elysia } from "elysia";
 
-import { desc, eq } from "@acme/db";
-import { CreatePostSchema, Post } from "@acme/db/schema";
+import type { Auth } from "@acme/auth";
+import type { Orm } from "@acme/db";
+import { Post } from "@acme/db";
+import { CreatePostSchema } from "@acme/validators";
 
-import { protectedProcedure, publicProcedure } from "../trpc";
+import { authed } from "../middleware";
 
-export const postRouter = {
-  all: publicProcedure.query(({ ctx }) => {
-    return ctx.db.query.Post.findMany({
-      orderBy: desc(Post.id),
-      limit: 10,
-    });
-  }),
-
-  byId: publicProcedure
-    .input(z.object({ id: z.string() }))
-    .query(({ ctx, input }) => {
-      return ctx.db.query.Post.findFirst({
-        where: eq(Post.id, input.id),
-      });
-    }),
-
-  create: protectedProcedure
-    .input(CreatePostSchema)
-    .mutation(({ ctx, input }) => {
-      return ctx.db.insert(Post).values(input);
-    }),
-
-  delete: protectedProcedure.input(z.string()).mutation(({ ctx, input }) => {
-    return ctx.db.delete(Post).where(eq(Post.id, input));
-  }),
-} satisfies TRPCRouterRecord;
+export const postRoutes = (auth: Auth, orm: Orm) =>
+  new Elysia()
+    .use(authed(auth))
+    .get("/api/posts", async () => {
+      const kysely = orm.em.getKysely();
+      return kysely
+        .selectFrom("post")
+        .selectAll()
+        .orderBy("created_at", "desc")
+        .limit(10)
+        .execute();
+    })
+    .get("/api/posts/:id", ({ params: { id } }) =>
+      orm.em.fork().findOne(Post, { id }),
+    )
+    .post(
+      "/api/posts",
+      async ({ body }) => {
+        // mikro-orm 7 forbids context actions on the global EntityManager — fork per request.
+        // p.uuid() has no generator and the DDL has no default, so the route supplies the id.
+        const em = orm.em.fork();
+        const post = em.create(Post, { ...body, id: crypto.randomUUID() });
+        await em.flush();
+        return post;
+      },
+      { body: CreatePostSchema, auth: true },
+    )
+    .delete(
+      "/api/posts/:id",
+      async ({ params: { id } }) => {
+        const em = orm.em.fork();
+        const post = await em.findOne(Post, { id });
+        if (post) {
+          em.remove(post);
+          await em.flush();
+        }
+        return post;
+      },
+      { auth: true },
+    );

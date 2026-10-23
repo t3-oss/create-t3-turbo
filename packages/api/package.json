@@ -11,7 +11,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "clean": "git clean -xdf .cache dist node_modules",
     "dev": "tsc",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint --flag unstable_native_nodejs_ts_config",
@@ -21,14 +21,17 @@
     "@acme/auth": "workspace:*",
     "@acme/db": "workspace:*",
     "@acme/validators": "workspace:*",
-    "@trpc/server": "catalog:",
-    "superjson": "2.2.3",
+    "@elysiajs/cors": "catalog:",
+    "@mikro-orm/core": "catalog:",
+    "@sinclair/typebox": "^0.34.0",
+    "elysia": "catalog:",
     "zod": "catalog:"
   },
   "devDependencies": {
     "@acme/eslint-config": "workspace:*",
     "@acme/prettier-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
+    "@elysiajs/eden": "catalog:",
     "eslint": "catalog:",
     "prettier": "catalog:",
     "typescript": "catalog:"

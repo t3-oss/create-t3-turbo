@@ -1,0 +1,38 @@
+{
+  "name": "@acme/web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vp dev",
+    "build": "vp build",
+    "check": "vp check",
+    "test": "vp test",
+    "clean": "git clean -xdf .cache node_modules dist"
+  },
+  "dependencies": {
+    "@acme/api": "workspace:*",
+    "@acme/tailwind-config": "workspace:*",
+    "@acme/validators": "workspace:*",
+    "@elysiajs/eden": "catalog:",
+    "@solidjs/router": "^2.0.0-next.41",
+    "@solidjs/web": "^2.0.0-rc.17",
+    "better-auth": "catalog:",
+    "solid-js": "catalog:"
+  },
+  "devDependencies": {
+    "@acme/tsconfig": "workspace:*",
+    "@solidjs/diagnostics": "^2.0.0-rc.17",
+    "@solidjs/meta": "^1.0.0-next.2",
+    "@solidjs/testing-library": "^1.0.0-beta.3",
+    "@solidjs/vite-plugin": "^3.0.0-next.51",
+    "@tailwindcss/vite": "catalog:",
+    "@testing-library/jest-dom": "^7.0.0",
+    "@types/bun": "catalog:",
+    "filesystem-routing": "0.4.0",
+    "jsdom": "^25.0.1",
+    "tailwindcss": "catalog:",
+    "vite": "npm:@voidzero-dev/vite-plus-core@1.4.0",
+    "vite-plus": "catalog:",
+    "vitest": "catalog:"
+  }
+}

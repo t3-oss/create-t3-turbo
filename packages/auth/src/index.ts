@@ -1,10 +1,8 @@
 import type { BetterAuthOptions, BetterAuthPlugin } from "better-auth";
 import { expo } from "@better-auth/expo";
 import { betterAuth } from "better-auth";
-import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { oAuthProxy } from "better-auth/plugins";
-
-import { db } from "@acme/db/client";
+import { DatabaseSync } from "node:sqlite";
 
 export function initAuth<
   TExtraPlugins extends BetterAuthPlugin[] = [],
@@ -18,9 +16,8 @@ export function initAuth<
   extraPlugins?: TExtraPlugins;
 }) {
   const config = {
-    database: drizzleAdapter(db, {
-      provider: "pg",
-    }),
+    // eslint-disable-next-line no-restricted-properties -- DATABASE_URL is shared with @acme/db, not part of authEnv()
+    database: new DatabaseSync(process.env.DATABASE_URL ?? "./sqlite.db"),
     baseURL: options.baseUrl,
     secret: options.secret,
     plugins: [
@@ -37,7 +34,7 @@ export function initAuth<
         redirectURI: `${options.productionUrl}/api/auth/callback/discord`,
       },
     },
-    trustedOrigins: ["expo://"],
+    trustedOrigins: ["expo://", "http://localhost:3001"],
     onAPIError: {
       onError(error, ctx) {
         console.error("BETTER AUTH API ERROR", error, ctx);
@@ -45,7 +42,17 @@ export function initAuth<
     },
   } satisfies BetterAuthOptions;
 
-  return betterAuth(config);
+  const auth = betterAuth(config);
+
+  // better-auth only creates its tables when asked; run the adapter's
+  // migrations in the background on init so the schema exists before first use.
+  void auth.$context
+    .then((ctx) => ctx.runMigrations())
+    .catch((error: unknown) => {
+      console.error("BETTER AUTH MIGRATION ERROR", error);
+    });
+
+  return auth;
 }
 
 export type Auth = ReturnType<typeof initAuth>;

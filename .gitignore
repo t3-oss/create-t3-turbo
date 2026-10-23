@@ -48,9 +48,6 @@ yarn-error.log*
 dist/
 .cache
 
-# turbo
-.turbo
-
 # tanstack
 .tanstack
 
@@ -60,9 +57,16 @@ dist/
 # vite-plus
 .vp
 
+# mikro-orm schema snapshots (regenerated from the live schema)
+.snapshot-*.json
+
 # sqlite
 data/
 *.sqlite
 *.sqlite-journal
 *.sqlite-wal
 *.sqlite-shm
+*.db
+*.db-journal
+*.db-wal
+*.db-shm

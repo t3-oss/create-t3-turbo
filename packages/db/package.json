@@ -6,39 +6,31 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./src/index.ts"
-    },
-    "./client": {
-      "types": "./dist/client.d.ts",
-      "default": "./src/client.ts"
-    },
-    "./schema": {
-      "types": "./dist/schema.d.ts",
-      "default": "./src/schema.ts"
     }
   },
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "clean": "git clean -xdf .cache dist node_modules",
     "dev": "tsc",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint --flag unstable_native_nodejs_ts_config",
-    "push": "pnpm with-env drizzle-kit push",
-    "studio": "pnpm with-env drizzle-kit studio",
-    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
-    "with-env": "dotenv -e ../../.env --"
+    "migration:create": "mikro-orm migration:create",
+    "migration:up": "mikro-orm migration:up",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
-    "@vercel/postgres": "^0.10.0",
-    "drizzle-orm": "^0.44.7",
-    "drizzle-zod": "^0.8.3",
-    "zod": "catalog:"
+    "@mikro-orm/core": "catalog:",
+    "@mikro-orm/sql": "catalog:",
+    "kysely": "catalog:"
   },
   "devDependencies": {
     "@acme/eslint-config": "workspace:*",
     "@acme/prettier-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
-    "drizzle-kit": "^0.31.5",
+    "@mikro-orm/cli": "catalog:",
+    "@mikro-orm/migrations": "catalog:",
+    "@types/node": "catalog:",
     "eslint": "catalog:",
     "prettier": "catalog:",
     "typescript": "catalog:"

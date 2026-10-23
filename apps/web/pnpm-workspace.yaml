@@ -1,0 +1,14 @@
+# pnpm settings for this project (honored even for a single-package project —
+# this file marks the workspace root). The Solid packages release in lockstep
+# and templates track them closely; exclude the whole family from any
+# minimumReleaseAge policy so fresh Solid releases install immediately.
+#
+# NOTE: this exclusion is a temporary measure for the Solid 2.0 prerelease
+# cycle (frequent lockstep releases where new floors would otherwise fail
+# under an age policy). It should be removed once Solid 2.0 is stable —
+# at that point a caret range nearly always contains an age-satisfying
+# release and the policy can protect these packages like any other.
+minimumReleaseAgeExclude:
+  - solid-js
+  - "@solidjs/*"
+  - filesystem-routing

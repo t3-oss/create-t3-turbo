@@ -1,0 +1,9 @@
+{
+  "extends": "@acme/tsconfig/base.json",
+  "compilerOptions": {
+    "jsx": "preserve",
+    "jsxImportSource": "@solidjs/web",
+    "types": ["bun"],
+    "lib": ["ES2022", "DOM", "DOM.Iterable"]
+  }
+}

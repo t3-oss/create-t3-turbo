@@ -5,14 +5,14 @@ import { Link, Stack } from "expo-router";
 import { LegendList } from "@legendapp/list/react-native";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
-import type { RouterOutputs } from "~/utils/api";
-import { trpc } from "~/utils/api";
+import { api } from "~/utils/api";
 import { authClient } from "~/utils/auth";
 
-function PostCard(props: {
-  post: RouterOutputs["post"]["all"][number];
-  onDelete: () => void;
-}) {
+type Post = NonNullable<
+  Awaited<ReturnType<typeof api.api.posts.get>>["data"]
+>[number];
+
+function PostCard(props: { post: Post; onDelete: () => void }) {
   return (
     <View className="bg-muted flex flex-row rounded-lg p-4">
       <View className="grow">
@@ -44,15 +44,24 @@ function CreatePost() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
-  const { mutate, error } = useMutation(
-    trpc.post.create.mutationOptions({
-      async onSuccess() {
-        setTitle("");
-        setContent("");
-        await queryClient.invalidateQueries(trpc.post.all.queryFilter());
-      },
-    }),
-  );
+  const { mutate, error } = useMutation({
+    mutationFn: async (input: { title: string; content: string }) => {
+      const res = await api.api.posts.post(input);
+      if (res.error) {
+        throw new Error(
+          res.error.status === 401
+            ? "You need to be logged in to create a post"
+            : `Creating the post failed (${res.error.status})`,
+        );
+      }
+      return res.data;
+    },
+    async onSuccess() {
+      setTitle("");
+      setContent("");
+      await queryClient.invalidateQueries({ queryKey: ["posts"] });
+    },
+  });
 
   return (
     <View className="mt-4 flex gap-2">
@@ -62,22 +71,12 @@ function CreatePost() {
         onChangeText={setTitle}
         placeholder="Title"
       />
-      {error?.data?.zodError?.fieldErrors.title && (
-        <Text className="text-destructive mb-2">
-          {error.data.zodError.fieldErrors.title}
-        </Text>
-      )}
       <TextInput
         className="border-input bg-background text-foreground items-center rounded-md border px-3 text-lg leading-tight"
         value={content}
         onChangeText={setContent}
         placeholder="Content"
       />
-      {error?.data?.zodError?.fieldErrors.content && (
-        <Text className="text-destructive mb-2">
-          {error.data.zodError.fieldErrors.content}
-        </Text>
-      )}
       <Pressable
         className="bg-primary flex items-center rounded-sm p-2"
         onPress={() => {
@@ -89,11 +88,7 @@ function CreatePost() {
       >
         <Text className="text-foreground">Create</Text>
       </Pressable>
-      {error?.data?.code === "UNAUTHORIZED" && (
-        <Text className="text-destructive mt-2">
-          You need to be logged in to create a post
-        </Text>
-      )}
+      {error && <Text className="text-destructive mt-2">{error.message}</Text>}
     </View>
   );
 }
@@ -126,14 +121,21 @@ function MobileAuth() {
 export default function Index() {
   const queryClient = useQueryClient();
 
-  const postQuery = useQuery(trpc.post.all.queryOptions());
+  const postQuery = useQuery({
+    queryKey: ["posts"],
+    queryFn: () => api.api.posts.get().then((r) => r.data),
+  });
 
-  const deletePostMutation = useMutation(
-    trpc.post.delete.mutationOptions({
-      onSettled: () =>
-        queryClient.invalidateQueries(trpc.post.all.queryFilter()),
-    }),
-  );
+  const deletePostMutation = useMutation({
+    mutationFn: async (id: string) => {
+      const res = await api.api.posts({ id }).delete();
+      if (res.error) {
+        throw new Error(`Deleting the post failed (${res.error.status})`);
+      }
+      return res.data;
+    },
+    onSettled: () => queryClient.invalidateQueries({ queryKey: ["posts"] }),
+  });
 
   return (
     <SafeAreaView className="bg-background">

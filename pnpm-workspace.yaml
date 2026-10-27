@@ -4,18 +4,18 @@ packages:
   - tooling/*
 
 catalog:
-  "@better-auth/expo": ^1.7.11
-  "@elysiajs/cors": ^1.2.0
-  "@elysiajs/eden": ^1.2.0
-  "@eslint/js": ^9.38.0
-  "@mikro-orm/cli": ^7.2.5
-  "@mikro-orm/core": ^7.2.5
-  "@mikro-orm/migrations": ^7.2.5
-  "@mikro-orm/sql": ^7.2.5
-  "@tailwindcss/vite": ^4.1.16
-  "@tanstack/react-query": ^5.90.8
-  "@types/bun": ^1.2.0
-  "@types/node": ^22.18.12
+  '@better-auth/expo': ^1.7.11
+  '@elysiajs/cors': ^1.2.0
+  '@elysiajs/eden': ^1.2.0
+  '@eslint/js': ^9.38.0
+  '@mikro-orm/cli': ^7.2.5
+  '@mikro-orm/core': ^7.2.5
+  '@mikro-orm/migrations': ^7.2.5
+  '@mikro-orm/sql': ^7.2.5
+  '@tailwindcss/vite': ^4.1.16
+  '@tanstack/react-query': ^5.90.8
+  '@types/bun': ^1.2.0
+  '@types/node': ^22.18.12
   better-auth: ^1.7.11
   elysia: ^1.2.0
   eslint: ^9.38.0
@@ -24,26 +24,27 @@ catalog:
   solid-js: ^2.0.0-rc
   tailwindcss: ^4.1.16
   typescript: ^5.9.3
+  varlock: ^1.23.0
   vite-plus: ^1.0.0
   vitest: ^5.0.0
   zod: ^4.5.4
 
 catalogs:
   react19:
-    "@types/react": 19.3.0
-    "@types/react-dom": 19.3.0
+    '@types/react': 19.3.0
+    '@types/react-dom': 19.3.0
     react: 19.3.0
     react-dom: 19.3.0
 
 linkWorkspacePackages: true
 
 onlyBuiltDependencies:
-  - "@tailwindcss/oxide"
+  - '@tailwindcss/oxide'
   - esbuild
 
 overrides:
-  "@types/minimatch": 5.1.2
+  '@types/minimatch': 5.1.2
 
 publicHoistPattern:
-  - "@ianvs/prettier-plugin-sort-imports"
+  - '@ianvs/prettier-plugin-sort-imports'
   - prettier-plugin-tailwindcss

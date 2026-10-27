@@ -3,6 +3,7 @@ import path from "node:path";
 import type { MetroConfig } from "expo/metro-config";
 import { getDefaultConfig } from "expo/metro-config";
 import { FileStore } from "@expo/metro/metro-cache";
+import { withVarlockMetroConfig } from "@varlock/expo-integration/metro-config";
 import { withUniwindConfig } from "uniwind/metro";
 
 // `MetroConfig` is deeply `Readonly`, so the cache store goes into a new object
@@ -18,6 +19,8 @@ const config: MetroConfig = {
   ],
 };
 
-export default withUniwindConfig(config, {
-  cssEntryFile: "./src/styles.css",
-});
+export default withVarlockMetroConfig(
+  withUniwindConfig(config, {
+    cssEntryFile: "./src/styles.css",
+  }),
+);

@@ -5,6 +5,8 @@ dist
 .nx
 .vp
 .env*
+!.env.schema
+!**/.env.schema
 data
 *.sqlite*
 *.db*

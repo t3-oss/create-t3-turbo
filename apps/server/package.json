@@ -6,7 +6,7 @@
     "dev": "bun --watch src/index.ts",
     "start": "bun src/index.ts",
     "clean": "git clean -xdf .cache node_modules",
-    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "format": "prettier --check . --ignore-path ../../.gitignore --ignore-path .prettierignore",
     "lint": "eslint --flag unstable_native_nodejs_ts_config",
     "typecheck": "tsc --noEmit"
   },
@@ -14,10 +14,9 @@
     "@acme/api": "workspace:*",
     "@acme/auth": "workspace:*",
     "@acme/db": "workspace:*",
-    "@t3-oss/env-core": "^0.13.8",
     "better-auth": "catalog:",
     "elysia": "catalog:",
-    "zod": "catalog:"
+    "varlock": "catalog:"
   },
   "devDependencies": {
     "@acme/eslint-config": "workspace:*",

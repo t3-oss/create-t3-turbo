@@ -15,7 +15,7 @@ env:
   FORCE_COLOR: 3
 
 jobs:
-  lint:
+  env:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -23,9 +23,16 @@ jobs:
       - name: Setup
         uses: ./tooling/github/setup
 
-      - name: Copy env
-        shell: bash
-        run: cp .env.example .env
+      - name: Validate env schemas
+        run: pnpm env:validate
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Setup
+        uses: ./tooling/github/setup
 
       - name: Lint
         run: pnpm lint && pnpm lint:ws
@@ -38,10 +45,6 @@ jobs:
       - name: Setup
         uses: ./tooling/github/setup
 
-      - name: Copy env
-        shell: bash
-        run: cp .env.example .env
-
       - name: Format
         run: pnpm format
 
@@ -53,10 +56,6 @@ jobs:
       - name: Setup
         uses: ./tooling/github/setup
 
-      - name: Copy env
-        shell: bash
-        run: cp .env.example .env
-
       - name: Typecheck
         run: pnpm typecheck
 
@@ -67,10 +66,6 @@ jobs:
 
       - name: Setup
         uses: ./tooling/github/setup
-
-      - name: Copy env
-        shell: bash
-        run: cp .env.example .env
 
       - name: Check web
         run: pnpm nx run @acme/web:check

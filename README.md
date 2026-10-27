@@ -4,40 +4,52 @@
 
 > [!NOTE]
 >
-> Make sure to follow the system requirements specified in [`package.json#engines`](./package.json#L4) before proceeding.
-
-Initialize an app using the `create-t3-turbo` starter by using this repository as a template:
-
-![use-as-template](https://github.com/t3-oss/create-t3-turbo/assets/51714798/bb6c2e5d-d8b6-416e-aeb3-b3e50e2ca994)
+> Make sure to follow the system requirements specified in [`package.json#engines`](./package.json#L4) before proceeding. The server runs on [Bun](https://bun.sh); everything else runs on Node 22 + pnpm 10.
 
 ## About
 
-Ever wondered how to migrate your T3 application into a monorepo? Stop right here! This is the perfect starter repo to get you running with the perfect stack!
+A T3-style monorepo orchestrated by [Nx](https://nx.dev) (the `package-json` plugin infers every `package.json` script as an Nx target). The stack has migrated away from the original starter: Turborepo, Next.js/TanStack web apps, tRPC and Drizzle/Supabase are gone.
 
-It uses [Nx](https://nx.dev) and contains:
+Current stack:
+
+- **API**: [Elysia](https://elysiajs.com) on Bun, consumed by clients through [Eden](https://elysiajs.com/eden) treaties (fully typesafe, no code generation)
+- **Auth**: [better-auth](https://www.better-auth.com) mounted directly into the Elysia app, with the oAuthProxy and Expo plugins
+- **Database**: SQLite via `node:sqlite`, accessed through [MikroORM 7](https://mikro-orm.io) with a [Kysely](https://kysely.dev) escape hatch (`orm.em.getKysely()`)
+- **Web**: SolidJS (`solid-js` 2.0 rc) + Vite Plus + filesystem routing + Tailwind CSS v4
+- **Mobile**: Expo SDK 58, React Native 0.88 / React 19, Expo Router, Uniwind (Tailwind v4), TanStack Query
+- **Validation**: shared zod v4 schemas in `@acme/validators`
 
 ```text
 .github
   └─ workflows
-        └─ CI with pnpm cache setup
+        └─ CI (lint, format, typecheck, web check) with pnpm cache setup
 .vscode
   └─ Recommended extensions and settings for VSCode users
 apps
-  └─ expo
-      ├─ Expo SDK 58
-      ├─ React Native 0.88 using React 19
-      ├─ Navigation using Expo Router
-      ├─ Tailwind CSS v4 using Uniwind
-      └─ Typesafe API calls using tRPC
+  ├─ expo
+  │   ├─ Expo SDK 58
+  │   ├─ React Native 0.88 using React 19
+  │   ├─ Navigation using Expo Router
+  │   ├─ Tailwind CSS v4 using Uniwind
+  │   └─ Typesafe API calls using Eden treaty + TanStack Query
+  ├─ server
+  │   └─ Bun + Elysia server (port 3000); mounts better-auth handlers and API routes
+  └─ web
+      ├─ SolidJS built with Vite Plus (port 3001)
+      ├─ Routing via filesystem-routing + @solidjs/router
+      ├─ Tailwind CSS v4
+      └─ Typesafe API calls using Eden treaty + better-auth client
 packages
   ├─ api
-  │   └─ tRPC v11 router definition
+  │   └─ Elysia app factory (`createApp`) + routes; exports the `App` type for Eden
   ├─ auth
-  │   └─ Authentication using better-auth.
+  │   └─ better-auth on node:sqlite; oAuthProxy + Expo plugins, Discord provider
   ├─ db
-  │   └─ Typesafe db calls using Drizzle & Supabase
-  └─ ui
-      └─ Start of a UI package for the webapp using shadcn-ui
+  │   └─ MikroORM 7 (SqliteDriver + NodeSqliteDialect), entities, migrations, Kysely
+  ├─ ui
+  │   └─ shadcn-ui component library (React-based; currently not consumed by the Solid web app)
+  └─ validators
+      └─ Shared zod v4 schemas (e.g. `CreatePostSchema`)
 tooling
   ├─ eslint
   │   └─ shared, fine-grained, eslint presets
@@ -45,8 +57,10 @@ tooling
   │   └─ shared prettier configuration
   ├─ tailwind
   │   └─ shared tailwind theme and configuration
-  └─ typescript
-      └─ shared tsconfig you can extend from
+  ├─ typescript
+  │   └─ shared tsconfig you can extend from
+  └─ github
+      └─ composite GitHub Actions setup (`./tooling/github/setup`) used by CI
 ```
 
 > In this template, we use `@acme` as a placeholder for package names. As a user, you might want to replace it with your own organization or project name. You can use find-and-replace to change all the instances of `@acme` to something like `@my-company` or `@project-name`.
@@ -54,7 +68,7 @@ tooling
 ## Quick Start
 
 > **Note**
-> The [db](./packages/db) package is preconfigured to use Supabase and is **edge-bound** with the [Vercel Postgres](https://github.com/vercel/storage/tree/main/packages/postgres) driver. If you're using something else, make the necessary modifications to the [schema](./packages/db/src/schema.ts) as well as the [client](./packages/db/src/index.ts) and the [drizzle config](./packages/db/drizzle.config.ts).
+> The [db](./packages/db) package uses a local SQLite file (`DATABASE_URL`, default `./sqlite.db`) through `node:sqlite` — no Postgres or Supabase required. If you're using something else, adapt the [driver](./packages/db/src/index.ts), the [entities](./packages/db/src/entities) and the MikroORM config.
 
 To get it running, follow the steps below:
 
@@ -64,39 +78,47 @@ To get it running, follow the steps below:
 # Install dependencies
 pnpm i
 
-# Configure environment variables
-# There is an `.env.example` in the root directory you can use for reference
-cp .env.example .env
+# Environment variables are declared in `.env.schema` (root) with safe defaults —
+# a fresh clone runs with zero setup. Real secrets go in a gitignored `.env.local`,
+# encrypted at rest: put `AUTH_SECRET=…` there, then run
+# pnpm exec varlock encrypt --file .env.local
 
-# Push the Drizzle schema to the database
-pnpm nx run @acme/db:push
+# Apply MikroORM migrations (creates the `post` table)
+pnpm db:migrate
+
+# Start server + web + expo in parallel
+pnpm dev
 ```
 
-### 2. Generate Better Auth Schema
+- **web**: http://localhost:3001
+- **server**: http://localhost:3000 (Elysia; better-auth routes under `/api/auth`)
 
-This project uses [Better Auth](https://www.better-auth.com) for authentication. The auth schema needs to be generated using the Better Auth CLI before you can use the authentication features.
+Environment variables (see `.env.schema`):
 
-```bash
-# Generate the Better Auth schema
-pnpm --filter @acme/auth generate
-```
+| Variable | Purpose |
+| --- | --- |
+| `DATABASE_URL` | SQLite file path (`./sqlite.db` locally, `/data/sqlite.db` in Docker) |
+| `BETTER_AUTH_URL` | Public URL of the Elysia server (better-auth base URL) |
+| `PORT` | Server port (default `3000`) |
+| `AUTH_SECRET` | better-auth secret (`openssl rand -base64 32`) |
+| `AUTH_DISCORD_ID` / `AUTH_DISCORD_SECRET` | Preconfigured Discord OAuth provider |
+| `VITE_API_URL` | Base URL the web app uses to reach the API (default `http://localhost:3000`) |
 
-This command runs the Better Auth CLI with the following configuration:
+### 2. Auth schema
 
-- **Config file**: `packages/auth/script/auth-cli.ts` - A CLI-only configuration file (isolated from src to prevent imports)
-- **Output**: `packages/db/src/auth-schema.ts` - Generated Drizzle schema for authentication tables
+No separate auth-schema generation step is needed: `initAuth` in [packages/auth](./packages/auth/src/index.ts) runs better-auth's own migrations against the same SQLite file at server boot, and MikroORM migrations handle the app tables (`pnpm db:migration:create` to generate new ones).
 
-The generation process:
+### 3. The example app
 
-1. Reads the Better Auth configuration from `packages/auth/script/auth-cli.ts`
-2. Generates the appropriate database schema based on your auth setup
-3. Outputs a Drizzle-compatible schema file to the `@acme/db` package
+The repo ships a small Post CRUD demo wired end-to-end:
 
-> **Note**: The `auth-cli.ts` file is placed in the `script/` directory (instead of `src/`) to prevent accidental imports from other parts of the codebase. This file is exclusively for CLI schema generation and should **not** be used directly in your application. For runtime authentication, use the configuration from `packages/auth/src/index.ts`.
+- `GET /api/posts`, `GET /api/posts/:id` — public, served with Kysely / MikroORM
+- `POST /api/posts`, `DELETE /api/posts/:id` — require a session (`auth: true` middleware), validated with `CreatePostSchema`
+- `GET /api/protected` — auth-gated sample
 
-For more information about the Better Auth CLI, see the [official documentation](https://www.better-auth.com/docs/concepts/cli#generate).
+Both the web and Expo apps sign in (Discord OAuth or better-auth's email flows via `authClient`) and render the post list with TanStack Query.
 
-### 3. Configure Expo `dev`-script
+### 4. Configure Expo `dev`-script
 
 #### Use iOS Simulator
 
@@ -122,13 +144,13 @@ For more information about the Better Auth CLI, see the [official documentation]
 
 3. Run `pnpm dev` at the project root folder.
 
-### 4. Configuring Better-Auth to work with Expo
+### 5. Configuring Better-Auth to work with Expo
 
 In order to get Better-Auth to work with Expo, you must either:
 
 #### Deploy the Auth Proxy (RECOMMENDED)
 
-Better-auth comes with an [auth proxy plugin](https://www.better-auth.com/docs/plugins/oauth-proxy). By deploying the app that serves your API, you can get OAuth working in preview deployments and development for Expo apps.
+Better-auth comes with an [auth proxy plugin](https://www.better-auth.com/docs/plugins/oauth-proxy), and it is already enabled in [packages/auth](./packages/auth/src/index.ts). By deploying the app that serves your API, you can get OAuth working in preview deployments and development for Expo apps.
 
 By using the proxy plugin, your server will forward any auth requests to the proxy server, which will handle the OAuth flow and then redirect back. This makes it easy to get OAuth working since you'll have a stable URL that is publicly accessible and doesn't change for every deployment and doesn't rely on what port the app is running on. So if port 3000 is taken and your app starts at port 3001 instead, your auth should still work without having to reconfigure the OAuth provider.
 
@@ -136,7 +158,7 @@ By using the proxy plugin, your server will forward any auth requests to the pro
 
 You can alternatively add your local IP (e.g. `192.168.x.y:$PORT`) to your OAuth provider. This may not be as reliable as your local IP may change when you change networks. Some OAuth providers may also only support a single callback URL for each app making this approach unviable for some providers (e.g. GitHub).
 
-### 5a. When it's time to add a new UI component
+### 6a. When it's time to add a new UI component
 
 Run the `ui-add` script to add a new UI component using the interactive `shadcn/ui` CLI:
 
@@ -144,21 +166,36 @@ Run the `ui-add` script to add a new UI component using the interactive `shadcn/
 pnpm nx run @acme/ui:ui-add
 ```
 
-When the component(s) has been installed, you should be good to go and start using it in your app.
+> **Note**: `@acme/ui` is React-based (Radix + shadcn). The Solid web app does not consume it today; use it only in React consumers (e.g. Expo) or port components to Solid.
 
-### 5b. When it's time to add a new package
+### 6b. When it's time to add a new package
 
 To add a new package, create a folder under `packages/` with a `package.json` named `@acme/<name>`. The Nx `package-json` plugin infers every script as a target automatically, so no registration is needed.
 
 Set up the `package.json`, `tsconfig.json` and a `index.ts`, and extend the shared tooling packages (`@acme/eslint-config`, `@acme/prettier-config`, `@acme/tsconfig`) to configure formatting, linting and typechecking for the new package.
 
+## Docker
+
+```bash
+docker compose up --build
+```
+
+- **server**: Bun image; runs `mikro-orm migration:up` at boot, then serves Elysia on port 3000. SQLite persists in the `./data` volume (`/data/sqlite.db`).
+- **web**: builds `@acme/web` with `pnpm nx run @acme/web:build` and serves the static bundle via nginx on port 3001.
+
+Auth env vars (`AUTH_SECRET`, `AUTH_DISCORD_ID`, `AUTH_DISCORD_SECRET`) are read from your shell/`.env` by compose.
+
+## CI
+
+[.github/workflows/ci.yml](./.github/workflows/ci.yml) runs `env`, `lint`, `format`, `typecheck` and `@acme/web:check` jobs on PRs, `main` pushes and merge queues, all using the composite setup action in `tooling/github/setup` (the `env` job validates the `.env.schema` contracts; no `.env` copy needed). Dependency updates are handled by Renovate.
+
 ## FAQ
 
 ### Does this pattern leak backend code to my client applications?
 
-No, it does not. The `api` package should only be a production dependency in the server application where it's served. The Expo app, and all other apps you may add in the future, should only add the `api` package as a dev dependency. This lets you have full typesafety in your client applications, while keeping your backend code safe.
+No, it does not. The `api` package should only be a production dependency in the server application where it's served. The Expo and web apps import only the `App` type from `@acme/api` to build their Eden treaties — a type-only import that is fully erased at build time — so keep it as a dev dependency there. This gives you full typesafety in your client applications while keeping your backend code safe.
 
-If you need to share runtime code between the client and server, such as input validation schemas, you can create a separate `shared` package for this and import it on both sides.
+If you need to share runtime code between the client and server, such as input validation schemas, that's what `@acme/validators` is for; import it on both sides.
 
 ## Deployment
 
@@ -166,9 +203,7 @@ If you need to share runtime code between the client and server, such as input v
 
 Deploying your Expo application works slightly differently compared to deploying a web app. Instead of "deploying" your app online, you need to submit production builds of your app to app stores, like [Apple App Store](https://www.apple.com/app-store) and [Google Play](https://play.google.com/store/apps). You can read the full [guide to distributing your app](https://docs.expo.dev/distribution/introduction), including best practices, in the Expo docs.
 
-1. Make sure to modify the `getBaseUrl` function to point to your backend's production URL:
-
-   <https://github.com/t3-oss/create-t3-turbo/blob/656965aff7db271e5e080242c4a3ce4dad5d25f8/apps/expo/src/utils/api.tsx#L20-L37>
+1. Make sure to modify the `getBaseUrl` function in [apps/expo/src/utils/base-url.ts](./apps/expo/src/utils/base-url.ts) to point to your backend's production URL.
 
 2. Let's start by setting up [EAS Build](https://docs.expo.dev/build/introduction), which is short for Expo Application Services. The build service helps you create builds of your app, without requiring a full native development setup. The commands below are a summary of [Creating your first build](https://docs.expo.dev/build/setup).
 
@@ -227,6 +262,10 @@ Deploying your Expo application works slightly differently compared to deploying
    > Your OTA (Over The Air) updates must always follow the app store's rules. You can't change your app's primary functionality without getting app store approval. But this is a fast way to update your app for minor changes and bug fixes.
 
 9. Done! Now that you have created your production build, submitted it to the stores, and installed EAS Update, you are ready for anything!
+
+### Server & Web
+
+`docker compose up --build` is the reference deployment: Elysia on Bun (port 3000, migrations run at boot, SQLite volume at `./data`) and the built Solid bundle behind nginx (port 3001). Point `BETTER_AUTH_URL` and the clients' API base URL at your public host.
 
 ## References
 

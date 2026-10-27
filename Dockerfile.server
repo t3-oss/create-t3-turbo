@@ -11,6 +11,10 @@ FROM oven/bun:1 AS run
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY --from=deps /app ./
+COPY .varlock-frozen-env ./
+ENV _VARLOCK_USE_FROZEN_ENV=1
+# DATABASE_URL is @dynamic=boot: this overrides the frozen ./sqlite.db default for
+# both the migration CMD (raw process.env read) and the server boot (varlock).
 ENV DATABASE_URL=/data/sqlite.db
 EXPOSE 3000
 CMD ["sh", "-c", "cd packages/db && bunx --bun mikro-orm migration:up && cd /app && exec bun apps/server/src/index.ts"]

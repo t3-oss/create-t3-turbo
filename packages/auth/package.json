@@ -3,8 +3,7 @@
   "private": true,
   "type": "module",
   "exports": {
-    ".": "./src/index.ts",
-    "./env": "./env.ts"
+    ".": "./src/index.ts"
   },
   "license": "MIT",
   "scripts": {
@@ -15,9 +14,7 @@
   },
   "dependencies": {
     "@better-auth/expo": "catalog:",
-    "@t3-oss/env-core": "^0.13.8",
-    "better-auth": "catalog:",
-    "zod": "catalog:"
+    "better-auth": "catalog:"
   },
   "devDependencies": {
     "@acme/eslint-config": "workspace:*",

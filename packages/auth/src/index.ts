@@ -21,7 +21,7 @@ export async function initAuth<
   extraPlugins?: TExtraPlugins;
 }): Promise<Auth> {
   const config: BetterAuthOptions = {
-    // eslint-disable-next-line no-restricted-properties -- DATABASE_URL is shared with @acme/db, not part of authEnv()
+    // eslint-disable-next-line no-restricted-properties -- DATABASE_URL is shared with @acme/db, injected by varlock
     database: new DatabaseSync(process.env.DATABASE_URL ?? "./sqlite.db"),
     baseURL: options.baseUrl,
     secret: options.secret,

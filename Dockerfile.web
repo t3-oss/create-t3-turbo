@@ -2,6 +2,7 @@ FROM node:22 AS build
 RUN corepack enable
 WORKDIR /app
 COPY package.json pnpm-workspace.yaml pnpm-lock.yaml nx.json ./
+COPY .env.schema ./
 COPY apps apps
 COPY packages packages
 COPY tooling tooling

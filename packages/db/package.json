@@ -15,8 +15,8 @@
     "dev": "tsc",
     "format": "prettier --check . --ignore-path ../../.gitignore",
     "lint": "eslint --flag unstable_native_nodejs_ts_config",
-    "migration:create": "mikro-orm migration:create",
-    "migration:up": "mikro-orm migration:up",
+    "migration:create": "varlock run -- mikro-orm migration:create",
+    "migration:up": "varlock run -- mikro-orm migration:up",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
@@ -33,7 +33,8 @@
     "@types/node": "catalog:",
     "eslint": "catalog:",
     "prettier": "catalog:",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "varlock": "catalog:"
   },
   "prettier": "@acme/prettier-config"
 }

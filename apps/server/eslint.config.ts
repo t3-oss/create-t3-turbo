@@ -4,7 +4,7 @@ import { baseConfig, restrictEnvAccess } from "@acme/eslint-config/base";
 
 export default defineConfig(
   {
-    ignores: ["dist/**"],
+    ignores: ["dist/**", "env.d.ts"],
   },
   baseConfig,
   restrictEnvAccess,

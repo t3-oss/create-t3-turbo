@@ -16,6 +16,8 @@ export function authEnv() {
         process.env.NODE_ENV === "production"
           ? z.string().min(1)
           : z.string().min(1).optional(),
+      MOCK_EMAIL: z.string().min(1).optional(),
+      MOCK_PASSWORD: z.string().min(1).optional(),
       NODE_ENV: z.enum(["development", "production"]).optional(),
     },
     runtimeEnv: process.env,

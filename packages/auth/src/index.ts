@@ -18,7 +18,8 @@ export function initAuth<
   discordClientSecret: string | undefined;
   extraPlugins?: TExtraPlugins;
 }) {
-  const isProduction = process.env.NODE_ENV === "production";
+  const isProduction =
+    new URL(options.baseUrl).origin === new URL(options.productionUrl).origin;
   const discordOptions = {
     clientId: options.discordClientId ?? "",
     clientSecret: options.discordClientSecret ?? "",

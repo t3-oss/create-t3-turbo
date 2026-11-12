@@ -14,7 +14,7 @@ const baseUrl =
     : env.VERCEL_ENV === "preview"
       ? `https://${env.VERCEL_URL}`
       : // eslint-disable-next-line no-restricted-properties
-        `http://localhost:${process.env.PORT ?? "43161"}`;
+        `http://localhost:${process.env.PORT ?? "3000"}`;
 
 export const auth = initAuth({
   baseUrl,

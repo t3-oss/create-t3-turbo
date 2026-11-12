@@ -5,17 +5,27 @@ import { Pool } from "pg";
 
 import * as schema from "./schema";
 
-// Local Docker Postgres speaks TCP, while @vercel/postgres uses Neon WebSockets.
-// Production keeps the existing Vercel Postgres client.
-const isProduction = process.env.NODE_ENV === "production";
-const isLocalPostgres =
-  process.env.POSTGRES_URL?.includes("localhost") === true;
+const localPostgresHosts = new Set([
+  "localhost",
+  "127.0.0.1",
+  "::1",
+  "[::1]",
+  "postgres",
+]);
+const isLocalPostgres = (() => {
+  const connectionString = process.env.POSTGRES_URL;
+  if (!connectionString) return false;
+  try {
+    return localPostgresHosts.has(new URL(connectionString).hostname);
+  } catch {
+    return false;
+  }
+})();
 
-export const db =
-  isProduction && !isLocalPostgres
-    ? drizzleVercel({ client: sql, schema, casing: "snake_case" })
-    : drizzleNode({
-        client: new Pool({ connectionString: process.env.POSTGRES_URL }),
-        schema,
-        casing: "snake_case",
-      });
+export const db = isLocalPostgres
+  ? drizzleNode({
+      client: new Pool({ connectionString: process.env.POSTGRES_URL }),
+      schema,
+      casing: "snake_case",
+    })
+  : drizzleVercel({ client: sql, schema, casing: "snake_case" });

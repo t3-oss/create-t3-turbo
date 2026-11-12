@@ -1,5 +1,6 @@
 import type { BetterAuthOptions, BetterAuthPlugin } from "better-auth";
 import { expo } from "@better-auth/expo";
+import { mockDiscord } from "@mockatoo/connect-better-auth";
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { oAuthProxy } from "better-auth/plugins";
@@ -13,10 +14,16 @@ export function initAuth<
   productionUrl: string;
   secret: string | undefined;
 
-  discordClientId: string;
-  discordClientSecret: string;
+  discordClientId: string | undefined;
+  discordClientSecret: string | undefined;
   extraPlugins?: TExtraPlugins;
 }) {
+  const isProduction = process.env.NODE_ENV === "production";
+  const discordOptions = {
+    clientId: options.discordClientId ?? "",
+    clientSecret: options.discordClientSecret ?? "",
+    redirectURI: `${isProduction ? options.productionUrl : options.baseUrl}/api/auth/callback/discord`,
+  };
   const config = {
     database: drizzleAdapter(db, {
       provider: "pg",
@@ -24,19 +31,18 @@ export function initAuth<
     baseURL: options.baseUrl,
     secret: options.secret,
     plugins: [
-      oAuthProxy({
-        productionURL: options.productionUrl,
-      }),
+      ...(isProduction
+        ? [
+            oAuthProxy({
+              productionURL: options.productionUrl,
+            }),
+          ]
+        : []),
+      ...(isProduction ? [] : [mockDiscord(discordOptions)]),
       expo(),
       ...(options.extraPlugins ?? []),
     ],
-    socialProviders: {
-      discord: {
-        clientId: options.discordClientId,
-        clientSecret: options.discordClientSecret,
-        redirectURI: `${options.productionUrl}/api/auth/callback/discord`,
-      },
-    },
+    socialProviders: isProduction ? { discord: discordOptions } : {},
     trustedOrigins: ["expo://"],
     onAPIError: {
       onError(error, ctx) {

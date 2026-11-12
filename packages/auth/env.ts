@@ -7,17 +7,17 @@ export function authEnv() {
       AUTH_DISCORD_ID:
         process.env.NODE_ENV === "production"
           ? z.string().min(1)
-          : z.string().min(1).optional(),
+          : z.string().min(1).optional().or(z.literal("")),
       AUTH_DISCORD_SECRET:
         process.env.NODE_ENV === "production"
           ? z.string().min(1)
-          : z.string().min(1).optional(),
+          : z.string().min(1).optional().or(z.literal("")),
       AUTH_SECRET:
         process.env.NODE_ENV === "production"
           ? z.string().min(1)
           : z.string().min(1).optional(),
-      MOCK_EMAIL: z.string().min(1).optional(),
-      MOCK_PASSWORD: z.string().min(1).optional(),
+      MOCK_EMAIL: z.string().min(1).optional().or(z.literal("")),
+      MOCK_PASSWORD: z.string().min(1).optional().or(z.literal("")),
       NODE_ENV: z.enum(["development", "production"]).optional(),
     },
     runtimeEnv: process.env,

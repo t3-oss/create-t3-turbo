@@ -1,7 +1,9 @@
 import { expect, test } from "@playwright/test";
 
-const email = process.env.MOCK_EMAIL;
-const password = process.env.MOCK_PASSWORD;
+import { env } from "~/env";
+
+const email = env.MOCK_EMAIL;
+const password = env.MOCK_PASSWORD;
 
 test("signs in with Discord through Mockatoo", async ({ page }) => {
   if (!email || !password) {

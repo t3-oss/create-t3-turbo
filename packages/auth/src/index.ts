@@ -18,8 +18,9 @@ export function initAuth<
   discordClientSecret: string | undefined;
   extraPlugins?: TExtraPlugins;
 }) {
-  const isProduction =
-    new URL(options.baseUrl).origin === new URL(options.productionUrl).origin;
+  // NODE_ENV is the deployment-mode boundary; URL equality is unsafe for previews.
+  // eslint-disable-next-line no-restricted-properties
+  const isProduction = process.env.NODE_ENV === "production";
   const discordOptions = {
     clientId: options.discordClientId ?? "",
     clientSecret: options.discordClientSecret ?? "",

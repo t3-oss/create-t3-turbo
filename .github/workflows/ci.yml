@@ -79,7 +79,7 @@ jobs:
         run: pnpm --filter @acme/nextjs exec playwright install --with-deps chromium
 
       - name: Push database schema
-        run: pnpm db:push
+        run: pnpm --filter @acme/db push
 
       - name: Run sign-in test
         run: pnpm --filter @acme/nextjs test:e2e

@@ -45,6 +45,45 @@ jobs:
       - name: Format
         run: pnpm format
 
+  e2e:
+    runs-on: ubuntu-latest
+    env:
+      POSTGRES_URL: postgres://postgres:postgres@localhost:5432/postgres
+      MOCK_EMAIL: ${{ secrets.MOCK_EMAIL }}
+      MOCK_PASSWORD: ${{ secrets.MOCK_PASSWORD }}
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d postgres"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Setup
+        uses: ./tooling/github/setup
+
+      - name: Copy env
+        shell: bash
+        run: cp .env.example .env
+
+      - name: Install Playwright browser
+        run: pnpm --filter @acme/nextjs exec playwright install --with-deps chromium
+
+      - name: Push database schema
+        run: pnpm --filter @acme/db push
+
+      - name: Run sign-in test
+        run: pnpm --filter @acme/nextjs test:e2e
+
   typecheck:
     runs-on: ubuntu-latest
     steps:

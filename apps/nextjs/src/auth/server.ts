@@ -13,7 +13,8 @@ const baseUrl =
     ? `https://${env.VERCEL_PROJECT_PRODUCTION_URL}`
     : env.VERCEL_ENV === "preview"
       ? `https://${env.VERCEL_URL}`
-      : "http://localhost:3000";
+      : // eslint-disable-next-line no-restricted-properties
+        `http://localhost:${process.env.PORT ?? "3000"}`;
 
 export const auth = initAuth({
   baseUrl,

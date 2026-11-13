@@ -98,7 +98,7 @@ pnpm db:push
 
 ### Run the Next.js sign-in test
 
-Development and test Discord sign-in uses Mockatoo. Set `MOCK_EMAIL` and `MOCK_PASSWORD` to a Mockatoo test account, then run Postgres and the test:
+Development and test Discord sign-in uses Mockatoo. Set `MOCK_EMAIL` and `MOCK_PASSWORD` to a Mockatoo test account, then run Postgres and the test. Without them, the full sign-in test skips. In CI, add them as repository secrets; GitHub does not pass secrets to pull requests from forks, so those runs skip it too.
 
 ```bash
 docker run --rm --name create-t3-turbo-postgres \

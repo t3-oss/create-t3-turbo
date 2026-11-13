@@ -5,8 +5,6 @@ import { expect, test } from "@playwright/test";
 const email = process.env.MOCK_EMAIL;
 // eslint-disable-next-line no-restricted-properties
 const password = process.env.MOCK_PASSWORD;
-// eslint-disable-next-line no-restricted-properties
-const isCI = Boolean(process.env.CI);
 
 test("starts Discord sign-in with Mockatoo", async ({ page }) => {
   await page.goto("/");
@@ -18,12 +16,12 @@ test("starts Discord sign-in with Mockatoo", async ({ page }) => {
 });
 
 test("signs in with Discord through Mockatoo", async ({ page }) => {
-  if (!email || !password) {
-    if (isCI) {
-      throw new Error("CI requires MOCK_EMAIL and MOCK_PASSWORD.");
-    }
-    test.skip(true, "MOCK_EMAIL and MOCK_PASSWORD are not available.");
-  }
+  // Needs a Mockatoo test account. CI on pull requests from forks has no
+  // secrets, so this skips there and the test above still runs.
+  test.skip(
+    !email || !password,
+    "Set MOCK_EMAIL and MOCK_PASSWORD to run the full sign-in.",
+  );
 
   await page.goto("/");
   await page.getByRole("button", { name: "Sign in with Discord" }).click();

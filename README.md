@@ -96,6 +96,22 @@ cp .env.example .env
 pnpm db:push
 ```
 
+### Run the Next.js sign-in test
+
+Development and test Discord sign-in uses Mockatoo. Set `MOCK_EMAIL` and `MOCK_PASSWORD` to a Mockatoo test account, then run Postgres and the test. Without them, the full sign-in test skips. In CI, add them as repository secrets; GitHub does not pass secrets to pull requests from forks, so those runs skip it too.
+
+```bash
+docker run --rm --name create-t3-turbo-postgres \
+  -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=postgres \
+  -p 5432:5432 -d postgres:17
+POSTGRES_URL=postgres://postgres:postgres@localhost:5432/postgres pnpm db:push
+MOCK_EMAIL=... MOCK_PASSWORD=... pnpm --filter @acme/nextjs test:e2e
+
+docker stop create-t3-turbo-postgres
+```
+
+Stop the container after the test. Production still uses the configured Discord OAuth credentials.
+
 ### 2. Generate Better Auth Schema
 
 This project uses [Better Auth](https://www.better-auth.com) for authentication. The auth schema needs to be generated using the Better Auth CLI before you can use the authentication features.
